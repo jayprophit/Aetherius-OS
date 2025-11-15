@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aetherius OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: 'hsl(210, 90%, 50%)',
+              light: 'hsl(210, 90%, 60%)',
+              dark: 'hsl(210, 90%, 40%)',
+            },
+            background: {
+              light: 'hsl(210, 20%, 98%)',
+              dark: 'hsl(225, 10%, 8%)',
+            },
+            content: {
+              light: 'hsl(225, 10%, 15%)',
+              dark: 'hsl(210, 20%, 95%)',
+            },
+            subtle: {
+              light: 'hsl(210, 20%, 90%)',
+              dark: 'hsl(225, 10%, 15%)',
+            },
+            accent: {
+               DEFAULT: 'hsl(260, 80%, 60%)',
+               light: 'hsl(260, 80%, 70%)',
+               dark: 'hsl(260, 80%, 50%)',
+            }
+          },
+          backdropBlur: {
+            xl: '24px',
+          }
+        }
+      }
+    }
+  </script>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "marked": "https://aistudiocdn.com/marked@^17.0.0",
+    "@heroicons/react/": "https://aistudiocdn.com/@heroicons/react@^2.2.0/"
+  }
+}
+</script>
+<script>
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+</script>
+</head>
+  <body class="bg-background-light dark:bg-background-dark text-content-light dark:text-content-dark font-sans">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

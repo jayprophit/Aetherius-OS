@@ -1,0 +1,7 @@
+{
+  "name": "Aetherius OS",
+  "description": "A web-based OS interface for Aetherius OS, featuring a hierarchical network architecture, multi-paradigm computing, and an integrated personal AI.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
