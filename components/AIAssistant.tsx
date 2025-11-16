@@ -603,7 +603,7 @@ export const AIHub: React.FC = () => {
                          </div>
                     </div>
 
-                    <div className="flex-shrink-0 p-3 overflow-y-auto">
+                    <div className="flex-shrink-0 p-3">
                         <AIVisualization />
                          <div className="h-40 bg-gray-100 dark:bg-gray-900/50 rounded-md p-3 overflow-y-auto text-sm text-gray-600 dark:text-gray-300">
                             <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Suggestions</h4>

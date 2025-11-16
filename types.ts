@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export interface ChatMessage {
@@ -246,6 +245,7 @@ export interface KnowledgeBaseItem {
 export interface MilestonesData {
   projectMilestones: string[];
   technicalBreakdown: string[];
+  platformFeatureMilestones?: string[];
 }
 
 // OS Build Checklist Data Structures

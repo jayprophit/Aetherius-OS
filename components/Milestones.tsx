@@ -25,6 +25,16 @@ export const Milestones: React.FC = () => {
           </ol>
         </SectionCard>
         
+        {milestonesData.platformFeatureMilestones && (
+            <SectionCard title="Platform Feature Milestones">
+              <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                {milestonesData.platformFeatureMilestones.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ol>
+            </SectionCard>
+        )}
+
         <SectionCard title="Advanced Technical Breakdown">
           <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300">
             {milestonesData.technicalBreakdown.map((item, index) => (

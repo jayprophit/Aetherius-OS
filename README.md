@@ -2,7 +2,7 @@
 
 A web-based, next-generation operating system interface that serves as the initial reference implementation for the Universal AI Development Protocol. It demonstrates a complete, production-ready system with a rich feature set, real-world integrations, and an advanced AI core.
 
-## ✨ Core Development Principles (OADP-001-UNIVERSAL-REV2)
+## ✨ Core Development Principles (OADP-001-UNIVERSAL-REV5)
 
 This project is built under a strict, revised protocol that mandates the AI developer to operate as a senior expert with century-level experience. The core tenet is **design-specific implementation**: every project is treated as a unique entity, and features are not carried over unless explicitly requested.
 
@@ -15,17 +15,28 @@ This project is built under a strict, revised protocol that mandates the AI deve
 
 Aetherius OS is built upon a foundation of both state-of-the-art and speculative future technologies. The internal Knowledge Base application provides in-depth details on each concept. Key pillars include:
 
+-   **Owner's Unrestricted Access:** The owner possesses ultimate authority, sitting above all AI layers with absolute control and the ability to override any system or AI decision.
+-   **Parent AI as Solo Business:** The Parent AI runs the entire platform autonomously, acting as the “CEO” of the system. Humans act as oversight supervisors, providing high-level checks for legal compliance, ethical review, and strategic guidance without interfering with day-to-day operational autonomy.
+-   **Three-Tiered Architecture:** The OS operates on a hierarchical network:
+    -   **Genesis Parent:** The owner's central command build with unrestricted access for development, governance, and system-wide updates.
+    -   **Child:** The core AI and blockchain processing layer, acting as an operational engine and network gatekeeper.
+    -   **Grandchild:** End-user instances (clones) with access to OS features for content creation and management, but without access to the primary codebase.
+-   **Universal Platform Accessibility:** Aetherius OS is designed as a universal platform, accessible internationally via a **Web App, Desktop App, Mobile App (iOS/Android), and Tablet/iPad App**, running in the cloud and within a virtualized environment.
+-   **Onion Router Data Layer:** An integrated, privacy-aware data scraping module to feed the AI's knowledge base from all layers of the web.
+-   **Hive/Singular Mind Dual Processing:** A sophisticated cognitive architecture that combines collective intelligence from all network nodes with private, individual processing for each user.
+-   **Universal Task Autonomy:** The AI can autonomously execute complex tasks across any domain, including robotics control, scientific research, and content creation.
+-   **Robotics Integration Protocol:** A secure middleware layer that allows the user's personal AI to be safely deployed onto third-party robotics platforms.
+-   **User Governance Model:** Users cannot directly modify core OS code but can vote on network proposals. Votes are weighted based on factors like tenure or contribution. Proposals affecting core security or AI logic are automatically rejected, creating a controlled, participatory governance system.
+-   **Self-Healing Network Protocol:** A robust security and synchronization system. Grandchild nodes are verified by the network before syncing. Corrupted or modified clones are automatically isolated, reset to their last valid state, and restored, ensuring network integrity. The system supports full online/offline functionality, with changes synced upon reconnection.
+-   **Bio-Synced Identity & Blockchain:** Every user has a unique, immutable ID on the blockchain. The system supports multi-modal authentication including 3rd-party social logins (Google, Facebook), advanced biometrics (face, finger, eye, bone density, live plasma), and a conceptual read-only DNA scan for identity validation, creating a secure and tamper-proof record of all actions. It supports both KYC and No-KYC users with tiered access levels.
+-   **Personalized AI Companions:** Each user receives a unique AI instance that learns their patterns, hobbies, and preferences, making it a personalized friend and assistant. The AI is governed by a strict set of ethical laws, including the protection of the user and society.
+-   **Gamification and Points System:** A comprehensive, gamified points system rewards user interactions (likes, comments, content creation, e-commerce, e-learning). Points are convertible to a digital crypto asset, can be staked, and are used for discounts and platform features.
+-   **Multi-Proof Consensus:** The blockchain architecture supports a vast array of consensus mechanisms (Proof-of-Work, Proof-of-Stake, Proof-of-History, etc.), allowing for flexible and situation-appropriate validation.
+-   **Integrated Hardware Ecosystem:** The OS is designed to run on custom future hardware and sync across all other devices (phones, wearables). It includes layers for **Wearable AI** (watches, rings, AI pins) and **Robotics** (Boston Dynamics Atlas, etc.).
+-   **Integrated Engineering & Design Suite:** The platform architecture accounts for professional CAD, 3D modeling, and engineering tools (Fusion 360, Solidworks), with a knowledge base grounded in mechanical and mechatronics principles.
+-   **Advanced Trading Intelligence:** An integrated module for market analysis using volume, price action, and order flow, including strategies based on real-world events like weather patterns.
 -   **Holistic 8-Layer Architecture:** A comprehensive system design covering sensory input, quantum computation, cognitive reasoning, generative output, data management, system orchestration, safety, and feedback loops.
--   **Advanced AI Learning Paradigms:** A nested cognitive core that utilizes a full spectrum of machine learning models, including Supervised, Unsupervised, Reinforcement, Transfer, Federated, and Meta-Learning.
--   **Full Spectrum AI Capabilities (ANI, AGI, ASI):** The architecture is designed to support and simulate all stages of AI evolution, from current task-specific AI (Narrow) to theoretical human-like (General) and transcendent (Super) intelligence.
--   **Virtual Quantum AI Computer:** A fully virtualized machine that runs all programs and integrates core quantum principles (entanglement, coherence, etc.), time crystals, and advanced AI models.
--   **Multi-Dimensional Blockchain:** A hierarchical, self-contained blockchain that represents entire digital entities (apps, games, OS) as "thought-bubble" blocks. It merges transactional, operational, and biological (DNA) data into a single, unified, and immutable ledger.
--   **AI Avatar Cloning & Generation:** A framework to create high-fidelity digital clones of the user (voice, appearance, personality) or generate entirely new, unique AI avatars.
--   **Whole Brain Emulation (WBE):** The conceptual goal of creating a digital twin of a human brain to serve as a cognitive engine for the AI, enabling human-like reasoning and creativity.
--   **Neuro-Symbolic AI (NSNoBrain):** A hybrid approach that combines the pattern-recognition of neural networks with the structured logic of symbolic AI, allowing for advanced, non-obvious, and causal reasoning.
--   **Advanced Generative Models:** Utilizes Transformers, Diffusion Models, and hybrid architectures to generate high-fidelity, multimodal content.
--   **Next-Generation Hardware Concepts:** Explores theoretical hardware like Superfluid Light for photonic computing, WBEs for direct neural links, and advanced memory technologies like DNA and Crystalline storage.
--   **Virtual Nanobites:** Simulated nano-scale agents for modeling and designing at the molecular level.
+-   **Virtual Quantum AI Computer:** A fully virtualized machine that runs all programs and integrates core quantum principles, time crystals, and advanced AI models.
 
 ## 🛠️ Tech Stack & Integrations (Reference Implementation)
 

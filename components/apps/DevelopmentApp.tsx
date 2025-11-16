@@ -2,12 +2,15 @@ import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
 import { PlaceholderView } from '../PlaceholderView';
+import { GameEngine } from '../GameEngine';
+import { AiSuiteApp } from './AiSuiteApp';
 
+// This is the map for components *inside* the Development App window.
 const developmentComponentMap: { [key: string]: React.FC<any> } = {
   codeEditor: () => <PlaceholderView viewName="Code Editor" />,
   websiteBuilder: () => <PlaceholderView viewName="Website Builder" />,
-  gameDesign: () => <PlaceholderView viewName="Game Design" />,
-  aiTools: () => <PlaceholderView viewName="AI Tools" />,
+  gameEngine: GameEngine,
+  aiSuite: AiSuiteApp,
 };
 
 interface DevelopmentAppProps {

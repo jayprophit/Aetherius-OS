@@ -1,5 +1,4 @@
 
-
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { LeftSidebar } from './components/Dock';
 import { TopBar } from './components/TopBar';
@@ -18,7 +17,8 @@ import { Elearning } from './components/Elearning';
 import { JobSearch } from './components/JobSearch';
 import { CvBuilder } from './components/CvBuilder';
 import { Marketplace } from './components/Marketplace';
-import { AIHub } from './components/AIAssistant';
+// FIX: Update import to use AIAssistant from AppLauncher.tsx and alias it as AIHub
+import { AIAssistant as AIHub } from './components/AppLauncher';
 import { SettingsView } from './components/SettingsModal';
 import { 
     WelcomeBanner,
@@ -56,6 +56,8 @@ import { AdminPanel } from './components/AdminPanel';
 import { AvatarForge } from './components/AvatarForge';
 import { SimulationHub } from './components/SimulationHub';
 import { VideoEditor } from './components/VideoEditor';
+import { GameEngine } from './components/GameEngine';
+import { CognitiveFramework } from './components/CognitiveFramework';
 
 
 // Import new trading components
@@ -92,8 +94,10 @@ import { ElearningApp } from './components/apps/ElearningApp';
 import { GamingApp } from './components/apps/GamingApp';
 import { HealthApp } from './components/apps/HealthApp';
 import { AccountApp } from './components/apps/AccountApp';
+import { EnterpriseApp } from './components/apps/EnterpriseApp';
 import { MouseSettings } from './components/settings/MouseSettings';
 import { StylusSettings } from './components/settings/StylusSettings';
+import { AiSuiteApp } from './components/apps/AiSuiteApp';
 
 import { loggedInUser } from './data';
 import { FolderIcon } from './components/Icons';
@@ -166,6 +170,8 @@ const componentMap: { [key: string]: React.FC<any> } = {
   gamingApp: GamingApp,
   healthApp: HealthApp,
   accountApp: AccountApp,
+  enterpriseApp: EnterpriseApp,
+  aiSuite: AiSuiteApp,
   
   // Child components (rendered inside App Containers)
   feedBiome: FeedView,
@@ -185,6 +191,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   knowledgeBase: KnowledgeBase,
   milestones: Milestones,
   buildChecklist: BuildChecklist,
+  cognitiveFramework: CognitiveFramework,
   tritCore: () => <PlaceholderView viewName="Trit Core" />,
   strategicHub: () => <PlaceholderView viewName="Strategic Hub" />,
   capabilities: () => <PlaceholderView viewName="Capabilities" />,
@@ -200,7 +207,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   commsHub: () => <PlaceholderView viewName="Comms Hub" />,
   codeEditor: () => <PlaceholderView viewName="Code Editor" />,
   websiteBuilder: () => <PlaceholderView viewName="Website Builder" />,
-  gameDesign: () => <PlaceholderView viewName="Game Design" />,
+  gameEngine: GameEngine,
   cadDesign: () => <PlaceholderView viewName="CAD Design" />,
   photoEditor: () => <PlaceholderView viewName="Photo Editor" />,
   videoEditor: VideoEditor,
@@ -208,7 +215,6 @@ const componentMap: { [key: string]: React.FC<any> } = {
   videoProduction: () => <CreationLab type="Video"/>,
   imageEditing: () => <CreationLab type="Image"/>,
   contentCreation: () => <CreationLab type="Content"/>,
-  aiTools: () => <PlaceholderView viewName="AI Tools" />,
   articleWriter: () => <PlaceholderView viewName="Article Writer" />,
   scriptGenerator: () => <PlaceholderView viewName="Script Generator" />,
   slideDeckDesigner: () => <PlaceholderView viewName="Slide Deck Designer" />,
@@ -221,7 +227,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   avatarForge: AvatarForge,
   engineeringHub: () => <PlaceholderView viewName="Engineering Hub" />,
   simulationHub: SimulationHub,
-  videoHub: () => <PlaceholderView viewName="Video Hub" />,
+  videoHub: VideoEditor,
   videoEditingSuite: VideoEditor,
   gameDevSuite: () => <PlaceholderView viewName="Game Dev Suite" />,
   documents: () => <PlaceholderView viewName="Documents" />,
@@ -247,6 +253,15 @@ const componentMap: { [key: string]: React.FC<any> } = {
   tradingGames: CryptoGames,
   tradingWallet: Wallet,
   blockchainHub: () => <PlaceholderView viewName="Blockchain Hub" />,
+  // Enterprise Suite Components
+  crm: () => <PlaceholderView viewName="Customer Relationship Management (CRM)" />,
+  erp: () => <PlaceholderView viewName="Enterprise Resource Planning (ERP)" />,
+  scm: () => <PlaceholderView viewName="Supply Chain Management (SCM)" />,
+  hcm: () => <PlaceholderView viewName="Human Capital Management (HCM)" />,
+  ppm: () => <PlaceholderView viewName="Project & Portfolio Management (PPM)" />,
+  fsm: () => <PlaceholderView viewName="Field Service Management (FSM)" />,
+  bpm: () => <PlaceholderView viewName="Business Process Management (BPM)" />,
+  // Gaming & Personal
   gamingHub: () => <PlaceholderView viewName="Gaming Hub" />,
   myLibrary: () => <PlaceholderView viewName="My Library" />,
   linkedDevices: () => <PlaceholderView viewName="Linked Devices" />,

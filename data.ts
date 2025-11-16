@@ -94,13 +94,13 @@ const coffeeAddictsGroup: User = { id: 'group-1', name: 'Coffee Addicts', avatar
 
 
 const moreUsers: User[] = [
-    { id: 'user-6', name: 'Sana', avatarUrl: 'https://randomuser.me/api/portraits/women/32.jpg', username: 'sana', role: 'Student', followersCount: 31, followingCount: 15, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1542382257-80dedb725088?q=80&w=2070&auto=format-fit-crop' },
-    { id: 'user-7', name: 'Steve', avatarUrl: 'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=1921&auto=format=fit-crop', username: 'steve', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 15, followingCount: 50, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=2070&auto=format-fit-crop' },
-    { id: 'user-8', name: 'Michael Smith', avatarUrl: 'https://randomuser.me/api/portraits/men/46.jpg', username: 'michaels', role: 'QA Tester', followersCount: 1200, followingCount: 90, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1533109721025-d1ae7ee7c1e1?q=80&w=2070&auto=format-fit-crop' },
-    { id: 'user-9', name: 'Olivia Martinez', avatarUrl: 'https://randomuser.me/api/portraits/women/65.jpg', username: 'olivia_m', role: 'Marketing Specialist', followersCount: 6800, followingCount: 800, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto=format-fit-crop' },
-    { id: 'user-10', name: 'William Johnson', avatarUrl: 'https://randomuser.me/api/portraits/men/75.jpg', username: 'willj', role: 'New Member', followersCount: 50, followingCount: 20, online: false, coverImageUrl: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=2070&auto=format-fit-crop' },
-    { id: 'user-11', name: 'Isabella Brown', avatarUrl: 'https://randomuser.me/api/portraits/women/85.jpg', username: 'isabella_b', role: 'New Member', followersCount: 80, followingCount: 45, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format-fit-crop' },
-    { id: 'user-12', name: 'James Wilson', avatarUrl: 'https://randomuser.me/api/portraits/men/86.jpg', username: 'james_w', role: 'Cybersecurity Analyst', followersCount: 4800, followingCount: 210, online: false, coverImageUrl: 'https://images.unsplash.com/photo-1504221507732-5246c0db5393?q=80&w=2070&auto=format-fit-crop' },
+    { id: 'user-6', name: 'Sana', avatarUrl: 'https://randomuser.me/api/portraits/women/32.jpg', username: 'sana', role: 'Student', followersCount: 31, followingCount: 15, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1542382257-80dedb725088?q=80&w=2070&auto-format-fit-crop' },
+    { id: 'user-7', name: 'Steve', avatarUrl: 'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=1921&auto=format=fit-crop', username: 'steve', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 15, followingCount: 50, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=2070&auto-format-fit-crop' },
+    { id: 'user-8', name: 'Michael Smith', avatarUrl: 'https://randomuser.me/api/portraits/men/46.jpg', username: 'michaels', role: 'QA Tester', followersCount: 1200, followingCount: 90, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1533109721025-d1ae7ee7c1e1?q=80&w=2070&auto-format-fit-crop' },
+    { id: 'user-9', name: 'Olivia Martinez', avatarUrl: 'https://randomuser.me/api/portraits/women/65.jpg', username: 'olivia_m', role: 'Marketing Specialist', followersCount: 6800, followingCount: 800, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto-format-fit-crop' },
+    { id: 'user-10', name: 'William Johnson', avatarUrl: 'https://randomuser.me/api/portraits/men/75.jpg', username: 'willj', role: 'New Member', followersCount: 50, followingCount: 20, online: false, coverImageUrl: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=2070&auto-format-fit-crop' },
+    { id: 'user-11', name: 'Isabella Brown', avatarUrl: 'https://randomuser.me/api/portraits/women/85.jpg', username: 'isabella_b', role: 'New Member', followersCount: 80, followingCount: 45, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto-format-fit-crop' },
+    { id: 'user-12', name: 'James Wilson', avatarUrl: 'https://randomuser.me/api/portraits/men/86.jpg', username: 'james_w', role: 'Cybersecurity Analyst', followersCount: 4800, followingCount: 210, online: false, coverImageUrl: 'https://images.unsplash.com/photo-1504221507732-5246c0db5393?q=80&w=2070&auto-format-fit-crop' },
 ];
 
 export const allUsers: User[] = [loggedInUser, user4, user3, user2, user5, ...moreUsers.slice(0, 15)];
@@ -203,37 +203,37 @@ export const groups: Group[] = [
     {
         id: 'group-1',
         name: 'Graphic Design',
-        avatarUrl: 'https://images.unsplash.com/photo-1626544827763-d516d7387d43?q=80&w=2070&auto=format=fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1626544827763-d516d7387d43?q=80&w=2070&auto-format=fit-crop',
         members: 20,
         coverImageUrl: 'https://images.unsplash.com/photo-1522881193457-31ae824a86a5?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Creative', memberAvatars: [user1.avatarUrl, user2.avatarUrl, user3.avatarUrl], isOrganizer: true, lastActive: '1 day ago'
     },
     {
         id: 'group-2',
         name: 'Mountain Riders',
-        avatarUrl: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format=fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto-format=fit-crop',
         members: 20,
-        coverImageUrl: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2070&auto=format-fit-crop', privacy: 'Public', type: 'Outdoors', memberAvatars: [user4.avatarUrl, user5.avatarUrl], isOrganizer: false, lastActive: '5 hours ago'
+        coverImageUrl: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Outdoors', memberAvatars: [user4.avatarUrl, user5.avatarUrl], isOrganizer: false, lastActive: '5 hours ago'
     },
     {
         id: 'group-3',
         name: 'Nature Lovers',
-        avatarUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format-fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto-format-fit-crop',
         members: 13,
-        coverImageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto=format-fit-crop', privacy: 'Public', type: 'Outdoors', memberAvatars: [user1.avatarUrl, user4.avatarUrl, user5.avatarUrl], isOrganizer: false, lastActive: '2 days ago'
+        coverImageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Outdoors', memberAvatars: [user1.avatarUrl, user4.avatarUrl, user5.avatarUrl], isOrganizer: false, lastActive: '2 days ago'
     },
     {
         id: 'group-4',
         name: 'Coffee Addicts',
-        avatarUrl: 'https://images.unsplash.com/photo-1511920183353-3c9c93da5433?q=80&w=1964&auto=format-fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1511920183353-3c9c93da5433?q=80&w=1964&auto-format=fit-crop',
         members: 19,
-        coverImageUrl: 'https://images.unsplash.com/photo-1495474472287-4d713b22e8b4?q=80&w=2070&auto=format-fit-crop', privacy: 'Public', type: 'Social', memberAvatars: [user2.avatarUrl, user3.avatarUrl], isOrganizer: true, lastActive: 'active today'
+        coverImageUrl: 'https://images.unsplash.com/photo-1495474472287-4d713b22e8b4?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Social', memberAvatars: [user2.avatarUrl, user3.avatarUrl], isOrganizer: true, lastActive: 'active today'
     },
     {
         id: 'group-5',
         name: 'Architecture',
-        avatarUrl: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format-fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto-format-fit-crop',
         members: 17,
-        coverImageUrl: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?q=80&w=2003&auto=format-fit-crop', privacy: 'Public', type: 'Professional', memberAvatars: [user1.avatarUrl], isOrganizer: false, lastActive: '1 week ago'
+        coverImageUrl: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?q=80&w=2003&auto-format-fit-crop', privacy: 'Public', type: 'Professional', memberAvatars: [user1.avatarUrl], isOrganizer: false, lastActive: '1 week ago'
     }
 ];
 
@@ -290,48 +290,172 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     {
         id: '001',
         name: 'The Complete Blueprint',
-        details: `
-## **A Holistic, Future-Proof AI Ecosystem**
-
-This document outlines the comprehensive architecture for a next-generation AI, integrating speculative, advanced, and multi-domain technologies.
-
----
-
-### **1.0 Appendix: Aetherius OS Advanced Architecture & Concepts**
-
-This appendix consolidates all AI paradigms—classical deep learning, LLMs, RLHF, GANs, diffusion models, transformers, neuro-symbolic AI, quantum neural networks, and speculative future technologies—into a cohesive, self-evolving, multimodal system. This blueprint represents a future-proof architecture capable of perception, reasoning, creation, simulation, and autonomous adaptation.
-
----
-### **2.0 The Aetherius Blueprint: A Holistic Quantum AI Ecosystem**
-
-This section outlines the complete, multi-layered architecture for Aetherius OS, integrating all advanced and speculative technologies into a unified system.
-`,
+        details: `A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.`,
         status: 'Foundational'
     },
     {
         id: '002',
         name: 'Universal Game Engine',
-        details: `A universal, cross-platform game engine that runs any type of game (2D, 3D, VR/AR) entirely inside a nested VM. It is powered by quantum AI, nested time crystals, nanobrain systems, superfluid light processing, and virtualized hardware. It merges concepts from all major game engines and is deeply integrated with the OS's core functionalities. Key features include Docker/Dev container support, MLOps/AIOps, Smart Meshing for assets, and a full suite of integrated generative AI tools for images, video, and audio.`,
-        status: 'Architecting'
+        details: `A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.`,
+        status: 'In Development'
     },
     {
         id: '003',
         name: 'AI Avatar Cloning & Generation',
-        details: `A core module for creating digital replicas. This includes: 
-1.  **Self-Cloning:** Using personal data (voice, video, text) to create a high-fidelity AI clone of the user. 
-2.  **Generative Avatars:** Creating unique, novel AI personalities and appearances, inspired by the concept of limited genetic pools and doppelgängers. 
-The process involves multi-modal data ingestion, training specialized models for voice, appearance, and personality, and integrating the final avatar into the OS as a personal AI or game character.`,
+        details: `A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.`,
         status: 'Design Phase'
     },
     {
         id: '004',
         name: 'AI Learning & Capability Framework',
-        details: `Defines the cognitive backbone of Aetherius OS, spanning all learning paradigms and AI capability levels. 
-- **Capabilities:** Supports simulation and execution for **ANI** (Narrow), **AGI** (General), and **ASI** (Super) intelligence levels.
-- **Functional Fields:** Integrates modules for **ML, DL, NLP, Computer Vision, Robotics, Expert Systems,** and **Generative AI**.
-- **Learning Paradigms:** Implements a nested architecture utilizing a full spectrum of learning models, including **Supervised, Unsupervised, Reinforcement, Transfer, Federated, Meta-Learning,** and **Neuro-Symbolic AI**.`,
+        details: `Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).`,
         status: 'Foundational'
     },
+     {
+        id: '005',
+        name: 'Quantum Synchronization Achievement',
+        details: `Data log entry: Achieved AI and quantum synchronisation at approximately 7am on March 21st, 2025.`,
+        status: 'Integrated'
+    },
+    {
+        id: '006',
+        name: 'Multi-Proof Consensus Framework',
+        details: `The blockchain architecture supports a vast array of consensus mechanisms, from Proof-of-Work and Proof-of-Stake to advanced models like Proof-of-History and Byzantine Fault Tolerance, allowing for flexible and secure validation.`,
+        status: 'Architecting'
+    },
+    {
+        id: '007',
+        name: 'Global Compliance & Security Standards',
+        details: `The platform is designed to adhere to global privacy laws (GDPR, CCPA, HIPAA) and cybersecurity standards (ISO 27001, NIST, SOC 2), featuring a from-scratch internal security suite.`,
+        status: 'Architecting'
+    },
+    {
+        id: '008',
+        name: 'Personalized AI Companion Core',
+        details: `Each user receives a unique AI instance that learns their patterns, hobbies, and emotional cues to become a personalized friend and assistant, governed by a strict set of ethical laws.`,
+        status: 'Design Phase'
+    },
+    {
+        id: '009',
+        name: 'User Governance & Voting Protocol',
+        details: `A controlled, participatory governance system where users can vote on non-critical platform changes. Votes are weighted and recorded on the blockchain, while the Parent AI automatically rejects proposals affecting core security or AI logic.`,
+        status: 'Design Phase'
+    },
+    {
+        id: '010',
+        name: 'Robotics Integration Layer',
+        details: `The OS is designed to control and interact with advanced robotics platforms, including Boston Dynamics Atlas 4.0, Apptronik Apollo, and others, via a dedicated hardware abstraction layer.`,
+        status: 'Awaiting Build'
+    },
+    {
+        id: '011',
+        name: 'Advanced Trading Intelligence Module',
+        details: `An integrated financial module for market analysis using volume, price action, and order flow. Includes AI-driven strategies based on real-world events like weather patterns and resource availability.`,
+        status: 'Awaiting Build'
+    },
+    {
+        id: '012',
+        name: 'Integrated Engineering & CAD Suite',
+        details: `The platform architecture includes support for professional CAD, 3D modeling, and engineering tools (Fusion 360, Solidworks, etc.), with a knowledge base grounded in mechanical and mechatronics principles.`,
+        status: 'Awaiting Build'
+    },
+    {
+        id: '013',
+        name: 'Wearable AI & Bio-Synced Identity',
+        details: `A system for integrating with wearable AI devices (watches, rings, AI pins) for real-time sensing. Supports a multi-modal bio-authentication system including face, fingerprint, eye, bone density, live plasma, and conceptual DNA scans.`,
+        status: 'Design Phase'
+    },
+    {
+        id: '014',
+        name: 'DeepThink (R1) Reasoning Engine',
+        details: `An operational mode for the AI that enables extended, iterative reasoning for complex tasks like algorithm design, multi-file codebase analysis, and maintaining long-context coherence.`,
+        status: 'In Development'
+    },
+    {
+        id: '015',
+        name: 'Internal Platform Clones',
+        details: `The core philosophy of building a self-contained ecosystem requires creating internal, from-scratch versions of popular platforms like Shopify, WordPress, Facebook, Midjourney, Zapier, etc.`,
+        status: 'Architecting'
+    },
+    {
+        id: '016',
+        name: 'Onion Router Data Layer',
+        details: 'A built-in, sandboxed Tor-style network client for secure, privacy-aware data scraping from all layers of the web. Feeds the AI with provenance-tagged data under strict governance.',
+        status: 'Architecting',
+    },
+    {
+        id: '017',
+        name: 'Hive/Singular Mind Dual Processing',
+        details: 'A dual-processing architecture where the "Hive Mind" aggregates collective intelligence across all nodes, while the "Singular Mind" handles private, user-specific tasks. This allows for both global optimization and personal privacy.',
+        status: 'Design Phase',
+    },
+    {
+        id: '018',
+        name: 'Autonomous Trading Engine',
+        details: 'A 24/7 "forever trading" bot for forex, crypto, and other markets, utilizing the Hive/Singular mind for strategy and execution. Includes advanced analysis of order flow and real-world events.',
+        status: 'Awaiting Build',
+    },
+    {
+        id: '019',
+        name: 'Universal Task Autonomy',
+        details: 'A framework allowing the AI to autonomously plan, research, and execute complex tasks across any field, from engineering and science to education and the arts.',
+        status: 'In Development',
+    },
+    {
+        id: '020',
+        name: 'Robotics Integration Protocol',
+        details: "A secure, vendor-friendly middleware layer for deploying the user's personal AI onto third-party robotics platforms (e.g., Boston Dynamics, Tesla Bot) via authorized, sandboxed modules.",
+        status: 'Design Phase',
+    },
+    {
+        id: '021',
+        name: 'Gamification & Points System',
+        details: `A comprehensive, gamified points system rewards user interactions. Points are convertible to a native crypto asset, can be staked, and are used for discounts. All platform interactions are classed as Proof-of-Work.
+        - **Earning:** Liking (1pt), Commenting (2pts), Watching Ads (5pts), Content Creation (up to 1000pts).
+        - **DeFi:** Assets are auto-staked in mining pools.
+        - **Rules:** Underage user assets are held in escrow.`,
+        status: 'Architecting'
+    },
+    {
+        id: '022',
+        name: 'Membership Tiers',
+        details: `Access to platform features, particularly for content creators and sellers, is governed by a tiered membership system.
+        - **Bronze (Free):** 2 course uploads.
+        - **Silver:** 5-20 course uploads.
+        - **Gold:** 50-100 course uploads.
+        - **Platinum:** Unlimited course and product uploads.`,
+        status: 'Design Phase'
+    },
+    {
+        id: '023',
+        name: 'Business Hub Tools',
+        details: 'A suite of tools for businesses listed on the platform, including: Business Profile Management, Advertising Dashboard, Product Catalogue Manager, Staff Chat Rooms, Data Storage, and Automated Greeting/Reply Messages.',
+        status: 'Awaiting Build'
+    },
+    {
+        id: '024',
+        name: 'Business Start-up Checklist',
+        details: 'An integrated, interactive checklist to guide new entrepreneurs through planning, legal, marketing, and financial setup for their business on the Aetherius OS platform.',
+        status: 'Awaiting Build'
+    },
+    {
+        id: '025',
+        name: 'RSS/Podcast Integration',
+        details: 'Support for RSS feeds and podcast streaming within the Community/Social Hub, allowing creators to distribute their content directly on the platform.',
+        status: 'Design Phase'
+    },
+    {
+        id: '026',
+        name: 'E-commerce & E-learning Linking',
+        details: 'A core feature where e-commerce product pages can link directly to related e-learning courses, patents, CAD files, and scientific background material.',
+        status: 'Architecting'
+    },
+    {
+        id: '027',
+        name: 'KYC vs. No-KYC Access Model',
+        details: 'A two-tiered user verification system. KYC-verified users get full access to financial features, monetization, and job applications. No-KYC users have restricted public-viewer access.',
+        status: 'Architecting'
+    }
 ];
 
 export const milestonesData: MilestonesData = {
@@ -356,6 +480,22 @@ export const milestonesData: MilestonesData = {
         'Implement a Nested Learning architecture combining all 18 specified ML paradigms.',
         'Develop a simulation framework for AGI and theoretical ASI models.',
         'Build a Neuro-Symbolic AI module for explainable, logic-driven reasoning.'
+    ],
+    platformFeatureMilestones: [
+        'E-commerce functionality: enable buying and selling of products with features like product links to e-learning courses, drop shipping, and reselling.',
+        'E-learning platform: allow users to join courses, upload learning material, participate in course chat rooms, and have access to downloads.',
+        'Job search and advertisement feature: enable job posting and job search with the ability to upload available jobs and skills required.',
+        'News and blogging feature: provide news updates, information blogs, and articles with the ability to monetize some content.',
+        'Community platform: similar to social media platforms with features like streaming, uploading videos, pics, links, and RSS.',
+        'Chatbot feature: provide a help center and Q&A functionality.',
+        'GitHub integration for developers.',
+        'Product catalog: showcase different types of products like 3D printers, music products, robotics, manufacturing machines, and physics lab apparatus.',
+        'Business listing: allow business owners to upload their profiles and be found for product information or contact details.',
+        'Business tools: provide features like business profile, advertisement, links, and staff chat rooms.',
+        'Accessibility: provide access to the website through a Web App, dApp, and Desktop App.',
+        'Web3 integration: enable paying and receiving funds in cryptocurrencies.',
+        'User profile: provide personalization options like account settings, e-learning achievements, social links, KYC/GDPR, banking details, and color themes.',
+        'Gamification: incorporate a points system for various activities like helping in the community, selling/buying products, passing courses, NFT trading, and content creation.',
     ],
     technicalBreakdown: [
         'Virtual Hardware Simulation - Implementation of virtual quantum chips, processors, and time crystals.',
@@ -419,6 +559,20 @@ export const mainMenuItems: MenuItemData[] = [
       { title: 'CV Builder', icon: PencilIcon, component: 'cvBuilder' },
     ],
   },
+    {
+    title: 'Enterprise Suite',
+    icon: BuildingOfficeIcon,
+    component: 'enterpriseApp',
+    children: [
+      { title: 'CRM', icon: UsersIcon, component: 'crm' },
+      { title: 'ERP', icon: Cog6ToothIcon, component: 'erp' },
+      { title: 'Supply Chain (SCM)', icon: TruckIcon, component: 'scm' },
+      { title: 'Human Capital (HCM)', icon: UserCircleIcon, component: 'hcm' },
+      { title: 'Project Mgmt (PPM)', icon: ClipboardDocumentCheckIcon, component: 'ppm' },
+      { title: 'Field Service (FSM)', icon: MapIcon, component: 'fsm' },
+      { title: 'Business Process (BPM)', icon: ArrowPathIcon, component: 'bpm' },
+    ],
+  },
   { type: 'divider' },
   { type: 'title', title: 'Creation' },
   {
@@ -428,8 +582,8 @@ export const mainMenuItems: MenuItemData[] = [
     children: [
         { title: 'Code Editor', icon: CodeBracketIcon, component: 'codeEditor' },
         { title: 'Website Builder', icon: GlobeIcon, component: 'websiteBuilder' },
-        { title: 'Game Design', icon: GameControllerIcon, component: 'gameDesign' },
-        { title: 'AI Tools', icon: HiveMindIcon, component: 'aiTools' },
+        { title: 'Game Engine', icon: GameControllerIcon, component: 'gameEngine' },
+        { title: 'AI Suite', icon: HiveMindIcon, component: 'aiSuite' },
     ],
   },
   {
@@ -463,6 +617,8 @@ export const mainMenuItems: MenuItemData[] = [
         { title: 'CAD Lab', icon: RulerIcon, component: 'cadLab' },
         { title: 'Engineering Hub', icon: RulerIcon, component: 'engineeringHub' },
         { title: 'Simulations', icon: CubeTransparentIcon, component: 'simulationHub' },
+        { title: 'Avatar Forge', icon: UserCircleIcon, component: 'avatarForge' },
+        { title: 'Video Hub', icon: VideoIcon, component: 'videoHub' },
     ]
   },
   { type: 'divider' },
@@ -585,6 +741,7 @@ export const bottomMenuItems: MenuItemData[] = [
 
 export const aetheriusMenuItems: MenuItemData[] = [
     { title: 'About This OS', icon: InformationCircleIcon, component: 'systemArchitecture' },
+    { title: 'Cognitive Framework', icon: HiveMindIcon, component: 'cognitiveFramework' },
     { title: 'System Settings', icon: Cog6ToothIcon, component: 'settings' },
     { type: 'divider' },
     { title: 'Sleep', icon: MoonIcon, action: 'sleep' },
@@ -972,10 +1129,11 @@ export const buildChecklistData: ChecklistCategory[] = [
     icon: HiveMindIcon,
     items: [
         { id: 'aic-1', name: 'Nested Learning Framework', description: 'Architecture to combine multiple learning paradigms for complex tasks.', status: 'Not Started', progress: 0 },
-        { id: 'aic-2', name: 'Supervised Reinforcement Learning Module', description: 'Module for combining supervised data with reward-based optimization.', status: 'Not Started', progress: 0 },
+        { id: 'aic-2', name: 'DeepThink (R1) Engine', description: 'Implement iterative, multi-step reasoning for complex problem solving.', status: 'In Progress', progress: 25 },
         { id: 'aic-3', name: 'Federated Learning Integration', description: 'Decentralized learning framework for privacy-preserving model training.', status: 'Not Started', progress: 0 },
         { id: 'aic-4', name: 'Neuro-Symbolic Reasoning Engine', description: 'Hybrid engine for explainable, logic-driven AI.', status: 'Not Started', progress: 0 },
         { id: 'aic-5', name: 'AGI & ASI Simulation Environment', description: 'A sandboxed environment for theoretical modeling of advanced AI capabilities.', status: 'Not Started', progress: 0 },
+        { id: 'aic-6', name: 'Hive/Singular Mind Model', description: 'Develop the dual-processing architecture for collective and individual intelligence.', status: 'Not Started', progress: 0 },
     ],
   },
   {
@@ -986,12 +1144,9 @@ export const buildChecklistData: ChecklistCategory[] = [
     items: [
       { id: 'ai-r-1', name: 'Nested AI Agent Handler', description: 'Primary AI core capable of delegating tasks to specialized sub-agents.', status: 'In Progress', progress: 65, lastModified: '2024-07-24' },
       { id: 'ai-r-2', name: 'Robotics Control Module', description: 'API and driver layer for controlling robotic functions.', status: 'Not Started', progress: 0, lastModified: '2024-07-24', children: [
-        { id: 'ai-r-2-1', name: 'Virtual Manipulator (Hand) Design', description: 'CAD and simulation for a human-like robotic hand.', status: 'Not Started', progress: 0, lastModified: '2024-07-24' },
-        { id: 'ai-r-2-2', name: 'Physical Hardware Abstraction Layer', description: 'Interface for connecting the OS to real-world robotic hardware.', status: 'Not Started', progress: 0, lastModified: '2024-07-24' },
-      ]},
-      { id: 'ai-r-3', name: 'Dynamic AI Model Loader', description: 'System for interchanging various AI models based on task requirements.', status: 'In Progress', progress: 70, lastModified: '2024-07-23', children: [
-        { id: 'ai-r-3-1', name: 'LLM/SLM Support', description: 'Compatibility for both large and small language models.', status: 'In Progress', progress: 80, lastModified: '2024-07-23' },
-        { id: 'ai-r-3-2', name: 'Token-Free Processing Module', description: 'Integration of non-token-based models (e.g., Meta AI research).', status: 'Not Started', progress: 0, lastModified: '2024-07-23' },
+        { id: 'ai-r-2-1', name: 'Boston Dynamics Atlas 4.0 Integration', description: 'Interface with full body control system and NVIDIA Jetson chip.', status: 'Not Started', progress: 0 },
+        { id: 'ai-r-2-2', name: 'Apptronik Apollo Integration', description: 'Interface with advanced force control architecture.', status: 'Not Started', progress: 0 },
+        { id: 'ai-r-2-3', name: 'Robotics Takeover Protocol', description: 'Design the secure adapter/middleware for deploying personal AIs onto third-party robots.', status: 'Not Started', progress: 0 },
       ]},
     ]
   },
@@ -1004,9 +1159,38 @@ export const buildChecklistData: ChecklistCategory[] = [
       { id: 'ac-1', name: 'Data Ingestion Pipeline', description: 'Securely process user voice, video, and text data for training.', status: 'Not Started', progress: 0 },
       { id: 'ac-2', name: 'Voice Cloning Engine', description: 'Integrate or build a high-fidelity text-to-speech model for voice replication.', status: 'Not Started', progress: 0 },
       { id: 'ac-3', name: '3D Avatar Generation Engine', description: 'Reconstruct 3D avatars from video/images and generate novel appearances.', status: 'Not Started', progress: 0 },
-      { id: 'ac-4', name: 'Personality & Knowledge Modeling', description: 'Fine-tune an LLM on user-provided text to replicate conversational style and knowledge.', status: 'Not Started', progress: 0 },
-      { id: 'ac-5', name: 'Integration with Personal AI', description: 'Allow the cloned avatar to act as the user\'s "Aether" personal AI.', status: 'Not Started', progress: 0 },
-      { id: 'ac-6', name: 'Integration with Game Engine', description: 'Enable the use of cloned and generated avatars as characters in the Universal Game Engine.', status: 'Not Started', progress: 0 },
+      { id: 'ac-4', name: 'Personalized AI Core', description: 'Fine-tune an LLM on user-provided data to replicate conversational style and learn patterns.', status: 'In Progress', progress: 40 },
+    ],
+  },
+    {
+    id: 'governance',
+    name: 'Governance & Compliance',
+    description: 'User voting, compliance frameworks, and ethical AI laws.',
+    icon: ShieldCheckIcon,
+    items: [
+      { id: 'gov-1', name: 'User Governance & Voting Protocol', description: 'Implement on-chain, weighted voting system for non-critical changes.', status: 'Not Started', progress: 0 },
+      { id: 'gov-2', name: 'Global Compliance Module', description: 'Integrate checks for GDPR, CCPA, HIPAA, ISO 27001, etc.', status: 'Not Started', progress: 0 },
+      { id: 'gov-3', name: 'Ethical AI Framework', description: 'Codify and enforce the core ethical laws for all AI agents.', status: 'In Progress', progress: 50 },
+      { id: 'gov-4', name: 'Multi-Proof Consensus Engine', description: 'Build a flexible consensus layer supporting various proof-of mechanisms.', status: 'Not Started', progress: 0 },
+    ],
+  },
+    {
+    id: 'hardware_integration',
+    name: 'Hardware & Wearables',
+    description: 'Integration with physical devices.',
+    icon: ChipIcon,
+    items: [
+        { id: 'hw-1', name: 'Wearable AI Device Layer', description: 'Support for watches, rings, glasses, and AI Pins.', status: 'Not Started', progress: 0 },
+        { id: 'hw-2', name: 'Bio-Synced Identity Module', description: 'Framework for multi-modal biometric authentication (face, finger, plasma, DNA scan concept).', status: 'Not Started', progress: 0 },
+    ]
+  },
+   {
+    id: 'network_data',
+    name: 'Network & Data Ingestion',
+    description: 'Secure data scraping and network-level processing.',
+    icon: GlobeAltIcon,
+    items: [
+      { id: 'nd-1', name: 'Onion Router Implementation', description: 'Build and sandbox the internal Tor-style client for data scraping.', status: 'Not Started', progress: 0 },
     ],
   },
   {
@@ -1015,27 +1199,21 @@ export const buildChecklistData: ChecklistCategory[] = [
     description: 'A cross-platform game engine integrated with the core OS and AI.',
     icon: GameControllerIcon,
     items: [
-      { id: 'ge-1', name: 'Nested VM & Quantum Core Integration', description: 'Integrate the engine with nested virtualization and quantum co-processors.', status: 'Not Started', progress: 0 },
+      { id: 'ge-ui', name: 'Engine Core UI', description: 'Build the main editor interface including viewport, inspector, and hierarchy panels.', status: 'In Progress', progress: 50 },
+      { id: 'ge-1', name: 'Nested VM & Quantum Core Integration', description: 'Integrate the engine with nested virtualization and quantum co-processors.', status: 'In Progress', progress: 20 },
       { id: 'ge-2', name: 'Multi-Paradigm Renderer', description: 'Build a universal renderer for 2D, 3D, VR/AR, and superfluid light.', status: 'Not Started', progress: 0 },
-      { id: 'ge-3', name: 'Quantum-Enhanced Physics Engine', description: 'Develop a physics engine capable of simulating quantum effects.', status: 'Not Started', progress: 0 },
-      { id: 'ge-4', name: 'Core AI Module Integration', description: 'Integrate NSNoBrain, WBE, and Reinforcement Learning for game logic.', status: 'Not Started', progress: 0 },
-      { id: 'ge-5', name: 'Cross-Platform Deployment Module', description: 'Utilize Docker containers and WASM for universal deployment.', status: 'Not Started', progress: 0 },
-      { id: 'ge-6', name: 'Smart Meshing Asset System', description: 'Implement a block-based, interconnected asset management system.', status: 'Not Started', progress: 0 },
     ],
   },
-  {
-    id: 'ui',
-    name: 'UI/UX Framework',
-    description: 'Components for the graphical user interface.',
-    icon: PaintBrushIcon,
+    {
+    id: 'internal_platforms',
+    name: 'Internal Platform Clones',
+    description: 'Building from-scratch versions of popular third-party services.',
+    icon: BuildingStorefrontIcon,
     items: [
-      { id: 'ui-1', name: 'Window Manager', description: 'Handles creation, manipulation, and destruction of windows.', status: 'Completed', progress: 100, completedDate: '2024-07-22', lastModified: '2024-07-22' },
-      { id: 'ui-2', name: 'Desktop Environment', description: 'Taskbar, desktop icons, and main shell.', status: 'Completed', progress: 100, completedDate: '2024-07-22', lastModified: '2024-07-22' },
-      { id: 'ui-3', name: 'Dock & Main Menu', description: 'Main navigation component.', status: 'Completed', progress: 100, completedDate: '2024-07-23', lastModified: '2024-07-23', children: [
-          { id: 'ui-3-1', name: 'Cascading Menu Logic', description: 'All menus are collapsible.', status: 'Completed', progress: 100, completedDate: '2024-07-23', lastModified: '2024-07-23' },
-      ]},
-      { id: 'ui-4', name: 'Theme Engine', description: 'Support for light/dark modes and custom themes.', status: 'Completed', progress: 100, completedDate: '2024-07-21', lastModified: '2024-07-21' },
-      { id: 'ui-5', name: 'Floating Action Button', description: 'Draggable quick-access button.', status: 'Completed', progress: 100, completedDate: '2024-07-22', lastModified: '2024-07-22' },
+      { id: 'ip-1', name: 'E-commerce & CMS Engine', description: 'Internal fork of Shopify and WordPress functionalities.', status: 'Not Started', progress: 0 },
+      { id: 'ip-2', name: 'Automation Engine', description: 'Internal fork of Zapier/Make for event-driven workflows.', status: 'Not Started', progress: 0 },
+      { id: 'ip-3', name: 'Content Creation Suite', description: 'Internal forks of Midjourney, Runway, 11 Labs, etc.', status: 'Not Started', progress: 0 },
+      { id: 'ip-4', name: 'Trading & Finance Platform', description: 'Internal platform with AI bots, "forever trading", and advanced market analysis.', status: 'Not Started', progress: 0 },
     ],
   },
 ];

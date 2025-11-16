@@ -1,5 +1,4 @@
 import React from 'react';
-// FIX: Removed FilmIcon and added ScissorsIcon.
 import { PlayIcon, ShareIcon, ArrowDownTrayIcon, ScissorsIcon, MusicNoteIcon, DocumentTextIcon } from './Icons';
 
 const Toolbar: React.FC = () => (
