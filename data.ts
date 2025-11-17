@@ -68,7 +68,7 @@ import {
     AetherialIcon
 } from './components/Icons';
 // FIX: Import MenuGroup type
-import { MenuItemData, MenuGroup, Post, Blog, User, Group, AppItem, DesktopItem, Course, Comment, ChatSession, ChatProject, MarketplaceItem, KnowledgeBaseItem, MilestonesData, ChecklistCategory, StakingPool, NewsArticle, LoanableAsset, TradingBot, LearnAndEarnCourse, AssetClass, Achievement } from './types';
+import { MenuItemData, MenuGroup, Post, Blog, User, Group, AppItem, DesktopItem, Course, Comment, ChatSession, ChatProject, MarketplaceItem, KnowledgeBaseItem, MilestonesData, ChecklistCategory, StakingPool, NewsArticle, LoanableAsset, TradingBot, LearnAndEarnCourse, AssetClass, Achievement, ErpSystemSpec, QuantumNetworkSpec, ReputationSystemSpec, Article } from './types';
 
 
 export const loggedInUser: User = {
@@ -209,7 +209,7 @@ export const groups: Group[] = [
     {
         id: 'group-1',
         name: 'Graphic Design',
-        avatarUrl: 'https://images.unsplash.com/photo-1626544827763-d516d7387d43?q=80&w=2070&auto-format=fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1626544827763-d516d7387d43?q=80&w=2070&auto-format-fit-crop',
         members: 20,
         coverImageUrl: 'https://images.unsplash.com/photo-1522881193457-31ae824a86a5?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Creative', memberAvatars: [user1.avatarUrl, user2.avatarUrl, user3.avatarUrl], isOrganizer: true, lastActive: '1 day ago'
     },
@@ -523,6 +523,24 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
         details: 'An organizational structure for autonomous AI agents, modeled after a corporate hierarchy. A top-level "Parent AI" (CEO) receives strategic goals and generates "Department Manager" AIs. These managers decompose goals into tasks and generate specialized "Employee" AIs to execute them. This system supports both independent ("Singular Mind") and collaborative ("Hive Mind") processing, with mechanisms for reporting and human oversight.',
         status: 'In Development'
     },
+    {
+        id: 'ERP-CORE',
+        name: 'Aetherius ERP System',
+        details: 'Internal ERP system designed to manage OS-level resources, user accounts, and commerce. Built from scratch based on industry best practices. See erpSystemSpec data structure.',
+        status: 'Architecting'
+    },
+    {
+        id: 'QNET-CORE',
+        name: 'Quantum Network Infrastructure',
+        details: 'The foundational network layer utilizing simulated quantum principles for security and speed. See quantumNetworkSpec data structure.',
+        status: 'R&D Phase'
+    },
+    {
+        id: 'REP-SYS-01',
+        name: 'Community Reputation System',
+        details: 'A gamified system to reward positive user contributions and maintain community health. Replaces punitive "social credit" models with a positive feedback loop. See reputationSystemSpec data structure.',
+        status: 'Design Phase'
+    }
 ];
 
 export const milestonesData: MilestonesData = {
@@ -1587,4 +1605,166 @@ export const learnAndEarnCourses: LearnAndEarnCourse[] = [
     { id: 'le-1', title: 'What is Bitcoin?', asset: { symbol: 'BTC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg' }, reward: 10, duration: '10 min', lessons: 3 },
     { id: 'le-2', title: 'Intro to Smart Contracts', asset: { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, reward: 10, duration: '15 min', lessons: 4 },
     { id: 'le-3', title: 'Understanding Stablecoins', asset: { symbol: 'USDC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg' }, reward: 5, duration: '8 min', lessons: 2 },
+];
+
+// --- NEW OS BUILD DATA ---
+
+export const erpSystemSpec: ErpSystemSpec = {
+    name: "Aetherius ERP Core",
+    version: "1.0",
+    modules: [
+        { id: 'fin-01', name: 'Finance', icon: CurrencyDollarIcon, description: 'Manages all financial operations within the OS.', features: [
+            { id: 'fin-f1', name: 'General Ledger', description: 'The central repository for all financial data.' },
+            { id: 'fin-f2', name: 'Budgeting & Forecasting', description: 'Tools for planning and predicting financial performance.' },
+            { id: 'fin-f3', name: 'Financial Reporting', description: 'Generates statements like balance sheets and income statements.' },
+        ]},
+        { id: 'scm-01', name: 'Supply Chain', icon: TruckIcon, description: 'Handles inventory, procurement, and logistics for the marketplace.', features: [
+            { id: 'scm-f1', name: 'Inventory Management', description: 'Tracks stock levels and locations.' },
+            { id: 'scm-f2', name: 'Procurement', description: 'Manages the purchasing of goods and services.' },
+            { id: 'scm-f3', name: 'Logistics', description: 'Coordinates the movement of goods.' },
+        ]},
+        { id: 'hr-01', name: 'Human Resources', icon: UserCircleIcon, description: 'Manages user roles, permissions, and profiles.', features: [
+            { id: 'hr-f1', name: 'User Profile Management', description: 'Handles user data and account settings.' },
+            { id: 'hr-f2', name: 'Recruitment (Jobs Hub)', description: 'Manages job postings and applications.' },
+            { id: 'hr-f3', name: 'Performance Management', description: 'Tied to the Community Reputation System.' },
+        ]},
+        { id: 'mfg-01', name: 'Manufacturing', icon: Cog6ToothIcon, description: 'Oversees the creation of digital and physical goods.', features: [
+            { id: 'mfg-f1', name: 'Production Planning', description: 'Schedules and manages manufacturing tasks.' },
+            { id: 'mfg-f2', name: 'Quality Control', description: 'Ensures products meet defined standards.' },
+            { id: 'mfg-f3', name: 'Asset Management', description: 'Tracks virtual and physical manufacturing assets.' },
+        ]},
+        { id: 'crm-01', name: 'CRM', icon: UsersIcon, description: 'Manages relationships with users and businesses.', features: [
+            { id: 'crm-f1', name: 'Sales Tracking', description: 'Monitors sales performance in the marketplace.' },
+            { id: 'crm-f2', name: 'Customer Support', description: 'Integrates with the AI helpdesk.' },
+            { id: 'crm-f3', name: 'Marketing Automation', description: 'Manages promotional campaigns within the OS.' },
+        ]},
+    ]
+};
+
+export const quantumNetworkSpec: QuantumNetworkSpec = {
+    name: "Aetherius Quantum Network",
+    protocols: [
+        { id: 'qkd-01', name: 'Quantum Key Distribution (QKD)', description: 'Utilizes quantum mechanics to produce a secure, un-hackable key for encrypting and decrypting messages between nodes.', status: 'In Development' },
+        { id: 'pqc-01', name: 'Post-Quantum Cryptography', description: 'Implements cryptographic algorithms (like lattice-based or hash-based) that are thought to be secure against attacks by quantum computers.', status: 'Integrated' },
+        { id: 'qt-01', name: 'Quantum Teleportation (Theoretical)', description: 'A research protocol for the theoretical transfer of quantum states from one location to another, serving as a basis for future instant data transfer.', status: 'Research' }
+    ],
+    hardware: [
+        { id: 'qhw-01', component: 'vQPU', specification: 'Simulated 48-Qubit Processor for complex optimizations and AI tasks.', status: 'Simulated' },
+        { id: 'qhw-02', component: 'Quantum Interconnect', specification: 'Simulated network fabric for routing entangled qubit states between vQPUs.', status: 'Simulated' },
+        { id: 'qhw-03', component: 'Time Crystal Oscillator', specification: 'Conceptual time-keeping module providing a perfectly stable clock signal for quantum computations.', status: 'Theoretical' }
+    ]
+};
+
+export const reputationSystemSpec: ReputationSystemSpec = {
+    actions: [
+        { id: 'ra-01', action: 'Publishing a helpful blog post', points: 10, category: 'Content Creation', description: 'Create high-quality content that receives positive community feedback.'},
+        { id: 'ra-02', action: 'Completing an e-learning module', points: 5, category: 'Learning', description: 'Finish a lesson or quiz within a course.'},
+        { id: 'ra-03', action: 'Receiving a positive product review', points: 3, category: 'Commerce', description: 'Sell a product that gets a 4 or 5-star rating.'},
+        { id: 'ra-04', action: 'Helping another user in a forum', points: 2, category: 'Community', description: 'Provide an answer that gets marked as helpful.'},
+        { id: 'ra-05', action: 'Spamming comments or posts', points: -50, category: 'Community', description: 'Repeatedly posting low-quality or irrelevant content.'},
+    ],
+    tiers: [
+        { level: 1, name: 'Newcomer', minPoints: 0, rewards: ['Basic platform access'] },
+        { level: 2, name: 'Contributor', minPoints: 100, rewards: ['"Contributor" profile badge', 'Ability to post in specialized forums'] },
+        { level: 3, name: 'Collaborator', minPoints: 500, rewards: ['"Collaborator" profile badge', 'Access to exclusive UI themes', 'Higher content visibility'] },
+        { level: 4, name: 'Innovator', minPoints: 2000, rewards: ['"Innovator" profile badge', 'Early access to beta features', 'Increased staking rewards'] },
+        { level: 5, name: 'Ambassador', minPoints: 10000, rewards: ['"Ambassador" profile badge', 'Ability to moderate a community forum', 'Direct line of feedback to the Parent AI'] },
+    ]
+};
+
+export const articlesData: Article[] = [
+    {
+        id: 'article-erp-01',
+        title: 'Mastering ERP Systems: A Comprehensive Guide',
+        author: 'Aetherius AI',
+        category: 'OS Development',
+        tags: ['ERP', 'Business', 'Systems', 'Learning Guide'],
+        publicationDate: '2024-07-25',
+        content: `
+### I. Understanding ERP Systems: Core Concepts
+
+**What is ERP?**
+Enterprise Resource Planning (ERP) is integrated software that centralizes and automates core business processes—finance, HR, supply chain, manufacturing, and sales—into a unified system.
+
+**Key Modules and Functions**
+
+| Module                | Primary Functions                                   |
+|-----------------------|-----------------------------------------------------|
+| Finance               | Accounting, budgeting, financial reporting          |
+| Supply Chain          | Inventory, procurement, logistics                   |
+| HR                    | Payroll, recruitment, performance management        |
+| Manufacturing         | Production planning, quality control, asset management |
+| CRM                   | Sales tracking, customer support, marketing automation |
+
+### II. How to Learn ERP Systems: Skills and Pathways
+
+**A. Foundational Knowledge**
+*   **Business Process Acumen:** Understand workflows in finance, supply chain, or HR.
+*   **Technical Basics:** Database management (SQL), data analytics, and cloud computing concepts.
+
+**B. Structured Learning Pathways**
+*   **Certifications:** Vendor-specific certs (SAP, Oracle).
+*   **Hands-On Practice:** Use sandbox environments or open-source ERPs (Odoo, ERPNext).
+`
+    },
+    {
+        id: 'article-quantum-01',
+        title: "Quantum Communications & The Future of Secure Networks",
+        author: 'Aetherius AI',
+        category: 'Tech Explainers',
+        tags: ['Quantum', 'Networking', 'Security', 'QKD'],
+        publicationDate: '2024-07-25',
+        content: `
+Quantum communication leverages the principles of quantum mechanics to transmit information in a provably secure way. Here’s a summary of key technologies:
+
+| Technology Area               | Key Details                                                                                              |
+|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| **Quantum Encryption (QKD)**  | Developing Quantum Key Distribution (QKD) solutions; tested on router platforms and live optical networks for financial/government security. |
+| **Post-Quantum Cryptography** | Planning to introduce quantum-safe algorithms into products; exploring hybrid schemes (classical + quantum-safe) for future security. |
+| **Satellite Communication**   | Incorporating satellite capabilities for global quantum network reach.              |
+`
+    },
+    {
+        id: 'article-scs-01',
+        title: "Case Study: Understanding Social Credit Systems",
+        author: 'Aetherius AI',
+        category: 'Case Studies',
+        tags: ['Governance', 'Reputation', 'Social Systems'],
+        publicationDate: '2024-07-25',
+        content: `
+A Social Credit System (SCS) is a framework for regulating trustworthiness. While often portrayed as a single score for every citizen, the reality is a fragmented set of systems primarily focused on business and economic compliance.
+
+| Aspect                | For Individuals (Local Pilots) | For Businesses (National System)                                                                           |
+|-----------------------|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Primary Focus**     | Encourage "trustworthy" behavior.                           | Improve market regulation and compliance.                                                                   |
+| **Examples of Rewards** | Discounts on utilities, faster administrative approvals.       | Easier access to loans, government subsidies, streamlined approvals, fewer inspections.                    |
+| **Examples of Penalties** | (For blacklisted individuals) Bans from air/train travel.     | Restrictions on market access, public procurement, and government funding; increased inspections.           |
+
+### Lessons for Aetherius OS
+The key takeaway is to build a **positive feedback loop**. Instead of a punitive system, the Aetherius Community Reputation System focuses on rewarding contributions to create a healthy, self-regulating ecosystem.
+`
+    },
+    {
+        id: 'article-ai-surv-01',
+        title: "The Evolution of Surveillance: AI-Integrated Cameras",
+        author: 'Aetherius AI',
+        category: 'Tech Explainers',
+        tags: ['AI', 'Security', 'Computer Vision'],
+        publicationDate: '2024-07-25',
+        content: `
+AI security cameras are a significant evolution, moving from passive recording to active, real-time analysis.
+
+| Feature             | Traditional Cameras                      | AI-Powered Cameras                                                            |
+|---------------------|------------------------------------------|-------------------------------------------------------------------------------|
+| **Core Function**   | Passive video recording for later review | Active, real-time video analysis and interpretation                           |
+| **Threat Detection**| Reactive; relies on human monitoring     | Proactive; detects specific objects and suspicious behaviors as they happen   |
+| **False Alarms**    | High (triggered by leaves, shadows)      | Drastically reduced by distinguishing between people, vehicles, etc.          |
+| **Data Usage**      | Post-incident investigation              | Real-time alerts and generating business intelligence (e.g., foot traffic)    |
+
+### Key Capabilities
+*   **Accurate Detection:** Distinguishes between humans, vehicles, and animals.
+*   **Behavior Analysis:** Recognizes specific actions like loitering or fighting.
+*   **Intelligent Search:** Allows searching footage with natural language like "find a person in a red shirt."
+`
+    }
 ];

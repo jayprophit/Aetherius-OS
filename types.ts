@@ -453,3 +453,79 @@ export interface AIDepartment {
     employees: AIAgentProfile[];
     tasks: AIAgentTask[];
 }
+
+// --- NEW OS BUILD DATA STRUCTURES ---
+
+// ERP System
+export interface ErpFeature {
+  id: string;
+  name: string;
+  description: string;
+}
+
+export interface ErpModule {
+  id: string;
+  name: 'Finance' | 'Supply Chain' | 'Human Resources' | 'Manufacturing' | 'CRM';
+  icon: React.FC<any>;
+  description: string;
+  features: ErpFeature[];
+}
+
+export interface ErpSystemSpec {
+  name: string;
+  version: string;
+  modules: ErpModule[];
+}
+
+// Quantum Network
+export interface QuantumProtocol {
+  id: string;
+  name: 'Quantum Key Distribution (QKD)' | 'Post-Quantum Cryptography' | 'Quantum Teleportation (Theoretical)';
+  description: string;
+  status: 'In Development' | 'Research' | 'Integrated';
+}
+
+export interface QuantumHardwareSpec {
+    id: string;
+    component: 'vQPU' | 'Quantum Interconnect' | 'Time Crystal Oscillator';
+    specification: string;
+    status: 'Simulated' | 'Theoretical';
+}
+
+export interface QuantumNetworkSpec {
+    name: string;
+    protocols: QuantumProtocol[];
+    hardware: QuantumHardwareSpec[];
+}
+
+// Reputation System
+export interface ReputationAction {
+    id: string;
+    action: string;
+    points: number; // can be positive or negative
+    category: 'Community' | 'Commerce' | 'Learning' | 'Content Creation';
+    description: string;
+}
+
+export interface ReputationTier {
+    level: number;
+    name: string;
+    minPoints: number;
+    rewards: string[];
+}
+
+export interface ReputationSystemSpec {
+    actions: ReputationAction[];
+    tiers: ReputationTier[];
+}
+
+// Media Content
+export interface Article {
+    id: string;
+    title: string;
+    author: string;
+    category: 'OS Development' | 'Tech Explainers' | 'Community Guides' | 'Case Studies';
+    tags: string[];
+    content: string; // Markdown content
+    publicationDate: string;
+}
