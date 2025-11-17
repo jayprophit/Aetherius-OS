@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon } from './Icons';
+import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon, GyeNyameIcon } from './Icons';
 import { MenuItemData } from '../types';
 import { ICON_BUTTON_CLASSES } from '../constants';
 import { LaunchableApp } from '../../App';
@@ -33,8 +33,8 @@ const AetheriusMenu: React.FC<{
 
   return (
     <div ref={menuRef} className="relative">
-      <button onClick={() => setIsOpen(!isOpen)} className="w-8 h-8 bg-primary rounded-md flex items-center justify-center font-bold text-white text-xl tracking-tighter" title="Aetherius Menu">
-        A
+      <button onClick={() => setIsOpen(!isOpen)} className="p-1.5 rounded-md hover:bg-black/10 dark:hover:bg-white/10" title="Aetherius Menu">
+        <GyeNyameIcon className="w-7 h-7 text-content-light dark:text-content-dark" />
       </button>
       {isOpen && (
         <div className="absolute left-0 mt-2 w-56 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-md shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50">

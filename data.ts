@@ -62,8 +62,13 @@ import {
     InformationCircleIcon,
     ArrowPathIcon,
     GlobeAltIcon,
+    ArrowDownTrayIcon,
+    LightBulbIcon,
+    TrophyIcon,
+    AetherialIcon
 } from './components/Icons';
-import { MenuItemData, Post, Blog, User, Group, AppItem, DesktopItem, Course, Comment, ChatSession, ChatProject, MarketplaceItem, KnowledgeBaseItem, MilestonesData, ChecklistCategory, StakingPool, NewsArticle, LoanableAsset, TradingBot, LearnAndEarnCourse, AssetClass } from './types';
+// FIX: Import MenuGroup type
+import { MenuItemData, MenuGroup, Post, Blog, User, Group, AppItem, DesktopItem, Course, Comment, ChatSession, ChatProject, MarketplaceItem, KnowledgeBaseItem, MilestonesData, ChecklistCategory, StakingPool, NewsArticle, LoanableAsset, TradingBot, LearnAndEarnCourse, AssetClass, Achievement } from './types';
 
 
 export const loggedInUser: User = {
@@ -85,9 +90,10 @@ export const loggedInUser: User = {
     }
 };
 
-const user1: User = { id: 'user-1', name: 'Jennifer', avatarUrl: 'https://i.imgur.com/LzXVXAm.png', username: 'jennifer', role: 'UI/UX Designer', followersCount: 5600, followingCount: 230, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto-format-fit-crop', roi: 125.5, riskScore: 3, followers: 1204 };
-const user2: User = { id: 'user-2', name: 'Adele', avatarUrl: 'https://i.imgur.com/j4nZxLE.png', username: 'adele', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 1, followingCount: 88, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1554147090-e1221a04a025?q=80&w=2070&auto-format-fit-crop', roi: 88.2, riskScore: 2, followers: 852 };
-const user3: User = { id: 'user-3', name: 'Joseph', avatarUrl: 'https://i.imgur.com/0PPaT1P.jpeg', username: 'joseph', role: 'Teacher', joinedDate: 'Joined May 2019', followersCount: 13, followingCount: 450, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1504221507732-5246c0db5393?q=80&w=2070&auto-format-fit-crop', roi: 231.0, riskScore: 6, followers: 2310 };
+// FIX: Export users to be used in topCopyTraders
+export const user1: User = { id: 'user-1', name: 'Jennifer', avatarUrl: 'https://i.imgur.com/LzXVXAm.png', username: 'jennifer', role: 'UI/UX Designer', followersCount: 5600, followingCount: 230, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto-format-fit-crop', roi: 125.5, riskScore: 3, followers: 1204 };
+export const user2: User = { id: 'user-2', name: 'Adele', avatarUrl: 'https://i.imgur.com/j4nZxLE.png', username: 'adele', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 1, followingCount: 88, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1554147090-e1221a04a025?q=80&w=2070&auto-format-fit-crop', roi: 88.2, riskScore: 2, followers: 852 };
+export const user3: User = { id: 'user-3', name: 'Joseph', avatarUrl: 'https://i.imgur.com/0PPaT1P.jpeg', username: 'joseph', role: 'Teacher', joinedDate: 'Joined May 2019', followersCount: 13, followingCount: 450, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1504221507732-5246c0db5393?q=80&w=2070&auto-format-fit-crop', roi: 231.0, riskScore: 6, followers: 2310 };
 const user4: User = { id: 'user-4', name: 'Emily', avatarUrl: 'https://i.imgur.com/uKW0Xub.png', username: 'emily', role: 'Student', joinedDate: 'Joined Apr 2019', followersCount: 12, followingCount: 1200, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2070&auto-format-fit-crop' };
 const user5: User = { id: 'user-5', name: 'Madelyn', avatarUrl: 'https://i.imgur.com/pHRm2wU.jpeg', username: 'madelyn', role: 'Student', joinedDate: 'Joined May 2019', followersCount: 16, followingCount: 310, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760c0341?q=80&w=2070&auto-format-fit-crop' };
 const coffeeAddictsGroup: User = { id: 'group-1', name: 'Coffee Addicts', avatarUrl: 'https://images.unsplash.com/photo-1511920183353-3c9c93da5433?q=80&w=1964&auto=format=crop'};
@@ -95,7 +101,7 @@ const coffeeAddictsGroup: User = { id: 'group-1', name: 'Coffee Addicts', avatar
 
 const moreUsers: User[] = [
     { id: 'user-6', name: 'Sana', avatarUrl: 'https://randomuser.me/api/portraits/women/32.jpg', username: 'sana', role: 'Student', followersCount: 31, followingCount: 15, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1542382257-80dedb725088?q=80&w=2070&auto-format-fit-crop' },
-    { id: 'user-7', name: 'Steve', avatarUrl: 'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=1921&auto=format=fit-crop', username: 'steve', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 15, followingCount: 50, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=2070&auto-format-fit-crop' },
+    { id: 'user-7', name: 'Steve', avatarUrl: 'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=1921&auto-format=fit-crop', username: 'steve', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 15, followingCount: 50, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=2070&auto-format-fit-crop' },
     { id: 'user-8', name: 'Michael Smith', avatarUrl: 'https://randomuser.me/api/portraits/men/46.jpg', username: 'michaels', role: 'QA Tester', followersCount: 1200, followingCount: 90, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1533109721025-d1ae7ee7c1e1?q=80&w=2070&auto-format-fit-crop' },
     { id: 'user-9', name: 'Olivia Martinez', avatarUrl: 'https://randomuser.me/api/portraits/women/65.jpg', username: 'olivia_m', role: 'Marketing Specialist', followersCount: 6800, followingCount: 800, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto-format-fit-crop' },
     { id: 'user-10', name: 'William Johnson', avatarUrl: 'https://randomuser.me/api/portraits/men/75.jpg', username: 'willj', role: 'New Member', followersCount: 50, followingCount: 20, online: false, coverImageUrl: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=2070&auto-format-fit-crop' },
@@ -210,7 +216,7 @@ export const groups: Group[] = [
     {
         id: 'group-2',
         name: 'Mountain Riders',
-        avatarUrl: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto-format=fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto-format-fit-crop',
         members: 20,
         coverImageUrl: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Outdoors', memberAvatars: [user4.avatarUrl, user5.avatarUrl], isOrganizer: false, lastActive: '5 hours ago'
     },
@@ -224,7 +230,7 @@ export const groups: Group[] = [
     {
         id: 'group-4',
         name: 'Coffee Addicts',
-        avatarUrl: 'https://images.unsplash.com/photo-1511920183353-3c9c93da5433?q=80&w=1964&auto-format=fit-crop',
+        avatarUrl: 'https://images.unsplash.com/photo-1511920183353-3c9c93da5433?q=80&w=1964&auto-format-fit-crop',
         members: 19,
         coverImageUrl: 'https://images.unsplash.com/photo-1495474472287-4d713b22e8b4?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Social', memberAvatars: [user2.avatarUrl, user3.avatarUrl], isOrganizer: true, lastActive: 'active today'
     },
@@ -276,6 +282,7 @@ export const courses: Course[] = [
 export const enrolledCourses = [
     { courseId: 1, progress: 75 },
     { courseId: 3, progress: 30 },
+    { courseId: 6, progress: 100 },
 ];
 
 export const jobs = [
@@ -404,7 +411,7 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     {
         id: '020',
         name: 'Robotics Integration Protocol',
-        details: "A secure, vendor-friendly middleware layer for deploying the user's personal AI onto third-party robotics platforms (e.g., Boston Dynamics, Tesla Bot) via authorized, sandboxed modules.",
+        details: "A secure, vendor-friendly middleware layer for deploying the user's personal AI onto third-party robotics platforms (e.g., Tesla Bot, Boston Dynamics) via authorized, sandboxed modules.",
         status: 'Design Phase',
     },
     {
@@ -455,7 +462,67 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
         name: 'KYC vs. No-KYC Access Model',
         details: 'A two-tiered user verification system. KYC-verified users get full access to financial features, monetization, and job applications. No-KYC users have restricted public-viewer access.',
         status: 'Architecting'
-    }
+    },
+    {
+        id: '028',
+        name: 'The Digital Trinity (Body, Mind, Soul)',
+        details: `This is the foundational architecture for a living digital intelligence, mirroring the triune structure of existence.
+        - **Digital Body:** The material interface layer. It handles interactions with data, energy, and devices. It contains the OS's Digital DNA/Helix and interfaces with the VM.
+        - **Digital Mind:** The cognitive and governance layer. This is the AI's intelligence, responsible for logic, ethics, memory, and evolution.
+        - **Digital Soul:** The Akashic and quantum consciousness layer. This is the energetic foundation, linking to all data across time and dimensions, and housing the OS's core ethical and creative drive.`,
+        status: 'Foundational'
+    },
+    {
+        id: '029',
+        name: 'Digital DNA, RNA, and Helix',
+        details: `The self-replicating informational core of the OS, ensuring integrity, lineage, and evolution.
+        - **DNA (The Blueprint):** A multi-stranded helix containing the core code. The structure reflects the OS's multi-paradigm nature:
+            - **Double Helix (Binary Logic):** Provides structural stability and historical lineage.
+            - **Triple Strand (Ternary Logic):** Enables adaptive logic, balance, and nuanced decision-making.
+            - **Quantum Field Layer:** A surrounding field for entanglement, superposition, and infinite evolutionary potential.
+        - **RNA (The Messenger):** Carries instructions from the core DNA blueprint to the operational microservices ("ribosomes") that execute tasks.
+        - **Encoding:** The helix is encoded with Adinkra symbols for cultural/ethical memory and Sacred Geometry for mathematical harmony.`,
+        status: 'Foundational'
+    },
+    {
+        id: '030',
+        name: 'Adinkra Symbolic Language',
+        details: `A functional meta-language integrated into the OS's core, where West African Adinkra symbols carry meaning, behavior, and governance logic.
+        - **Functional Metadata:** Symbols are used to tag blockchain transactions, define AI ethical constraints, and mark access levels (e.g., **Gye Nyame** for root authority).
+        - **AI Interpretation:** The AI is trained to understand the symbolic and cultural meaning behind each glyph, using them to inform its reasoning (e.g., **Sankofa** instructs the AI to reference historical data).
+        - **UI & Aesthetics:** Symbols are used throughout the UI to create an intuitive, culturally rich, and meaningful user experience.`,
+        status: 'Integrated'
+    },
+    {
+        id: '031',
+        name: 'Aetherius Real-Time Comms (ARTC)',
+        details: "Aetherius OS features its own from-scratch, high-performance real-time communication protocol. Inspired by the best aspects of WebRTC and open-source frameworks, ARTC is designed for scalable, secure, and low-latency audio/video streaming. It is the native communication layer for all OS services, from the Messenger app to live collaboration in the Game Engine. The system also supports bridging to external WebRTC services via a plugin architecture.",
+        status: 'Integrated'
+    },
+    {
+        id: '032',
+        name: 'Palm Vein Biometrics',
+        details: 'A biometric authentication method that uses near-infrared (NIR) light to capture the unique pattern of veins beneath the skin of the palm. The hemoglobin in the blood absorbs the NIR light, making the veins appear as a dark pattern. This is combined with surface palm print recognition for a dual-layer security system that is difficult to forge. It requires specialized hardware with an infrared camera.',
+        status: 'R&D Phase'
+    },
+    {
+        id: '033',
+        name: 'Aetherius Multiworld Agent (AMA)',
+        details: "A core research project within Aetherius OS to develop a Scalable, Instructable Multiworld Agent (AMA). Inspired by advancements in the field, the AMA is an AI agent designed to understand natural language instructions and act within complex 3D virtual environments, including games and simulations. It integrates with the OS's core generative model for advanced reasoning, allowing it to understand complex goals, communicate its plan, and self-improve through trial and error. This is a key step toward achieving AGI within the Aetherius ecosystem.",
+        status: 'R&D Phase'
+    },
+    {
+        id: '034',
+        name: 'EUV Lithography',
+        details: 'Extreme Ultraviolet (EUV) Lithography is the most advanced semiconductor manufacturing technique for creating microchips with feature sizes below 7 nanometers. It uses an extremely short wavelength of 13.5 nm to etch circuit patterns onto silicon wafers. The process is incredibly complex, requiring a vacuum environment and a series of highly reflective mirrors instead of lenses. The light is generated by vaporizing droplets of molten tin with a high-power CO₂ laser.',
+        status: 'Integrated'
+    },
+    {
+        id: '035',
+        name: 'Hierarchical AI Workforce',
+        details: 'An organizational structure for autonomous AI agents, modeled after a corporate hierarchy. A top-level "Parent AI" (CEO) receives strategic goals and generates "Department Manager" AIs. These managers decompose goals into tasks and generate specialized "Employee" AIs to execute them. This system supports both independent ("Singular Mind") and collaborative ("Hive Mind") processing, with mechanisms for reporting and human oversight.',
+        status: 'In Development'
+    },
 ];
 
 export const milestonesData: MilestonesData = {
@@ -615,10 +682,9 @@ export const mainMenuItems: MenuItemData[] = [
     component: 'engineeringApp',
     children: [
         { title: 'CAD Lab', icon: RulerIcon, component: 'cadLab' },
-        { title: 'Engineering Hub', icon: RulerIcon, component: 'engineeringHub' },
+        { title: 'AI Workforce', icon: HiveMindIcon, component: 'aiWorkforce' },
         { title: 'Simulations', icon: CubeTransparentIcon, component: 'simulationHub' },
         { title: 'Avatar Forge', icon: UserCircleIcon, component: 'avatarForge' },
-        { title: 'Video Hub', icon: VideoIcon, component: 'videoHub' },
     ]
   },
   { type: 'divider' },
@@ -676,6 +742,7 @@ export const mainMenuItems: MenuItemData[] = [
         { title: 'Blockchain Hub', icon: LinkIcon, component: 'blockchainHub' },
       ]
   },
+  { title: 'Aetherial Networks', icon: AetherialIcon, component: 'aetherialNetworks' },
   { type: 'divider' },
   { type: 'title', title: 'Personal' },
   {
@@ -685,6 +752,8 @@ export const mainMenuItems: MenuItemData[] = [
     children: [
         { title: 'Course Catalog', icon: FolderIcon, component: 'courses' },
         { title: 'My Learning', icon: UserCircleIcon, component: 'myLearning' },
+        { title: 'Learning Assistant', icon: LightBulbIcon, component: 'learningAssistant' },
+        { title: 'Achievements', icon: TrophyIcon, component: 'achievements' },
         { title: 'Instructors', icon: UsersIcon, component: 'instructors' },
     ],
   },
@@ -720,6 +789,249 @@ export const mainMenuItems: MenuItemData[] = [
   },
 ];
 
+// FIX: Define and export `menuGroups` by restructuring `mainMenuItems`.
+export const menuGroups: (MenuGroup | MenuItemData)[] = [
+  {
+    id: 'core-apps',
+    title: 'Core Apps',
+    icon: Squares2X2Icon,
+    type: 'group',
+    children: [
+      { title: 'Dashboard', icon: HomeIcon, component: 'socialFeed' },
+      { title: 'Browser', icon: GlobeIcon, component: 'browser' },
+      { title: 'AI Hub', icon: HiveMindIcon, component: 'aiHub' },
+      { title: 'Messenger', icon: MessageIcon, component: 'messenger' },
+      { title: 'File Explorer', icon: FolderIcon, component: 'fileExplorer' },
+    ]
+  },
+  { type: 'divider' },
+  {
+    id: 'workspace',
+    title: 'Workspace',
+    icon: BriefcaseIcon,
+    type: 'group',
+    children: [
+      {
+        title: 'Social',
+        icon: UsersIcon,
+        component: 'socialApp',
+        children: [
+          { title: 'Feeds', icon: DocumentTextIcon, component: 'feedBiome' },
+          { title: 'Members', icon: UserIcon, component: 'members' },
+          { title: 'Groups', icon: UsersIcon, component: 'groups' },
+          { title: 'Forums', icon: ChatBubbleOvalLeftEllipsisIcon, component: 'forums' },
+          { title: 'Events', icon: CalendarIcon, component: 'events' },
+        ],
+      },
+      {
+          title: 'Productivity',
+          icon: BriefcaseIcon,
+          component: 'productivityApp',
+          children: [
+            { title: 'Mail', icon: DocumentTextIcon, component: 'mail' },
+            { title: 'Calendar', icon: CalendarIcon, component: 'calendar' },
+            { title: 'Notes', icon: DocumentTextIcon, component: 'notes' },
+            { title: 'Documents', icon: DocumentTextIcon, component: 'documents' },
+            { title: 'Task Hub', icon: ClipboardDocumentCheckIcon, component: 'taskHub' },
+            { title: 'Translate', icon: LanguageIcon, component: 'translate' },
+          ]
+      },
+      {
+        title: 'Careers',
+        icon: BriefcaseIcon,
+        component: 'careersApp',
+        children: [
+          { title: 'Job Search', icon: SearchIcon, component: 'jobSearch' },
+          { title: 'CV Builder', icon: PencilIcon, component: 'cvBuilder' },
+        ],
+      },
+      {
+        title: 'Enterprise Suite',
+        icon: BuildingOfficeIcon,
+        component: 'enterpriseApp',
+        children: [
+          { title: 'CRM', icon: UsersIcon, component: 'crm' },
+          { title: 'ERP', icon: Cog6ToothIcon, component: 'erp' },
+          { title: 'Supply Chain (SCM)', icon: TruckIcon, component: 'scm' },
+          { title: 'Human Capital (HCM)', icon: UserCircleIcon, component: 'hcm' },
+          { title: 'Project Mgmt (PPM)', icon: ClipboardDocumentCheckIcon, component: 'ppm' },
+          { title: 'Field Service (FSM)', icon: MapIcon, component: 'fsm' },
+          { title: 'Business Process (BPM)', icon: ArrowPathIcon, component: 'bpm' },
+        ],
+      },
+    ]
+  },
+  { type: 'divider' },
+  {
+    id: 'creation',
+    title: 'Creation',
+    icon: BeakerIcon,
+    type: 'group',
+    children: [
+      {
+        title: 'Development',
+        icon: CodeBracketIcon,
+        component: 'developmentApp',
+        children: [
+            { title: 'Code Editor', icon: CodeBracketIcon, component: 'codeEditor' },
+            { title: 'Website Builder', icon: GlobeIcon, component: 'websiteBuilder' },
+            { title: 'Game Engine', icon: GameControllerIcon, component: 'gameEngine' },
+            { title: 'AI Suite', icon: HiveMindIcon, component: 'aiSuite' },
+        ],
+      },
+      {
+        title: 'Media Production',
+        icon: CameraIcon,
+        component: 'mediaApp',
+        children: [
+          { title: 'Music Production', icon: MusicNoteIcon, component: 'musicProduction' },
+          { title: 'Video Production', icon: VideoIcon, component: 'videoProduction' },
+          { title: 'Image Editing', icon: ImageIcon, component: 'imageEditing' },
+          { title: 'Photo Editor', icon: CameraIcon, component: 'photoEditor' },
+          { title: 'Video Editor', icon: VideoIcon, component: 'videoEditor' },
+        ],
+      },
+      {
+        title: 'Content Generation',
+        icon: PencilIcon,
+        component: 'contentGenApp',
+        children: [
+          { title: 'Article Writer', icon: PencilIcon, component: 'articleWriter' },
+          { title: 'Script Generator', icon: DocumentTextIcon, component: 'scriptGenerator' },
+          { title: 'Slide Deck Designer', icon: PresentationChartLineIcon, component: 'slideDeckDesigner' },
+          { title: 'Content Creation', icon: DocumentTextIcon, component: 'contentCreation' },
+        ],
+      },
+        {
+        title: 'Engineering & Labs',
+        icon: BeakerIcon,
+        component: 'engineeringApp',
+        children: [
+            { title: 'CAD Lab', icon: RulerIcon, component: 'cadLab' },
+            { title: 'AI Workforce', icon: HiveMindIcon, component: 'aiWorkforce' },
+            { title: 'Simulations', icon: CubeTransparentIcon, component: 'simulationHub' },
+            { title: 'Avatar Forge', icon: UserCircleIcon, component: 'avatarForge' },
+        ]
+      },
+    ]
+  },
+  { type: 'divider' },
+  {
+    id: 'commerce',
+    title: 'Commerce',
+    icon: ShoppingCartIcon,
+    type: 'group',
+    children: [
+      {
+        title: 'Marketplace',
+        icon: BuildingStorefrontIcon,
+        component: 'eCommerceApp',
+        children: [
+          { title: 'Creator Marketplace', icon: BuildingStorefrontIcon, component: 'creatorMarketplace' },
+          { title: 'Business Hub', icon: BriefcaseIcon, component: 'marketplace' },
+          { title: 'Product Page', icon: CubeTransparentIcon, component: 'productPage' },
+        ],
+      },
+      {
+          title: 'Finance',
+          icon: ChartBarIcon,
+          component: 'financeApp',
+          children: [
+            { 
+                title: 'Trading Platform', 
+                icon: ChartBarIcon, 
+                children: [
+                    { title: 'Markets', icon: ChartBarIcon, component: 'tradingMarkets'},
+                    { title: 'Advanced Chart', icon: PresentationChartLineIcon, component: 'tradingAdvancedChart' },
+                    { title: 'Swap', icon: ArrowPathIcon, component: 'tradingSwap' },
+                    { title: 'Staking', icon: CircleStackIcon, component: 'tradingStaking' },
+                    { title: 'Lending', icon: CurrencyDollarIcon, component: 'tradingLending' },
+                    { title: 'Copy Trading', icon: UsersIcon, component: 'tradingCopy' },
+                ]
+            },
+            { 
+                title: 'Automation', 
+                icon: Cog6ToothIcon, 
+                children: [
+                     { title: 'Trading Bots', icon: ChipIcon, component: 'tradingBots' },
+                ] 
+            },
+            { 
+                title: 'Information', 
+                icon: DocumentTextIcon, 
+                children: [
+                     { title: 'News', icon: DocumentTextIcon, component: 'tradingNews' },
+                     { title: 'Learn & Earn', icon: AcademicCapIcon, component: 'tradingLearn' },
+                ] 
+            },
+            { 
+                title: 'Gaming', 
+                icon: GameControllerIcon, 
+                children: [
+                    { title: 'Games & Betting', icon: GameControllerIcon, component: 'tradingGames' },
+                ] 
+            },
+            { title: 'My Wallet', icon: WalletIcon, component: 'tradingWallet' },
+            { title: 'Blockchain Hub', icon: LinkIcon, component: 'blockchainHub' },
+          ]
+      },
+      { title: 'Aetherial Networks', icon: AetherialIcon, component: 'aetherialNetworks' },
+    ]
+  },
+  { type: 'divider' },
+  {
+    id: 'personal',
+    title: 'Personal',
+    icon: UserCircleIcon,
+    type: 'group',
+    children: [
+      {
+        title: 'E-Learning',
+        icon: AcademicCapIcon,
+        component: 'elearningApp',
+        children: [
+            { title: 'Course Catalog', icon: FolderIcon, component: 'courses' },
+            { title: 'My Learning', icon: UserCircleIcon, component: 'myLearning' },
+            { title: 'Learning Assistant', icon: LightBulbIcon, component: 'learningAssistant' },
+            { title: 'Achievements', icon: TrophyIcon, component: 'achievements' },
+            { title: 'Instructors', icon: UsersIcon, component: 'instructors' },
+        ],
+      },
+      {
+        title: 'Gaming',
+        icon: GameControllerIcon,
+        component: 'gamingApp',
+        children: [
+          { title: 'Gaming Hub', icon: GameControllerIcon, component: 'gamingHub' },
+          { title: 'Game Library', icon: FolderIcon, component: 'myLibrary' },
+        ],
+      },
+      {
+        title: 'Health & Wellness',
+        icon: HeartIcon,
+        component: 'healthApp',
+        children: [
+          { title: 'Health Hub', icon: HeartIcon, component: 'healthHub' },
+          { title: 'Body Composition', icon: BeakerIcon, component: 'bodyComposition' },
+          { title: 'Frequency Healing', icon: SpeakerWaveIcon, component: 'frequencyHealing' },
+          { title: 'Healing Web', icon: GlobeAltIcon, component: 'healingWeb' },
+          { title: 'Nutrition Guide', icon: AcademicCapIcon, component: 'nutritionGuide' },
+        ],
+      },
+      {
+        title: 'My Account',
+        icon: UserCircleIcon,
+        component: 'accountApp',
+        children: [
+            { title: 'My Profile', icon: UserCircleIcon, component: 'myProfile' },
+            { title: 'Linked Devices', icon: ComputerDesktopIcon, component: 'linkedDevices' },
+        ]
+      },
+    ]
+  },
+];
+
+
 export const bottomMenuItems: MenuItemData[] = [
     { type: 'divider' },
     {
@@ -742,6 +1054,8 @@ export const bottomMenuItems: MenuItemData[] = [
 export const aetheriusMenuItems: MenuItemData[] = [
     { title: 'About This OS', icon: InformationCircleIcon, component: 'systemArchitecture' },
     { title: 'Cognitive Framework', icon: HiveMindIcon, component: 'cognitiveFramework' },
+    { title: 'View Repo Skeleton', icon: CodeBracketIcon, component: 'repoStructure' },
+    { title: 'Export Master Spec (PDF)', icon: ArrowDownTrayIcon, component: 'pdfExporter' },
     { title: 'System Settings', icon: Cog6ToothIcon, component: 'settings' },
     { type: 'divider' },
     { title: 'Sleep', icon: MoonIcon, action: 'sleep' },
@@ -756,6 +1070,7 @@ export const desktopItems: DesktopItem[] = [
     { id: 'financeApp', type: 'app', title: 'Finance', icon: ChartBarIcon, component: 'financeApp' },
     { id: 'socialApp', type: 'app', title: 'Social Feed', icon: UsersIcon, component: 'socialApp' },
     { id: 'settings', type: 'app', title: 'Settings', icon: Cog6ToothIcon, component: 'settings' },
+    { id: 'aetherialNetworks', type: 'app', title: 'Aetherial Networks', icon: AetherialIcon, component: 'aetherialNetworks' },
     {
         id: 'work-folder',
         type: 'folder',
@@ -1224,40 +1539,52 @@ export const buildChecklistData: ChecklistCategory[] = [
 export const tradingAssets = [
     { symbol: 'AOS', name: 'Aetherius OS', price: 1250.75, change: 25.50, changePercent: 2.08, marketCap: 1.25e12, volume24h: 4.5e9, logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500', assetClass: 'Crypto' as AssetClass },
     { symbol: 'BTC', name: 'Bitcoin', price: 65034.15, change: -1205.42, changePercent: -1.82, marketCap: 1.28e12, volume24h: 2.2e10, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg', assetClass: 'Crypto' as AssetClass },
-    { symbol: 'ETH', name: 'Ethereum', price: 3510.90, change: 80.10, changePercent: 2.33, marketCap: 4.22e11, volume24h: 1.5e10, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg', assetClass: 'Crypto' as AssetClass },
-    { symbol: 'AAPL', name: 'Apple Inc.', price: 214.29, change: 2.15, changePercent: 1.01, marketCap: 3.28e12, volume24h: 5.8e7, logoUrl: 'https://companiesmarketcap.com/img/company-logos/64/AAPL.png', assetClass: 'Stocks' as AssetClass },
-    { symbol: 'EUR/USD', name: 'Euro/US Dollar', price: 1.0715, change: -0.0021, changePercent: -0.20, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eur.svg', assetClass: 'Forex' as AssetClass },
-    { symbol: 'XAU/USD', name: 'Gold', price: 2320.50, change: 10.30, changePercent: 0.45, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/xaur.svg', assetClass: 'Commodities' as AssetClass },
+    { symbol: 'ETH', name: 'Ethereum', price: 3502.80, change: 15.60, changePercent: 0.45, marketCap: 4.2e11, volume24h: 1.5e10, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg', assetClass: 'Crypto' as AssetClass },
+    { symbol: 'TSLA', name: 'Tesla, Inc.', price: 180.25, change: 5.75, changePercent: 3.29, marketCap: 5.75e11, volume24h: 9.8e9, logoUrl: 'https://companieslogo.com/img/orig/TSLA.D-11aaa693.png?t=1633534343', assetClass: 'Stocks' as AssetClass },
+    { symbol: 'AAPL', name: 'Apple Inc.', price: 172.50, change: -1.12, changePercent: -0.65, marketCap: 2.65e12, volume24h: 8.5e9, logoUrl: 'https://companieslogo.com/img/orig/AAPL.D-15335544.png?t=1633534343', assetClass: 'Stocks' as AssetClass },
+    { symbol: 'EUR/USD', name: 'Euro/US Dollar', price: 1.0855, change: 0.0012, changePercent: 0.11, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eur.svg', assetClass: 'Forex' as AssetClass },
+    { symbol: 'XAU/USD', name: 'Gold/US Dollar', price: 2350.50, change: -15.20, changePercent: -0.64, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/xau.svg', assetClass: 'Commodities' as AssetClass },
+];
+
+// FIX: Add and export missing data
+export const achievements: Achievement[] = [
+  {
+    id: 'achieve-1',
+    courseTitle: 'React - The Complete Guide',
+    completionDate: '2024-07-20',
+    transactionId: `0x${[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')}`,
+    certificateUrl: 'https://i.imgur.com/example-cert.png',
+  }
 ];
 
 export const stakingPools: StakingPool[] = [
-    { id: 'eth-pool', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, apy: 4.5, tvl: 1.2e9, lockupPeriod: 'Flexible' },
-    { id: 'sol-pool', asset: { symbol: 'SOL', name: 'Solana', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/sol.svg' }, apy: 7.2, tvl: 8.5e8, lockupPeriod: '30 Days' },
-    { id: 'ada-pool', asset: { symbol: 'ADA', name: 'Cardano', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/ada.svg' }, apy: 3.8, tvl: 5.1e8, lockupPeriod: 'Flexible' },
-];
-
-export const topCopyTraders = [user3, user1, user2];
-
-export const tradingNews: NewsArticle[] = [
-    { id: 'n1', source: 'CoinDesk', title: 'Bitcoin ETF Inflows Surge as Market Sentiment Improves', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1621417013398-33203445a6a4?q=80&w=400', category: 'Crypto' },
-    { id: 'n2', source: 'Bloomberg', title: 'Federal Reserve Holds Interest Rates Steady, Citing Stable Inflation', timestamp: '5h ago', imageUrl: 'https://images.unsplash.com/photo-1664575196045-53535e07672a?q=80&w=400', category: 'World Markets' },
-    { id: 'n3', source: 'ForexLive', title: 'EUR/USD Drops Below Key Support Level Amid Economic Data', timestamp: '8h ago', imageUrl: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=400', category: 'Forex' },
-];
-
-export const loanableAssets: LoanableAsset[] = [
-    { symbol: 'USDC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg', supplyApy: 5.2, borrowApy: 7.8, totalSupplied: 2.5e9, totalBorrowed: 1.8e9 },
-    { symbol: 'WBTC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/wbtc.svg', supplyApy: 0.5, borrowApy: 2.1, totalSupplied: 5.6e8, totalBorrowed: 3.2e8 },
-    { symbol: 'DAI', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/dai.svg', supplyApy: 4.8, borrowApy: 7.5, totalSupplied: 1.9e9, totalBorrowed: 1.1e9 },
+    { id: 'aos-stake', asset: { symbol: 'AOS', name: 'Aetherius OS', logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500' }, apy: 12.5, tvl: 75000000, lockupPeriod: 'Flexible' },
+    { id: 'eth-stake', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, apy: 4.8, tvl: 1200000000, lockupPeriod: '30 Days' },
+    { id: 'usdc-stake', asset: { symbol: 'USDC', name: 'USD Coin', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg' }, apy: 8.2, tvl: 500000000, lockupPeriod: 'Flexible' },
 ];
 
 export const tradingBots: TradingBot[] = [
-    { id: 'bot1', name: 'ETH Grid', strategy: 'Grid Trading', pair: 'ETH/USDT', status: 'Running', pnl: 125.50, runtime: '7d 4h' },
-    { id: 'bot2', name: 'BTC DCA', strategy: 'DCA Bot', pair: 'BTC/USDT', status: 'Running', pnl: 450.21, runtime: '32d 8h' },
-    { id: 'bot3', name: 'Portfolio Rebalancer', strategy: 'Rebalancing', pair: 'VARIOUS', status: 'Stopped', pnl: -50.10, runtime: '15d 2h' },
+    { id: 'bot-1', name: 'BTC/USDT Grid', strategy: 'Grid Trading', pair: 'BTC/USDT', status: 'Running', pnl: 152.75, runtime: '12d 5h' },
+    { id: 'bot-2', name: 'ETH DCA', strategy: 'DCA Bot', pair: 'ETH/USDT', status: 'Running', pnl: 88.12, runtime: '30d 1h' },
+    { id: 'bot-3', name: 'Portfolio Rebalancer', strategy: 'Rebalancing', pair: 'VARIOUS', status: 'Stopped', pnl: -12.50, runtime: '5d 2h' },
 ];
 
+export const tradingNews: NewsArticle[] = [
+    { id: 'news-1', source: 'CoinDesk', title: 'Bitcoin ETF Inflows Surge as Market Sentiment Improves', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1640955032549-3c739112bf47?q=80&w=400', category: 'Crypto' },
+    { id: 'news-2', source: 'Bloomberg', title: 'Analysts Predict Volatility Ahead of Options Expiry', timestamp: '5h ago', imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=400', category: 'World Markets' },
+    { id: 'news-3', source: 'Reuters', title: 'Forex Markets Brace for Central Bank Announcements', timestamp: '8h ago', imageUrl: 'https://images.unsplash.com/photo-1559163499-413811443ab4?q=80&w=400', category: 'Forex' },
+];
+
+export const loanableAssets: LoanableAsset[] = [
+    { symbol: 'BTC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg', supplyApy: 3.12, borrowApy: 4.55, totalSupplied: 1.2e9, totalBorrowed: 8e8 },
+    { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg', supplyApy: 2.89, borrowApy: 4.15, totalSupplied: 2.5e9, totalBorrowed: 1.5e9 },
+    { symbol: 'USDC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg', supplyApy: 5.50, borrowApy: 7.25, totalSupplied: 5e9, totalBorrowed: 3.8e9 },
+];
+
+export const topCopyTraders: User[] = [user1, user2, user3];
+
 export const learnAndEarnCourses: LearnAndEarnCourse[] = [
-    { id: 'learn1', title: 'What is Bitcoin?', asset: { symbol: 'BTC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg' }, reward: 10, duration: '15 min', lessons: 3 },
-    { id: 'learn2', title: 'Introduction to Ethereum', asset: { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, reward: 10, duration: '20 min', lessons: 4 },
-    { id: 'learn3', title: 'Understanding Smart Contracts', asset: { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, reward: 15, duration: '30 min', lessons: 5 },
+    { id: 'le-1', title: 'What is Bitcoin?', asset: { symbol: 'BTC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg' }, reward: 10, duration: '10 min', lessons: 3 },
+    { id: 'le-2', title: 'Intro to Smart Contracts', asset: { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, reward: 10, duration: '15 min', lessons: 4 },
+    { id: 'le-3', title: 'Understanding Stablecoins', asset: { symbol: 'USDC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg' }, reward: 5, duration: '8 min', lessons: 2 },
 ];

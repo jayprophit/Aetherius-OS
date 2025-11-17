@@ -27,6 +27,14 @@ export interface MenuItemData {
   action?: string | (() => void);
 }
 
+export interface MenuGroup {
+  id: string;
+  title: string;
+  icon: React.FC<any>;
+  children: MenuItemData[];
+  type: 'group';
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -348,4 +356,100 @@ export interface AssetNews {
   source: string;
   title: string;
   time: string;
+}
+
+// --- E-Learning AI Assistant ---
+export interface LearningPath {
+  title: string;
+  description: string;
+  steps: {
+    courseId: number;
+    rationale: string;
+  }[];
+}
+
+export interface Achievement {
+  id: string;
+  courseTitle: string;
+  completionDate: string;
+  transactionId: string;
+  certificateUrl: string; // URL to a mock certificate image
+}
+
+// --- AI Support Avatar ---
+export interface NotificationData {
+  id: string;
+  type: 'success' | 'error' | 'warning' | 'info' | 'processing';
+  title: string;
+  message: string;
+  duration?: number;
+}
+
+export interface AITask {
+  id: string;
+  name: string;
+  status: 'processing' | 'completed' | 'failed';
+}
+
+export interface AgentChatMessage {
+    id: string;
+    role: 'user' | 'agent' | 'system' | 'tool';
+    content: string;
+    timestamp: string;
+}
+
+// --- Network Orchestrator ---
+export type ServerStatus = 'Online' | 'Degraded' | 'Offline';
+
+export interface Server {
+    id: string;
+    name: string;
+    status: ServerStatus;
+    cpu: number;
+    memory: number;
+}
+
+export interface RpcLog {
+    id: string;
+    timestamp: string;
+    method: string;
+    source: string;
+    status: 'Success' | 'Failed';
+}
+
+// --- Training Data Hub ---
+export interface TrainingDataSample {
+    id: string;
+    input: string;
+    output: string;
+    intent: string;
+}
+
+// --- AI Workforce Orchestrator ---
+export type AIAgentStatus = 'Idle' | 'Working' | 'Reporting' | 'Awaiting Task';
+export type ProcessingMode = 'Singular Mind' | 'Hive Mind' | 'Dual Processing';
+
+export interface AIAgentProfile {
+  id: string;
+  name: string;
+  role: 'Parent' | 'Manager' | 'Employee';
+  specialization: string;
+  status: AIAgentStatus;
+  mode: ProcessingMode;
+}
+
+export interface AIAgentTask {
+    id: string;
+    description: string;
+    status: 'Pending' | 'In Progress' | 'Completed' | 'Requires Review';
+    assignee?: string; // Agent ID
+    report?: string;
+}
+
+export interface AIDepartment {
+    id: string;
+    name: string;
+    manager: AIAgentProfile;
+    employees: AIAgentProfile[];
+    tasks: AIAgentTask[];
 }

@@ -2,12 +2,14 @@ import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
 import { Elearning } from '../Elearning';
-import { MyLearning } from '../MyLearning';
+import { MyLearning, LearningAssistant, Achievements } from '../MyLearning';
 import { PlaceholderView } from '../PlaceholderView';
 
 const elearningComponentMap: { [key: string]: React.FC<any> } = {
   courses: Elearning,
   myLearning: MyLearning,
+  learningAssistant: LearningAssistant,
+  achievements: Achievements,
   instructors: () => <PlaceholderView viewName="Instructors" />,
 };
 

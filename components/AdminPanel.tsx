@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cog6ToothIcon, GlobeAltIcon, ShoppingCartIcon, BeakerIcon, HeartIcon } from './Icons';
+import { Cog6ToothIcon, GlobeAltIcon, ShoppingCartIcon, BeakerIcon, HeartIcon, ShieldCheckIcon } from './Icons';
 
 interface ToggleRowProps {
   title: string;
@@ -55,6 +55,12 @@ export const AdminPanel: React.FC = () => {
                     <ToggleRow title="AI Hub" description="Main AI assistant and chat interface." />
                     <ToggleRow title="Browser" description="The built-in web browser application." />
                     <ToggleRow title="Social Hub" description="Enables all social features like feeds, members, and groups." />
+                </Section>
+                
+                <Section title="Security & Authentication" icon={ShieldCheckIcon}>
+                    <ToggleRow title="End-to-End Encryption" description="Enable quantum-resistant E2EE for all private messages." />
+                    <ToggleRow title="BCI Authentication" description="Allow users to authenticate using Brain-Computer Interface patterns." initialValue={false}/>
+                    <ToggleRow title="Require KYC for Trading" description="Mandate Know Your Customer verification for all financial services." />
                 </Section>
 
                 <Section title="Commerce Hubs" icon={ShoppingCartIcon}>

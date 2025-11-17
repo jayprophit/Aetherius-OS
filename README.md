@@ -38,17 +38,23 @@ Aetherius OS is built upon a foundation of both state-of-the-art and speculative
 -   **Holistic 8-Layer Architecture:** A comprehensive system design covering sensory input, quantum computation, cognitive reasoning, generative output, data management, system orchestration, safety, and feedback loops.
 -   **Virtual Quantum AI Computer:** A fully virtualized machine that runs all programs and integrates core quantum principles, time crystals, and advanced AI models.
 
-## 🛠️ Tech Stack & Integrations (Reference Implementation)
+## 🛠️ Tech Stack & Integrations
 
 -   **Frontend:** [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)
 -   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
--   **AI Core:** [Google Gemini API](https://ai.google.dev/gemini-api) (`@google/genai`)
--   **Markdown Rendering:** [Marked](https://marked.js.org/)
--   **Key Integrations (Demonstrated/Planned for this specific project):**
-    -   **VoIP/SMS:** Twilio, Plivo
-    -   **Email:** SendGrid, SMTP relays
-    -   **Payments:** Stripe, PayPal, Adyen
-    -   **Web3:** Direct integration with blockchain networks for cryptocurrency transactions.
+-   **AI Core:** Proprietary Aetherius AI Engine (built from scratch, inspired by state-of-the-art models)
+-   **Blockchain:** Proprietary Aetherius Multi-Dimensional Blockchain
+
+#### Internal Services vs. 3rd Party Plugins
+
+Aetherius OS is a self-contained ecosystem. Core functionalities like VoIP/SMS, email, and payment processing are provided by native, from-scratch Aetherius services. This ensures maximum security, performance, and integration.
+
+However, the OS is designed with an open and extensible architecture. Users and developers have the choice to integrate with their preferred 3rd-party services via a robust plugin system. While the OS can run independently, it also supports:
+
+-   **VoIP/SMS:** Twilio, Plivo
+-   **Email:** SendGrid, SMTP relays
+-   **Payments:** Stripe, PayPal, Adyen
+-   **Web3:** Direct integration with external blockchain networks.
 
 ## 🚀 Running Locally & Offline
 
@@ -113,7 +119,7 @@ You can deploy Aetherius OS to any static hosting service.
 │   ├── AIAssistant.tsx # The main AI assistant component
 │   └── ...
 ├── docs/               # Project documentation
-│   └── ai_guidelines.md
+│   └── masterSpec.ts   # Master blueprint content for in-app use
 ├── App.tsx             # Main application component, layout manager
 ├── data.ts             # Static data, menu configurations, etc.
 ├── types.ts            # TypeScript type definitions

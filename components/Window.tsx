@@ -1,292 +1,170 @@
+import React, { useState } from 'react';
+import { CheckCircleIcon, ClockIcon, GlobeAltIcon, LockClosedIcon, BeakerIcon, ChipIcon, ShieldCheckIcon, WifiIcon, MapIcon, DocumentTextIcon } from './Icons';
 
-
-
-
-import React from 'react';
-import { ProductPage } from './ProductPage';
-import { SocialFeed } from './SocialFeed';
-import { Elearning } from './Elearning';
-import { JobSearch } from './JobSearch';
-import { CvBuilder } from './CvBuilder';
-import { Marketplace } from './Marketplace';
-import { AIHub } from './AIAssistant';
-import { SettingsView } from './SettingsModal';
-import { 
-    WelcomeBanner,
-    ActivityFeedCreator,
-    PeopleYouMayKnow,
-    PostCard,
-    BlogWidget,
-    FollowingWidget,
-    CompleteProfileWidget,
-    LatestUpdatesWidget,
-    GroupsWidget,
-    SponsoredWidget,
-    ContactsWidget
-} from './SocialFeed';
-import { posts } from '../data';
-import { Browser } from './Browser';
-import { SystemArchitecture } from './SystemArchitecture';
-import { CoreParadigms } from './CoreParadigms';
-import { VirtualHardware } from './VirtualHardware';
-import { PersonalAI } from './PersonalAI';
-import { KnowledgeBase } from './KnowledgeBase';
-import { Milestones } from './Milestones';
-import { CADLab } from './CADLab';
-import { CreationLab } from './CreationLab';
-import { MyLearning } from './MyLearning';
-import { CourseDetail } from './CourseDetail';
-import { BuildChecklist } from './BuildChecklist';
-import { CreatorMarketplace } from './CreatorMarketplace';
-import MyProfile from './MyProfile';
-import { Messenger } from './Messenger';
-import { Members } from './Members';
-import { Groups } from './Groups';
-
-// Import all settings components for mapping
-import { PlaceholderSettings } from './settings/PlaceholderSettings';
-import { DisplaySettings } from './settings/DisplaySettings';
-import { NetworkSettings } from './settings/NetworkSettings';
-import { AboutSettings } from './settings/AboutSettings';
-import { NotificationsSettings } from './settings/NotificationsSettings';
-import { SoundsSettings } from './settings/SoundsSettings';
-import { CloudStorageSettings } from './settings/CloudStorageSettings';
-import { AiSettings } from './settings/AiSettings';
-import { AccessibilitySettings } from './settings/AccessibilitySettings';
-import { WallpaperSettings } from './settings/WallpaperSettings';
-
-// Import new Health & Wellness components
-import { HealthHub } from './health/HealthHub';
-import { BodyComposition } from './health/BodyComposition';
-import { FrequencyHealing } from './health/FrequencyHealing';
-import { HealingWeb } from './health/HealingWeb';
-import { NutritionGuide } from './health/NutritionGuide';
-
-
-// Temporarily map missing settings to Placeholder to ensure app compiles
-const AirplaneModeSettings = (props: any) => <PlaceholderSettings {...props} />;
-const BluetoothSettings = (props: any) => <PlaceholderSettings {...props} />;
-const CellularSettings = (props: any) => <PlaceholderSettings {...props} />;
-const VpnSettings = (props: any) => <PlaceholderSettings {...props} />;
-const HomeScreenSettings = (props: any) => <PlaceholderSettings {...props} />;
-const FontsSettings = (props: any) => <PlaceholderSettings {...props} />;
-const FocusSettings = (props: any) => <PlaceholderSettings {...props} />;
-const ScreenTimeSettings = (props: any) => <PlaceholderSettings {...props} />;
-const SearchSettings = (props: any) => <PlaceholderSettings {...props} />;
-const MailSettings = (props: any) => <PlaceholderSettings {...props} />;
-const PasswordsSettings = (props: any) => <PlaceholderSettings {...props} />;
-const FaceIdSettings = (props: any) => <PlaceholderSettings {...props} />;
-const PrivacySettings = (props: any) => <PlaceholderSettings {...props} />;
-const SoftwareUpdateSettings = (props: any) => <PlaceholderSettings {...props} />;
-const StorageSettings = (props: any) => <PlaceholderSettings {...props} />;
-const ControlCenterSettings = (props: any) => <PlaceholderSettings {...props} />;
-const MultitaskingSettings = (props: any) => <PlaceholderSettings {...props} />;
-const LanguageSettings = (props: any) => <PlaceholderSettings {...props} />;
-const DateTimeSettings = (props: any) => <PlaceholderSettings {...props} />;
-const KeyboardSettings = (props: any) => <PlaceholderSettings {...props} />;
-const DictionarySettings = (props: any) => <PlaceholderSettings {...props} />;
-const ResetSettings = (props: any) => <PlaceholderSettings {...props} />;
-const LegalSettings = (props: any) => <PlaceholderSettings {...props} />;
-const ShutdownSettings = (props: any) => <PlaceholderSettings {...props} />;
-const BatterySettings = (props: any) => <PlaceholderSettings {...props} />;
-const StylusSettings = (props: any) => <PlaceholderSettings {...props} />;
-const TrackpadSettings = (props: any) => <PlaceholderSettings {...props} />;
-const CameraSettings = (props: any) => <PlaceholderSettings {...props} />;
-const AppLibrarySettings = (props: any) => <PlaceholderSettings {...props} />;
-const DefaultAppsSettings = (props: any) => <PlaceholderSettings {...props} />;
-const WalletSettings = (props: any) => <PlaceholderSettings {...props} />;
-const GameCenterSettings = (props: any) => <PlaceholderSettings {...props} />;
-
-
-const PlaceholderView: React.FC<{ viewName: string, onSetView?: (view: string, context?: any) => void }> = ({ viewName }) => (
-    <div className="flex items-center justify-center h-full p-4 sm:p-6 bg-gray-100 dark:bg-gray-900">
-        <div className="text-center p-6">
-            <h1 className="text-2xl font-bold capitalize">{viewName.replace(/([A-Z])/g, ' $1').trim()}</h1>
-            <p className="mt-2 text-gray-500 dark:text-gray-400">This application is under construction.</p>
-        </div>
-    </div>
+const PricingCard: React.FC<{
+  plan: { name: string; price: string; mcu: string; bestFor: string; feature: string; highlight?: boolean };
+}> = ({ plan }) => (
+  <div className={`border rounded-xl p-6 flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
+    plan.highlight ? 'bg-primary/10 dark:bg-primary/20 border-primary' : 'bg-white/5 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700'
+  }`}>
+    {plan.highlight && (
+      <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-4 py-1 rounded-bl-lg">Most Popular</div>
+    )}
+    <h3 className="text-2xl font-bold">{plan.name}</h3>
+    <p className="mt-2">
+      <span className="text-4xl font-extrabold">£{plan.price}</span>
+      <span className="text-lg font-medium text-gray-500 dark:text-gray-400">/month</span>
+    </p>
+    <p className="mt-4 text-lg font-semibold">{plan.mcu}</p>
+    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 flex-grow">{plan.bestFor}</p>
+    <ul className="mt-6 space-y-2 text-sm">
+      <li className="flex items-center gap-2">
+        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+        <span>{plan.feature}</span>
+      </li>
+       <li className="flex items-center gap-2">
+        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+        <span>Unlimited standard-speed queue</span>
+      </li>
+       <li className="flex items-center gap-2">
+        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+        <span>Unlimited text &amp; code outputs</span>
+      </li>
+    </ul>
+    <button className={`w-full py-3 font-semibold rounded-lg mt-8 transition-colors ${
+      plan.highlight ? 'bg-primary text-white hover:bg-primary-dark' : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+    }`}>
+      Choose Plan
+    </button>
+  </div>
 );
 
-const FeedView: React.FC<{ onSetView: (view: string) => void }> = ({ onSetView }) => (
-    <div className="bg-[#fbfbfb] dark:bg-gray-900 min-h-full p-4 sm:p-6 relative">
-        <div className="max-w-screen-xl mx-auto">
-            <WelcomeBanner />
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 items-start mt-6">
-                {/* Left Column */}
-                <aside className="hidden xl:block col-span-1 space-y-6">
-                    <BlogWidget />
-                    <FollowingWidget />
-                </aside>
+export const AetherialNetworksPricing: React.FC = () => {
+  const [planType, setPlanType] = useState<'monthly' | 'annual'>('monthly');
 
-                {/* Center Column */}
-                <main className="col-span-1 xl:col-span-2 space-y-6">
-                    <ActivityFeedCreator />
-                    <PeopleYouMayKnow />
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Activity Feed</h2>
-                         <select className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md h-9 px-2 text-sm focus:ring-0 focus:border-gray-400">
-                            <option>Show all updates</option>
-                            <option>Posts</option>
-                            <option>Comments</option>
-                        </select>
-                    </div>
-                    {posts.map(post => <PostCard key={post.id} post={post} />)}
-                </main>
+  const monthlyPlans = [
+    { name: 'Spark', price: '8', mcu: '2,000 MCU', bestFor: 'Students, casual users, simple chatbots, basic text summary.', feature: 'Basic API Access' },
+    { name: 'Flow', price: '12', mcu: '8,000 MCU', bestFor: 'Power users, content creators, advanced summarization.', feature: 'Standard Priority Queue' },
+    { name: 'Surge', price: '18', mcu: '25,000 MCU', bestFor: 'Developers, small businesses, multi-modal projects (image+text).', feature: 'Advanced API + WebSocket Access' },
+    { name: 'Torrent', price: '25', mcu: '100,000 MCU', bestFor: 'Startups, research projects, heavy code generation & analysis.', feature: 'High-Priority Processing, 128k Context Window' },
+    { name: 'Omega', price: '35', mcu: 'Unlimited MCU', bestFor: 'Enterprises, AI labs, massive data processing, training runs.', feature: 'Dedicated throughput, Guaranteed SLA, 1M+ Context', highlight: true },
+  ];
 
-                {/* Right Column (Merged) */}
-                <aside className="hidden xl:block col-span-1 space-y-6">
-                    <CompleteProfileWidget />
-                    <SponsoredWidget />
-                    <LatestUpdatesWidget />
-                    <ContactsWidget />
-                    <GroupsWidget />
-                </aside>
-            </div>
-        </div>
-    </div>
-);
+  const annualPlans = [
+    { name: 'Catalyst Builder', price: '15', mcu: '25,000 MCU', bestFor: 'Small businesses and developers committing for the year.', feature: 'High-Priority Processing' },
+    { name: 'Catalyst Innovator', price: '22', mcu: '120,000 MCU', bestFor: 'Startups and research teams needing consistent high volume.', feature: 'High-Priority Processing, 128k Context' },
+    { name: 'Catalyst Enterprise', price: 'Custom', mcu: 'Tailored MCU', bestFor: 'Large organizations with specific needs.', feature: 'Custom Models & Private Deployment', highlight: true },
+  ];
 
+  const addOns = [
+    { name: 'Real-Time Sync', price: '£5/month', description: 'Ultra-low latency for real-time chatbot applications.', icon: ClockIcon },
+    { name: 'Quantum-Resistant Encryption', price: '£3/month', description: 'Secure all data with post-quantum cryptographic algorithms.', icon: LockClosedIcon },
+    { name: 'Neuromorphic Compute Boost', price: '£10/month', description: '10x efficiency boost on pattern-matching workloads.', icon: BeakerIcon },
+    { name: 'Sovereign Data Pack', price: 'Varies', description: 'Guarantee data residency within a specific geographic region.', icon: MapIcon },
+  ];
 
-const componentMap: { [key: string]: React.FC<any> } = {
-  socialFeed: SocialFeed,
-  feedBiome: FeedView,
-  browser: Browser,
-  productPage: ProductPage,
-  aiHub: AIHub,
-  courses: Elearning,
-  jobSearch: JobSearch,
-  cvBuilder: CvBuilder,
-  marketplace: Marketplace,
-  creatorMarketplace: CreatorMarketplace,
-  settings: SettingsView,
-  // New E-Learning components
-  myLearning: MyLearning,
-  courseDetail: CourseDetail,
-  instructors: () => <PlaceholderView viewName="Instructors" />,
-  // New OS Core Components
-  systemArchitecture: SystemArchitecture,
-  coreParadigms: CoreParadigms,
-  virtualHardware: VirtualHardware,
-  personalAI: PersonalAI,
-  knowledgeBase: KnowledgeBase,
-  milestones: Milestones,
-  buildChecklist: BuildChecklist,
-  tritCore: () => <PlaceholderView viewName="Trit Core" />,
-  strategicHub: () => <PlaceholderView viewName="Strategic Hub" />,
-  capabilities: () => <PlaceholderView viewName="Capabilities" />,
-  dataArchive: () => <PlaceholderView viewName="Data Archive" />,
-  platformIntegrations: () => <PlaceholderView viewName="Platform Integrations" />,
-  systemIntegrity: () => <PlaceholderView viewName="System Integrity" />,
-  systemMonitor: () => <PlaceholderView viewName="System Monitor" />,
-  // Social & Communication
-  members: Members,
-  groups: Groups,
-  forums: () => <PlaceholderView viewName="Forums" />,
-  events: () => <PlaceholderView viewName="Events" />,
-  messenger: Messenger,
-  mail: () => <PlaceholderView viewName="Mail" />,
-  commsHub: () => <PlaceholderView viewName="Comms Hub" />,
-  // Creation & Development
-  codeEditor: () => <PlaceholderView viewName="Code Editor" />,
-  websiteBuilder: () => <PlaceholderView viewName="Website Builder" />,
-  gameDesign: () => <PlaceholderView viewName="Game Design" />,
-  cadDesign: () => <PlaceholderView viewName="CAD Design" />,
-  photoEditor: () => <PlaceholderView viewName="Photo Editor" />,
-  videoEditor: () => <PlaceholderView viewName="Video Editor" />,
-  musicProduction: () => <CreationLab type="Music"/>,
-  videoProduction: () => <CreationLab type="Video"/>,
-  imageEditing: () => <CreationLab type="Image"/>,
-  contentCreation: () => <CreationLab type="Content"/>,
-  aiTools: () => <PlaceholderView viewName="AI Tools" />,
-  articleWriter: () => <PlaceholderView viewName="Article Writer" />,
-  scriptGenerator: () => <PlaceholderView viewName="Script Generator" />,
-  slideDeckDesigner: () => <PlaceholderView viewName="Slide Deck Designer" />,
-  // Virtual Lab
-  slideMatrix: () => <PlaceholderView viewName="Slide Matrix" />,
-  notes: () => <PlaceholderView viewName="Notes" />,
-  translate: () => <PlaceholderView viewName="Translate" />,
-  fileExplorer: () => <PlaceholderView viewName="File Explorer" />,
-  engineering: () => <PlaceholderView viewName="Engineering" />,
-  // Simulations
-  genesisForge: () => <PlaceholderView viewName="Genesis Forge" />,
-  avatarForge: () => <PlaceholderView viewName="Avatar Forge" />,
-  engineeringHub: () => <PlaceholderView viewName="Engineering Hub" />,
-  simulationHub: () => <PlaceholderView viewName="Simulation Hub" />,
-  videoHub: () => <PlaceholderView viewName="Video Hub" />,
-  videoEditingSuite: () => <PlaceholderView viewName="Video Editing Suite" />,
-  gameDevSuite: () => <PlaceholderView viewName="Game Dev Suite" />,
-  // Work & Finance
-  documents: () => <PlaceholderView viewName="Documents" />,
-  calendar: () => <PlaceholderView viewName="Calendar" />,
-  taskHub: () => <PlaceholderView viewName="taskHub" />,
-  cadLab: CADLab,
-  myProfile: MyProfile,
-  // New Health & Wellness
-  healthHub: HealthHub,
-  bodyComposition: BodyComposition,
-  frequencyHealing: FrequencyHealing,
-  healingWeb: HealingWeb,
-  nutritionGuide: NutritionGuide,
-  
-  // All Settings Sub-pages
-  display: DisplaySettings,
-  network: NetworkSettings,
-  about: AboutSettings,
-  notifications: NotificationsSettings,
-  sounds: SoundsSettings,
-  cloud_storage: CloudStorageSettings,
-  ai_settings: AiSettings,
-  accessibility: AccessibilitySettings,
-  wallpaper: WallpaperSettings,
-  airplane_mode: AirplaneModeSettings,
-  wifi: NetworkSettings, // Corrected to use NetworkSettings
-  bluetooth: BluetoothSettings,
-  cellular: CellularSettings,
-  vpn: VpnSettings,
-  home_screen: HomeScreenSettings,
-  fonts: FontsSettings,
-  focus: FocusSettings,
-  screen_time: ScreenTimeSettings,
-  search_settings: SearchSettings,
-  mail_accounts: MailSettings,
-  passwords: PasswordsSettings,
-  face_id: FaceIdSettings,
-  privacy: PrivacySettings,
-  software_update: SoftwareUpdateSettings,
-  storage: StorageSettings,
-  control_center: ControlCenterSettings,
-  multitasking: MultitaskingSettings,
-  language_region: LanguageSettings,
-  date_time: DateTimeSettings,
-  keyboard: KeyboardSettings,
-  dictionary: DictionarySettings,
-  reset: ResetSettings,
-  legal: LegalSettings,
-  shutdown: ShutdownSettings,
-  battery: BatterySettings,
-  stylus: StylusSettings,
-  trackpad_mouse: TrackpadSettings,
-  camera: CameraSettings,
-  app_library: AppLibrarySettings,
-  default_apps: DefaultAppsSettings,
-  wallet_settings: WalletSettings,
-  game_center_profile: GameCenterSettings,
-  // Add mappings for other specific settings if they are not placeholders
-  accessibility_main: AccessibilitySettings
-};
-
-interface MainContentProps {
-  view: string;
-  onSetView: (view: string, context?: any) => void;
-  viewContext: any;
-}
-
-export const MainContent: React.FC<MainContentProps> = ({ view, onSetView, viewContext }) => {
-  const ComponentToRender = componentMap[view] || (() => <PlaceholderView viewName={view} onSetView={onSetView} />);
+   const features = [
+    { name: '5G-Fast Inference', description: 'Optimized latency across all plans.', icon: WifiIcon },
+    { name: 'Unlimited Outputs', description: 'No per-token charges on generated text/code.', icon: DocumentTextIcon },
+    { name: 'Global AI Roaming', description: 'Process over 100 languages with no extra cost.', icon: GlobeAltIcon },
+    { name: 'Aetherial Core', description: 'Runs on our distributed, energy-optimized compute grid.', icon: ChipIcon },
+    { name: 'Ethical AI Sourcing', description: 'Training data is ethically sourced and fully licensed.', icon: ShieldCheckIcon },
+  ];
 
   return (
-    <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900/50 relative">
-      <ComponentToRender onSetView={onSetView} {...viewContext} />
-    </main>
+    <div className="h-full w-full bg-background-light dark:bg-gray-900 text-content-light dark:text-content-dark overflow-y-auto p-6 sm:p-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <header className="text-center mb-12">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">Aetherial Networks</h1>
+          <h2 className="mt-3 text-2xl sm:text-3xl font-bold text-primary">The Future of AI Compute is Here.</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
+            Forget tokens. Think smarter. We don't count words; we measure computational value, offering unparalleled efficiency and fairness.
+          </p>
+        </header>
+
+        {/* Plan Toggle */}
+        <div className="flex justify-center mb-10">
+          <div className="bg-gray-200 dark:bg-gray-800 rounded-full p-1 flex items-center space-x-1">
+            <button
+              onClick={() => setPlanType('monthly')}
+              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${planType === 'monthly' ? 'bg-white dark:bg-gray-700 shadow' : 'text-gray-600 dark:text-gray-300'}`}
+            >
+              Monthly Rolling
+            </button>
+            <button
+              onClick={() => setPlanType('annual')}
+              className={`px-6 py-2 text-sm font-semibold rounded-full transition-colors ${planType === 'annual' ? 'bg-white dark:bg-gray-700 shadow' : 'text-gray-600 dark:text-gray-300'}`}
+            >
+              Annual Contracts
+            </button>
+          </div>
+        </div>
+
+        {/* Pricing Grids */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 ${planType !== 'monthly' && 'hidden'}`}>
+          {monthlyPlans.map(plan => <PricingCard key={plan.name} plan={plan} />)}
+        </div>
+         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${planType !== 'annual' && 'hidden'}`}>
+          {annualPlans.map(plan => <PricingCard key={plan.name} plan={plan} />)}
+        </div>
+
+        {/* Other Sections */}
+        <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-8">
+             <section>
+              <h3 className="text-3xl font-bold mb-4">Key Features</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {features.map(({ name, description, icon: Icon }) => (
+                   <div key={name} className="flex items-start gap-4">
+                      <div className="bg-primary/10 text-primary p-3 rounded-full"><Icon className="w-6 h-6"/></div>
+                      <div>
+                        <h4 className="font-bold">{name}</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+                      </div>
+                   </div>
+                ))}
+              </div>
+            </section>
+            <section>
+              <h3 className="text-3xl font-bold mb-4">Why Our Model is Superior</h3>
+              <div className="prose prose-sm dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-2">
+                  <p><strong>Fairness:</strong> You don't pay the same price to process "hello world" and a complex legal clause. Cost reflects computational complexity.</p>
+                  <p><strong>Efficiency:</strong> Our Neural Dynamo Engine uses dynamic byte patching, reducing wasted computation on simple data and allocating it where it's needed most. This saving is passed to you.</p>
+                  <p><strong>Transparency:</strong> Compute Units (MCUs) are a clearer representation of the actual server-side effort than abstract token counts.</p>
+                  <p><strong>Robustness:</strong> Byte-level processing handles emojis, code formatting, typos, and low-resource languages without breaking a sweat, making the service more reliable and predictable.</p>
+              </div>
+            </section>
+          </div>
+          <div className="space-y-8">
+            <section className="bg-white/5 dark:bg-gray-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold mb-3">Pay-As-You-Go</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Perfect for low-volume users. You only pay for the computational power you consume.</p>
+              <p className="text-center my-4">
+                <span className="text-3xl font-extrabold">5 Æ</span>
+                <span className="text-lg font-medium text-gray-500 dark:text-gray-400"> / Million Compute Units (MCU)</span>
+              </p>
+            </section>
+            <section>
+              <h3 className="text-xl font-bold mb-3">Future-Proof Add-Ons</h3>
+              <div className="space-y-4">
+                {addOns.map(({name, price, description, icon: Icon}) => (
+                  <div key={name} className="bg-white/5 dark:bg-gray-800/50 p-4 rounded-lg border border-gray-200 dark:border-gray-700 flex items-start gap-3">
+                    <Icon className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="flex justify-between items-baseline">
+                        <h4 className="font-semibold">{name}</h4>
+                        <span className="text-xs font-bold">{price}</span>
+                      </div>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };

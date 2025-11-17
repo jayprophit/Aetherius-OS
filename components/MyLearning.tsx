@@ -1,7 +1,8 @@
-import React from 'react';
-import { courses, enrolledCourses } from '../data';
-import { Course } from '../types';
-import { AcademicCapIcon } from './Icons';
+import React, { useState } from 'react';
+import { courses, enrolledCourses, achievements } from '../data';
+import { Course, LearningPath } from '../types';
+import { AcademicCapIcon, LightBulbIcon, TrophyIcon } from './Icons';
+import { GoogleGenAI, Type } from '@google/genai';
 
 interface MyLearningProps {
     onSetView: (view: string, context?: any) => void;
@@ -59,6 +60,154 @@ export const MyLearning: React.FC<MyLearningProps> = ({ onSetView }) => {
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    );
+};
+
+
+// --- NEW COMPONENTS ---
+
+export const LearningAssistant: React.FC<{ onSetView: (view: string, context?: any) => void; }> = ({ onSetView }) => {
+    const [goal, setGoal] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [learningPath, setLearningPath] = useState<LearningPath | null>(null);
+    const [error, setError] = useState('');
+
+    const handleGeneratePath = async () => {
+        if (!goal.trim()) return;
+        setIsLoading(true);
+        setError('');
+        setLearningPath(null);
+
+        if (!process.env.API_KEY) {
+            setError('API key is not configured.');
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const courseCatalog = JSON.stringify(courses.map(({ id, title, description, category }) => ({ id, title, description, category })));
+            const prompt = `You are an AI Learning Advisor for Aetherius OS. The user wants to achieve the following goal: "${goal}". Based on this goal, analyze the following course catalog and generate a personalized learning path. The path should be a sequence of courses. For each course, provide a short, one-sentence rationale explaining why it's a necessary step towards the user's goal. Also suggest complementary skills. Here is the course catalog in JSON format: ${courseCatalog}. Respond with ONLY a valid JSON object.`;
+
+            const response = await ai.models.generateContent({
+                model: 'gemini-2.5-flash',
+                contents: prompt,
+                config: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: Type.OBJECT,
+                        properties: {
+                            title: { type: Type.STRING },
+                            description: { type: Type.STRING },
+                            steps: {
+                                type: Type.ARRAY,
+                                items: {
+                                    type: Type.OBJECT,
+                                    properties: {
+                                        courseId: { type: Type.NUMBER },
+                                        rationale: { type: Type.STRING },
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const responseJson = JSON.parse(response.text);
+            setLearningPath(responseJson);
+
+        } catch (e: any) {
+            console.error(e);
+            setError(`An error occurred: ${e.message}`);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto">
+            <header className="mb-6 max-w-3xl mx-auto">
+                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-3">
+                    <LightBulbIcon className="w-8 h-8"/> AI Learning Assistant
+                </h1>
+                <p className="text-gray-600 dark:text-gray-400 mt-1">Enter your goal and let our AI build a custom learning path for you.</p>
+            </header>
+            <div className="max-w-3xl mx-auto space-y-6">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                    <label htmlFor="learning-goal" className="block text-lg font-semibold mb-2">What do you want to learn?</label>
+                    <textarea 
+                        id="learning-goal"
+                        rows={3}
+                        value={goal}
+                        onChange={(e) => setGoal(e.target.value)}
+                        placeholder="e.g., 'Become a full-stack web developer' or 'Launch my own online store'"
+                        className="w-full bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-2 text-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <button onClick={handleGeneratePath} disabled={isLoading || !goal.trim()} className="mt-4 w-full bg-blue-600 text-white font-semibold py-2.5 rounded-md hover:bg-blue-700 transition-colors disabled:bg-gray-400">
+                        {isLoading ? 'Generating Your Path...' : 'Generate Path'}
+                    </button>
+                    {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+                </div>
+                {learningPath && (
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h2 className="text-2xl font-bold mb-2">{learningPath.title}</h2>
+                        <p className="text-gray-600 dark:text-gray-400 mb-4">{learningPath.description}</p>
+                        <div className="space-y-4">
+                            {learningPath.steps.map((step, index) => {
+                                const course = courses.find(c => c.id === step.courseId);
+                                if (!course) return null;
+                                return (
+                                    <div key={index} className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                        <div className="flex items-center gap-4">
+                                            <div className="text-2xl font-bold text-gray-300 dark:text-gray-600">{index + 1}</div>
+                                            <img src={course.imageUrl} alt={course.title} className="w-16 h-16 object-cover rounded-md" />
+                                            <div className="flex-1">
+                                                <h3 className="font-bold">{course.title}</h3>
+                                                <p className="text-sm text-gray-500 dark:text-gray-400 italic">"{step.rationale}"</p>
+                                            </div>
+                                            <button onClick={() => onSetView('courseDetail', { courseId: course.id })} className="px-3 py-1.5 text-sm font-semibold text-white bg-gray-800 dark:bg-blue-600 rounded-md hover:bg-gray-700 dark:hover:bg-blue-500">View</button>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export const Achievements: React.FC = () => {
+    return (
+        <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto">
+             <header className="mb-6 max-w-4xl mx-auto">
+                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-3">
+                    <TrophyIcon className="w-8 h-8"/> My Achievements
+                </h1>
+                <p className="text-gray-600 dark:text-gray-400 mt-1">A verifiable record of your completed courses, stored on the blockchain.</p>
+            </header>
+            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                {achievements.map(ach => (
+                    <div key={ach.id} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-5">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/50 rounded-full flex items-center justify-center">
+                                <TrophyIcon className="w-7 h-7 text-yellow-500"/>
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="font-bold text-lg">{ach.courseTitle}</h3>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">Completed on: {ach.completionDate}</p>
+                            </div>
+                        </div>
+                        <div className="mt-4 text-xs font-mono bg-gray-100 dark:bg-gray-700/50 p-2 rounded-md">
+                            <p className="font-semibold">Blockchain Transaction ID:</p>
+                            <p className="text-gray-500 dark:text-gray-400 truncate">{ach.transactionId}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

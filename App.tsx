@@ -1,9 +1,12 @@
 
+
+
+
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { LeftSidebar } from './components/Dock';
 import { TopBar } from './components/TopBar';
-import { mainMenuItems, aetheriusMenuItems } from './data';
-import { MenuItemData, WindowState } from './types';
+import { menuGroups, aetheriusMenuItems } from './data';
+import { MenuItemData, WindowState, MenuGroup } from './types';
 import { FloatingActionButton } from './components/FloatingActionButton';
 import { Desktop } from './components/Desktop';
 import { WindowFrame } from './components/WindowFrame';
@@ -43,7 +46,7 @@ import { KnowledgeBase } from './components/KnowledgeBase';
 import { Milestones } from './components/Milestones';
 import { CADLab } from './components/CADLab';
 import { CreationLab } from './components/CreationLab';
-import { MyLearning } from './components/MyLearning';
+import { MyLearning, LearningAssistant, Achievements } from './components/MyLearning';
 import { CourseDetail } from './components/CourseDetail';
 import { BuildChecklist } from './components/BuildChecklist';
 import { CreatorMarketplace } from './components/CreatorMarketplace';
@@ -58,6 +61,9 @@ import { SimulationHub } from './components/SimulationHub';
 import { VideoEditor } from './components/VideoEditor';
 import { GameEngine } from './components/GameEngine';
 import { CognitiveFramework } from './components/CognitiveFramework';
+import { PDFExporter } from './components/PDFExporter';
+import { RepoStructureView } from './components/RepoStructureView';
+import { AiSupportAvatar } from './components/AiSupportAvatar';
 
 
 // Import new trading components
@@ -98,9 +104,17 @@ import { EnterpriseApp } from './components/apps/EnterpriseApp';
 import { MouseSettings } from './components/settings/MouseSettings';
 import { StylusSettings } from './components/settings/StylusSettings';
 import { AiSuiteApp } from './components/apps/AiSuiteApp';
+import { RD_HubApp } from './components/apps/RD_HubApp';
+
+// Import new "from scratch" platform components
+import { NetworkOrchestrator } from './components/NetworkOrchestrator';
+import { BlockchainExplorer } from './components/BlockchainExplorer';
+import { TrainingDataHub } from './components/TrainingDataHub';
+import { AiWorkforceOrchestrator } from './components/AiWorkforceOrchestrator';
+
 
 import { loggedInUser } from './data';
-import { FolderIcon } from './components/Icons';
+import { FolderIcon, HiveMindIcon } from './components/Icons';
 
 // --- App Launching Interface ---
 export interface LaunchableApp {
@@ -155,6 +169,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   messenger: Messenger,
   folderView: FolderView,
   adminPanel: AdminPanel,
+  aiSupportAvatar: AiSupportAvatar,
 
   // App Containers
   socialApp: SocialApp,
@@ -172,6 +187,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   accountApp: AccountApp,
   enterpriseApp: EnterpriseApp,
   aiSuite: AiSuiteApp,
+  rdHub: RD_HubApp,
   
   // Child components (rendered inside App Containers)
   feedBiome: FeedView,
@@ -183,6 +199,8 @@ const componentMap: { [key: string]: React.FC<any> } = {
   creatorMarketplace: CreatorMarketplace,
   myLearning: MyLearning,
   courseDetail: CourseDetail,
+  learningAssistant: LearningAssistant,
+  achievements: Achievements,
   instructors: () => <PlaceholderView viewName="Instructors" />,
   systemArchitecture: SystemArchitecture,
   coreParadigms: CoreParadigms,
@@ -192,6 +210,8 @@ const componentMap: { [key: string]: React.FC<any> } = {
   milestones: Milestones,
   buildChecklist: BuildChecklist,
   cognitiveFramework: CognitiveFramework,
+  pdfExporter: PDFExporter,
+  repoStructure: RepoStructureView,
   tritCore: () => <PlaceholderView viewName="Trit Core" />,
   strategicHub: () => <PlaceholderView viewName="Strategic Hub" />,
   capabilities: () => <PlaceholderView viewName="Capabilities" />,
@@ -240,6 +260,14 @@ const componentMap: { [key: string]: React.FC<any> } = {
   frequencyHealing: FrequencyHealing,
   healingWeb: HealingWeb,
   nutritionGuide: NutritionGuide,
+  // New Platform Components
+  networkOrchestrator: NetworkOrchestrator,
+  blockchainExplorer: BlockchainExplorer,
+  trainingDataHub: TrainingDataHub,
+  aiWorkforce: AiWorkforceOrchestrator,
+  vrStudio: () => <PlaceholderView viewName="VR/AR Studio" />,
+  bciLab: () => <PlaceholderView viewName="Brain-Computer Interface Lab" />,
+  digitalTwinSim: () => <PlaceholderView viewName="Digital Twin Simulator" />,
   // Trading Platform Components
   tradingMarkets: Markets,
   tradingAdvancedChart: AdvancedChart,
@@ -396,30 +424,29 @@ const App: React.FC = () => {
     return <ComponentToRender onSetView={launchApp} context={win.context} launchApp={launchApp}/>;
   }, [launchApp]);
 
-  const findActiveMainMenu = (items: MenuItemData[], view: string): MenuItemData | null => {
+  const findActiveMenuGroup = useMemo(() => {
     const activeWindow = windows.find(w => w.id === activeWindowId);
     if (!activeWindow) return null;
     const componentToFind = activeWindow.component;
 
-    let parentMatch: MenuItemData | null = null;
-    let directMatch: MenuItemData | null = null;
-    
-    const find = (currentItems: MenuItemData[], parent: MenuItemData | null) => {
-        for (const item of currentItems) {
-            if (item.component === componentToFind) {
-                if (!parent) directMatch = item;
-                else parentMatch = parent;
+    for (const group of menuGroups) {
+        if (group.type === 'group') {
+            const findInChildren = (items: MenuItemData[]): boolean => {
+                for (const item of items) {
+                    if (item.component === componentToFind) return true;
+                    if (item.children && findInChildren(item.children)) return true;
+                }
+                return false;
             }
-            if (item.children && !parentMatch) find(item.children, item);
-            if (parentMatch) break;
+            if (findInChildren((group as MenuGroup).children)) {
+                return group as MenuGroup;
+            }
         }
-    };
-    find(items, null);
-    return parentMatch || directMatch;
-  };
+    }
+    return null;
+  }, [activeWindowId, windows, menuGroups]);
   
-  const activeMainMenu = findActiveMainMenu(mainMenuItems, '');
-  const contextualActions = activeMainMenu?.children || [];
+  const contextualActions = findActiveMenuGroup?.children || [];
 
   return (
     <div className="h-screen w-screen bg-background-dark text-content-light dark:text-content-dark font-sans flex flex-col overflow-hidden">
@@ -434,12 +461,13 @@ const App: React.FC = () => {
         
         <div className="flex flex-1 overflow-hidden relative">
             <FloatingActionButton 
-                onLaunchAi={() => launchApp({ component: 'aiHub', title: 'AI Hub', icon: mainMenuItems.find(i => i.component === 'aiHub')?.icon! })}
+                onLaunchAi={() => launchApp({ component: 'aiHub', title: 'AI Hub', icon: HiveMindIcon })}
                 showCart={true}
             />
             <LeftSidebar 
                 isOpen={isLeftSidebarOpen} 
-                onLaunchApp={launchApp} 
+                onLaunchApp={launchApp}
+                menuGroups={menuGroups}
             />
             
             {/* Window Container */}
