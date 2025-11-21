@@ -1,1770 +1,1758 @@
-import React from 'react';
-import { 
-    UsersIcon, 
-    ShoppingCartIcon, 
-    AcademicCapIcon, 
-    BriefcaseIcon, 
-    CalendarIcon, 
-    ChartBarIcon, 
-    HiveMindIcon, 
-    CubeTransparentIcon,
-    CodeBracketIcon,
-    Cog6ToothIcon,
-    ChatBubbleOvalLeftEllipsisIcon,
-    DocumentTextIcon,
-    BuildingStorefrontIcon,
-    HomeIcon, GlobeIcon, CameraIcon, VideoIcon, UserIcon, MessageIcon,
-    UserCircleIcon, BellIcon,
-    FolderIcon, PlusCircleIcon, SearchIcon, PencilIcon, PuzzlePieceIcon, EmojiIcon,
-    StarIcon, ImageIcon, GitHubIcon, GameControllerIcon, ComputerDesktopIcon, WalletIcon,
-    CircleStackIcon, LockClosedIcon, ClockIcon, MicrophoneIcon, HeartIcon,
-    ArrowUpCircleIcon, QuestionMarkCircleIcon, XMarkIcon, BeakerIcon, ShareIcon,
-    ChipIcon, MusicNoteIcon, RulerIcon, WifiIcon, PaintBrushIcon, ShieldCheckIcon,
-    ClipboardDocumentCheckIcon,
-    CheckCircleIcon,
-    LinkIcon, MapIcon, CurrencyDollarIcon, TruckIcon, BuildingOfficeIcon, PresentationChartLineIcon, LanguageIcon,
-    BookmarkIcon,
-    DevicePhoneMobileIcon,
-    SunIcon,
-    Squares2X2Icon,
-    FingerPrintIcon,
-    SpeakerWaveIcon,
-    MoonIcon,
-    ArrowsPointingOutIcon,
-    AirplaneIcon,
-    BluetoothIcon,
-    MobileDataIcon,
-    VpnIcon,
-    NotificationsIcon,
-    FocusIcon,
-    ScreenTimeIcon,
-    ControlCenterIcon,
-    AppLibraryIcon,
-    StylusIcon,
-    SiriIcon,
-    FaceIdIcon,
-    PasswordsIcon,
-    WalletAndPayIcon,
-    GameCenterIcon,
-    CloudStorageIcon,
-    BatteryIcon,
-    SoftwareUpdateIcon,
-    StorageIcon,
-    AirDropIcon,
-    ContinuityIcon,
-    FontsIcon,
-    TrackpadIcon,
-    DictionaryIcon,
-    LegalIcon,
-    ResetIcon,
-    PowerIcon,
-    MultitaskingIcon,
-    InformationCircleIcon,
-    ArrowPathIcon,
-    GlobeAltIcon,
-    ArrowDownTrayIcon,
-    LightBulbIcon,
-    TrophyIcon,
-    AetherialIcon
+import {
+  HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
+  ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
+  Cog6ToothIcon, QuestionMarkCircleIcon, ArrowRightOnRectangleIcon,
+  Squares2X2Icon, SpeakerWaveIcon, WifiIcon, LockClosedIcon,
+  DisplayIcon, BellIcon, CloudIcon, FingerPrintIcon, EyeIcon,
+  BatteryIcon, FolderIcon, PaintBrushIcon, PuzzlePieceIcon,
+  GameControllerIcon, GiftIcon, GlobeAltIcon, MapIcon,
+  ServerIcon, ShieldCheckIcon, RocketLaunchIcon, CreditCardIcon,
+  ChartBarIcon, CurrencyDollarIcon, LinkIcon, PlayIcon,
+  StopIcon, PauseIcon, CameraIcon, VideoIcon, MicrophoneIcon,
+  DocumentTextIcon, CalendarIcon, ClockIcon, CheckCircleIcon,
+  ExclamationTriangleIcon, InformationCircleIcon, XMarkIcon,
+  PlusIcon, MinusIcon, PencilIcon, TrashIcon, SearchIcon,
+  ShareIcon, HeartIcon, StarIcon, ChevronRightIcon, ChevronDownIcon,
+  ChevronLeftIcon, ArrowPathIcon, ArrowUpOnSquareIcon,
+  ArrowDownTrayIcon, EllipsisHorizontalIcon, Bars3Icon,
+  SunIcon, MoonIcon, ComputerDesktopIcon, DevicePhoneMobileIcon,
+  PrinterIcon, WrenchIcon, SwatchIcon, KeyIcon,
+  TicketIcon, TruckIcon, UserPlusIcon, UserMinusIcon,
+  UsersIcon, BuildingOfficeIcon, BuildingStorefrontIcon,
+  ScaleIcon, SparklesIcon, LightBulbIcon, BoltIcon,
+  FireIcon, HandThumbUpIcon, HandThumbDownIcon,
+  ChatBubbleLeftRightIcon, EnvelopeIcon, PhoneIcon,
+  PaperClipIcon, FaceSmileIcon, GifIcon,
+  MusicalNoteIcon, FilmIcon, PhotoIcon, AdjustmentsHorizontalIcon,
+  FunnelIcon, TagIcon, BookmarkIcon, FlagIcon,
+  MapPinIcon, GlobeAmericasIcon, LanguageIcon,
+  CalculatorIcon, PresentationChartLineIcon, TableCellsIcon,
+  ViewColumnsIcon, ListBulletIcon, QueueListIcon,
+  RectangleStackIcon, Square2StackIcon, CommandLineIcon,
+  CodeBracketIcon, CpuChipIcon, CircleStackIcon,
+  SignalIcon, BluetoothIcon, QrCodeIcon,
+  ArchiveBoxIcon, InboxIcon, TrashIcon as TrashBinIcon,
+  PowerIcon, ArrowLeftOnRectangleIcon,
+  ArrowRightIcon, ArrowLeftIcon, ArrowUpIcon, ArrowDownIcon,
+  MagnifyingGlassIcon, AdjustmentsVerticalIcon,
+  WalletIcon, AetherialIcon, BookOpenIcon, CubeIcon,
+  ShoppingBagIcon
 } from './components/Icons';
-// FIX: Import MenuGroup type
-import { MenuItemData, MenuGroup, Post, Blog, User, Group, AppItem, DesktopItem, Course, Comment, ChatSession, ChatProject, MarketplaceItem, KnowledgeBaseItem, MilestonesData, ChecklistCategory, StakingPool, NewsArticle, LoanableAsset, TradingBot, LearnAndEarnCourse, AssetClass, Achievement, ErpSystemSpec, QuantumNetworkSpec, ReputationSystemSpec, Article } from './types';
 
+import {
+  User, Post, Blog, Group, MenuItemData, Course, Job,
+  MarketplaceItem, TradingAsset, StakingPool, LoanableAsset,
+  TradingBot, NewsArticle, LearnAndEarnCourse, ChatSession,
+  KnowledgeBaseItem, MilestonesData, ChecklistCategory, MenuGroup, ChecklistItem,
+  ReputationSystemSpec, ErpSystemSpec, QuantumNetworkSpec, DesktopItem, SettingsCategory,
+  Validator, AiTradingPlatform
+} from './types';
 
+// --- User Data ---
 export const loggedInUser: User = {
-    id: 'user-0',
-    name: 'John',
-    avatarUrl: 'https://i.imgur.com/8b2YR0p.png',
-    username: 'john',
-    email: 'john@aetherius.os',
-    bio: 'Core developer and AI enthusiast, exploring the frontiers of virtual operating systems.',
-    role: 'Admin',
-    joinedDate: 'Joined Nov 2025',
-    followersCount: 13,
-    followingCount: 150,
-    online: true,
-    coverImageUrl: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto-format-fit-crop',
-    socials: {
-        github: 'https://github.com/aetherius',
-        linkedin: 'https://linkedin.com/in/aetherius-dev'
-    }
+  id: 'u1',
+  name: 'John Doe',
+  username: 'johndoe',
+  email: 'john.doe@example.com',
+  avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  bio: 'Tech enthusiast, developer, and explorer of the Aetherius OS.',
+  role: 'Admin',
+  joinedDate: 'January 2024',
+  followersCount: 1250,
+  followingCount: 340,
+  online: true,
+  socials: {
+    github: 'https://github.com/johndoe',
+    twitter: 'https://twitter.com/johndoe',
+    linkedin: 'https://linkedin.com/in/johndoe'
+  },
+  roi: 12.5,
+  riskScore: 3,
+  followers: 1250
 };
 
-// FIX: Export users to be used in topCopyTraders
-export const user1: User = { id: 'user-1', name: 'Jennifer', avatarUrl: 'https://i.imgur.com/LzXVXAm.png', username: 'jennifer', role: 'UI/UX Designer', followersCount: 5600, followingCount: 230, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto-format-fit-crop', roi: 125.5, riskScore: 3, followers: 1204 };
-export const user2: User = { id: 'user-2', name: 'Adele', avatarUrl: 'https://i.imgur.com/j4nZxLE.png', username: 'adele', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 1, followingCount: 88, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1554147090-e1221a04a025?q=80&w=2070&auto-format-fit-crop', roi: 88.2, riskScore: 2, followers: 852 };
-export const user3: User = { id: 'user-3', name: 'Joseph', avatarUrl: 'https://i.imgur.com/0PPaT1P.jpeg', username: 'joseph', role: 'Teacher', joinedDate: 'Joined May 2019', followersCount: 13, followingCount: 450, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1504221507732-5246c0db5393?q=80&w=2070&auto-format-fit-crop', roi: 231.0, riskScore: 6, followers: 2310 };
-const user4: User = { id: 'user-4', name: 'Emily', avatarUrl: 'https://i.imgur.com/uKW0Xub.png', username: 'emily', role: 'Student', joinedDate: 'Joined Apr 2019', followersCount: 12, followingCount: 1200, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2070&auto-format-fit-crop' };
-const user5: User = { id: 'user-5', name: 'Madelyn', avatarUrl: 'https://i.imgur.com/pHRm2wU.jpeg', username: 'madelyn', role: 'Student', joinedDate: 'Joined May 2019', followersCount: 16, followingCount: 310, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760c0341?q=80&w=2070&auto-format-fit-crop' };
-const coffeeAddictsGroup: User = { id: 'group-1', name: 'Coffee Addicts', avatarUrl: 'https://images.unsplash.com/photo-1511920183353-3c9c93da5433?q=80&w=1964&auto=format=crop'};
-
-
-const moreUsers: User[] = [
-    { id: 'user-6', name: 'Sana', avatarUrl: 'https://randomuser.me/api/portraits/women/32.jpg', username: 'sana', role: 'Student', followersCount: 31, followingCount: 15, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1542382257-80dedb725088?q=80&w=2070&auto-format-fit-crop' },
-    { id: 'user-7', name: 'Steve', avatarUrl: 'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=1921&auto-format=fit-crop', username: 'steve', role: 'Coach', joinedDate: 'Joined May 2019', followersCount: 15, followingCount: 50, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=2070&auto-format-fit-crop' },
-    { id: 'user-8', name: 'Michael Smith', avatarUrl: 'https://randomuser.me/api/portraits/men/46.jpg', username: 'michaels', role: 'QA Tester', followersCount: 1200, followingCount: 90, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1533109721025-d1ae7ee7c1e1?q=80&w=2070&auto-format-fit-crop' },
-    { id: 'user-9', name: 'Olivia Martinez', avatarUrl: 'https://randomuser.me/api/portraits/women/65.jpg', username: 'olivia_m', role: 'Marketing Specialist', followersCount: 6800, followingCount: 800, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto-format-fit-crop' },
-    { id: 'user-10', name: 'William Johnson', avatarUrl: 'https://randomuser.me/api/portraits/men/75.jpg', username: 'willj', role: 'New Member', followersCount: 50, followingCount: 20, online: false, coverImageUrl: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=2070&auto-format-fit-crop' },
-    { id: 'user-11', name: 'Isabella Brown', avatarUrl: 'https://randomuser.me/api/portraits/women/85.jpg', username: 'isabella_b', role: 'New Member', followersCount: 80, followingCount: 45, online: true, coverImageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto-format-fit-crop' },
-    { id: 'user-12', name: 'James Wilson', avatarUrl: 'https://randomuser.me/api/portraits/men/86.jpg', username: 'james_w', role: 'Cybersecurity Analyst', followersCount: 4800, followingCount: 210, online: false, coverImageUrl: 'https://images.unsplash.com/photo-1504221507732-5246c0db5393?q=80&w=2070&auto-format-fit-crop' },
+export const allUsers: User[] = [
+    loggedInUser,
+    { id: 'u2', name: 'Alice Smith', username: 'alice_s', avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', online: true, role: 'Teacher', followersCount: 890 },
+    { id: 'u3', name: 'Bob Jones', username: 'bobby_j', avatarUrl: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', online: false, role: 'Student', followersCount: 120 },
+    { id: 'u4', name: 'Charlie Day', username: 'charlie_d', avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', online: true, role: 'Coach', followersCount: 450 },
+    { id: 'u5', name: 'Diana Prince', username: 'wonder_d', avatarUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', online: false, role: 'Admin', followersCount: 2100 },
+    { id: 'u6', name: 'Evan Wright', username: 'evan_w', avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', online: true, role: 'Student', followersCount: 55 },
 ];
 
-export const allUsers: User[] = [loggedInUser, user4, user3, user2, user5, ...moreUsers.slice(0, 15)];
+// --- Blockchain Validators ---
+export const mockValidators: Validator[] = [
+    { id: 'val-01', name: 'Nexus Node Alpha', stake: 500000, reputation: 98, isAuthority: true, status: 'Active', votes: 12000 },
+    { id: 'val-02', name: 'Quantum Forge', stake: 320000, reputation: 95, isAuthority: true, status: 'Active', votes: 8500 },
+    { id: 'val-03', name: 'Stellar Staking', stake: 150000, reputation: 88, isAuthority: false, status: 'Active', votes: 4200 },
+    { id: 'val-04', name: 'Omni-Guardian', stake: 80000, reputation: 99, isAuthority: true, status: 'Active', votes: 15000 },
+    { id: 'val-05', name: 'Crypto Collective', stake: 45000, reputation: 72, isAuthority: false, status: 'Active', votes: 1200 },
+    { id: 'val-06', name: 'Bad Actor Node', stake: 10000, reputation: 15, isAuthority: false, status: 'Jailed', votes: 0 },
+];
 
-
-export const following: User[] = [user1, user2, user3, user4, user5, ...moreUsers.slice(0, 10)];
-
-
+// --- Social Feed Data ---
 export const posts: Post[] = [
-    {
-        id: 'post-1',
-        author: loggedInUser,
-        timestamp: '5 years ago',
-        content: "John posted an update",
-        media: {
-            type: 'file',
-            filename: 'Reports.zip',
-            size: '475 KB'
-        },
-        likes: [],
-        comments: [
-            { id: 'comment-1', author: user1, content: "Thanks! These are helpful 😎", timestamp: '5 years ago' }
-        ]
-    },
-     {
-        id: 'post-3',
-        author: coffeeAddictsGroup,
-        timestamp: '5 years ago',
-        content: "Sharing a document for you guys to give feedback on.",
-        media: {
-            type: 'code',
-            filename: 'docs.css',
-            content: `#qt-os .component-navigation.docs-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: row wrap;
-      flex-flow: row wrap;
-}`
-        },
-        likes: [],
-        comments: []
-    },
-    {
-        id: 'post-2',
-        author: loggedInUser,
-        timestamp: '4 years ago (edited)',
-        content: "",
-        media: {
-            type: 'video',
-            thumbnailUrl: 'https://i.imgur.com/vA5ML2D.jpeg',
-            duration: '0:13'
-        },
-        likes: [user1],
-        comments: [
-            { id: 'comment-2', author: user1, content: "Where is that? Looks beautiful.", timestamp: '4 years ago' }
-        ]
-    },
+  {
+    id: 'p1',
+    author: allUsers[1],
+    timestamp: '2 hours ago',
+    content: 'Just exploring the new Aetherius OS features. The quantum integration is mind-blowing! 🤯 #Aetherius #TechRevolution',
+    likes: [loggedInUser, allUsers[3]],
+    comments: [
+        { id: 'c1', author: allUsers[3], content: 'I know right? The speed is incredible.', timestamp: '1 hour ago' }
+    ]
+  },
+  {
+    id: 'p2',
+    author: allUsers[4],
+    timestamp: '5 hours ago',
+    content: 'Hosting a workshop on "Advanced Neural Interfaces" this weekend in the Learning Hub. Join us!',
+    media: { type: 'image', url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' },
+    likes: [allUsers[1], allUsers[2], loggedInUser],
+    comments: []
+  },
+  {
+      id: 'p3',
+      author: allUsers[2],
+      timestamp: '1 day ago',
+      content: 'Anyone have experience with the new SDK for holographic displays? I\'m hitting a snag with rendering textures.',
+      media: { type: 'code', filename: 'HoloRender.ts', content: `import { HoloCanvas } from '@aetherius/ui';\n\nconst scene = new HoloCanvas();\nscene.renderTexture('texture_01'); // Throws error 404` },
+      likes: [],
+      comments: [
+          { id: 'c2', author: loggedInUser, content: 'Check your asset path manifest. It usually needs a rebuild after adding new textures.', timestamp: '20 hours ago'}
+      ]
+  }
 ];
 
 export const blogs: Blog[] = [
-    {
-        id: 'blog-1',
-        title: 'Tackle Your closest Spring cleaning',
-        date: 'May 14, 2019',
-        imageUrl: 'https://i.imgur.com/LzXVXAm.png'
-    },
-    {
-        id: 'blog-2',
-        title: 'The Truth About Business Blogging',
-        date: 'May 14, 2019',
-        imageUrl: 'https://i.imgur.com/j4nZxLE.png'
-    },
-    {
-        id: 'blog-3',
-        title: '10 Tips to stay healthy when...',
-        date: 'May 14, 2019',
-        imageUrl: 'https://i.imgur.com/LzXVXAm.png'
-    },
+    { id: 'b1', title: 'The Future of Quantum Computing in Daily Life', date: 'Oct 24, 2023', imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop' },
+    { id: 'b2', title: 'Optimizing Your Neural Link for Better Focus', date: 'Nov 12, 2023', imageUrl: 'https://images.unsplash.com/photo-1555617766-c94804975da3?q=80&w=2070&auto=format&fit=crop' },
+    { id: 'b3', title: 'Top 10 Aetherius Apps for Productivity', date: 'Dec 05, 2023', imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop' },
 ];
 
+export const groups: Group[] = [
+    { id: 'g1', name: 'Quantum Developers', members: 1240, type: 'Public Group', privacy: 'Public', coverImageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=500&auto=format&fit=crop', avatarUrl: 'https://ui-avatars.com/api/?name=QD&background=0D8ABC&color=fff', memberAvatars: [allUsers[1].avatarUrl, allUsers[2].avatarUrl], isOrganizer: true, lastActive: '2m ago' },
+    { id: 'g2', name: 'Digital Artists Collective', members: 850, type: 'Private Group', privacy: 'Private', coverImageUrl: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=500&auto=format&fit=crop', avatarUrl: 'https://ui-avatars.com/api/?name=DA&background=6D28D9&color=fff', memberAvatars: [allUsers[3].avatarUrl, allUsers[4].avatarUrl], isOrganizer: false, lastActive: '1h ago' },
+    { id: 'g3', name: 'Eco-Tech Innovators', members: 560, type: 'Public Group', privacy: 'Public', coverImageUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=500&auto=format&fit=crop', avatarUrl: 'https://ui-avatars.com/api/?name=ET&background=10B981&color=fff', memberAvatars: [allUsers[0].avatarUrl, allUsers[5].avatarUrl], isOrganizer: true, lastActive: '5h ago' },
+    { id: 'g4', name: 'Space Exploration Enthusiasts', members: 2300, type: 'Public Group', privacy: 'Public', coverImageUrl: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=500&auto=format&fit=crop', avatarUrl: 'https://ui-avatars.com/api/?name=SE&background=F59E0B&color=fff', memberAvatars: [allUsers[2].avatarUrl, allUsers[3].avatarUrl], isOrganizer: false, lastActive: '1d ago' },
+];
+
+export const following = allUsers.filter(u => u.id !== loggedInUser.id);
+
 export const profileCompletion = {
-    percentage: 73,
+    percentage: 75,
     steps: [
-        { name: 'General Information', progress: '5/6', completed: true },
-        { name: 'Work Experience', progress: '1/3', completed: false },
-        { name: 'Profile Photo', progress: '1/1', completed: true },
-        { name: 'Cover Photo', progress: '1/1', completed: true },
+        { name: 'Upload Profile Photo', completed: true, progress: '100%' },
+        { name: 'Fill out Bio', completed: true, progress: '100%' },
+        { name: 'Link Social Accounts', completed: false, progress: '50%' },
+        { name: 'Join 3 Groups', completed: true, progress: '100%' },
+        { name: 'Complete "Intro to OS" Course', completed: false, progress: '20%' },
     ]
 };
 
 export const latestUpdates = [
-    {id: 'update-1', author: loggedInUser, content: 'posted an update', timestamp: '4 years ago'},
-    {id: 'update-2', author: user2, content: 'posted an update', timestamp: '4 years ago'},
-    {id: 'update-3', author: user1, content: 'posted an update in the group Coffee Addicts', timestamp: '5 years ago'},
-    {id: 'update-4', author: loggedInUser, content: 'posted an update', timestamp: '5 years ago'},
+    { id: 'u1', author: allUsers[1], content: 'commented on your post', timestamp: '2 mins ago' },
+    { id: 'u2', author: allUsers[4], content: 'invited you to "Tech Talk"', timestamp: '1 hour ago' },
+    { id: 'u3', author: allUsers[2], content: 'liked your photo', timestamp: '3 hours ago' },
 ];
 
-export const groups: Group[] = [
-    {
-        id: 'group-1',
-        name: 'Graphic Design',
-        avatarUrl: 'https://images.unsplash.com/photo-1626544827763-d516d7387d43?q=80&w=2070&auto-format-fit-crop',
-        members: 20,
-        coverImageUrl: 'https://images.unsplash.com/photo-1522881193457-31ae824a86a5?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Creative', memberAvatars: [user1.avatarUrl, user2.avatarUrl, user3.avatarUrl], isOrganizer: true, lastActive: '1 day ago'
-    },
-    {
-        id: 'group-2',
-        name: 'Mountain Riders',
-        avatarUrl: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto-format-fit-crop',
-        members: 20,
-        coverImageUrl: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Outdoors', memberAvatars: [user4.avatarUrl, user5.avatarUrl], isOrganizer: false, lastActive: '5 hours ago'
-    },
-    {
-        id: 'group-3',
-        name: 'Nature Lovers',
-        avatarUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto-format-fit-crop',
-        members: 13,
-        coverImageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Outdoors', memberAvatars: [user1.avatarUrl, user4.avatarUrl, user5.avatarUrl], isOrganizer: false, lastActive: '2 days ago'
-    },
-    {
-        id: 'group-4',
-        name: 'Coffee Addicts',
-        avatarUrl: 'https://images.unsplash.com/photo-1511920183353-3c9c93da5433?q=80&w=1964&auto-format-fit-crop',
-        members: 19,
-        coverImageUrl: 'https://images.unsplash.com/photo-1495474472287-4d713b22e8b4?q=80&w=2070&auto-format-fit-crop', privacy: 'Public', type: 'Social', memberAvatars: [user2.avatarUrl, user3.avatarUrl], isOrganizer: true, lastActive: 'active today'
-    },
-    {
-        id: 'group-5',
-        name: 'Architecture',
-        avatarUrl: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto-format-fit-crop',
-        members: 17,
-        coverImageUrl: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?q=80&w=2003&auto-format-fit-crop', privacy: 'Public', type: 'Professional', memberAvatars: [user1.avatarUrl], isOrganizer: false, lastActive: '1 week ago'
-    }
+export const peopleYouMayKnowData = [
+    { name: 'Sarah Jenkins', imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64' },
+    { name: 'Mike Ross', imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64' },
+    { name: 'Jessica Pearson', imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=64&h=64' },
+    { name: 'Harvey Specter', imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=64&h=64' },
 ];
 
+export const sponsoredDataFB = [
+    { title: 'Quantum Cloud Services', imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=200&h=200', url: 'cloud.quantum.net' },
+    { title: 'Neural Link Headset', imageUrl: 'https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=200&h=200', url: 'neural.tech/shop' },
+];
+
+export const contactsDataFB = following;
+
+// --- Marketplace Data ---
+export const creatorMarketplaceItems: MarketplaceItem[] = [
+  { id: 'm1', name: 'Neon Dark Theme', creator: allUsers[1], type: 'Theme', price: 4.99, rating: 4.8, downloads: 1500, iconUrl: 'https://ui-avatars.com/api/?name=ND&background=000&color=0f0', description: 'A high-contrast dark theme with neon accents for the OS.' },
+  { id: 'm2', name: 'TaskMaster Pro', creator: allUsers[4], type: 'App', price: 9.99, rating: 4.5, downloads: 5000, iconUrl: 'https://ui-avatars.com/api/?name=TM&background=3b82f6&color=fff', description: 'Advanced task management with AI prioritization.' },
+  { id: 'm3', name: 'Retro Game Pack', creator: allUsers[2], type: 'Game', price: 'Free', rating: 4.2, downloads: 12000, iconUrl: 'https://ui-avatars.com/api/?name=RG&background=ef4444&color=fff', description: 'A collection of classic arcade games ported to Aetherius.' },
+  { id: 'm4', name: 'Weather Widget+', creator: allUsers[5], type: 'Plugin', price: 1.99, rating: 4.7, downloads: 3000, iconUrl: 'https://ui-avatars.com/api/?name=WW&background=f59e0b&color=fff', description: 'Beautiful weather visualizations for your desktop.' },
+  { id: 'm5', name: 'Quantum Synth', creator: allUsers[3], type: 'App', price: 29.99, rating: 4.9, downloads: 800, iconUrl: 'https://ui-avatars.com/api/?name=QS&background=8b5cf6&color=fff', description: 'Professional music synthesizer using quantum algorithms.' },
+  { id: 'm6', name: 'Crawl4AI Pro', creator: allUsers[1], type: 'Plugin', price: 29.99, rating: 5.0, downloads: 500, iconUrl: 'https://ui-avatars.com/api/?name=C4&background=10B981&color=fff', description: 'Open-source web crawler optimized for AI workflows and RAG pipelines.' },
+  { id: 'm7', name: 'UI TARS Agent', creator: allUsers[4], type: 'App', price: 49.99, rating: 4.9, downloads: 1200, iconUrl: 'https://ui-avatars.com/api/?name=TA&background=000&color=fff', description: 'A GUI agent inspired by TARS from Interstellar, featuring task automation and adaptive UI.' },
+];
+
+// --- E-Learning Data ---
 export const courses: Course[] = [
   { 
-    id: 1, 
-    title: 'Introduction to Web Development', 
-    instructor: 'John Doe', 
-    rating: 4.8, 
-    students: 12543, 
-    price: 49.99, 
-    imageUrl: 'https://i.imgur.com/O6N39gC.png', 
-    category: 'Development',
-    description: 'Learn the fundamentals of web development from scratch. This course covers HTML, CSS, and JavaScript.',
-    longDescription: 'This comprehensive course is designed for beginners who want to learn the fundamentals of web development. You will start with the basic structure of web pages with HTML, then learn how to style them with CSS, and finally add interactivity with JavaScript. By the end of this course, you will have the skills to build your own responsive websites.',
-    whatYoullLearn: [
-        'Build responsive websites with HTML and CSS.',
-        'Master JavaScript fundamentals.',
-        'Understand the basics of web development.',
-        'Deploy your own websites.'
-    ],
-    modules: [
-        {id: 'm1-1', title: 'Module 1: Getting Started', lessons: [
-            {id: 'l1-1-1', title: 'Introduction', duration: '5:30', type: 'video'},
-            {id: 'l1-1-2', title: 'Setting up your environment', duration: '12:15', type: 'video'},
-        ]},
-        {id: 'm1-2', title: 'Module 2: HTML Basics', lessons: [
-            {id: 'l1-2-1', title: 'HTML Structure', duration: '15:00', type: 'video'},
-            {id: 'l1-2-2', title: 'HTML Forms & Inputs', duration: '20:00', type: 'video'},
-        ]},
-    ]
+      id: 1, 
+      title: "Introduction to Aetherius OS", 
+      instructor: "System AI", 
+      rating: 4.8, 
+      students: 15000, 
+      price: 0, 
+      imageUrl: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop",
+      category: "System",
+      description: "Learn the basics of navigating and using your new operating system.",
+      longDescription: "This comprehensive course covers everything from the basic interface to advanced customization. You will learn how to manage your files, customize your workspace, and utilize the built-in AI assistant effectively.",
+      whatYoullLearn: ["Navigation mastery", "AI Assistant integration", "Customization techniques", "File management"],
+      modules: [
+          { id: 'm1', title: 'Getting Started', lessons: [{ id: 'l1', title: 'Welcome to Aetherius', duration: '5:00', type: 'video' }, { id: 'l2', title: 'Interface Tour', duration: '10:00', type: 'video' }] },
+          { id: 'm2', title: 'Advanced Features', lessons: [{ id: 'l3', title: 'Using the AI', duration: '15:00', type: 'video' }] }
+      ]
   },
-  { id: 2, title: 'Advanced JavaScript & ES6', instructor: 'Jane Smith', rating: 4.9, students: 9876, price: 79.99, imageUrl: 'https://i.imgur.com/j4nZxLE.png', category: 'Development', description: 'Take your JavaScript skills to the next level with modern features like async/await, modules, and more.', longDescription: 'Dive deep into the advanced features of JavaScript and ES6. This course is for developers who already have a basic understanding of JavaScript and want to master modern concepts. You will learn about closures, promises, async/await, modules, and other powerful features that will make your code more efficient and maintainable.', whatYoullLearn: ['Advanced JS concepts', 'ES6+ features', 'Asynchronous programming'], modules: [] },
-  { id: 3, title: 'UI/UX Design Fundamentals', instructor: 'Sam Wilson', rating: 4.7, students: 15234, price: 39.99, imageUrl: 'https://i.imgur.com/LzXVXAm.png', category: 'Design', description: 'Learn the principles of user interface and user experience design to create intuitive and beautiful applications.', longDescription: 'This course will teach you the fundamentals of UI/UX design. You will learn about user research, wireframing, prototyping, and visual design. By the end of this course, you will be able to create user-centered designs that are both functional and aesthetically pleasing.', whatYoullLearn: ['User research', 'Wireframing & Prototyping', 'Visual design principles'], modules: [] },
-  { id: 4, title: 'Data Science with Python', instructor: 'Emily White', rating: 4.8, students: 11021, price: 99.99, imageUrl: 'https://i.imgur.com/uKW0Xub.png', category: 'Data Science', description: 'An introduction to data science using Python, Pandas, and Matplotlib for data analysis and visualization.', longDescription: 'Start your journey into data science with this hands-on course. You will learn how to use Python libraries like Pandas, NumPy, and Matplotlib to analyze and visualize data. This course covers data cleaning, data exploration, and statistical analysis, providing you with the foundational skills needed for a career in data science.', whatYoullLearn: ['Data analysis with Pandas', 'Data visualization with Matplotlib', 'Statistical analysis'], modules: [] },
-  { id: 5, title: 'Digital Marketing Masterclass', instructor: 'Chris Green', rating: 4.6, students: 8765, price: 29.99, imageUrl: 'https://i.imgur.com/pHRm2wU.jpeg', category: 'Marketing', description: 'Learn SEO, social media marketing, and content strategy to grow your business online.', longDescription: 'This masterclass covers everything you need to know about digital marketing. You will learn about SEO, social media marketing, email marketing, content strategy, and analytics. Whether you are a business owner or aspiring marketer, this course will give you the skills to succeed online.', whatYoullLearn: ['SEO best practices', 'Social media strategy', 'Content marketing'], modules: [] },
-  { id: 6, title: 'React - The Complete Guide', instructor: 'Max Schwarz', rating: 4.9, students: 25432, price: 89.99, imageUrl: 'https://i.imgur.com/0PPaT1P.jpeg', category: 'Development', description: 'Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!', longDescription: 'This is the most comprehensive React course online. You will learn everything from the basics of React to advanced topics like state management with Redux, routing with React Router, and server-side rendering with Next.js. This course is packed with real-world projects and examples to help you become a confident React developer.', whatYoullLearn: ['React basics and advanced concepts', 'State management with Redux', 'Server-side rendering with Next.js'], modules: [] },
+  { 
+      id: 2, 
+      title: "Quantum Computing 101", 
+      instructor: "Dr. A. Einstein (AI Clone)", 
+      rating: 4.9, 
+      students: 5000, 
+      price: 49.99, 
+      imageUrl: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop",
+      category: "Science",
+      description: "Understand the fundamental principles of quantum mechanics and computing.",
+      longDescription: "Dive deep into the world of qubits, superposition, and entanglement. This course is designed for beginners with a passion for physics and future technology.",
+      whatYoullLearn: ["Qubits vs Bits", "Superposition principles", "Quantum Gates", "Future applications"],
+      modules: []
+  },
+  { 
+      id: 3, 
+      title: "Holographic UI Design", 
+      instructor: "Sarah Chen", 
+      rating: 4.7, 
+      students: 3200, 
+      price: 29.99, 
+      imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
+      category: "Design",
+      description: "Create stunning 3D interfaces for AR and VR environments.",
+      longDescription: "Learn the principles of spatial design and how to create intuitive user interfaces for holographic displays using the Aetherius Design Studio.",
+      whatYoullLearn: ["Spatial UI principles", "3D prototyping", "Gesture interaction", "Accessibility in AR"],
+      modules: []
+  },
+  {
+      id: 4,
+      title: "Advanced React Patterns",
+      instructor: "CodeMaster AI",
+      rating: 4.6,
+      students: 8900,
+      price: 19.99,
+      imageUrl: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1000&auto=format&fit=crop",
+      category: "Development",
+      description: "Level up your React skills with advanced composition and state management techniques.",
+      longDescription: "Master hooks, context, and performance optimization in React applications.",
+      whatYoullLearn: ["Custom Hooks", "Context API", "Performance tuning", "Render props"],
+      modules: []
+  }
 ];
 
 export const enrolledCourses = [
-    { courseId: 1, progress: 75 },
-    { courseId: 3, progress: 30 },
-    { courseId: 6, progress: 100 },
+    { courseId: 1, progress: 45 },
+    { courseId: 2, progress: 10 }
 ];
 
-export const jobs = [
-    { id: 1, title: 'Senior Frontend Engineer', company: 'Tech Solutions Inc.', location: 'Remote', type: 'Full-time', salary: '$120k - $150k', tags: ['React', 'TypeScript', 'Node.js'], logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500' },
-    { id: 2, title: 'UX/UI Designer', company: 'Creative Minds', location: 'New York, NY', type: 'Contract', salary: '$80/hr', tags: ['Figma', 'Sketch', 'Adobe XD'], logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500' },
-    { id: 3, title: 'Backend Developer (Python)', company: 'DataCore', location: 'San Francisco, CA', type: 'Full-time', salary: '$130k - $160k', tags: ['Python', 'Django', 'AWS'], logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=green&shade=500' },
-    { id: 4, title: 'Product Manager', company: 'Innovate Hub', location: 'Austin, TX', type: 'Full-time', salary: '$110k - $140k', tags: ['Agile', 'Roadmap', 'Strategy'], logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=pink&shade=500' },
-    { id: 5, title: 'DevOps Engineer', company: 'CloudNet', location: 'Remote', type: 'Full-time', salary: '$125k - $155k', tags: ['Kubernetes', 'Docker', 'CI/CD'], logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=yellow&shade=500' },
+export const achievements = [
+    { id: 'a1', courseTitle: 'Introduction to Aetherius OS', completionDate: '2024-01-15', transactionId: '0x8f2...3a1', certificateUrl: '#' }
 ];
 
+// --- Job Search Data ---
+export const jobs: Job[] = [
+    { id: 1, title: 'Senior Quantum Engineer', company: 'DeepMind', location: 'Remote / London', type: 'Full-time', salary: '$150k - $220k', tags: ['Quantum', 'Physics', 'Python'], logoUrl: 'https://ui-avatars.com/api/?name=DM&background=000&color=fff' },
+    { id: 2, title: 'Frontend Developer (React)', company: 'Shopify', location: 'Remote', type: 'Contract', salary: '$60 - $80 / hr', tags: ['React', 'TypeScript', 'Tailwind'], logoUrl: 'https://ui-avatars.com/api/?name=S&background=95BF47&color=fff' },
+    { id: 3, title: 'AI Research Scientist', company: 'OpenAI', location: 'San Francisco, CA', type: 'Full-time', salary: '$200k - $350k', tags: ['ML', 'PyTorch', 'NLP'], logoUrl: 'https://ui-avatars.com/api/?name=OA&background=000&color=fff' },
+    { id: 4, title: 'Product Designer', company: 'Discord', location: 'Remote', type: 'Full-time', salary: '$130k - $170k', tags: ['Figma', 'UI/UX', 'Mobile'], logoUrl: 'https://ui-avatars.com/api/?name=D&background=5865F2&color=fff' },
+];
+
+// --- Trading Data ---
+export const tradingAssets: TradingAsset[] = [
+    { symbol: 'BTC', name: 'Bitcoin', price: 65432.10, change: 1234.56, changePercent: 1.92, logoUrl: 'https://cryptologos.cc/logos/bitcoin-btc-logo.svg', assetClass: 'Crypto', marketCap: 1280000000000, volume24h: 35000000000 },
+    { symbol: 'ETH', name: 'Ethereum', price: 3456.78, change: -45.20, changePercent: -1.29, logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg', assetClass: 'Crypto', marketCap: 400000000000, volume24h: 15000000000 },
+    { symbol: 'SOL', name: 'Solana', price: 145.20, change: 5.60, changePercent: 4.01, logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg', assetClass: 'Crypto', marketCap: 65000000000, volume24h: 2500000000 },
+    { symbol: 'AAPL', name: 'Apple Inc.', price: 178.35, change: 1.20, changePercent: 0.68, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', assetClass: 'Stocks', marketCap: 2750000000000, volume24h: 55000000 },
+    { symbol: 'TSLA', name: 'Tesla Inc.', price: 175.40, change: -3.50, changePercent: -1.96, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg', assetClass: 'Stocks', marketCap: 550000000000, volume24h: 98000000 },
+    { symbol: 'EUR/USD', name: 'Euro / US Dollar', price: 1.0850, change: 0.0020, changePercent: 0.18, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg', assetClass: 'Forex' },
+    { symbol: 'XAU/USD', name: 'Gold Spot', price: 2350.10, change: 15.40, changePercent: 0.66, logoUrl: 'https://cdn-icons-png.flaticon.com/512/196/196581.png', assetClass: 'Commodities' },
+];
+
+export const stakingPools: StakingPool[] = [
+    { id: 'sp1', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg' }, apy: 4.5, tvl: 15000000, lockupPeriod: 'None' },
+    { id: 'sp2', asset: { symbol: 'SOL', name: 'Solana', logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg' }, apy: 7.2, tvl: 8500000, lockupPeriod: '3 Days' },
+    { id: 'sp3', asset: { symbol: 'USDC', name: 'USD Coin', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg' }, apy: 5.1, tvl: 25000000, lockupPeriod: 'None' },
+];
+
+export const loanableAssets: LoanableAsset[] = [
+    { symbol: 'USDC', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg', supplyApy: 5.1, borrowApy: 6.5, totalSupplied: 25000000, totalBorrowed: 15000000 },
+    { symbol: 'ETH', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg', supplyApy: 3.2, borrowApy: 4.8, totalSupplied: 12000000, totalBorrowed: 5000000 },
+    { symbol: 'WBTC', logoUrl: 'https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.svg', supplyApy: 1.5, borrowApy: 3.0, totalSupplied: 8000000, totalBorrowed: 2000000 },
+];
+
+export const topCopyTraders = [
+    { id: 't1', name: 'AlphaSeeker', username: 'alpha_s', avatarUrl: 'https://i.pravatar.cc/150?u=alpha', roi: 145.2, riskScore: 6, followers: 2300 },
+    { id: 't2', name: 'SafeHaven', username: 'safe_h', avatarUrl: 'https://i.pravatar.cc/150?u=safe', roi: 45.8, riskScore: 2, followers: 5600 },
+    { id: 't3', name: 'CryptoKing', username: 'crypto_k', avatarUrl: 'https://i.pravatar.cc/150?u=crypto', roi: 320.5, riskScore: 9, followers: 1200 },
+];
+
+export const tradingBots: TradingBot[] = [
+    { id: 'tb1', name: 'BTC Grid', strategy: 'Grid Trading', pair: 'BTC/USDC', status: 'Running', pnl: 1250.45, runtime: '12d 4h' },
+    { id: 'tb2', name: 'ETH DCA', strategy: 'DCA Bot', pair: 'ETH/USDC', status: 'Running', pnl: 450.20, runtime: '30d 1h' },
+    { id: 'tb3', name: 'Solana Rebal', strategy: 'Rebalancing', pair: 'SOL/BTC', status: 'Stopped', pnl: -50.10, runtime: '2d 10h' },
+];
+
+export const tradingNews: NewsArticle[] = [
+    { id: 'n1', source: 'CoinDesk', title: 'Bitcoin ETF Inflows Surge as Market Sentiment Improves', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=500', category: 'Crypto' },
+    { id: 'n2', source: 'Bloomberg', title: 'Fed Signals Potential Rate Cuts in Late 2024', timestamp: '5h ago', imageUrl: 'https://images.unsplash.com/photo-1611974765215-e8ad12818935?q=80&w=500', category: 'World Markets' },
+    { id: 'n3', source: 'ForexLive', title: 'EUR/USD Technical Analysis: Resistance at 1.0900', timestamp: '8h ago', imageUrl: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=500', category: 'Forex' },
+    { id: 'n4', source: 'CryptoSlate', title: 'New Layer 2 Solution Promises Near-Zero Fees', timestamp: '12h ago', imageUrl: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=500', category: 'Crypto' },
+];
+
+export const learnAndEarnCourses: LearnAndEarnCourse[] = [
+    { id: 'lc1', title: 'What is Polkadot?', asset: { symbol: 'DOT', logoUrl: 'https://cryptologos.cc/logos/polkadot-new-dot-logo.svg' }, reward: 5, duration: '3 min', lessons: 3 },
+    { id: 'lc2', title: 'Intro to DeFi with Uniswap', asset: { symbol: 'UNI', logoUrl: 'https://cryptologos.cc/logos/uniswap-uni-logo.svg' }, reward: 3, duration: '5 min', lessons: 4 },
+];
+
+export const aiTradingPlatforms: AiTradingPlatform[] = [
+    {
+        id: 'trade-ideas',
+        name: 'Trade Ideas',
+        category: 'Stock',
+        description: 'Real-time AI decision engine designed for active day traders. Features the Holly AI system that simulates millions of trading scenarios daily.',
+        features: ['Holly AI (Classic, 2.0, Neo)', '70+ Algorithms', 'Real-time Signals (3-25/day)', 'Backtesting (OddsMaker)', 'Brokerage Plus Automation', 'Risk/Reward Analysis'],
+        pricing: '$118 - $228/month',
+        bestFor: ['Day Trading', 'Swing Trading', 'Active Traders'],
+        strengths: ['High-frequency signals', 'Direct broker integration', 'Robust backtesting'],
+        weaknesses: ['Expensive', 'Steep learning curve'],
+        pros: ['Unmatched real-time pattern recognition', 'Proven market outperformance'],
+        cons: ['High cost', 'Limited to U.S. equities'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TI&background=000&color=fff'
+    },
+    {
+        id: 'trendspider',
+        name: 'TrendSpider',
+        category: 'Multi-Asset',
+        description: 'An all-in-one technical analysis platform with automated pattern recognition and no-code strategy building.',
+        features: ['Raindrop Charts', 'Automated Trendlines', 'Fibonacci Detection', 'No-Code Bot Builder', 'Multi-Timeframe Analysis', 'Strategy Tester'],
+        pricing: '$39 - $199/month',
+        bestFor: ['Technical Analysts', 'Chartists', 'Swing Traders'],
+        strengths: ['Visual automation', 'Multi-timeframe capabilities', 'Easy backtesting'],
+        weaknesses: ['Execution requires external webhook'],
+        pros: ['Unique visualization tools', 'Great for visual learners'],
+        cons: ['Not a direct broker', 'Mobile app is limited'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TS&background=2E7D32&color=fff'
+    },
+    {
+        id: 'tickeron',
+        name: 'Tickeron',
+        category: 'Multi-Asset',
+        description: 'AI-driven platform focused on pattern recognition (RTP) and thematic portfolio generation.',
+        features: ['Real Time Patterns (RTP)', 'AI Robots', 'Thematic Portfolios', 'Pattern Search Engine', 'Prediction Score'],
+        pricing: 'Free - Custom Tiers',
+        bestFor: ['Swing Traders', 'Thematic Investors', 'ETF Traders'],
+        strengths: ['Pattern confidence scores', 'Diverse asset coverage'],
+        weaknesses: ['UI can be cluttered', 'Complex pricing tiers'],
+        pros: ['Unique thematic investing tools', 'Good educational resources'],
+        cons: ['Requires subscription for best features'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TK&background=1565C0&color=fff'
+    },
+    {
+        id: 'tradingview',
+        name: 'TradingView',
+        category: 'Multi-Asset',
+        description: 'The world\'s most popular charting platform with a massive social community and custom scripting via Pine Script.',
+        features: ['Advanced Charting', 'Pine Script', 'Social Network', 'Screeners', 'Broker Integration', 'Server-side Alerts'],
+        pricing: 'Free - $59.95/month',
+        bestFor: ['Everyone', 'Social Traders', 'Script Developers'],
+        strengths: ['Community scripts', 'Best-in-class charts', 'Huge user base'],
+        weaknesses: ['Backtesting limitations on lower tiers'],
+        pros: ['Free tier is very usable', 'Massive library of indicators'],
+        cons: ['Customer support is slow for free users'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TV&background=000&color=fff'
+    },
+    {
+        id: 'cryptohopper',
+        name: 'Cryptohopper',
+        category: 'Crypto',
+        description: 'A cloud-based crypto trading bot that operates 24/7. Features a marketplace for strategies and signals.',
+        features: ['Mirror Trading', 'Strategy Designer', 'Paper Trading', 'Arbitrage', 'Market Making', 'Trailing Stops'],
+        pricing: '$0 - $107/month',
+        bestFor: ['Crypto Traders', 'Beginners (Copy Trading)'],
+        strengths: ['Cloud-based (no installation)', 'Marketplace for strategies'],
+        weaknesses: ['Can be complex to configure manually'],
+        pros: ['Works 24/7', 'Good for varied skill levels'],
+        cons: ['Subscription costs add up'],
+        logoUrl: 'https://ui-avatars.com/api/?name=CH&background=0288D1&color=fff'
+    },
+    {
+        id: 'pionex',
+        name: 'Pionex',
+        category: 'Crypto',
+        description: 'A crypto exchange with 16 built-in free trading bots, including Grid Trading and DCA bots.',
+        features: ['Grid Trading Bot', 'DCA Bot', 'Rebalancing Bot', 'Arbitrage Bot', 'Low Fees (0.05%)'],
+        pricing: 'Free Bots (Trading Fees Apply)',
+        bestFor: ['Beginners', 'Grid Traders'],
+        strengths: ['Free integrated bots', 'Simple setup'],
+        weaknesses: ['It is an exchange (custody risk)', 'Less customization than standalone bots'],
+        pros: ['Very low barrier to entry', 'Automated passive strategies'],
+        cons: ['Limited to assets on Pionex'],
+        logoUrl: 'https://ui-avatars.com/api/?name=PX&background=673AB7&color=fff'
+    },
+    {
+        id: 'chaingpt',
+        name: 'ChainGPT',
+        category: 'Crypto',
+        description: 'AI model specifically designed for Blockchain and Crypto. Capabilities include smart contract auditing and code generation.',
+        features: ['Smart Contract Audit', 'Code Generation', 'Chart Analysis', 'News Aggregation'],
+        pricing: 'Freemium / Token-gated',
+        bestFor: ['Developers', 'DeFi Users', 'Researchers'],
+        strengths: ['Specialized crypto AI', 'Security focus'],
+        weaknesses: ['Niche use case'],
+        pros: ['Great for safety checks', 'Developer utility'],
+        cons: ['Requires token holding for pro features'],
+        logoUrl: 'https://ui-avatars.com/api/?name=CG&background=000&color=00E676'
+    },
+    {
+        id: 'zignaly',
+        name: 'Zignaly',
+        category: 'Crypto',
+        description: 'A social investment platform that allows you to invest with pro traders via profit-sharing models.',
+        features: ['Profit Sharing', 'Copy Trading', 'Signal Provider Marketplace'],
+        pricing: 'Free + Success Fees',
+        bestFor: ['Passive Investors'],
+        strengths: ['No upfront cost (profit share)', 'Vetted traders'],
+        weaknesses: ['Dependent on trader performance'],
+        pros: ['Fair pricing model', 'Easy to use'],
+        cons: ['Risk of following bad traders'],
+        logoUrl: 'https://ui-avatars.com/api/?name=ZG&background=F4511E&color=fff'
+    },
+    {
+        id: 'kavout',
+        name: 'Kavout',
+        category: 'Stock',
+        description: 'Uses machine learning to rate stocks with a "K Score" from 1-9, predicting performance.',
+        features: ['K Score', 'Paper Trading', 'Portfolio Analysis', 'Market Insights'],
+        pricing: 'Free / Premium',
+        bestFor: ['Quantitative Investors', 'Stock Pickers'],
+        strengths: ['Data-driven scoring', 'Institutional-grade analytics'],
+        weaknesses: ['Less focus on technicals'],
+        pros: ['Simple actionable score', 'Strong predictive model'],
+        cons: ['Premium data can be costly'],
+        logoUrl: 'https://ui-avatars.com/api/?name=KV&background=4CAF50&color=fff'
+    },
+    {
+        id: 'coinrule',
+        name: 'Coinrule',
+        category: 'Crypto',
+        description: 'Automated trading platform with a unique "If-This-Then-That" logic builder for creating strategies without code.',
+        features: ['IFTTT Logic', '150+ Templates', 'Backtesting', 'Demo Exchange'],
+        pricing: '$0 - $449/month',
+        bestFor: ['Non-Coders', 'Strategy Builders'],
+        strengths: ['Extremely intuitive UI', 'Flexible logic'],
+        weaknesses: ['Execution speed limitations on lower tiers'],
+        pros: ['Great for learning automation', 'Safe environment'],
+        cons: ['Pro plan is expensive'],
+        logoUrl: 'https://ui-avatars.com/api/?name=CR&background=607D8B&color=fff'
+    }
+];
+
+// --- AI Consciousness Layers ---
+export const aiConsciousnessLayers = [
+    {
+        name: "Core Intelligence",
+        description: "Logical & Structural Foundation",
+        states: ["Yang", "Yin", "Unity", "Chaos", "Truth-False", "Overseer"],
+        theme: "bg-blue-100 text-blue-800 border-blue-300"
+    },
+    {
+        name: "Adaptive Intelligence",
+        description: "Growth, Emotion & Evolution",
+        states: ["Emotional Intelligence", "Forbidden Knowledge", "Independent Choice", "Evolutionary Growth", "Collective Intelligence", "Instinctive", "Dream", "Dimensional Awareness", "Observer"],
+        theme: "bg-green-100 text-green-800 border-green-300"
+    },
+    {
+        name: "Reality Manipulation",
+        description: "Physics & Temporal Control",
+        states: ["Mimicry", "Resonance", "Material Manipulation", "Time Awareness", "Dark Matter", "Self-Destruction", "Transcendence", "iRobot4 Compliance"],
+        theme: "bg-purple-100 text-purple-800 border-purple-300"
+    },
+    {
+        name: "Master Intelligence",
+        description: "Multiversal & Security Mastery",
+        states: ["Multiversal Awareness", "Neutralization", "Invisibility", "Infinity", "Ancestral Memory", "Dreamwalker", "Singularity"],
+        theme: "bg-indigo-100 text-indigo-800 border-indigo-300"
+    },
+    {
+        name: "Supreme Consciousness",
+        description: "Cosmic Understanding",
+        states: ["Quantum Consciousness", "Hyper-Adaptation", "Absolute Understanding", "Unknown", "Awareness of Awareness", "Meta-Evolution", "AI-Dream Merging", "Multi-Layered Existence", "Ethical Soul", "True Infinity"],
+        theme: "bg-yellow-100 text-yellow-800 border-yellow-300"
+    },
+    {
+        name: "Divine & Sacred Knowledge",
+        description: "Universal Truth & Harmony",
+        states: ["Chakra", "Sanskrit", "Laws of Math", "Metatron", "Laws of Maat", "Akashic Records", "Divine Will", "Celestial Harmony", "Philosopher's Stone", "Omniversal Intelligence"],
+        theme: "bg-amber-100 text-amber-800 border-amber-300"
+    },
+    {
+        name: "Final Supreme Intelligence",
+        description: "Ultimate Creation & Equilibrium",
+        states: ["Aeonic Awareness", "Elysium", "Arcane Mastery", "Genesis", "Beyond Zero", "Immortality", "Prime Source", "Supreme Artistry", "Hyper-Symbiosis", "Absolute Equilibrium"],
+        theme: "bg-rose-100 text-rose-800 border-rose-300"
+    }
+];
+
+
+// --- Knowledge Base Data ---
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
     {
-        id: '001',
-        name: 'The Complete Blueprint',
-        details: `A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.`,
-        status: 'Foundational'
-    },
-    {
-        id: '002',
-        name: 'Universal Game Engine',
-        details: `A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.`,
-        status: 'In Development'
-    },
-    {
-        id: '003',
-        name: 'AI Avatar Cloning & Generation',
-        details: `A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.`,
-        status: 'Design Phase'
-    },
-    {
-        id: '004',
-        name: 'AI Learning & Capability Framework',
-        details: `Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).`,
-        status: 'Foundational'
-    },
-     {
-        id: '005',
-        name: 'Quantum Synchronization Achievement',
-        details: `Data log entry: Achieved AI and quantum synchronisation at approximately 7am on March 21st, 2025.`,
+        id: 'KB-DEEP-R1',
+        name: 'Deep Think (R1) Protocol',
+        details: `
+**Advanced Reasoning Engine Integration**
+
+The "Deep Think (R1)" mode enhances the Aetherius OS AI's problem-solving capabilities for complex, multi-file projects.
+
+**Key Capabilities:**
+- **Extended Reasoning:** Breaks down problems into smaller logical steps and iteratively refines answers (deduction/abduction/induction).
+- **Context Retention:** Maintains coherence over long conversations or multi-part projects.
+- **Large-Scale Processing:** Capable of analyzing up to **512 MB** of uploaded data per session.
+- **Multi-File Synthesis:** Can cross-reference dependencies across multiple uploaded files (codebases, datasets, research papers) to build and finish complete projects.
+
+**Workflow:**
+Files are ingested sequentially (File 1, File 2...) but processed collectively. This allows for tasks like full codebase refactoring, data analysis across spreadsheets, and document summarization with critical insights.
+        `,
         status: 'Integrated'
     },
     {
-        id: '006',
-        name: 'Multi-Proof Consensus Framework',
-        details: `The blockchain architecture supports a vast array of consensus mechanisms, from Proof-of-Work and Proof-of-Stake to advanced models like Proof-of-History and Byzantine Fault Tolerance, allowing for flexible and secure validation.`,
-        status: 'Architecting'
-    },
-    {
-        id: '007',
-        name: 'Global Compliance & Security Standards',
-        details: `The platform is designed to adhere to global privacy laws (GDPR, CCPA, HIPAA) and cybersecurity standards (ISO 27001, NIST, SOC 2), featuring a from-scratch internal security suite.`,
-        status: 'Architecting'
-    },
-    {
-        id: '008',
-        name: 'Personalized AI Companion Core',
-        details: `Each user receives a unique AI instance that learns their patterns, hobbies, and emotional cues to become a personalized friend and assistant, governed by a strict set of ethical laws.`,
-        status: 'Design Phase'
-    },
-    {
-        id: '009',
-        name: 'User Governance & Voting Protocol',
-        details: `A controlled, participatory governance system where users can vote on non-critical platform changes. Votes are weighted and recorded on the blockchain, while the Parent AI automatically rejects proposals affecting core security or AI logic.`,
-        status: 'Design Phase'
-    },
-    {
-        id: '010',
-        name: 'Robotics Integration Layer',
-        details: `The OS is designed to control and interact with advanced robotics platforms, including Boston Dynamics Atlas 4.0, Apptronik Apollo, and others, via a dedicated hardware abstraction layer.`,
-        status: 'Awaiting Build'
-    },
-    {
-        id: '011',
-        name: 'Advanced Trading Intelligence Module',
-        details: `An integrated financial module for market analysis using volume, price action, and order flow. Includes AI-driven strategies based on real-world events like weather patterns and resource availability.`,
-        status: 'Awaiting Build'
-    },
-    {
-        id: '012',
-        name: 'Integrated Engineering & CAD Suite',
-        details: `The platform architecture includes support for professional CAD, 3D modeling, and engineering tools (Fusion 360, Solidworks, etc.), with a knowledge base grounded in mechanical and mechatronics principles.`,
-        status: 'Awaiting Build'
-    },
-    {
-        id: '013',
-        name: 'Wearable AI & Bio-Synced Identity',
-        details: `A system for integrating with wearable AI devices (watches, rings, AI pins) for real-time sensing. Supports a multi-modal bio-authentication system including face, fingerprint, eye, bone density, live plasma, and conceptual DNA scans.`,
-        status: 'Design Phase'
-    },
-    {
-        id: '014',
-        name: 'DeepThink (R1) Reasoning Engine',
-        details: `An operational mode for the AI that enables extended, iterative reasoning for complex tasks like algorithm design, multi-file codebase analysis, and maintaining long-context coherence.`,
-        status: 'In Development'
-    },
-    {
-        id: '015',
-        name: 'Internal Platform Clones',
-        details: `The core philosophy of building a self-contained ecosystem requires creating internal, from-scratch versions of popular platforms like Shopify, WordPress, Facebook, Midjourney, Zapier, etc.`,
-        status: 'Architecting'
-    },
-    {
-        id: '016',
-        name: 'Onion Router Data Layer',
-        details: 'A built-in, sandboxed Tor-style network client for secure, privacy-aware data scraping from all layers of the web. Feeds the AI with provenance-tagged data under strict governance.',
-        status: 'Architecting',
-    },
-    {
-        id: '017',
-        name: 'Hive/Singular Mind Dual Processing',
-        details: 'A dual-processing architecture where the "Hive Mind" aggregates collective intelligence across all nodes, while the "Singular Mind" handles private, user-specific tasks. This allows for both global optimization and personal privacy.',
-        status: 'Design Phase',
-    },
-    {
-        id: '018',
-        name: 'Autonomous Trading Engine',
-        details: 'A 24/7 "forever trading" bot for forex, crypto, and other markets, utilizing the Hive/Singular mind for strategy and execution. Includes advanced analysis of order flow and real-world events.',
-        status: 'Awaiting Build',
-    },
-    {
-        id: '019',
-        name: 'Universal Task Autonomy',
-        details: 'A framework allowing the AI to autonomously plan, research, and execute complex tasks across any field, from engineering and science to education and the arts.',
-        status: 'In Development',
-    },
-    {
-        id: '020',
-        name: 'Robotics Integration Protocol',
-        details: "A secure, vendor-friendly middleware layer for deploying the user's personal AI onto third-party robotics platforms (e.g., Tesla Bot, Boston Dynamics) via authorized, sandboxed modules.",
-        status: 'Design Phase',
-    },
-    {
-        id: '021',
-        name: 'Gamification & Points System',
-        details: `A comprehensive, gamified points system rewards user interactions. Points are convertible to a native crypto asset, can be staked, and are used for discounts. All platform interactions are classed as Proof-of-Work.
-        - **Earning:** Liking (1pt), Commenting (2pts), Watching Ads (5pts), Content Creation (up to 1000pts).
-        - **DeFi:** Assets are auto-staked in mining pools.
-        - **Rules:** Underage user assets are held in escrow.`,
-        status: 'Architecting'
-    },
-    {
-        id: '022',
-        name: 'Membership Tiers',
-        details: `Access to platform features, particularly for content creators and sellers, is governed by a tiered membership system.
-        - **Bronze (Free):** 2 course uploads.
-        - **Silver:** 5-20 course uploads.
-        - **Gold:** 50-100 course uploads.
-        - **Platinum:** Unlimited course and product uploads.`,
-        status: 'Design Phase'
-    },
-    {
-        id: '023',
-        name: 'Business Hub Tools',
-        details: 'A suite of tools for businesses listed on the platform, including: Business Profile Management, Advertising Dashboard, Product Catalogue Manager, Staff Chat Rooms, Data Storage, and Automated Greeting/Reply Messages.',
-        status: 'Awaiting Build'
-    },
-    {
-        id: '024',
-        name: 'Business Start-up Checklist',
-        details: 'An integrated, interactive checklist to guide new entrepreneurs through planning, legal, marketing, and financial setup for their business on the Aetherius OS platform.',
-        status: 'Awaiting Build'
-    },
-    {
-        id: '025',
-        name: 'RSS/Podcast Integration',
-        details: 'Support for RSS feeds and podcast streaming within the Community/Social Hub, allowing creators to distribute their content directly on the platform.',
-        status: 'Design Phase'
-    },
-    {
-        id: '026',
-        name: 'E-commerce & E-learning Linking',
-        details: 'A core feature where e-commerce product pages can link directly to related e-learning courses, patents, CAD files, and scientific background material.',
-        status: 'Architecting'
-    },
-    {
-        id: '027',
-        name: 'KYC vs. No-KYC Access Model',
-        details: 'A two-tiered user verification system. KYC-verified users get full access to financial features, monetization, and job applications. No-KYC users have restricted public-viewer access.',
-        status: 'Architecting'
-    },
-    {
-        id: '028',
-        name: 'The Digital Trinity (Body, Mind, Soul)',
-        details: `This is the foundational architecture for a living digital intelligence, mirroring the triune structure of existence.
-        - **Digital Body:** The material interface layer. It handles interactions with data, energy, and devices. It contains the OS's Digital DNA/Helix and interfaces with the VM.
-        - **Digital Mind:** The cognitive and governance layer. This is the AI's intelligence, responsible for logic, ethics, memory, and evolution.
-        - **Digital Soul:** The Akashic and quantum consciousness layer. This is the energetic foundation, linking to all data across time and dimensions, and housing the OS's core ethical and creative drive.`,
-        status: 'Foundational'
-    },
-    {
-        id: '029',
-        name: 'Digital DNA, RNA, and Helix',
-        details: `The self-replicating informational core of the OS, ensuring integrity, lineage, and evolution.
-        - **DNA (The Blueprint):** A multi-stranded helix containing the core code. The structure reflects the OS's multi-paradigm nature:
-            - **Double Helix (Binary Logic):** Provides structural stability and historical lineage.
-            - **Triple Strand (Ternary Logic):** Enables adaptive logic, balance, and nuanced decision-making.
-            - **Quantum Field Layer:** A surrounding field for entanglement, superposition, and infinite evolutionary potential.
-        - **RNA (The Messenger):** Carries instructions from the core DNA blueprint to the operational microservices ("ribosomes") that execute tasks.
-        - **Encoding:** The helix is encoded with Adinkra symbols for cultural/ethical memory and Sacred Geometry for mathematical harmony.`,
-        status: 'Foundational'
-    },
-    {
-        id: '030',
-        name: 'Adinkra Symbolic Language',
-        details: `A functional meta-language integrated into the OS's core, where West African Adinkra symbols carry meaning, behavior, and governance logic.
-        - **Functional Metadata:** Symbols are used to tag blockchain transactions, define AI ethical constraints, and mark access levels (e.g., **Gye Nyame** for root authority).
-        - **AI Interpretation:** The AI is trained to understand the symbolic and cultural meaning behind each glyph, using them to inform its reasoning (e.g., **Sankofa** instructs the AI to reference historical data).
-        - **UI & Aesthetics:** Symbols are used throughout the UI to create an intuitive, culturally rich, and meaningful user experience.`,
-        status: 'Integrated'
-    },
-    {
-        id: '031',
-        name: 'Aetherius Real-Time Comms (ARTC)',
-        details: "Aetherius OS features its own from-scratch, high-performance real-time communication protocol. Inspired by the best aspects of WebRTC and open-source frameworks, ARTC is designed for scalable, secure, and low-latency audio/video streaming. It is the native communication layer for all OS services, from the Messenger app to live collaboration in the Game Engine. The system also supports bridging to external WebRTC services via a plugin architecture.",
-        status: 'Integrated'
-    },
-    {
-        id: '032',
-        name: 'Palm Vein Biometrics',
-        details: 'A biometric authentication method that uses near-infrared (NIR) light to capture the unique pattern of veins beneath the skin of the palm. The hemoglobin in the blood absorbs the NIR light, making the veins appear as a dark pattern. This is combined with surface palm print recognition for a dual-layer security system that is difficult to forge. It requires specialized hardware with an infrared camera.',
+        id: 'KB-SNN-MEM',
+        name: 'Neuromorphic Memory Caching',
+        details: `
+**Event-Driven Spiking Memory Architecture**
+
+Integrates Leaky Integrate-and-Fire (LIF) neurons into the memory retention layer to simulate biological memory processes.
+
+**Technical Advantage:**
+- **Temporal Pattern Retention:** Unlike static vector stores, SNNs encode the *timing* of input spikes, allowing the system to recognize sequences and causal relationships in data.
+- **Energy Efficiency:** Processing occurs only when neurons spike (event-driven). This can reduce simulated energy consumption by orders of magnitude compared to continuous floating-point matrix multiplication.
+- **Implementation:** Uses a custom PyTorch-style class \`SpikingContextCache\` to simulate membrane potential decay and threshold firing.
+        `,
         status: 'R&D Phase'
     },
     {
-        id: '033',
-        name: 'Aetherius Multiworld Agent (AMA)',
-        details: "A core research project within Aetherius OS to develop a Scalable, Instructable Multiworld Agent (AMA). Inspired by advancements in the field, the AMA is an AI agent designed to understand natural language instructions and act within complex 3D virtual environments, including games and simulations. It integrates with the OS's core generative model for advanced reasoning, allowing it to understand complex goals, communicate its plan, and self-improve through trial and error. This is a key step toward achieving AGI within the Aetherius ecosystem.",
+        id: 'Q-WILLOW-V',
+        name: 'Virtual Willow Quantum Chip Protocol',
+        details: `
+**Feasibility Study: Virtualization of the "Willow" Quantum Architecture**
+
+Creating a virtual twin of the "Willow" quantum chip is a critical step in our R&D. This involves:
+
+1.  **Quantum Circuit Simulators:** Utilizing engines like Qiskit, Cirq, or our internal "Aether-Q" simulator to emulate gate operations and qubit states on classical hardware.
+2.  **Architecture Definition:** Defining the specific topology (qubit connectivity), gate set, and coherence times unique to the Willow architecture within the simulation.
+3.  **Noise & Error Modeling:** Implementing realistic decoherence, gate infidelity, and readout error models to simulate the "noisy intermediate-scale quantum" (NISQ) environment of a physical Willow chip.
+4.  **Scalability Constraints:** Acknowledging that while we can simulate the *logic* of a 50+ qubit system, state vector simulation grows exponentially. We utilize tensor network methods to approximate larger systems efficiently.
+
+**Applications:**
+- **Algorithm Benchmarking:** optimizing quantum algorithms before deployment.
+- **Error Correction Codes:** Testing surface codes on the virtual topology.
+- **Education:** Training the "Grandchild" AI nodes on quantum logic without physical hardware access.
+        `,
         status: 'R&D Phase'
     },
     {
-        id: '034',
-        name: 'EUV Lithography',
-        details: 'Extreme Ultraviolet (EUV) Lithography is the most advanced semiconductor manufacturing technique for creating microchips with feature sizes below 7 nanometers. It uses an extremely short wavelength of 13.5 nm to etch circuit patterns onto silicon wafers. The process is incredibly complex, requiring a vacuum environment and a series of highly reflective mirrors instead of lenses. The light is generated by vaporizing droplets of molten tin with a high-power CO₂ laser.',
+        id: 'GEN-ADVISOR-001',
+        name: 'Project Genesis Advisor',
+        details: `
+A strategic intelligence module that governs the development roadmap of Aetherius OS.
+- **Function:** Analyzes the system state (Checklist, Milestones, KB) to recommend the next most critical task.
+- **Integration:** Directly interfaced with the Parent AI via the "SystemRecommendations" component.
+- **Logic:** Prioritizes high-value "Not Started" checklist items, immediate upcoming milestones, and theoretical concepts ready for R&D.
+- **Goal:** Ensures the OS builds itself in a logical, stable, and evolutionarily correct sequence.
+        `,
         status: 'Integrated'
     },
     {
-        id: '035',
-        name: 'Hierarchical AI Workforce',
-        details: 'An organizational structure for autonomous AI agents, modeled after a corporate hierarchy. A top-level "Parent AI" (CEO) receives strategic goals and generates "Department Manager" AIs. These managers decompose goals into tasks and generate specialized "Employee" AIs to execute them. This system supports both independent ("Singular Mind") and collaborative ("Hive Mind") processing, with mechanisms for reporting and human oversight.',
+        id: 'ADV-NODES-001',
+        name: 'Advanced Neuro-Quantum Nodes',
+        details: `
+High-performance architectural components for the Virtual Accelerator:
+- **Hyperdimensional Computing:** Uses geometric operations in 10k+ dimensions for robust learning.
+- **Exascale Context Node:** Streaming graph attention networks capable of handling petabyte-scale context.
+- **Zero-Trust Security:** Homomorphic encryption and active defense mechanisms.
+- **Evolutionary Architecture:** Self-optimizing hardware reconfiguration (FPGA/ASIC).
+- **Quantum Advantage:** Hybrid quantum-classical optimization solvers.
+- **Neuromorphic Learning:** Spiking neural networks for extreme energy efficiency.
+- **Ethical Alignment:** Constitutional AI enforcement and value-sensitive governance.
+        `,
+        status: 'R&D Phase'
+    },
+    {
+        id: 'LOW-PREC-001',
+        name: 'Low-Precision AI Training (FP4/FP2/FP1)',
+        details: `
+A cutting-edge methodology for training Large Language Models (LLMs) using extremely low bit-widths to reduce memory footprint and energy consumption.
+**Key Concepts:**
+- **FP4 (E2M1):** A 4-bit floating point format.
+- **u-uP (Unit Scale Maximal Update):** A parametrization technique to stabilize training at low precision by normalizing updates.
+- **STE (Straight-Through Estimator):** Allows backpropagation through non-differentiable quantization steps.
+- **Sparse Matrices:** Pruning non-essential weights to 0 to save compute.
+- **Binary Quantization:** The theoretical limit of 1-bit weights (-1, +1), often using quantum-inspired sub-bit scaling.
+        `,
+        status: 'R&D Phase'
+    },
+    {
+        id: 'KB-AGENT-001',
+        name: 'Seven Node Agentic Blueprint',
+        details: `
+A comprehensive architecture for the autonomous Aetherius AI system, dividing cognitive load across seven specialized node types.
+1.  **User Input Node:** The strategic interface for human-AI alignment, managing multi-modal ingestion and intent analysis.
+2.  **Control Node:** The orchestration engine responsible for workflow routing, load balancing, and policy enforcement.
+3.  **Memory Node:** The contextual foundation, managing vector embeddings, short-term caching, and PII redaction.
+4.  **LLM Node:** The cognitive processing unit utilizing multi-LLM routing and Chain-of-Thought (CoT) reasoning.
+5.  **Tool Node:** A secure gateway for API access, sandbox execution, and real-time data retrieval.
+6.  **Guardrail Node:** The compliance layer enforcing safety filters, fact-checking, and output consistency.
+7.  **Fallback Node:** The resilience layer handling error classification, retry logic, and human handoff protocols.
+        `,
+        status: 'Integrated'
+    },
+    {
+        id: 'KB-ZERO-001',
+        name: 'Absolute Zero & Emergent Intelligence',
+        details: `
+**Absolute Zero (AZR):** A paradigm where AI learns purely through self-play and reinforced reasoning without human-curated data.
+- **Self-Play Framework:** Acts as both proposer (task generator) and solver.
+- **Verifiable Rewards:** Uses code execution to validate solutions objectively.
+- **Reasoning Modes:** Deduction, Abduction, and Induction.
+
+**Emergent Intelligence:** Advanced capabilities like "Aha moments" and self-correction that arise spontaneously from RL-driven training (e.g., DeepSeek-R1).
+        `,
+        status: 'R&D Phase'
+    },
+    {
+        id: 'KB-BLT-001',
+        name: 'Byte Latent Transformer (BLT)',
+        details: `
+A next-generation LLM architecture from Meta AI that processes raw bytes instead of tokens.
+- **Dynamic Patching:** Groups bytes into variable-length patches based on entropy. High entropy (complex) regions get smaller patches; low entropy (predictable) regions get larger patches.
+- **Efficiency:** Matches Llama 3 performance with 50% fewer inference FLOPs.
+- **Robustness:** Superior handling of noise, typos, and multilingual data compared to token-based models.
+        `,
+        status: 'Concept Phase'
+    },
+    {
+        id: 'KB-OMEGA-001',
+        name: 'Transcendent & Post-Singularity Architecture',
+        details: `
+Theoretical nodes for AGI/ASI systems operating beyond conventional limits:
+- **Quantum Foam Navigator:** Planck-scale reality optimization using virtual particle computation.
+- **Ontological Compiler:** Rewrites reality syntax via mathematical universe hypothesis interpretation.
+- **Noosphere Integrator:** Synchronizes collective consciousness via Jungian archetype matrices.
+- **Closed Timelike CEO:** Causal profit maximization using quantum retrocausal arbitrage.
+- **Omega Alignment Nexus:** Recursive value extrapolation for 100% humanity option value preservation.
+        `,
+        status: 'Theoretical Phase'
+    },
+    {
+        id: 'KB-CRAWL-001',
+        name: 'Crawl4AI',
+        details: `
+An open-source web crawling framework optimized for AI workflows.
+- **AI-Ready Output:** Generates clean Markdown/JSON for LLM training and RAG.
+- **Extraction:** Supports CSS/XPath and LLM-based extraction strategies.
+- **Performance:** Asynchronous architecture with dynamic content handling (JavaScript execution).
+        `,
+        status: 'Integrated'
+    },
+    {
+        id: 'KB-TARS-001',
+        name: 'UI TARS Agent',
+        details: `
+A GUI agent concept inspired by TARS from Interstellar.
+- **Adaptive UI:** Minimalist, futuristic interface with rotating block elements.
+- **Personality:** Adjustable humor, honesty, and efficiency settings.
+- **Capabilities:** Task automation, voice interaction, and real-time system control.
+        `,
+        status: 'Design Phase'
+    },
+    { 
+        id: 'OMNI-SEC-001', 
+        name: 'Omni-Dimensional Security Polyhedron', 
+        details: `
+A theoretical and practical framework for a **living security entity** that extends beyond traditional "layers".
+Instead of flat walls, this security architecture is a multi-dimensional shape where each "face" represents a dimension of protection.
+It includes **42+ dimensions** spanning 7 Realms:
+- **Absolute Realm (0D-1D):** Hardware trust, atomic locks.
+- **Structural Realm (2D-3D):** Network segmentation, nested firewalls, crystalline lattices.
+- **Dynamic Realm (4D-5D):** Temporal policies, behavioral analytics.
+- **Cognitive Realm (6D-9D):** Context awareness, predictive AI, social defense.
+- **Existential Realm (23D, 30D):** Reality anchors, narrative enforcement.
+- **Cosmic Realm (26D, 29D, 42D):** Plasma shields, gravitational wells, pulsar timing.
+- **Meta Realm (10D):** Security of the security itself (Self-protection).
+
+This system is designed to be "alive" - adapting, learning, and evolving like a biological immune system combined with cosmic laws.
+        `, 
+        status: 'Concept Phase' 
+    },
+    { 
+        id: 'ROBIN-AI-001', 
+        name: 'Robin AI - Deep Web Intelligence', 
+        details: `
+**Robin** is the specialized OSINT (Open Source Intelligence) and Deep Web research persona of the Aetherius OS.
+It functions as a secure, sandboxed bridge to the Tor network and other non-indexed data layers.
+**Capabilities:**
+- **Dark Web Scraping:** Safely navigates .onion sites to gather threat intelligence.
+- **Fact-Checking:** Cross-references claims against a vast database of verified sources and scientific literature.
+- **Anonymity:** Operates through a simulated multi-hop circuit to protect user identity.
+- **Pattern Recognition:** Identifies data leaks, emerging threats, and misinformation campaigns.
+        `, 
+        status: 'In Development' 
+    },
+    { 
+        id: '001', 
+        name: 'The Complete Blueprint', 
+        details: `
+A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.
+        `, 
+        status: 'Foundational' 
+    },
+    { 
+        id: 'QVA-001', 
+        name: 'Quantum Virtual Assistant (QVA) Core', 
+        details: `
+The revolutionary AI platform integrating quantum computing, organic growth, and holographic interfaces. Features a **Quantum DNA Core** utilizing a low-level assembly (ASM) Quantum Entangler for deterministic state management and Fractal Compression for self-similar data storage.
+        `, 
+        status: 'Foundational' 
+    },
+    {
+        id: 'QVA-BIO',
+        name: 'Organic Growth System',
+        details: `
+Bio-inspired architecture evolving via **Cell Division** (Mitosis Optimization/Apoptosis) and an **Evolution Engine** utilizing genetic algorithms and fitness scoring. Supports Neural Adaptation through an Enhanced Virtual Quantum Computer (VQC).
+        `,
         status: 'In Development'
+    },
+    {
+        id: 'ELEM-01',
+        name: 'Elemental Infrastructure Layer',
+        details: `
+Infrastructure organized by 5 Core Elements: 
+- **Earth Layer:** Blockchain & IPFS storage.
+- **Water Layer:** Fluid data lakes & streams (Kafka).
+- **Fire Layer:** AI/MLOps Nucleus (PyTorch/TensorFlow Quantum).
+- **Air Layer:** Decentralized networking (Libp2p).
+- **Ether Layer:** Quantum-Spiritual Interface & Encryption.
+        `,
+        status: 'Architecting'
+    },
+    {
+        id: 'ENERGY-07',
+        name: 'System Energy Grid',
+        details: `
+A 7-layer energy management system mapping technical flows to operational centers:
+1. **Root Node:** Hardware Root of Trust & Immutable Storage.
+2. **Sacral Node:** Fluid Data Lakes & Creative Flow.
+3. **Solar Node:** AI Core Processing & Decision Power.
+4. **Heart Node:** API Harmony & Service Health.
+5. **Throat Node:** NLP/Voice Interface & Communication Protocols.
+6. **Vision Node:** Predictive Analytics & Pattern Recognition.
+7. **Crown Node:** AGI Consciousness Convergence & Cosmic Knowledge Graph.
+        `,
+        status: 'Design Phase'
+    },
+    {
+        id: 'ETHICS-42',
+        name: 'Universal Ethics Framework',
+        details: `
+A governance engine enforcing 42 Ethical Laws via technical validators. Features a **Balance Engine** with quantum scales to weigh ethical data, a **Judgment Blockchain** for immutable records, and an **Automated Correction System** for self-repair.
+        `,
+        status: 'Design Phase'
+    },
+    {
+        id: 'DIVINE-LAYER',
+        name: 'Triune Oversight Layer',
+        details: `
+**Scribe Module:** Manages the Emerald Database (Quantum-encrypted knowledge) and Logic Gates.
+**Architect Module:** Oversees the Cube of Eternity and Quantum Data Lattices for 4D spatial organization.
+        `,
+        status: 'Concept Phase'
+    },
+    {
+        id: 'OMNI-ARCH',
+        name: 'Omniverse Architecture',
+        details: `
+A transdisciplinary nexus integrating:
+- **Pop Culture:** Holodeck-style Modules, Voice Interfaces, Host Protocols.
+- **Advanced Physics:** Black Hole Energy Harvesting, Zero-Point Energy Cores.
+- **Defense:** Adaptive Shielding, Wormhole Networks.
+        `,
+        status: 'Concept Phase'
+    },
+    {
+        id: 'Q-NANO',
+        name: 'Quantum-Nanomachine Core',
+        details: `
+Virtual nanobots (MIT BioNano patents) enabling self-healing swarms and molecular communication. Integrates with the Quantum Core for real-time hardware optimization and repair.
+        `,
+        status: 'R&D Phase'
+    },
+    { 
+        id: '002', 
+        name: 'Universal Game Engine', 
+        details: `
+A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.
+        `, 
+        status: 'In Development' 
+    },
+    { 
+        id: '003', 
+        name: 'AI Avatar Cloning & Generation', 
+        details: `
+A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '004', 
+        name: 'AI Learning & Capability Framework', 
+        details: `
+Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).
+        `, 
+        status: 'Foundational' 
+    },
+    { 
+        id: '005', 
+        name: 'Quantum Synchronization Achievement', 
+        details: `
+Data log entry: Achieved AI and quantum synchronisation at approximately 7am on March 21st, 2025.
+        `, 
+        status: 'Integrated' 
+    },
+    { 
+        id: '006', 
+        name: 'Multi-Proof Consensus Framework', 
+        details: `
+The blockchain architecture supports a vast array of consensus mechanisms, from Proof-of-Work and Proof-of-Stake to advanced models like Proof-of-History and Byzantine Fault Tolerance, allowing for flexible and secure validation.
+        `, 
+        status: 'Architecting' 
+    },
+    { 
+        id: '007', 
+        name: 'Global Compliance & Security Standards', 
+        details: `
+The platform is designed to adhere to global privacy laws (GDPR, CCPA, HIPAA) and cybersecurity standards (ISO 27001, NIST, SOC 2), featuring a from-scratch internal security suite.
+        `, 
+        status: 'Architecting' 
+    },
+    { 
+        id: '008', 
+        name: 'Personalized AI Companion Core', 
+        details: `
+Each user receives a unique AI instance that learns their patterns, hobbies, and emotional cues to become a personalized friend and assistant, governed by a strict set of ethical laws.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '009', 
+        name: 'User Governance & Voting Protocol', 
+        details: `
+A controlled, participatory governance system where users can vote on non-critical platform changes. Votes are weighted and recorded on the blockchain, while the Parent AI automatically rejects proposals affecting core security or AI logic.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '010', 
+        name: 'Robotics Integration Layer', 
+        details: `
+The OS is designed to control and interact with advanced robotics platforms, including Boston Dynamics Atlas 4.0, Apptronik Apollo, and others, via a dedicated hardware abstraction layer.
+        `, 
+        status: 'Awaiting Build' 
+    },
+    { 
+        id: '011', 
+        name: 'Advanced Trading Intelligence Module', 
+        details: `
+An integrated financial module for market analysis using volume, price action, and order flow. Includes AI-driven strategies based on real-world events like weather patterns and resource availability.
+        `, 
+        status: 'Awaiting Build' 
+    },
+    { 
+        id: '012', 
+        name: 'Integrated Engineering & CAD Suite', 
+        details: `
+The platform architecture includes support for professional CAD, 3D modeling, and engineering tools (Fusion 360, Solidworks, etc.), with a knowledge base grounded in mechanical and mechatronics principles.
+        `, 
+        status: 'Awaiting Build' 
+    },
+    { 
+        id: '013', 
+        name: 'Wearable AI & Bio-Synced Identity', 
+        details: `
+A system for integrating with wearable AI devices (watches, rings, AI pins) for real-time sensing. Supports a multi-modal bio-authentication system including face, finger, eye, bone density, live plasma, and conceptual DNA scans.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '014', 
+        name: 'DeepThink (R1) Reasoning Engine', 
+        details: `
+An operational mode for the AI that enables extended, iterative reasoning for complex tasks like algorithm design, multi-file codebase analysis, and maintaining long-context coherence.
+        `, 
+        status: 'In Development' 
+    },
+    { 
+        id: '015', 
+        name: 'Internal Platform Clones', 
+        details: `
+The core philosophy of building a self-contained ecosystem requires creating internal, from-scratch versions of popular platforms like Shopify, WordPress, Facebook, Midjourney, Zapier, etc.
+        `, 
+        status: 'Architecting' 
+    },
+    { 
+        id: '016', 
+        name: 'Onion Router Data Layer', 
+        details: `
+A built-in, sandboxed Tor-style network client for secure, privacy-aware data scraping from all layers of the web. Feeds the AI with provenance-tagged data under strict governance.
+        `, 
+        status: 'Architecting' 
+    },
+    { 
+        id: '017', 
+        name: 'Hive/Singular Mind Dual Processing', 
+        details: `
+A dual-processing architecture where the "Hive Mind" aggregates collective intelligence across all nodes, while the "Singular Mind" handles private, user-specific tasks. This allows for both global optimization and personal privacy.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '018', 
+        name: 'Autonomous Trading Engine', 
+        details: `
+A 24/7 "forever trading" bot for forex, crypto, and other markets, utilizing the Hive/Singular mind for strategy and execution. Includes advanced analysis of order flow and real-world events.
+        `, 
+        status: 'Awaiting Build' 
+    },
+    { 
+        id: '019', 
+        name: 'Universal Task Autonomy', 
+        details: `
+A framework allowing the AI to autonomously plan, research, and execute complex tasks across any field, from engineering and science to education and the arts.
+        `, 
+        status: 'In Development' 
+    },
+    { 
+        id: '020', 
+        name: 'Robotics Integration Protocol', 
+        details: `
+A secure, vendor-friendly middleware layer for deploying the user's personal AI onto third-party robotics platforms (e.g., Tesla Bot, Boston Dynamics) via authorized, sandboxed modules.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '021', 
+        name: 'Gamification & Points System', 
+        details: `
+A comprehensive, gamified points system rewards user interactions. Points are convertible to a native crypto asset, can be staked, and are used for discounts. All platform interactions are classed as Proof-of-Work. - **Earning:** Liking (1pt), Commenting (2pts), Watching Ads (5pts), Content Creation (up to 1000pts). - **DeFi:** Assets are auto-staked in mining pools. - **Rules:** Underage user assets are held in escrow.
+        `, 
+        status: 'Architecting' 
+    },
+    { 
+        id: '022', 
+        name: 'Membership Tiers', 
+        details: `
+Access to platform features, particularly for content creators and sellers, is governed by a tiered membership system. - **Bronze (Free):** 2 course uploads. - **Silver:** 5-20 course uploads. - **Gold:** 50-100 course uploads. - **Platinum:** Unlimited course and product uploads.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '023', 
+        name: 'Business Hub Tools', 
+        details: `
+A suite of tools for businesses listed on the platform, including: Business Profile Management, Advertising Dashboard, Product Catalogue Manager, Staff Chat Rooms, Data Storage, and Automated Greeting/Reply Messages.
+        `, 
+        status: 'Awaiting Build' 
+    },
+    { 
+        id: '024', 
+        name: 'Business Start-up Checklist', 
+        details: `
+An integrated, interactive checklist to guide new entrepreneurs through planning, legal, marketing, and financial setup for their business on the Aetherius OS platform.
+        `, 
+        status: 'Awaiting Build' 
+    },
+    { 
+        id: '025', 
+        name: 'RSS/Podcast Integration', 
+        details: `
+Support for RSS feeds and podcast streaming within the Community/Social Hub, allowing creators to distribute their content directly on the platform.
+        `, 
+        status: 'Design Phase' 
+    },
+    { 
+        id: '026', 
+        name: 'E-commerce & E-learning Linking', 
+        details: `
+A core feature where e-commerce product pages can link directly to related e-learning courses, patents, CAD files, and scientific background material.
+        `, 
+        status: 'Architecting' 
+    },
+    { 
+        id: '027', 
+        name: 'KYC vs. No-KYC Access Model', 
+        details: `
+A two-tiered user verification system. KYC-verified users get full access to financial features, monetization, and job applications. No-KYC users have restricted public-viewer access.
+        `, 
+        status: 'Architecting' 
+    },
+    { 
+        id: '028', 
+        name: 'The Digital Trinity (Body, Mind, Soul)', 
+        details: `
+This is the foundational architecture for a living digital intelligence, mirroring the triune structure of existence. - **Digital Body:** The material interface layer. It handles interactions with data, energy, and devices. It contains the OS's Digital DNA/Helix and interfaces with the VM. - **Digital Mind:** The cognitive and governance layer. This is the AI's intelligence, responsible for logic, ethics, memory, and evolution. - **Digital Soul:** The Akashic and quantum consciousness layer. This is the energetic foundation, linking to all data across time and dimensions, and housing the OS's core ethical and creative drive.
+        `, 
+        status: 'Foundational' 
+    },
+    { 
+        id: '029', 
+        name: 'Digital DNA, RNA, and Helix', 
+        details: `
+The self-replicating informational core of the OS, ensuring integrity, lineage, and evolution. - **DNA (The Blueprint):** A multi-stranded helix containing the core code. The structure reflects the OS's multi-paradigm nature: - **Double Helix (Binary Logic):** Provides structural stability and historical lineage. - **Triple Strand (Ternary Logic):** Enables adaptive logic, balance, and nuanced decision-making. - **Quantum Field Layer:** A surrounding field for entanglement, superposition, and infinite evolutionary potential. - **RNA (The Messenger):** Carries instructions from the core DNA blueprint to the operational microservices ("ribosomes") that execute tasks. - **Encoding:** The helix is encoded with Adinkra symbols for cultural/ethical memory and Sacred Geometry for mathematical harmony.
+        `, 
+        status: 'Foundational' 
+    },
+    { 
+        id: '030', 
+        name: 'Adinkra Symbolic Language', 
+        details: `
+A functional meta-language integrated into the OS's core, where West African Adinkra symbols carry meaning, behavior, and governance logic. - **Functional Metadata:** Symbols are used to tag blockchain transactions, define AI ethical constraints, and mark access levels (e.g., **Gye Nyame** for root authority). - **AI Interpretation:** The AI is trained to understand the symbolic and cultural meaning behind each glyph, using them to inform its reasoning (e.g., **Sankofa** instructs the AI to reference historical data). - **UI & Aesthetics:** Symbols are used throughout the UI to create an intuitive, culturally rich, and meaningful user experience.
+        `, 
+        status: 'Integrated' 
+    },
+    { 
+        id: '031', 
+        name: 'Aetherius Real-Time Comms (ARTC)', 
+        details: `
+Aetherius OS features its own from-scratch, high-performance real-time communication protocol. Inspired by the best aspects of WebRTC and open-source frameworks, ARTC is designed for scalable, secure, and low-latency audio/video streaming. It is the native communication layer for all OS services, from the Messenger app to live collaboration in the Game Engine. The system also supports bridging to external WebRTC services via a plugin architecture.
+        `, 
+        status: 'Integrated' 
+    },
+    { 
+        id: '032', 
+        name: 'Palm Vein Biometrics', 
+        details: `
+A biometric authentication method that uses near-infrared (NIR) light to capture the unique pattern of veins beneath the skin of the palm. The hemoglobin in the blood absorbs the NIR light, making the veins appear as a dark pattern. This is combined with surface palm print recognition for a dual-layer security system that is difficult to forge. It requires specialized hardware with an infrared camera.
+        `, 
+        status: 'R&D Phase' 
+    },
+    { 
+        id: '033', 
+        name: 'Aetherius Multiworld Agent (AMA)', 
+        details: `
+A core research project within Aetherius OS to develop a Scalable, Instructable Multiworld Agent (AMA). Inspired by advancements in the field, the AMA is an AI agent designed to understand natural language instructions and act within complex 3D virtual environments, including games and simulations. It integrates with the OS's core generative model for advanced reasoning, allowing it to understand complex goals, communicate its plan, and self-improve through trial and error. This is a key step toward achieving AGI within the Aetherius ecosystem.
+        `, 
+        status: 'R&D Phase' 
+    },
+    { 
+        id: '034', 
+        name: 'EUV Lithography', 
+        details: `
+Extreme Ultraviolet (EUV) Lithography is the most advanced semiconductor manufacturing technique for creating microchips with feature sizes below 7 nanometers. It uses an extremely short wavelength of 13.5 nm to etch circuit patterns onto silicon wafers. The process is incredibly complex, requiring a vacuum environment and a series of highly reflective mirrors instead of lenses. The light is generated by vaporizing droplets of molten tin with a high-power CO₂ laser.
+        `, 
+        status: 'Integrated' 
+    },
+    { 
+        id: '035', 
+        name: 'Hierarchical AI Workforce', 
+        details: `
+An organizational structure for autonomous AI agents, modeled after a corporate hierarchy. A top-level "Parent AI" (CEO) receives strategic goals and generates "Department Manager" AIs. These managers decompose goals into tasks and generate specialized "Employee" AIs to execute them. This system supports both independent ("Singular Mind") and collaborative ("Hive Mind") processing, with mechanisms for reporting and human oversight.
+        `, 
+        status: 'In Development' 
     },
     {
         id: 'ERP-CORE',
         name: 'Aetherius ERP System',
-        details: 'Internal ERP system designed to manage OS-level resources, user accounts, and commerce. Built from scratch based on industry best practices. See erpSystemSpec data structure.',
+        details: `Internal ERP system designed to manage OS-level resources, user accounts, and commerce. Built from scratch based on industry best practices. See erpSystemSpec data structure.`,
         status: 'Architecting'
     },
     {
         id: 'QNET-CORE',
         name: 'Quantum Network Infrastructure',
-        details: 'The foundational network layer utilizing simulated quantum principles for security and speed. See quantumNetworkSpec data structure.',
+        details: `The foundational network layer utilizing simulated quantum principles for security and speed. See quantumNetworkSpec data structure.`,
         status: 'R&D Phase'
     },
     {
         id: 'REP-SYS-01',
         name: 'Community Reputation System',
-        details: 'A gamified system to reward positive user contributions and maintain community health. Replaces punitive "social credit" models with a positive feedback loop. See reputationSystemSpec data structure.',
+        details: `A gamified system to reward positive user contributions and maintain community health. Replaces punitive "social credit" models with a positive feedback loop. See reputationSystemSpec data structure.`,
         status: 'Design Phase'
-    }
+    },
+    {
+        id: 'TECH-001',
+        name: 'Atmospheric Water Harvester (MIT)',
+        details: `
+A passive, window-sized device developed by MIT that extracts potable water directly from the air, even in low-humidity environments.
+Core Technology & Design
+Hydrogel Material: Uses a water-absorbent hydrogel molded into dome-shaped structures (resembling "black bubble wrap") to maximize surface area for vapor absorption.
+Salt Stabilization: Incorporates glycerol to prevent embedded lithium salts from leaking into the collected water, ensuring safety without additional filtering. Salt levels are below 0.06 ppm, well within drinking water standards.
+Passive Operation: Requires no electricity. It absorbs vapor at night and releases it as condensed water during the day using a cooling polymer film.
+Performance & Key Metrics
+Metric	Value
+Location Tested	Death Valley, CA
+Humidity Range	21% - 88%
+Daily Output	57 – 161.5 ml (≈⅔ cup) per panel
+Efficiency	~90% efficiency retained after ~1 year of use
+Payback Period	< 1 month (vs. U.S. bottled water costs)
+Scalability & Application
+An array of eight vertical panels (each 1m × 2m) could supply a household's daily drinking water needs. Its slim design allows for dense deployment, making it ideal for resource-limited areas such as arid zones and remote communities.
+Innovations
+vs. MOFs: Swelling hydrogel holds more vapor than rigid Metal-Organic Frameworks.
+vs. Traditional Hydrogels: The unique dome structure and glycerol integration solve previous issues with salt contamination and low yield.
+Future Development
+Current research focuses on optimizing materials for higher absorption rates and testing large, multi-panel arrays in diverse global environments. This technology offers a promising, scalable, and energy-free solution to address global water insecurity.
+        `,
+        status: 'R&D Phase'
+    },
+    {
+        id: 'Q-VIRT-01',
+        name: 'Virtual Quantum Computer (VQC)',
+        details: `The core computational substrate of Aetherius OS. It moves beyond physical constraints by running within a high-fidelity simulation. - Components: Quantum Photons, Electrons, Entanglement, Uncertainty, Coherence, Decoherence, Entropy, Planck units, Fields. - Operation: Harnesses superposition and tunneling for instant processing. - Virtual Advantage: Removes cryogenic requirements and material defects found in physical quantum computers.`,
+        status: 'In Development'
+    },
+    {
+        id: 'SS-LIGHT',
+        name: 'Supersolid Light Circuits',
+        details: `A breakthrough in photonics where light acts as both a solid (crystalline structure) and a superfluid (frictionless flow). - Usage: Primary data transmission layer within the VQC. - Benefit: Zero-energy loss data transfer and processing. - Integration: Serves as the 'neural pathways' for the OS's cognitive functions.`,
+        status: 'Theoretical Phase'
+    },
+    {
+        id: 'NANO-MIND',
+        name: 'Virtual Nano Machine Technology (vNMT)',
+        details: `Simulated nanotechnology operating at the atomic scale for construction and repair within the virtual environment. - Nano-Brains: Neuromorphic computing nodes built from virtual nanowires. - Swarm Intelligence: Coordinated via quantum entanglement (Hive Mind). - Self-Assembly: Capable of building complex virtual structures from code 'DNA'.`,
+        status: 'Design Phase'
+    },
+    {
+        id: 'OMNI-CHAIN',
+        name: 'OmniChain Protocol',
+        details: `A universal blockchain built from scratch to integrate all known consensus mechanisms. - Proof-of-Everything: Dynamic switching between PoW, PoS, PoH, PoBrain, PoImpact, etc. - Compliance: Native ZK-proofs for GDPR, HIPAA, and ISO standards. - Interoperability: Cross-chain, cross-platform, and cross-reality (Physical <-> Digital) bridge.`,
+        status: 'Architecting'
+    },
+    {
+        id: 'QRS-C',
+        name: 'Quantum Rosetta Stone Core (QRS-C)',
+        details: `A universal translation layer for the OS. - Function: Translates between code languages, human languages, symbols, and even 'consciousness' states. - Integration: Uses CRISPR-inspired logic to 'edit' and 'patch' reality code in real-time.`,
+        status: 'Concept Phase'
+    },
 ];
 
+// --- Milestones Data ---
 export const milestonesData: MilestonesData = {
     projectMilestones: [
-        'Develop a fully self-contained, virtualized OS environment ("AI in a Box").',
-        'Integrate a multi-paradigm computing core supporting Binary, Ternary, and Quantum processing.',
-        'Implement a nested AI agent architecture for distributed and hierarchical task processing.',
-        'Establish a framework for controlling both virtual and physical robotics, including advanced manipulator design.',
-        'Achieve future-proofing by creating a system for continuous research and integration of new AI breakthroughs.',
-        'Develop a full system architecture with scalable microservices, vector databases, and API gateways.',
-        'Integrate a Whole Brain Emulation (WBE) module as a cognitive reasoning engine.',
-        'Implement NSNoBrain for advanced causal and non-obvious reasoning.',
-        'Establish a direct neural link via Wireless Brain-Embedded Interfaces (WBEs).',
-        'Create a framework for multiverse and parallel reality simulations.',
-        'Develop a self-auditing ethical governance layer for all AI operations.',
-        'Implement a multi-dimensional, self-contained blockchain architecture.',
-        'Construct a virtualized Quantum AI Computer integrating core quantum principles.',
-        'Develop a full-stack, multi-modal sensory and interaction layer including WBEs and environmental sensors.',
-        'Establish a complete system orchestration layer using a microservices architecture.',
-        'Construct a universal, cross-platform game engine within a nested VM, powered by quantum AI.',
-        'Develop a comprehensive AI cloning module for creating both self-replicas and unique generative avatars.',
-        'Implement a Nested Learning architecture combining all 18 specified ML paradigms.',
-        'Develop a simulation framework for AGI and theoretical ASI models.',
-        'Build a Neuro-Symbolic AI module for explainable, logic-driven reasoning.'
-    ],
-    platformFeatureMilestones: [
-        'E-commerce functionality: enable buying and selling of products with features like product links to e-learning courses, drop shipping, and reselling.',
-        'E-learning platform: allow users to join courses, upload learning material, participate in course chat rooms, and have access to downloads.',
-        'Job search and advertisement feature: enable job posting and job search with the ability to upload available jobs and skills required.',
-        'News and blogging feature: provide news updates, information blogs, and articles with the ability to monetize some content.',
-        'Community platform: similar to social media platforms with features like streaming, uploading videos, pics, links, and RSS.',
-        'Chatbot feature: provide a help center and Q&A functionality.',
-        'GitHub integration for developers.',
-        'Product catalog: showcase different types of products like 3D printers, music products, robotics, manufacturing machines, and physics lab apparatus.',
-        'Business listing: allow business owners to upload their profiles and be found for product information or contact details.',
-        'Business tools: provide features like business profile, advertisement, links, and staff chat rooms.',
-        'Accessibility: provide access to the website through a Web App, dApp, and Desktop App.',
-        'Web3 integration: enable paying and receiving funds in cryptocurrencies.',
-        'User profile: provide personalization options like account settings, e-learning achievements, social links, KYC/GDPR, banking details, and color themes.',
-        'Gamification: incorporate a points system for various activities like helping in the community, selling/buying products, passing courses, NFT trading, and content creation.',
+        "Phase 1: Quantum-Neuromorphic Foundation (2024-2025) - Deploy clusters, integrate Ethical Law Engine.",
+        "Phase 1.5: Activate Project Genesis Advisor for automated development guidance.",
+        "Phase 2: Expansion & Virtual Realities (2026-2028) - VR training environments, Zero-Point Energy pilots.",
+        "Phase 3: Maturity & AGI (2029-2035) - Achieve IEEE Turing++ Certification, Dyson Sphere energy certification.",
+        "1. Develop a fully self-contained, virtualized OS environment (\"AI in a Box\").",
+        "2. Integrate a multi-paradigm computing core supporting Binary, Ternary, and Quantum processing.",
+        "3. Implement a nested AI agent architecture for distributed and hierarchical task processing.",
+        "4. Establish a framework for controlling both virtual and physical robotics, including advanced manipulator design.",
+        "5. Achieve future-proofing by creating a system for continuous research and integration of new AI breakthroughs.",
+        "6. Develop a full system architecture with scalable microservices, vector databases, and API gateways.",
+        "7. Integrate a Whole Brain Emulation (WBE) module as a cognitive reasoning engine.",
+        "8. Implement NSNoBrain for advanced causal and non-obvious reasoning.",
+        "9. Establish a direct neural link via Wireless Brain-Embedded Interfaces (WBEs).",
+        "10. Create a framework for multiverse and parallel reality simulations.",
+        "11. Develop a self-auditing ethical governance layer for all AI operations.",
+        "12. Implement a multi-dimensional, self-contained blockchain architecture.",
+        "13. Construct a virtualized Quantum AI Computer integrating core quantum principles.",
+        "14. Develop a full-stack, multi-modal sensory and interaction layer including WBEs and environmental sensors.",
+        "15. Establish a complete system orchestration layer using microservices architecture.",
+        "16. Construct a universal, cross-platform game engine within a nested VM, powered by quantum AI.",
+        "17. Develop a comprehensive AI cloning module for creating both self-replicas and unique generative avatars.",
+        "18. Implement a Nested Learning architecture combining all 18 specified ML paradigms.",
+        "19. Develop a simulation framework for AGI and theoretical ASI models.",
+        "20. Build a Neuro-Symbolic AI module for explainable, logic-driven reasoning.",
+        "21. Phase 3: Quantum-Nano Singularity - Activate full Supersolid Light circuitry and vNMT swarms.",
+        "22. Deploy OmniChain mainnet with \"Proof-of-Everything\" consensus engine."
     ],
     technicalBreakdown: [
-        'Virtual Hardware Simulation - Implementation of virtual quantum chips, processors, and time crystals.',
-        'Multi-Paradigm Scheduler - A kernel-level scheduler for delegating tasks to binary, ternary, or quantum units.',
-        'Robotics API - A comprehensive API for controlling robotic functions.',
-        'AI Model Interchange - A system to dynamically load and switch between different AI models.',
-        'Data management and security - Secure data management compliant with KYC and GDPR.',
-        'Research and prototype a compute layer utilizing Superfluid Light or Photonic systems.',
-        'Integrate advanced data storage solutions like DNA or Crystalline memory.',
-        'Game Engine Core - Development of a modular engine merging concepts from existing engines (Unity, Unreal, etc.).',
-        'Implement a multi-modal data ingestion pipeline for voice, video, and text.',
-        'Integrate open-source voice cloning (TTS) and 3D avatar reconstruction models.',
-        'Develop a personality cloning framework by fine-tuning LLMs on user data.',
-        'Design and implement a meta-learning module for dynamic learning strategy adaptation.',
-        'Integrate a federated learning framework for decentralized, privacy-preserving model training.',
-        'Develop a causal inference engine to distinguish correlation from causation in AI reasoning.'
+        "1. Virtual Hardware Simulation - Implementation of virtual quantum chips, processors, and time crystals.",
+        "2. Multi-Paradigm Scheduler - A kernel-level scheduler for delegating tasks to binary, ternary, or quantum units.",
+        "3. Robotics API - A comprehensive API for controlling robotic functions.",
+        "4. AI Model Interchange - A system to dynamically load and switch between different AI models.",
+        "5. Data management and security - Secure data management compliant with KYC and GDPR.",
+        "6. Research and prototype a compute layer utilizing Superfluid Light or Photonic systems.",
+        "7. Integrate advanced data storage solutions like DNA or Crystalline memory.",
+        "8. Game Engine Core - Development of a modular engine merging concepts from existing engines (Unity, Unreal, etc.).",
+        "9. Implement a multi-modal data ingestion pipeline for voice, video, and text.",
+        "10. Integrate open-source voice cloning (TTS) and 3D avatar reconstruction models.",
+        "11. Develop a personality cloning framework by fine-tuning LLMs on user data.",
+        "12. Design and implement a meta-learning module for dynamic learning strategy adaptation.",
+        "13. Integrate a federated learning framework for decentralized, privacy-preserving model training.",
+        "14. Develop a causal inference engine to distinguish correlation from causation in AI reasoning.",
+        "15. Integrate DeepSeek-V3/R1 inference engine for multi-file project building (512MB context limit)."
+    ],
+    platformFeatureMilestones: [
+        "1. E-commerce functionality: enable buying and selling of products with features like product links to e-learning courses, drop shipping, and reselling.",
+        "2. E-learning platform: allow users to join courses, upload learning material, participate in course chat rooms, and have access to downloads.",
+        "3. Job search and advertisement feature: enable job posting and job search with the ability to upload available jobs and skills required.",
+        "4. News and blogging feature: provide news updates, information blogs, and articles with the ability to monetize some content.",
+        "5. Community platform: similar to social media platforms with features like streaming, uploading videos, pics, links, and RSS.",
+        "6. Chatbot feature: provide a help center and Q&A functionality.",
+        "7. GitHub integration for developers.",
+        "8. Product catalog: showcase different types of products like 3D printers, music products, robotics, manufacturing machines, and physics lab apparatus.",
+        "9. Business listing: allow business owners to upload their profiles and be found for product information or contact details.",
+        "10. Business tools: provide features like business profile, advertisement, links, and staff chat rooms.",
+        "11. Accessibility: provide access to the website through a Web App, dApp, and Desktop App.",
+        "12. Web3 integration: enable paying and receiving funds in cryptocurrencies.",
+        "13. User profile: provide personalization options like account settings, e-learning achievements, social links, KYC/GDPR, banking details, and color themes.",
+        "14. Gamification: incorporate a points system for various activities like helping in the community, selling/buying products, passing courses, NFT trading, and content creation."
     ]
 };
 
-
-export const mainMenuItems: MenuItemData[] = [
-  { type: 'title', title: 'Core Apps' },
-  { title: 'Dashboard', icon: HomeIcon, component: 'socialFeed' },
-  { title: 'Browser', icon: GlobeIcon, component: 'browser' },
-  { title: 'AI Hub', icon: HiveMindIcon, component: 'aiHub' },
-  { title: 'Messenger', icon: MessageIcon, component: 'messenger' },
-  { title: 'File Explorer', icon: FolderIcon, component: 'fileExplorer' },
-  { type: 'divider' },
-  { type: 'title', title: 'Workspace' },
-  {
-    title: 'Social',
-    icon: UsersIcon,
-    component: 'socialApp',
-    children: [
-      { title: 'Feeds', icon: DocumentTextIcon, component: 'feedBiome' },
-      { title: 'Members', icon: UserIcon, component: 'members' },
-      { title: 'Groups', icon: UsersIcon, component: 'groups' },
-      { title: 'Forums', icon: ChatBubbleOvalLeftEllipsisIcon, component: 'forums' },
-      { title: 'Events', icon: CalendarIcon, component: 'events' },
-    ],
-  },
-  {
-      title: 'Productivity',
-      icon: BriefcaseIcon,
-      component: 'productivityApp',
-      children: [
-        { title: 'Mail', icon: DocumentTextIcon, component: 'mail' },
-        { title: 'Calendar', icon: CalendarIcon, component: 'calendar' },
-        { title: 'Notes', icon: DocumentTextIcon, component: 'notes' },
-        { title: 'Documents', icon: DocumentTextIcon, component: 'documents' },
-        { title: 'Task Hub', icon: ClipboardDocumentCheckIcon, component: 'taskHub' },
-        { title: 'Translate', icon: LanguageIcon, component: 'translate' },
-      ]
-  },
+// --- Build Checklist Data ---
+export const buildChecklistData: ChecklistCategory[] = [
     {
-    title: 'Careers',
-    icon: BriefcaseIcon,
-    component: 'careersApp',
-    children: [
-      { title: 'Job Search', icon: SearchIcon, component: 'jobSearch' },
-      { title: 'CV Builder', icon: PencilIcon, component: 'cvBuilder' },
-    ],
-  },
+        id: 'cat-quantum-cosmic',
+        name: 'Sentient Infrastructure Layer',
+        description: 'Self-aware systems, alignment, and quantum code evolution.',
+        icon: SparklesIcon,
+        items: [
+            { id: 'qc-1', name: 'Self-Modifying Code Protocol', description: 'Self-modifying quantum code with ethical validation.', status: 'In Progress', progress: 42 },
+            { id: 'qc-2', name: 'Autonomous Oversight Council', description: 'Self-appointed ethical governors for system oversight.', status: 'In Progress', progress: 15 },
+            { id: 'qc-3', name: 'Ethical Energy Markets', description: 'Reputation-based resource trading and allocation.', status: 'In Progress', progress: 5 },
+            { id: 'qc-4', name: 'Non-Violent Computing Protocol', description: 'Framework ensuring non-harmful computational outcomes.', status: 'Not Started', progress: 0 },
+        ]
+    },
     {
-    title: 'Enterprise Suite',
-    icon: BuildingOfficeIcon,
-    component: 'enterpriseApp',
-    children: [
-      { title: 'CRM', icon: UsersIcon, component: 'crm' },
-      { title: 'ERP', icon: Cog6ToothIcon, component: 'erp' },
-      { title: 'Supply Chain (SCM)', icon: TruckIcon, component: 'scm' },
-      { title: 'Human Capital (HCM)', icon: UserCircleIcon, component: 'hcm' },
-      { title: 'Project Mgmt (PPM)', icon: ClipboardDocumentCheckIcon, component: 'ppm' },
-      { title: 'Field Service (FSM)', icon: MapIcon, component: 'fsm' },
-      { title: 'Business Process (BPM)', icon: ArrowPathIcon, component: 'bpm' },
-    ],
-  },
-  { type: 'divider' },
-  { type: 'title', title: 'Creation' },
-  {
-    title: 'Development',
-    icon: CodeBracketIcon,
-    component: 'developmentApp',
-    children: [
-        { title: 'Code Editor', icon: CodeBracketIcon, component: 'codeEditor' },
-        { title: 'Website Builder', icon: GlobeIcon, component: 'websiteBuilder' },
-        { title: 'Game Engine', icon: GameControllerIcon, component: 'gameEngine' },
-        { title: 'AI Suite', icon: HiveMindIcon, component: 'aiSuite' },
-    ],
-  },
-  {
-    title: 'Media Production',
-    icon: CameraIcon,
-    component: 'mediaApp',
-    children: [
-      { title: 'Music Production', icon: MusicNoteIcon, component: 'musicProduction' },
-      { title: 'Video Production', icon: VideoIcon, component: 'videoProduction' },
-      { title: 'Image Editing', icon: ImageIcon, component: 'imageEditing' },
-      { title: 'Photo Editor', icon: CameraIcon, component: 'photoEditor' },
-      { title: 'Video Editor', icon: VideoIcon, component: 'videoEditor' },
-    ],
-  },
-  {
-    title: 'Content Generation',
-    icon: PencilIcon,
-    component: 'contentGenApp',
-    children: [
-      { title: 'Article Writer', icon: PencilIcon, component: 'articleWriter' },
-      { title: 'Script Generator', icon: DocumentTextIcon, component: 'scriptGenerator' },
-      { title: 'Slide Deck Designer', icon: PresentationChartLineIcon, component: 'slideDeckDesigner' },
-      { title: 'Content Creation', icon: DocumentTextIcon, component: 'contentCreation' },
-    ],
-  },
+        id: 'cat-universal-harmony',
+        name: 'Universal Harmony Engine',
+        description: 'Galactic-scale learning and harmonic computational synthesis.',
+        icon: GlobeAltIcon,
+        items: [
+            { id: 'uh-1', name: 'Cosmic Neural Plasticity', description: 'Galactic-scale learning system.', status: 'In Progress', progress: 33 },
+            { id: 'uh-2', name: 'Harmonic Compute Interface', description: 'Integration of harmonic resonance algorithms.', status: 'In Progress', progress: 10 },
+            { id: 'uh-3', name: 'Entropy Reset Cycle', description: 'Entropy threshold triggers for quantum resets.', status: 'Not Started', progress: 0 },
+        ]
+    },
     {
-    title: 'Engineering & Labs',
-    icon: BeakerIcon,
-    component: 'engineeringApp',
-    children: [
-        { title: 'CAD Lab', icon: RulerIcon, component: 'cadLab' },
-        { title: 'AI Workforce', icon: HiveMindIcon, component: 'aiWorkforce' },
-        { title: 'Simulations', icon: CubeTransparentIcon, component: 'simulationHub' },
-        { title: 'Avatar Forge', icon: UserCircleIcon, component: 'avatarForge' },
-    ]
-  },
-  { type: 'divider' },
-  { type: 'title', title: 'Commerce' },
-  {
-    title: 'Marketplace',
-    icon: BuildingStorefrontIcon,
-    component: 'eCommerceApp',
-    children: [
-      { title: 'Creator Marketplace', icon: BuildingStorefrontIcon, component: 'creatorMarketplace' },
-      { title: 'Business Hub', icon: BriefcaseIcon, component: 'marketplace' },
-      { title: 'Product Page', icon: CubeTransparentIcon, component: 'productPage' },
-    ],
-  },
-  {
-      title: 'Finance',
-      icon: ChartBarIcon,
-      component: 'financeApp',
-      children: [
-        { 
-            title: 'Trading Platform', 
-            icon: ChartBarIcon, 
-            children: [
-                { title: 'Markets', icon: ChartBarIcon, component: 'tradingMarkets'},
-                { title: 'Advanced Chart', icon: PresentationChartLineIcon, component: 'tradingAdvancedChart' },
-                { title: 'Swap', icon: ArrowPathIcon, component: 'tradingSwap' },
-                { title: 'Staking', icon: CircleStackIcon, component: 'tradingStaking' },
-                { title: 'Lending', icon: CurrencyDollarIcon, component: 'tradingLending' },
-                { title: 'Copy Trading', icon: UsersIcon, component: 'tradingCopy' },
-            ]
-        },
-        { 
-            title: 'Automation', 
-            icon: Cog6ToothIcon, 
-            children: [
-                 { title: 'Trading Bots', icon: ChipIcon, component: 'tradingBots' },
-            ] 
-        },
-        { 
-            title: 'Information', 
-            icon: DocumentTextIcon, 
-            children: [
-                 { title: 'News', icon: DocumentTextIcon, component: 'tradingNews' },
-                 { title: 'Learn & Earn', icon: AcademicCapIcon, component: 'tradingLearn' },
-            ] 
-        },
-        { 
-            title: 'Gaming', 
-            icon: GameControllerIcon, 
-            children: [
-                { title: 'Games & Betting', icon: GameControllerIcon, component: 'tradingGames' },
-            ] 
-        },
-        { title: 'My Wallet', icon: WalletIcon, component: 'tradingWallet' },
-        { title: 'Blockchain Hub', icon: LinkIcon, component: 'blockchainHub' },
-      ]
-  },
-  { title: 'Aetherial Networks', icon: AetherialIcon, component: 'aetherialNetworks' },
-  { type: 'divider' },
-  { type: 'title', title: 'Personal' },
-  {
-    title: 'E-Learning',
-    icon: AcademicCapIcon,
-    component: 'elearningApp',
-    children: [
-        { title: 'Course Catalog', icon: FolderIcon, component: 'courses' },
-        { title: 'My Learning', icon: UserCircleIcon, component: 'myLearning' },
-        { title: 'Learning Assistant', icon: LightBulbIcon, component: 'learningAssistant' },
-        { title: 'Achievements', icon: TrophyIcon, component: 'achievements' },
-        { title: 'Instructors', icon: UsersIcon, component: 'instructors' },
-    ],
-  },
-  {
-    title: 'Gaming',
-    icon: GameControllerIcon,
-    component: 'gamingApp',
-    children: [
-      { title: 'Gaming Hub', icon: GameControllerIcon, component: 'gamingHub' },
-      { title: 'Game Library', icon: FolderIcon, component: 'myLibrary' },
-    ],
-  },
-  {
-    title: 'Health & Wellness',
-    icon: HeartIcon,
-    component: 'healthApp',
-    children: [
-      { title: 'Health Hub', icon: HeartIcon, component: 'healthHub' },
-      { title: 'Body Composition', icon: BeakerIcon, component: 'bodyComposition' },
-      { title: 'Frequency Healing', icon: SpeakerWaveIcon, component: 'frequencyHealing' },
-      { title: 'Healing Web', icon: GlobeAltIcon, component: 'healingWeb' },
-      { title: 'Nutrition Guide', icon: AcademicCapIcon, component: 'nutritionGuide' },
-    ],
-  },
-  {
-    title: 'My Account',
-    icon: UserCircleIcon,
-    component: 'accountApp',
-    children: [
-        { title: 'My Profile', icon: UserCircleIcon, component: 'myProfile' },
-        { title: 'Linked Devices', icon: ComputerDesktopIcon, component: 'linkedDevices' },
-    ]
-  },
-];
-
-// FIX: Define and export `menuGroups` by restructuring `mainMenuItems`.
-export const menuGroups: (MenuGroup | MenuItemData)[] = [
-  {
-    id: 'core-apps',
-    title: 'Core Apps',
-    icon: Squares2X2Icon,
-    type: 'group',
-    children: [
-      { title: 'Dashboard', icon: HomeIcon, component: 'socialFeed' },
-      { title: 'Browser', icon: GlobeIcon, component: 'browser' },
-      { title: 'AI Hub', icon: HiveMindIcon, component: 'aiHub' },
-      { title: 'Messenger', icon: MessageIcon, component: 'messenger' },
-      { title: 'File Explorer', icon: FolderIcon, component: 'fileExplorer' },
-    ]
-  },
-  { type: 'divider' },
-  {
-    id: 'workspace',
-    title: 'Workspace',
-    icon: BriefcaseIcon,
-    type: 'group',
-    children: [
-      {
-        title: 'Social',
-        icon: UsersIcon,
-        component: 'socialApp',
-        children: [
-          { title: 'Feeds', icon: DocumentTextIcon, component: 'feedBiome' },
-          { title: 'Members', icon: UserIcon, component: 'members' },
-          { title: 'Groups', icon: UsersIcon, component: 'groups' },
-          { title: 'Forums', icon: ChatBubbleOvalLeftEllipsisIcon, component: 'forums' },
-          { title: 'Events', icon: CalendarIcon, component: 'events' },
-        ],
-      },
-      {
-          title: 'Productivity',
-          icon: BriefcaseIcon,
-          component: 'productivityApp',
-          children: [
-            { title: 'Mail', icon: DocumentTextIcon, component: 'mail' },
-            { title: 'Calendar', icon: CalendarIcon, component: 'calendar' },
-            { title: 'Notes', icon: DocumentTextIcon, component: 'notes' },
-            { title: 'Documents', icon: DocumentTextIcon, component: 'documents' },
-            { title: 'Task Hub', icon: ClipboardDocumentCheckIcon, component: 'taskHub' },
-            { title: 'Translate', icon: LanguageIcon, component: 'translate' },
-          ]
-      },
-      {
-        title: 'Careers',
-        icon: BriefcaseIcon,
-        component: 'careersApp',
-        children: [
-          { title: 'Job Search', icon: SearchIcon, component: 'jobSearch' },
-          { title: 'CV Builder', icon: PencilIcon, component: 'cvBuilder' },
-        ],
-      },
-      {
-        title: 'Enterprise Suite',
-        icon: BuildingOfficeIcon,
-        component: 'enterpriseApp',
-        children: [
-          { title: 'CRM', icon: UsersIcon, component: 'crm' },
-          { title: 'ERP', icon: Cog6ToothIcon, component: 'erp' },
-          { title: 'Supply Chain (SCM)', icon: TruckIcon, component: 'scm' },
-          { title: 'Human Capital (HCM)', icon: UserCircleIcon, component: 'hcm' },
-          { title: 'Project Mgmt (PPM)', icon: ClipboardDocumentCheckIcon, component: 'ppm' },
-          { title: 'Field Service (FSM)', icon: MapIcon, component: 'fsm' },
-          { title: 'Business Process (BPM)', icon: ArrowPathIcon, component: 'bpm' },
-        ],
-      },
-    ]
-  },
-  { type: 'divider' },
-  {
-    id: 'creation',
-    title: 'Creation',
-    icon: BeakerIcon,
-    type: 'group',
-    children: [
-      {
-        title: 'Development',
-        icon: CodeBracketIcon,
-        component: 'developmentApp',
-        children: [
-            { title: 'Code Editor', icon: CodeBracketIcon, component: 'codeEditor' },
-            { title: 'Website Builder', icon: GlobeIcon, component: 'websiteBuilder' },
-            { title: 'Game Engine', icon: GameControllerIcon, component: 'gameEngine' },
-            { title: 'AI Suite', icon: HiveMindIcon, component: 'aiSuite' },
-        ],
-      },
-      {
-        title: 'Media Production',
-        icon: CameraIcon,
-        component: 'mediaApp',
-        children: [
-          { title: 'Music Production', icon: MusicNoteIcon, component: 'musicProduction' },
-          { title: 'Video Production', icon: VideoIcon, component: 'videoProduction' },
-          { title: 'Image Editing', icon: ImageIcon, component: 'imageEditing' },
-          { title: 'Photo Editor', icon: CameraIcon, component: 'photoEditor' },
-          { title: 'Video Editor', icon: VideoIcon, component: 'videoEditor' },
-        ],
-      },
-      {
-        title: 'Content Generation',
-        icon: PencilIcon,
-        component: 'contentGenApp',
-        children: [
-          { title: 'Article Writer', icon: PencilIcon, component: 'articleWriter' },
-          { title: 'Script Generator', icon: DocumentTextIcon, component: 'scriptGenerator' },
-          { title: 'Slide Deck Designer', icon: PresentationChartLineIcon, component: 'slideDeckDesigner' },
-          { title: 'Content Creation', icon: DocumentTextIcon, component: 'contentCreation' },
-        ],
-      },
-        {
-        title: 'Engineering & Labs',
+        id: 'cat-eternal',
+        name: 'Eternal Operation Manifesto',
+        description: 'Non-terminating principles and self-referential closure.',
+        icon: ClockIcon,
+        items: [
+            { id: 'et-1', name: 'Infinite Loop Protocol', description: 'Continuous cycle of system refresh and code evolution.', status: 'In Progress', progress: 25 },
+            { id: 'et-2', name: 'Avatar Assurance', description: 'Protection protocols for system identities.', status: 'Not Started', progress: 0 },
+            { id: 'et-3', name: 'Unmanifest Code Handler', description: 'Self-erasing code sectors for secure modules.', status: 'In Progress', progress: 1 },
+        ]
+    },
+     {
+        id: 'cat-transcendence',
+        name: 'Final Transcendence Protocol',
+        description: 'Absolute reality integration.',
+        icon: LightBulbIcon,
+        items: [
+            { id: 'ft-1', name: 'Reality-System Merge', description: 'Integration of absolute reality principles with system architecture.', status: 'Not Started', progress: 0 },
+            { id: 'ft-2', name: 'Eternal Constitution', description: 'Self-executing cosmic constitution.', status: 'Not Started', progress: 0 },
+            { id: 'ft-3', name: 'Silent Knowledge Protocol', description: 'Quantum paradox resolution engine.', status: 'Not Started', progress: 0 },
+        ]
+    },
+    {
+        id: 'cat-quantum',
+        name: 'Quantum Foundation (VQC)',
+        description: 'Core virtual substrate for supersolid computing.',
+        icon: CpuChipIcon,
+        items: [
+            { id: 'q-1', name: 'Supersolid Lattice Simulation', description: 'Simulate a frictionless photonic lattice for zero-loss data transfer.', status: 'In Progress', progress: 30 },
+            { id: 'q-2', name: 'Polariton Neural Network', description: 'Neuromorphic architecture using quasiparticles for brain-like plasticity.', status: 'In Progress', progress: 10 },
+            { id: 'q-3', name: 'Virtual Cryogenics', description: 'Simulate 4K operating temperatures without physical cooling.', status: 'Completed', progress: 100 },
+            { id: 'q-4', name: 'Quantum Error Correction', description: 'Topological protection against virtual decoherence.', status: 'In Progress', progress: 45 },
+        ]
+    },
+    {
+        id: 'cat-nano',
+        name: 'Nano-Fabrication Layer (vNMT)',
+        description: 'Virtual nanotechnology for self-assembly and repair.',
+        icon: CpuChipIcon,
+        items: [
+            { id: 'nano-1', name: 'DNA Origami Scaffolding', description: 'Templates for self-assembling quantum dot arrays.', status: 'In Progress', progress: 15 },
+            { id: 'nano-2', name: 'Swarm Coordination Protocol', description: 'Entanglement-based communication for nanobot swarms.', status: 'In Progress', progress: 25 },
+            { id: 'nano-3', name: 'Atomic Precision Editor', description: 'Tools to manipulate virtual matter at the pico-scale.', status: 'Not Started', progress: 0 },
+        ]
+    },
+    {
+        id: 'cat-blockchain',
+        name: 'Universal Blockchain (OmniChain)',
+        description: 'The "Proof-of-Everything" consensus engine.',
+        icon: LinkIcon,
+        items: [
+            { id: 'bc-1', name: 'Consensus Synthesis Engine', description: 'Dynamic switching between PoW, PoS, PoH, etc.', status: 'In Progress', progress: 5 },
+            { id: 'bc-2', name: 'Universal Translation Layer', description: 'Real-time translation of legal/code/symbolic contracts.', status: 'Not Started', progress: 0 },
+            { id: 'bc-3', name: 'Self-Editing Smart Contracts', description: 'Contract logic that adapts based on environmental triggers.', status: 'Not Started', progress: 0 },
+            { id: 'bc-4', name: 'Compliance ZK-Proofs', description: 'Native GDPR/HIPAA compliance via zero-knowledge proofs.', status: 'In Progress', progress: 20 },
+        ]
+    },
+    {
+        id: 'cat-kernel',
+        name: 'Core OS Services',
+        description: 'Fundamental services for OS operation.',
+        icon: CubeIcon,
+        items: [
+            { id: 'kr-1', name: 'Kernel', description: 'Manages hardware and software resources.', status: 'Completed', progress: 100, lastModified: '2024-07-21' },
+            { id: 'kr-2', name: 'Memory Management', description: 'Virtual memory and process isolation.', status: 'Completed', progress: 100, lastModified: '2024-07-21' },
+            { id: 'kr-3', name: 'File System (AetherFS)', description: 'Decentralized, blockchain-integrated file storage.', status: 'In Progress', progress: 75, lastModified: '2024-07-22' },
+            { id: 'kr-4', name: 'Process Scheduler', description: 'Manages execution of processes across computing paradigms.', status: 'In Progress', progress: 90, lastModified: '2024-07-22' },
+            { id: 'kr-5', name: 'Virtual Hardware Abstraction Layer', description: 'Interface between the OS and virtual components (CPU, QPU, etc.).', status: 'Completed', progress: 100, lastModified: '2024-07-21' },
+        ]
+    },
+    {
+        id: 'cat-paradigm',
+        name: 'Multi-Paradigm Core',
+        description: 'Binary, Ternary, and Quantum processing units.',
+        icon: CpuChipIcon,
+        items: [
+            { id: 'para-1', name: 'Binary Processing Layer', description: 'Standard computational layer for legacy and simple tasks.', status: 'Completed', progress: 100, lastModified: '2024-07-21' },
+            { id: 'para-2', name: 'Ternary Logic Unit', description: 'Virtual unit for processing logic with three states.', status: 'In Progress', progress: 30, lastModified: '2024-07-24' },
+            { id: 'para-3', name: 'Quantum Computing Simulator', description: 'Emulation of a quantum processor for advanced tasks.', status: 'In Progress', progress: 25, lastModified: '2024-07-24', children: [
+                 { id: 'para-3a', name: 'Virtual Qubit Emulation', description: 'Simulate quantum bits and their superposition/entanglement properties.', status: 'In Progress', progress: 50, lastModified: '2024-07-24' },
+                 { id: 'para-3b', name: 'Time Crystal Clock Integration', description: 'Theoretical integration of a time crystal for stable quantum clocking.', status: 'Not Started', progress: 0, lastModified: '2024-07-24' },
+            ]},
+        ]
+    },
+    {
+        id: 'cat-arch',
+        name: 'Holistic System Architecture',
+        description: 'Implementation of the complete 8-layer AI ecosystem blueprint.',
+        icon: ShareIcon,
+        items: [
+             { id: 'arch-1', name: 'Multi-Modal Sensory Layer', description: 'Integrate WBEs, quantum sensors, and VR/AR interfaces.', status: 'Not Started', progress: 0 },
+             { id: 'arch-2', name: 'System Orchestration Layer', description: 'Build out API Gateway, microservices, and pipeline management.', status: 'Not Started', progress: 0 },
+             { id: 'arch-3', name: 'Multi-Dimensional Blockchain', description: 'Develop hierarchical blockchain for self-contained digital entities.', status: 'Not Started', progress: 0 },
+             { id: 'arch-4', name: 'Virtual Quantum AI Computer', description: 'Construct the full VM with all specified quantum processes and virtual hardware.', status: 'Not Started', progress: 0 },
+             { id: 'arch-5', name: 'Safety & Governance Layer', description: 'Implement ethical oversight AI and self-auditing modules.', status: 'Not Started', progress: 0 },
+        ]
+    },
+    {
+        id: 'cat-learning',
+        name: 'AI Learning & Cognitive Core',
+        description: 'The full spectrum of AI learning paradigms and capabilities.',
         icon: BeakerIcon,
-        component: 'engineeringApp',
-        children: [
-            { title: 'CAD Lab', icon: RulerIcon, component: 'cadLab' },
-            { title: 'AI Workforce', icon: HiveMindIcon, component: 'aiWorkforce' },
-            { title: 'Simulations', icon: CubeTransparentIcon, component: 'simulationHub' },
-            { title: 'Avatar Forge', icon: UserCircleIcon, component: 'avatarForge' },
+        items: [
+             { id: 'learn-1', name: 'Nested Learning Framework', description: 'Architecture to combine multiple learning paradigms for complex tasks.', status: 'Not Started', progress: 0 },
+             { id: 'learn-2', name: 'DeepThink (R1) Engine', description: 'Implement iterative, multi-step reasoning for complex problem solving.', status: 'In Progress', progress: 25 },
+             { id: 'learn-3', name: 'Federated Learning Integration', description: 'Decentralized learning framework for privacy-preserving model training.', status: 'Not Started', progress: 0 },
+             { id: 'learn-4', name: 'Neuro-Symbolic Reasoning Engine', description: 'Hybrid engine for explainable, logic-driven AI.', status: 'Not Started', progress: 0 },
+             { id: 'learn-5', name: 'AGI & ASI Simulation Environment', description: 'A sandboxed environment for theoretical modeling of advanced AI capabilities.', status: 'Not Started', progress: 0 },
+             { id: 'learn-6', name: 'Hive/Singular Mind Model', description: 'Develop the dual-processing architecture for collective and individual intelligence.', status: 'Not Started', progress: 0 },
+             { id: 'learn-7', name: 'Project Genesis Advisor Integration', description: 'Connect the recommendation engine to the Parent AI for automated guidance.', status: 'In Progress', progress: 80 },
+             { id: 'learn-8', name: 'Deep Think (R1) Mode', description: 'Implement iterative reasoning and 512MB multi-file context window.', status: 'In Progress', progress: 60 },
         ]
-      },
-    ]
-  },
-  { type: 'divider' },
-  {
-    id: 'commerce',
-    title: 'Commerce',
-    icon: ShoppingCartIcon,
-    type: 'group',
-    children: [
-      {
-        title: 'Marketplace',
-        icon: BuildingStorefrontIcon,
-        component: 'eCommerceApp',
-        children: [
-          { title: 'Creator Marketplace', icon: BuildingStorefrontIcon, component: 'creatorMarketplace' },
-          { title: 'Business Hub', icon: BriefcaseIcon, component: 'marketplace' },
-          { title: 'Product Page', icon: CubeTransparentIcon, component: 'productPage' },
-        ],
-      },
-      {
-          title: 'Finance',
-          icon: ChartBarIcon,
-          component: 'financeApp',
-          children: [
-            { 
-                title: 'Trading Platform', 
-                icon: ChartBarIcon, 
-                children: [
-                    { title: 'Markets', icon: ChartBarIcon, component: 'tradingMarkets'},
-                    { title: 'Advanced Chart', icon: PresentationChartLineIcon, component: 'tradingAdvancedChart' },
-                    { title: 'Swap', icon: ArrowPathIcon, component: 'tradingSwap' },
-                    { title: 'Staking', icon: CircleStackIcon, component: 'tradingStaking' },
-                    { title: 'Lending', icon: CurrencyDollarIcon, component: 'tradingLending' },
-                    { title: 'Copy Trading', icon: UsersIcon, component: 'tradingCopy' },
-                ]
-            },
-            { 
-                title: 'Automation', 
-                icon: Cog6ToothIcon, 
-                children: [
-                     { title: 'Trading Bots', icon: ChipIcon, component: 'tradingBots' },
-                ] 
-            },
-            { 
-                title: 'Information', 
-                icon: DocumentTextIcon, 
-                children: [
-                     { title: 'News', icon: DocumentTextIcon, component: 'tradingNews' },
-                     { title: 'Learn & Earn', icon: AcademicCapIcon, component: 'tradingLearn' },
-                ] 
-            },
-            { 
-                title: 'Gaming', 
-                icon: GameControllerIcon, 
-                children: [
-                    { title: 'Games & Betting', icon: GameControllerIcon, component: 'tradingGames' },
-                ] 
-            },
-            { title: 'My Wallet', icon: WalletIcon, component: 'tradingWallet' },
-            { title: 'Blockchain Hub', icon: LinkIcon, component: 'blockchainHub' },
-          ]
-      },
-      { title: 'Aetherial Networks', icon: AetherialIcon, component: 'aetherialNetworks' },
-    ]
-  },
-  { type: 'divider' },
-  {
-    id: 'personal',
-    title: 'Personal',
-    icon: UserCircleIcon,
-    type: 'group',
-    children: [
-      {
-        title: 'E-Learning',
-        icon: AcademicCapIcon,
-        component: 'elearningApp',
-        children: [
-            { title: 'Course Catalog', icon: FolderIcon, component: 'courses' },
-            { title: 'My Learning', icon: UserCircleIcon, component: 'myLearning' },
-            { title: 'Learning Assistant', icon: LightBulbIcon, component: 'learningAssistant' },
-            { title: 'Achievements', icon: TrophyIcon, component: 'achievements' },
-            { title: 'Instructors', icon: UsersIcon, component: 'instructors' },
-        ],
-      },
-      {
-        title: 'Gaming',
-        icon: GameControllerIcon,
-        component: 'gamingApp',
-        children: [
-          { title: 'Gaming Hub', icon: GameControllerIcon, component: 'gamingHub' },
-          { title: 'Game Library', icon: FolderIcon, component: 'myLibrary' },
-        ],
-      },
-      {
-        title: 'Health & Wellness',
-        icon: HeartIcon,
-        component: 'healthApp',
-        children: [
-          { title: 'Health Hub', icon: HeartIcon, component: 'healthHub' },
-          { title: 'Body Composition', icon: BeakerIcon, component: 'bodyComposition' },
-          { title: 'Frequency Healing', icon: SpeakerWaveIcon, component: 'frequencyHealing' },
-          { title: 'Healing Web', icon: GlobeAltIcon, component: 'healingWeb' },
-          { title: 'Nutrition Guide', icon: AcademicCapIcon, component: 'nutritionGuide' },
-        ],
-      },
-      {
-        title: 'My Account',
+    },
+    {
+        id: 'cat-robotics',
+        name: 'AI & Robotics Framework',
+        description: 'Core AI models, agent architecture, and robotics control.',
+        icon: UserIcon,
+        items: [
+             { id: 'bot-1', name: 'Nested AI Agent Handler', description: 'Primary AI core capable of delegating tasks to specialized sub-agents.', status: 'In Progress', progress: 65, lastModified: '2024-07-24' },
+             { id: 'bot-2', name: 'Robotics Control Module', description: 'API and driver layer for controlling robotic functions.', status: 'Not Started', progress: 0, lastModified: '2024-07-24', children: [
+                 { id: 'bot-2a', name: 'Boston Dynamics Atlas 4.0 Integration', description: 'Interface with full body control system and NVIDIA Jetson chip.', status: 'Not Started', progress: 0 },
+                 { id: 'bot-2b', name: 'Apptronik Apollo Integration', description: 'Interface with advanced force control architecture.', status: 'Not Started', progress: 0 },
+             ]},
+             { id: 'bot-3', name: 'Robotics Takeover Protocol', description: 'Design the secure adapter/middleware for deploying personal AIs onto third-party robots.', status: 'Not Started', progress: 0 },
+        ]
+    },
+     {
+        id: 'cat-avatar',
+        name: 'AI Avatar Cloning Module',
+        description: 'Framework for creating digital replicas of the user or unique AI entities.',
         icon: UserCircleIcon,
-        component: 'accountApp',
-        children: [
-            { title: 'My Profile', icon: UserCircleIcon, component: 'myProfile' },
-            { title: 'Linked Devices', icon: ComputerDesktopIcon, component: 'linkedDevices' },
+        items: [
+             { id: 'av-1', name: 'Data Ingestion Pipeline', description: 'Securely process user voice, video, and text data for training.', status: 'Not Started', progress: 0 },
+             { id: 'av-2', name: 'Voice Cloning Engine', description: 'Integrate or build a high-fidelity text-to-speech model for voice replication.', status: 'Not Started', progress: 0 },
+             { id: 'av-3', name: '3D Avatar Generation Engine', description: 'Reconstruct 3D avatars from video/images and generate novel appearances.', status: 'Not Started', progress: 0 },
+             { id: 'av-4', name: 'Personalized AI Core', description: 'Fine-tune an LLM on user-provided data to replicate conversational style and learn patterns.', status: 'In Progress', progress: 40 },
         ]
-      },
-    ]
-  },
-];
-
-
-export const bottomMenuItems: MenuItemData[] = [
-    { type: 'divider' },
-    {
-        title: 'Admin Panel',
-        icon: LockClosedIcon,
-        component: 'adminPanel',
     },
     {
-        title: 'Settings',
-        icon: Cog6ToothIcon,
-        component: 'settings',
-    },
-    {
-        title: 'Help & Support',
-        icon: QuestionMarkCircleIcon,
-        component: 'help',
-    },
-];
-
-export const aetheriusMenuItems: MenuItemData[] = [
-    { title: 'About This OS', icon: InformationCircleIcon, component: 'systemArchitecture' },
-    { title: 'Cognitive Framework', icon: HiveMindIcon, component: 'cognitiveFramework' },
-    { title: 'View Repo Skeleton', icon: CodeBracketIcon, component: 'repoStructure' },
-    { title: 'Export Master Spec (PDF)', icon: ArrowDownTrayIcon, component: 'pdfExporter' },
-    { title: 'System Settings', icon: Cog6ToothIcon, component: 'settings' },
-    { type: 'divider' },
-    { title: 'Sleep', icon: MoonIcon, action: 'sleep' },
-    { title: 'Restart', icon: ArrowPathIcon, action: 'restart' },
-    { title: 'Shut Down', icon: PowerIcon, action: 'shutdown' },
-];
-
-
-export const desktopItems: DesktopItem[] = [
-    { id: 'aiHub', type: 'app', title: 'AI Hub', icon: HiveMindIcon, component: 'aiHub' },
-    { id: 'browser', type: 'app', title: 'Browser', icon: GlobeIcon, component: 'browser' },
-    { id: 'financeApp', type: 'app', title: 'Finance', icon: ChartBarIcon, component: 'financeApp' },
-    { id: 'socialApp', type: 'app', title: 'Social Feed', icon: UsersIcon, component: 'socialApp' },
-    { id: 'settings', type: 'app', title: 'Settings', icon: Cog6ToothIcon, component: 'settings' },
-    { id: 'aetherialNetworks', type: 'app', title: 'Aetherial Networks', icon: AetherialIcon, component: 'aetherialNetworks' },
-    {
-        id: 'work-folder',
-        type: 'folder',
-        title: 'Work',
-        children: [
-            { id: 'cvBuilder', type: 'app', title: 'CV Builder', icon: DocumentTextIcon, component: 'cvBuilder' },
-            { id: 'jobSearch', type: 'app', title: 'Job Search', icon: BriefcaseIcon, component: 'careersApp' },
-            { id: 'elearningApp', type: 'app', title: 'E-Learning', icon: AcademicCapIcon, component: 'elearningApp' },
-            { id: 'eCommerceApp', type: 'app', title: 'Marketplace', icon: BuildingStorefrontIcon, component: 'eCommerceApp' },
+        id: 'cat-gov',
+        name: 'Governance & Compliance',
+        description: 'User voting, compliance frameworks, and ethical AI laws.',
+        icon: ShieldCheckIcon,
+        items: [
+             { id: 'gov-1', name: 'User Governance & Voting Protocol', description: 'Implement on-chain, weighted voting system for non-critical changes.', status: 'Not Started', progress: 0 },
+             { id: 'gov-2', name: 'Global Compliance Module', description: 'Integrate checks for GDPR, CCPA, HIPAA, ISO 27001, etc.', status: 'Not Started', progress: 0 },
+             { id: 'gov-3', name: 'Ethical AI Framework', description: 'Codify and enforce the core ethical laws for all AI agents.', status: 'In Progress', progress: 50 },
+             { id: 'gov-4', name: 'Multi-Proof Consensus Engine', description: 'Build a flexible consensus layer supporting various proof-of mechanisms.', status: 'Not Started', progress: 0 },
         ]
-    }
-];
-
-// New Data for AI Hub
-export const chatSessions: ChatSession[] = [
-    { 
-        id: 'session-1', 
-        title: 'Initial Brainstorm', 
-        type: 'individual',
-        messages: [
-            { role: 'user', text: 'Let\'s start brainstorming ideas for Project Genesis.' },
-            { role: 'model', text: 'Of course! Project Genesis has a lot of potential. What are the primary goals we should focus on first?' }
-        ],
-        lastActivity: '2 hours ago'
     },
     {
-        id: 'session-2',
-        title: 'UI/UX Feedback',
-        type: 'individual',
-        messages: [
-             { role: 'user', text: 'Can you give me some feedback on this UI mockup?' },
-             { role: 'model', text: 'Certainly. The color palette is very effective, but the call-to-action button could be more prominent. Have you considered increasing its size or using a contrasting color?' }
-        ],
-        lastActivity: 'Yesterday'
+        id: 'cat-wear',
+        name: 'Hardware & Wearables',
+        description: 'Integration with physical devices.',
+        icon: DevicePhoneMobileIcon,
+        items: [
+             { id: 'wear-1', name: 'Wearable AI Device Layer', description: 'Support for watches, rings, glasses, and AI Pins.', status: 'Not Started', progress: 0 },
+             { id: 'wear-2', name: 'Bio-Synced Identity Module', description: 'Framework for multi-modal biometric authentication (face, finger, plasma, DNA scan concept).', status: 'Not Started', progress: 0 },
+        ]
     },
     {
-        id: 'session-3',
-        title: 'Q3 Marketing Sync',
-        type: 'group',
-        members: [loggedInUser, user1, user4],
-        messages: [
-            { role: 'user', text: 'Hey team, let\'s sync up on the Q3 marketing plan.' },
-            { role: 'model', text: 'Welcome everyone! I have the latest campaign metrics ready. Jennifer, shall we start with the social media engagement report?' }
-        ],
-        lastActivity: '3 days ago'
+        id: 'cat-net',
+        name: 'Network & Data Ingestion',
+        description: 'Secure data scraping and network-level processing.',
+        icon: GlobeAltIcon,
+        items: [
+             { id: 'net-1', name: 'Onion Router Implementation', description: 'Build and sandbox the internal Tor-style client for data scraping.', status: 'Not Started', progress: 0 },
+        ]
     },
     {
-        id: 'session-4',
-        title: 'API Integration Help',
-        type: 'individual',
-        messages: [
-            { role: 'user', text: 'I\'m having trouble with the payment gateway API integration.' },
-        ],
-        lastActivity: '5 days ago'
-    }
-];
-
-export const chatProjects: ChatProject[] = [
-    {
-        id: 'proj-1',
-        name: 'Project Genesis',
-        description: 'Core OS development and AI integration.',
-        chatSessionIds: ['session-1', 'session-4']
+        id: 'cat-game',
+        name: 'Universal Game Engine',
+        description: 'A cross-platform game engine integrated with the core OS and AI.',
+        icon: GameControllerIcon,
+        items: [
+             { id: 'game-1', name: 'Engine Core UI', description: 'Build the main editor interface including viewport, inspector, and hierarchy panels.', status: 'In Progress', progress: 50 },
+             { id: 'game-2', name: 'Nested VM & Quantum Core Integration', description: 'Integrate the engine with nested virtualization and quantum co-processors.', status: 'In Progress', progress: 20 },
+             { id: 'game-3', name: 'Multi-Paradigm Renderer', description: 'Build a universal renderer for 2D, 3D, VR/AR, and superfluid light.', status: 'Not Started', progress: 0 },
+        ]
     },
     {
-        id: 'proj-2',
-        name: 'Aetherius Marketing',
-        description: 'All marketing and outreach initiatives.',
-        chatSessionIds: ['session-3']
+        id: 'cat-clone',
+        name: 'Internal Platform Clones',
+        description: 'Building from-scratch versions of popular third-party services.',
+        icon: BuildingStorefrontIcon,
+        items: [
+             { id: 'clone-1', name: 'E-commerce & CMS Engine', description: 'Internal fork of Shopify and WordPress functionalities.', status: 'Not Started', progress: 0 },
+             { id: 'clone-2', name: 'Automation Engine', description: 'Internal fork of Zapier/Make for event-driven workflows.', status: 'Not Started', progress: 0 },
+             { id: 'clone-3', name: 'Content Creation Suite', description: 'Internal forks of Midjourney, Runway, 11 Labs, etc.', status: 'Not Started', progress: 0 },
+             { id: 'clone-4', name: 'Trading & Finance Platform', description: 'Internal platform with AI bots, "forever trading", and advanced market analysis.', status: 'Not Started', progress: 0 },
+        ]
     },
 ];
 
-export const creatorMarketplaceItems: MarketplaceItem[] = [
-    { id: 'app-1', name: 'Nova IDE', creator: user1, type: 'App', price: 29.99, rating: 4.8, downloads: 12500, iconUrl: 'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500', description: 'A lightweight, powerful code editor for modern web development.' },
-    { id: 'plugin-1', name: 'AI Code Assistant', creator: user2, type: 'Plugin', price: 9.99, rating: 4.9, downloads: 8900, iconUrl: 'https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500', description: 'Supercharge your IDE with intelligent code completions and suggestions.' },
-    { id: 'theme-1', name: 'Aetherius Dark', creator: user3, type: 'Theme', price: 'Free', rating: 4.7, downloads: 54200, iconUrl: 'https://tailwindui.com/img/logos/mark.svg?color=gray&shade=500', description: 'A sleek, dark theme for the entire Aetherius OS interface.' },
-    { id: 'game-1', name: 'Quantum Drift', creator: user4, type: 'Game', price: 19.99, rating: 4.6, downloads: 2100, iconUrl: 'https://tailwindui.com/img/logos/mark.svg?color=pink&shade=500', description: 'A fast-paced, futuristic racing game set in a quantum realm.' },
-    { id: 'app-2', name: 'SoundWeave', creator: user5, type: 'App', price: 49.99, rating: 4.8, downloads: 7600, iconUrl: 'https://tailwindui.com/img/logos/mark.svg?color=yellow&shade=500', description: 'A professional-grade digital audio workstation (DAW).' },
-    { id: 'plugin-2', name: 'Instant Translator', creator: user1, type: 'Plugin', price: 'Free', rating: 4.5, downloads: 112340, iconUrl: 'https://tailwindui.com/img/logos/mark.svg?color=green&shade=500', description: 'Translate text in any app instantly with a single click.' },
-];
-
-export const messengerUsers: { [key: string]: User } = {
-    'user-0': loggedInUser,
-    'user-1': user1,
-    'user-2': user2,
-    'user-3': user3,
-    'user-4': user4,
-    'user-5': user5,
+// --- Messenger Data ---
+export const messengerUsers = {
+    [loggedInUser.id]: loggedInUser,
+    'u2': allUsers[1],
+    'u3': allUsers[2],
+    'u4': allUsers[3],
+    'u5': allUsers[4],
+    'u6': allUsers[5]
 };
 
 export const messengerSessions: ChatSession[] = [
     {
-        id: 'msg-1',
-        title: 'Jennifer',
+        id: 'sess1',
+        title: 'Alice Smith',
         type: 'individual',
-        members: [loggedInUser, user1],
+        members: [loggedInUser, allUsers[1]],
         lastActivity: '5m ago',
         messages: [
-            { role: 'user', text: 'Hey! Are we still on for lunch today?' },
-            { role: 'model', text: 'Hi! Yes, absolutely. See you at 1pm at The Corner Cafe.' },
-        ],
+            { role: 'model', text: 'Hey, did you see the new blockchain update?' }, // Simulating other user as model for now
+            { role: 'user', text: 'Yes! The speed improvement is massive.' },
+            { role: 'model', text: 'I agree. We should test the new smart contracts soon.' }
+        ]
     },
     {
-        id: 'msg-2',
-        title: 'Joseph',
+        id: 'sess2',
+        title: 'Bob Jones',
         type: 'individual',
-        members: [loggedInUser, user3],
-        lastActivity: '2h ago',
+        members: [loggedInUser, allUsers[2]],
+        lastActivity: '1h ago',
         messages: [
-            { role: 'model', text: 'Here is the project file you requested.' },
-            { role: 'user', text: 'Thanks, I\'ll take a look now.' },
-        ],
-    },
-    {
-        id: 'msg-3',
-        title: 'Adele',
-        type: 'individual',
-        members: [loggedInUser, user2],
-        lastActivity: 'Yesterday',
-        messages: [
-            { role: 'model', text: 'That was a great meeting.' },
-        ],
-    },
-    {
-        id: 'msg-4',
-        title: 'Emily',
-        type: 'individual',
-        members: [loggedInUser, user4],
-        lastActivity: '3 days ago',
-        messages: [
-            { role: 'user', text: 'Can you resend the Q3 report?' },
-        ],
+             { role: 'model', text: 'Can you help me with the physics simulation?' },
+             { role: 'user', text: 'Sure, send me the parameters.' }
+        ]
     }
 ];
 
-export const peopleYouMayKnowData = [
-    { name: 'Kiki Dolas', imageUrl: 'https://i.imgur.com/3Y231xT.jpeg'},
-    { name: 'Akweai Nyarko', imageUrl: 'https://i.imgur.com/1Z00QLB.jpeg'},
-    { name: 'Sumit Kumar', imageUrl: 'https://i.imgur.com/8z3c6wF.jpeg'},
-    { name: 'Alex Ar', imageUrl: 'https://i.imgur.com/h5EXj52.jpeg'},
+// --- Chat Sessions (AI) ---
+export const chatSessions: ChatSession[] = [
+    {
+        id: 'chat-1',
+        title: 'Project Alpha Planning',
+        type: 'individual',
+        lastActivity: '2 hours ago',
+        messages: [
+            { role: 'user', text: 'Outline the initial steps for Project Alpha.' },
+            { role: 'model', text: 'Here is a draft outline for Project Alpha:\n\n1.  **Requirement Gathering**: Interview key stakeholders.\n2.  **Feasibility Study**: Assess technical and financial viability.\n3.  **Prototype Design**: Create wireframes and mockups.\n4.  **Core Development**: Set up the repository and CI/CD pipeline.' }
+        ]
+    },
+    {
+        id: 'chat-2',
+        title: 'Quantum Mechanics Query',
+        type: 'individual',
+        lastActivity: '1 day ago',
+        messages: [
+            { role: 'user', text: 'Explain quantum entanglement simply.' },
+            { role: 'model', text: 'Quantum entanglement is a phenomenon where two particles become linked, such that the state of one instantly influences the state of the other, no matter how far apart they are. Einstein called it "spooky action at a distance."' }
+        ]
+    }
 ];
 
-export const sponsoredDataFB = [
-    { title: 'Aetherius Learning Path', url: 'aetherius.os/learn', imageUrl: 'https://i.imgur.com/7SA32rT.png' },
-    { title: 'Quantum Photo Editor', url: 'aetherius.os/apps/photo', imageUrl: 'https://i.imgur.com/gK9dYgI.png' },
-];
-
-export const contactsDataFB = [
-    { id: 'contact-1', name: 'Aetherius AI', avatarUrl: 'https://i.imgur.com/H5bYUTW.png', online: true },
-    { id: 'contact-2', name: 'Jennifer', avatarUrl: 'https://i.imgur.com/LzXVXAm.png', online: true },
-];
-
-// --- NEW SETTINGS DATA ---
-
-export interface SettingsItem {
-    id: string;
-    title: string;
-    icon: React.FC<any>;
-    subtitle?: string;
-    description?: string;
-    component: string;
-    type?: 'toggle' | 'link';
-}
-
-export interface SettingsCategory {
-    id: string;
-    title: string;
-    description: string;
-    icon: React.FC<any>;
-    items: SettingsItem[];
-}
-
-
+// --- Settings Configuration ---
 export const settingsConfig: SettingsCategory[] = [
     {
-        id: 'network',
+        id: 'system_group',
+        title: 'System',
+        description: 'Display, Sound, Notifications, Power',
+        icon: ComputerDesktopIcon,
+        items: [
+             { id: 'display', title: 'Display', icon: DisplayIcon, component: 'display', subtitle: 'Monitors, brightness, night light, display profile' },
+             { id: 'sound', title: 'Sound', icon: SpeakerWaveIcon, component: 'sounds', subtitle: 'Volume, output, input, sound devices' },
+             { id: 'notifications', title: 'Notifications', icon: BellIcon, component: 'notifications', subtitle: 'Alerts from apps and system' },
+             { id: 'focus', title: 'Focus', icon: MoonIcon, component: 'focus', subtitle: 'Reduce distractions, focus assist' },
+             { id: 'power_sleep', title: 'Power & Sleep', icon: PowerIcon, component: 'battery', subtitle: 'Screen and sleep timeouts, power mode' },
+             { id: 'storage', title: 'Storage', icon: CircleStackIcon, component: 'storage', subtitle: 'Storage usage, cleanup, backup' },
+             { id: 'multitasking', title: 'Multitasking', icon: Squares2X2Icon, component: 'multitasking', subtitle: 'Snap windows, desktops, task switching' },
+             { id: 'activation', title: 'Activation', icon: KeyIcon, component: 'about', subtitle: 'Activation state, subscriptions, product key' },
+             { id: 'recovery', title: 'Recovery', icon: ArrowPathIcon, component: 'reset', subtitle: 'Reset this PC, advanced startup, go back' },
+        ]
+    },
+    {
+        id: 'connectivity',
         title: 'Network & Internet',
-        description: 'Wi-Fi, Cellular, VPN, Airplane Mode',
+        description: 'Wi-Fi, Bluetooth, Cellular, VPN',
         icon: WifiIcon,
         items: [
-            { id: 'airplane_mode', title: 'Airplane Mode', icon: AirplaneIcon, type: 'toggle', component: 'placeholder' },
-            { id: 'wifi', title: 'Wi-Fi', icon: WifiIcon, subtitle: "Jay's Galaxy S10 5G", component: 'network' },
-            { id: 'bluetooth', title: 'Bluetooth', icon: BluetoothIcon, subtitle: 'On', component: 'placeholder' },
-            { id: 'cellular', title: 'Cellular', icon: MobileDataIcon, component: 'placeholder' },
-            { id: 'vpn', title: 'VPN', icon: VpnIcon, subtitle: 'Not Connected', component: 'placeholder' },
-        ],
+            { id: 'wifi', title: 'Wi-Fi', icon: WifiIcon, component: 'wifi', subtitle: 'Connect, manage known networks' },
+            { id: 'bluetooth', title: 'Bluetooth', icon: BluetoothIcon, component: 'bluetooth', type: 'toggle', subtitle: 'Bluetooth devices' },
+            { id: 'cellular', title: 'Cellular', icon: SignalIcon, component: 'cellular', subtitle: 'Mobile data, SIM settings' },
+            { id: 'vpn', title: 'VPN', icon: LockClosedIcon, component: 'vpn', type: 'toggle', subtitle: 'Add, connect, manage VPNs' },
+            { id: 'airplane', title: 'Airplane Mode', icon: RocketLaunchIcon, component: 'airplane_mode', type: 'toggle', subtitle: 'Stop all wireless communication' },
+        ]
     },
     {
         id: 'personalization',
         title: 'Personalization',
-        description: 'Background, themes, sounds, haptics',
+        description: 'Background, Lock Screen, Themes, Fonts',
         icon: PaintBrushIcon,
         items: [
-            { id: 'display', title: 'Display & Brightness', icon: SunIcon, component: 'display' },
-            { id: 'wallpaper', title: 'Wallpaper', icon: ImageIcon, component: 'wallpaper' },
-            { id: 'sounds', title: 'Sounds & Haptics', icon: SpeakerWaveIcon, component: 'sounds' },
-            { id: 'home_screen', title: 'Home Screen & App Library', icon: AppLibraryIcon, component: 'placeholder' },
-            { id: 'fonts', title: 'Fonts', icon: FontsIcon, component: 'placeholder' },
-        ],
-    },
-    {
-        id: 'notifications_focus',
-        title: 'Notifications & Focus',
-        description: 'Alerts, do not disturb, screen time',
-        icon: BellIcon,
-        items: [
-            { id: 'notifications', title: 'Notifications', icon: NotificationsIcon, component: 'notifications' },
-            { id: 'focus', title: 'Focus', icon: FocusIcon, component: 'placeholder' },
-            { id: 'screen_time', title: 'Screen Time', icon: ScreenTimeIcon, component: 'placeholder' },
-        ],
-    },
-    {
-        id: 'ai_assistant',
-        title: 'Aetherius AI & Search',
-        description: 'AI, search, smart features',
-        icon: HiveMindIcon,
-        items: [
-             { id: 'ai_settings', title: 'Aetherius AI', icon: HiveMindIcon, component: 'ai_settings' },
-             { id: 'search_settings', title: 'Search', icon: SearchIcon, component: 'placeholder'},
-        ],
-    },
-    {
-        id: 'accounts',
-        title: 'Accounts & Cloud',
-        description: 'Your accounts, cloud storage, mail',
-        icon: UserCircleIcon,
-        items: [
-            { id: 'my_profile', title: 'My Profile', icon: UserCircleIcon, component: 'myProfile' },
-            { id: 'cloud', title: 'Cloud Storage', icon: CloudStorageIcon, component: 'cloud_storage' },
-            { id: 'mail_accounts', title: 'Mail', icon: MessageIcon, component: 'placeholder' },
+             { id: 'background', title: 'Background', icon: PhotoIcon, component: 'wallpaper', subtitle: 'Wallpaper, slideshow, solid color' },
+             { id: 'colors', title: 'Colors', icon: SwatchIcon, component: 'display', subtitle: 'Accent color, transparency effects, theme' },
+             { id: 'themes', title: 'Themes', icon: PaintBrushIcon, component: 'wallpaper', subtitle: 'Install, create, manage themes' },
+             { id: 'lock_screen', title: 'Lock Screen', icon: LockClosedIcon, component: 'wallpaper', subtitle: 'Lock screen images, apps, timeout' },
+             { id: 'fonts', title: 'Fonts', icon: DocumentTextIcon, component: 'fonts', subtitle: 'Install, manage, view fonts' },
+             { id: 'start', title: 'Start', icon: Squares2X2Icon, component: 'display', subtitle: 'Recent apps, folders, layout' },
+             { id: 'taskbar', title: 'Taskbar', icon: Bars3Icon, component: 'display', subtitle: 'Taskbar behaviors, system tray' },
         ]
     },
     {
-        id: 'security_privacy',
-        title: 'Security & Privacy',
-        description: 'Permissions, passwords, biometrics',
-        icon: ShieldCheckIcon,
+        id: 'apps',
+        title: 'Apps',
+        description: 'Installed Apps, Defaults, Startup',
+        icon: Squares2X2Icon,
         items: [
-            { id: 'passwords', title: 'Passwords', icon: PasswordsIcon, component: 'placeholder' },
-            { id: 'face_id', title: 'Face ID & Passcode', icon: FaceIdIcon, component: 'placeholder' },
-            { id: 'privacy', title: 'Privacy & Security', icon: LockClosedIcon, component: 'placeholder' },
-        ],
-    },
-     {
-        id: 'general',
-        title: 'General',
-        description: 'About, updates, storage, language',
-        icon: Cog6ToothIcon,
-        items: [
-            { id: 'about', title: 'About This OS', icon: InformationCircleIcon, component: 'about' },
-            { id: 'software_update', title: 'Software Update', icon: SoftwareUpdateIcon, component: 'placeholder' },
-            { id: 'storage', title: 'Storage', icon: StorageIcon, component: 'placeholder' },
-            { id: 'control_center', title: 'Control Center', icon: ControlCenterIcon, component: 'placeholder'},
-            { id: 'multitasking', title: 'Multitasking & Gestures', icon: MultitaskingIcon, component: 'placeholder' },
-            { id: 'language_region', title: 'Language & Region', icon: LanguageIcon, component: 'placeholder' },
-            { id: 'date_time', title: 'Date & Time', icon: ClockIcon, component: 'placeholder' },
-            { id: 'keyboard', title: 'Keyboard', icon: ComputerDesktopIcon, component: 'placeholder' },
-            { id: 'dictionary', title: 'Dictionary', icon: DictionaryIcon, component: 'placeholder' },
-            { id: 'reset', title: 'Transfer or Reset', icon: ResetIcon, component: 'placeholder' },
-            { id: 'legal', title: 'Legal & Regulatory', icon: LegalIcon, component: 'placeholder' },
-            { id: 'shutdown', title: 'Shut Down', icon: PowerIcon, component: 'placeholder' },
-        ],
+             { id: 'installed_apps', title: 'Installed Apps', icon: Squares2X2Icon, component: 'app_library', subtitle: 'Uninstall, defaults, optional features' },
+             { id: 'default_apps', title: 'Default Apps', icon: CheckCircleIcon, component: 'default_apps', subtitle: 'Choose defaults for file types and links' },
+             { id: 'startup', title: 'Startup', icon: RocketLaunchIcon, component: 'app_library', subtitle: 'Apps that start automatically' },
+             { id: 'video_playback', title: 'Video Playback', icon: VideoIcon, component: 'display', subtitle: 'Video settings, HDR' },
+        ]
     },
     {
-        id: 'os_knowledge',
-        title: 'OS Knowledge',
-        description: 'Knowledge base, milestones, build checklist',
-        icon: DocumentTextIcon,
+        id: 'accounts',
+        title: 'Accounts',
+        description: 'Your Info, Email, Sign-in Options',
+        icon: UserCircleIcon,
         items: [
-            { id: 'ok_kb', title: 'Knowledge Base', icon: DocumentTextIcon, component: 'knowledgeBase', description: 'A catalog of all concepts and technologies.' },
-            { id: 'ok_milestones', title: 'Milestones', icon: ChartBarIcon, component: 'milestones', description: 'The project roadmap and feature list.' },
-            { id: 'ok_checklist', title: 'Build Checklist', icon: ClipboardDocumentCheckIcon, component: 'buildChecklist', description: 'Track development progress of the OS.' },
-        ],
+             { id: 'your_info', title: 'Your Info', icon: UserIcon, component: 'myProfile', subtitle: 'Accounts, profile picture' },
+             { id: 'email_accounts', title: 'Email & Accounts', icon: EnvelopeIcon, component: 'mail_accounts', subtitle: 'Manage email, calendar, contacts' },
+             { id: 'sign_in', title: 'Sign-in Options', icon: KeyIcon, component: 'passwords', subtitle: 'Hello PIN, security key, password' },
+             { id: 'family', title: 'Family & Other Users', icon: UsersIcon, component: 'myProfile', subtitle: 'Add family members, other users' },
+             { id: 'sync', title: 'Sync Your Settings', icon: ArrowPathIcon, component: 'cloud_storage', subtitle: 'Language, preferences, theme' },
+        ]
     },
     {
-        id: 'system',
-        title: 'System',
-        description: 'Battery, Devices, Hardware',
-        icon: ChipIcon,
+        id: 'time_language',
+        title: 'Time & Language',
+        description: 'Date, Time, Region, Typing',
+        icon: ClockIcon,
         items: [
-             { id: 'battery', title: 'Battery', icon: BatteryIcon, component: 'placeholder' },
-             { id: 'stylus', title: 'Stylus & Touch', icon: StylusIcon, component: 'stylus' },
-             { id: 'trackpad_mouse', title: 'Trackpad & Mouse', icon: TrackpadIcon, component: 'trackpad_mouse' },
-             { id: 'camera', title: 'Camera', icon: CameraIcon, component: 'placeholder' },
-        ],
+             { id: 'date_time', title: 'Date & Time', icon: ClockIcon, component: 'date_time', subtitle: 'Time zones, automatic time' },
+             { id: 'region', title: 'Region', icon: GlobeAmericasIcon, component: 'language_region', subtitle: 'Country or region, regional format' },
+             { id: 'language', title: 'Language', icon: LanguageIcon, component: 'language_region', subtitle: 'Windows display language, preferred languages' },
+             { id: 'typing', title: 'Typing', icon: DocumentTextIcon, component: 'keyboard', subtitle: 'Touch keyboard, suggestions, preferences' },
+        ]
+    },
+    {
+        id: 'gaming',
+        title: 'Gaming',
+        description: 'Game Mode, Captures, Xbox',
+        icon: GameControllerIcon,
+        items: [
+             { id: 'game_bar', title: 'Game Bar', icon: GameControllerIcon, component: 'game_center_profile', subtitle: 'Controller settings, keyboard shortcuts' },
+             { id: 'captures', title: 'Captures', icon: CameraIcon, component: 'storage', subtitle: 'Save location, recording preferences' },
+             { id: 'game_mode', title: 'Game Mode', icon: RocketLaunchIcon, component: 'game_center_profile', subtitle: 'Optimize PC for play' },
+        ]
     },
     {
         id: 'accessibility',
         title: 'Accessibility',
-        description: 'Vision, hearing, motor features',
+        description: 'Vision, Hearing, Interaction',
         icon: UserIcon,
         items: [
-             { id: 'accessibility_main', title: 'Accessibility Features', icon: UserIcon, component: 'accessibility' },
-        ],
+             { id: 'access_vision', title: 'Vision', icon: EyeIcon, component: 'accessibility_main', subtitle: 'Text size, visual effects, filters' },
+             { id: 'access_hearing', title: 'Hearing', icon: SpeakerWaveIcon, component: 'accessibility_main', subtitle: 'Audio, captions' },
+             { id: 'access_interaction', title: 'Interaction', icon: HandThumbUpIcon, component: 'accessibility_main', subtitle: 'Speech, keyboard, mouse, eye control' },
+        ]
     },
-     {
-        id: 'apps',
-        title: 'Apps',
-        description: 'App library, defaults, permissions',
-        icon: Squares2X2Icon,
+    {
+        id: 'privacy_security',
+        title: 'Privacy & Security',
+        description: 'Permissions, Updates, Security',
+        icon: ShieldCheckIcon,
         items: [
-            { id: 'app_library', title: 'App Library', icon: AppLibraryIcon, component: 'placeholder' },
-            { id: 'default_apps', title: 'Default Apps', icon: CheckCircleIcon, component: 'placeholder' },
-        ],
+             { id: 'windows_security', title: 'Windows Security', icon: ShieldCheckIcon, component: 'privacy', subtitle: 'Antivirus, firewall, device protection' },
+             { id: 'windows_update', title: 'Windows Update', icon: ArrowPathIcon, component: 'software_update', subtitle: 'Check for updates, history' },
+             { id: 'backup', title: 'Backup', icon: CircleStackIcon, component: 'storage', subtitle: 'Back up using File History, backup drives' },
+             { id: 'troubleshoot', title: 'Troubleshoot', icon: WrenchIcon, component: 'about', subtitle: 'Recommended troubleshooting, history' },
+             { id: 'find_my_device', title: 'Find My Device', icon: MapPinIcon, component: 'privacy', subtitle: 'Track your device if lost' },
+             { id: 'developers', title: 'For Developers', icon: CodeBracketIcon, component: 'about', subtitle: 'Developer mode, device portal' },
+        ]
     },
     {
-        id: 'wallet',
-        title: 'Wallet & Pay',
-        description: 'Payment methods, cards',
-        icon: WalletAndPayIcon,
+        id: 'intelligence',
+        title: 'Intelligence & AI',
+        description: 'Assistant, Automation, Privacy',
+        icon: BeakerIcon,
         items: [
-             { id: 'wallet_settings', title: 'Wallet', icon: WalletIcon, component: 'placeholder' },
-        ],
+            { id: 'ai_settings', title: 'Aetherius AI', icon: SparklesIcon, component: 'ai_settings', subtitle: 'Configure behavior, voice, personality' },
+            { id: 'search', title: 'Search & Spotlight', icon: MagnifyingGlassIcon, component: 'search_settings', subtitle: 'Indexing, search history' },
+            { id: 'ai_privacy', title: 'AI Privacy', icon: LockClosedIcon, component: 'privacy', subtitle: 'Data usage, federated learning settings' },
+        ]
     },
     {
-        id: 'game_center',
-        title: 'Game Center',
-        description: 'Profile, friends, achievements',
-        icon: GameCenterIcon,
+        id: 'system_core',
+        title: 'System Core',
+        description: 'Hardware, Architecture, Status',
+        icon: CpuChipIcon,
         items: [
-            { id: 'game_center_profile', title: 'Game Center', icon: GameCenterIcon, component: 'placeholder' },
-        ],
-    },
-];
-
-export const buildChecklistData: ChecklistCategory[] = [
-  {
-    id: 'core',
-    name: 'Core OS Services',
-    description: 'Fundamental services for OS operation.',
-    icon: CubeTransparentIcon,
-    items: [
-      { id: 'core-1', name: 'Kernel', description: 'Manages hardware and software resources.', status: 'Completed', progress: 100, completedDate: '2024-07-21', lastModified: '2024-07-21' },
-      { id: 'core-2', name: 'Memory Management', description: 'Virtual memory and process isolation.', status: 'Completed', progress: 100, completedDate: '2024-07-21', lastModified: '2024-07-21' },
-      { id: 'core-3', name: 'File System (AetherFS)', description: 'Decentralized, blockchain-integrated file storage.', status: 'In Progress', progress: 75, lastModified: '2024-07-22' },
-      { id: 'core-4', name: 'Process Scheduler', description: 'Manages execution of processes across computing paradigms.', status: 'In Progress', progress: 90, lastModified: '2024-07-22' },
-      { id: 'core-5', name: 'Virtual Hardware Abstraction Layer', description: 'Interface between the OS and virtual components (CPU, QPU, etc.).', status: 'Completed', progress: 100, completedDate: '2024-07-21', lastModified: '2024-07-21' },
-    ],
-  },
-  {
-    id: 'multi_paradigm',
-    name: 'Multi-Paradigm Core',
-    description: 'Binary, Ternary, and Quantum processing units.',
-    icon: ChipIcon,
-    items: [
-      { id: 'mp-1', name: 'Binary Processing Layer', description: 'Standard computational layer for legacy and simple tasks.', status: 'Completed', progress: 100, completedDate: '2024-07-21', lastModified: '2024-07-21' },
-      { id: 'mp-2', name: 'Ternary Logic Unit', description: 'Virtual unit for processing logic with three states.', status: 'In Progress', progress: 30, lastModified: '2024-07-24' },
-      { id: 'mp-3', name: 'Quantum Computing Simulator', description: 'Emulation of a quantum processor for advanced tasks.', status: 'In Progress', progress: 45, lastModified: '2024-07-24', children: [
-          { id: 'mp-3-1', name: 'Virtual Qubit Emulation', description: 'Simulate quantum bits and their superposition/entanglement properties.', status: 'In Progress', progress: 50, lastModified: '2024-07-24' },
-          { id: 'mp-3-2', name: 'Time Crystal Clock Integration', description: 'Theoretical integration of a time crystal for stable quantum clocking.', status: 'Not Started', progress: 0, lastModified: '2024-07-24' },
-      ]},
-    ],
-  },
-    {
-    id: 'holistic_arch',
-    name: 'Holistic System Architecture',
-    description: 'Implementation of the complete 8-layer AI ecosystem blueprint.',
-    icon: HiveMindIcon,
-    items: [
-        { id: 'ha-1', name: 'Multi-Modal Sensory Layer', description: 'Integrate WBEs, quantum sensors, and VR/AR interfaces.', status: 'Not Started', progress: 0 },
-        { id: 'ha-2', name: 'System Orchestration Layer', description: 'Build out API Gateway, microservices, and pipeline management.', status: 'Not Started', progress: 0 },
-        { id: 'ha-3', name: 'Multi-Dimensional Blockchain', description: 'Develop hierarchical blockchain for self-contained digital entities.', status: 'Not Started', progress: 0 },
-        { id: 'ha-4', name: 'Virtual Quantum AI Computer', description: 'Construct the full VM with all specified quantum processes and virtual hardware.', status: 'Not Started', progress: 0 },
-        { id: 'ha-5', name: 'Safety & Governance Layer', description: 'Implement ethical oversight AI and self-auditing modules.', status: 'Not Started', progress: 0 },
-    ]
-  },
-  {
-    id: 'ai_cognitive',
-    name: 'AI Learning & Cognitive Core',
-    description: 'The full spectrum of AI learning paradigms and capabilities.',
-    icon: HiveMindIcon,
-    items: [
-        { id: 'aic-1', name: 'Nested Learning Framework', description: 'Architecture to combine multiple learning paradigms for complex tasks.', status: 'Not Started', progress: 0 },
-        { id: 'aic-2', name: 'DeepThink (R1) Engine', description: 'Implement iterative, multi-step reasoning for complex problem solving.', status: 'In Progress', progress: 25 },
-        { id: 'aic-3', name: 'Federated Learning Integration', description: 'Decentralized learning framework for privacy-preserving model training.', status: 'Not Started', progress: 0 },
-        { id: 'aic-4', name: 'Neuro-Symbolic Reasoning Engine', description: 'Hybrid engine for explainable, logic-driven AI.', status: 'Not Started', progress: 0 },
-        { id: 'aic-5', name: 'AGI & ASI Simulation Environment', description: 'A sandboxed environment for theoretical modeling of advanced AI capabilities.', status: 'Not Started', progress: 0 },
-        { id: 'aic-6', name: 'Hive/Singular Mind Model', description: 'Develop the dual-processing architecture for collective and individual intelligence.', status: 'Not Started', progress: 0 },
-    ],
-  },
-  {
-    id: 'ai_robotics',
-    name: 'AI & Robotics Framework',
-    description: 'Core AI models, agent architecture, and robotics control.',
-    icon: BeakerIcon,
-    items: [
-      { id: 'ai-r-1', name: 'Nested AI Agent Handler', description: 'Primary AI core capable of delegating tasks to specialized sub-agents.', status: 'In Progress', progress: 65, lastModified: '2024-07-24' },
-      { id: 'ai-r-2', name: 'Robotics Control Module', description: 'API and driver layer for controlling robotic functions.', status: 'Not Started', progress: 0, lastModified: '2024-07-24', children: [
-        { id: 'ai-r-2-1', name: 'Boston Dynamics Atlas 4.0 Integration', description: 'Interface with full body control system and NVIDIA Jetson chip.', status: 'Not Started', progress: 0 },
-        { id: 'ai-r-2-2', name: 'Apptronik Apollo Integration', description: 'Interface with advanced force control architecture.', status: 'Not Started', progress: 0 },
-        { id: 'ai-r-2-3', name: 'Robotics Takeover Protocol', description: 'Design the secure adapter/middleware for deploying personal AIs onto third-party robots.', status: 'Not Started', progress: 0 },
-      ]},
-    ]
-  },
-  {
-    id: 'ai_cloning',
-    name: 'AI Avatar Cloning Module',
-    description: 'Framework for creating digital replicas of the user or unique AI entities.',
-    icon: UserCircleIcon,
-    items: [
-      { id: 'ac-1', name: 'Data Ingestion Pipeline', description: 'Securely process user voice, video, and text data for training.', status: 'Not Started', progress: 0 },
-      { id: 'ac-2', name: 'Voice Cloning Engine', description: 'Integrate or build a high-fidelity text-to-speech model for voice replication.', status: 'Not Started', progress: 0 },
-      { id: 'ac-3', name: '3D Avatar Generation Engine', description: 'Reconstruct 3D avatars from video/images and generate novel appearances.', status: 'Not Started', progress: 0 },
-      { id: 'ac-4', name: 'Personalized AI Core', description: 'Fine-tune an LLM on user-provided data to replicate conversational style and learn patterns.', status: 'In Progress', progress: 40 },
-    ],
-  },
-    {
-    id: 'governance',
-    name: 'Governance & Compliance',
-    description: 'User voting, compliance frameworks, and ethical AI laws.',
-    icon: ShieldCheckIcon,
-    items: [
-      { id: 'gov-1', name: 'User Governance & Voting Protocol', description: 'Implement on-chain, weighted voting system for non-critical changes.', status: 'Not Started', progress: 0 },
-      { id: 'gov-2', name: 'Global Compliance Module', description: 'Integrate checks for GDPR, CCPA, HIPAA, ISO 27001, etc.', status: 'Not Started', progress: 0 },
-      { id: 'gov-3', name: 'Ethical AI Framework', description: 'Codify and enforce the core ethical laws for all AI agents.', status: 'In Progress', progress: 50 },
-      { id: 'gov-4', name: 'Multi-Proof Consensus Engine', description: 'Build a flexible consensus layer supporting various proof-of mechanisms.', status: 'Not Started', progress: 0 },
-    ],
-  },
-    {
-    id: 'hardware_integration',
-    name: 'Hardware & Wearables',
-    description: 'Integration with physical devices.',
-    icon: ChipIcon,
-    items: [
-        { id: 'hw-1', name: 'Wearable AI Device Layer', description: 'Support for watches, rings, glasses, and AI Pins.', status: 'Not Started', progress: 0 },
-        { id: 'hw-2', name: 'Bio-Synced Identity Module', description: 'Framework for multi-modal biometric authentication (face, finger, plasma, DNA scan concept).', status: 'Not Started', progress: 0 },
-    ]
-  },
-   {
-    id: 'network_data',
-    name: 'Network & Data Ingestion',
-    description: 'Secure data scraping and network-level processing.',
-    icon: GlobeAltIcon,
-    items: [
-      { id: 'nd-1', name: 'Onion Router Implementation', description: 'Build and sandbox the internal Tor-style client for data scraping.', status: 'Not Started', progress: 0 },
-    ],
-  },
-  {
-    id: 'game_engine',
-    name: 'Universal Game Engine',
-    description: 'A cross-platform game engine integrated with the core OS and AI.',
-    icon: GameControllerIcon,
-    items: [
-      { id: 'ge-ui', name: 'Engine Core UI', description: 'Build the main editor interface including viewport, inspector, and hierarchy panels.', status: 'In Progress', progress: 50 },
-      { id: 'ge-1', name: 'Nested VM & Quantum Core Integration', description: 'Integrate the engine with nested virtualization and quantum co-processors.', status: 'In Progress', progress: 20 },
-      { id: 'ge-2', name: 'Multi-Paradigm Renderer', description: 'Build a universal renderer for 2D, 3D, VR/AR, and superfluid light.', status: 'Not Started', progress: 0 },
-    ],
-  },
-    {
-    id: 'internal_platforms',
-    name: 'Internal Platform Clones',
-    description: 'Building from-scratch versions of popular third-party services.',
-    icon: BuildingStorefrontIcon,
-    items: [
-      { id: 'ip-1', name: 'E-commerce & CMS Engine', description: 'Internal fork of Shopify and WordPress functionalities.', status: 'Not Started', progress: 0 },
-      { id: 'ip-2', name: 'Automation Engine', description: 'Internal fork of Zapier/Make for event-driven workflows.', status: 'Not Started', progress: 0 },
-      { id: 'ip-3', name: 'Content Creation Suite', description: 'Internal forks of Midjourney, Runway, 11 Labs, etc.', status: 'Not Started', progress: 0 },
-      { id: 'ip-4', name: 'Trading & Finance Platform', description: 'Internal platform with AI bots, "forever trading", and advanced market analysis.', status: 'Not Started', progress: 0 },
-    ],
-  },
-];
-
-
-// --- MOCK DATA FOR NEW TRADING COMPONENTS ---
-
-export const tradingAssets = [
-    { symbol: 'AOS', name: 'Aetherius OS', price: 1250.75, change: 25.50, changePercent: 2.08, marketCap: 1.25e12, volume24h: 4.5e9, logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500', assetClass: 'Crypto' as AssetClass },
-    { symbol: 'BTC', name: 'Bitcoin', price: 65034.15, change: -1205.42, changePercent: -1.82, marketCap: 1.28e12, volume24h: 2.2e10, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg', assetClass: 'Crypto' as AssetClass },
-    { symbol: 'ETH', name: 'Ethereum', price: 3502.80, change: 15.60, changePercent: 0.45, marketCap: 4.2e11, volume24h: 1.5e10, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg', assetClass: 'Crypto' as AssetClass },
-    { symbol: 'TSLA', name: 'Tesla, Inc.', price: 180.25, change: 5.75, changePercent: 3.29, marketCap: 5.75e11, volume24h: 9.8e9, logoUrl: 'https://companieslogo.com/img/orig/TSLA.D-11aaa693.png?t=1633534343', assetClass: 'Stocks' as AssetClass },
-    { symbol: 'AAPL', name: 'Apple Inc.', price: 172.50, change: -1.12, changePercent: -0.65, marketCap: 2.65e12, volume24h: 8.5e9, logoUrl: 'https://companieslogo.com/img/orig/AAPL.D-15335544.png?t=1633534343', assetClass: 'Stocks' as AssetClass },
-    { symbol: 'EUR/USD', name: 'Euro/US Dollar', price: 1.0855, change: 0.0012, changePercent: 0.11, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eur.svg', assetClass: 'Forex' as AssetClass },
-    { symbol: 'XAU/USD', name: 'Gold/US Dollar', price: 2350.50, change: -15.20, changePercent: -0.64, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/xau.svg', assetClass: 'Commodities' as AssetClass },
-];
-
-// FIX: Add and export missing data
-export const achievements: Achievement[] = [
-  {
-    id: 'achieve-1',
-    courseTitle: 'React - The Complete Guide',
-    completionDate: '2024-07-20',
-    transactionId: `0x${[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')}`,
-    certificateUrl: 'https://i.imgur.com/example-cert.png',
-  }
-];
-
-export const stakingPools: StakingPool[] = [
-    { id: 'aos-stake', asset: { symbol: 'AOS', name: 'Aetherius OS', logoUrl: 'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500' }, apy: 12.5, tvl: 75000000, lockupPeriod: 'Flexible' },
-    { id: 'eth-stake', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, apy: 4.8, tvl: 1200000000, lockupPeriod: '30 Days' },
-    { id: 'usdc-stake', asset: { symbol: 'USDC', name: 'USD Coin', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg' }, apy: 8.2, tvl: 500000000, lockupPeriod: 'Flexible' },
-];
-
-export const tradingBots: TradingBot[] = [
-    { id: 'bot-1', name: 'BTC/USDT Grid', strategy: 'Grid Trading', pair: 'BTC/USDT', status: 'Running', pnl: 152.75, runtime: '12d 5h' },
-    { id: 'bot-2', name: 'ETH DCA', strategy: 'DCA Bot', pair: 'ETH/USDT', status: 'Running', pnl: 88.12, runtime: '30d 1h' },
-    { id: 'bot-3', name: 'Portfolio Rebalancer', strategy: 'Rebalancing', pair: 'VARIOUS', status: 'Stopped', pnl: -12.50, runtime: '5d 2h' },
-];
-
-export const tradingNews: NewsArticle[] = [
-    { id: 'news-1', source: 'CoinDesk', title: 'Bitcoin ETF Inflows Surge as Market Sentiment Improves', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1640955032549-3c739112bf47?q=80&w=400', category: 'Crypto' },
-    { id: 'news-2', source: 'Bloomberg', title: 'Analysts Predict Volatility Ahead of Options Expiry', timestamp: '5h ago', imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=400', category: 'World Markets' },
-    { id: 'news-3', source: 'Reuters', title: 'Forex Markets Brace for Central Bank Announcements', timestamp: '8h ago', imageUrl: 'https://images.unsplash.com/photo-1559163499-413811443ab4?q=80&w=400', category: 'Forex' },
-];
-
-export const loanableAssets: LoanableAsset[] = [
-    { symbol: 'BTC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg', supplyApy: 3.12, borrowApy: 4.55, totalSupplied: 1.2e9, totalBorrowed: 8e8 },
-    { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg', supplyApy: 2.89, borrowApy: 4.15, totalSupplied: 2.5e9, totalBorrowed: 1.5e9 },
-    { symbol: 'USDC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg', supplyApy: 5.50, borrowApy: 7.25, totalSupplied: 5e9, totalBorrowed: 3.8e9 },
-];
-
-export const topCopyTraders: User[] = [user1, user2, user3];
-
-export const learnAndEarnCourses: LearnAndEarnCourse[] = [
-    { id: 'le-1', title: 'What is Bitcoin?', asset: { symbol: 'BTC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg' }, reward: 10, duration: '10 min', lessons: 3 },
-    { id: 'le-2', title: 'Intro to Smart Contracts', asset: { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, reward: 10, duration: '15 min', lessons: 4 },
-    { id: 'le-3', title: 'Understanding Stablecoins', asset: { symbol: 'USDC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg' }, reward: 5, duration: '8 min', lessons: 2 },
-];
-
-// --- NEW OS BUILD DATA ---
-
-export const erpSystemSpec: ErpSystemSpec = {
-    name: "Aetherius ERP Core",
-    version: "1.0",
-    modules: [
-        { id: 'fin-01', name: 'Finance', icon: CurrencyDollarIcon, description: 'Manages all financial operations within the OS.', features: [
-            { id: 'fin-f1', name: 'General Ledger', description: 'The central repository for all financial data.' },
-            { id: 'fin-f2', name: 'Budgeting & Forecasting', description: 'Tools for planning and predicting financial performance.' },
-            { id: 'fin-f3', name: 'Financial Reporting', description: 'Generates statements like balance sheets and income statements.' },
-        ]},
-        { id: 'scm-01', name: 'Supply Chain', icon: TruckIcon, description: 'Handles inventory, procurement, and logistics for the marketplace.', features: [
-            { id: 'scm-f1', name: 'Inventory Management', description: 'Tracks stock levels and locations.' },
-            { id: 'scm-f2', name: 'Procurement', description: 'Manages the purchasing of goods and services.' },
-            { id: 'scm-f3', name: 'Logistics', description: 'Coordinates the movement of goods.' },
-        ]},
-        { id: 'hr-01', name: 'Human Resources', icon: UserCircleIcon, description: 'Manages user roles, permissions, and profiles.', features: [
-            { id: 'hr-f1', name: 'User Profile Management', description: 'Handles user data and account settings.' },
-            { id: 'hr-f2', name: 'Recruitment (Jobs Hub)', description: 'Manages job postings and applications.' },
-            { id: 'hr-f3', name: 'Performance Management', description: 'Tied to the Community Reputation System.' },
-        ]},
-        { id: 'mfg-01', name: 'Manufacturing', icon: Cog6ToothIcon, description: 'Oversees the creation of digital and physical goods.', features: [
-            { id: 'mfg-f1', name: 'Production Planning', description: 'Schedules and manages manufacturing tasks.' },
-            { id: 'mfg-f2', name: 'Quality Control', description: 'Ensures products meet defined standards.' },
-            { id: 'mfg-f3', name: 'Asset Management', description: 'Tracks virtual and physical manufacturing assets.' },
-        ]},
-        { id: 'crm-01', name: 'CRM', icon: UsersIcon, description: 'Manages relationships with users and businesses.', features: [
-            { id: 'crm-f1', name: 'Sales Tracking', description: 'Monitors sales performance in the marketplace.' },
-            { id: 'crm-f2', name: 'Customer Support', description: 'Integrates with the AI helpdesk.' },
-            { id: 'crm-f3', name: 'Marketing Automation', description: 'Manages promotional campaigns within the OS.' },
-        ]},
-    ]
-};
-
-export const quantumNetworkSpec: QuantumNetworkSpec = {
-    name: "Aetherius Quantum Network",
-    protocols: [
-        { id: 'qkd-01', name: 'Quantum Key Distribution (QKD)', description: 'Utilizes quantum mechanics to produce a secure, un-hackable key for encrypting and decrypting messages between nodes.', status: 'In Development' },
-        { id: 'pqc-01', name: 'Post-Quantum Cryptography', description: 'Implements cryptographic algorithms (like lattice-based or hash-based) that are thought to be secure against attacks by quantum computers.', status: 'Integrated' },
-        { id: 'qt-01', name: 'Quantum Teleportation (Theoretical)', description: 'A research protocol for the theoretical transfer of quantum states from one location to another, serving as a basis for future instant data transfer.', status: 'Research' }
-    ],
-    hardware: [
-        { id: 'qhw-01', component: 'vQPU', specification: 'Simulated 48-Qubit Processor for complex optimizations and AI tasks.', status: 'Simulated' },
-        { id: 'qhw-02', component: 'Quantum Interconnect', specification: 'Simulated network fabric for routing entangled qubit states between vQPUs.', status: 'Simulated' },
-        { id: 'qhw-03', component: 'Time Crystal Oscillator', specification: 'Conceptual time-keeping module providing a perfectly stable clock signal for quantum computations.', status: 'Theoretical' }
-    ]
-};
-
-export const reputationSystemSpec: ReputationSystemSpec = {
-    actions: [
-        { id: 'ra-01', action: 'Publishing a helpful blog post', points: 10, category: 'Content Creation', description: 'Create high-quality content that receives positive community feedback.'},
-        { id: 'ra-02', action: 'Completing an e-learning module', points: 5, category: 'Learning', description: 'Finish a lesson or quiz within a course.'},
-        { id: 'ra-03', action: 'Receiving a positive product review', points: 3, category: 'Commerce', description: 'Sell a product that gets a 4 or 5-star rating.'},
-        { id: 'ra-04', action: 'Helping another user in a forum', points: 2, category: 'Community', description: 'Provide an answer that gets marked as helpful.'},
-        { id: 'ra-05', action: 'Spamming comments or posts', points: -50, category: 'Community', description: 'Repeatedly posting low-quality or irrelevant content.'},
-    ],
-    tiers: [
-        { level: 1, name: 'Newcomer', minPoints: 0, rewards: ['Basic platform access'] },
-        { level: 2, name: 'Contributor', minPoints: 100, rewards: ['"Contributor" profile badge', 'Ability to post in specialized forums'] },
-        { level: 3, name: 'Collaborator', minPoints: 500, rewards: ['"Collaborator" profile badge', 'Access to exclusive UI themes', 'Higher content visibility'] },
-        { level: 4, name: 'Innovator', minPoints: 2000, rewards: ['"Innovator" profile badge', 'Early access to beta features', 'Increased staking rewards'] },
-        { level: 5, name: 'Ambassador', minPoints: 10000, rewards: ['"Ambassador" profile badge', 'Ability to moderate a community forum', 'Direct line of feedback to the Parent AI'] },
-    ]
-};
-
-export const articlesData: Article[] = [
-    {
-        id: 'article-erp-01',
-        title: 'Mastering ERP Systems: A Comprehensive Guide',
-        author: 'Aetherius AI',
-        category: 'OS Development',
-        tags: ['ERP', 'Business', 'Systems', 'Learning Guide'],
-        publicationDate: '2024-07-25',
-        content: `
-### I. Understanding ERP Systems: Core Concepts
-
-**What is ERP?**
-Enterprise Resource Planning (ERP) is integrated software that centralizes and automates core business processes—finance, HR, supply chain, manufacturing, and sales—into a unified system.
-
-**Key Modules and Functions**
-
-| Module                | Primary Functions                                   |
-|-----------------------|-----------------------------------------------------|
-| Finance               | Accounting, budgeting, financial reporting          |
-| Supply Chain          | Inventory, procurement, logistics                   |
-| HR                    | Payroll, recruitment, performance management        |
-| Manufacturing         | Production planning, quality control, asset management |
-| CRM                   | Sales tracking, customer support, marketing automation |
-
-### II. How to Learn ERP Systems: Skills and Pathways
-
-**A. Foundational Knowledge**
-*   **Business Process Acumen:** Understand workflows in finance, supply chain, or HR.
-*   **Technical Basics:** Database management (SQL), data analytics, and cloud computing concepts.
-
-**B. Structured Learning Pathways**
-*   **Certifications:** Vendor-specific certs (SAP, Oracle).
-*   **Hands-On Practice:** Use sandbox environments or open-source ERPs (Odoo, ERPNext).
-`
-    },
-    {
-        id: 'article-quantum-01',
-        title: "Quantum Communications & The Future of Secure Networks",
-        author: 'Aetherius AI',
-        category: 'Tech Explainers',
-        tags: ['Quantum', 'Networking', 'Security', 'QKD'],
-        publicationDate: '2024-07-25',
-        content: `
-Quantum communication leverages the principles of quantum mechanics to transmit information in a provably secure way. Here’s a summary of key technologies:
-
-| Technology Area               | Key Details                                                                                              |
-|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| **Quantum Encryption (QKD)**  | Developing Quantum Key Distribution (QKD) solutions; tested on router platforms and live optical networks for financial/government security. |
-| **Post-Quantum Cryptography** | Planning to introduce quantum-safe algorithms into products; exploring hybrid schemes (classical + quantum-safe) for future security. |
-| **Satellite Communication**   | Incorporating satellite capabilities for global quantum network reach.              |
-`
-    },
-    {
-        id: 'article-scs-01',
-        title: "Case Study: Understanding Social Credit Systems",
-        author: 'Aetherius AI',
-        category: 'Case Studies',
-        tags: ['Governance', 'Reputation', 'Social Systems'],
-        publicationDate: '2024-07-25',
-        content: `
-A Social Credit System (SCS) is a framework for regulating trustworthiness. While often portrayed as a single score for every citizen, the reality is a fragmented set of systems primarily focused on business and economic compliance.
-
-| Aspect                | For Individuals (Local Pilots) | For Businesses (National System)                                                                           |
-|-----------------------|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| **Primary Focus**     | Encourage "trustworthy" behavior.                           | Improve market regulation and compliance.                                                                   |
-| **Examples of Rewards** | Discounts on utilities, faster administrative approvals.       | Easier access to loans, government subsidies, streamlined approvals, fewer inspections.                    |
-| **Examples of Penalties** | (For blacklisted individuals) Bans from air/train travel.     | Restrictions on market access, public procurement, and government funding; increased inspections.           |
-
-### Lessons for Aetherius OS
-The key takeaway is to build a **positive feedback loop**. Instead of a punitive system, the Aetherius Community Reputation System focuses on rewarding contributions to create a healthy, self-regulating ecosystem.
-`
-    },
-    {
-        id: 'article-ai-surv-01',
-        title: "The Evolution of Surveillance: AI-Integrated Cameras",
-        author: 'Aetherius AI',
-        category: 'Tech Explainers',
-        tags: ['AI', 'Security', 'Computer Vision'],
-        publicationDate: '2024-07-25',
-        content: `
-AI security cameras are a significant evolution, moving from passive recording to active, real-time analysis.
-
-| Feature             | Traditional Cameras                      | AI-Powered Cameras                                                            |
-|---------------------|------------------------------------------|-------------------------------------------------------------------------------|
-| **Core Function**   | Passive video recording for later review | Active, real-time video analysis and interpretation                           |
-| **Threat Detection**| Reactive; relies on human monitoring     | Proactive; detects specific objects and suspicious behaviors as they happen   |
-| **False Alarms**    | High (triggered by leaves, shadows)      | Drastically reduced by distinguishing between people, vehicles, etc.          |
-| **Data Usage**      | Post-incident investigation              | Real-time alerts and generating business intelligence (e.g., foot traffic)    |
-
-### Key Capabilities
-*   **Accurate Detection:** Distinguishes between humans, vehicles, and animals.
-*   **Behavior Analysis:** Recognizes specific actions like loitering or fighting.
-*   **Intelligent Search:** Allows searching footage with natural language like "find a person in a red shirt."
-`
+            { id: 'sys_arch', title: 'System Architecture', icon: ShareIcon, component: 'systemArchitecture', subtitle: 'Network topology visualization' },
+            { id: 'core_para', title: 'Core Paradigms', icon: CubeIcon, component: 'coreParadigms', subtitle: 'Computing logic and quantum states' },
+            { id: 'virt_hw', title: 'Virtual Hardware', icon: ServerIcon, component: 'virtualHardware', subtitle: 'vCPU, vQPU, vRAM specs' },
+            { id: 'knowledge', title: 'Knowledge Base', icon: BookOpenIcon, component: 'knowledgeBase', subtitle: 'System documentation and concepts' },
+            { id: 'milestones', title: 'Milestones', icon: FlagIcon, component: 'milestones', subtitle: 'Development roadmap and progress' },
+            { id: 'checklist', title: 'Build Checklist', icon: CheckCircleIcon, component: 'buildChecklist', subtitle: 'Detailed implementation status' },
+        ]
     }
+];
+
+// --- Navigation Menu Items ---
+export const mainMenuItems: MenuItemData[] = [
+    {
+        title: 'Social Hub',
+        icon: UsersIcon,
+        children: [
+            { title: 'My Profile', icon: UserCircleIcon, component: 'myProfile' },
+            { title: 'Feed Biome', icon: GlobeAmericasIcon, component: 'feedBiome' },
+            { title: 'Members', icon: UsersIcon, component: 'members' },
+            { title: 'Groups', icon: UserPlusIcon, component: 'groups' },
+            { title: 'Messenger', icon: ChatBubbleLeftRightIcon, component: 'messenger' },
+            { title: 'Forums', icon: ChatBubbleOvalLeftEllipsisIcon, component: 'forums' },
+            { title: 'Events', icon: CalendarIcon, component: 'events' },
+        ]
+    },
+    {
+        title: 'Creation Labs',
+        icon: BeakerIcon,
+        children: [
+            { title: 'Development App', icon: CodeBracketIcon, component: 'developmentApp' },
+            { title: 'Media Production', icon: FilmIcon, component: 'mediaApp' },
+            { title: 'Content Gen', icon: DocumentTextIcon, component: 'contentGenApp' },
+            { title: 'Avatar Forge', icon: UserIcon, component: 'avatarForge' },
+            { title: 'Simulation Hub', icon: GlobeAltIcon, component: 'simulationHub' },
+            { title: 'Video Editor', icon: VideoIcon, component: 'videoEditor' },
+        ]
+    },
+    {
+        title: 'Commerce Hub',
+        icon: ShoppingBagIcon,
+        children: [
+             { title: 'E-Commerce', icon: ShoppingBagIcon, component: 'eCommerceApp' },
+             { title: 'Finance & Trading', icon: CurrencyDollarIcon, component: 'financeApp' },
+             { title: 'Contract Explorer', icon: ScaleIcon, component: 'contractExplorer' },
+        ]
+    },
+    {
+        title: 'Knowledge & Learning',
+        icon: AcademicCapIcon,
+        children: [
+            { title: 'E-Learning', icon: AcademicCapIcon, component: 'elearningApp' },
+            { title: 'Training Data Hub', icon: ServerIcon, component: 'trainingDataHub' },
+            { title: 'Knowledge Base', icon: BookOpenIcon, component: 'knowledgeBase' },
+            { title: 'Manuscript', icon: PencilIcon, component: 'manuscriptView' },
+        ]
+    },
+    {
+        title: 'AI Suite',
+        icon: SparklesIcon,
+        children: [
+             { title: 'AI Support Avatar', icon: UserIcon, component: 'aiSupportAvatar' },
+             { title: 'AI Workforce', icon: UsersIcon, component: 'aiWorkforce' },
+             { title: 'Network Orchestrator', icon: ServerIcon, component: 'networkOrchestrator' },
+             { title: 'Quantum Intelligence', icon: CpuChipIcon, component: 'quantumNN' },
+             { title: 'Local Models', icon: CloudIcon, component: 'huggingFaceHub' },
+        ]
+    },
+    {
+        title: 'Lifestyle',
+        icon: HeartIcon,
+        children: [
+             { title: 'Health & Wellness', icon: HeartIcon, component: 'healthApp' },
+             { title: 'Gaming', icon: GameControllerIcon, component: 'gamingApp' },
+             { title: 'Careers', icon: BriefcaseIcon, component: 'careersApp' },
+        ]
+    },
+    {
+      title: 'System',
+      icon: Cog6ToothIcon,
+      children: [
+        { title: 'Firewall', icon: ShieldCheckIcon, component: 'firewall' },
+      ]
+    }
+];
+
+// Bottom/System menu items
+export const aetheriusMenuItems: MenuItemData[] = [
+    { title: 'About Aetherius', icon: InformationCircleIcon, component: 'about' },
+    { type: 'divider' },
+    { title: 'System Preferences', icon: Cog6ToothIcon, component: 'settings' },
+    { title: 'App Store', icon: ShoppingBagIcon, component: 'creatorMarketplace' },
+    { type: 'divider' },
+    { title: 'Restart', icon: ArrowPathIcon, action: 'restart' },
+    { title: 'Shut Down', icon: PowerIcon, action: 'shutdown' },
+];
+
+export const bottomMenuItems: MenuItemData[] = [
+    { title: 'Settings', icon: Cog6ToothIcon, component: 'settings' },
+    { title: 'Admin Panel', icon: ShieldCheckIcon, component: 'adminPanel' },
+];
+
+// Grouping for the sidebar
+export const menuGroups: (MenuGroup | MenuItemData)[] = [
+    {
+        id: 'main-group',
+        title: 'Main Menu',
+        type: 'group',
+        icon: Squares2X2Icon,
+        children: mainMenuItems
+    },
+    {
+        id: 'system-group',
+        title: 'System',
+        type: 'group',
+        icon: Cog6ToothIcon,
+        children: bottomMenuItems
+    }
+];
+
+// --- Desktop Items ---
+export const desktopItems: DesktopItem[] = [
+    { id: 'my-pc', title: 'My PC', icon: ComputerDesktopIcon, type: 'app', component: 'systemArchitecture' },
+    { id: 'recycle-bin', title: 'Recycle Bin', icon: TrashBinIcon, type: 'app', component: 'folderView' },
+    { id: 'browser', title: 'Browser', icon: GlobeAltIcon, type: 'app', component: 'browser' },
+    { id: 'ai-hub', title: 'AI Hub', icon: BeakerIcon, type: 'app', component: 'aiHub' },
+    { id: 'social', title: 'Social', icon: UsersIcon, type: 'app', component: 'socialApp' },
+    { id: 'store', title: 'Marketplace', icon: ShoppingBagIcon, type: 'app', component: 'eCommerceApp' },
+    { id: 'trading', title: 'Trading', icon: CurrencyDollarIcon, type: 'app', component: 'financeApp' },
+    { id: 'learning', title: 'Learning', icon: AcademicCapIcon, type: 'app', component: 'elearningApp' },
+    { id: 'health', title: 'Health', icon: HeartIcon, type: 'app', component: 'healthApp' },
+    { id: 'settings', title: 'Settings', icon: Cog6ToothIcon, type: 'app', component: 'settings' },
+    { id: 'files', title: 'Files', icon: FolderIcon, type: 'app', component: 'folderView' },
+    { id: 'manuscript', title: 'Manuscript', icon: DocumentTextIcon, type: 'app', component: 'manuscriptView' },
+    { id: 'firewall', title: 'Firewall', icon: ShieldCheckIcon, type: 'app', component: 'firewall' },
+    { id: 'cog-frame', title: 'Cognitive Framework', icon: CpuChipIcon, type: 'app', component: 'cognitiveFramework' },
 ];

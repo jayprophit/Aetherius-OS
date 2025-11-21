@@ -1,7 +1,9 @@
+
 import React, { useState, useMemo } from 'react';
 import { TradingAsset, AssetClass, AssetMetric, AssetNews } from '../../types';
 import { tradingAssets } from '../../data';
-import { SearchIcon, ChevronDownIcon, TrendingUpIcon, ChartBarIcon } from '../Icons';
+import { SearchIcon, ChevronDownIcon, TrendingUpIcon, ChartBarIcon, GlobeAltIcon, ListBulletIcon } from '../Icons';
+import { MarketBubbles } from './MarketBubbles';
 
 const AssetRow: React.FC<{ asset: TradingAsset; onRowClick: () => void; isExpanded: boolean }> = ({ asset, onRowClick, isExpanded }) => {
     const isPositive = asset.changePercent >= 0;
@@ -90,6 +92,7 @@ export const Markets: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeClass, setActiveClass] = useState<AssetClass>('Crypto');
     const [expandedAssetSymbol, setExpandedAssetSymbol] = useState<string | null>(null);
+    const [viewMode, setViewMode] = useState<'list' | 'bubbles'>('list');
 
     const assetClasses: AssetClass[] = ['Crypto', 'Stocks', 'Forex', 'Commodities'];
 
@@ -103,10 +106,16 @@ export const Markets: React.FC = () => {
     }, [searchTerm, activeClass]);
 
     return (
-        <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto">
-            <header className="mb-6">
-                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Markets</h1>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">Explore real-time data across all asset classes.</p>
+        <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto flex flex-col">
+            <header className="mb-6 flex justify-between items-center">
+                <div>
+                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Markets</h1>
+                    <p className="text-gray-600 dark:text-gray-400 mt-1">Explore real-time data across all asset classes.</p>
+                </div>
+                <div className="flex bg-gray-200 dark:bg-gray-800 rounded-lg p-1 gap-1">
+                    <button onClick={() => setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="List View"><ListBulletIcon className="w-5 h-5"/></button>
+                    <button onClick={() => setViewMode('bubbles')} className={`p-2 rounded-md ${viewMode === 'bubbles' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="Bubble View"><GlobeAltIcon className="w-5 h-5"/></button>
+                </div>
             </header>
 
             <div className="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -133,41 +142,47 @@ export const Markets: React.FC = () => {
                 </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                        <thead className="bg-gray-50 dark:bg-gray-700/50 text-xs uppercase text-gray-500 dark:text-gray-400">
-                            <tr>
-                                <th className="p-4 text-left">Asset</th>
-                                <th className="p-4 text-right">Price</th>
-                                <th className="p-4 text-right">Change</th>
-                                <th className="p-4 text-right">24h %</th>
-                                <th className="p-4 text-right hidden md:table-cell">Market Cap</th>
-                                <th className="p-4 text-right hidden lg:table-cell">Volume (24h)</th>
-                                <th className="p-4 text-right"></th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                            {filteredAssets.map((asset) => (
-                                <React.Fragment key={asset.symbol}>
-                                    <AssetRow 
-                                        asset={asset} 
-                                        onRowClick={() => setExpandedAssetSymbol(prev => prev === asset.symbol ? null : asset.symbol)}
-                                        isExpanded={expandedAssetSymbol === asset.symbol}
-                                    />
-                                    {expandedAssetSymbol === asset.symbol && (
-                                        <tr>
-                                            <td colSpan={7} className="p-0">
-                                                <AssetDetailView asset={asset} />
-                                            </td>
-                                        </tr>
-                                    )}
-                                </React.Fragment>
-                            ))}
-                        </tbody>
-                    </table>
+            {viewMode === 'list' ? (
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden flex-1">
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                            <thead className="bg-gray-50 dark:bg-gray-700/50 text-xs uppercase text-gray-500 dark:text-gray-400">
+                                <tr>
+                                    <th className="p-4 text-left">Asset</th>
+                                    <th className="p-4 text-right">Price</th>
+                                    <th className="p-4 text-right">Change</th>
+                                    <th className="p-4 text-right">24h %</th>
+                                    <th className="p-4 text-right hidden md:table-cell">Market Cap</th>
+                                    <th className="p-4 text-right hidden lg:table-cell">Volume (24h)</th>
+                                    <th className="p-4 text-right"></th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                                {filteredAssets.map((asset) => (
+                                    <React.Fragment key={asset.symbol}>
+                                        <AssetRow 
+                                            asset={asset} 
+                                            onRowClick={() => setExpandedAssetSymbol(prev => prev === asset.symbol ? null : asset.symbol)}
+                                            isExpanded={expandedAssetSymbol === asset.symbol}
+                                        />
+                                        {expandedAssetSymbol === asset.symbol && (
+                                            <tr>
+                                                <td colSpan={7} className="p-0">
+                                                    <AssetDetailView asset={asset} />
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="flex-1 bg-gray-900 rounded-lg overflow-hidden border border-gray-700">
+                    <MarketBubbles />
+                </div>
+            )}
         </div>
     );
 };

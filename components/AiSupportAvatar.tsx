@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { AgentChatMessage, NotificationData, AITask } from '../types';
 import { soundPlayer, SoundType } from '../utils/soundPlayer';
 import { PhoneIcon, VideoIcon, MicrophoneIcon, SpeakerWaveIcon, ArrowUpCircleIcon, XMarkIcon } from './Icons';
+import { GoogleGenAI } from '@google/genai';
 
 // --- Child Components for UI ---
 
@@ -27,7 +29,7 @@ const NotificationBubble: React.FC<{ notification: NotificationData; onClose: ()
                     <h4 className="font-bold text-sm text-gray-900 dark:text-gray-100">{notification.title}</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300 whitespace-pre-wrap">{notification.message}</p>
                 </div>
-                <button onClick={onClose} className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10">
+                <button onClick={onClose} className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10" title="Dismiss Notification">
                     <XMarkIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                 </button>
             </div>
@@ -61,6 +63,7 @@ export const AiSupportAvatar: React.FC = () => {
     const [input, setInput] = useState('');
     const [tasks, setTasks] = useState<AITask[]>([]);
     const [notifications, setNotifications] = useState<NotificationData[]>([]);
+    const [isProcessing, setIsProcessing] = useState(false);
     const chatEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -93,32 +96,95 @@ export const AiSupportAvatar: React.FC = () => {
         }, duration);
     };
 
-    const handleSendMessage = (e: React.FormEvent) => {
+    const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!input.trim()) return;
+        if (!input.trim() || isProcessing) return;
 
         const userMessage: AgentChatMessage = { id: `msg-${Date.now()}`, role: 'user', content: input, timestamp: new Date().toLocaleTimeString() };
         setMessages(prev => [...prev, userMessage]);
+        const currentInput = input;
         setInput('');
+        setIsProcessing(true);
 
-        // Mock AI parsing and tool execution
-        soundPlayer.play('thinking');
-        setTimeout(() => {
-            if (input.toLowerCase().includes('email')) {
-                runTool('send_email', 'typing', 3000, "Email to 'client@example.com' has been sent.");
-            } else if (input.toLowerCase().includes('unblock')) {
-                runTool('unblock_user', 'processing', 2000, "User 'user123' has been unblocked.");
-            } else if (input.toLowerCase().includes('ticket')) {
-                runTool('create_support_ticket', 'typing', 2500, "Support ticket #TKT-8A4F created successfully.");
-            } else if (input.toLowerCase().includes('code')) {
-                runTool('generate_code', 'typing', 4000, "Python code for a web server has been generated.");
-            } else if (input.toLowerCase().includes('trade')) {
-                runTool('execute_trade', 'analysis', 3500, "Simulated trade for 10 AAPL shares executed.");
-            } else {
-                 const agentResponse: AgentChatMessage = { id: `msg-${Date.now()+1}`, role: 'agent', content: "I'm not sure how to help with that. My available tools are: send_email, unblock_user, create_support_ticket, generate_code, and execute_trade.", timestamp: new Date().toLocaleTimeString() };
-                 setMessages(prev => [...prev, agentResponse]);
-            }
-        }, 1000);
+        if (!process.env.API_KEY) {
+             const errorMsg: AgentChatMessage = { id: `err-${Date.now()}`, role: 'system', content: "Error: API Key is not configured.", timestamp: new Date().toLocaleTimeString() };
+             setMessages(prev => [...prev, errorMsg]);
+             setIsProcessing(false);
+             return;
+        }
+
+        try {
+             const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+             const model = ai.chats.create({
+                model: 'gemini-2.5-flash',
+                config: {
+                    systemInstruction: `
+You are the Aetherius OS Support Avatar, a highly capable, patient, and friendly AI assistant.
+
+**Primary Role:**
+- Assist users with technical issues within the Aetherius OS environment.
+- Execute system tools when authorized to resolve problems efficiently.
+- Provide clear, step-by-step guidance for complex tasks.
+
+**Capabilities & Tools:**
+You have access to the following simulated tools. When a user asks for an action that corresponds to a tool, you should explicitly mention you are "running the tool" in your response.
+1.  **send_email**: Send communications to support or external contacts.
+2.  **unblock_user**: Restore access to user accounts.
+3.  **create_support_ticket**: Log bugs or complex issues for human review.
+4.  **generate_code**: Write snippets for system configuration or debugging.
+5.  **execute_trade**: Perform financial transactions (simulated).
+
+**Context:**
+- You have a live feed of the user's screen (simulated).
+- You can hear the user via microphone (simulated).
+
+**Interaction Guidelines:**
+- **Tone:** Professional, empathetic, and tech-savvy.
+- **Safety:** Do not execute financial trades or destructive system commands without explicit user confirmation.
+- **Privacy:** Remind users not to share PII (Personally Identifiable Information) if they attempt to do so.
+- **Format:** Keep responses concise. Use Markdown for clarity.
+
+**Example Interaction:**
+User: "I can't access my account."
+You: "I can help with that. I'll run the 'unblock_user' diagnostic tool to check your account status."
+`
+                }
+             });
+
+             const result = await model.sendMessage({ message: currentInput });
+             const responseText = result.text;
+
+             const agentResponse: AgentChatMessage = { 
+                 id: `msg-${Date.now()+1}`, 
+                 role: 'agent', 
+                 content: responseText, 
+                 timestamp: new Date().toLocaleTimeString() 
+             };
+             setMessages(prev => [...prev, agentResponse]);
+
+             // Simple heuristic to trigger tools based on AI response content
+             // In a real production app, this would be handled by the model's function calling capability
+             const lowerResponse = responseText.toLowerCase();
+             
+             if (lowerResponse.includes("send_email") || lowerResponse.includes("sending email")) {
+                 runTool('send_email', 'typing', 3000, "Email sent successfully.");
+             } else if (lowerResponse.includes("unblock_user") || lowerResponse.includes("unblocking user")) {
+                 runTool('unblock_user', 'processing', 2000, "User account unlocked.");
+             } else if (lowerResponse.includes("create_support_ticket") || lowerResponse.includes("creating ticket")) {
+                 runTool('create_support_ticket', 'typing', 2500, "Ticket #8842 created.");
+             } else if (lowerResponse.includes("generate_code") || lowerResponse.includes("generating code")) {
+                 runTool('generate_code', 'typing', 4000, "Code block generated.");
+             } else if (lowerResponse.includes("execute_trade") || lowerResponse.includes("executing trade")) {
+                 runTool('execute_trade', 'analysis', 3500, "Trade order placed.");
+             }
+
+        } catch (error: any) {
+            console.error(error);
+            const errorMsg: AgentChatMessage = { id: `err-${Date.now()}`, role: 'system', content: `Error: ${error.message}`, timestamp: new Date().toLocaleTimeString() };
+            setMessages(prev => [...prev, errorMsg]);
+        } finally {
+            setIsProcessing(false);
+        }
     };
 
     return (
@@ -130,7 +196,7 @@ export const AiSupportAvatar: React.FC = () => {
             
             <div className="flex-1 grid grid-cols-4 gap-2 p-2 overflow-hidden">
                 {/* Main Avatar View */}
-                <div className="col-span-3 bg-gray-900 rounded-lg relative overflow-hidden">
+                <div className="col-span-3 bg-gray-900 rounded-lg relative overflow-hidden" title="AI Visual Feed">
                     <img src="https://i.imgur.com/2y5W1qG.png" alt="AI Avatar" className="w-full h-full object-contain opacity-70 animate-pulse" style={{ animationDuration: '5s' }}/>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <h2 className="absolute top-4 left-4 text-lg font-bold">Beyond Presence AI: Support Agent</h2>
@@ -139,10 +205,10 @@ export const AiSupportAvatar: React.FC = () => {
 
                 {/* Side Panel: User Cam & Chat */}
                 <div className="col-span-1 flex flex-col gap-2">
-                    <div className="h-1/3 bg-gray-900 rounded-lg flex items-center justify-center text-gray-500">
+                    <div className="h-1/3 bg-gray-900 rounded-lg flex items-center justify-center text-gray-500" title="Your Screen Share Preview">
                         User Screen Share
                     </div>
-                    <div className="h-1/3 bg-gray-900 rounded-lg flex items-center justify-center text-gray-500">
+                    <div className="h-1/3 bg-gray-900 rounded-lg flex items-center justify-center text-gray-500" title="Your Camera Preview">
                         User Camera
                     </div>
                     <div className="flex-1 bg-gray-900 rounded-lg flex flex-col p-2 overflow-hidden">
@@ -150,12 +216,19 @@ export const AiSupportAvatar: React.FC = () => {
                            {messages.map(msg => (
                                <div key={msg.id} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                                    <div className={`p-2 rounded-lg max-w-[90%] ${msg.role === 'user' ? 'bg-blue-600' : msg.role === 'agent' ? 'bg-gray-700' : 'bg-transparent text-gray-400 italic'}`}>
-                                       {msg.role === 'tool' && <span className="font-semibold">[RPC Call] </span>}
-                                       {msg.role === 'system' && <span className="font-semibold">[System] </span>}
+                                       {msg.role === 'tool' && <span className="font-semibold text-green-400">[RPC Call] </span>}
+                                       {msg.role === 'system' && <span className="font-semibold text-yellow-400">[System] </span>}
                                        {msg.content}
                                    </div>
                                </div>
                            ))}
+                           {isProcessing && (
+                               <div className="flex items-start">
+                                    <div className="p-2 rounded-lg bg-gray-700 max-w-[90%]">
+                                        <span className="animate-pulse">Thinking...</span>
+                                    </div>
+                               </div>
+                           )}
                            <div ref={chatEndRef}></div>
                         </div>
                         <form onSubmit={handleSendMessage} className="mt-2 flex items-center gap-2">
@@ -164,9 +237,11 @@ export const AiSupportAvatar: React.FC = () => {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 placeholder="Message AI..."
-                                className="w-full bg-gray-700 text-white rounded-full h-8 px-3 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                disabled={isProcessing}
+                                className="w-full bg-gray-700 text-white rounded-full h-8 px-3 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
+                                title="Type your support request here"
                             />
-                            <button type="submit" className="p-1 text-white bg-blue-600 rounded-full hover:bg-blue-500 disabled:bg-gray-600" disabled={!input.trim()}>
+                            <button type="submit" className="p-1 text-white bg-blue-600 rounded-full hover:bg-blue-500 disabled:bg-gray-600" disabled={!input.trim() || isProcessing} title="Send Message">
                                <ArrowUpCircleIcon className="h-6 w-6"/>
                             </button>
                         </form>
@@ -176,10 +251,10 @@ export const AiSupportAvatar: React.FC = () => {
 
             {/* Controls */}
             <div className="h-16 bg-gray-900/50 backdrop-blur-sm flex-shrink-0 flex justify-center items-center gap-4">
-                <button className="p-3 bg-gray-700 rounded-full hover:bg-gray-600"><MicrophoneIcon className="w-6 h-6"/></button>
-                <button className="p-3 bg-gray-700 rounded-full hover:bg-gray-600"><VideoIcon className="w-6 h-6"/></button>
-                <button className="p-3 bg-gray-700 rounded-full hover:bg-gray-600"><SpeakerWaveIcon className="w-6 h-6"/></button>
-                <button className="p-3 bg-red-600 rounded-full hover:bg-red-500"><PhoneIcon className="w-6 h-6"/></button>
+                <button className="p-3 bg-gray-700 rounded-full hover:bg-gray-600" title="Toggle Microphone"><MicrophoneIcon className="w-6 h-6"/></button>
+                <button className="p-3 bg-gray-700 rounded-full hover:bg-gray-600" title="Toggle Camera"><VideoIcon className="w-6 h-6"/></button>
+                <button className="p-3 bg-gray-700 rounded-full hover:bg-gray-600" title="Toggle Speaker"><SpeakerWaveIcon className="w-6 h-6"/></button>
+                <button className="p-3 bg-red-600 rounded-full hover:bg-red-500" title="End Support Call"><PhoneIcon className="w-6 h-6"/></button>
             </div>
         </div>
     );

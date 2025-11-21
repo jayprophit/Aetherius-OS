@@ -1,16 +1,17 @@
+
 import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
-import { Elearning } from '../Elearning';
+import { LearningRealms } from '../LearningRealms';
 import { MyLearning, LearningAssistant, Achievements } from '../MyLearning';
-import { PlaceholderView } from '../PlaceholderView';
+import { ElearningPlatforms } from '../ElearningPlatforms';
 
 const elearningComponentMap: { [key: string]: React.FC<any> } = {
-  courses: Elearning,
+  learningRealms: LearningRealms,
   myLearning: MyLearning,
   learningAssistant: LearningAssistant,
   achievements: Achievements,
-  instructors: () => <PlaceholderView viewName="Instructors" />,
+  elearningPlatforms: ElearningPlatforms,
 };
 
 interface ElearningAppProps {

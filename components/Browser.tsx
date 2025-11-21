@@ -1,5 +1,6 @@
+
 import React, { useState, useRef, KeyboardEvent, useMemo, useEffect } from 'react';
-import { ArrowPathIcon, ChevronLeftIcon, ChevronRightIcon, HomeIcon, LockClosedIcon, StarIcon, ChevronDownIcon, BookmarkIcon } from './Icons';
+import { ArrowPathIcon, ChevronLeftIcon, ChevronRightIcon, HomeIcon, LockClosedIcon, StarIcon, ChevronDownIcon, BookmarkIcon, ShieldCheckIcon, GlobeAltIcon, EyeIcon, GlobeAmericasIcon } from './Icons';
 import { ICON_BUTTON_CLASSES } from '../constants';
 
 interface Bookmark {
@@ -7,14 +8,18 @@ interface Bookmark {
   url: string;
 }
 
+type BrowserMode = 'Surface' | 'Robin (Dark Web)' | 'Fact Check';
+
 export const Browser: React.FC = () => {
     const [url, setUrl] = useState<string>('https://www.google.com/webhp?igu=1');
     const [displayUrl, setDisplayUrl] = useState<string>('https://www.google.com');
+    const [mode, setMode] = useState<BrowserMode>('Surface');
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const [history, setHistory] = useState<string[]>(['https://www.google.com/webhp?igu=1']);
     const [historyIndex, setHistoryIndex] = useState(0);
     const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
     const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
+    const [isTorConnected, setIsTorConnected] = useState(false);
     const bookmarksMenuRef = useRef<HTMLDivElement>(null);
 
     // Load bookmarks from localStorage on initial render
@@ -49,13 +54,30 @@ export const Browser: React.FC = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // Simulate Tor connection when switching to Robin mode
+    useEffect(() => {
+        if (mode === 'Robin (Dark Web)') {
+            setIsTorConnected(false);
+            const timer = setTimeout(() => setIsTorConnected(true), 2000);
+            return () => clearTimeout(timer);
+        } else {
+            setIsTorConnected(false);
+        }
+    }, [mode]);
+
     const canGoBack = historyIndex > 0;
     const canGoForward = historyIndex < history.length - 1;
 
     const navigateTo = (newUrl: string, addToHistory = true) => {
         let finalUrl = newUrl;
+        // Basic URL handling
         if (!/^https?:\/\//i.test(newUrl)) {
-            finalUrl = `https://www.google.com/search?q=${encodeURIComponent(newUrl)}`;
+            if (mode === 'Robin (Dark Web)') {
+                 // Simulate dark web search
+                 finalUrl = `https://duckduckgo.com/?q=${encodeURIComponent(newUrl)}&t=h_&ia=web`; 
+            } else {
+                 finalUrl = `https://www.google.com/search?q=${encodeURIComponent(newUrl)}`;
+            }
         }
         
         setUrl(finalUrl);
@@ -103,7 +125,11 @@ export const Browser: React.FC = () => {
     };
     
     const handleHome = () => {
-        navigateTo('https://www.google.com/webhp?igu=1');
+        if (mode === 'Robin (Dark Web)') {
+            navigateTo('https://duckduckgo.com/');
+        } else {
+            navigateTo('https://www.google.com/webhp?igu=1');
+        }
     };
 
     const handleIframeLoad = () => {
@@ -133,38 +159,59 @@ export const Browser: React.FC = () => {
             }
         }
     };
+    
+    // Theme classes based on mode
+    const isRobinMode = mode === 'Robin (Dark Web)';
+    const isFactCheck = mode === 'Fact Check';
+
+    const headerBg = isRobinMode ? 'bg-gray-900 border-green-900' : isFactCheck ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200' : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700';
+    const inputBg = isRobinMode ? 'bg-black text-green-500 border-green-800 font-mono' : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border-gray-300 dark:border-gray-600';
+    const iconColor = isRobinMode ? 'text-green-500 hover:bg-green-900/30' : ICON_BUTTON_CLASSES;
 
     return (
-        <div className="flex flex-col h-full bg-gray-100 dark:bg-gray-900">
-            <header className="flex-shrink-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-2 flex items-center gap-2">
-                <button onClick={handleBack} disabled={!canGoBack} className={ICON_BUTTON_CLASSES} title="Go back">
+        <div className={`flex flex-col h-full ${isRobinMode ? 'bg-black' : 'bg-gray-100 dark:bg-gray-900'}`}>
+            {/* Mode Switcher */}
+            <div className={`flex items-center justify-center p-1 gap-2 text-xs font-semibold ${isRobinMode ? 'bg-gray-900 text-green-600' : 'bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400'}`}>
+                <button onClick={() => setMode('Surface')} className={`px-3 py-1 rounded-full ${mode === 'Surface' ? 'bg-white dark:bg-gray-600 shadow text-blue-600' : 'hover:bg-black/5'}`}>Surface Web</button>
+                <button onClick={() => setMode('Robin (Dark Web)')} className={`px-3 py-1 rounded-full flex items-center gap-1 ${mode === 'Robin (Dark Web)' ? 'bg-green-900/30 text-green-400 border border-green-600/30' : 'hover:bg-black/5'}`}>
+                    <EyeIcon className="w-3 h-3"/> Robin (Dark Web)
+                </button>
+                <button onClick={() => setMode('Fact Check')} className={`px-3 py-1 rounded-full flex items-center gap-1 ${mode === 'Fact Check' ? 'bg-blue-100 dark:bg-blue-900 text-blue-600' : 'hover:bg-black/5'}`}>
+                    <ShieldCheckIcon className="w-3 h-3"/> Fact Check
+                </button>
+            </div>
+
+            <header className={`flex-shrink-0 border-b p-2 flex items-center gap-2 ${headerBg} transition-colors duration-300`}>
+                <button onClick={handleBack} disabled={!canGoBack} className={`${iconColor} p-2 rounded-full disabled:opacity-30`} title="Go back">
                     <ChevronLeftIcon className="w-5 h-5" />
                 </button>
-                <button onClick={handleForward} disabled={!canGoForward} className={ICON_BUTTON_CLASSES} title="Go forward">
+                <button onClick={handleForward} disabled={!canGoForward} className={`${iconColor} p-2 rounded-full disabled:opacity-30`} title="Go forward">
                     <ChevronRightIcon className="w-5 h-5" />
                 </button>
-                <button onClick={handleRefresh} className={ICON_BUTTON_CLASSES} title="Reload page">
+                <button onClick={handleRefresh} className={`${iconColor} p-2 rounded-full`} title="Reload page">
                     <ArrowPathIcon className="w-5 h-5" />
                 </button>
-                <button onClick={handleHome} className={ICON_BUTTON_CLASSES} title="Go to home page">
+                <button onClick={handleHome} className={`${iconColor} p-2 rounded-full`} title="Go to home page">
                     <HomeIcon className="w-5 h-5" />
                 </button>
                 <div className="flex-1 relative">
-                    <LockClosedIcon className="w-4 h-4 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <div className={`absolute left-3 top-1/2 -translate-y-1/2 ${isRobinMode ? 'text-green-500' : 'text-gray-400 dark:text-gray-500'}`}>
+                        {isRobinMode ? <EyeIcon className="w-4 h-4" /> : <LockClosedIcon className="w-4 h-4" />}
+                    </div>
                     <input 
                         type="text"
                         value={displayUrl}
                         onChange={(e) => setDisplayUrl(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        placeholder="Search Google or type a URL"
-                        className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-full h-9 pl-9 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800 dark:text-gray-200"
+                        placeholder={isRobinMode ? "Search Tor Network or enter .onion URL" : "Search Google or type a URL"}
+                        className={`w-full border rounded-full h-9 pl-9 pr-10 text-sm focus:outline-none focus:ring-1 ${isRobinMode ? 'focus:ring-green-500 placeholder-green-800' : 'focus:ring-blue-500'} ${inputBg}`}
                     />
-                    <button onClick={handleToggleBookmark} className={`absolute right-1 top-1/2 -translate-y-1/2 ${ICON_BUTTON_CLASSES}`} title="Add to bookmarks">
-                        <StarIcon className={`w-5 h-5 ${isCurrentUrlBookmarked ? 'text-yellow-400' : 'text-gray-400'}`} solid={isCurrentUrlBookmarked} />
+                    <button onClick={handleToggleBookmark} className={`absolute right-1 top-1/2 -translate-y-1/2 p-2 rounded-full ${isRobinMode ? 'text-green-700 hover:text-green-400' : ICON_BUTTON_CLASSES}`} title="Add to bookmarks">
+                        <StarIcon className={`w-5 h-5 ${isCurrentUrlBookmarked ? 'text-yellow-400' : ''}`} solid={isCurrentUrlBookmarked} />
                     </button>
                 </div>
                 <div className="relative" ref={bookmarksMenuRef}>
-                    <button onClick={() => setIsBookmarksOpen(!isBookmarksOpen)} className={`${ICON_BUTTON_CLASSES} flex items-center gap-1`} title="View bookmarks">
+                    <button onClick={() => setIsBookmarksOpen(!isBookmarksOpen)} className={`${iconColor} flex items-center gap-1 p-2 rounded-full`} title="View bookmarks">
                         <BookmarkIcon className="w-5 h-5" />
                         <ChevronDownIcon className="w-4 h-4"/>
                     </button>
@@ -191,15 +238,39 @@ export const Browser: React.FC = () => {
                     )}
                 </div>
             </header>
-            <main className="flex-1 bg-white dark:bg-black">
-                <iframe
-                    ref={iframeRef}
-                    src={url}
-                    className="w-full h-full border-none"
-                    title="Aetherius OS Browser"
-                    sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts"
-                    onLoad={handleIframeLoad}
-                ></iframe>
+            
+            {/* Status Bar for Robin Mode */}
+            {isRobinMode && (
+                <div className="bg-black border-b border-green-900 p-1 flex justify-center items-center gap-4 text-xs font-mono text-green-600">
+                    <span className="flex items-center gap-1">
+                        <div className={`w-2 h-2 rounded-full ${isTorConnected ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
+                        {isTorConnected ? 'TOR CIRCUIT: ESTABLISHED' : 'TOR CIRCUIT: CONNECTING...'}
+                    </span>
+                    <span>RELAY: 192.44.0.1 (Romania) &rarr; 88.12.9.5 (France) &rarr; EXIT</span>
+                    <span>ENCRYPTION: AES-256-GCM</span>
+                </div>
+            )}
+
+            <main className="flex-1 relative bg-white dark:bg-black">
+                {isRobinMode && !isTorConnected ? (
+                    <div className="absolute inset-0 bg-black flex flex-col items-center justify-center text-green-500 font-mono z-10">
+                        <EyeIcon className="w-16 h-16 mb-4 animate-pulse"/>
+                        <p>Establishing secure connection to Onion Network...</p>
+                        <div className="w-64 h-1 bg-green-900 mt-4 rounded-full overflow-hidden">
+                             <div className="h-full bg-green-500 animate-[loading_2s_ease-in-out_infinite]"></div>
+                        </div>
+                    </div>
+                ) : (
+                     <iframe
+                        ref={iframeRef}
+                        src={url}
+                        className={`w-full h-full border-none ${isRobinMode ? 'invert hue-rotate-180 contrast-75 filter' : ''}`} 
+                        // Note: CSS filter is a hacky way to simulate "Dark Web mode" on the iframe content for effect
+                        title="Aetherius OS Browser"
+                        sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts"
+                        onLoad={handleIframeLoad}
+                    ></iframe>
+                )}
             </main>
         </div>
     );

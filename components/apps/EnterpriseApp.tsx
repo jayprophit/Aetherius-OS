@@ -1,7 +1,10 @@
+
 import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
 import { PlaceholderView } from '../PlaceholderView';
+import { ECommercePlatforms } from '../ECommercePlatforms';
+import { ContractExplorer } from '../ContractExplorer';
 
 const enterpriseComponentMap: { [key: string]: React.FC<any> } = {
   crm: () => <PlaceholderView viewName="Customer Relationship Management (CRM)" />,
@@ -11,6 +14,8 @@ const enterpriseComponentMap: { [key: string]: React.FC<any> } = {
   ppm: () => <PlaceholderView viewName="Project & Portfolio Management (PPM)" />,
   fsm: () => <PlaceholderView viewName="Field Service Management (FSM)" />,
   bpm: () => <PlaceholderView viewName="Business Process Management (BPM)" />,
+  eCommercePlatforms: ECommercePlatforms,
+  contractExplorer: ContractExplorer,
 };
 
 interface EnterpriseAppProps {

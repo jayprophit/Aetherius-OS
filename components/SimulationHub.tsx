@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
 import { PlayIcon, ArrowPathIcon, ArrowsPointingOutIcon, PlusIcon, XMarkIcon } from './Icons';
 import { ICON_BUTTON_CLASSES } from '../constants';
 
 const Viewport: React.FC<{ isRunning: boolean }> = ({ isRunning }) => (
-    <div className="w-full h-full bg-black rounded-lg border border-gray-700 flex items-center justify-center relative overflow-hidden">
+    <div className="w-full h-full bg-black rounded-lg border border-gray-700 flex items-center justify-center relative overflow-hidden" title="Simulation Viewport">
         {/* Placeholder for 3D/2D simulation rendering */}
         <p className="z-10 text-gray-500">Simulation Viewport</p>
         {isRunning && (
@@ -29,22 +30,22 @@ export const SimulationHub: React.FC = () => {
                 {/* Timeline & Controls */}
                 <div className="h-32 flex-shrink-0 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3 flex flex-col">
                     {/* Timeline placeholder */}
-                    <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full mb-3 relative">
+                    <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full mb-3 relative" title="Simulation Timeline">
                         <div className="absolute top-0 left-0 h-2 bg-blue-500 rounded-full" style={{ width: '35%' }} />
                     </div>
                     <div className="flex items-center justify-between">
                          <div className="flex items-center gap-2">
-                            <button className={ICON_BUTTON_CLASSES} onClick={() => setIsRunning(!isRunning)}>
+                            <button className={ICON_BUTTON_CLASSES} onClick={() => setIsRunning(!isRunning)} title={isRunning ? "Pause Simulation" : "Run Simulation"}>
                                 {isRunning ? <div className="w-5 h-5 bg-currentColor rounded-sm" /> : <PlayIcon className="w-5 h-5" />}
                             </button>
                             <span className="text-sm font-mono">Year: 7/20</span>
                          </div>
                          <div className="flex items-center gap-2">
-                             <button className={ICON_BUTTON_CLASSES}>-</button>
+                             <button className={ICON_BUTTON_CLASSES} title="Decrease Playback Speed">-</button>
                              <span>1.0x</span>
-                             <button className={ICON_BUTTON_CLASSES}>+</button>
+                             <button className={ICON_BUTTON_CLASSES} title="Increase Playback Speed">+</button>
                          </div>
-                         <button className={ICON_BUTTON_CLASSES}><ArrowsPointingOutIcon className="w-5 h-5" /></button>
+                         <button className={ICON_BUTTON_CLASSES} title="Expand Viewport to Fullscreen"><ArrowsPointingOutIcon className="w-5 h-5" /></button>
                     </div>
                 </div>
             </main>
@@ -59,6 +60,7 @@ export const SimulationHub: React.FC = () => {
                             value={prompt}
                             onChange={(e) => setPrompt(e.target.value)}
                             className="w-full text-sm p-2 rounded-md bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600"
+                            title="Define initial simulation parameters"
                         />
                     </div>
                      <div>
@@ -67,12 +69,13 @@ export const SimulationHub: React.FC = () => {
                             rows={3}
                             placeholder="e.g., 'Introduce a sudden housing market crash in year 10...'"
                             className="w-full text-sm p-2 rounded-md bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600"
+                            title="Introduce new events during simulation"
                         />
-                         <button className="w-full mt-2 text-sm py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-md font-semibold">Inject Event</button>
+                         <button className="w-full mt-2 text-sm py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-md font-semibold" title="Inject Event into Simulation">Inject Event</button>
                     </div>
                 </div>
                  <div className="flex-shrink-0 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <button onClick={() => setIsRunning(true)} className="w-full bg-blue-600 text-white font-semibold py-2.5 rounded-md hover:bg-blue-700">
+                    <button onClick={() => setIsRunning(true)} className="w-full bg-blue-600 text-white font-semibold py-2.5 rounded-md hover:bg-blue-700" title="Start New Simulation">
                         Run Simulation
                     </button>
                  </div>

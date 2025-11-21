@@ -1,0 +1,61 @@
+
+version: '3.9'
+
+services:
+  # --- Network Layer ---
+  tor-proxy:
+    image: osminogin/tor-simple
+    container_name: qva-tor
+    ports:
+      - "9050:9050"
+    restart: always
+
+  # --- Core Services ---
+  gateway:
+    build: ./services/gateway
+    ports:
+      - "8000:8000"
+    env_file: ./config/.env
+    depends_on:
+      - ai-orchestrator
+      - quantum-engine
+      - search-engine
+
+  search-engine:
+    build: ./services/search_engine
+    environment:
+      - TOR_PROXY=socks5h://tor-proxy:9050
+      - Q_INDEX_PATH=/var/data/q_index
+    volumes:
+      - search_data:/var/data
+    depends_on:
+      - tor-proxy
+      - quantum-engine
+
+  quantum-engine:
+    build: ./services/quantum_engine
+    environment:
+      - WILLOW_CHIP_MODE=simulation
+      - TIME_CRYSTAL_STABILITY=0.99
+
+  ai-orchestrator:
+    build: ./services/ai_orchestrator
+    environment:
+      - AGENT_MODE=hive_mind
+
+  blockchain-node:
+    build: ./services/blockchain_node
+    ports:
+      - "8545:8545"
+
+  # --- Frontend ---
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - gateway
+
+volumes:
+  search_data:
+  blockchain_data:

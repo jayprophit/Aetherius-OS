@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export interface ChatMessage {
@@ -63,6 +64,18 @@ export interface Course {
   modules: Module[];
 }
 
+export interface SystemIdentity {
+    governmentName?: string;
+    userId: string;
+    aiCoreName: string;
+    aiNickname: string;
+    aiId: string;
+    osId: string;
+    networkId: string; // The combined blockchain ID
+    accountTier: 'verified' | 'anonymous';
+    govtIdNumber?: string;
+}
+
 export interface User {
   id: string;
   name: string;
@@ -85,6 +98,7 @@ export interface User {
   roi?: number;
   riskScore?: number;
   followers?: number;
+  systemIdentity?: SystemIdentity;
 }
 
 export interface Comment {
@@ -358,6 +372,21 @@ export interface AssetNews {
   time: string;
 }
 
+export interface AiTradingPlatform {
+    id: string;
+    name: string;
+    category: 'Stock' | 'Crypto' | 'Forex' | 'Multi-Asset';
+    description: string;
+    features: string[];
+    pricing: string;
+    bestFor: string[];
+    strengths: string[];
+    weaknesses: string[];
+    pros: string[];
+    cons: string[];
+    logoUrl?: string;
+}
+
 // --- E-Learning AI Assistant ---
 export interface LearningPath {
   title: string;
@@ -427,7 +456,7 @@ export interface TrainingDataSample {
 
 // --- AI Workforce Orchestrator ---
 export type AIAgentStatus = 'Idle' | 'Working' | 'Reporting' | 'Awaiting Task';
-export type ProcessingMode = 'Singular Mind' | 'Hive Mind' | 'Dual Processing';
+export type ProcessingMode = 'Singular Mind' | 'Hive Mind' | 'Dual Processing' | 'Deep Think (R1)';
 
 export interface AIAgentProfile {
   id: string;
@@ -452,6 +481,50 @@ export interface AIDepartment {
     manager: AIAgentProfile;
     employees: AIAgentProfile[];
     tasks: AIAgentTask[];
+}
+
+// --- AI Memory Node ---
+export interface MemoryVector {
+    id: string;
+    content: string;
+    embedding: number[]; // [x, y] coordinates for simple 2D visualization
+    timestamp: string;
+    type: 'Conversation' | 'Document' | 'Code' | 'System';
+    score?: number; // Similarity score
+}
+
+// --- Blockchain & Consensus ---
+export type ConsensusMechanism = 
+    | 'Proof-of-Work' 
+    | 'Proof-of-Stake' 
+    | 'Delegated Proof-of-Stake' 
+    | 'Proof-of-Authority' 
+    | 'Proof-of-History'
+    | 'Proof-of-Reputation';
+
+export interface Validator {
+    id: string;
+    name: string;
+    stake: number; // For PoS/DPoS
+    reputation: number; // For PoR (0-100)
+    isAuthority: boolean; // For PoA
+    status: 'Active' | 'Jailed' | 'Inactive';
+    votes?: number; // For DPoS
+}
+
+export interface Transaction {
+    hash: string;
+    type: 'CERTIFICATE_MINT' | 'AI_INTERACTION_VERIFIED' | 'GOVERNANCE_VOTE' | 'ASSET_TRANSFER' | 'REPUTATION_SLASH' | 'VALIDATOR_ELECTION';
+    details: any;
+}
+
+export interface Block {
+    height: number;
+    hash: string;
+    timestamp: string;
+    transactions: Transaction[];
+    consensusType: ConsensusMechanism;
+    validator: string;
 }
 
 // --- NEW OS BUILD DATA STRUCTURES ---
@@ -528,4 +601,34 @@ export interface Article {
     tags: string[];
     content: string; // Markdown content
     publicationDate: string;
+}
+
+export interface Job {
+    id: number;
+    title: string;
+    company: string;
+    location: string;
+    type: string;
+    salary: string;
+    tags: string[];
+    logoUrl: string;
+}
+
+// FIX: Add missing Settings types to resolve import errors.
+export interface SettingsItem {
+    id: string;
+    title: string;
+    icon: React.FC<any>;
+    subtitle?: string;
+    description?: string;
+    component: string;
+    type?: 'toggle' | 'link';
+}
+
+export interface SettingsCategory {
+    id: string;
+    title: string;
+    description: string;
+    icon: React.FC<any>;
+    items: SettingsItem[];
 }

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { 
     PlayIcon, PauseIcon, StopIcon, FolderIcon, CodeBracketIcon, CubeIcon, CameraIcon, 
@@ -9,13 +10,13 @@ const Toolbar: React.FC = () => (
     <header className="h-12 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-2 flex-shrink-0">
         <div className="flex items-center gap-1">
             {['File', 'Edit', 'Assets', 'GameObject', 'Component', 'AI', 'Window', 'Help'].map(menu => (
-                <button key={menu} className="px-3 py-1 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700">{menu}</button>
+                <button key={menu} className="px-3 py-1 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700" title={`Show ${menu} menu`}>{menu}</button>
             ))}
         </div>
         <div className="flex items-center gap-2">
-            <button title="Play" className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><PlayIcon className="w-5 h-5"/></button>
-            <button title="Pause" className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><PauseIcon className="w-5 h-5"/></button>
-            <button title="Stop" className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><StopIcon className="w-5 h-5"/></button>
+            <button title="Start Game Simulation" className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><PlayIcon className="w-5 h-5"/></button>
+            <button title="Pause Game Simulation" className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><PauseIcon className="w-5 h-5"/></button>
+            <button title="Stop Game Simulation" className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><StopIcon className="w-5 h-5"/></button>
         </div>
         <div className="w-48"></div> {/* Spacer */}
     </header>
@@ -38,6 +39,7 @@ const SceneHierarchy: React.FC<{ onSelect: (item: string) => void, selected: str
                         key={item.name} 
                         onClick={() => onSelect(item.name)}
                         className={`w-full flex items-center gap-2 p-1.5 text-sm rounded ${selected === item.name ? 'bg-blue-100 dark:bg-blue-900/50' : 'hover:bg-gray-100 dark:hover:bg-gray-700/50'}`}
+                        title={`Select ${item.name} in hierarchy`}
                     >
                         <item.icon className="w-4 h-4 text-gray-500" />
                         <span>{item.name}</span>
@@ -71,7 +73,7 @@ const Inspector: React.FC<{ selectedItem: string | null }> = ({ selectedItem }) 
                 <div className="border border-gray-200 dark:border-gray-700 rounded-md">
                     <p className="text-xs font-semibold p-2 bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700">Mesh Renderer</p>
                 </div>
-                 <button className="w-full text-sm py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md font-semibold">Add Component</button>
+                 <button className="w-full text-sm py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md font-semibold" title="Add Component to Object">Add Component</button>
             </div>
         ) : (
             <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">Select an object to inspect its properties.</p>
@@ -90,7 +92,7 @@ const AssetBrowser: React.FC = () => {
     return (
         <div className="p-2 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
             {assets.map(asset => (
-                <div key={asset.name} className="flex flex-col items-center p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700/50 cursor-pointer">
+                <div key={asset.name} className="flex flex-col items-center p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700/50 cursor-pointer" title={`Open ${asset.name} folder/file`}>
                     <asset.icon className="w-10 h-10 text-gray-500" />
                     <p className="text-xs text-center truncate w-full">{asset.name}</p>
                 </div>
@@ -103,9 +105,9 @@ const AITools: React.FC = () => (
     <div className="p-4 space-y-4">
         <h4 className="font-semibold">AI-Powered Tools</h4>
         <div className="space-y-2">
-            <button className="w-full text-left p-2 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700/50">Procedural Content Generation</button>
-            <button className="w-full text-left p-2 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700/50">NPC Behavior Trees</button>
-            <button className="w-full text-left p-2 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700/50">Adaptive Gameplay Analysis</button>
+            <button className="w-full text-left p-2 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700/50" title="Generate procedural terrain and objects">Procedural Content Generation</button>
+            <button className="w-full text-left p-2 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700/50" title="Configure NPC behavior logic">NPC Behavior Trees</button>
+            <button className="w-full text-left p-2 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700/50" title="Analyze player data for adaptive difficulty">Adaptive Gameplay Analysis</button>
         </div>
     </div>
 );
@@ -122,9 +124,9 @@ export const GameEngine: React.FC = () => {
                 <SceneHierarchy onSelect={setSelectedObject} selected={selectedObject!} />
                 <main className="flex-1 flex flex-col">
                     <div className="h-10 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center px-2 gap-1">
-                        <button className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded" title="Move"><ArrowsUpDownLeftRightIcon className="w-5 h-5 text-blue-600 dark:text-blue-300"/></button>
-                        <button className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700" title="Rotate"><ArrowPathRoundedSquareIcon className="w-5 h-5"/></button>
-                        <button className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700" title="Scale"><ArrowsPointingOutIcon className="w-5 h-5"/></button>
+                        <button className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded" title="Move Tool - Shortcut W"><ArrowsUpDownLeftRightIcon className="w-5 h-5 text-blue-600 dark:text-blue-300"/></button>
+                        <button className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700" title="Rotate Tool - Shortcut E"><ArrowPathRoundedSquareIcon className="w-5 h-5"/></button>
+                        <button className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700" title="Scale Tool - Shortcut R"><ArrowsPointingOutIcon className="w-5 h-5"/></button>
                     </div>
                     <div className="flex-1 bg-black flex items-center justify-center text-gray-600">
                         3D Viewport
@@ -136,6 +138,7 @@ export const GameEngine: React.FC = () => {
                                     key={tab} 
                                     onClick={() => setActiveBottomTab(tab)}
                                     className={`px-3 py-1.5 text-sm font-semibold ${activeBottomTab === tab ? 'bg-gray-100 dark:bg-gray-700/50' : 'hover:bg-gray-50 dark:hover:bg-gray-700/20'}`}
+                                    title={`Open ${tab} panel`}
                                 >
                                     {tab}
                                 </button>

@@ -1,0 +1,21 @@
+
+{
+	"name": "Quantum Omni OS Dev",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"settings": {
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"extensions": [
+		"ms-python.python",
+		"ms-azuretools.vscode-docker",
+		"dbaeumer.vscode-eslint",
+		"tushortandon.python-extended-snippets"
+	],
+	"forwardPorts": [3000, 8000, 9050, 8545],
+	"postCreateCommand": "pip install -r services/gateway/requirements.txt && npm install --prefix frontend",
+	"remoteUser": "vscode"
+}

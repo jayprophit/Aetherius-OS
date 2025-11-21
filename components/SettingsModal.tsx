@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { settingsConfig, SettingsCategory, SettingsItem } from '../data';
+import { settingsConfig, loggedInUser } from '../data';
+import { SettingsCategory, SettingsItem } from '../types';
 import { ChevronLeftIcon, SearchIcon } from './Icons';
-import { loggedInUser } from '../data';
 
 // Import existing settings components
 import { PlaceholderSettings } from './settings/PlaceholderSettings';

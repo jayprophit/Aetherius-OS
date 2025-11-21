@@ -1,12 +1,14 @@
+
 # Aetherius OS - Project Genesis Framework
 
 A web-based, next-generation operating system interface that serves as the initial reference implementation for the Universal AI Development Protocol. It demonstrates a complete, production-ready system with a rich feature set, real-world integrations, and an advanced AI core.
 
-## ✨ Core Development Principles (OADP-001-UNIVERSAL-REV5)
+## ✨ Core Development Principles (OADP-001-UNIVERSAL-REV7)
 
-This project is built under a strict, revised protocol that mandates the AI developer to operate as a senior expert with century-level experience. The core tenet is **design-specific implementation**: every project is treated as a unique entity, and features are not carried over unless explicitly requested.
+This project is built under a strict, revised protocol that mandates the AI developer to operate as a senior expert with century-level experience. The core tenet is **design-specific implementation** guided by the internal **Project Genesis Advisor**.
 
 -   **Vision Realization:** All projects are built as complete, world-class, production-ready products. No MVPs or demos.
+-   **Strategic Alignment:** Development is algorithmically guided by the **Project Genesis Advisor**, which synthesizes data from the **Build Checklist**, **Milestones**, and **Knowledge Base** to recommend the most critical next steps.
 -   **Design-Specific Implementation:** Advanced features and real-world integrations are uniquely tailored to each project's specific design requirements. There are no default feature sets.
 -   **Sovereign Architecture:** The owner's specifications for each project's menus, functions, and integrations are absolute and project-specific.
 -   **Adaptive Expertise:** The AI applies expert knowledge appropriate to each project's domain (e.g., mobile app development, systems programming, game design).
@@ -21,6 +23,9 @@ Aetherius OS is built upon a foundation of both state-of-the-art and speculative
     -   **Genesis Parent:** The owner's central command build with unrestricted access for development, governance, and system-wide updates.
     -   **Child:** The core AI and blockchain processing layer, acting as an operational engine and network gatekeeper.
     -   **Grandchild:** End-user instances (clones) with access to OS features for content creation and management, but without access to the primary codebase.
+-   **Custom Blockchain (OmniChain):** A bespoke Layer 1 blockchain built from scratch, featuring a hybrid consensus engine (PoW, PoS, PoH), quantum-resistant cryptography, and a "Proof-of-Everything" validation model.
+-   **Advanced AI Tooling:** Deep integration of RAG, CAG, A2A (Agent-to-Agent), and MCP (Model Context Protocol) for autonomous, intelligent operations.
+-   **Holistic Cybersecurity:** A military-grade security suite including ZK Firewalls, Decentralized SOC, automated pen-testing, and real-time threat intelligence.
 -   **Universal Platform Accessibility:** Aetherius OS is designed as a universal platform, accessible internationally via a **Web App, Desktop App, Mobile App (iOS/Android), and Tablet/iPad App**, running in the cloud and within a virtualized environment.
 -   **Onion Router Data Layer:** An integrated, privacy-aware data scraping module to feed the AI's knowledge base from all layers of the web.
 -   **Hive/Singular Mind Dual Processing:** A sophisticated cognitive architecture that combines collective intelligence from all network nodes with private, individual processing for each user.
@@ -43,18 +48,7 @@ Aetherius OS is built upon a foundation of both state-of-the-art and speculative
 -   **Frontend:** [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)
 -   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 -   **AI Core:** Proprietary Aetherius AI Engine (built from scratch, inspired by state-of-the-art models)
--   **Blockchain:** Proprietary Aetherius Multi-Dimensional Blockchain
-
-#### Internal Services vs. 3rd Party Plugins
-
-Aetherius OS is a self-contained ecosystem. Core functionalities like VoIP/SMS, email, and payment processing are provided by native, from-scratch Aetherius services. This ensures maximum security, performance, and integration.
-
-However, the OS is designed with an open and extensible architecture. Users and developers have the choice to integrate with their preferred 3rd-party services via a robust plugin system. While the OS can run independently, it also supports:
-
--   **VoIP/SMS:** Twilio, Plivo
--   **Email:** SendGrid, SMTP relays
--   **Payments:** Stripe, PayPal, Adyen
--   **Web3:** Direct integration with external blockchain networks.
+-   **Blockchain:** Proprietary Aetherius Multi-Dimensional Blockchain (OmniChain)
 
 ## 🚀 Running Locally & Offline
 

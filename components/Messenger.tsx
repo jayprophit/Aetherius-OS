@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { ChatSession, User, ChatMessage } from '../types';
 import { messengerSessions, loggedInUser, messengerUsers } from '../data';
@@ -12,6 +13,7 @@ const ConversationListItem: React.FC<{ session: ChatSession; isActive: boolean; 
         <button
             onClick={onClick}
             className={`w-full text-left p-3 flex items-center gap-3 rounded-lg transition-colors ${isActive ? 'bg-blue-100 dark:bg-blue-900/50' : 'hover:bg-gray-100 dark:hover:bg-gray-700/50'}`}
+            title={`Open chat with ${otherUser?.name}`}
         >
             <div className="relative flex-shrink-0">
                 <img src={otherUser?.avatarUrl || `https://ui-avatars.com/api/?name=${otherUser?.name}&background=random`} alt={otherUser?.name} className="w-12 h-12 rounded-full object-cover" />
@@ -32,7 +34,7 @@ const MessageBubble: React.FC<{ message: ChatMessage; sender: User; isOwn: boole
     return (
         <div className={`flex items-end gap-2 ${isOwn ? 'justify-end' : 'justify-start'}`}>
             {!isOwn && (
-                <img src={sender.avatarUrl || `https://ui-avatars.com/api/?name=${sender.name}&background=random`} alt={sender.name} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+                <img src={sender.avatarUrl || `https://ui-avatars.com/api/?name=${sender.name}&background=random`} alt={sender.name} className="w-8 h-8 rounded-full object-cover flex-shrink-0" title={sender.name} />
             )}
             <div className={`max-w-md p-3 rounded-2xl ${isOwn ? 'bg-blue-600 text-white rounded-br-none' : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 rounded-bl-none'}`}>
                 <p className="text-sm">{message.text}</p>
@@ -80,7 +82,7 @@ export const Messenger: React.FC = () => {
                     <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Messenger</h1>
                     <div className="relative mt-2">
                         <SearchIcon className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                        <input type="text" placeholder="Search messages or users" className="bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-full h-9 pl-10 pr-4 w-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                        <input type="text" placeholder="Search messages or users" title="Search within your conversations" className="bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-full h-9 pl-10 pr-4 w-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
                     </div>
                 </header>
                 <div className="flex-1 overflow-y-auto space-y-2 pr-2">
@@ -108,9 +110,9 @@ export const Messenger: React.FC = () => {
                                 </div>
                             </div>
                              <div className="flex items-center gap-2">
-                                <button className={ICON_BUTTON_CLASSES}><PhoneIcon className="w-5 h-5" /></button>
-                                <button className={ICON_BUTTON_CLASSES}><VideoIcon className="w-5 h-5" /></button>
-                                <button className={ICON_BUTTON_CLASSES}><EllipsisHorizontalIcon className="w-5 h-5" /></button>
+                                <button className={ICON_BUTTON_CLASSES} title="Start Voice Call"><PhoneIcon className="w-5 h-5" /></button>
+                                <button className={ICON_BUTTON_CLASSES} title="Start Video Call"><VideoIcon className="w-5 h-5" /></button>
+                                <button className={ICON_BUTTON_CLASSES} title="Conversation Options"><EllipsisHorizontalIcon className="w-5 h-5" /></button>
                              </div>
                         </header>
                         
@@ -128,17 +130,18 @@ export const Messenger: React.FC = () => {
                         <div className="p-4 flex-shrink-0 bg-gray-50/50 dark:bg-gray-900/50">
                             <form onSubmit={handleSendMessage} className="w-full max-w-4xl mx-auto">
                                 <div className="flex items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm focus-within:ring-2 focus-within:ring-blue-500 transition-all p-2 gap-2">
-                                    <button type="button" className={ICON_BUTTON_CLASSES}><PlusCircleIcon className="w-6 h-6"/></button>
+                                    <button type="button" className={ICON_BUTTON_CLASSES} title="Add Attachment"><PlusCircleIcon className="w-6 h-6"/></button>
                                     <input
                                         type="text"
                                         value={newMessage}
                                         onChange={(e) => setNewMessage(e.target.value)}
                                         placeholder={`Message ${otherUser.name}...`}
                                         className="w-full bg-transparent px-2 focus:outline-none text-gray-800 dark:text-gray-200 text-sm resize-none"
+                                        title="Type your message here"
                                     />
-                                    <button type="button" className={ICON_BUTTON_CLASSES}><PaperClipIcon className="w-5 h-5"/></button>
-                                    <button type="button" className={ICON_BUTTON_CLASSES}><EmojiIcon className="w-5 h-5"/></button>
-                                    <button type="submit" disabled={!newMessage.trim()} className="p-1.5 text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors">
+                                    <button type="button" className={ICON_BUTTON_CLASSES} title="Attach File"><PaperClipIcon className="w-5 h-5"/></button>
+                                    <button type="button" className={ICON_BUTTON_CLASSES} title="Insert Emoji"><EmojiIcon className="w-5 h-5"/></button>
+                                    <button type="submit" disabled={!newMessage.trim()} className="p-1.5 text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors" title="Send Message">
                                         <ArrowUpCircleIcon className="h-6 w-6"/>
                                     </button>
                                 </div>

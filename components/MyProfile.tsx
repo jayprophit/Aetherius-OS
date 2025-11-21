@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, ChangeEvent } from 'react';
 import { loggedInUser } from '../data';
 import { User } from '../types';
@@ -24,6 +25,7 @@ const EditableField: React.FC<{
             placeholder,
             className: "block w-full rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-10 py-2 text-sm focus:border-blue-500 focus:ring-blue-500",
             autoFocus: true,
+            title: `Editing ${label}`,
             onBlur: () => onEditClick(null), // Close on blur
             onKeyDown: (e: React.KeyboardEvent) => {
                 if (e.key === 'Enter' && as !== 'textarea') {
@@ -67,6 +69,7 @@ const EditableField: React.FC<{
                     onClick={() => onEditClick(name)}
                     className="p-1.5 rounded-full bg-gray-200 dark:bg-gray-600 opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100"
                     aria-label={`Edit ${label}`}
+                    title={`Edit ${label}`}
                 >
                     <PencilIcon className="w-4 h-4 text-gray-600 dark:text-gray-300" />
                 </button>
@@ -79,7 +82,7 @@ const SocialButton: React.FC<{ platform: string, children: React.ReactNode }> = 
     // A real implementation would have different logic for each platform
     const connect = () => alert(`Connecting with ${platform}...`);
     return (
-        <button onClick={connect} className="w-full flex items-center justify-center gap-3 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+        <button onClick={connect} className="w-full flex items-center justify-center gap-3 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" title={`Connect with ${platform}`}>
             {children}
         </button>
     )
@@ -146,6 +149,7 @@ export const MyProfile: React.FC = () => {
                     onClick={handleSaveChanges}
                     disabled={!isDirty}
                     className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    title="Save Profile Changes"
                 >
                     Save Changes
                 </button>
@@ -170,6 +174,7 @@ export const MyProfile: React.FC = () => {
                             <button
                                 onClick={handlePictureClick}
                                 className="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                title="Upload Profile Picture"
                             >
                                 <CameraIcon className="w-8 h-8" />
                             </button>

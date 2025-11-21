@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { desktopItems } from '../data';
 import { AppItem, FolderItem, DesktopItem } from '../types';
@@ -182,12 +183,17 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
             style={{ backgroundImage: `url(${wallpaperUrl || defaultWallpaper})` }}
             onContextMenu={handleContextMenu}
             onClick={() => setContextMenu({ ...contextMenu, visible: false })}
+            title="Desktop Workspace"
         >
             <div className="w-full h-full p-2 relative">
                 {desktopItems.map(item => {
                     const position = positions[item.id];
                     if (!position) return null;
                     const Icon = item.type === 'app' ? item.icon : FolderIcon;
+                    const tooltipText = item.type === 'app' 
+                        ? `Launch ${item.title} Application` 
+                        : `Open ${item.title} Folder`;
+
                     return (
                         <button 
                             key={item.id}
@@ -203,7 +209,8 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
                                 touchAction: 'none',
                                 cursor: 'pointer'
                             }}
-                            aria-label={`Open ${item.title}`}
+                            aria-label={tooltipText}
+                            title={tooltipText}
                         >
                             <div className="bg-black/30 dark:bg-black/40 rounded-lg flex items-center justify-center backdrop-blur-sm shadow-md pointer-events-none" style={{ width: currentSize.iconSize + 16, height: currentSize.iconSize + 16 }}>
                                 <Icon className="text-white" style={{ width: currentSize.iconSize, height: currentSize.iconSize }} />

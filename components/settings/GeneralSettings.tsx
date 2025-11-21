@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import { ChevronRightIcon } from '../Icons';
-import { SettingsItem } from '../../data';
+import { SettingsItem } from '../../types';
 
 const ToggleSwitch: React.FC<{toggled: boolean, onToggle: (e: React.MouseEvent) => void}> = ({ toggled, onToggle }) => {
     return (
