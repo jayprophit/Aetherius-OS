@@ -17,6 +17,7 @@ export interface WindowState {
   zIndex: number;
   isMaximized: boolean;
   isMinimized: boolean;
+  workspace: number; // 0, 1, 2, etc.
 }
 
 export interface MenuItemData {
@@ -67,13 +68,17 @@ export interface Course {
 export interface SystemIdentity {
     governmentName?: string;
     userId: string;
-    aiCoreName: string;
-    aiNickname: string;
+    aiCoreName: string; // The formal name (e.g., "Aether Core 1")
+    aiNickname: string; // The friendly name (e.g., "Buddy")
     aiId: string;
     osId: string;
     networkId: string; // The combined blockchain ID
     accountTier: 'verified' | 'anonymous';
+    kycStatus?: 'unverified' | 'pending' | 'verified' | 'rejected';
+    verificationLevel?: 'None' | 'Tier 1 (Basic)' | 'Tier 2 (Full Financial)';
+    ageGroup?: 'Child' | 'Teen' | 'Adult';
     govtIdNumber?: string;
+    buildType: 'Genesis' | 'Child' | 'Grandchild'; // Determines the hierarchy level
 }
 
 export interface User {
@@ -614,7 +619,6 @@ export interface Job {
     logoUrl: string;
 }
 
-// FIX: Add missing Settings types to resolve import errors.
 export interface SettingsItem {
     id: string;
     title: string;

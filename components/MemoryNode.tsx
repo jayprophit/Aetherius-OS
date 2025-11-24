@@ -5,16 +5,9 @@ import {
     CubeTransparentIcon, SearchIcon, PlusIcon, CodeBracketIcon, 
     CircleStackIcon, ChipIcon, BoltIcon, ClockIcon, ShareIcon, SparklesIcon
 } from './Icons';
+import { Kernel, MemoryEntry } from '../services/AetheriusKernel';
 
-const initialMemories: MemoryVector[] = [
-    { id: 'mem-001', content: "User prefers dark mode UI themes.", embedding: [0.2, 0.8], timestamp: "2024-05-10 09:30", type: "Conversation" },
-    { id: 'mem-002', content: "Project Alpha deadline is June 1st.", embedding: [0.7, 0.3], timestamp: "2024-05-12 14:15", type: "Document" },
-    { id: 'mem-003', content: "Python script for quantum annealing simulation.", embedding: [0.8, 0.2], timestamp: "2024-05-15 11:00", type: "Code" },
-    { id: 'mem-004', content: "System error log: vQPU overload detected.", embedding: [0.1, 0.1], timestamp: "2024-05-16 03:45", type: "System" },
-    { id: 'mem-005', content: "Meeting notes: Discussed neural link latency.", embedding: [0.6, 0.4], timestamp: "2024-05-18 16:20", type: "Document" },
-];
-
-// Python implementation code snippet (UPDATED)
+// Python implementation code snippet
 const pythonImplementation = `
 import faiss
 import numpy as np
@@ -140,7 +133,7 @@ class MemoryNode:
 `;
 
 const VectorVisualizer: React.FC<{ 
-    memories: MemoryVector[], 
+    memories: MemoryEntry[], 
     queryVector?: number[] 
 }> = ({ memories, queryVector }) => {
     return (
@@ -166,7 +159,7 @@ const VectorVisualizer: React.FC<{
                     {/* Tooltip */}
                     <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-48 bg-gray-900 text-xs text-gray-300 p-2 rounded border border-gray-700 opacity-0 group-hover:opacity-100 pointer-events-none z-10 transition-opacity">
                         <p className="font-bold text-white mb-1">{mem.type}</p>
-                        <p>{mem.content}</p>
+                        <p className="line-clamp-3">{mem.content}</p>
                     </div>
                     <div className="absolute inset-0 rounded-full animate-ping opacity-20 bg-current"></div>
                 </div>
@@ -260,42 +253,40 @@ const SpikingNetworkVisualizer: React.FC<{ isActive: boolean }> = ({ isActive })
 
 export const MemoryNode: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'Dashboard' | 'Code'>('Dashboard');
-    const [memories, setMemories] = useState<MemoryVector[]>(initialMemories);
+    const [memories, setMemories] = useState<MemoryEntry[]>([]);
     const [inputText, setInputText] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, setSearchResults] = useState<MemoryVector[]>([]);
+    const [searchResults, setSearchResults] = useState<MemoryEntry[]>([]);
     const [queryVec, setQueryVec] = useState<number[] | undefined>(undefined);
     const [cacheHit, setCacheHit] = useState(false);
     const [architecture, setArchitecture] = useState<'Vector (Standard)' | 'Neuromorphic (SNN)'>('Vector (Standard)');
 
     // Stats
-    const [indexSize, setIndexSize] = useState(1402);
+    const [indexSize, setIndexSize] = useState(0);
     const [cacheHits, setCacheHits] = useState(842);
 
-    // Simulate Embedding (2D for visualization)
-    const mockEmbed = (text: string): number[] => {
-        // Deterministic pseudo-random for consistent demo
-        let hash = 0;
-        for (let i = 0; i < text.length; i++) {
-            hash = (hash << 5) - hash + text.charCodeAt(i);
-            hash |= 0;
-        }
-        const x = Math.abs((hash % 1000) / 1000);
-        const y = Math.abs(((hash >> 10) % 1000) / 1000);
-        return [x, y];
-    };
+    // Load memories from Kernel on mount
+    useEffect(() => {
+        const loadedMemories = Kernel.getMemories();
+        setMemories(loadedMemories);
+        setIndexSize(loadedMemories.length);
+        
+        // Poll for updates (simulate live sync)
+        const interval = setInterval(() => {
+            const current = Kernel.getMemories();
+            if (current.length !== memories.length) {
+                setMemories(current);
+                setIndexSize(current.length);
+            }
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [memories.length]);
 
     const handleIngest = () => {
         if (!inputText.trim()) return;
         
-        const vector = mockEmbed(inputText);
-        const newMem: MemoryVector = {
-            id: `mem-${Date.now()}`,
-            content: inputText,
-            embedding: vector,
-            timestamp: new Date().toLocaleString(),
-            type: inputText.includes('def ') || inputText.includes('import ') ? 'Code' : 'Conversation'
-        };
+        const type = inputText.includes('def ') || inputText.includes('import ') ? 'Code' : 'Conversation';
+        const newMem = Kernel.addMemory(inputText, type);
         
         setMemories(prev => [...prev, newMem]);
         setIndexSize(prev => prev + 1);
@@ -309,7 +300,16 @@ export const MemoryNode: React.FC = () => {
             return;
         }
 
-        const qVec = mockEmbed(searchQuery);
+        // Re-create embedding logic locally for visualizer query point
+        let hash = 0;
+        for (let i = 0; i < searchQuery.length; i++) {
+            hash = (hash << 5) - hash + searchQuery.charCodeAt(i);
+            hash |= 0;
+        }
+        const x = Math.abs((hash % 1000) / 1000);
+        const y = Math.abs(((hash >> 10) % 1000) / 1000);
+        const qVec = [x, y];
+        
         setQueryVec(qVec);
 
         // Simulate retrieval (Euclidean distance in 2D for demo)
@@ -451,7 +451,7 @@ export const MemoryNode: React.FC = () => {
                                     <div key={idx} className="bg-gray-900 p-3 rounded-lg border border-gray-700 text-xs">
                                         <div className="flex justify-between mb-1 text-gray-400">
                                             <span>{res.type}</span>
-                                            <span className="text-purple-400 font-mono">{((res.score || 0) * 100).toFixed(1)}% Match</span>
+                                            <span className="text-purple-400 font-mono">{((res as any).score * 100).toFixed(1)}% Match</span>
                                         </div>
                                         <p className="text-gray-200">{res.content}</p>
                                     </div>

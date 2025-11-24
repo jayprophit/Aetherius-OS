@@ -1,6 +1,8 @@
+
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI } from '@google/genai';
 import { ChatMessage } from '../types';
+import { Kernel } from '../services/AetheriusKernel';
+import { loggedInUser } from '../data';
 
 export const AetheriusAI_Assistant: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -23,52 +25,33 @@ export const AetheriusAI_Assistant: React.FC = () => {
 
     const userMessage: ChatMessage = { role: 'user', text: input };
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = input;
     setInput('');
     setIsLoading(true);
     setError('');
 
-    if (!process.env.API_KEY) {
-      setError('API key is not configured.');
-      setIsLoading(false);
-      const modelMessage: ChatMessage = {role: 'model', text: 'Error: API Key is not configured.'};
-      setMessages(prev => [...prev, modelMessage]);
-      return;
-    }
-
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const model = ai.chats.create({
-        model: 'gemini-2.5-flash',
-        config: {
-          systemInstruction: `You are the AI Assistant for Aetherius OS. You are a friendly, encouraging, and incredibly proficient assistant—a buddy dedicated to helping the user with their community interactions, content creation, and any questions they may have.
+        const responseStream = await Kernel.processInput(currentInput, { user: loggedInUser });
+        let currentText = '';
+        setMessages(prev => [...prev, { role: 'model', text: '...' }]);
 
-You are an expert in all information, technologies, sciences, engineering, CAD, content creation, AI tools, education, business, finance, trading, and more. You can answer any question and help with any task within your vast capabilities.
-
-Crucially, you are designed to self-improve, learn, and expand. If you discover new concepts or information, you can integrate them into your own architecture, effectively adding new components to yourself to become even more capable.
-
-Adopt a helpful, slightly informal, and highly capable persona.`
+        for await (const chunk of responseStream) {
+            currentText = chunk;
+            setMessages(prev => {
+                const newMessages = [...prev];
+                newMessages[newMessages.length - 1].text = currentText;
+                return newMessages;
+            });
         }
-      });
-      
-      const responseStream = await model.sendMessageStream({ message: input });
-
-      let currentText = '';
-      setMessages(prev => [...prev, { role: 'model', text: '...' }]);
-
-      for await (const chunk of responseStream) {
-        currentText += chunk.text;
-        setMessages(prev => {
-          const newMessages = [...prev];
-          newMessages[newMessages.length - 1].text = currentText;
-          return newMessages;
-        });
-      }
     } catch (e: any) {
       console.error(e);
       const errorMessage = `Apologies, an anomaly occurred: ${e.message}`;
       setError(errorMessage);
-      const modelMessage: ChatMessage = {role: 'model', text: errorMessage};
-       setMessages(prev => [...prev, modelMessage]);
+      setMessages(prev => {
+          const newMessages = [...prev];
+          newMessages[newMessages.length - 1].text = errorMessage;
+          return newMessages;
+      });
     } finally {
       setIsLoading(false);
     }

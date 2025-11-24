@@ -39,7 +39,6 @@ const AssetRow: React.FC<{ asset: TradingAsset; onRowClick: () => void; isExpand
 };
 
 const AssetDetailView: React.FC<{ asset: TradingAsset }> = ({ asset }) => {
-    // Mock data for the detail view
     const metrics: AssetMetric[] = [
         { label: 'Market Cap', value: asset.marketCap ? `$${(asset.marketCap / 1e9).toFixed(2)}B` : 'N/A' },
         { label: 'Volume (24h)', value: asset.volume24h ? `$${(asset.volume24h / 1e6).toFixed(2)}M` : 'N/A' },
@@ -105,6 +104,26 @@ export const Markets: React.FC = () => {
             );
     }, [searchTerm, activeClass]);
 
+    if (viewMode === 'bubbles') {
+        return (
+            <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto flex flex-col">
+                <header className="mb-6 flex justify-between items-center">
+                    <div>
+                        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Markets</h1>
+                        <p className="text-gray-600 dark:text-gray-400 mt-1">Real-time market heatmap.</p>
+                    </div>
+                    <div className="flex bg-gray-200 dark:bg-gray-800 rounded-lg p-1 gap-1">
+                        <button onClick={() => setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="List View"><ListBulletIcon className="w-5 h-5"/></button>
+                        <button onClick={() => setViewMode('bubbles')} className={`p-2 rounded-md ${viewMode === 'bubbles' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="Bubble View"><GlobeAltIcon className="w-5 h-5"/></button>
+                    </div>
+                </header>
+                <div className="flex-1 min-h-0">
+                    <MarketBubbles />
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto flex flex-col">
             <header className="mb-6 flex justify-between items-center">
@@ -131,58 +150,52 @@ export const Markets: React.FC = () => {
                     ))}
                 </div>
                 <div className="relative w-full sm:w-64">
-                    <SearchIcon className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                        type="text"
-                        placeholder="Search assets..."
+                    <SearchIcon className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input 
+                        type="text" 
+                        placeholder="Search Assets..." 
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-full h-10 pl-10 pr-4 w-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="w-full pl-10 pr-4 py-1.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                 </div>
             </div>
 
-            {viewMode === 'list' ? (
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden flex-1">
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-sm">
-                            <thead className="bg-gray-50 dark:bg-gray-700/50 text-xs uppercase text-gray-500 dark:text-gray-400">
-                                <tr>
-                                    <th className="p-4 text-left">Asset</th>
-                                    <th className="p-4 text-right">Price</th>
-                                    <th className="p-4 text-right">Change</th>
-                                    <th className="p-4 text-right">24h %</th>
-                                    <th className="p-4 text-right hidden md:table-cell">Market Cap</th>
-                                    <th className="p-4 text-right hidden lg:table-cell">Volume (24h)</th>
-                                    <th className="p-4 text-right"></th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                                {filteredAssets.map((asset) => (
-                                    <React.Fragment key={asset.symbol}>
-                                        <AssetRow 
-                                            asset={asset} 
-                                            onRowClick={() => setExpandedAssetSymbol(prev => prev === asset.symbol ? null : asset.symbol)}
-                                            isExpanded={expandedAssetSymbol === asset.symbol}
-                                        />
-                                        {expandedAssetSymbol === asset.symbol && (
-                                            <tr>
-                                                <td colSpan={7} className="p-0">
-                                                    <AssetDetailView asset={asset} />
-                                                </td>
-                                            </tr>
-                                        )}
-                                    </React.Fragment>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden flex-1">
+                <div className="overflow-x-auto h-full">
+                    <table className="w-full text-sm text-left">
+                        <thead className="bg-gray-50 dark:bg-gray-700/50 text-xs uppercase text-gray-500 dark:text-gray-400 sticky top-0 z-10">
+                            <tr>
+                                <th className="p-4">Asset</th>
+                                <th className="p-4 text-right">Price</th>
+                                <th className="p-4 text-right">Change</th>
+                                <th className="p-4 text-right">Change %</th>
+                                <th className="p-4 text-right hidden md:table-cell">Market Cap</th>
+                                <th className="p-4 text-right hidden lg:table-cell">Volume (24h)</th>
+                                <th className="p-4"></th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                            {filteredAssets.map(asset => (
+                                <React.Fragment key={asset.symbol}>
+                                    <AssetRow 
+                                        asset={asset} 
+                                        onRowClick={() => setExpandedAssetSymbol(expandedAssetSymbol === asset.symbol ? null : asset.symbol)}
+                                        isExpanded={expandedAssetSymbol === asset.symbol}
+                                    />
+                                    {expandedAssetSymbol === asset.symbol && (
+                                        <tr>
+                                            <td colSpan={7} className="p-0">
+                                                <AssetDetailView asset={asset} />
+                                            </td>
+                                        </tr>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-            ) : (
-                <div className="flex-1 bg-gray-900 rounded-lg overflow-hidden border border-gray-700">
-                    <MarketBubbles />
-                </div>
-            )}
+            </div>
         </div>
     );
 };

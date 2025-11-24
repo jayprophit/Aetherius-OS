@@ -1,12 +1,15 @@
+
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI } from '@google/genai';
 import { ChatMessage } from '../types';
 import { marked } from 'marked';
+import { loggedInUser } from '../data';
+import { Kernel } from '../services/AetheriusKernel';
 
 export const SimpleAIChat: React.FC = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Aetherius OS Assistant online. How can I help you today?' }
-  ]);
+  const identity = loggedInUser.systemIdentity;
+  const aiName = identity?.aiNickname || identity?.aiCoreName || 'Aether';
+
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -16,6 +19,12 @@ export const SimpleAIChat: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Initialize with dynamic greeting
+  useEffect(() => {
+    const greeting = Kernel.getDynamicGreeting(loggedInUser);
+    setMessages([{ role: 'model', text: greeting }]);
+  }, []);
+
   useEffect(scrollToBottom, [messages]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -24,34 +33,22 @@ export const SimpleAIChat: React.FC = () => {
 
     const userMessage: ChatMessage = { role: 'user', text: input };
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = input;
     setInput('');
     setIsLoading(true);
     setError('');
 
-    if (!process.env.API_KEY) {
-      setError('API key is not configured.');
-      setIsLoading(false);
-      const modelMessage: ChatMessage = {role: 'model', text: 'Error: API Key is not configured.'};
-      setMessages(prev => [...prev, modelMessage]);
-      return;
-    }
-
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const model = ai.chats.create({
-        model: 'gemini-2.5-flash',
-        config: {
-          systemInstruction: `You are the AI Assistant for Aetherius OS. You are a friendly, encouraging, and proficient assistant. Format your responses in Markdown.`
-        }
+      // Process via Internal Kernel
+      const responseStream = await Kernel.processInput(currentInput, {
+          user: loggedInUser
       });
-      
-      const responseStream = await model.sendMessageStream({ message: input });
 
       let currentText = '';
       setMessages(prev => [...prev, { role: 'model', text: '...' }]);
 
       for await (const chunk of responseStream) {
-        currentText += chunk.text;
+        currentText = chunk;
         setMessages(prev => {
           const newMessages = [...prev];
           newMessages[newMessages.length - 1].text = currentText;
@@ -60,10 +57,13 @@ export const SimpleAIChat: React.FC = () => {
       }
     } catch (e: any) {
       console.error(e);
-      const errorMessage = `Apologies, an anomaly occurred: ${e.message}`;
+      const errorMessage = `Core Error: ${e.message}`;
       setError(errorMessage);
-      const modelMessage: ChatMessage = {role: 'model', text: errorMessage};
-       setMessages(prev => [...prev, modelMessage]);
+      setMessages(prev => {
+        const newMessages = [...prev];
+        newMessages[newMessages.length - 1].text = errorMessage;
+        return newMessages;
+      });
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +72,7 @@ export const SimpleAIChat: React.FC = () => {
   return (
     <div className="flex flex-col h-full bg-white dark:bg-gray-800">
       <header className="p-4 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
-          <h2 className="font-semibold text-lg text-gray-800 dark:text-gray-100">AI Assistant</h2>
+          <h2 className="font-semibold text-lg text-gray-800 dark:text-gray-100">{aiName} (AI Assistant)</h2>
       </header>
       <div className="flex-grow p-4 overflow-y-auto space-y-4">
         {messages.map((msg, index) => (
@@ -101,7 +101,7 @@ export const SimpleAIChat: React.FC = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask Aetherius..."
+            placeholder={`Message ${aiName}...`}
             disabled={isLoading}
             className="w-full bg-transparent p-2 focus:outline-none text-gray-800 dark:text-gray-200 text-sm disabled:opacity-50"
           />

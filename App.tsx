@@ -9,7 +9,7 @@ import { Desktop } from './components/Desktop';
 import { WindowFrame } from './components/WindowFrame';
 import { Taskbar } from './components/Taskbar';
 import { PlaceholderView } from './components/PlaceholderView';
-import { GyeNyameIcon, ArrowRightIcon } from './components/Icons';
+import { GyeNyameIcon, ArrowRightIcon, FingerPrintIcon } from './components/Icons';
 import { OnboardingWizard } from './components/OnboardingWizard';
 
 // --- Component Imports for Window Content ---
@@ -52,6 +52,13 @@ import { QuantumNeuralNetwork } from './components/QuantumNeuralNetwork';
 import { HuggingFaceModelHub } from './components/HuggingFaceModelHub';
 import { QuantumDNACore } from './components/QuantumDNACore';
 import { MemoryNode } from './components/MemoryNode';
+import { Terminal } from './components/apps/Terminal';
+import { Hypervisor } from './components/apps/Hypervisor';
+import { SystemRequirements } from './components/SystemRequirements'; 
+import { RoboticsControl } from './components/RoboticsControl'; // Import
+import { GovernancePortal } from './components/GovernancePortal'; // Import
+import { NanoFabricator } from './components/NanoFabricator'; // Import
+import { GuestOS } from './components/apps/GuestOS'; // Import
 
 // App Containers
 import { SocialApp } from './components/apps/SocialApp';
@@ -144,6 +151,13 @@ const componentMap: { [key: string]: React.FC<any> } = {
   engineeringHub: InfrastructureControl,
   rigBuilder: VirtualRigBuilder,
   digitalTwinSim: DigitalTwinEngine,
+  terminal: Terminal,
+  hypervisor: Hypervisor,
+  guestOS: GuestOS, // Added
+  systemRequirements: SystemRequirements,
+  roboticsControl: RoboticsControl, // Add
+  governance: GovernancePortal, // Add
+  nanoFab: NanoFabricator, // Add
   
   // App Containers
   socialApp: SocialApp,
@@ -250,6 +264,23 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
         }, 1000);
     };
 
+    const handleSocialLogin = (provider: string) => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+            onLogin();
+        }, 1500);
+    };
+
+    const handleBioScan = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            // Simulated biometric success
+            setIsLoading(false);
+            onLogin();
+        }, 2500);
+    };
+
     return (
         <div 
             className="h-screen w-screen bg-cover bg-center flex items-center justify-center z-[9998]"
@@ -263,10 +294,15 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
                     alt={user.name} 
                     className="w-24 h-24 rounded-full border-4 border-white/20 mb-4 shadow-lg object-cover"
                 />
-                <h2 className="text-2xl font-bold text-white mb-6">{user.name}</h2>
+                <h2 className="text-2xl font-bold text-white mb-2">{user.name}</h2>
+                {user.systemIdentity?.verificationLevel && (
+                    <span className="text-xs bg-blue-500/20 border border-blue-500/50 text-blue-200 px-2 py-0.5 rounded mb-6">
+                        {user.systemIdentity.verificationLevel}
+                    </span>
+                )}
                 
-                <form onSubmit={handleLogin} className="w-full">
-                    <div className="relative mb-4">
+                <form onSubmit={handleLogin} className="w-full space-y-3">
+                    <div className="relative">
                         <input 
                             type="password" 
                             value={password}
@@ -287,6 +323,33 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
                         )}
                     </button>
                 </form>
+
+                <div className="w-full flex items-center gap-2 my-4">
+                    <div className="h-px bg-white/10 flex-1"></div>
+                    <span className="text-white/40 text-xs uppercase">Or continue with</span>
+                    <div className="h-px bg-white/10 flex-1"></div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3 w-full">
+                    <button onClick={() => handleSocialLogin('Apple')} className="bg-white/10 hover:bg-white/20 border border-white/10 p-2 rounded-lg transition-colors flex items-center justify-center" title="Sign in with Apple">
+                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.38-1.09-.52-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.38C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.74 1.18 0 2.21-.93 3.69-.93.95 0 2.58.5 3.63 1.62-3.18 1.61-2.59 5.35.69 6.73-.51 1.55-1.32 3.05-2.52 4.24l-.57.57zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                    </button>
+                    <button onClick={() => handleSocialLogin('Microsoft')} className="bg-white/10 hover:bg-white/20 border border-white/10 p-2 rounded-lg transition-colors flex items-center justify-center" title="Sign in with Microsoft">
+                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M11.55 21H3v-8.55h8.55V21zM21 21h-8.55v-8.55H21V21zm-9.45-9.45H3V3h8.55v8.55zm9.45 0h-8.55V3H21v8.55z"/></svg>
+                    </button>
+                    <button onClick={() => handleSocialLogin('Google')} className="bg-white/10 hover:bg-white/20 border border-white/10 p-2 rounded-lg transition-colors flex items-center justify-center" title="Sign in with Google">
+                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+                    </button>
+                </div>
+                
+                <button 
+                    onClick={handleBioScan}
+                    className="w-full mt-4 bg-gradient-to-r from-blue-600/50 to-purple-600/50 border border-white/10 p-3 rounded-lg flex items-center justify-center gap-2 hover:from-blue-600/70 hover:to-purple-600/70 transition-all group"
+                >
+                    <FingerPrintIcon className="w-6 h-6 text-blue-300 group-hover:text-white" />
+                    <span className="text-sm text-blue-100 group-hover:text-white">Biometric Identity Scan</span>
+                </button>
+
                 <button className="mt-4 text-white/60 hover:text-white text-sm transition-colors">
                     Forgot Password?
                 </button>
@@ -307,6 +370,8 @@ const App: React.FC = () => {
   const [zoom, setZoom] = useState(1);
   const [wallpaper, setWallpaper] = useState<string>('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto-format=fit-crop');
   
+  const [activeWorkspace, setActiveWorkspace] = useState(0);
+
   const desktopRef = useRef<HTMLDivElement>(null);
   const [desktopRect, setDesktopRect] = useState<DOMRect | null>(null);
 
@@ -326,7 +391,7 @@ const App: React.FC = () => {
   const handleOnboardingComplete = (identity: SystemIdentity, avatarUrl: string) => {
       const newUser = {
           ...currentUser,
-          name: identity.governmentName, // Set government name as display name initially
+          name: identity.governmentName || 'User', // Set government name as display name initially
           avatarUrl: avatarUrl,
           systemIdentity: identity
       };
@@ -354,6 +419,15 @@ const App: React.FC = () => {
     return nextZIndex.current;
   };
   
+  const focusWindow = useCallback((id: string) => {
+    const win = windows.find(w => w.id === id);
+    if (win && win.workspace !== activeWorkspace) {
+        setActiveWorkspace(win.workspace);
+    }
+    setWindows(windows => windows.map(w => w.id === id ? { ...w, zIndex: bringToFront(id), isMinimized: false } : w));
+    setActiveWindowId(id);
+  }, [windows, activeWorkspace]);
+
   const launchApp = useCallback((app: LaunchableApp) => {
     const existingWindow = windows.find(w => w.id === app.component && !w.isMinimized);
     if (existingWindow) {
@@ -378,16 +452,17 @@ const App: React.FC = () => {
       zIndex: bringToFront(app.component),
       isMaximized: false,
       isMinimized: false,
+      workspace: activeWorkspace, // Assign to current workspace
     };
     
     setWindows(prev => [...prev, newWindow]);
     setActiveWindowId(newWindow.id);
-  }, [windows]);
+  }, [windows, activeWorkspace, focusWindow]);
 
   const closeWindow = (id: string) => {
     setWindows(windows => windows.filter(w => w.id !== id));
     if (activeWindowId === id) {
-        const remainingWindows = windows.filter(w => w.id !== id && !w.isMinimized);
+        const remainingWindows = windows.filter(w => w.id !== id && !w.isMinimized && w.workspace === activeWorkspace);
         if (remainingWindows.length > 0) {
             const topWindow = remainingWindows.reduce((prev, current) => (prev.zIndex > current.zIndex) ? prev : current);
             setActiveWindowId(topWindow.id);
@@ -397,15 +472,10 @@ const App: React.FC = () => {
     }
   };
   
-  const focusWindow = (id: string) => {
-    setWindows(windows => windows.map(w => w.id === id ? { ...w, zIndex: bringToFront(id), isMinimized: false } : w));
-    setActiveWindowId(id);
-  };
-  
   const minimizeWindow = (id: string) => {
     setWindows(windows => windows.map(w => w.id === id ? { ...w, isMinimized: true } : w));
     if(id === activeWindowId) {
-        const otherWindows = windows.filter(w => w.id !== id && !w.isMinimized);
+        const otherWindows = windows.filter(w => w.id !== id && !w.isMinimized && w.workspace === activeWorkspace);
         if (otherWindows.length > 0) {
             const topWindow = otherWindows.reduce((prev, current) => (prev.zIndex > current.zIndex) ? prev : current);
             setActiveWindowId(topWindow.id);
@@ -448,8 +518,11 @@ const App: React.FC = () => {
       return <OnboardingWizard onComplete={handleOnboardingComplete} />;
   }
 
+  // Filter windows for the current workspace
+  const visibleWindows = windows.filter(w => !w.isMinimized && w.workspace === activeWorkspace);
+
   return (
-    <div className="h-screen w-screen bg-black text-content-light dark:text-content-dark font-sans overflow-hidden flex animate-fade-in" style={{ zoom }}>
+    <div className="h-screen w-screen bg-background-light dark:bg-background-dark text-content-light dark:text-content-dark font-sans overflow-hidden flex animate-fade-in transition-colors duration-300" style={{ zoom }}>
       <LeftSidebar isOpen={isLeftSidebarOpen} onLaunchApp={launchApp} menuGroups={menuGroups} />
       <div className="flex-1 flex flex-col relative" ref={desktopRef}>
         <TopBar 
@@ -462,7 +535,7 @@ const App: React.FC = () => {
         />
         <main className="flex-1 relative">
           <Desktop launchApp={launchApp} wallpaperUrl={wallpaper} />
-          {windows.filter(w => !w.isMinimized).map(win => (
+          {visibleWindows.map(win => (
             <WindowFrame 
               key={win.id} 
               windowState={win}
@@ -477,7 +550,13 @@ const App: React.FC = () => {
             </WindowFrame>
           ))}
         </main>
-        <Taskbar windows={windows} onFocus={focusWindow} activeWindowId={activeWindowId} />
+        <Taskbar 
+            windows={windows.filter(w => w.workspace === activeWorkspace)} // Only show windows in current workspace on taskbar
+            onFocus={focusWindow} 
+            activeWindowId={activeWindowId} 
+            activeWorkspace={activeWorkspace}
+            onSwitchWorkspace={setActiveWorkspace}
+        />
       </div>
     </div>
   );

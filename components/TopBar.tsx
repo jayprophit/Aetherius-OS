@@ -1,9 +1,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon, GyeNyameIcon } from './Icons';
+import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon, GyeNyameIcon, SunIcon, MoonIcon, Cog6ToothIcon } from './Icons';
 import { MenuItemData } from '../types';
 import { ICON_BUTTON_CLASSES } from '../constants';
-import { LaunchableApp } from '../../App';
+import { LaunchableApp } from '../App';
 import { mainMenuItems } from '../data';
 
 const AetheriusMenu: React.FC<{
@@ -75,6 +75,37 @@ const ZoomControls: React.FC<{ zoom: number; onZoom: (zoom: number) => void }> =
   );
 };
 
+const ThemeToggle: React.FC = () => {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+      setIsDark(true);
+    }
+  };
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className={ICON_BUTTON_CLASSES}
+      title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+    >
+      {isDark ? <SunIcon className="w-6 h-6 text-yellow-400" /> : <MoonIcon className="w-6 h-6 text-gray-600 dark:text-gray-300" />}
+    </button>
+  );
+};
+
 export const TopBar: React.FC<{
   toggleLeftSidebar: () => void;
   onLaunchApp: (app: LaunchableApp) => void;
@@ -106,14 +137,16 @@ export const TopBar: React.FC<{
              }
         }
     }
-    const settingsApp = { component: 'settings', title: 'Settings', icon: mainMenuItems.find(i=>i.title === 'Settings')?.icon!};
-    if(component === 'settings') return settingsApp;
+    // FIX: Explicitly define the Settings app with a valid icon to prevent "undefined" icon error
+    if(component === 'settings') {
+        return { component: 'settings', title: 'Settings', icon: Cog6ToothIcon };
+    }
     return undefined;
   }
 
   return (
     <>
-      <header className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-xl border-b border-black/10 dark:border-white/10 h-16 flex-shrink-0 flex items-center justify-between px-4 z-20 relative">
+      <header className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-xl border-b border-black/10 dark:border-white/10 h-16 flex-shrink-0 flex items-center justify-between px-4 z-20 relative transition-colors duration-300">
         {/* Left section */}
         <div className="flex items-center space-x-3">
           <button onClick={toggleLeftSidebar} className={ICON_BUTTON_CLASSES} title="Toggle Side Navigation Menu">
@@ -139,6 +172,7 @@ export const TopBar: React.FC<{
         {/* Right section */}
         <div className="flex items-center space-x-2">
           <ZoomControls zoom={zoom} onZoom={onZoom} />
+          <ThemeToggle />
           <div className="relative hidden sm:block">
               <SearchIcon className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
               <input type="text" placeholder="Search..." title="Global Search - Find apps, files, and web results" className="bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-full h-9 pl-10 pr-4 w-48 text-sm focus:outline-none focus:ring-1 focus:ring-primary text-content-light dark:text-content-dark" />

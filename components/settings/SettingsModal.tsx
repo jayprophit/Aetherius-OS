@@ -22,7 +22,7 @@ import { VirtualHardware } from './VirtualHardware';
 import { KnowledgeBase } from './KnowledgeBase';
 import { Milestones } from './Milestones';
 import { BuildChecklist } from './BuildChecklist';
-import { SystemRequirements } from './SystemRequirements';
+import { SystemRequirements } from './SystemRequirements'; // Import
 
 // Temporarily map missing settings to Placeholder to ensure app compiles
 const AirplaneModeSettings = (props: any) => <PlaceholderSettings {...props} />;
@@ -84,7 +84,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   
   // NEWLY CREATED SETTINGS PAGES
   airplane_mode: AirplaneModeSettings,
-  wifi: NetworkSettings,
+  wifi: NetworkSettings, // Corrected to use NetworkSettings
   bluetooth: BluetoothSettings,
   cellular: CellularSettings,
   vpn: VpnSettings,

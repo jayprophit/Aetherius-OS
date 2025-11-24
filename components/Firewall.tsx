@@ -4,47 +4,43 @@ import {
     ShieldCheckIcon, LockClosedIcon, CubeTransparentIcon, GlobeAltIcon, 
     ClockIcon, UserCircleIcon, BeakerIcon, SparklesIcon, EyeIcon, BoltIcon,
     ArrowPathIcon, ExclamationTriangleIcon, CheckCircleIcon, FireIcon,
-    CubeIcon, ServerIcon, ClipboardDocumentCheckIcon
+    CubeIcon, ServerIcon, ClipboardDocumentCheckIcon, SwatchIcon
 } from './Icons';
 
-// The Omni-Dimensional Security Polyhedron - Dimension Map
+// The Omni-Dimensional Security Polyhedron - 7 Realms
 const dimensionsData = [
-    // Absolute Realm (Foundational)
+    // 1. The Absolute Realm (Foundational)
     { id: '0D', name: 'Singularity Root', description: 'Hardware-enforced root of trust. The atomic level of security.', realm: 'Absolute', icon: LockClosedIcon, color: 'text-gray-200' },
     { id: '1D', name: 'Physical Barrier', description: 'Quantum-physical access locks and biometric hardware gates.', realm: 'Absolute', icon: ShieldCheckIcon, color: 'text-gray-300' },
     
-    // Structural Realm (Architecture)
+    // 2. The Structural Realm (Architecture)
     { id: '2D', name: 'Planar Segmentation', description: 'VLANs, flat security zones, and standard network separation.', realm: 'Structural', icon: CubeTransparentIcon, color: 'text-blue-400' },
     { id: '3D', name: 'Volumetric Firewall', description: 'Nested firewalls, deep packet inspection, and layered depth.', realm: 'Structural', icon: CubeIcon, color: 'text-blue-500' },
     { id: '27D', name: 'Crystalline Lattice', description: 'Self-healing security structures with rigid yet flexible redundancy.', realm: 'Structural', icon: SparklesIcon, color: 'text-blue-300' },
 
-    // Dynamic Realm (Adaptive)
+    // 3. The Dynamic Realm (Adaptive)
     { id: '4D', name: 'Temporal Defense', description: 'Time-based policies, session lifespans, and causality checks.', realm: 'Dynamic', icon: ClockIcon, color: 'text-green-500' },
     { id: '5D', name: 'Behavioral Analytics', description: 'UEBA, dynamic risk scoring, and anomaly detection.', realm: 'Dynamic', icon: UserCircleIcon, color: 'text-green-400' },
     { id: '26D', name: 'Plasma Shield', description: 'Dynamic, self-organizing conductive defense that behaves like plasma.', realm: 'Dynamic', icon: FireIcon, color: 'text-orange-500' },
+    { id: '28D', name: 'Mycelial Network', description: 'Distributed, decentralized threat intelligence sharing (fungal model).', realm: 'Dynamic', icon: GlobeAltIcon, color: 'text-green-600' },
 
-    // Cognitive Realm (Intelligent)
+    // 4. The Cognitive Realm (Intelligent)
     { id: '6D', name: 'Contextual Awareness', description: 'Environmental, device, and location state verification.', realm: 'Cognitive', icon: GlobeAltIcon, color: 'text-yellow-500' },
     { id: '7D', name: 'Predictive AI', description: 'Threat forecasting and pre-crime attack path simulation.', realm: 'Cognitive', icon: EyeIcon, color: 'text-yellow-400' },
     { id: '9D', name: 'Cognitive Intent', description: 'Natural language policy creation and intent analysis.', realm: 'Cognitive', icon: BeakerIcon, color: 'text-yellow-300' },
     { id: '15D', name: 'Psychological Shield', description: 'Social engineering detection and cognitive defense patterns.', realm: 'Cognitive', icon: UserCircleIcon, color: 'text-yellow-600' },
 
-    // Advanced Tech Realm (Quantum/Future)
-    { id: '11D', name: 'Quantum Shield', description: 'Post-quantum cryptography and superposition defense.', realm: 'Advanced Tech', icon: BoltIcon, color: 'text-purple-500' },
-    { id: '12D', name: 'Holographic Dist.', description: 'Fractal security where every part contains the whole.', realm: 'Advanced Tech', icon: CubeTransparentIcon, color: 'text-purple-400' },
-    { id: '13D', name: 'Temporal Paradox', description: 'Forward secrecy and cryptographic agility against time attacks.', realm: 'Advanced Tech', icon: ClockIcon, color: 'text-purple-600' },
-
-    // Existential Realm (Reality/Truth)
+    // 5. The Existential Realm (Reality/Truth)
     { id: '23D', name: 'Reality Anchor', description: 'Protection against reality-manipulating attacks and deepfakes.', realm: 'Existential', icon: LockClosedIcon, color: 'text-red-500' },
-    { id: '30D', name: 'Noospheric Mind', description: 'Protection of the global collective intelligence.', realm: 'Existential', icon: GlobeAltIcon, color: 'text-red-400' },
     { id: '32D', name: 'Kabbalistic Geometry', description: 'Security based on sacred geometry and numerical patterns.', realm: 'Existential', icon: SparklesIcon, color: 'text-red-300' },
+    { id: '39D', name: 'Surrealist Logic', description: 'Dream-logic analysis to detect non-linear threat patterns.', realm: 'Existential', icon: SwatchIcon, color: 'text-pink-400' },
 
-    // Cosmic Realm (Universal)
+    // 6. The Cosmic Realm (Universal)
     { id: '29D', name: 'Gravitational Well', description: 'Attracts and analyzes traffic in high-gravity security zones.', realm: 'Cosmic', icon: GlobeAltIcon, color: 'text-indigo-500' },
     { id: '40D', name: 'Dark Matter', description: 'Invisible security influence that cannot be directly detected.', realm: 'Cosmic', icon: EyeIcon, color: 'text-indigo-400' },
     { id: '42D', name: 'Cosmic Sync', description: 'Universal pulsar timing synchronization for perfect coordination.', realm: 'Cosmic', icon: SparklesIcon, color: 'text-indigo-300' },
 
-    // Meta Realm (Self-Reflective)
+    // 7. The Meta Realm (Self-Reflective)
     { id: '10D', name: 'Meta-Security', description: 'The system that secures the security system itself.', realm: 'Meta', icon: ShieldCheckIcon, color: 'text-white' },
 ];
 
