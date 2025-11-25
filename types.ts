@@ -68,17 +68,17 @@ export interface Course {
 export interface SystemIdentity {
     governmentName?: string;
     userId: string;
-    aiCoreName: string; // The formal name (e.g., "Aether Core 1")
-    aiNickname: string; // The friendly name (e.g., "Buddy")
+    aiCoreName: string;
+    aiNickname: string;
     aiId: string;
     osId: string;
-    networkId: string; // The combined blockchain ID
+    networkId: string;
     accountTier: 'verified' | 'anonymous';
     kycStatus?: 'unverified' | 'pending' | 'verified' | 'rejected';
     verificationLevel?: 'None' | 'Tier 1 (Basic)' | 'Tier 2 (Full Financial)';
     ageGroup?: 'Child' | 'Teen' | 'Adult';
     govtIdNumber?: string;
-    buildType: 'Genesis' | 'Child' | 'Grandchild'; // Determines the hierarchy level
+    buildType: 'Genesis' | 'Child' | 'Grandchild';
 }
 
 export interface User {
@@ -99,7 +99,6 @@ export interface User {
   followingCount?: number;
   online?: boolean;
   coverImageUrl?: string;
-  // For copy trading
   roi?: number;
   riskScore?: number;
   followers?: number;
@@ -127,7 +126,6 @@ export interface Post {
   media?: PostMedia;
   likes: User[];
   comments: Comment[];
-  // For new feed design
   group?: string;
   subAuthor?: string;
   coverImage?: string;
@@ -146,7 +144,7 @@ export interface Group {
   coverImageUrl: string;
   avatarUrl: string;
   privacy: 'Public' | 'Private';
-  type: string; // e.g., 'Club', 'Meetup', 'Group'
+  type: string;
   members: number;
   memberAvatars: (string | null)[];
   isOrganizer: boolean;
@@ -407,7 +405,7 @@ export interface Achievement {
   courseTitle: string;
   completionDate: string;
   transactionId: string;
-  certificateUrl: string; // URL to a mock certificate image
+  certificateUrl: string;
 }
 
 // --- AI Support Avatar ---
@@ -492,10 +490,10 @@ export interface AIDepartment {
 export interface MemoryVector {
     id: string;
     content: string;
-    embedding: number[]; // [x, y] coordinates for simple 2D visualization
+    embedding: number[];
     timestamp: string;
     type: 'Conversation' | 'Document' | 'Code' | 'System';
-    score?: number; // Similarity score
+    score?: number;
 }
 
 // --- Blockchain & Consensus ---
@@ -510,11 +508,11 @@ export type ConsensusMechanism =
 export interface Validator {
     id: string;
     name: string;
-    stake: number; // For PoS/DPoS
-    reputation: number; // For PoR (0-100)
-    isAuthority: boolean; // For PoA
+    stake: number;
+    reputation: number;
+    isAuthority: boolean;
     status: 'Active' | 'Jailed' | 'Inactive';
-    votes?: number; // For DPoS
+    votes?: number;
 }
 
 export interface Transaction {
@@ -533,7 +531,6 @@ export interface Block {
 }
 
 // --- NEW OS BUILD DATA STRUCTURES ---
-
 // ERP System
 export interface ErpFeature {
   id: string;
@@ -580,7 +577,7 @@ export interface QuantumNetworkSpec {
 export interface ReputationAction {
     id: string;
     action: string;
-    points: number; // can be positive or negative
+    points: number;
     category: 'Community' | 'Commerce' | 'Learning' | 'Content Creation';
     description: string;
 }
@@ -604,7 +601,7 @@ export interface Article {
     author: string;
     category: 'OS Development' | 'Tech Explainers' | 'Community Guides' | 'Case Studies';
     tags: string[];
-    content: string; // Markdown content
+    content: string;
     publicationDate: string;
 }
 

@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { LeftSidebar } from './components/Dock';
 import { TopBar } from './components/TopBar';
@@ -59,6 +61,7 @@ import { RoboticsControl } from './components/RoboticsControl'; // Import
 import { GovernancePortal } from './components/GovernancePortal'; // Import
 import { NanoFabricator } from './components/NanoFabricator'; // Import
 import { GuestOS } from './components/apps/GuestOS'; // Import
+import { CloudOpsApp } from './components/apps/CloudOpsApp'; // Added
 
 // App Containers
 import { SocialApp } from './components/apps/SocialApp';
@@ -158,6 +161,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   roboticsControl: RoboticsControl, // Add
   governance: GovernancePortal, // Add
   nanoFab: NanoFabricator, // Add
+  cloudOps: CloudOpsApp, // Added
   
   // App Containers
   socialApp: SocialApp,
