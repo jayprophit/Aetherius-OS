@@ -1,6 +1,4 @@
 
-
-
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { LeftSidebar } from './components/Dock';
 import { TopBar } from './components/TopBar';
@@ -362,6 +360,10 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
     );
 };
 
+// TOGGLE: Set this to true to skip onboarding during development
+// Switch to false when ready for final launch.
+const SKIP_ONBOARDING = true;
+
 const App: React.FC = () => {
   const [systemState, setSystemState] = useState<'boot' | 'login' | 'desktop'>('boot');
   const [hasOnboarded, setHasOnboarded] = useState(false);
@@ -518,7 +520,7 @@ const App: React.FC = () => {
   }
 
   // Onboarding Check (Before Desktop)
-  if (!hasOnboarded) {
+  if (!hasOnboarded && !SKIP_ONBOARDING) {
       return <OnboardingWizard onComplete={handleOnboardingComplete} />;
   }
 

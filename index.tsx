@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -72,7 +71,11 @@ class ChildAgent {
         }
 
         return response.text || "I could not process that.";
-    } catch (error) {
+    } catch (error: any) {
+        if (error.status === 429 || error.message?.includes('429') || error.error?.code === 429) {
+            console.warn(`[Child: ${this.name}] Quota exceeded. Pausing agent.`);
+            return "Task paused: Quota limit reached.";
+        }
         console.error(`[Child: ${this.name}] Error:`, error);
         return "Error processing task.";
     }
@@ -170,7 +173,11 @@ async function runHierarchicalSystem() {
     } else {
         console.log(`[Parent] Decided not to delegate. Response: ${parentResponse.text}`);
     }
-  } catch (e) {
+  } catch (e: any) {
+      if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
+          console.warn("[Parent] Hierarchical system paused due to API quota limits. Please check billing.");
+          return;
+      }
       console.error("Hierarchical system error:", e);
   }
 }

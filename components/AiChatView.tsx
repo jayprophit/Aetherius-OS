@@ -146,7 +146,13 @@ export const AiChatView: React.FC = () => {
             }
         } catch (e: any) {
             console.error(e);
-            const errorMessage: ChatMessage = { role: 'model', text: `Apologies, an anomaly occurred: ${e.message}` };
+            let errorText = `Apologies, an anomaly occurred: ${e.message}`;
+            
+            if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
+                errorText = "**System Alert:** API Quota Exceeded. Please try again later.";
+            }
+
+            const errorMessage: ChatMessage = { role: 'model', text: errorText };
             setChatSessionsData(prevSessions =>
                 prevSessions.map(session =>
                     session.id === activeSessionId

@@ -1,4 +1,3 @@
-
 import { 
     knowledgeBaseData, 
     milestonesData, 
@@ -313,7 +312,12 @@ class AetheriusKernelService {
                 this.addMemory(`AI: ${fullResponse}`, 'Conversation');
                 return;
 
-            } catch (e) {
+            } catch (e: any) {
+                if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
+                    yield "**[SYSTEM ALERT]** API Rate Limit/Quota Exceeded. The AI core is temporarily offline. Please check your billing or wait before trying again.";
+                    this.addMemory(`AI Error: Quota Exceeded`, 'System');
+                    return;
+                }
                 console.error("AI Chat Error", e);
                 // Fallback if AI fails
             }
@@ -467,46 +471,54 @@ System is operating within nominal parameters.`;
         - Use Google Search to find real-time information when necessary.
         `;
 
-        const chat = this.externalAi.chats.create({
-            model: 'gemini-2.5-flash',
-            config: { 
-                systemInstruction: sysPrompt,
-                tools: [{ googleSearch: {} }] 
-            }
-        });
-        
-        const result = await chat.sendMessageStream({ message: input });
-        let buffer = '';
-        let groundingMetadata: any = null;
-
-        yield "**[ESTABLISHING SECURE UPLINK & SCANNING WEB...]**\n\n";
-        
-        for await (const chunk of result) {
-            const text = chunk.text;
-            if (text) {
-                buffer += text;
-                yield buffer;
-            }
-            if (chunk.candidates?.[0]?.groundingMetadata) {
-                groundingMetadata = chunk.candidates[0].groundingMetadata;
-            }
-        }
-
-        if (groundingMetadata?.groundingChunks) {
-            const sources = groundingMetadata.groundingChunks
-                .filter((c: any) => c.web?.uri && c.web?.title)
-                .map((c: any) => `[${c.web.title}](${c.web.uri})`);
+        try {
+            const chat = this.externalAi.chats.create({
+                model: 'gemini-2.5-flash',
+                config: { 
+                    systemInstruction: sysPrompt,
+                    tools: [{ googleSearch: {} }] 
+                }
+            });
             
-            const uniqueSources = [...new Set(sources)];
+            const result = await chat.sendMessageStream({ message: input });
+            let buffer = '';
+            let groundingMetadata: any = null;
 
-            if (uniqueSources.length > 0) {
-                buffer += `\n\n**Sources:**\n${uniqueSources.map((s: string) => `- ${s}`).join('\n')}`;
-                yield buffer;
+            yield "**[ESTABLISHING SECURE UPLINK & SCANNING WEB...]**\n\n";
+            
+            for await (const chunk of result) {
+                const text = chunk.text;
+                if (text) {
+                    buffer += text;
+                    yield buffer;
+                }
+                if (chunk.candidates?.[0]?.groundingMetadata) {
+                    groundingMetadata = chunk.candidates[0].groundingMetadata;
+                }
             }
+
+            if (groundingMetadata?.groundingChunks) {
+                const sources = groundingMetadata.groundingChunks
+                    .filter((c: any) => c.web?.uri && c.web?.title)
+                    .map((c: any) => `[${c.web.title}](${c.web.uri})`);
+                
+                const uniqueSources = [...new Set(sources)];
+
+                if (uniqueSources.length > 0) {
+                    buffer += `\n\n**Sources:**\n${uniqueSources.map((s: string) => `- ${s}`).join('\n')}`;
+                    yield buffer;
+                }
+            }
+            
+            // Store research results in memory
+            this.addMemory(`Research: ${input} -> ${buffer.substring(0, 150)}...`, 'Document');
+        } catch (e: any) {
+            if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
+                yield "**[UPLINK FAILURE]** API Quota Exceeded. Connection terminated to preserve system integrity.";
+                return;
+            }
+            throw e;
         }
-        
-        // Store research results in memory
-        this.addMemory(`Research: ${input} -> ${buffer.substring(0, 150)}...`, 'Document');
     }
 }
 

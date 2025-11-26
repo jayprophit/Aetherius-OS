@@ -89,7 +89,11 @@ export const NutritionGuide: React.FC = () => {
 
         } catch (e: any) {
             console.error(e);
-            setError(`An error occurred: ${e.message}`);
+            if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
+                setError("Error: API Quota Exceeded. Please check your billing plan.");
+            } else {
+                setError(`An error occurred: ${e.message}`);
+            }
         } finally {
             setIsAnalyzing(false);
         }

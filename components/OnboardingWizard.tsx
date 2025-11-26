@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { 
     UserCircleIcon, CheckCircleIcon, FingerPrintIcon, HiveMindIcon, 
@@ -216,8 +215,16 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete }
             } else {
                  throw new Error("AI Response Empty");
             }
-        } catch (e) {
+        } catch (e: any) {
             console.error("Liveness AI Error", e);
+            // Handle 429 specifically to allow user to proceed in demo/dev mode
+            if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
+                 console.warn("Quota exceeded during liveness check. Bypassing for demo.");
+                 setCapturedSelfie(imageBase64);
+                 setLivenessStatus('success');
+                 return;
+            }
+            
             // Fallback to success in demo/offline mode to prevent blocking user
             setCapturedSelfie(imageBase64);
             setLivenessStatus('success');
