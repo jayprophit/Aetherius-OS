@@ -9,14 +9,15 @@ import { Desktop } from './components/Desktop';
 import { WindowFrame } from './components/WindowFrame';
 import { Taskbar } from './components/Taskbar';
 import { PlaceholderView } from './components/PlaceholderView';
-import { GyeNyameIcon, ArrowRightIcon, FingerPrintIcon } from './components/Icons';
+import { GyeNyameIcon, ArrowRightIcon, FingerPrintIcon, Cog6ToothIcon } from './components/Icons';
 import { OnboardingWizard } from './components/OnboardingWizard';
+import { CartDrawer } from './components/CartDrawer';
 
 // --- Component Imports for Window Content ---
 import { ProductPage } from './components/ProductPage';
 import { SocialFeed } from './components/SocialFeed';
 import { AetheriusAI_Assistant } from './components/AetherAIAssistant';
-import { AIAssistant as AIHub } from './components/AppLauncher'; // Renaming for clarity
+import { AIAssistant as AIHub } from './components/AppLauncher'; 
 import { Browser } from './components/Browser';
 import { Messenger } from './components/Messenger';
 import { SettingsView } from './components/SettingsModal';
@@ -55,11 +56,11 @@ import { MemoryNode } from './components/MemoryNode';
 import { Terminal } from './components/apps/Terminal';
 import { Hypervisor } from './components/apps/Hypervisor';
 import { SystemRequirements } from './components/SystemRequirements'; 
-import { RoboticsControl } from './components/RoboticsControl'; // Import
-import { GovernancePortal } from './components/GovernancePortal'; // Import
-import { NanoFabricator } from './components/NanoFabricator'; // Import
-import { GuestOS } from './components/apps/GuestOS'; // Import
-import { CloudOpsApp } from './components/apps/CloudOpsApp'; // Added
+import { RoboticsControl } from './components/RoboticsControl';
+import { GovernancePortal } from './components/GovernancePortal';
+import { NanoFabricator } from './components/NanoFabricator';
+import { GuestOS } from './components/apps/GuestOS';
+import { CloudOpsApp } from './components/apps/CloudOpsApp';
 
 // App Containers
 import { SocialApp } from './components/apps/SocialApp';
@@ -108,13 +109,15 @@ import { CryptoGames } from './components/trading/CryptoGames';
 import { Wallet } from './components/trading/Wallet';
 import { AdminPanel } from './components/AdminPanel';
 
-// This is the missing type that was causing errors.
 export interface LaunchableApp {
   component: string;
   title: string;
   icon: React.FC<any>;
   context?: any;
 }
+
+// Safe fallback for missing components
+const SafePlaceholder = (props: any) => <PlaceholderView viewName={props.viewName || 'Application'} />;
 
 const componentMap: { [key: string]: React.FC<any> } = {
   socialFeed: SocialFeed,
@@ -154,12 +157,12 @@ const componentMap: { [key: string]: React.FC<any> } = {
   digitalTwinSim: DigitalTwinEngine,
   terminal: Terminal,
   hypervisor: Hypervisor,
-  guestOS: GuestOS, // Added
+  guestOS: GuestOS,
   systemRequirements: SystemRequirements,
-  roboticsControl: RoboticsControl, // Add
-  governance: GovernancePortal, // Add
-  nanoFab: NanoFabricator, // Add
-  cloudOps: CloudOpsApp, // Added
+  roboticsControl: RoboticsControl,
+  governance: GovernancePortal,
+  nanoFab: NanoFabricator,
+  cloudOps: CloudOpsApp,
   
   // App Containers
   socialApp: SocialApp,
@@ -223,8 +226,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   tradingGames: CryptoGames,
   tradingWallet: Wallet,
   
-  // And many more... for simplicity, we'll add a fallback
-  placeholder: (props: any) => <PlaceholderView viewName={props.viewName || 'Placeholder'} />,
+  placeholder: SafePlaceholder,
 };
 
 const BootScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
@@ -257,6 +259,10 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
+    // IMPORTANT: If you have a real Client ID, replace this string.
+    // If "YOUR_GOOGLE_CLIENT_ID" is detected, a mock button will be shown to prevent 401 errors.
+    const GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID"; 
+
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
@@ -268,6 +274,7 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
 
     const handleSocialLogin = (provider: string) => {
         setIsLoading(true);
+        // Simulate social auth delay
         setTimeout(() => {
             setIsLoading(false);
             onLogin();
@@ -282,6 +289,33 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
             onLogin();
         }, 2500);
     };
+
+    useEffect(() => {
+        // Only initialize real Google Sign-In if we have a valid Client ID
+        const isRealClient = GOOGLE_CLIENT_ID !== "YOUR_GOOGLE_CLIENT_ID";
+
+        if (isRealClient && (window as any).google) {
+            try {
+                (window as any).google.accounts.id.initialize({
+                    client_id: GOOGLE_CLIENT_ID, 
+                    callback: (response: any) => {
+                        console.log("Google Sign-In credential received:", response.credential);
+                        setIsLoading(true);
+                        setTimeout(() => {
+                            setIsLoading(false);
+                            onLogin();
+                        }, 1000);
+                    }
+                });
+                (window as any).google.accounts.id.renderButton(
+                    document.getElementById("googleSignInBtnWrapper"),
+                    { theme: "filled_black", size: "large", type: "icon", shape: "square", width: "100%" } 
+                );
+            } catch (e) {
+                console.error("Google Sign-In initialization error:", e);
+            }
+        }
+    }, [onLogin]);
 
     return (
         <div 
@@ -332,16 +366,28 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
                     <div className="h-px bg-white/10 flex-1"></div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-3 w-full">
+                <div className="grid grid-cols-4 gap-3 w-full">
                     <button onClick={() => handleSocialLogin('Apple')} className="bg-white/10 hover:bg-white/20 border border-white/10 p-2 rounded-lg transition-colors flex items-center justify-center" title="Sign in with Apple">
                         <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.38-1.09-.52-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.38C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.74 1.18 0 2.21-.93 3.69-.93.95 0 2.58.5 3.63 1.62-3.18 1.61-2.59 5.35.69 6.73-.51 1.55-1.32 3.05-2.52 4.24l-.57.57zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
                     </button>
                     <button onClick={() => handleSocialLogin('Microsoft')} className="bg-white/10 hover:bg-white/20 border border-white/10 p-2 rounded-lg transition-colors flex items-center justify-center" title="Sign in with Microsoft">
                         <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M11.55 21H3v-8.55h8.55V21zM21 21h-8.55v-8.55H21V21zm-9.45-9.45H3V3h8.55v8.55zm9.45 0h-8.55V3H21v8.55z"/></svg>
                     </button>
-                    <button onClick={() => handleSocialLogin('Google')} className="bg-white/10 hover:bg-white/20 border border-white/10 p-2 rounded-lg transition-colors flex items-center justify-center" title="Sign in with Google">
-                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+                     <button onClick={() => handleSocialLogin('Yahoo')} className="bg-white/10 hover:bg-white/20 border border-white/10 p-2 rounded-lg transition-colors flex items-center justify-center" title="Sign in with Yahoo">
+                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M21.0002 5.00002H16.9892L13.2525 13.5482L9.61554 5.00002H5.00019L11.0072 17.5006V24H15.0002V17.5006L21.0002 5.00002Z"/></svg>
                     </button>
+                    
+                    {/* Google Button Wrapper */}
+                    {GOOGLE_CLIENT_ID === "YOUR_GOOGLE_CLIENT_ID" ? (
+                        <button onClick={() => handleSocialLogin('Google')} className="bg-white hover:bg-gray-100 border border-white/10 rounded-lg transition-colors flex items-center justify-center h-[42px] w-full" title="Sign in with Google (Demo)">
+                            <svg className="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        </button>
+                    ) : (
+                        <div className="relative bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg transition-colors flex items-center justify-center h-[42px]">
+                            <svg className="w-5 h-5 text-white pointer-events-none absolute" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+                            <div id="googleSignInBtnWrapper" className="absolute inset-0 z-10 w-full h-full opacity-1 overflow-hidden rounded-lg"></div>
+                        </div>
+                    )}
                 </div>
                 
                 <button 
@@ -360,14 +406,13 @@ const LoginScreen: React.FC<{ onLogin: () => void, user: typeof initialUser }> =
     );
 };
 
-// TOGGLE: Set this to true to skip onboarding during development
-// Switch to false when ready for final launch.
 const SKIP_ONBOARDING = true;
 
 const App: React.FC = () => {
   const [systemState, setSystemState] = useState<'boot' | 'login' | 'desktop'>('boot');
   const [hasOnboarded, setHasOnboarded] = useState(false);
   const [currentUser, setCurrentUser] = useState(initialUser);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
@@ -381,7 +426,6 @@ const App: React.FC = () => {
   const desktopRef = useRef<HTMLDivElement>(null);
   const [desktopRect, setDesktopRect] = useState<DOMRect | null>(null);
 
-  // Check for previous onboarding on mount
   useEffect(() => {
       const onboarded = localStorage.getItem('aetherius_onboarded') === 'true';
       setHasOnboarded(onboarded);
@@ -397,7 +441,7 @@ const App: React.FC = () => {
   const handleOnboardingComplete = (identity: SystemIdentity, avatarUrl: string) => {
       const newUser = {
           ...currentUser,
-          name: identity.governmentName || 'User', // Set government name as display name initially
+          name: identity.governmentName || 'User',
           avatarUrl: avatarUrl,
           systemIdentity: identity
       };
@@ -448,7 +492,7 @@ const App: React.FC = () => {
     }
     
     const newWindow: WindowState = {
-      id: `${app.component}-${Date.now()}`, // Unique ID to allow multiple instances
+      id: `${app.component}-${Date.now()}`,
       title: app.title,
       icon: app.icon,
       component: app.component,
@@ -458,7 +502,7 @@ const App: React.FC = () => {
       zIndex: bringToFront(app.component),
       isMaximized: false,
       isMinimized: false,
-      workspace: activeWorkspace, // Assign to current workspace
+      workspace: activeWorkspace,
     };
     
     setWindows(prev => [...prev, newWindow]);
@@ -497,6 +541,13 @@ const App: React.FC = () => {
 
   const renderWindowContent = (win: WindowState) => {
       const Component = componentMap[win.component] || componentMap['placeholder'];
+      
+      // Ensure Component is a valid function/class
+      if (typeof Component !== 'function') {
+          console.error(`Invalid component for ${win.component}`, Component);
+          return <SafePlaceholder viewName={win.title + " (Error)"} />;
+      }
+
       const props: any = {
           onSetView: (view: string, context: any) => launchApp({ component: view, title: view, icon: () => null, context }),
           context: win.context,
@@ -519,12 +570,10 @@ const App: React.FC = () => {
       return <LoginScreen onLogin={() => setSystemState('desktop')} user={currentUser} />;
   }
 
-  // Onboarding Check (Before Desktop)
   if (!hasOnboarded && !SKIP_ONBOARDING) {
       return <OnboardingWizard onComplete={handleOnboardingComplete} />;
   }
 
-  // Filter windows for the current workspace
   const visibleWindows = windows.filter(w => !w.isMinimized && w.workspace === activeWorkspace);
 
   return (
@@ -538,6 +587,7 @@ const App: React.FC = () => {
           aetheriusMenu={aetheriusMenuItems}
           zoom={zoom}
           onZoom={setZoom}
+          onOpenCart={() => setIsCartOpen(true)}
         />
         <main className="flex-1 relative">
           <Desktop launchApp={launchApp} wallpaperUrl={wallpaper} />
@@ -555,9 +605,11 @@ const App: React.FC = () => {
               {renderWindowContent(win)}
             </WindowFrame>
           ))}
+          
+          <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
         </main>
         <Taskbar 
-            windows={windows.filter(w => w.workspace === activeWorkspace)} // Only show windows in current workspace on taskbar
+            windows={windows.filter(w => w.workspace === activeWorkspace)}
             onFocus={focusWindow} 
             activeWindowId={activeWindowId} 
             activeWorkspace={activeWorkspace}

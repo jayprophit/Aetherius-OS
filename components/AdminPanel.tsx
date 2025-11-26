@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
-import { Cog6ToothIcon, GlobeAltIcon, ShoppingCartIcon, BeakerIcon, HeartIcon, ShieldCheckIcon } from './Icons';
+import { Cog6ToothIcon, GlobeAltIcon, ShoppingCartIcon, BeakerIcon, HeartIcon, ShieldCheckIcon, UsersIcon } from './Icons';
+import { allUsers } from '../data';
 
 interface ToggleRowProps {
   title: string;
@@ -43,6 +45,53 @@ const Section: React.FC<{ title: string; icon: React.FC<any>; children: React.Re
     </div>
 );
 
+const UserManagement: React.FC = () => {
+    const [users, setUsers] = useState(allUsers);
+
+    const handleRoleChange = (userId: string, newRole: string) => {
+        setUsers(prev => prev.map(u => u.id === userId ? { ...u, role: newRole } : u));
+    };
+
+    return (
+        <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th className="px-4 py-3">User</th>
+                        <th className="px-4 py-3">Current Role</th>
+                        <th className="px-4 py-3">Assign Role</th>
+                    </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                    {users.map(user => (
+                        <tr key={user.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td className="px-4 py-3 font-medium text-gray-900 dark:text-white flex items-center gap-2">
+                                <img src={user.avatarUrl || ''} className="w-6 h-6 rounded-full"/>
+                                {user.name}
+                            </td>
+                            <td className="px-4 py-3 text-gray-500 dark:text-gray-400">{user.role}</td>
+                            <td className="px-4 py-3">
+                                <select 
+                                    value={user.role} 
+                                    onChange={(e) => handleRoleChange(user.id, e.target.value)}
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                >
+                                    <option value="Buyer">Buyer</option>
+                                    <option value="Seller">Seller</option>
+                                    <option value="Developer">Developer</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                </select>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+}
+
 export const AdminPanel: React.FC = () => {
     return (
         <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto">
@@ -51,6 +100,10 @@ export const AdminPanel: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 mt-1">Enable or disable platform features and categories globally.</p>
             </header>
             <div className="max-w-4xl mx-auto space-y-6">
+                 <Section title="User Management" icon={UsersIcon}>
+                    <UserManagement />
+                </Section>
+
                 <Section title="Core OS Features" icon={Cog6ToothIcon}>
                     <ToggleRow title="AI Hub" description="Main AI assistant and chat interface." />
                     <ToggleRow title="Browser" description="The built-in web browser application." />

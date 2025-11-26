@@ -147,7 +147,6 @@ export const HuggingFaceModelHub: React.FC = () => {
                         if (next[id] >= 100) {
                             next[id] = 100;
                             setLocalModels(curr => [...curr, id]);
-                            // Auto-remove from downloading state after a moment could be handled, but we keep 100% for UI feedback
                         }
                         changed = true;
                     }
@@ -177,6 +176,8 @@ export const HuggingFaceModelHub: React.FC = () => {
     };
 
     const handleDelete = (id: string) => {
+        if (!window.confirm("Are you sure you want to delete this model from local storage?")) return;
+
         if (runningModels.includes(id)) {
              // Stop first
              const sizeStr = mockModels.find(m => m.id === id)?.size || '2 GB';

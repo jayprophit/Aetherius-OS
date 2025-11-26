@@ -63,7 +63,11 @@ const VMCard: React.FC<{ vm: VirtualMachine; onAction: (id: string, action: stri
                 >
                     Console
                 </button>
-                <button className="px-2 py-1.5 rounded hover:bg-red-50 text-red-500 dark:hover:bg-red-900/20">
+                <button 
+                    onClick={() => onAction(vm.id, 'delete')}
+                    className="px-2 py-1.5 rounded hover:bg-red-50 text-red-500 dark:hover:bg-red-900/20"
+                    title="Delete VM"
+                >
                     <TrashIcon className="w-4 h-4" />
                 </button>
             </div>
@@ -79,6 +83,13 @@ export const Hypervisor: React.FC<HypervisorProps> = ({ launchApp }) => {
     const [vms, setVms] = useState<VirtualMachine[]>(initialVMs);
 
     const handleAction = (id: string, action: string) => {
+        if (action === 'delete') {
+            if (window.confirm("Are you sure you want to delete this Virtual Machine? This action cannot be undone.")) {
+                 setVms(prev => prev.filter(v => v.id !== id));
+            }
+            return;
+        }
+        
         const vm = vms.find(v => v.id === id);
         setVms(prev => prev.map(v => {
             if (v.id === id) {

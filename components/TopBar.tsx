@@ -113,7 +113,8 @@ export const TopBar: React.FC<{
   aetheriusMenu: MenuItemData[];
   zoom: number;
   onZoom: (zoom: number) => void;
-}> = ({ toggleLeftSidebar, onLaunchApp, contextualActions, aetheriusMenu, zoom, onZoom }) => {
+  onOpenCart?: () => void;
+}> = ({ toggleLeftSidebar, onLaunchApp, contextualActions, aetheriusMenu, zoom, onZoom, onOpenCart }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   
@@ -192,7 +193,7 @@ export const TopBar: React.FC<{
               </div>
             )}
           </div>
-           <button className={ICON_BUTTON_CLASSES} title="Open Shopping Cart">
+           <button onClick={onOpenCart} className={ICON_BUTTON_CLASSES} title="Open Shopping Cart">
               <ShoppingCartIcon className="w-6 h-6" />
           </button>
           <div className="relative">

@@ -1,4 +1,5 @@
 
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -121,80 +122,51 @@ export const mainMenuItems: MenuItemData[] = [
 export const menuGroups: (MenuGroup | MenuItemData)[] = [
     {
         id: 'system',
-        title: 'System',
+        title: 'Core System',
         icon: CpuChipIcon,
         type: 'group',
         children: [
             { title: 'Dashboard', icon: HomeIcon, component: 'socialFeed' },
-            { title: 'AI Hub', icon: HiveMindIcon, component: 'aiHub' },
-            { title: 'Settings', icon: Cog6ToothIcon, component: 'settings' },
-            { title: 'Cloud Ops', icon: CloudIcon, component: 'cloudOps' },
-            { title: 'File Manager', icon: FolderIcon, component: 'folderView' },
+            { title: 'Files', icon: FolderIcon, component: 'folderView' },
             { title: 'Browser', icon: GlobeAltIcon, component: 'browser' },
-            { title: 'Terminal', icon: CommandLineIcon, component: 'terminal' },
-            { title: 'Virtual Machines', icon: ServerIcon, component: 'hypervisor' },
-            { title: 'Knowledge Base', icon: BookOpenIcon, component: 'knowledgeBase' },
-            { title: 'Milestones', icon: FlagIcon, component: 'milestones' },
-            { title: 'Build Checklist', icon: ClipboardDocumentCheckIcon, component: 'buildChecklist' },
-            { title: 'System Requirements', icon: ShieldCheckIcon, component: 'systemRequirements' },
+            { title: 'Settings', icon: Cog6ToothIcon, component: 'settings' },
         ]
     },
     {
-        id: 'social',
-        title: 'Social & Community',
+        id: 'intelligence',
+        title: 'Intelligence & R&D',
+        icon: SparklesIcon,
+        type: 'group',
+        children: [
+            { title: 'AI Hub', icon: HiveMindIcon, component: 'aiHub' },
+            { title: 'AI Suite', icon: BoltIcon, component: 'aiSuite' },
+            { title: 'R&D Labs', icon: BeakerIcon, component: 'rdHub' },
+            { title: 'Development', icon: CodeBracketIcon, component: 'developmentApp' },
+            { title: 'Engineering', icon: WrenchIcon, component: 'engineeringApp' },
+        ]
+    },
+    {
+        id: 'community',
+        title: 'Community & Life',
         icon: UsersIcon,
         type: 'group',
         children: [
-            { title: 'Social Feed', icon: DocumentTextIcon, component: 'socialFeed' },
+            { title: 'Social Hub', icon: DocumentTextIcon, component: 'socialApp' },
             { title: 'Messenger', icon: MessageIcon, component: 'messenger' },
-            { title: 'Members', icon: UsersIcon, component: 'members' },
-            { title: 'Groups', icon: UserCircleIcon, component: 'groups' },
+            { title: 'Health', icon: HeartIcon, component: 'healthApp' },
+            { title: 'Learning', icon: AcademicCapIcon, component: 'elearningApp' },
         ]
     },
     {
-        id: 'productivity',
-        title: 'Productivity',
-        icon: BriefcaseIcon,
-        type: 'group',
-        children: [
-            { title: 'Productivity App', icon: BriefcaseIcon, component: 'productivityApp' },
-            { title: 'Content Gen', icon: PencilIcon, component: 'contentGenApp' },
-            { title: 'Careers', icon: BriefcaseIcon, component: 'careersApp' },
-        ]
-    },
-    {
-        id: 'commerce',
-        title: 'Commerce & Finance',
+        id: 'economy',
+        title: 'Economy',
         icon: ShoppingCartIcon,
         type: 'group',
         children: [
-            { title: 'Marketplace', icon: ShoppingCartIcon, component: 'eCommerceApp' },
-            { title: 'Finance Hub', icon: ChartBarIcon, component: 'financeApp' },
+            { title: 'Commerce', icon: ShoppingCartIcon, component: 'eCommerceApp' },
+            { title: 'Finance', icon: ChartBarIcon, component: 'financeApp' },
             { title: 'Wallet', icon: WalletIcon, component: 'tradingWallet' },
-        ]
-    },
-    {
-        id: 'learning',
-        title: 'Learning & Health',
-        icon: AcademicCapIcon,
-        type: 'group',
-        children: [
-            { title: 'E-Learning', icon: AcademicCapIcon, component: 'elearningApp' },
-            { title: 'Health Hub', icon: HeartIcon, component: 'healthApp' },
-        ]
-    },
-    {
-        id: 'development',
-        title: 'Development & R&D',
-        icon: CodeBracketIcon,
-        type: 'group',
-        children: [
-            { title: 'Dev Suite', icon: CodeBracketIcon, component: 'developmentApp' },
-            { title: 'Engineering', icon: WrenchIcon, component: 'engineeringApp' },
-            { title: 'R&D Labs', icon: BeakerIcon, component: 'rdHub' },
-            { title: 'AI Suite', icon: SparklesIcon, component: 'aiSuite' },
-            { title: 'Architecture', icon: CubeIcon, component: 'systemArchitecture' },
-            { title: 'Core Paradigms', icon: ChipIcon, component: 'coreParadigms' },
+            { title: 'Careers', icon: BriefcaseIcon, component: 'careersApp' },
         ]
     }
 ];
@@ -616,30 +588,89 @@ export const buildChecklistData: ChecklistCategory[] = [
     }
 ];
 
+// --- UPDATED SETTINGS CONFIG (Reorganized) ---
 export const settingsConfig: SettingsCategory[] = [
     {
-        id: 'general', title: 'General', description: 'System preferences and updates', icon: Cog6ToothIcon,
+        id: 'account', 
+        title: 'Account & Identity', 
+        description: 'Profile, Wallet, and Membership', 
+        icon: UserCircleIcon,
         items: [
-            { id: 'about', title: 'About', icon: InformationCircleIcon, component: 'about' },
-            { id: 'display', title: 'Display', icon: DisplayIcon, component: 'display' },
-            { id: 'systemArchitecture', title: 'System Architecture', icon: CubeIcon, component: 'systemArchitecture' },
+            { id: 'myProfile', title: 'My Profile', icon: UserIcon, component: 'myProfile', subtitle: 'Edit details & avatar' },
+            { id: 'wallet_settings', title: 'Wallet & Payments', icon: WalletIcon, component: 'wallet_settings' },
+            { id: 'game_center_profile', title: 'Game Center', icon: GameControllerIcon, component: 'game_center_profile' },
+        ]
+    },
+    {
+        id: 'system_ops', 
+        title: 'System Operations', 
+        description: 'Core OS management and maintenance tools', 
+        icon: ServerIcon,
+        items: [
+            { id: 'about', title: 'About Aetherius', icon: InformationCircleIcon, component: 'about' },
+            { id: 'software_update', title: 'Software Update', icon: ArrowPathIcon, component: 'software_update', subtitle: 'Version 24H2' },
+            { id: 'cloudOps', title: 'Cloud Operations', icon: CloudIcon, component: 'cloudOps', subtitle: 'Deploy & Manage' },
+            { id: 'hypervisor', title: 'Virtual Machines', icon: ComputerDesktopIcon, component: 'hypervisor' },
+            { id: 'terminal', title: 'System Terminal', icon: CommandLineIcon, component: 'terminal' },
+            { id: 'rigBuilder', title: 'Virtual Rig Builder', icon: ServerIcon, component: 'rigBuilder', subtitle: 'Configure Hardware' },
+        ]
+    },
+    {
+        id: 'knowledge',
+        title: 'Knowledge & Planning',
+        description: 'Documentation, Roadmaps, and Architecture',
+        icon: BookOpenIcon,
+        items: [
+            { id: 'knowledgeBase', title: 'Knowledge Base', icon: BookOpenIcon, component: 'knowledgeBase' },
             { id: 'milestones', title: 'Milestones', icon: FlagIcon, component: 'milestones' },
-            { id: 'checklist', title: 'Build Checklist', icon: ClipboardDocumentCheckIcon, component: 'buildChecklist' },
-            { id: 'kb', title: 'Knowledge Base', icon: BookOpenIcon, component: 'knowledgeBase' },
+            { id: 'checklist', title: 'Build Checklist', icon: ClipboardDocumentCheckIcon, component: 'checklist' },
+            { id: 'systemArchitecture', title: 'Architecture', icon: CubeIcon, component: 'systemArchitecture' },
+            { id: 'systemRequirements', title: 'Requirements', icon: ShieldCheckIcon, component: 'systemRequirements' },
         ]
     },
     {
-        id: 'network', title: 'Network & Connectivity', description: 'Wi-Fi, Bluetooth, and VPN', icon: WifiIcon,
+        id: 'ai_intelligence', 
+        title: 'AI & Intelligence', 
+        description: 'Configure your Personal AI and Models', 
+        icon: HiveMindIcon,
         items: [
-            { id: 'wifi', title: 'Wi-Fi', icon: WifiIcon, component: 'wifi' },
-            { id: 'bluetooth', title: 'Bluetooth', icon: BluetoothIcon, component: 'bluetooth' },
+            { id: 'ai_settings', title: 'AI Preferences', icon: SparklesIcon, component: 'ai_settings' },
+            { id: 'coreParadigms', title: 'Computing Paradigms', icon: ChipIcon, component: 'coreParadigms' },
+            { id: 'virtualHardware', title: 'Hardware Monitor', icon: CpuChipIcon, component: 'virtualHardware' },
         ]
     },
     {
-        id: 'personalization', title: 'Personalization', description: 'Wallpapers, themes, and sounds', icon: SwatchIcon,
+        id: 'customization', 
+        title: 'Customization', 
+        description: 'Appearance, Sounds, and Notifications', 
+        icon: SwatchIcon,
         items: [
+            { id: 'display', title: 'Display & Brightness', icon: DisplayIcon, component: 'display' },
             { id: 'wallpaper', title: 'Wallpaper', icon: PhotoIcon, component: 'wallpaper' },
             { id: 'sounds', title: 'Sounds & Haptics', icon: SpeakerWaveIcon, component: 'sounds' },
+            { id: 'notifications', title: 'Notifications', icon: BellIcon, component: 'notifications' },
+            { id: 'accessibility_main', title: 'Accessibility', icon: HandRaisedIcon, component: 'accessibility_main' },
+        ]
+    },
+    {
+        id: 'privacy_security', 
+        title: 'Privacy & Security', 
+        description: 'Network, Firewall, and Permissions', 
+        icon: ShieldCheckIcon,
+        items: [
+            { id: 'network', title: 'Network', icon: WifiIcon, component: 'network' },
+            { id: 'firewall', title: 'Firewall & Defense', icon: ShieldCheckIcon, component: 'firewall' },
+            { id: 'privacy', title: 'Privacy & Security', icon: LockClosedIcon, component: 'privacy' },
+            { id: 'passwords', title: 'Passwords', icon: KeyIcon, component: 'passwords' },
+        ]
+    },
+    {
+        id: 'custom_user',
+        title: 'User Variety',
+        description: 'Custom user-defined settings and toggles',
+        icon: SparklesIcon,
+        items: [
+            { id: 'customVariety', title: 'Custom Experience', icon: AdjustmentsHorizontalIcon, component: 'customVariety', subtitle: 'My custom options' },
         ]
     }
 ];
