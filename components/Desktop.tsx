@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { desktopItems } from '../data';
+import { desktopItems, osMenuStructures } from '../data';
 import { AppItem, FolderItem, DesktopItem } from '../types';
 import { LaunchableApp } from '../App';
 import { FolderIcon } from './Icons';
@@ -176,6 +176,46 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
 
     const defaultWallpaper = 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto-format=fit-crop';
   
+    // Map actions for the context menu based on osMenuStructures
+    // Helper to map static data to functions
+    const mapAction = (item: any): any => {
+        if (item.type === 'divider') return item;
+        
+        let action = () => {};
+        
+        if (item.label === 'Refresh') {
+             action = () => window.location.reload();
+        } else if (item.label === 'Display Settings') {
+             action = () => launchApp({ component: 'settings', title: 'Settings', icon: FolderIcon, context: { initialView: 'display' }});
+        } else if (item.label === 'Personalize') {
+             action = () => launchApp({ component: 'settings', title: 'Settings', icon: FolderIcon, context: { initialView: 'wallpaper' }});
+        } else if (item.label === 'Open Terminal') {
+             action = () => launchApp({ component: 'terminal', title: 'Terminal', icon: FolderIcon });
+        } else if (item.label.includes('Large Icons')) {
+            action = () => changeIconSize('large');
+        } else if (item.label.includes('Medium Icons')) {
+            action = () => changeIconSize('medium');
+        } else if (item.label.includes('Small Icons')) {
+            action = () => changeIconSize('small');
+        } else if (item.type !== 'submenu') {
+            // Default action for placeholder items
+             action = () => console.log(`Clicked ${item.label}`);
+        }
+
+        // Recursively map submenus
+        if (item.submenu || item.items) {
+            return {
+                ...item,
+                type: 'submenu',
+                items: (item.submenu || item.items).map(mapAction)
+            };
+        }
+
+        return { ...item, action };
+    };
+
+    const contextMenuItems = osMenuStructures.desktopContext.map(mapAction);
+
     return (
         <div 
             ref={desktopRef}
@@ -225,17 +265,7 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
                     x={contextMenu.x}
                     y={contextMenu.y}
                     onClose={() => setContextMenu({ ...contextMenu, visible: false })}
-                    items={[
-                        { label: 'View', action: () => {}, disabled: true }, // Placeholder
-                        { type: 'submenu', label: 'Icon Size', items: [
-                            { label: 'Small', action: () => changeIconSize('small') },
-                            { label: 'Medium', action: () => changeIconSize('medium') },
-                            { label: 'Large', action: () => changeIconSize('large') },
-                        ]},
-                        { type: 'divider' },
-                        { label: 'Auto-arrange Icons', action: gridLayout },
-                        { label: 'Personalize', action: () => launchApp({ component: 'settings', title: 'Settings', icon: FolderIcon, context: { initialView: 'display' }}) },
-                    ]}
+                    items={contextMenuItems}
                 />
             )}
         </div>

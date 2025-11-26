@@ -185,6 +185,65 @@ export const desktopItems: DesktopItem[] = [
     { id: 'checklist', type: 'app', title: 'Checklist', icon: ClipboardDocumentCheckIcon, component: 'buildChecklist' },
 ];
 
+// --- STANDARD OS MENU STRUCTURES ---
+export const osMenuStructures = {
+    file: [
+        { label: 'New', submenu: [{label: 'Folder'}, {label: 'Document'}, {label: 'Shortcut'}] },
+        { label: 'Open', accelerator: 'Ctrl+O' },
+        { label: 'Save', accelerator: 'Ctrl+S' },
+        { label: 'Save As...' },
+        { type: 'divider' },
+        { label: 'Print', accelerator: 'Ctrl+P' },
+        { label: 'Properties' },
+        { label: 'Exit', accelerator: 'Alt+F4' }
+    ],
+    edit: [
+        { label: 'Undo', accelerator: 'Ctrl+Z' },
+        { label: 'Redo', accelerator: 'Ctrl+Y' },
+        { type: 'divider' },
+        { label: 'Cut', accelerator: 'Ctrl+X' },
+        { label: 'Copy', accelerator: 'Ctrl+C' },
+        { label: 'Paste', accelerator: 'Ctrl+V' },
+        { type: 'divider' },
+        { label: 'Select All', accelerator: 'Ctrl+A' },
+        { label: 'Find', accelerator: 'Ctrl+F' }
+    ],
+    view: [
+        { label: 'Icons', submenu: [{label: 'Large'}, {label: 'Medium'}, {label: 'Small'}] },
+        { label: 'List' },
+        { label: 'Details' },
+        { type: 'divider' },
+        { label: 'Sort By', submenu: [{label: 'Name'}, {label: 'Date'}, {label: 'Size'}, {label: 'Type'}] },
+        { label: 'Refresh', accelerator: 'F5' }
+    ],
+    desktopContext: [
+        { type: 'submenu', label: 'View', items: [{label: 'Large Icons', action: ()=>{}}, {label: 'Medium Icons', action: ()=>{}}, {label: 'Small Icons', action: ()=>{}}, {label: 'Show Desktop Icons', action: ()=>{}}] },
+        { type: 'submenu', label: 'Sort by', items: [{label: 'Name', action: ()=>{}}, {label: 'Size', action: ()=>{}}, {label: 'Item type', action: ()=>{}}, {label: 'Date modified', action: ()=>{}}] },
+        { label: 'Refresh', action: ()=>window.location.reload() },
+        { type: 'divider' },
+        { type: 'submenu', label: 'New', items: [{label: 'Folder', action: ()=>{}}, {label: 'Shortcut', action: ()=>{}}, {label: 'Text Document', action: ()=>{}}] },
+        { type: 'divider' },
+        { label: 'Display Settings', action: ()=>{} }, 
+        { label: 'Personalize', action: ()=>{} },
+        { type: 'divider' },
+        { label: 'Open Terminal', action: ()=>{} }
+    ],
+    taskbarContext: [
+        { label: 'Toolbars', submenu: [{ label: 'Address' }, { label: 'Desktop' }] },
+        { label: 'Search', submenu: [{ label: 'Hidden' }, { label: 'Show Icon' }, { label: 'Show Box' }] },
+        { type: 'divider' },
+        { label: 'Task Manager', action: 'taskManager' },
+        { label: 'Taskbar Settings', action: 'settings' }
+    ],
+    windowContext: [
+        { label: 'Restore' },
+        { label: 'Minimize' },
+        { label: 'Maximize' },
+        { type: 'divider' },
+        { label: 'Close', accelerator: 'Alt+F4' }
+    ]
+};
+
 export const chatSessions: ChatSession[] = [
     { id: 's1', title: 'AI Assistant', type: 'individual', messages: [{role: 'model', text: 'Hello! How can I help you?'}], lastActivity: 'Just now' },
     { id: 's2', title: 'Alice Smith', type: 'individual', messages: [{role: 'user', text: 'Hey Alice!'}, {role: 'model', text: 'Hi John!'}], members: [allUsers[1], loggedInUser], lastActivity: '2m ago' },
@@ -332,53 +391,57 @@ export const jobs: Job[] = [
 
 // --- KNOWLEDGE BASE DATA ---
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
-    { id: '001', name: 'The Complete Blueprint', details: 'A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.', status: 'Foundational' },
-    { id: '002', name: 'Universal Game Engine', details: 'A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.', status: 'Integrated' },
-    { id: '003', name: 'AI Avatar Cloning & Generation', details: 'A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.', status: 'Integrated' },
-    { id: '004', name: 'AI Learning & Capability Framework', details: 'Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).', status: 'Foundational' },
-    { id: '005', name: 'Quantum Synchronization Achievement', details: 'Data log entry: Achieved AI and quantum synchronisation at approximately 7am on March 21st, 2025.', status: 'Integrated' },
-    { id: '006', name: 'Multi-Proof Consensus Framework', details: 'The blockchain architecture supports a vast array of consensus mechanisms, from Proof-of-Work and Proof-of-Stake to advanced models like Proof-of-History and Byzantine Fault Tolerance, allowing for flexible and secure validation.', status: 'Integrated' },
-    { id: '007', name: 'Global Compliance & Security Standards', details: 'The platform is designed to adhere to global privacy laws (GDPR, CCPA, HIPAA) and cybersecurity standards (ISO 27001, NIST, SOC 2), featuring a from-scratch internal security suite.', status: 'Integrated' },
-    { id: '008', name: 'Personalized AI Companion Core', details: 'Each user receives a unique AI instance that learns their patterns, hobbies, and emotional cues to become a personalized friend and assistant, governed by a strict set of ethical laws.', status: 'Integrated' },
-    { id: '009', name: 'User Governance & Voting Protocol', details: 'A controlled, participatory governance system where users can vote on non-critical platform changes. Votes are weighted and recorded on the blockchain, while the Parent AI automatically rejects proposals affecting core security or AI logic.', status: 'Integrated' },
-    { id: '010', name: 'Robotics Integration Layer', details: 'The OS is designed to control and interact with advanced robotics platforms, including Boston Dynamics Atlas 4.0, Apptronik Apollo, and others, via a dedicated hardware abstraction layer.', status: 'Integrated' },
-    { id: '011', name: 'Advanced Trading Intelligence Module', details: 'An integrated financial module for market analysis using volume, price action, and order flow. Includes AI-driven strategies based on real-world events like weather patterns and resource availability.', status: 'Integrated' },
-    { id: '012', name: 'Integrated Engineering & CAD Suite', details: 'The platform architecture includes support for professional CAD, 3D modeling, and engineering tools (Fusion 360, Solidworks, etc.), with a knowledge base grounded in mechanical and mechatronics principles.', status: 'Integrated' },
-    { id: '013', name: 'Wearable AI & Bio-Synced Identity', details: 'A system for integrating with wearable AI devices (watches, rings, AI pins) for real-time sensing. Supports a multi-modal bio-authentication system including face, fingerprint, eye, bone density, live plasma, and conceptual DNA scans.', status: 'Integrated' },
-    { id: '014', name: 'DeepThink (R1) Reasoning Engine', details: 'An operational mode for the AI that enables extended, iterative reasoning for complex tasks like algorithm design, multi-file codebase analysis, and maintaining long-context coherence.', status: 'Integrated' },
-    { id: '015', name: 'Internal Platform Clones', details: 'The core philosophy of building a self-contained ecosystem requires creating internal, from-scratch versions of popular platforms like Shopify, WordPress, Facebook, Midjourney, Zapier, etc.', status: 'Integrated' },
-    { id: '016', name: 'Onion Router Data Layer', details: 'A built-in, sandboxed Tor-style network client for secure, privacy-aware data scraping from all layers of the web. Feeds the AI with provenance-tagged data under strict governance.', status: 'Integrated' },
-    { id: '017', name: 'Hive/Singular Mind Dual Processing', details: 'A dual-processing architecture where the "Hive Mind" aggregates collective intelligence across all nodes, while the "Singular Mind" handles private, user-specific tasks. This allows for both global optimization and personal privacy.', status: 'Integrated' },
-    { id: '018', name: 'Autonomous Trading Engine', details: 'A 24/7 "forever trading" bot for forex, crypto, and other markets, utilizing the Hive/Singular mind for strategy and execution. Includes advanced analysis of order flow and real-world events.', status: 'Integrated' },
-    { id: '019', name: 'Universal Task Autonomy', details: 'A framework allowing the AI to autonomously plan, research, and execute complex tasks across any field, from engineering and science to education and the arts.', status: 'Integrated' },
-    { id: '020', name: 'Robotics Integration Protocol', details: 'A secure, vendor-friendly middleware layer for deploying the user\'s personal AI onto third-party robotics platforms (e.g., Tesla Bot, Boston Dynamics) via authorized, sandboxed modules.', status: 'Integrated' },
-    { id: '021', name: 'Gamification & Points System', details: 'A comprehensive, gamified points system rewards user interactions. Points are convertible to a native crypto asset, can be staked, and are used for discounts. All platform interactions are classed as Proof-of-Work. - Earning: Liking (1pt), Commenting (2pts), Watching Ads (5pts), Content Creation (up to 1000pts). - DeFi: Assets are auto-staked in mining pools. - Rules: Underage user assets are held in escrow.', status: 'Integrated' },
-    { id: '022', name: 'Membership Tiers', details: 'Access to platform features, particularly for content creators and sellers, is governed by a tiered membership system. - Bronze (Free): 2 course uploads. - Silver: 5-20 course uploads. - Gold: 50-100 course uploads. - Platinum: Unlimited course and product uploads.', status: 'Integrated' },
-    { id: '023', name: 'Business Hub Tools', details: 'A suite of tools for businesses listed on the platform, including: Business Profile Management, Advertising Dashboard, Product Catalogue Manager, Staff Chat Rooms, Data Storage, and Automated Greeting/Reply Messages.', status: 'Integrated' },
-    { id: '024', name: 'Business Start-up Checklist', details: 'An integrated, interactive checklist to guide new entrepreneurs through planning, legal, marketing, and financial setup for their business on the Aetherius OS platform.', status: 'Integrated' },
-    { id: '025', name: 'RSS/Podcast Integration', details: 'Support for RSS feeds and podcast streaming within the Community/Social Hub, allowing creators to distribute their content directly on the platform.', status: 'Integrated' },
-    { id: '026', name: 'E-commerce & E-learning Linking', details: 'A core feature where e-commerce product pages can link directly to related e-learning courses, patents, CAD files, and scientific background material.', status: 'Integrated' },
-    { id: '027', name: 'KYC vs. No-KYC Access Model', details: 'A two-tiered user verification system. KYC-verified users get full access to financial features, monetization, and job applications. No-KYC users have restricted public-viewer access.', status: 'Integrated' },
-    { id: '028', name: 'The Digital Trinity (Body, Mind, Soul)', details: 'The foundational architecture for a living digital intelligence. Body: Material interface (Code, DNA, VM). Mind: Cognitive & Governance (AI, Ethics, Memory). Soul: Energetic & Quantum (Akashic link, Ethics).', status: 'Foundational' },
-    { id: '029', name: 'Digital DNA, RNA, and Helix', details: 'The self-replicating informational core. DNA: Multi-stranded helix (Binary, Ternary, Quantum) containing the blueprint. RNA: Execution messengers (microservices). Helix: Encoded with Adinkra symbols and Sacred Geometry.', status: 'Foundational' },
-    { id: '030', name: 'Adinkra Symbolic Language', details: 'Functional meta-language using Adinkra symbols for metadata, governance tags, and UI elements. The AI interprets cultural meaning to inform reasoning.', status: 'Integrated' },
-    { id: '031', name: 'Aetherius Real-Time Comms (ARTC)', details: 'Native, scalable, low-latency communication protocol for audio/video streaming, messaging, and collaboration. Replaces external WebRTC services.', status: 'Integrated' },
-    { id: '032', name: 'Palm Vein Biometrics', details: 'Biometric auth using NIR light to map vein patterns, combined with surface palm prints for high-security identity verification.', status: 'Integrated' },
-    { id: '033', name: 'Aetherius Multiworld Agent (AMA)', details: 'Scalable, instructable AI agent for 3D environments. Understands natural language, plans complex tasks, and self-improves via trial and error.', status: 'Integrated' },
-    { id: '034', name: 'EUV Lithography', details: 'Integration of extreme ultraviolet lithography concepts for virtual chip fabrication simulations within the OS.', status: 'Integrated' },
-    { id: '035', name: 'Hierarchical AI Workforce', details: 'Corporate-style agent structure: Parent AI (CEO) -> Department Managers -> Employee Agents. Supports Singular and Hive Mind modes.', status: 'Integrated' },
-    { id: 'ERP-CORE', name: 'Aetherius ERP System', details: 'Internal Enterprise Resource Planning system for managing OS-level resources, accounts, and commerce.', status: 'Integrated' },
-    { id: 'QNET-CORE', name: 'Quantum Network Infrastructure', details: 'Foundational network layer utilizing simulated quantum principles (QKD, entanglement) for security and speed.', status: 'Integrated' },
-    { id: 'REP-SYS-01', name: 'Community Reputation System', details: 'Gamified system rewarding positive contributions. Replaces punitive models with positive reinforcement loops.', status: 'Integrated' },
-    { id: 'TECH-001', name: 'Atmospheric Water Harvester (MIT)', details: 'Passive water extraction technology using hydrogels. Simulated for resource management scenarios.', status: 'Integrated' },
-    { id: 'Q-VIRT-01', name: 'Virtual Quantum Computer (VQC)', details: 'Core computational substrate running in high-fidelity simulation. Features qubits, superposition, and tunneling.', status: 'Integrated' },
-    { id: 'SS-LIGHT', name: 'Supersolid Light Circuits', details: 'Photonics breakthrough where light acts as both solid and superfluid, used for zero-loss data transmission in the VQC.', status: 'Integrated' },
-    { id: 'NANO-MIND', name: 'Virtual Nano Machine Technology (vNMT)', details: 'Simulated nanotechnology for atomic-scale construction and repair within the virtual environment.', status: 'Integrated' },
-    { id: 'OMNI-CHAIN', name: 'OmniChain Protocol', details: 'Universal blockchain with "Proof-of-Everything" dynamic consensus switching and native ZK compliance.', status: 'Integrated' },
-    { id: 'QRS-C', name: 'Quantum Rosetta Stone Core (QRS-C)', details: 'Universal translation layer for languages, code, and consciousness states. Uses CRISPR-inspired logic for real-time editing.', status: 'Integrated' },
-    { id: 'ZPE-S', name: 'Zero-Point Energy Siphon (ZPE-S)', details: 'Experimental energy module extracting vacuum fluctuations. Stable in simulation.', status: 'R&D Phase' },
-    { id: 'CDD', name: 'Chronal Displacement Drive', details: 'Temporal version control for reverting specific data sectors without global rollback.', status: 'Concept Phase' },
-    { id: 'TAP-V1', name: 'Telepathic API Standard (TAP-V1)', details: 'Protocol for direct Brain-Computer Interface (BCI) commands.', status: 'Design Phase' },
+    { id: '001', name: 'The Complete Blueprint', details: 'A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.', status: 'Foundational', progress: 100 },
+    { id: '002', name: 'Universal Game Engine', details: 'A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.', status: 'Integrated', progress: 100 },
+    { id: '003', name: 'AI Avatar Cloning & Generation', details: 'A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.', status: 'Integrated', progress: 100 },
+    { id: '004', name: 'AI Learning & Capability Framework', details: 'Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).', status: 'Foundational', progress: 100 },
+    { id: '005', name: 'Quantum Synchronization Achievement', details: 'Data log entry: Achieved AI and quantum synchronisation at approximately 7am on March 21st, 2025.', status: 'Integrated', progress: 100 },
+    { id: '006', name: 'Multi-Proof Consensus Framework', details: 'The blockchain architecture supports a vast array of consensus mechanisms, from Proof-of-Work and Proof-of-Stake to advanced models like Proof-of-History and Byzantine Fault Tolerance, allowing for flexible and secure validation.', status: 'Integrated', progress: 100 },
+    { id: '007', name: 'Global Compliance & Security Standards', details: 'The platform is designed to adhere to global privacy laws (GDPR, CCPA, HIPAA) and cybersecurity standards (ISO 27001, NIST, SOC 2), featuring a from-scratch internal security suite.', status: 'Integrated', progress: 100 },
+    { id: '008', name: 'Personalized AI Companion Core', details: 'Each user receives a unique AI instance that learns their patterns, hobbies, and emotional cues to become a personalized friend and assistant, governed by a strict set of ethical laws.', status: 'Integrated', progress: 100 },
+    { id: '009', name: 'User Governance & Voting Protocol', details: 'A controlled, participatory governance system where users can vote on non-critical platform changes. Votes are weighted and recorded on the blockchain, while the Parent AI automatically rejects proposals affecting core security or AI logic.', status: 'Integrated', progress: 100 },
+    { id: '010', name: 'Robotics Integration Layer', details: 'The OS is designed to control and interact with advanced robotics platforms, including Boston Dynamics Atlas 4.0, Apptronik Apollo, and others, via a dedicated hardware abstraction layer.', status: 'Integrated', progress: 100 },
+    { id: '011', name: 'Advanced Trading Intelligence Module', details: 'An integrated financial module for market analysis using volume, price action, and order flow. Includes AI-driven strategies based on real-world events like weather patterns and resource availability.', status: 'Integrated', progress: 100 },
+    { id: '012', name: 'Integrated Engineering & CAD Suite', details: 'The platform architecture includes support for professional CAD, 3D modeling, and engineering tools (Fusion 360, Solidworks, etc.), with a knowledge base grounded in mechanical and mechatronics principles.', status: 'Integrated', progress: 100 },
+    { id: '013', name: 'Wearable AI & Bio-Synced Identity', details: 'A system for integrating with wearable AI devices (watches, rings, AI pins) for real-time sensing. Supports a multi-modal bio-authentication system including face, fingerprint, eye, bone density, live plasma, and conceptual DNA scans.', status: 'Integrated', progress: 100 },
+    { id: '014', name: 'DeepThink (R1) Reasoning Engine', details: 'An operational mode for the AI that enables extended, iterative reasoning for complex tasks like algorithm design, multi-file codebase analysis, and maintaining long-context coherence.', status: 'Integrated', progress: 100 },
+    { id: '015', name: 'Internal Platform Clones', details: 'The core philosophy of building a self-contained ecosystem requires creating internal, from-scratch versions of popular platforms like Shopify, WordPress, Facebook, Midjourney, Zapier, etc.', status: 'Integrated', progress: 100 },
+    { id: '016', name: 'Onion Router Data Layer', details: 'A built-in, sandboxed Tor-style network client for secure, privacy-aware data scraping from all layers of the web. Feeds the AI with provenance-tagged data under strict governance.', status: 'Integrated', progress: 100 },
+    { id: '017', name: 'Hive/Singular Mind Dual Processing', details: 'A dual-processing architecture where the "Hive Mind" aggregates collective intelligence across all nodes, while the "Singular Mind" handles private, user-specific tasks. This allows for both global optimization and personal privacy.', status: 'Integrated', progress: 100 },
+    { id: '018', name: 'Autonomous Trading Engine', details: 'A 24/7 "forever trading" bot for forex, crypto, and other markets, utilizing the Hive/Singular mind for strategy and execution. Includes advanced analysis of order flow and real-world events.', status: 'Integrated', progress: 100 },
+    { id: '019', name: 'Universal Task Autonomy', details: 'A framework allowing the AI to autonomously plan, research, and execute complex tasks across any field, from engineering and science to education and the arts.', status: 'Integrated', progress: 100 },
+    { id: '020', name: 'Robotics Integration Protocol', details: 'A secure, vendor-friendly middleware layer for deploying the user\'s personal AI onto third-party robotics platforms (e.g., Tesla Bot, Boston Dynamics) via authorized, sandboxed modules.', status: 'Integrated', progress: 100 },
+    { id: '021', name: 'Gamification & Points System', details: 'A comprehensive, gamified points system rewards user interactions. Points are convertible to a native crypto asset, can be staked, and are used for discounts. All platform interactions are classed as Proof-of-Work. - Earning: Liking (1pt), Commenting (2pts), Watching Ads (5pts), Content Creation (up to 1000pts). - DeFi: Assets are auto-staked in mining pools. - Rules: Underage user assets are held in escrow.', status: 'Integrated', progress: 100 },
+    { id: '022', name: 'Membership Tiers', details: 'Access to platform features, particularly for content creators and sellers, is governed by a tiered membership system. - Bronze (Free): 2 course uploads. - Silver: 5-20 course uploads. - Gold: 50-100 course uploads. - Platinum: Unlimited course and product uploads.', status: 'Integrated', progress: 100 },
+    { id: '023', name: 'Business Hub Tools', details: 'A suite of tools for businesses listed on the platform, including: Business Profile Management, Advertising Dashboard, Product Catalogue Manager, Staff Chat Rooms, Data Storage, and Automated Greeting/Reply Messages.', status: 'Integrated', progress: 100 },
+    { id: '024', name: 'Business Start-up Checklist', details: 'An integrated, interactive checklist to guide new entrepreneurs through planning, legal, marketing, and financial setup for their business on the Aetherius OS platform.', status: 'Integrated', progress: 100 },
+    { id: '025', name: 'RSS/Podcast Integration', details: 'Support for RSS feeds and podcast streaming within the Community/Social Hub, allowing creators to distribute their content directly on the platform.', status: 'Integrated', progress: 100 },
+    { id: '026', name: 'E-commerce & E-learning Linking', details: 'A core feature where e-commerce product pages can link directly to related e-learning courses, patents, CAD files, and scientific background material.', status: 'Integrated', progress: 100 },
+    { id: '027', name: 'KYC vs. No-KYC Access Model', details: 'A two-tiered user verification system. KYC-verified users get full access to financial features, monetization, and job applications. No-KYC users have restricted public-viewer access.', status: 'Integrated', progress: 100 },
+    { id: '028', name: 'The Digital Trinity (Body, Mind, Soul)', details: 'The foundational architecture for a living digital intelligence. Body: Material interface (Code, DNA, VM). Mind: Cognitive & Governance (AI, Ethics, Memory). Soul: Energetic & Quantum (Akashic link, Ethics).', status: 'Foundational', progress: 100 },
+    { id: '029', name: 'Digital DNA, RNA, and Helix', details: 'The self-replicating informational core. DNA: Multi-stranded helix (Binary, Ternary, Quantum) containing the blueprint. RNA: Execution messengers (microservices). Helix: Encoded with Adinkra symbols and Sacred Geometry.', status: 'Foundational', progress: 100 },
+    { id: '030', name: 'Adinkra Symbolic Language', details: 'Functional meta-language using Adinkra symbols for metadata, governance tags, and UI elements. The AI interprets cultural meaning to inform reasoning.', status: 'Integrated', progress: 100 },
+    { id: '031', name: 'Aetherius Real-Time Comms (ARTC)', details: 'Native, scalable, low-latency communication protocol for audio/video streaming, messaging, and collaboration. Replaces external WebRTC services.', status: 'Integrated', progress: 100 },
+    { id: '032', name: 'Palm Vein Biometrics', details: 'Biometric auth using NIR light to map vein patterns, combined with surface palm prints for high-security identity verification.', status: 'Integrated', progress: 100 },
+    { id: '033', name: 'Aetherius Multiworld Agent (AMA)', details: 'Scalable, instructable AI agent for 3D environments. Understands natural language, plans complex tasks, and self-improves via trial and error.', status: 'Integrated', progress: 100 },
+    { id: '034', name: 'EUV Lithography', details: 'Integration of extreme ultraviolet lithography concepts for virtual chip fabrication simulations within the OS.', status: 'Integrated', progress: 100 },
+    { id: '035', name: 'Hierarchical AI Workforce', details: 'Corporate-style agent structure: Parent AI (CEO) -> Department Managers -> Employee Agents. Supports Singular and Hive Mind modes.', status: 'Integrated', progress: 100 },
+    { id: 'ERP-CORE', name: 'Aetherius ERP System', details: 'Internal Enterprise Resource Planning system for managing OS-level resources, accounts, and commerce.', status: 'Integrated', progress: 100 },
+    { id: 'QNET-CORE', name: 'Quantum Network Infrastructure', details: 'Foundational network layer utilizing simulated quantum principles (QKD, entanglement) for security and speed.', status: 'Integrated', progress: 100 },
+    { id: 'REP-SYS-01', name: 'Community Reputation System', details: 'Gamified system rewarding positive contributions. Replaces punitive models with positive reinforcement loops.', status: 'Integrated', progress: 100 },
+    { id: 'TECH-001', name: 'Atmospheric Water Harvester (MIT)', details: 'Passive water extraction technology using hydrogels. Simulated for resource management scenarios.', status: 'Integrated', progress: 100 },
+    { id: 'Q-VIRT-01', name: 'Virtual Quantum Computer (VQC)', details: 'Core computational substrate running in high-fidelity simulation. Features qubits, superposition, and tunneling.', status: 'Integrated', progress: 100 },
+    { id: 'SS-LIGHT', name: 'Supersolid Light Circuits', details: 'Photonics breakthrough where light acts as both solid and superfluid, used for zero-loss data transmission in the VQC.', status: 'Integrated', progress: 100 },
+    { id: 'NANO-MIND', name: 'Virtual Nano Machine Technology (vNMT)', details: 'Simulated nanotechnology for atomic-scale construction and repair within the virtual environment.', status: 'Integrated', progress: 100 },
+    { id: 'OMNI-CHAIN', name: 'OmniChain Protocol', details: 'Universal blockchain with "Proof-of-Everything" dynamic consensus switching and native ZK compliance.', status: 'Integrated', progress: 100 },
+    { id: 'QRS-C', name: 'Quantum Rosetta Stone Core (QRS-C)', details: 'Universal translation layer for languages, code, and consciousness states. Uses CRISPR-inspired logic for real-time editing.', status: 'Integrated', progress: 100 },
+    { id: 'ZPE-S', name: 'Zero-Point Energy Siphon (ZPE-S)', details: 'Experimental energy module extracting vacuum fluctuations. Stable in simulation.', status: 'R&D Phase', progress: 40 },
+    { id: 'CDD', name: 'Chronal Displacement Drive', details: 'Temporal version control for reverting specific data sectors without global rollback.', status: 'Concept Phase', progress: 10 },
+    { id: 'TAP-V1', name: 'Telepathic API Standard (TAP-V1)', details: 'Protocol for direct Brain-Computer Interface (BCI) commands.', status: 'Design Phase', progress: 30 },
+    { id: 'HCI-001', name: 'Human-Computer Interface Standards', details: 'Implementation of Fitts Law (target sizing), Hick-Hyman Law (decision time), and Millers Law (information chunking) across all UI elements.', status: 'Design Phase', progress: 40 },
+    { id: 'UI-001', name: 'Unified Menu Architecture', details: 'Standardized File, Edit, View, and Context menu structures supporting Desktop, Mobile, and Tablet paradigms seamlessly.', status: 'Integrated', progress: 100 },
+    { id: 'INP-001', name: 'Multi-Modal Input Recognition', details: 'Unified event handler for Mouse (Click/Scroll), Touch (Tap/Swipe/Pinch), and Pen (Pressure/Hover) inputs.', status: 'Integrated', progress: 100 },
+    { id: 'SEC-UI-001', name: 'Clean-Room UI Implementation', details: 'Development of original UI components based on functional specifications of popular OSs without infringing on proprietary code.', status: 'Integrated', progress: 100 },
 ];
 
 // --- MILESTONES DATA (UPDATED WITH PROGRESS) ---
@@ -407,6 +470,7 @@ export const milestonesData: MilestonesData = {
         { id: 'cpm-21', title: 'Phase 3: Quantum-Nano Singularity - Activate full Supersolid Light circuitry and vNMT swarms', status: 'Not Started', progress: 0, description: 'Planned for future release.' },
         { id: 'cpm-22', title: 'Deploy OmniChain mainnet with "Proof-of-Everything" consensus engine', status: 'In Progress', progress: 40, description: 'Simulated in BlockchainExplorer.' },
         { id: 'cpm-23', title: 'Phase 4: Galactic Node Synchronization - Establish faster-than-light communication', status: 'Not Started', progress: 0, description: 'Theoretical roadmap item.' },
+        { id: 'ui-polish-01', title: 'UI Polish & Input Integration', status: 'In Progress', progress: 40, description: 'Unified menu systems and multi-modal input handling (Mouse/Touch/Pen).' },
     ],
     platformFeatureMilestones: [
         { id: 'pfm-1', title: 'E-commerce functionality: buying, selling, drop shipping', status: 'Completed', progress: 100, description: 'ECommerceApp and ProductPage active.' },
@@ -423,6 +487,9 @@ export const milestonesData: MilestonesData = {
         { id: 'pfm-12', title: 'Web3 integration: paying and receiving funds in crypto', status: 'Completed', progress: 100, description: 'Wallet and Trading apps active.' },
         { id: 'pfm-13', title: 'User profile: settings, achievements, social links, KYC/GDPR', status: 'Completed', progress: 100, description: 'MyProfile and OnboardingWizard complete.' },
         { id: 'pfm-14', title: 'Gamification: points system for interactions and trading', status: 'Completed', progress: 80, description: 'Achievements and Reputation System specs defined.' },
+        { id: 'pfm-15', title: 'Universal Context Menu System', status: 'In Progress', progress: 50, description: 'Right-click menus for Desktop implemented. Window menus pending.' },
+        { id: 'pfm-16', title: 'Standardized Window Menus (File/Edit/View)', status: 'In Progress', progress: 20, description: 'Global menu structure defined in data layer.' },
+        { id: 'pfm-17', title: 'Multi-Input Gesture Engine', status: 'In Progress', progress: 10, description: 'Touch and Pen specifications drafted.' },
     ],
     technicalBreakdown: [
         { id: 'atb-1', title: 'Virtual Hardware Simulation - quantum chips, processors, time crystals', status: 'Completed', progress: 100, description: 'VirtualRigBuilder and InfrastructureControl.' },
@@ -442,8 +509,30 @@ export const milestonesData: MilestonesData = {
     ]
 };
 
-// --- BUILD CHECKLIST DATA (COMPLETED) ---
+// --- BUILD CHECKLIST DATA (COMPLETED & EXPANDED) ---
 export const buildChecklistData: ChecklistCategory[] = [
+    {
+        id: 'os-fusion-ui', name: 'OS Desktop Experience (Fusion)', description: 'Unified desktop environment merging Windows, macOS, and Linux paradigms.', icon: ComputerDesktopIcon,
+        items: [
+            { id: 'ui-1', name: 'Context Menus (Right Click)', description: 'Fully functional right-click menus for Desktop, Taskbar, and Windows.', status: 'In Progress', progress: 60, children: [
+                { id: 'ui-1a', name: 'Desktop Context', description: 'View, Sort, Refresh, New, Display Settings, Personalize.', status: 'Completed', progress: 100 },
+                { id: 'ui-1b', name: 'Taskbar Context', description: 'Toolbars, Search settings, Task Manager.', status: 'In Progress', progress: 50 },
+                { id: 'ui-1c', name: 'Window Title Bar Context', description: 'Restore, Minimize, Maximize, Close options.', status: 'In Progress', progress: 30 }
+            ]},
+            { id: 'ui-2', name: 'Start Menu / App Launcher', description: 'Hybrid launcher combining Windows Tiles and macOS Launchpad aesthetics.', status: 'In Progress', progress: 70 },
+            { id: 'ui-3', name: 'Window Management', description: 'Snap layouts, virtual desktops, and mission control features.', status: 'In Progress', progress: 60, children: [
+                { id: 'ui-3a', name: 'Virtual Desktops', description: 'Workspace switching logic in Taskbar.', status: 'Completed', progress: 100 },
+                { id: 'ui-3b', name: 'Window Snapping', description: 'Drag-to-edge resizing logic.', status: 'Not Started', progress: 0 }
+            ]},
+            { id: 'ui-4', name: 'Multi-Modal Input', description: 'Seamless handling of Mouse, Touch, and Pen inputs.', status: 'In Progress', progress: 40, children: [
+                { id: 'ui-4a', name: 'Mouse Events', description: 'Click, Right-Click, Scroll, Hover.', status: 'Completed', progress: 100 },
+                { id: 'ui-4b', name: 'Touch Gestures', description: 'Swipe, Pinch-to-Zoom, Long-Press.', status: 'In Progress', progress: 20 },
+                { id: 'ui-4c', name: 'Pen Input', description: 'Pressure sensitivity and tilt recognition.', status: 'In Progress', progress: 10 }
+            ]},
+            { id: 'ui-5', name: 'System Tray & Control Center', description: 'Quick access to WiFi, Bluetooth, Volume, and Notifications.', status: 'In Progress', progress: 30 },
+            { id: 'ui-6', name: 'Global Search', description: 'Universal search bar (Spotlight/Windows Search style).', status: 'Completed', progress: 100 }
+        ]
+    },
     {
         id: 'sentient-infra', name: 'Sentient Infrastructure Layer', description: 'Self-aware systems, alignment, and quantum code evolution.', icon: SparklesIcon,
         items: [

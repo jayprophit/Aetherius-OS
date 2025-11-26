@@ -265,6 +265,7 @@ export interface KnowledgeBaseItem {
   name: string;
   details: string;
   status: KnowledgeBaseStatus;
+  progress: number; // 0-100
 }
 
 export interface MilestoneItem {

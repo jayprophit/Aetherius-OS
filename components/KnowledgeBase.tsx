@@ -1,8 +1,9 @@
 
-import React from 'react';
+
+import React, { useMemo } from 'react';
 import { knowledgeBaseData } from '../data';
 import { marked } from 'marked';
-import { BookOpenIcon } from './Icons';
+import { BookOpenIcon, CheckCircleIcon, ClockIcon, ExclamationTriangleIcon } from './Icons';
 
 const statusColors: { [key: string]: string } = {
     'Concept Phase': 'bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300',
@@ -19,6 +20,12 @@ const statusColors: { [key: string]: string } = {
 };
 
 export const KnowledgeBase: React.FC = () => {
+    const totalProgress = useMemo(() => {
+        if (!knowledgeBaseData.length) return 0;
+        const total = knowledgeBaseData.reduce((acc, item) => acc + item.progress, 0);
+        return Math.round(total / knowledgeBaseData.length);
+    }, []);
+
     return (
         <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto">
             <header className="mb-6">
@@ -28,6 +35,24 @@ export const KnowledgeBase: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 mt-1">A living catalog of all concepts, technologies, and modules within Aetherius OS.</p>
             </header>
 
+            {/* Overall Progress Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 mb-8 shadow-sm">
+                <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Total System Knowledge Integration</h2>
+                <div className="flex items-center gap-6">
+                    <span className="font-bold text-4xl text-blue-600 dark:text-blue-400">{totalProgress}%</span>
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-6 shadow-inner overflow-hidden">
+                        <div 
+                            className="bg-gradient-to-r from-blue-500 to-blue-700 h-full rounded-full shadow-lg transition-all duration-1000 ease-out" 
+                            style={{ width: `${totalProgress}%` }}
+                        ></div>
+                    </div>
+                </div>
+                <div className="mt-2 flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                    <span>Concept Phase</span>
+                    <span>Active Deployment</span>
+                </div>
+            </div>
+
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm text-left">
@@ -36,7 +61,7 @@ export const KnowledgeBase: React.FC = () => {
                                 <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300 w-24">ID</th>
                                 <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300 w-1/4">Name</th>
                                 <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300">Details & Description</th>
-                                <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300 w-32">Status</th>
+                                <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300 w-48">Completion</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -46,14 +71,38 @@ export const KnowledgeBase: React.FC = () => {
                                     <td className="py-4 px-4 font-bold text-gray-800 dark:text-gray-200 align-top">{item.name}</td>
                                     <td className="py-4 px-4 max-w-2xl text-gray-600 dark:text-gray-300 align-top">
                                         <div 
-                                            className="prose prose-sm dark:prose-invert max-w-none"
+                                            className="prose prose-sm dark:prose-invert max-w-none mb-2"
                                             dangerouslySetInnerHTML={{ __html: marked(item.details) as string }} 
                                         />
-                                    </td>
-                                    <td className="py-4 px-4 align-top">
-                                        <span className={`px-3 py-1 text-xs font-bold rounded-full whitespace-nowrap border border-opacity-20 ${statusColors[item.status] || 'bg-gray-100 text-gray-800'}`}>
+                                        <span className={`inline-block px-2 py-0.5 text-[10px] font-bold rounded-full border border-opacity-20 ${statusColors[item.status] || 'bg-gray-100 text-gray-800'}`}>
                                             {item.status}
                                         </span>
+                                    </td>
+                                    <td className="py-4 px-4 align-top">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{item.progress}%</span>
+                                            {item.progress === 100 ? (
+                                                <CheckCircleIcon className="w-4 h-4 text-green-500" />
+                                            ) : item.progress > 0 ? (
+                                                <ClockIcon className="w-4 h-4 text-blue-500" />
+                                            ) : (
+                                                <ExclamationTriangleIcon className="w-4 h-4 text-gray-400" />
+                                            )}
+                                        </div>
+                                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                                            <div 
+                                                className={`h-full rounded-full transition-all duration-500 ${
+                                                    item.progress === 100 ? 'bg-green-500' : 
+                                                    item.progress >= 50 ? 'bg-blue-500' : 
+                                                    item.progress > 0 ? 'bg-yellow-500' : 'bg-gray-400'
+                                                }`} 
+                                                style={{ width: `${item.progress}%` }}
+                                            ></div>
+                                        </div>
+                                        <div className="flex justify-between mt-1 text-[10px] text-gray-400">
+                                            <span>Done</span>
+                                            <span>{100 - item.progress}% Rem</span>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
