@@ -267,10 +267,18 @@ export interface KnowledgeBaseItem {
   status: KnowledgeBaseStatus;
 }
 
+export interface MilestoneItem {
+  id: string;
+  title: string;
+  description?: string;
+  status: 'Completed' | 'In Progress' | 'Pending' | 'Not Started';
+  progress: number; // 0-100
+}
+
 export interface MilestonesData {
-  projectMilestones: string[];
-  technicalBreakdown: string[];
-  platformFeatureMilestones?: string[];
+  projectMilestones: MilestoneItem[];
+  technicalBreakdown: MilestoneItem[];
+  platformFeatureMilestones: MilestoneItem[];
 }
 
 // OS Build Checklist Data Structures

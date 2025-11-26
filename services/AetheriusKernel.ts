@@ -1,3 +1,4 @@
+
 import { 
     knowledgeBaseData, 
     milestonesData, 
@@ -368,19 +369,24 @@ I attempted to access the external grid but the uplink is currently unavailable 
             }
         }
 
-        // 2. Search Milestones
-        const milestoneContent = [
-            ...milestonesData.projectMilestones, 
-            ...milestonesData.technicalBreakdown
-        ].join('\n');
-        const milestoneScore = calculateScore(milestoneContent);
-        if (milestoneScore > highestScore) {
-            highestScore = milestoneScore;
-            bestMatch = {
-                source: 'Project Milestones',
-                content: `Found related roadmap items:\n\n${milestonesData.projectMilestones.filter(m => terms.some(t => m.toLowerCase().includes(t))).map(m => `- ${m}`).join('\n')}`,
-                score: milestoneScore
-            };
+        // 2. Search Milestones (UPDATED for new Object structure)
+        const allMilestones = [
+            ...milestonesData.projectMilestones,
+            ...milestonesData.technicalBreakdown,
+            ...milestonesData.platformFeatureMilestones
+        ];
+
+        for (const item of allMilestones) {
+             const content = `${item.title}\n${item.description || ''}`;
+             const score = calculateScore(content);
+             if (score > highestScore) {
+                highestScore = score;
+                bestMatch = {
+                    source: `Milestone Tracker`,
+                    content: `**Milestone:** ${item.title}\n**Status:** ${item.status} (${item.progress}%)\n**Details:** ${item.description || 'N/A'}`,
+                    score
+                };
+             }
         }
 
         // 3. Search Checklist

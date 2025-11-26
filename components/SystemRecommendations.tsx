@@ -78,11 +78,11 @@ export const SystemRecommendations: React.FC = () => {
         return notStarted.sort(() => 0.5 - Math.random()).slice(0, 4);
     }, []);
 
-    // 2. Analyze Milestones (Sequential)
+    // 2. Analyze Milestones (Sequential - find first 'In Progress' or 'Pending')
     const milestoneRecommendations = useMemo(() => {
-        // Simple heuristic: assume the first 3 are done, recommend next few
-        // In a real app, we'd track completed state in the data object
-        return milestonesData.projectMilestones.slice(3, 7);
+        return milestonesData.projectMilestones
+            .filter(m => m.status === 'In Progress' || m.status === 'Pending')
+            .slice(0, 4);
     }, []);
 
     // 3. Analyze Knowledge Base for R&D/Concept (Innovation)
@@ -134,13 +134,13 @@ export const SystemRecommendations: React.FC = () => {
                         </h2>
                          <span className="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">Targets</span>
                     </div>
-                    {milestoneRecommendations.map((ms, idx) => (
+                    {milestoneRecommendations.map((ms) => (
                         <RecommendationCard 
-                            key={idx}
-                            title={`Milestone Phase Target`}
-                            description={ms}
+                            key={ms.id}
+                            title={ms.title}
+                            description={ms.description || 'Milestone target.'}
                             type="milestone"
-                            meta="Roadmap"
+                            meta={ms.status}
                         />
                     ))}
                 </section>
