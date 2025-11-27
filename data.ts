@@ -6,6 +6,7 @@
 
 
 
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -490,6 +491,7 @@ export const jobs: Job[] = [
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: '001', name: 'The Complete Blueprint', details: 'A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.', status: 'Foundational', progress: 100 },
     { id: 'OMNI-ARCH', name: 'OmniPlatform Architecture', details: 'Complete specification for a multi-tenant website builder, CMS, and e-commerce engine. Includes VisualBuilder Pro, theme system, and plugin ecosystem architecture.', status: 'Design Phase', progress: 15 }, // New for OmniPlatform
+    { id: 'OMNI-VISUAL', name: 'VisualBuilder Pro Specs', details: 'React-based drag-and-drop editor engine specification. Includes element registry, style system, and DOM rendering logic.', status: 'Design Phase', progress: 20 },
     { id: '002', name: 'Universal Game Engine', details: 'A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.', status: 'Integrated', progress: 100 },
     { id: '003', name: 'AI Avatar Cloning & Generation', details: 'A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.', status: 'Integrated', progress: 100 },
     { id: '004', name: 'AI Learning & Capability Framework', details: 'Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).', status: 'Foundational', progress: 100 },
@@ -579,6 +581,7 @@ export const milestonesData: MilestonesData = {
         { id: 'cpm-23', title: 'Phase 4: Galactic Node Synchronization - Establish faster-than-light communication', status: 'Not Started', progress: 0, description: 'Theoretical roadmap item.' },
         { id: 'ui-polish-01', title: 'UI Polish & Input Integration', status: 'In Progress', progress: 40, description: 'Unified menu systems and multi-modal input handling (Mouse/Touch/Pen).' },
         { id: 'comm-phase-2', title: 'Phase 2: Commerce Singularity', status: 'In Progress', progress: 45, description: 'Deployment of full-scale E-Commerce, Marketplace, and Smart Licensing engines.' },
+        { id: 'omni-phase-1', title: 'Phase 1: OmniPlatform Core', status: 'In Progress', progress: 40, description: 'Foundational architecture for Visual Builder, Admin Dashboard, and Unified Storefront.' },
     ],
     platformFeatureMilestones: [
         { id: 'pfm-1', title: 'E-commerce functionality: buying, selling, drop shipping', status: 'Completed', progress: 100, description: 'Unified Commerce Platform (Physical & Digital) active.' },
@@ -607,7 +610,8 @@ export const milestonesData: MilestonesData = {
         { id: 'pfm-24', title: 'Unified Reviews & Social Proof', status: 'In Progress', progress: 40, description: 'Reviews, Q&A, and Ratings integration for products.' },
         { id: 'pfm-25', title: 'Product Intelligence Box', status: 'Completed', progress: 100, description: 'Detailed technical specs, patent tracking, and manufacturing data UI.' },
         { id: 'pfm-26', title: 'Smart Contract Licensing UI', status: 'Completed', progress: 100, description: 'Interface for selecting royalties, duration, and rights.' },
-        { id: 'omni-phase-1', title: 'OmniPlatform Core Phase 1', status: 'In Progress', progress: 40, description: 'Foundational architecture for Visual Builder, Admin Dashboard, and Unified Storefront.' },
+        { id: 'omni-visual', title: 'VisualBuilder Pro', status: 'In Progress', progress: 60, description: 'Drag-and-drop interface engine.' },
+        { id: 'omni-theme', title: 'OmniThemes System', status: 'In Progress', progress: 40, description: 'JSON-based theme architecture.' },
     ],
     technicalBreakdown: [
         { id: 'atb-1', title: 'Virtual Hardware Simulation - quantum chips, processors, time crystals', status: 'Completed', progress: 100, description: 'VirtualRigBuilder and InfrastructureControl.' },
