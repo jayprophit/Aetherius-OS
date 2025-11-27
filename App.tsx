@@ -1,4 +1,5 @@
 
+
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { LeftSidebar } from './components/Dock';
 import { TopBar } from './components/TopBar';
@@ -79,6 +80,7 @@ import { HealthApp } from './components/apps/HealthApp';
 import { AccountApp } from './components/apps/AccountApp';
 import { RD_HubApp } from './components/apps/RD_HubApp';
 import { AiSuiteApp } from './components/apps/AiSuiteApp';
+import { OmniPlatformApp } from './components/apps/OmniPlatformApp'; // NEW IMPORT
 
 // E-Learning sub-views
 import { CourseDetail } from './components/CourseDetail';
@@ -163,6 +165,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   governance: GovernancePortal,
   nanoFab: NanoFabricator,
   cloudOps: CloudOpsApp,
+  omniPlatform: OmniPlatformApp, // NEW
   
   // App Containers
   socialApp: SocialApp,

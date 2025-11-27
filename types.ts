@@ -197,6 +197,28 @@ export type MarketplaceItemType = 'App' | 'Plugin' | 'Theme' | 'Game' | 'Digital
 export type CommerceSource = 'ecommerce' | 'marketplace';
 export type DeliveryMethod = 'shipping' | 'digital-download' | 'app-install' | 'service-activation';
 
+// Extended Technical Data for Product Information System
+export interface TechnicalSpecification {
+    patentNumber?: string;
+    patentStatus?: 'Pending' | 'Granted' | 'Expired';
+    blueprints?: { title: string; url: string }[];
+    circuitDiagrams?: { title: string; url: string }[];
+    materials?: { name: string; percentage?: string }[];
+    processSteps?: string[];
+    weight?: string;
+    dimensions?: string;
+}
+
+// Smart Contract Licensing Options
+export interface SmartContractOption {
+    id: string;
+    type: 'One-Time' | 'Monthly' | 'Quarterly' | 'Yearly' | 'Per-Unit Royalty';
+    price: number;
+    currency: 'Æ' | 'USD' | 'ETH';
+    terms: string;
+    rights: string[];
+}
+
 export interface MarketplaceItem {
   id: string;
   name: string;
@@ -225,6 +247,11 @@ export interface MarketplaceItem {
   
   // CAD Specifics
   is3DViewable?: boolean;
+
+  // Product Information System (New)
+  technicalSpecs?: TechnicalSpecification;
+  licensingOptions?: SmartContractOption[];
+  relatedCourseIds?: number[]; // Links to Learning courses
 }
 
 // Health & Wellness Data Structures

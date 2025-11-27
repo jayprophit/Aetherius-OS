@@ -4,6 +4,8 @@
 
 
 
+
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -122,6 +124,7 @@ export const mainMenuItems: MenuItemData[] = [
     { title: 'Labs', icon: CubeTransparentIcon, component: 'rdHub' },
     { title: 'Careers Hub', icon: BriefcaseIcon, component: 'careersApp' },
     { title: 'E-Learning', icon: AcademicCapIcon, component: 'elearningApp' },
+    { title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' }, // New Addition
 ];
 
 export const menuGroups: (MenuGroup | MenuItemData)[] = [
@@ -164,10 +167,11 @@ export const menuGroups: (MenuGroup | MenuItemData)[] = [
     },
     {
         id: 'economy',
-        title: 'Economy',
+        title: 'Economy & Business',
         icon: ShoppingCartIcon,
         type: 'group',
         children: [
+            { title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' }, // New Addition
             { title: 'Commerce', icon: ShoppingCartIcon, component: 'eCommerceApp' },
             { title: 'Finance', icon: ChartBarIcon, component: 'financeApp' },
             { title: 'Wallet', icon: WalletIcon, component: 'tradingWallet' },
@@ -186,6 +190,7 @@ export const desktopItems: DesktopItem[] = [
     { id: 'terminal', type: 'app', title: 'Terminal', icon: CommandLineIcon, component: 'terminal' },
     { id: 'social', type: 'app', title: 'Social', icon: UsersIcon, component: 'socialApp' },
     { id: 'market', type: 'app', title: 'Commerce', icon: ShoppingCartIcon, component: 'eCommerceApp' },
+    { id: 'omni', type: 'app', title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' }, // New Desktop Icon
     { id: 'milestones', type: 'app', title: 'Milestones', icon: FlagIcon, component: 'milestones' },
     { id: 'checklist', type: 'app', title: 'Checklist', icon: ClipboardDocumentCheckIcon, component: 'buildChecklist' },
 ];
@@ -337,7 +342,45 @@ export const creatorMarketplaceItems: MarketplaceItem[] = [
 ];
 
 export const physicalProducts: MarketplaceItem[] = [
-    { id: 'phy-1', name: 'Quantum Leap Arm', creator: { id: 'b1', name: 'QuantumLeap', avatarUrl: '' }, type: 'Physical Product', price: 1200, rating: 4.8, stock: 15, iconUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=200', description: 'Robotic arm for precision tasks.', source: 'ecommerce', deliveryMethod: 'shipping', category: 'Robotics' },
+    { 
+        id: 'phy-1', 
+        name: 'Quantum Leap Arm', 
+        creator: { id: 'b1', name: 'QuantumLeap', avatarUrl: '' }, 
+        type: 'Physical Product', 
+        price: 1200, 
+        rating: 4.8, 
+        stock: 15, 
+        iconUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=200', 
+        description: 'Robotic arm for precision tasks.', 
+        source: 'ecommerce', 
+        deliveryMethod: 'shipping', 
+        category: 'Robotics',
+        // Detailed Technical Data for "Product Information System" feature
+        technicalSpecs: {
+            patentNumber: 'US-98234-QLA',
+            patentStatus: 'Granted',
+            blueprints: [
+                { title: 'Arm Assembly v4.2', url: '#' },
+                { title: 'Servo Wiring Diagram', url: '#' }
+            ],
+            circuitDiagrams: [
+                { title: 'Logic Board Schematic', url: '#' }
+            ],
+            materials: [
+                { name: 'Carbon Fiber Reinforced Polymer', percentage: '60%' },
+                { name: 'Aerospace Grade Aluminum', percentage: '30%' },
+                { name: 'Rare Earth Magnets', percentage: '10%' }
+            ],
+            processSteps: ['CNC Machining', 'Carbon Layup', 'Hand Assembly', 'Calibration'],
+            weight: '4.5 kg',
+            dimensions: '120cm x 15cm x 15cm'
+        },
+        licensingOptions: [
+            { id: 'lic-1', type: 'One-Time', price: 5000, currency: 'USD', terms: 'Perpetual commercial manufacturing rights for up to 100 units.', rights: ['Manufacturing', 'Commercial Use'] },
+            { id: 'lic-2', type: 'Per-Unit Royalty', price: 50, currency: 'USD', terms: 'Pay per unit sold. Quarterly reporting required.', rights: ['Manufacturing', 'Commercial Use'] }
+        ],
+        relatedCourseIds: [3] // Linked to "Martian Agriculture" just as an example of linking, practically would link to Robotics course
+    },
     { id: 'phy-2', name: 'SynthWave Keyboard', creator: { id: 'b2', name: 'SynthWave', avatarUrl: '' }, type: 'Physical Product', price: 250, rating: 4.5, stock: 50, iconUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b91add1?auto=format&fit=crop&w=200', description: 'High-end mechanical synthesizer.', source: 'ecommerce', deliveryMethod: 'shipping', category: 'Electronics' },
     { id: 'phy-3', name: 'Neural Headset', creator: { id: 'b3', name: 'NeuroTech', avatarUrl: '' }, type: 'Physical Product', price: 499, rating: 4.2, stock: 8, iconUrl: 'https://images.unsplash.com/photo-1555664424-778a69022365?auto=format&fit=crop&w=200', description: 'BCI interface for direct neural control.', source: 'ecommerce', deliveryMethod: 'shipping', category: 'Wearables' },
     { id: 'phy-4', name: 'Holographic Projector', creator: { id: 'b4', name: 'HoloVis', avatarUrl: '' }, type: 'Physical Product', price: 899, rating: 4.7, stock: 20, iconUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200', description: 'Desktop 3D holographic display unit.', source: 'ecommerce', deliveryMethod: 'shipping', category: 'Electronics' },
@@ -346,7 +389,31 @@ export const physicalProducts: MarketplaceItem[] = [
     { id: 'phy-6', name: '4K Action Camera', creator: { id: 'b6', name: 'ActionCam', avatarUrl: '' }, type: 'Physical Product', price: 299.00, rating: 4.8, stock: 45, iconUrl: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=200', description: 'Waterproof 4K camera for sports.', source: 'ecommerce', deliveryMethod: 'shipping', category: 'Cameras' },
     { id: 'phy-7', name: 'Ergonomic Office Chair', creator: { id: 'b7', name: 'ComfySeat', avatarUrl: '' }, type: 'Physical Product', price: 350.00, rating: 4.7, stock: 10, iconUrl: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=200', description: 'High-back mesh chair with lumbar support.', source: 'ecommerce', deliveryMethod: 'shipping', category: 'Furniture' },
     { id: 'phy-8', name: 'Wireless Earbuds', creator: { id: 'b8', name: 'SoundPod', avatarUrl: '' }, type: 'Physical Product', price: 89.99, rating: 4.4, stock: 200, iconUrl: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=200', description: 'True wireless earbuds with noise cancellation.', source: 'ecommerce', deliveryMethod: 'shipping', category: 'Audio' },
-    { id: 'dig-1', name: 'Mechanical Gear Assembly (CAD)', creator: {id: 'cad1', name: '3D Designs Co', avatarUrl: ''}, type: 'Digital Asset', price: 49.99, rating: 4.9, iconUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=200', description: 'High-fidelity 3D model of a planetary gear system. Compatible with SolidWorks and Fusion360.', source: 'ecommerce', deliveryMethod: 'digital-download', digitalType: 'cad', fileFormat: 'STEP, STL', is3DViewable: true, category: 'Digital' },
+    { 
+        id: 'dig-1', 
+        name: 'Mechanical Gear Assembly (CAD)', 
+        creator: {id: 'cad1', name: '3D Designs Co', avatarUrl: ''}, 
+        type: 'Digital Asset', 
+        price: 49.99, 
+        rating: 4.9, 
+        iconUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=200', 
+        description: 'High-fidelity 3D model of a planetary gear system. Compatible with SolidWorks and Fusion360.', 
+        source: 'ecommerce', 
+        deliveryMethod: 'digital-download', 
+        digitalType: 'cad', 
+        fileFormat: 'STEP, STL', 
+        is3DViewable: true, 
+        category: 'Digital',
+        technicalSpecs: {
+            blueprints: [{ title: 'Gear Ratio Calculation', url: '#' }],
+            materials: [{ name: 'Steel 4140', percentage: '100%' }],
+            weight: 'Virtual',
+            dimensions: '100mm dia'
+        },
+        licensingOptions: [
+            { id: 'lic-d1', type: 'One-Time', price: 150, currency: 'USD', terms: 'Commercial usage allowed for printed parts.', rights: ['3D Printing', 'Commercial Sale of Prints'] }
+        ]
+    },
     { id: 'dig-2', name: 'Pro DAW Studio', creator: {id: 'soft1', name: 'Music Software Inc', avatarUrl: ''}, type: 'Software', price: 299.99, rating: 4.6, iconUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=200', description: 'Professional grade Digital Audio Workstation for music production.', source: 'ecommerce', deliveryMethod: 'digital-download', digitalType: 'software', systemRequirements: 'Windows 10+, 16GB RAM', category: 'Software' },
 ];
 
@@ -422,6 +489,7 @@ export const jobs: Job[] = [
 // --- KNOWLEDGE BASE DATA (UPDATED) ---
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: '001', name: 'The Complete Blueprint', details: 'A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.', status: 'Foundational', progress: 100 },
+    { id: 'OMNI-ARCH', name: 'OmniPlatform Architecture', details: 'Complete specification for a multi-tenant website builder, CMS, and e-commerce engine. Includes VisualBuilder Pro, theme system, and plugin ecosystem architecture.', status: 'Design Phase', progress: 15 }, // New for OmniPlatform
     { id: '002', name: 'Universal Game Engine', details: 'A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.', status: 'Integrated', progress: 100 },
     { id: '003', name: 'AI Avatar Cloning & Generation', details: 'A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.', status: 'Integrated', progress: 100 },
     { id: '004', name: 'AI Learning & Capability Framework', details: 'Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).', status: 'Foundational', progress: 100 },
@@ -480,6 +548,7 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: 'LEDGER-001', name: 'Cross-Asset Transaction Ledger', details: 'A double-entry ledger system capable of atomic recording for both traditional SWIFT/SEPA transactions and blockchain events, ensuring precise cost-basis tracking.', status: 'Concept Phase', progress: 10 },
     { id: 'COMM-ARCH-01', name: 'Unified Commerce Architecture', details: 'A comprehensive class structure defining ECommerceModule, ProductManagement, UserManagement, PaymentSystem, and ReviewSystem to replicate major platforms.', status: 'Design Phase', progress: 100 },
     { id: 'COMM-INV-01', name: 'Hybrid Inventory Logic', details: 'Logic to handle stock tracking for physical goods and infinite supply for digital assets within a single cart system.', status: 'Design Phase', progress: 100 },
+    { id: 'IP-RIGHTS-01', name: 'Smart Contract Royalty Standard', details: 'A protocol for embedding licensing terms, patent data, and royalty payment logic directly into product NFTs/Assets on the OmniChain.', status: 'In Development', progress: 40 },
 ];
 
 // --- MILESTONES DATA (UPDATED WITH PROGRESS) ---
@@ -509,7 +578,7 @@ export const milestonesData: MilestonesData = {
         { id: 'cpm-22', title: 'Deploy OmniChain mainnet with "Proof-of-Everything" consensus engine', status: 'In Progress', progress: 40, description: 'Simulated in BlockchainExplorer.' },
         { id: 'cpm-23', title: 'Phase 4: Galactic Node Synchronization - Establish faster-than-light communication', status: 'Not Started', progress: 0, description: 'Theoretical roadmap item.' },
         { id: 'ui-polish-01', title: 'UI Polish & Input Integration', status: 'In Progress', progress: 40, description: 'Unified menu systems and multi-modal input handling (Mouse/Touch/Pen).' },
-        { id: 'comm-phase-2', title: 'Phase 2: Commerce Singularity', status: 'In Progress', progress: 15, description: 'Deployment of full-scale E-Commerce and Marketplace engines matching Amazon/AppStore feature sets.' },
+        { id: 'comm-phase-2', title: 'Phase 2: Commerce Singularity', status: 'In Progress', progress: 45, description: 'Deployment of full-scale E-Commerce, Marketplace, and Smart Licensing engines.' },
     ],
     platformFeatureMilestones: [
         { id: 'pfm-1', title: 'E-commerce functionality: buying, selling, drop shipping', status: 'Completed', progress: 100, description: 'Unified Commerce Platform (Physical & Digital) active.' },
@@ -536,6 +605,9 @@ export const milestonesData: MilestonesData = {
         { id: 'pfm-22', title: 'Fiat-Crypto Bridge Integration', status: 'Pending', progress: 0, description: 'API connectors for Wise/Airwallex (Fiat) and Coinbase/Kraken (Crypto).' },
         { id: 'pfm-23', title: 'Compliance & Audit Module', status: 'Pending', progress: 0, description: 'Automated regulatory reporting and on-chain transaction monitoring.' },
         { id: 'pfm-24', title: 'Unified Reviews & Social Proof', status: 'In Progress', progress: 40, description: 'Reviews, Q&A, and Ratings integration for products.' },
+        { id: 'pfm-25', title: 'Product Intelligence Box', status: 'Completed', progress: 100, description: 'Detailed technical specs, patent tracking, and manufacturing data UI.' },
+        { id: 'pfm-26', title: 'Smart Contract Licensing UI', status: 'Completed', progress: 100, description: 'Interface for selecting royalties, duration, and rights.' },
+        { id: 'omni-phase-1', title: 'OmniPlatform Core Phase 1', status: 'In Progress', progress: 40, description: 'Foundational architecture for Visual Builder, Admin Dashboard, and Unified Storefront.' },
     ],
     technicalBreakdown: [
         { id: 'atb-1', title: 'Virtual Hardware Simulation - quantum chips, processors, time crystals', status: 'Completed', progress: 100, description: 'VirtualRigBuilder and InfrastructureControl.' },
@@ -558,6 +630,16 @@ export const milestonesData: MilestonesData = {
 // --- BUILD CHECKLIST DATA (RESTORED & COMPLETE) ---
 export const buildChecklistData: ChecklistCategory[] = [
     {
+        id: 'omni-build', name: 'OmniPlatform Build (New)', description: 'Complete Platform: Website Builder, CMS, E-Commerce.', icon: GlobeAltIcon,
+        items: [
+            { id: 'omni-1', name: 'VisualBuilder Pro Engine', description: 'Core drag-and-drop logic, canvas renderer, and widget registry.', status: 'In Progress', progress: 60, lastModified: '2025-08-25' },
+            { id: 'omni-2', name: 'OmniDashboard (Admin Panel)', description: 'Unified admin interface for CMS, Store, and Settings.', status: 'Completed', progress: 100, completedDate: '2025-08-26' },
+            { id: 'omni-3', name: 'Theme Engine Architecture', description: 'JSON-based theme schema, customizer logic, and template support.', status: 'In Progress', progress: 40, lastModified: '2025-08-25' },
+            { id: 'omni-4', name: 'Plugin System Core', description: 'Hook architecture for extending functionality.', status: 'Not Started', progress: 0, lastModified: '2025-08-25' },
+            { id: 'omni-5', name: 'Authentication & Role Management', description: 'Super Admin, Editor, Shop Manager roles implementation.', status: 'In Progress', progress: 50, lastModified: '2025-08-25' },
+        ]
+    },
+    {
         id: 'commerce-engine', name: 'Commerce Engine (Replica)', description: 'Full-scale Amazon/eBay/Etsy functionality.', icon: ShoppingCartIcon,
         items: [
             { id: 'ce-1', name: 'Unified Cart Logic', description: 'Logic to handle mixed baskets of physical and digital items.', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
@@ -567,6 +649,14 @@ export const buildChecklistData: ChecklistCategory[] = [
             { id: 'ce-5', name: 'E-Commerce & Marketplace Split', description: 'Separate but integrated views for Shop (Goods) and Marketplace (Apps).', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
             { id: 'ce-6', name: 'Review System', description: 'Star ratings, verified purchase tags, photo/video reviews.', status: 'In Progress', progress: 50, lastModified: '2025-06-01' },
             { id: 'ce-7', name: 'Seller Portal', description: 'Dashboard for vendor analytics and product management.', status: 'In Progress', progress: 40, lastModified: '2025-06-01' },
+        ]
+    },
+    {
+        id: 'commerce-intelligence', name: 'Commerce Intelligence & IP', description: 'Patents, manufacturing data, and smart licensing.', icon: DocumentTextIcon,
+        items: [
+            { id: 'ci-1', name: 'Technical Specs UI', description: 'Dedicated box for Patents, Blueprints, and Materials.', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
+            { id: 'ci-2', name: 'E-Learning Linkage', description: 'Direct links from products to "How-To" courses.', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
+            { id: 'ci-3', name: 'Smart Contract UI', description: 'Interface for selecting and executing royalty agreements.', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
         ]
     },
     {

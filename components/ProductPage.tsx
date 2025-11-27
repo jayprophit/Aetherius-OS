@@ -1,7 +1,10 @@
 
+
+
 import React, { useState } from 'react';
-import { CameraIcon, StarIcon, HeartIcon, ShareIcon, ShoppingCartIcon, ArrowDownTrayIcon, CubeTransparentIcon, TruckIcon, CpuChipIcon, UserCircleIcon, CheckCircleIcon, HandThumbUpIcon, SearchIcon, MapPinIcon } from './Icons';
-import { commerceData } from '../data';
+import { CameraIcon, StarIcon, HeartIcon, ShareIcon, ShoppingCartIcon, ArrowDownTrayIcon, CubeTransparentIcon, TruckIcon, CpuChipIcon, UserCircleIcon, CheckCircleIcon, HandThumbUpIcon, SearchIcon, MapPinIcon, ScaleIcon, DocumentTextIcon, AcademicCapIcon, BeakerIcon } from './Icons';
+import { commerceData, courses } from '../data';
+import { SmartContractOption, TechnicalSpecification } from '../types';
 
 const ProductInfoCard: React.FC<{title: string, children: React.ReactNode, icon?: React.FC<any>}> = ({title, children, icon: Icon}) => (
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
@@ -63,8 +66,124 @@ const QuestionsList: React.FC = () => (
     </div>
 );
 
-export const ProductPage: React.FC<{ context?: { productId?: string } }> = ({ context }) => {
-  const [activeTab, setActiveTab] = useState<'details' | 'reviews' | 'qa'>('details');
+// --- NEW: Technical Specs View ---
+const TechnicalSpecsView: React.FC<{ specs: TechnicalSpecification }> = ({ specs }) => {
+    return (
+        <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-sm mb-2 flex items-center gap-2">
+                        <ScaleIcon className="w-4 h-4 text-purple-500"/> Patent Information
+                    </h4>
+                    <p className="text-sm"><span className="font-semibold">Patent #:</span> {specs.patentNumber || 'Pending'}</p>
+                    <p className="text-sm"><span className="font-semibold">Status:</span> <span className="text-green-500">{specs.patentStatus || 'N/A'}</span></p>
+                </div>
+                <div className="p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-sm mb-2 flex items-center gap-2">
+                        <CubeTransparentIcon className="w-4 h-4 text-blue-500"/> Physical Attributes
+                    </h4>
+                    <p className="text-sm"><span className="font-semibold">Weight:</span> {specs.weight || 'N/A'}</p>
+                    <p className="text-sm"><span className="font-semibold">Dimensions:</span> {specs.dimensions || 'N/A'}</p>
+                </div>
+            </div>
+
+            {specs.materials && (
+                <div>
+                    <h4 className="font-bold text-sm mb-2">Material Composition</h4>
+                    <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+                        {specs.materials.map((m, i) => (
+                            <li key={i} className="flex justify-between border-b border-gray-100 dark:border-gray-700 py-1">
+                                <span>{m.name}</span>
+                                <span className="font-mono text-xs opacity-70">{m.percentage}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+            {specs.blueprints && specs.blueprints.length > 0 && (
+                <div>
+                    <h4 className="font-bold text-sm mb-2">Blueprints & Schematics</h4>
+                    <div className="space-y-2">
+                        {specs.blueprints.map((bp, i) => (
+                             <button key={i} className="flex items-center justify-between w-full p-2 text-left text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+                                <span className="flex items-center gap-2"><DocumentTextIcon className="w-4 h-4"/> {bp.title}</span>
+                                <ArrowDownTrayIcon className="w-4 h-4"/>
+                             </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+             {specs.processSteps && (
+                <div>
+                    <h4 className="font-bold text-sm mb-2">Manufacturing Process</h4>
+                    <div className="flex flex-wrap gap-2">
+                        {specs.processSteps.map((step, i) => (
+                             <span key={i} className="px-2 py-1 text-xs bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">{i+1}. {step}</span>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+// --- NEW: Licensing & Rights View ---
+const LicensingView: React.FC<{ options: SmartContractOption[] }> = ({ options }) => {
+    return (
+        <div className="space-y-4">
+            <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">
+                Select a smart contract template to acquire usage rights. All transactions are recorded on the OmniChain.
+            </p>
+            {options.map((opt) => (
+                <div key={opt.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-blue-500 transition-colors cursor-pointer group">
+                    <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-bold text-sm text-gray-800 dark:text-gray-100">{opt.type} License</h4>
+                        <span className="text-xs font-bold text-white bg-blue-600 px-2 py-0.5 rounded">{opt.price} {opt.currency}</span>
+                    </div>
+                    <p className="text-xs text-gray-500 mb-3">{opt.terms}</p>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                        {opt.rights.map((right, i) => (
+                             <span key={i} className="text-[10px] bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-1.5 py-0.5 rounded">{right}</span>
+                        ))}
+                    </div>
+                    <button className="w-full py-2 text-xs font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        View Contract
+                    </button>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+// --- NEW: Learning Integration Card ---
+const LearningCard: React.FC<{ relatedIds: number[], onSetView: Function }> = ({ relatedIds, onSetView }) => {
+    if (!relatedIds || relatedIds.length === 0) return null;
+    
+    // Mock fetching course data based on ID
+    const relatedCourses = courses.filter(c => relatedIds.includes(c.id));
+    
+    return (
+        <ProductInfoCard title="Learn to Build This" icon={AcademicCapIcon}>
+            <div className="space-y-3">
+                {relatedCourses.map(course => (
+                    <div key={course.id} className="flex items-center gap-3 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer" onClick={() => onSetView('courseDetail', { courseId: course.id })}>
+                        <img src={course.imageUrl} className="w-10 h-10 object-cover rounded" alt={course.title}/>
+                        <div className="flex-1 min-w-0">
+                            <p className="text-xs font-bold truncate">{course.title}</p>
+                            <p className="text-[10px] text-gray-500">by {course.instructor}</p>
+                        </div>
+                        <ArrowDownTrayIcon className="w-4 h-4 text-blue-500 -rotate-90"/>
+                    </div>
+                ))}
+            </div>
+        </ProductInfoCard>
+    );
+};
+
+export const ProductPage: React.FC<{ context?: { productId?: string }, onSetView: Function }> = ({ context, onSetView }) => {
+  const [activeTab, setActiveTab] = useState<'details' | 'reviews' | 'qa' | 'specs'>('details');
   const allItems = [...commerceData.physical, ...commerceData.digitalGoods, ...commerceData.apps];
   const defaultProduct = allItems[0];
   
@@ -75,7 +194,6 @@ export const ProductPage: React.FC<{ context?: { productId?: string } }> = ({ co
 
   const isPhysical = product.deliveryMethod === 'shipping';
   const isDigital = product.deliveryMethod === 'digital-download';
-  const isApp = product.deliveryMethod === 'app-install';
   const isCAD = product.digitalType === 'cad';
 
   return (
@@ -100,22 +218,28 @@ export const ProductPage: React.FC<{ context?: { productId?: string } }> = ({ co
         
         {/* Tabbed Content */}
         <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-            <div className="flex border-b border-gray-200 dark:border-gray-700">
+            <div className="flex border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
                 <button 
                     onClick={() => setActiveTab('details')} 
-                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors ${activeTab === 'details' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'details' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
                 >
                     Details
                 </button>
                 <button 
+                    onClick={() => setActiveTab('specs')} 
+                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'specs' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                >
+                    Specs & Rights
+                </button>
+                <button 
                     onClick={() => setActiveTab('reviews')} 
-                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors ${activeTab === 'reviews' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'reviews' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
                 >
                     Reviews (121)
                 </button>
                 <button 
                     onClick={() => setActiveTab('qa')} 
-                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors ${activeTab === 'qa' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'qa' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
                 >
                     Q&A (4)
                 </button>
@@ -136,6 +260,24 @@ export const ProductPage: React.FC<{ context?: { productId?: string } }> = ({ co
                             <div><span className="font-bold">Category:</span> {product.type}</div>
                             <div><span className="font-bold">Seller:</span> {product.creator.name}</div>
                         </div>
+                    </div>
+                )}
+                {activeTab === 'specs' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {product.technicalSpecs ? (
+                            <TechnicalSpecsView specs={product.technicalSpecs} />
+                        ) : (
+                            <div className="text-gray-500 text-sm italic">No technical specifications available for this product.</div>
+                        )}
+                        
+                        {product.licensingOptions && (
+                            <div>
+                                <h4 className="font-bold text-sm mb-4 flex items-center gap-2 border-b border-gray-200 dark:border-gray-700 pb-2">
+                                    <ScaleIcon className="w-4 h-4 text-blue-500"/> Intellectual Property & Licensing
+                                </h4>
+                                <LicensingView options={product.licensingOptions} />
+                            </div>
+                        )}
                     </div>
                 )}
                 {activeTab === 'reviews' && <ReviewList />}
@@ -240,6 +382,11 @@ export const ProductPage: React.FC<{ context?: { productId?: string } }> = ({ co
                 <button className="w-full border border-gray-300 dark:border-gray-600 py-1 rounded text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">Add to List</button>
             </div>
         </div>
+
+        {/* Learning Integration */}
+        {product.relatedCourseIds && (
+            <LearningCard relatedIds={product.relatedCourseIds} onSetView={onSetView} />
+        )}
 
         {/* Protection Plan */}
         {isPhysical && (
