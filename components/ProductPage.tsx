@@ -1,6 +1,8 @@
 
 
 
+
+
 import React, { useState } from 'react';
 import { CameraIcon, StarIcon, HeartIcon, ShareIcon, ShoppingCartIcon, ArrowDownTrayIcon, CubeTransparentIcon, TruckIcon, CpuChipIcon, UserCircleIcon, CheckCircleIcon, HandThumbUpIcon, SearchIcon, MapPinIcon, ScaleIcon, DocumentTextIcon, AcademicCapIcon, BeakerIcon } from './Icons';
 import { commerceData, courses } from '../data';
