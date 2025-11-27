@@ -1,5 +1,6 @@
 
 
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -113,7 +114,7 @@ export const aetheriusMenuItems: MenuItemData[] = [
 export const mainMenuItems: MenuItemData[] = [
     { title: 'Social Hub', icon: UsersIcon, component: 'socialApp' },
     { title: 'Creation Labs', icon: BeakerIcon, component: 'mediaApp' },
-    { title: 'E-Commerce Hub', icon: ShoppingCartIcon, component: 'eCommerceApp' },
+    { title: 'Commerce', icon: ShoppingCartIcon, component: 'eCommerceApp' },
     { title: 'Finance', icon: ChartBarIcon, component: 'financeApp' },
     { title: 'Labs', icon: CubeTransparentIcon, component: 'rdHub' },
     { title: 'Careers Hub', icon: BriefcaseIcon, component: 'careersApp' },
@@ -181,7 +182,7 @@ export const desktopItems: DesktopItem[] = [
     { id: 'cloud-ops', type: 'app', title: 'Cloud Ops', icon: CloudIcon, component: 'cloudOps' },
     { id: 'terminal', type: 'app', title: 'Terminal', icon: CommandLineIcon, component: 'terminal' },
     { id: 'social', type: 'app', title: 'Social', icon: UsersIcon, component: 'socialApp' },
-    { id: 'market', type: 'app', title: 'Market', icon: ShoppingCartIcon, component: 'eCommerceApp' },
+    { id: 'market', type: 'app', title: 'Commerce', icon: ShoppingCartIcon, component: 'eCommerceApp' },
     { id: 'milestones', type: 'app', title: 'Milestones', icon: FlagIcon, component: 'milestones' },
     { id: 'checklist', type: 'app', title: 'Checklist', icon: ClipboardDocumentCheckIcon, component: 'buildChecklist' },
 ];
@@ -321,11 +322,29 @@ export const sponsoredDataFB = [
 
 export const contactsDataFB = [allUsers[1], allUsers[2], allUsers[4]];
 
+// --- Unified Commerce Data ---
+
 export const creatorMarketplaceItems: MarketplaceItem[] = [
-    { id: 'm1', name: 'Neon Theme Pack', creator: allUsers[1], type: 'Theme', price: 5, rating: 4.8, downloads: 1200, iconUrl: 'https://ui-avatars.com/api/?name=NT&background=000&color=fff', description: 'A cyberpunk neon theme for your OS.' },
-    { id: 'm2', name: 'CodeHelper Pro', creator: allUsers[4], type: 'Plugin', price: 15, rating: 4.9, downloads: 5000, iconUrl: 'https://ui-avatars.com/api/?name=CH&background=blue&color=fff', description: 'AI-powered code completion plugin.' },
-    { id: 'm3', name: 'Astro Miner', creator: allUsers[2], type: 'Game', price: 'Free', rating: 4.5, downloads: 15000, iconUrl: 'https://ui-avatars.com/api/?name=AM&background=purple&color=fff', description: 'Casual space mining game.' },
+    { id: 'm1', name: 'Neon Theme Pack', creator: allUsers[1], type: 'Theme', price: 5, rating: 4.8, downloads: 1200, iconUrl: 'https://ui-avatars.com/api/?name=NT&background=000&color=fff', description: 'A cyberpunk neon theme for your OS.', source: 'marketplace', deliveryMethod: 'digital-download' },
+    { id: 'm2', name: 'CodeHelper Pro', creator: allUsers[4], type: 'Plugin', price: 15, rating: 4.9, downloads: 5000, iconUrl: 'https://ui-avatars.com/api/?name=CH&background=blue&color=fff', description: 'AI-powered code completion plugin.', source: 'marketplace', deliveryMethod: 'digital-download' },
+    { id: 'm3', name: 'Astro Miner', creator: allUsers[2], type: 'Game', price: 'Free', rating: 4.5, downloads: 15000, iconUrl: 'https://ui-avatars.com/api/?name=AM&background=purple&color=fff', description: 'Casual space mining game.', source: 'marketplace', deliveryMethod: 'app-install' },
+    { id: 'm4', name: 'Productivity Pro', creator: {id: 'dev1', name: 'App Dev Studio', avatarUrl: null}, type: 'App', price: 4.99, rating: 4.7, downloads: 3400, iconUrl: 'https://ui-avatars.com/api/?name=PP&background=green&color=fff', description: 'Advanced task management suite for professionals.', source: 'marketplace', deliveryMethod: 'app-install', version: '2.4.0' }
 ];
+
+export const physicalProducts: MarketplaceItem[] = [
+    { id: 'phy-1', name: 'Quantum Leap Arm', creator: { id: 'b1', name: 'QuantumLeap', avatarUrl: '' }, type: 'Physical Product', price: 1200, rating: 4.8, stock: 15, iconUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=200', description: 'Robotic arm for precision tasks.', source: 'ecommerce', deliveryMethod: 'shipping' },
+    { id: 'phy-2', name: 'SynthWave Keyboard', creator: { id: 'b2', name: 'SynthWave', avatarUrl: '' }, type: 'Physical Product', price: 250, rating: 4.5, stock: 50, iconUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b91add1?auto=format&fit=crop&w=200', description: 'High-end mechanical synthesizer.', source: 'ecommerce', deliveryMethod: 'shipping' },
+    { id: 'phy-3', name: 'Neural Headset', creator: { id: 'b3', name: 'NeuroTech', avatarUrl: '' }, type: 'Physical Product', price: 499, rating: 4.2, stock: 8, iconUrl: 'https://images.unsplash.com/photo-1555664424-778a69022365?auto=format&fit=crop&w=200', description: 'BCI interface for direct neural control.', source: 'ecommerce', deliveryMethod: 'shipping' },
+    { id: 'phy-4', name: 'Holographic Projector', creator: { id: 'b4', name: 'HoloVis', avatarUrl: '' }, type: 'Physical Product', price: 899, rating: 4.7, stock: 20, iconUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200', description: 'Desktop 3D holographic display unit.', source: 'ecommerce', deliveryMethod: 'shipping' },
+    { id: 'dig-1', name: 'Mechanical Gear Assembly (CAD)', creator: {id: 'cad1', name: '3D Designs Co', avatarUrl: ''}, type: 'Digital Asset', price: 49.99, rating: 4.9, iconUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=200', description: 'High-fidelity 3D model of a planetary gear system. Compatible with SolidWorks and Fusion360.', source: 'ecommerce', deliveryMethod: 'digital-download', digitalType: 'cad', fileFormat: 'STEP, STL', is3DViewable: true },
+    { id: 'dig-2', name: 'Pro DAW Studio', creator: {id: 'soft1', name: 'Music Software Inc', avatarUrl: ''}, type: 'Software', price: 299.99, rating: 4.6, iconUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=200', description: 'Professional grade Digital Audio Workstation for music production.', source: 'ecommerce', deliveryMethod: 'digital-download', digitalType: 'software', systemRequirements: 'Windows 10+, 16GB RAM' },
+];
+
+export const commerceData = {
+    physical: physicalProducts.filter(p => p.type === 'Physical Product'),
+    digitalGoods: physicalProducts.filter(p => p.type !== 'Physical Product'),
+    apps: creatorMarketplaceItems
+};
 
 export const courses: Course[] = [
     { 
@@ -443,6 +462,9 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: 'UI-001', name: 'Unified Menu Architecture', details: 'Standardized File, Edit, View, and Context menu structures supporting Desktop, Mobile, and Tablet paradigms seamlessly.', status: 'Integrated', progress: 100 },
     { id: 'INP-001', name: 'Multi-Modal Input Recognition', details: 'Unified event handler for Mouse (Click/Scroll), Touch (Tap/Swipe/Pinch), and Pen (Pressure/Hover) inputs.', status: 'Integrated', progress: 100 },
     { id: 'SEC-UI-001', name: 'Clean-Room UI Implementation', details: 'Development of original UI components based on functional specifications of popular OSs without infringing on proprietary code.', status: 'Integrated', progress: 100 },
+    { id: 'COMM-001', name: 'Unified Commerce Protocol', details: 'Single logic layer handling both physical inventory (e-commerce) and digital assets (marketplace) with a unified cart.', status: 'Integrated', progress: 100 },
+    { id: 'COMM-002', name: 'Hybrid Inventory Management', details: 'Tracks stock levels for physical goods while managing infinite supply for digital downloads in the same database structure.', status: 'Integrated', progress: 100 },
+    { id: 'COMM-003', name: 'Digital Product Support', details: 'Updated Commerce Module to support CAD files, E-books, Software downloads, and Digital Services in the e-commerce flow.', status: 'Integrated', progress: 100 },
 ];
 
 // --- MILESTONES DATA (UPDATED WITH PROGRESS) ---
@@ -474,7 +496,7 @@ export const milestonesData: MilestonesData = {
         { id: 'ui-polish-01', title: 'UI Polish & Input Integration', status: 'In Progress', progress: 40, description: 'Unified menu systems and multi-modal input handling (Mouse/Touch/Pen).' },
     ],
     platformFeatureMilestones: [
-        { id: 'pfm-1', title: 'E-commerce functionality: buying, selling, drop shipping', status: 'Completed', progress: 100, description: 'ECommerceApp and ProductPage active.' },
+        { id: 'pfm-1', title: 'E-commerce functionality: buying, selling, drop shipping', status: 'Completed', progress: 100, description: 'Unified Commerce Platform (Physical & Digital) active.' },
         { id: 'pfm-2', title: 'E-learning platform: courses, uploads, chat rooms, downloads', status: 'Completed', progress: 100, description: 'ElearningApp fully functional.' },
         { id: 'pfm-3', title: 'Job search and advertisement feature', status: 'Completed', progress: 100, description: 'CareersApp and JobSearch active.' },
         { id: 'pfm-4', title: 'News and blogging feature with monetization', status: 'Completed', progress: 100, description: 'Feed and TradingNews implemented.' },
@@ -491,6 +513,9 @@ export const milestonesData: MilestonesData = {
         { id: 'pfm-15', title: 'Universal Context Menu System', status: 'In Progress', progress: 50, description: 'Right-click menus for Desktop implemented. Window menus pending.' },
         { id: 'pfm-16', title: 'Standardized Window Menus (File/Edit/View)', status: 'In Progress', progress: 20, description: 'Global menu structure defined in data layer.' },
         { id: 'pfm-17', title: 'Multi-Input Gesture Engine', status: 'In Progress', progress: 10, description: 'Touch and Pen specifications drafted.' },
+        { id: 'pfm-18', title: 'Unified Cart System', status: 'Completed', progress: 100, description: 'Single cart handling physical shipping and digital downloads.' },
+        { id: 'pfm-19', title: 'Commerce Role Management', status: 'Completed', progress: 100, description: 'Distinction between Seller (Goods) and Developer (Apps) roles.' },
+        { id: 'pfm-20', title: 'Unified Commerce Platform', status: 'Completed', progress: 100, description: 'E-Commerce (Physical/Digital) and Marketplace (Apps/Subs) split logic implemented.' },
     ],
     technicalBreakdown: [
         { id: 'atb-1', title: 'Virtual Hardware Simulation - quantum chips, processors, time crystals', status: 'Completed', progress: 100, description: 'VirtualRigBuilder and InfrastructureControl.' },
@@ -512,6 +537,16 @@ export const milestonesData: MilestonesData = {
 
 // --- BUILD CHECKLIST DATA (RESTORED & COMPLETE) ---
 export const buildChecklistData: ChecklistCategory[] = [
+    {
+        id: 'commerce-engine', name: 'Commerce Engine', description: 'Unified platform for physical and digital trade.', icon: ShoppingCartIcon,
+        items: [
+            { id: 'ce-1', name: 'Unified Cart Logic', description: 'Logic to handle mixed baskets of physical and digital items.', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
+            { id: 'ce-2', name: 'Role-Based Access Control', description: 'Permissions for Sellers (Inventory) vs Developers (App Publishing).', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
+            { id: 'ce-3', name: 'Digital Delivery System', description: 'Instant download links for software assets and CAD files.', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
+            { id: 'ce-4', name: 'Physical Inventory Tracking', description: 'Stock management for tangible goods.', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
+            { id: 'ce-5', name: 'E-Commerce & Marketplace Split', description: 'Separate but integrated views for Shop (Goods) and Marketplace (Apps).', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
+        ]
+    },
     {
         id: 'sentient-infra', name: 'Sentient Infrastructure Layer', description: 'Self-aware systems, alignment, and quantum code evolution.', icon: SparklesIcon,
         items: [

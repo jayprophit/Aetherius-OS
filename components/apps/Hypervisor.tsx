@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { PlayIcon, StopIcon, PlusIcon, ServerIcon, ComputerDesktopIcon, CpuChipIcon, CircleStackIcon, TrashIcon } from '../Icons';
-import { LaunchableApp } from '../../types';
+import { LaunchableApp } from '../../App';
 
 interface VirtualMachine {
     id: string;

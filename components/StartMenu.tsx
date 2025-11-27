@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
-import { LaunchableApp, TaskbarConfig } from '../types';
+import { LaunchableApp } from '../App';
 import { 
     SearchIcon, PowerIcon, Cog6ToothIcon, UserCircleIcon, 
     Squares2X2Icon, DocumentTextIcon, PhotoIcon, FolderIcon 
 } from './Icons';
 import { desktopItems, mainMenuItems } from '../data';
 import { loggedInUser } from '../data';
+import { TaskbarConfig } from '../types';
 
 interface StartMenuProps {
     onLaunchApp: (app: LaunchableApp) => void;

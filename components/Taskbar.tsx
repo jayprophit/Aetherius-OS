@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react';
-import { WindowState, TaskbarConfig, LaunchableApp } from '../types';
+import { WindowState, TaskbarConfig } from '../types';
 import { 
     Squares2X2Icon, WifiIcon, BatteryIcon, SpeakerWaveIcon, 
     ChevronDownIcon, BellIcon, CalendarIcon, GyeNyameIcon 
 } from './Icons';
+import { LaunchableApp } from '../App';
 import { StartMenu } from './StartMenu';
 
 interface TaskbarProps {

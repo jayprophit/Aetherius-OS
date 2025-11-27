@@ -192,7 +192,10 @@ export interface ChatProject {
   chatSessionIds: string[]; 
 }
 
-export type MarketplaceItemType = 'App' | 'Plugin' | 'Theme' | 'Game' | 'Digital Asset';
+// --- Commerce Types ---
+export type MarketplaceItemType = 'App' | 'Plugin' | 'Theme' | 'Game' | 'Digital Asset' | 'Physical Product' | 'Software' | 'Subscription';
+export type CommerceSource = 'ecommerce' | 'marketplace';
+export type DeliveryMethod = 'shipping' | 'digital-download' | 'app-install' | 'service-activation';
 
 export interface MarketplaceItem {
   id: string;
@@ -201,9 +204,27 @@ export interface MarketplaceItem {
   type: MarketplaceItemType;
   price: number | 'Free';
   rating: number;
-  downloads: number;
+  downloads?: number;
+  stock?: number; // For physical items
   iconUrl: string;
   description: string;
+  category?: string;
+  
+  // Unified Commerce Fields
+  source: CommerceSource;
+  deliveryMethod: DeliveryMethod;
+  
+  // Digital Product Specifics
+  digitalType?: 'cad' | 'software' | 'ebook' | 'pdf' | 'none';
+  fileFormat?: string;
+  fileSize?: string;
+  
+  // Software/App Specifics
+  version?: string;
+  systemRequirements?: string;
+  
+  // CAD Specifics
+  is3DViewable?: boolean;
 }
 
 // Health & Wellness Data Structures
@@ -649,11 +670,4 @@ export interface SettingsCategory {
     description: string;
     icon: React.FC<any>;
     items: SettingsItem[];
-}
-
-export interface LaunchableApp {
-  component: string;
-  title: string;
-  icon: React.FC<any>;
-  context?: any;
 }

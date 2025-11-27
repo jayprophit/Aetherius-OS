@@ -1,8 +1,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon, GyeNyameIcon, SunIcon, MoonIcon, Cog6ToothIcon } from './Icons';
-import { MenuItemData, LaunchableApp } from '../types';
+import { MenuItemData } from '../types';
 import { ICON_BUTTON_CLASSES } from '../constants';
+import { LaunchableApp } from '../App';
 import { mainMenuItems } from '../data';
 
 const AetheriusMenu: React.FC<{

@@ -1,7 +1,8 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { desktopItems, osMenuStructures } from '../data';
-import { AppItem, FolderItem, DesktopItem, LaunchableApp } from '../types';
+import { AppItem, FolderItem, DesktopItem } from '../types';
+import { LaunchableApp } from '../App';
 import { FolderIcon } from './Icons';
 import { ContextMenu } from './ContextMenu';
 
