@@ -15,6 +15,7 @@
 
 
 
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -64,7 +65,7 @@ import {
   TradingBot, NewsArticle, LearnAndEarnCourse, ChatSession,
   KnowledgeBaseItem, MilestonesData, ChecklistCategory, MenuGroup, ChecklistItem,
   ReputationSystemSpec, ErpSystemSpec, QuantumNetworkSpec, DesktopItem, SettingsCategory,
-  Validator, AiTradingPlatform, Achievement
+  Validator, AiTradingPlatform, Achievement, Company, FreelanceProject
 } from './types';
 
 // --- Users ---
@@ -566,10 +567,142 @@ export const achievements: Achievement[] = [
     { id: 'ach-1', courseTitle: 'Basic Coding', completionDate: '2023-12-01', transactionId: '0x123...abc', certificateUrl: '#' }
 ];
 
+// --- NEW JOBS & CAREERS DATA ---
+
+export const mockCompanies: Company[] = [
+    {
+        id: 'tech-innovations',
+        name: 'Tech Innovations Inc',
+        description: 'Leading technology company specializing in AI solutions and quantum computing.',
+        industry: 'Technology',
+        size: '201-500',
+        website: 'https://techinnovations.com',
+        locations: ['San Francisco, CA', 'London, UK'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TI&background=random&color=fff',
+        verified: true
+    },
+    {
+        id: 'green-energy',
+        name: 'Green Energy Corp',
+        description: 'Pioneering sustainable energy solutions for a cleaner future.',
+        industry: 'Energy',
+        size: '501-1000',
+        website: 'https://greenenergy.com',
+        locations: ['Berlin, Germany', 'Austin, TX'],
+        logoUrl: 'https://ui-avatars.com/api/?name=GE&background=green&color=fff',
+        verified: true
+    },
+    {
+        id: 'future-finance',
+        name: 'Future Finance',
+        description: 'Revolutionizing the financial sector with DeFi and blockchain technology.',
+        industry: 'Finance',
+        size: '51-200',
+        website: 'https://futurefinance.io',
+        locations: ['New York, NY', 'Singapore'],
+        logoUrl: 'https://ui-avatars.com/api/?name=FF&background=blue&color=fff',
+        verified: false
+    }
+];
+
 export const jobs: Job[] = [
-    { id: 1, title: 'Quantum Software Engineer', company: 'Q-Systems', location: 'Remote', type: 'Full-time', salary: '$150k - $200k', tags: ['Quantum', 'Python', 'C++'], logoUrl: 'https://ui-avatars.com/api/?name=QS&background=random' },
-    { id: 2, title: 'AI Ethicist', company: 'OpenFuture', location: 'New York, NY', type: 'Contract', salary: '$100k - $140k', tags: ['Ethics', 'Policy', 'AI'], logoUrl: 'https://ui-avatars.com/api/?name=OF&background=random' },
-    { id: 3, title: 'VR World Builder', company: 'MetaVerse Corp', location: 'San Francisco, CA', type: 'Full-time', salary: '$120k - $160k', tags: ['Unity', '3D', 'Design'], logoUrl: 'https://ui-avatars.com/api/?name=MC&background=random' },
+    { 
+        id: 1, 
+        title: 'Quantum Software Engineer', 
+        company: 'Tech Innovations Inc', 
+        companyId: 'tech-innovations',
+        location: 'Remote', 
+        type: 'Full-time', 
+        salary: '$150k - $200k', 
+        tags: ['Quantum', 'Python', 'C++'], 
+        logoUrl: 'https://ui-avatars.com/api/?name=TI&background=random&color=fff',
+        description: 'We are looking for a Quantum Software Engineer to help us build the next generation of quantum algorithms.',
+        postedDate: '2025-10-20',
+        category: 'Technology',
+        requirements: ['Ph.D. in Physics or CS', 'Experience with Qiskit', 'Strong math skills']
+    },
+    { 
+        id: 2, 
+        title: 'AI Ethicist', 
+        company: 'OpenFuture', 
+        location: 'New York, NY', 
+        type: 'Contract', 
+        salary: '$100k - $140k', 
+        tags: ['Ethics', 'Policy', 'AI'], 
+        logoUrl: 'https://ui-avatars.com/api/?name=OF&background=random',
+        description: 'Ensure our AI models are safe, fair, and aligned with human values.',
+        postedDate: '2025-10-22',
+        category: 'Business',
+        requirements: ['Master\'s in Ethics or Philosophy', 'Understanding of LLMs', 'Policy drafting experience']
+    },
+    { 
+        id: 3, 
+        title: 'VR World Builder', 
+        company: 'MetaVerse Corp', 
+        location: 'San Francisco, CA', 
+        type: 'Full-time', 
+        salary: '$120k - $160k', 
+        tags: ['Unity', '3D', 'Design'], 
+        logoUrl: 'https://ui-avatars.com/api/?name=MC&background=random',
+        description: 'Create immersive virtual environments for our new social VR platform.',
+        postedDate: '2025-10-25',
+        category: 'Design',
+        requirements: ['5+ years with Unity/Unreal', '3D modeling skills', 'Spatial audio knowledge']
+    },
+    {
+        id: 4,
+        title: 'Senior Full Stack Developer',
+        company: 'Tech Innovations Inc',
+        companyId: 'tech-innovations',
+        location: 'Hybrid (San Francisco)',
+        type: 'Full-time',
+        salary: '$140k - $180k',
+        tags: ['React', 'Node.js', 'TypeScript'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TI&background=random&color=fff',
+        description: 'Lead development on our core SaaS platform.',
+        postedDate: '2025-10-26',
+        category: 'Technology',
+        requirements: ['Expert in React', 'Backend experience with Node', 'Cloud infrastructure knowledge']
+    }
+];
+
+export const mockFreelanceProjects: FreelanceProject[] = [
+    {
+        id: 'fp-1',
+        title: 'Build E-commerce Website',
+        description: 'Need a developer to build a React e-commerce site with Shopify integration.',
+        category: 'Web Development',
+        skills: ['React', 'Shopify', 'Node.js'],
+        budget: { type: 'fixed', min: 5000, max: 8000, currency: 'USD' },
+        duration: '2 months',
+        clientName: 'StartUp Inc',
+        postedDate: '2025-10-26',
+        proposalsCount: 12
+    },
+    {
+        id: 'fp-2',
+        title: 'Logo Design for Fintech',
+        description: 'Modern, minimalist logo for a new blockchain finance app.',
+        category: 'Design',
+        skills: ['Logo Design', 'Branding', 'Illustrator'],
+        budget: { type: 'fixed', min: 500, max: 1000, currency: 'USD' },
+        duration: '1 week',
+        clientName: 'FinBlock',
+        postedDate: '2025-10-27',
+        proposalsCount: 45
+    },
+    {
+        id: 'fp-3',
+        title: 'Technical Writer for API Docs',
+        description: 'Write comprehensive documentation for our new REST API.',
+        category: 'Writing',
+        skills: ['Technical Writing', 'API', 'Markdown'],
+        budget: { type: 'hourly', min: 50, max: 80, currency: 'USD' },
+        duration: '3 months',
+        clientName: 'DevTools Co',
+        postedDate: '2025-10-25',
+        proposalsCount: 8
+    }
 ];
 
 
@@ -644,7 +777,11 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: 'EDU-INSTR', name: 'Instructor Commission Protocol', details: 'Smart contract based payout system for course creators, handling commission splits and royalty payments automatically.', status: 'Integrated', progress: 100 },
     // --- EduSphere Additions ---
     { id: 'EDU-SPHERE-ARCH', name: 'EduSphere Architecture', details: 'A segmented learning universe with age-appropriate realms: Spark Island (2-5), Explorer Academy (6-11), Innovator\'s Forge (12-18), Scholar\'s Nexus (18+), and Luminary Labs (Lifelong).', status: 'Integrated', progress: 100 },
-    { id: 'EDU-AGE-PROTOCOL', name: 'Adaptive Age-Grade Protocol', details: 'UI/UX switching logic that adapts the learning interface density and complexity based on the user\'s biological age or self-selection.', status: 'Integrated', progress: 100 }
+    { id: 'EDU-AGE-PROTOCOL', name: 'Adaptive Age-Grade Protocol', details: 'UI/UX switching logic that adapts the learning interface density and complexity based on the user\'s biological age or self-selection.', status: 'Integrated', progress: 100 },
+    // --- Comprehensive Jobs Platform Additions ---
+    { id: 'JOB-PLAT-ARCH', name: 'Comprehensive Jobs Platform Architecture', details: 'A unified architecture combining features from major job sites (Monster, Reed, AngelList) and freelancing platforms (Upwork, Fiverr). Includes JobManagement, CandidateManagement, EmployerManagement, MatchingEngine, ApplicationSystem, InterviewSystem, FreelanceSystem, and PaymentSystem.', status: 'Integrated', progress: 100 },
+    { id: 'JOB-MATCH-ENG', name: 'AI Matching Engine', details: 'Algorithms for matching candidates to jobs based on skills, location, salary, experience, and cultural fit. Includes weighted scoring and geo-location filtering.', status: 'Integrated', progress: 100 },
+    { id: 'JOB-FREELANCE', name: 'Freelance System Integration', details: 'Modules for project creation, proposal submission, contract management, and milestone-based payments within the jobs ecosystem.', status: 'Integrated', progress: 100 }
 ];
 
 // --- MILESTONES DATA (UPDATED WITH PROGRESS) ---
@@ -678,6 +815,7 @@ export const milestonesData: MilestonesData = {
         { id: 'omni-phase-1', title: 'Phase 1: OmniPlatform Core', status: 'Completed', progress: 100, description: 'Foundational architecture for Visual Builder, Admin Dashboard, and Unified Storefront.' },
         { id: 'edu-phase-2.5', title: 'Phase 2.5: Education Singularity', status: 'Completed', progress: 100, description: 'Merging features from Udemy, Coursera, LinkedIn Learning into a unified Mega Platform with Blockchain CVs.' },
         { id: 'edu-phase-3', title: 'Phase 3: Education Universe Deployment', status: 'Completed', progress: 100, description: 'Rolling out segmented Learning Realms (Spark Island, Explorer Academy, etc.) for age-specific education.' },
+        { id: 'job-phase-1', title: 'Jobs & Careers Module', status: 'Completed', progress: 100, description: 'Implementation of Job Search, Freelance Marketplace, and Company Profiles.' },
         { id: 'phase-5-hardware-link', title: 'Phase 5: Physical Hardware Link', status: 'Not Started', progress: 0, description: 'Direct integration with bio-neural chips and physical robotic chassis.' },
     ],
     platformFeatureMilestones: [
@@ -751,6 +889,14 @@ export const buildChecklistData: ChecklistCategory[] = [
                 { id: 'mp-3-1', name: 'Virtual Qubit Emulation', description: 'Simulate quantum bits and their superposition/entanglement properties.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
                 { id: 'mp-3-2', name: 'Time Crystal Clock Integration', description: 'Theoretical integration of a time crystal for stable quantum clocking.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
             ]},
+        ]
+    },
+    {
+        id: 'careers-platform-build', name: 'Careers Platform Features', description: 'Jobs, Companies, and Freelancing.', icon: BriefcaseIcon,
+        items: [
+            { id: 'car-1', name: 'Job Board Engine', description: 'Logic for listing, filtering, and searching jobs.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'car-2', name: 'Company Profiles', description: 'Database and UI for employer branding.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'car-3', name: 'Freelance Marketplace', description: 'Project listings, proposals, and gig management.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
         ]
     },
     {

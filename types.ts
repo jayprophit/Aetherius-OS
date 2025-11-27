@@ -709,15 +709,54 @@ export interface Article {
     publicationDate: string;
 }
 
+// --- NEW CAREERS MODULE STRUCTURES ---
+export interface Company {
+    id: string;
+    name: string;
+    description: string;
+    industry: string;
+    size: string;
+    website: string;
+    locations: string[];
+    logoUrl: string;
+    verified: boolean;
+}
+
 export interface Job {
     id: number;
     title: string;
-    company: string;
+    company: string; // Company Name
+    companyId?: string;
     location: string;
-    type: string;
+    type: 'Full-time' | 'Part-time' | 'Contract' | 'Freelance' | 'Internship';
     salary: string;
+    salaryMin?: number;
+    salaryMax?: number;
+    currency?: string;
     tags: string[];
     logoUrl: string;
+    description?: string;
+    postedDate?: string;
+    category?: string;
+    requirements?: string[];
+}
+
+export interface FreelanceProject {
+    id: string;
+    title: string;
+    description: string;
+    category: string;
+    skills: string[];
+    budget: {
+        type: 'fixed' | 'hourly';
+        min: number;
+        max: number;
+        currency: string;
+    };
+    duration: string;
+    clientName: string;
+    postedDate: string;
+    proposalsCount: number;
 }
 
 export interface SettingsItem {
