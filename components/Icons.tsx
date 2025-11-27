@@ -1007,3 +1007,22 @@ export const CloudStorageIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props)
     <path d="M12 13l3 3" />
   </svg>
 );
+
+export const UserGroupIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.964c.351-.351.73-.674 1.143-.956m-8.143.956c.351.351.73.674 1.143.956m4.5-5.25a3.89 3.89 0 013.342 1.956c.351.351.73.674 1.143.956M3 18.72a9.094 9.094 0 013.741-.479 3 3 0 01-4.682-2.72m7.5-2.964c-.351-.351-.73-.674-1.143-.956m8.143.956c-.351.351-.73.674-1.143.956m-4.5 5.25a3.89 3.89 0 00-3.342-1.956c-.351-.351-.73-.674-1.143-.956M12 21a9 9 0 100-18 9 9 0 000 18z" />
+    </svg>
+);
+
+export const PlayCircleIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+  </svg>
+);
+
+export const HashtagIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
+  </svg>
+);

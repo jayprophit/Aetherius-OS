@@ -198,6 +198,43 @@ export interface Group {
   lastActive: string;
 }
 
+// --- Social Platform Architecture Types ---
+
+export type ChannelType = 'text' | 'voice' | 'video' | 'forum' | 'announcement';
+
+export interface SocialChannel {
+    id: string;
+    name: string;
+    type: ChannelType;
+    unreadCount?: number;
+    isPrivate?: boolean;
+    activeUsers?: number; // For voice/video
+}
+
+export interface SocialCommunity {
+    id: string;
+    name: string;
+    description: string;
+    iconUrl: string;
+    bannerUrl: string;
+    memberCount: number;
+    onlineCount: number;
+    category: string;
+    channels: SocialChannel[];
+    roles?: string[];
+}
+
+export interface SocialStream {
+    id: string;
+    broadcaster: User;
+    title: string;
+    category: string;
+    viewers: number;
+    thumbnailUrl: string;
+    isLive: boolean;
+    tags: string[];
+}
+
 export interface AppItem {
     id: string;
     type: 'app';

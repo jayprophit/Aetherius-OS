@@ -16,6 +16,8 @@
 
 
 
+
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -65,7 +67,8 @@ import {
   TradingBot, NewsArticle, LearnAndEarnCourse, ChatSession,
   KnowledgeBaseItem, MilestonesData, ChecklistCategory, MenuGroup, ChecklistItem,
   ReputationSystemSpec, ErpSystemSpec, QuantumNetworkSpec, DesktopItem, SettingsCategory,
-  Validator, AiTradingPlatform, Achievement, Company, FreelanceProject
+  Validator, AiTradingPlatform, Achievement, Company, FreelanceProject,
+  SocialCommunity, SocialStream
 } from './types';
 
 // --- Users ---
@@ -706,10 +709,70 @@ export const mockFreelanceProjects: FreelanceProject[] = [
 ];
 
 
+// --- SOCIAL PLATFORM MOCK DATA ---
+
+export const socialCommunities: SocialCommunity[] = [
+    {
+        id: 'comm-1',
+        name: 'Quantum Builders',
+        description: 'A community for quantum computing enthusiasts and developers.',
+        iconUrl: 'https://ui-avatars.com/api/?name=QB&background=000&color=fff',
+        bannerUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=800',
+        memberCount: 15400,
+        onlineCount: 3200,
+        category: 'Technology',
+        channels: [
+            { id: 'ch-1', name: 'general', type: 'text' },
+            { id: 'ch-2', name: 'announcements', type: 'announcement', isPrivate: true },
+            { id: 'ch-3', name: 'q-algorithms', type: 'text' },
+            { id: 'ch-4', name: 'Voice Lounge', type: 'voice', activeUsers: 12 },
+        ]
+    },
+    {
+        id: 'comm-2',
+        name: 'Digital Artists Collective',
+        description: 'Share your generative art and collaborate on projects.',
+        iconUrl: 'https://ui-avatars.com/api/?name=DA&background=purple&color=fff',
+        bannerUrl: 'https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=800',
+        memberCount: 8900,
+        onlineCount: 1200,
+        category: 'Art',
+        channels: [
+             { id: 'ch-5', name: 'showcase', type: 'text' },
+             { id: 'ch-6', name: 'critique', type: 'text' },
+             { id: 'ch-7', name: 'Live Workshop', type: 'video', activeUsers: 45 },
+        ]
+    }
+];
+
+export const socialStreams: SocialStream[] = [
+    {
+        id: 'stream-1',
+        broadcaster: allUsers[1],
+        title: 'Building a Neural Network from Scratch',
+        category: 'Coding',
+        viewers: 1240,
+        thumbnailUrl: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=400',
+        isLive: true,
+        tags: ['AI', 'Python', 'Live Coding']
+    },
+    {
+        id: 'stream-2',
+        broadcaster: allUsers[2],
+        title: 'Space Exploration in VR - Join Me!',
+        category: 'Gaming',
+        viewers: 850,
+        thumbnailUrl: 'https://images.unsplash.com/photo-1614726365723-49cfae927834?q=80&w=400',
+        isLive: true,
+        tags: ['VR', 'Space', 'Exploration']
+    }
+];
+
 // --- KNOWLEDGE BASE DATA (UPDATED) ---
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: '001', name: 'The Complete Blueprint', details: 'A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.', status: 'Foundational', progress: 100 },
     { id: 'OMNI-ARCH', name: 'OmniPlatform Architecture', details: 'Complete specification for a multi-tenant website builder, CMS, and e-commerce engine. Includes VisualBuilder Pro, theme system, and plugin ecosystem architecture.', status: 'Integrated', progress: 100 },
+    { id: 'SOCIAL-PLAT-ARCH', name: 'Social Media Platform Architecture', details: 'A comprehensive social network blueprint combining features from Facebook (Feed/Groups), Discord (Communities/Channels), TikTok (Reels), and Twitch (Live Streaming). Includes UserManagement, ContentManagement, MessagingSystem, and LiveStreamingSystem classes.', status: 'Integrated', progress: 100 },
     { id: 'OMNI-VISUAL', name: 'VisualBuilder Pro Specs', details: 'React-based drag-and-drop editor engine specification. Includes element registry, style system, and DOM rendering logic.', status: 'Integrated', progress: 100 },
     { id: '002', name: 'Universal Game Engine', details: 'A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.', status: 'Integrated', progress: 100 },
     { id: '003', name: 'AI Avatar Cloning & Generation', details: 'A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.', status: 'Integrated', progress: 100 },
@@ -816,6 +879,7 @@ export const milestonesData: MilestonesData = {
         { id: 'edu-phase-2.5', title: 'Phase 2.5: Education Singularity', status: 'Completed', progress: 100, description: 'Merging features from Udemy, Coursera, LinkedIn Learning into a unified Mega Platform with Blockchain CVs.' },
         { id: 'edu-phase-3', title: 'Phase 3: Education Universe Deployment', status: 'Completed', progress: 100, description: 'Rolling out segmented Learning Realms (Spark Island, Explorer Academy, etc.) for age-specific education.' },
         { id: 'job-phase-1', title: 'Jobs & Careers Module', status: 'Completed', progress: 100, description: 'Implementation of Job Search, Freelance Marketplace, and Company Profiles.' },
+        { id: 'social-phase-1', title: 'Social & Community Singularity', status: 'Completed', progress: 100, description: 'Integrated Feed, Communities (Discord-style), Watch (TikTok-style), and Messaging modules.' },
         { id: 'phase-5-hardware-link', title: 'Phase 5: Physical Hardware Link', status: 'Not Started', progress: 0, description: 'Direct integration with bio-neural chips and physical robotic chassis.' },
     ],
     platformFeatureMilestones: [
@@ -849,6 +913,8 @@ export const milestonesData: MilestonesData = {
         { id: 'omni-theme', title: 'OmniThemes System', status: 'Completed', progress: 100, description: 'JSON-based theme architecture.' },
         { id: 'edu-blockchain-cv', title: 'Blockchain CV Integration', status: 'Completed', progress: 100, description: 'Visualizer for credentials on-chain.' },
         { id: 'edu-instructor', title: 'Instructor Studio', status: 'Completed', progress: 100, description: 'Dashboard for course creation and earnings.' },
+        { id: 'social-communities', title: 'Community Server Engine', status: 'Completed', progress: 100, description: 'Discord-style server architecture with channel types.' },
+        { id: 'social-streams', title: 'Live Streaming Module', status: 'Completed', progress: 100, description: 'Twitch/TikTok style video feed and live interaction.' },
     ],
     technicalBreakdown: [
         { id: 'atb-1', title: 'Virtual Hardware Simulation - quantum chips, processors, time crystals', status: 'Completed', progress: 100, description: 'VirtualRigBuilder and InfrastructureControl.' },
@@ -889,6 +955,15 @@ export const buildChecklistData: ChecklistCategory[] = [
                 { id: 'mp-3-1', name: 'Virtual Qubit Emulation', description: 'Simulate quantum bits and their superposition/entanglement properties.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
                 { id: 'mp-3-2', name: 'Time Crystal Clock Integration', description: 'Theoretical integration of a time crystal for stable quantum clocking.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
             ]},
+        ]
+    },
+    {
+        id: 'social-platform-build', name: 'Social & Community Modules', description: 'Feed, Messenger, Communities, and Live Streaming.', icon: UsersIcon,
+        items: [
+            { id: 'soc-1', name: 'Community Server Engine', description: 'Discord-style server/channel architecture.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'soc-2', name: 'Live Streaming Core', description: 'Twitch/TikTok style video feed and broadcasting.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'soc-3', name: 'Unified Messaging', description: 'WhatsApp/Signal style encrypted messaging.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'soc-4', name: 'Social Graph Logic', description: 'Follower/Following and Friend Request logic.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
         ]
     },
     {
