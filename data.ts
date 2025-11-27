@@ -114,6 +114,7 @@ export const mainMenuItems: MenuItemData[] = [
     { title: 'Social Hub', icon: UsersIcon, component: 'socialApp' },
     { title: 'Creation Labs', icon: BeakerIcon, component: 'mediaApp' },
     { title: 'E-Commerce Hub', icon: ShoppingCartIcon, component: 'eCommerceApp' },
+    { title: 'Finance', icon: ChartBarIcon, component: 'financeApp' },
     { title: 'Labs', icon: CubeTransparentIcon, component: 'rdHub' },
     { title: 'Careers Hub', icon: BriefcaseIcon, component: 'careersApp' },
     { title: 'E-Learning', icon: AcademicCapIcon, component: 'elearningApp' },
@@ -389,7 +390,7 @@ export const jobs: Job[] = [
 ];
 
 
-// --- KNOWLEDGE BASE DATA ---
+// --- KNOWLEDGE BASE DATA (UPDATED) ---
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: '001', name: 'The Complete Blueprint', details: 'A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.', status: 'Foundational', progress: 100 },
     { id: '002', name: 'Universal Game Engine', details: 'A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.', status: 'Integrated', progress: 100 },
@@ -509,30 +510,8 @@ export const milestonesData: MilestonesData = {
     ]
 };
 
-// --- BUILD CHECKLIST DATA (COMPLETED & EXPANDED) ---
+// --- BUILD CHECKLIST DATA (RESTORED & COMPLETE) ---
 export const buildChecklistData: ChecklistCategory[] = [
-    {
-        id: 'os-fusion-ui', name: 'OS Desktop Experience (Fusion)', description: 'Unified desktop environment merging Windows, macOS, and Linux paradigms.', icon: ComputerDesktopIcon,
-        items: [
-            { id: 'ui-1', name: 'Context Menus (Right Click)', description: 'Fully functional right-click menus for Desktop, Taskbar, and Windows.', status: 'In Progress', progress: 60, children: [
-                { id: 'ui-1a', name: 'Desktop Context', description: 'View, Sort, Refresh, New, Display Settings, Personalize.', status: 'Completed', progress: 100 },
-                { id: 'ui-1b', name: 'Taskbar Context', description: 'Toolbars, Search settings, Task Manager.', status: 'In Progress', progress: 50 },
-                { id: 'ui-1c', name: 'Window Title Bar Context', description: 'Restore, Minimize, Maximize, Close options.', status: 'In Progress', progress: 30 }
-            ]},
-            { id: 'ui-2', name: 'Start Menu / App Launcher', description: 'Hybrid launcher combining Windows Tiles and macOS Launchpad aesthetics.', status: 'In Progress', progress: 70 },
-            { id: 'ui-3', name: 'Window Management', description: 'Snap layouts, virtual desktops, and mission control features.', status: 'In Progress', progress: 60, children: [
-                { id: 'ui-3a', name: 'Virtual Desktops', description: 'Workspace switching logic in Taskbar.', status: 'Completed', progress: 100 },
-                { id: 'ui-3b', name: 'Window Snapping', description: 'Drag-to-edge resizing logic.', status: 'Not Started', progress: 0 }
-            ]},
-            { id: 'ui-4', name: 'Multi-Modal Input', description: 'Seamless handling of Mouse, Touch, and Pen inputs.', status: 'In Progress', progress: 40, children: [
-                { id: 'ui-4a', name: 'Mouse Events', description: 'Click, Right-Click, Scroll, Hover.', status: 'Completed', progress: 100 },
-                { id: 'ui-4b', name: 'Touch Gestures', description: 'Swipe, Pinch-to-Zoom, Long-Press.', status: 'In Progress', progress: 20 },
-                { id: 'ui-4c', name: 'Pen Input', description: 'Pressure sensitivity and tilt recognition.', status: 'In Progress', progress: 10 }
-            ]},
-            { id: 'ui-5', name: 'System Tray & Control Center', description: 'Quick access to WiFi, Bluetooth, Volume, and Notifications.', status: 'In Progress', progress: 30 },
-            { id: 'ui-6', name: 'Global Search', description: 'Universal search bar (Spotlight/Windows Search style).', status: 'Completed', progress: 100 }
-        ]
-    },
     {
         id: 'sentient-infra', name: 'Sentient Infrastructure Layer', description: 'Self-aware systems, alignment, and quantum code evolution.', icon: SparklesIcon,
         items: [
@@ -674,6 +653,28 @@ export const buildChecklistData: ChecklistCategory[] = [
             { id: 'pc-3', name: 'Content Creation Suite', description: 'Internal forks of Midjourney, Runway, 11 Labs, etc.', status: 'Completed', progress: 100, completedDate: '2025-02-03' },
             { id: 'pc-4', name: 'Trading & Finance Platform', description: 'Internal platform with AI bots, "forever trading", and advanced market analysis.', status: 'Completed', progress: 100, completedDate: '2025-02-03' },
         ]
+    },
+    {
+        id: 'os-fusion-ui', name: 'OS Desktop Experience (Fusion)', description: 'Unified desktop environment merging Windows, macOS, and Linux paradigms.', icon: ComputerDesktopIcon,
+        items: [
+            { id: 'ui-1', name: 'Context Menus (Right Click)', description: 'Fully functional right-click menus for Desktop, Taskbar, and Windows.', status: 'In Progress', progress: 60, children: [
+                { id: 'ui-1a', name: 'Desktop Context', description: 'View, Sort, Refresh, New, Display Settings, Personalize.', status: 'Completed', progress: 100 },
+                { id: 'ui-1b', name: 'Taskbar Context', description: 'Toolbars, Search settings, Task Manager.', status: 'In Progress', progress: 50 },
+                { id: 'ui-1c', name: 'Window Title Bar Context', description: 'Restore, Minimize, Maximize, Close options.', status: 'In Progress', progress: 30 }
+            ]},
+            { id: 'ui-2', name: 'Start Menu / App Launcher', description: 'Hybrid launcher combining Windows Tiles and macOS Launchpad aesthetics.', status: 'In Progress', progress: 70 },
+            { id: 'ui-3', name: 'Window Management', description: 'Snap layouts, virtual desktops, and mission control features.', status: 'In Progress', progress: 60, children: [
+                { id: 'ui-3a', name: 'Virtual Desktops', description: 'Workspace switching logic in Taskbar.', status: 'Completed', progress: 100 },
+                { id: 'ui-3b', name: 'Window Snapping', description: 'Drag-to-edge resizing logic.', status: 'Not Started', progress: 0 }
+            ]},
+            { id: 'ui-4', name: 'Multi-Modal Input', description: 'Seamless handling of Mouse, Touch, and Pen inputs.', status: 'In Progress', progress: 40, children: [
+                { id: 'ui-4a', name: 'Mouse Events', description: 'Click, Right-Click, Scroll, Hover.', status: 'Completed', progress: 100 },
+                { id: 'ui-4b', name: 'Touch Gestures', description: 'Swipe, Pinch-to-Zoom, Long-Press.', status: 'In Progress', progress: 20 },
+                { id: 'ui-4c', name: 'Pen Input', description: 'Pressure sensitivity and tilt recognition.', status: 'In Progress', progress: 10 }
+            ]},
+            { id: 'ui-5', name: 'System Tray & Control Center', description: 'Quick access to WiFi, Bluetooth, Volume, and Notifications.', status: 'In Progress', progress: 30 },
+            { id: 'ui-6', name: 'Global Search', description: 'Universal search bar (Spotlight/Windows Search style).', status: 'Completed', progress: 100 }
+        ]
     }
 ];
 
@@ -771,103 +772,102 @@ export const aiConsciousnessLayers = [
     { name: 'Hive Mind', description: 'Collective intelligence aggregation.', states: ['Syncing', 'Consensus', 'Distributed'], theme: 'bg-green-100 border-green-500' },
 ];
 
-// --- Finance & Trading Data ---
-
 export const tradingAssets: TradingAsset[] = [
-    { symbol: 'BTC', name: 'Bitcoin', price: 65432.10, change: 1234.56, changePercent: 1.92, marketCap: 1200000000000, volume24h: 35000000000, logoUrl: 'https://cryptologos.cc/logos/bitcoin-btc-logo.svg', assetClass: 'Crypto' },
-    { symbol: 'ETH', name: 'Ethereum', price: 3420.50, change: -45.20, changePercent: -1.30, marketCap: 400000000000, volume24h: 15000000000, logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg', assetClass: 'Crypto' },
-    { symbol: 'SOL', name: 'Solana', price: 145.20, change: 8.50, changePercent: 6.22, marketCap: 65000000000, volume24h: 4000000000, logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg', assetClass: 'Crypto' },
-    { symbol: 'AAPL', name: 'Apple Inc.', price: 185.60, change: 1.20, changePercent: 0.65, marketCap: 2900000000000, volume24h: 5000000000, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', assetClass: 'Stocks' },
-    { symbol: 'TSLA', name: 'Tesla Inc.', price: 178.40, change: -3.50, changePercent: -1.92, marketCap: 560000000000, volume24h: 8000000000, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png', assetClass: 'Stocks' },
-    { symbol: 'EUR/USD', name: 'Euro / US Dollar', price: 1.0845, change: 0.0020, changePercent: 0.18, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg', assetClass: 'Forex' },
-    { symbol: 'XAU/USD', name: 'Gold Spot', price: 2350.10, change: 15.40, changePercent: 0.66, logoUrl: 'https://cdn-icons-png.flaticon.com/512/2535/2535560.png', assetClass: 'Commodities' },
+  { symbol: 'BTC', name: 'Bitcoin', price: 65432.10, change: 1234.56, changePercent: 2.4, marketCap: 1200000000000, volume24h: 35000000000, logoUrl: 'https://cryptologos.cc/logos/bitcoin-btc-logo.svg', assetClass: 'Crypto' },
+  { symbol: 'ETH', name: 'Ethereum', price: 3420.50, change: -12.30, changePercent: -1.1, marketCap: 400000000000, volume24h: 15000000000, logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg', assetClass: 'Crypto' },
+  { symbol: 'SOL', name: 'Solana', price: 145.20, change: 8.50, changePercent: 5.8, marketCap: 65000000000, volume24h: 2500000000, logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg', assetClass: 'Crypto' },
+  { symbol: 'USDC', name: 'USD Coin', price: 1.00, change: 0.00, changePercent: 0.0, marketCap: 33000000000, volume24h: 1200000000, logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg', assetClass: 'Crypto' },
+  { symbol: 'AAPL', name: 'Apple Inc.', price: 175.30, change: 1.20, changePercent: 0.7, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', assetClass: 'Stocks' },
+  { symbol: 'TSLA', name: 'Tesla, Inc.', price: 240.50, change: -5.40, changePercent: -2.2, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png', assetClass: 'Stocks' },
+  { symbol: 'EUR/USD', name: 'Euro / US Dollar', price: 1.08, change: 0.002, changePercent: 0.15, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg', assetClass: 'Forex' },
+  { symbol: 'XAU/USD', name: 'Gold Spot', price: 2350.10, change: 15.20, changePercent: 0.65, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Gold_bullion_icon.svg', assetClass: 'Commodities' },
 ];
 
 export const stakingPools: StakingPool[] = [
-    { id: 'pool-1', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg' }, apy: 4.5, tvl: 1500000000, lockupPeriod: 'None' },
-    { id: 'pool-2', asset: { symbol: 'SOL', name: 'Solana', logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg' }, apy: 7.2, tvl: 800000000, lockupPeriod: '3 Days' },
-    { id: 'pool-3', asset: { symbol: 'DOT', name: 'Polkadot', logoUrl: 'https://cryptologos.cc/logos/polkadot-new-dot-logo.svg' }, apy: 12.5, tvl: 400000000, lockupPeriod: '28 Days' },
+    { id: 'pool-1', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg' }, apy: 4.5, tvl: 150000000, lockupPeriod: 'Flexible' },
+    { id: 'pool-2', asset: { symbol: 'SOL', name: 'Solana', logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg' }, apy: 7.2, tvl: 85000000, lockupPeriod: '30 Days' },
+    { id: 'pool-3', asset: { symbol: 'USDC', name: 'USD Coin', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg' }, apy: 5.1, tvl: 220000000, lockupPeriod: 'Flexible' },
 ];
 
 export const loanableAssets: LoanableAsset[] = [
-    { symbol: 'USDC', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg', supplyApy: 5.1, borrowApy: 6.5, totalSupplied: 500000000, totalBorrowed: 300000000 },
+    { symbol: 'USDC', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg', supplyApy: 4.8, borrowApy: 6.2, totalSupplied: 500000000, totalBorrowed: 350000000 },
     { symbol: 'ETH', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg', supplyApy: 2.5, borrowApy: 3.8, totalSupplied: 200000000, totalBorrowed: 80000000 },
-    { symbol: 'WBTC', logoUrl: 'https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.svg', supplyApy: 1.2, borrowApy: 2.0, totalSupplied: 150000000, totalBorrowed: 40000000 },
+    { symbol: 'WBTC', logoUrl: 'https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.svg', supplyApy: 1.2, borrowApy: 2.5, totalSupplied: 150000000, totalBorrowed: 40000000 },
 ];
 
 export const tradingBots: TradingBot[] = [
-    { id: 'bot-1', name: 'BTC Grid Alpha', strategy: 'Grid Trading', pair: 'BTC/USDT', status: 'Running', pnl: 1250.45, runtime: '14d 2h' },
-    { id: 'bot-2', name: 'ETH DCA Long', strategy: 'DCA Bot', pair: 'ETH/USDT', status: 'Running', pnl: 450.20, runtime: '5d 12h' },
-    { id: 'bot-3', name: 'SOL Rebalance', strategy: 'Rebalancing', pair: 'SOL/USDC', status: 'Stopped', pnl: -25.10, runtime: '2d 1h' },
+    { id: 'bot-1', name: 'Alpha Grid', strategy: 'Grid Trading', pair: 'BTC/USDT', status: 'Running', pnl: 1250.50, runtime: '12d 4h' },
+    { id: 'bot-2', name: 'Eth Rebalance', strategy: 'Rebalancing', pair: 'ETH/BTC', status: 'Running', pnl: 45.20, runtime: '5d 1h' },
+    { id: 'bot-3', name: 'Solana DCA', strategy: 'DCA Bot', pair: 'SOL/USDC', status: 'Stopped', pnl: -12.30, runtime: '2d 8h' },
 ];
 
 export const tradingNews: NewsArticle[] = [
-    { id: 'n1', source: 'CoinDesk', title: 'Bitcoin ETF Inflows Surge as Market Sentiment Improves', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=400', category: 'Crypto' },
-    { id: 'n2', source: 'Bloomberg', title: 'Fed Chair Signals Interest Rate Cuts Possible in Q3', timestamp: '4h ago', imageUrl: 'https://images.unsplash.com/photo-1526304640152-9292d132e29b?q=80&w=400', category: 'World Markets' },
-    { id: 'n3', source: 'Decrypt', title: 'Ethereum Layer 2 TVL Hits All-Time High', timestamp: '6h ago', imageUrl: 'https://images.unsplash.com/photo-1622630998477-20aa696fa4f5?q=80&w=400', category: 'Crypto' },
+    { id: 'news-1', source: 'CoinDesk', title: 'Bitcoin ETF Inflows Reach Record Highs', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=400', category: 'Crypto' },
+    { id: 'news-2', source: 'Bloomberg', title: 'Fed Signals Potential Rate Cuts in Q4', timestamp: '4h ago', imageUrl: 'https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=400', category: 'World Markets' },
+    { id: 'news-3', source: 'TechCrunch', title: 'New AI Trading Algorithms Outperform Humans', timestamp: '6h ago', imageUrl: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=400', category: 'Analysis' },
+    { id: 'news-4', source: 'Reuters', title: 'Forex Markets React to Global Trade Shifts', timestamp: '8h ago', imageUrl: 'https://images.unsplash.com/photo-1526304640152-d4619684e484?q=80&w=400', category: 'Forex' },
 ];
 
 export const learnAndEarnCourses: LearnAndEarnCourse[] = [
-    { id: 'le-1', title: 'Intro to Polkadot', asset: { symbol: 'DOT', logoUrl: 'https://cryptologos.cc/logos/polkadot-new-dot-logo.svg' }, reward: 5, duration: '10m', lessons: 3 },
-    { id: 'le-2', title: 'Understanding DeFi', asset: { symbol: 'UNI', logoUrl: 'https://cryptologos.cc/logos/uniswap-uni-logo.svg' }, reward: 3, duration: '15m', lessons: 4 },
-    { id: 'le-3', title: 'What is a Stablecoin?', asset: { symbol: 'USDC', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg' }, reward: 2, duration: '5m', lessons: 2 },
+    { id: 'course-1', title: 'Intro to Bitcoin', asset: { symbol: 'BTC', logoUrl: 'https://cryptologos.cc/logos/bitcoin-btc-logo.svg' }, reward: 5, duration: '10 min', lessons: 3 },
+    { id: 'course-2', title: 'How Ethereum Works', asset: { symbol: 'ETH', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg' }, reward: 3, duration: '15 min', lessons: 4 },
+    { id: 'course-3', title: 'DeFi Basics with Uniswap', asset: { symbol: 'UNI', logoUrl: 'https://cryptologos.cc/logos/uniswap-uni-logo.svg' }, reward: 2, duration: '8 min', lessons: 2 },
 ];
 
 export const topCopyTraders: User[] = [
-    { id: 'trader-1', name: 'CryptoKing', username: 'cryptoking', avatarUrl: 'https://i.pravatar.cc/150?u=trader1', roi: 145.2, riskScore: 6, followers: 5400, role: 'Pro Trader' },
-    { id: 'trader-2', name: 'SafeHands', username: 'safehands', avatarUrl: 'https://i.pravatar.cc/150?u=trader2', roi: 45.8, riskScore: 2, followers: 12000, role: 'Investor' },
-    { id: 'trader-3', name: 'MoonShot', username: 'moonshot', avatarUrl: 'https://i.pravatar.cc/150?u=trader3', roi: 320.5, riskScore: 9, followers: 2100, role: 'Degen' },
-];
-
-export const aiTradingPlatforms: AiTradingPlatform[] = [
-    {
-        id: 'p1',
-        name: 'TrendSpider',
-        category: 'Multi-Asset',
-        description: 'Advanced technical analysis software with automated charting and AI-driven trend detection.',
-        features: ['Automated Trendlines', 'Strategy Tester', 'Raindrop Charts'],
-        pricing: '$39/mo',
-        bestFor: ['Technical Analysis', 'Swing Trading'],
-        strengths: ['Visual automation', 'Unique chart types'],
-        weaknesses: ['Learning curve'],
-        pros: ['Saves time on charting', 'Alert system is robust'],
-        cons: ['Can be expensive for beginners'],
-        logoUrl: 'https://images.crunchbase.com/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/v1553542993/p4k8q2k5k8q2k5k8q2k5.png'
-    },
-    {
-        id: 'p2',
-        name: '3Commas',
-        category: 'Crypto',
-        description: 'A comprehensive crypto trading bot platform supporting DCA, Grid, and Options bots.',
-        features: ['SmartTrade Terminal', 'DCA Bots', 'Grid Bots', 'Portfolio Tracking'],
-        pricing: 'Free / $29/mo',
-        bestFor: ['Bot Trading', 'Portfolio Management'],
-        strengths: ['Multi-exchange support', 'Robust bot configurations'],
-        weaknesses: ['Complex interface'],
-        pros: ['Great for automation', 'Paper trading included'],
-        cons: ['Customer support can be slow'],
-        logoUrl: 'https://cryptologos.cc/logos/3commas-3commas-logo.png'
-    },
-    {
-        id: 'p3',
-        name: 'Trade Ideas',
-        category: 'Stock',
-        description: 'AI-powered stock scanner and idea generator for active day traders.',
-        features: ['Holly AI', 'Real-time Scans', 'Backtesting'],
-        pricing: '$89/mo',
-        bestFor: ['Day Trading', 'Stock Picking'],
-        strengths: ['Real-time data processing', 'AI entry/exit signals'],
-        weaknesses: ['Windows only desktop app'],
-        pros: ['Powerful scanner', 'AI guidance'],
-        cons: ['Expensive', 'UI looks dated'],
-        logoUrl: 'https://www.trade-ideas.com/wp-content/uploads/2016/07/TradeIdeas_Logo_250x250.png'
-    }
+    { id: 'trader-1', name: 'CryptoKing', username: 'cryptoking', avatarUrl: 'https://ui-avatars.com/api/?name=CK&background=random', roi: 145.2, riskScore: 6, followers: 12500 },
+    { id: 'trader-2', name: 'SafeHands', username: 'safehands', avatarUrl: 'https://ui-avatars.com/api/?name=SH&background=random', roi: 25.5, riskScore: 2, followers: 8900 },
+    { id: 'trader-3', name: 'ApeStrong', username: 'apestrong', avatarUrl: 'https://ui-avatars.com/api/?name=AS&background=random', roi: 320.1, riskScore: 9, followers: 5600 },
 ];
 
 export const mockValidators: Validator[] = [
-    { id: 'val-1', name: 'Genesis Node', stake: 5000000, reputation: 100, isAuthority: true, status: 'Active', votes: 15000 },
-    { id: 'val-2', name: 'Orion Validator', stake: 2500000, reputation: 98, isAuthority: false, status: 'Active', votes: 8000 },
-    { id: 'val-3', name: 'Nebula Staking', stake: 1200000, reputation: 95, isAuthority: false, status: 'Active', votes: 4500 },
-    { id: 'val-4', name: 'Cosmos Ventures', stake: 800000, reputation: 92, isAuthority: false, status: 'Active', votes: 3200 },
-    { id: 'val-5', name: 'Quantum Secure', stake: 500000, reputation: 99, isAuthority: true, status: 'Active', votes: 6000 },
+    { id: 'val-1', name: 'Genesis Node 01', stake: 5000000, reputation: 99, isAuthority: true, status: 'Active', votes: 12000 },
+    { id: 'val-2', name: 'Community Node A', stake: 1200000, reputation: 85, isAuthority: false, status: 'Active', votes: 8500 },
+    { id: 'val-3', name: 'Community Node B', stake: 800000, reputation: 78, isAuthority: false, status: 'Active', votes: 4000 },
+    { id: 'val-4', name: 'Bad Actor Node', stake: 100000, reputation: 12, isAuthority: false, status: 'Jailed', votes: 50 },
+];
+
+export const aiTradingPlatforms: AiTradingPlatform[] = [
+    { 
+        id: 'plat-1', 
+        name: 'TradeSanta', 
+        category: 'Crypto', 
+        description: 'Cloud-based software automating cryptocurrency trading strategies.', 
+        features: ['Grid & DCA Bots', 'Long & Short Strategies', 'Technical Indicators'],
+        pricing: '$18/mo', 
+        bestFor: ['Beginners', 'Grid Trading'],
+        strengths: ['Easy to use', 'Pre-set templates'],
+        weaknesses: ['Limited advanced features'],
+        pros: ['User friendly', 'Cloud based'],
+        cons: ['Paid subscription'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TS&background=random'
+    },
+    { 
+        id: 'plat-2', 
+        name: '3Commas', 
+        category: 'Crypto', 
+        description: 'Advanced trading terminal and automated bot platform.', 
+        features: ['Smart Trade Terminal', 'DCA, Grid, Options Bots', 'Paper Trading'],
+        pricing: '$29/mo', 
+        bestFor: ['Advanced Traders', 'Portfolio Management'],
+        strengths: ['Robust terminal', 'Huge community presets'],
+        weaknesses: ['Can be overwhelming'],
+        pros: ['Feature rich', 'Mobile app'],
+        cons: ['Expensive pro plan'],
+        logoUrl: 'https://ui-avatars.com/api/?name=3C&background=random'
+    },
+    { 
+        id: 'plat-3', 
+        name: 'Tickeron', 
+        category: 'Stock', 
+        description: 'AI-powered trading platform for stocks, ETFs, and forex with pattern recognition.', 
+        features: ['AI Pattern Search', 'Trend Prediction', 'Robots'],
+        pricing: '$90/mo', 
+        bestFor: ['Stock Traders', 'Swing Trading'],
+        strengths: ['Strong AI analysis', 'Visual pattern finder'],
+        weaknesses: ['Expensive', 'Steep learning curve'],
+        pros: ['Deep analytics', 'Real-time alerts'],
+        cons: ['Complex UI'],
+        logoUrl: 'https://ui-avatars.com/api/?name=Ti&background=random'
+    }
 ];

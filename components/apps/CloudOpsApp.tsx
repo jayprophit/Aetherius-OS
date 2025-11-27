@@ -166,7 +166,9 @@ export const CloudOpsApp: React.FC = () => {
                         <div className="flex items-center gap-4 bg-black/30 p-3 rounded-lg border border-green-500/20 w-fit">
                             <span className="text-xs text-green-400 font-bold">LIVE URL:</span>
                             <a href="#" className="text-sm font-mono text-white hover:underline">https://aetherius-os-deploy.google.space</a>
-                            <ArrowPathIcon className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" title="Refresh Status"/>
+                            <span title="Refresh Status" className="cursor-pointer">
+                                <ArrowPathIcon className="w-4 h-4 text-gray-400 hover:text-white" />
+                            </span>
                         </div>
                     </div>
                 </div>

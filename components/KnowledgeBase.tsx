@@ -1,5 +1,4 @@
 
-
 import React, { useMemo } from 'react';
 import { knowledgeBaseData } from '../data';
 import { marked } from 'marked';
@@ -39,7 +38,7 @@ export const KnowledgeBase: React.FC = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 mb-8 shadow-sm">
                 <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">Total System Knowledge Integration</h2>
                 <div className="flex items-center gap-6">
-                    <span className="font-bold text-4xl text-blue-600 dark:text-blue-400">{totalProgress}%</span>
+                    <span className="font-bold text-4xl text-blue-600 dark:text-blue-400 min-w-[3rem] text-right">{totalProgress}%</span>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-6 shadow-inner overflow-hidden">
                         <div 
                             className="bg-gradient-to-r from-blue-500 to-blue-700 h-full rounded-full shadow-lg transition-all duration-1000 ease-out" 
@@ -56,12 +55,12 @@ export const KnowledgeBase: React.FC = () => {
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm text-left">
-                        <thead className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700">
+                        <thead className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300">
                             <tr>
-                                <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300 w-24">ID</th>
-                                <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300 w-1/4">Name</th>
-                                <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300">Details & Description</th>
-                                <th className="py-3 px-4 font-semibold uppercase text-gray-600 dark:text-gray-300 w-48">Completion</th>
+                                <th className="py-3 px-4 font-semibold uppercase w-24">ID</th>
+                                <th className="py-3 px-4 font-semibold uppercase w-1/4">Name</th>
+                                <th className="py-3 px-4 font-semibold uppercase">Details & Description</th>
+                                <th className="py-3 px-4 font-semibold uppercase w-48">Completion</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -79,7 +78,7 @@ export const KnowledgeBase: React.FC = () => {
                                         </span>
                                     </td>
                                     <td className="py-4 px-4 align-top">
-                                        <div className="flex items-center gap-2 mb-1">
+                                        <div className="flex items-center justify-between mb-1">
                                             <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{item.progress}%</span>
                                             {item.progress === 100 ? (
                                                 <CheckCircleIcon className="w-4 h-4 text-green-500" />
@@ -100,8 +99,7 @@ export const KnowledgeBase: React.FC = () => {
                                             ></div>
                                         </div>
                                         <div className="flex justify-between mt-1 text-[10px] text-gray-400">
-                                            <span>Done</span>
-                                            <span>{100 - item.progress}% Rem</span>
+                                            <span>{item.status === 'Integrated' ? 'Done' : 'Pending'}</span>
                                         </div>
                                     </td>
                                 </tr>

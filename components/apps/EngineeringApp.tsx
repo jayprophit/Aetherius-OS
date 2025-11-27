@@ -6,16 +6,16 @@ import { CADLab } from '../CADLab';
 import { PlaceholderView } from '../PlaceholderView';
 import { InfrastructureControl } from '../InfrastructureControl';
 import { VirtualRigBuilder } from '../VirtualRigBuilder';
-import { RoboticsControl } from '../RoboticsControl'; // Import
-import { NanoFabricator } from '../NanoFabricator'; // Import
-import { ServerIcon, CpuChipIcon, CubeTransparentIcon } from '../Icons'; // Import Icons
+import { RoboticsControl } from '../RoboticsControl';
+import { NanoFabricator } from '../NanoFabricator';
+import { ServerIcon, CpuChipIcon, CubeTransparentIcon, CubeIcon } from '../Icons';
 
 const engineeringComponentMap: { [key: string]: React.FC<any> } = {
   cadLab: CADLab,
   engineeringHub: InfrastructureControl,
   rigBuilder: VirtualRigBuilder,
-  roboticsControl: RoboticsControl, // Add map
-  nanoFab: NanoFabricator, // Add map
+  roboticsControl: RoboticsControl,
+  nanoFab: NanoFabricator,
   simulationHub: () => <PlaceholderView viewName="Simulation Hub" />,
 };
 
@@ -47,7 +47,7 @@ export const EngineeringApp: React.FC<EngineeringAppProps> = ({ context, onSetVi
     }
     // Inject Nano Fab
     if (!children.some(c => c.component === 'nanoFab')) {
-        children.push({ title: 'Nano-Fabricator', icon: CubeTransparentIcon, component: 'nanoFab' });
+        children.push({ title: 'Nano-Fabricator', icon: CubeIcon, component: 'nanoFab' });
     }
 
     augmentedMenuItem.children = children;

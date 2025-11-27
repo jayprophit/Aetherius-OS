@@ -202,11 +202,11 @@ export const QuantumDNACore: React.FC = () => {
                                         <span className="text-xs font-mono text-gray-400 truncate" title={block.hash}>{block.hash}</span>
                                         <span className="text-[10px] text-gray-500">{block.timestamp.split(',')[1]}</span>
                                     </div>
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center gap-2" title="Maat Verified">
                                         <div className="h-1 flex-1 bg-gray-800 rounded overflow-hidden">
                                             <div className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 w-full opacity-50"></div>
                                         </div>
-                                        <ScaleIcon className="w-3 h-3 text-yellow-500" title="Maat Verified"/>
+                                        <ScaleIcon className="w-3 h-3 text-yellow-500" />
                                     </div>
                                     <p className="text-[10px] text-gray-500 mt-1 font-mono">Data: {block.data}</p>
                                 </div>

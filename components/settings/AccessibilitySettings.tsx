@@ -41,4 +41,9 @@ export const AccessibilitySettings: React.FC<{ title: string }> = ({ title }) =>
                 <h2 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-100">Hearing</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FeatureCard icon={EarIcon} title="Audio" description="Adjust audio balance and enable mono audio." />
-                    <FeatureCard icon
+                    <FeatureCard icon={DocumentTextIcon} title="Captions" description="Customize subtitles and captioning style." />
+                </div>
+            </section>
+        </div>
+    );
+};

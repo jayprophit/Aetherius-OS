@@ -1,14 +1,13 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { marked } from 'marked';
-import { ChatMessage } from '../types';
+import { ChatMessage, LaunchableApp } from '../types';
 import { 
     HiveMindIcon, PlusCircleIcon, ChevronDownIcon, MicrophoneIcon, ArrowUpCircleIcon, 
     PaperClipIcon, Bars3Icon, CpuChipIcon, SparklesIcon, UsersIcon, DnaIcon, CircleStackIcon,
     ServerIcon, PlayIcon, StopIcon, UserCircleIcon, BoltIcon
 } from './Icons';
 import { loggedInUser } from '../data';
-import { LaunchableApp } from '../App';
 import { Kernel } from '../services/AetheriusKernel';
 
 // --- Child Components ---

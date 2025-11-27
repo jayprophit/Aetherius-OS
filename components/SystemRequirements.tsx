@@ -59,43 +59,50 @@ export const SystemRequirements: React.FC = () => {
         const binaryCpuCount = rig.Binary_CPU.length;
         const quantumCpuCount = rig.Quantum_QPU.length;
         
-        return [
+        const items: {
+            label: string;
+            icon: React.FC<any>;
+            safetyDefault: string;
+            currentSpec: string;
+            status: 'Met' | 'Exceeded' | 'Critical';
+        }[] = [
             {
                 label: 'Logic Processing (Binary)',
                 icon: CpuChipIcon,
-                min: 'Score 40',
-                curr: binaryCpuCount > 0 ? `Total Score: ${stats.perf.binary}` : 'MISSING',
+                safetyDefault: 'Score 40',
+                currentSpec: binaryCpuCount > 0 ? `Total Score: ${stats.perf.binary}` : 'MISSING',
                 status: getStatus(binaryCpuCount > 0, stats.perf.binary, 40)
             },
             {
                 label: 'System Memory (Binary RAM)',
                 icon: CircleStackIcon,
-                min: 'Active Module',
-                curr: rig.Binary_RAM.length > 0 ? `${rig.Binary_RAM.length} Modules` : 'MISSING',
+                safetyDefault: 'Active Module',
+                currentSpec: rig.Binary_RAM.length > 0 ? `${rig.Binary_RAM.length} Modules` : 'MISSING',
                 status: rig.Binary_RAM.length > 0 ? 'Met' : 'Critical'
             },
             {
                 label: 'Power Output',
                 icon: BoltIcon,
-                min: '500W Capacity',
-                curr: `${stats.capacity}W (Load: ${stats.power}W)`,
+                safetyDefault: '500W Capacity',
+                currentSpec: `${stats.capacity}W (Load: ${stats.power}W)`,
                 status: stats.capacity >= stats.power && stats.capacity >= 500 ? 'Met' : 'Critical'
             },
             {
                 label: 'Quantum Core',
                 icon: SparklesIcon,
-                min: 'Active QPU',
-                curr: quantumCpuCount > 0 ? `${quantumCpuCount} QPU(s)` : 'MISSING',
+                safetyDefault: 'Active QPU',
+                currentSpec: quantumCpuCount > 0 ? `${quantumCpuCount} QPU(s)` : 'MISSING',
                 status: quantumCpuCount > 0 ? 'Met' : 'Critical'
             },
             {
                 label: 'Hardware Bridge',
                 icon: ServerIcon,
-                min: 'Bridge Controller',
-                curr: rig.Bridge_Controller.length > 0 ? 'Online' : 'MISSING',
+                safetyDefault: 'Bridge Controller',
+                currentSpec: rig.Bridge_Controller.length > 0 ? 'Online' : 'MISSING',
                 status: rig.Bridge_Controller.length > 0 ? 'Met' : 'Critical'
             }
         ];
+        return items;
     }, [rig]);
 
     return (

@@ -1,7 +1,7 @@
+
 import React, { useState, useRef } from 'react';
 import { ChevronRightIcon, PlusCircleIcon } from './Icons';
-import { MenuItemData, MenuGroup } from '../types';
-import { LaunchableApp } from '../App';
+import { MenuItemData, MenuGroup, LaunchableApp } from '../types';
 
 const RecursiveMenuItem: React.FC<{
   item: MenuItemData;

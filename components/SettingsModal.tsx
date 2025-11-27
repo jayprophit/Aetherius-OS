@@ -142,6 +142,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   knowledgeBase: KnowledgeBase,
   milestones: Milestones,
   buildChecklist: BuildChecklist,
+  checklist: BuildChecklist, // Map 'checklist' from data.ts to BuildChecklist component
   systemMonitor: () => <PlaceholderSettings title="System Monitor" />,
   systemIntegrity: () => <PlaceholderSettings title="System Integrity" />,
   systemRequirements: SystemRequirements,

@@ -113,8 +113,8 @@ export const Markets: React.FC = () => {
                         <p className="text-gray-600 dark:text-gray-400 mt-1">Real-time market heatmap.</p>
                     </div>
                     <div className="flex bg-gray-200 dark:bg-gray-800 rounded-lg p-1 gap-1">
-                        <button onClick={() => setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="List View"><ListBulletIcon className="w-5 h-5"/></button>
-                        <button onClick={() => setViewMode('bubbles')} className={`p-2 rounded-md ${viewMode === 'bubbles' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="Bubble View"><GlobeAltIcon className="w-5 h-5"/></button>
+                        <button onClick={() => setViewMode('list')} className="p-2 rounded-md" title="List View"><ListBulletIcon className="w-5 h-5"/></button>
+                        <button onClick={() => setViewMode('bubbles')} className="p-2 rounded-md bg-white dark:bg-gray-700 shadow" title="Bubble View"><GlobeAltIcon className="w-5 h-5"/></button>
                     </div>
                 </header>
                 <div className="flex-1 min-h-0">
@@ -132,8 +132,8 @@ export const Markets: React.FC = () => {
                     <p className="text-gray-600 dark:text-gray-400 mt-1">Explore real-time data across all asset classes.</p>
                 </div>
                 <div className="flex bg-gray-200 dark:bg-gray-800 rounded-lg p-1 gap-1">
-                    <button onClick={() => setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="List View"><ListBulletIcon className="w-5 h-5"/></button>
-                    <button onClick={() => setViewMode('bubbles')} className={`p-2 rounded-md ${viewMode === 'bubbles' ? 'bg-white dark:bg-gray-700 shadow' : ''}`} title="Bubble View"><GlobeAltIcon className="w-5 h-5"/></button>
+                    <button onClick={() => setViewMode('list')} className="p-2 rounded-md bg-white dark:bg-gray-700 shadow" title="List View"><ListBulletIcon className="w-5 h-5"/></button>
+                    <button onClick={() => setViewMode('bubbles')} className="p-2 rounded-md" title="Bubble View"><GlobeAltIcon className="w-5 h-5"/></button>
                 </div>
             </header>
 

@@ -17,7 +17,7 @@ const calculateProgress = (item: ChecklistItem): number => {
         const total = item.children.reduce((acc, child) => acc + calculateProgress(child), 0);
         return Math.round(total / item.children.length);
     }
-    return item.progress ?? 0;
+    return item.progress ?? 0;''
 };
 
 const ChecklistItemRow: React.FC<{ item: ChecklistItem; level: number }> = ({ item, level }) => {

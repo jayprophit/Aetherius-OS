@@ -14,9 +14,9 @@ import { LearnAndEarn } from '../trading/LearnAndEarn';
 import { CryptoGames } from '../trading/CryptoGames';
 import { Wallet } from '../trading/Wallet';
 import { AiTradingTools } from '../trading/AiTradingTools';
-import { UnifiedTerminal } from '../trading/UnifiedTerminal'; // Imported UnifiedTerminal
+import { UnifiedTerminal } from '../trading/UnifiedTerminal';
 import { PlaceholderView } from '../PlaceholderView';
-import { ChartBarIcon, CpuChipIcon, GlobeAltIcon } from '../Icons';
+import { ChartBarIcon, CpuChipIcon, GlobeAltIcon, ArrowPathIcon, LockClosedIcon, ScaleIcon, UsersIcon, AcademicCapIcon, GameControllerIcon, WalletIcon } from '../Icons';
 
 const financeComponentMap: { [key: string]: React.FC<any> } = {
   tradingTerminal: UnifiedTerminal, // Main Pro View
@@ -45,19 +45,36 @@ export const FinanceApp: React.FC<FinanceAppProps> = ({ context, onSetView }) =>
         return <div>Error: App context not provided.</div>;
     }
 
-    // Inject AI Trading Tools menu item if not present
     const augmentedMenuItem = { ...context.menuItem };
     let children = augmentedMenuItem.children ? [...augmentedMenuItem.children] : [];
     
     // Insert Unified Terminal at the top
     if (!children.some(c => c.component === 'tradingTerminal')) {
-         const terminalItem: MenuItemData = { 
+         children.unshift({ 
              title: 'Genesis Trade Deck', 
              icon: ChartBarIcon, 
              component: 'tradingTerminal' 
-         };
-         children.splice(0, 0, terminalItem);
+         });
     }
+
+    // Explicitly add the requested sub-menu items if they are missing
+    const requiredItems: MenuItemData[] = [
+        { title: 'Markets', icon: ChartBarIcon, component: 'tradingMarkets' },
+        { title: 'Swap', icon: ArrowPathIcon, component: 'tradingSwap' },
+        { title: 'Staking', icon: LockClosedIcon, component: 'tradingStaking' },
+        { title: 'Lending', icon: ScaleIcon, component: 'tradingLending' },
+        { title: 'Copy Trading', icon: UsersIcon, component: 'tradingCopy' },
+        { title: 'Trading Bots', icon: CpuChipIcon, component: 'tradingBots' },
+        { title: 'Learn & Earn', icon: AcademicCapIcon, component: 'tradingLearn' },
+        { title: 'Crypto Games', icon: GameControllerIcon, component: 'tradingGames' },
+        { title: 'Wallet', icon: WalletIcon, component: 'tradingWallet' }
+    ];
+
+    requiredItems.forEach(item => {
+        if (!children.some(c => c.component === item.component)) {
+            children.push(item);
+        }
+    });
 
     // Ensure AI Platform Explorer is present
     if (!children.some(c => c.component === 'aiTradingTools')) {
@@ -66,8 +83,7 @@ export const FinanceApp: React.FC<FinanceAppProps> = ({ context, onSetView }) =>
              icon: CpuChipIcon, 
              component: 'aiTradingTools' 
          };
-         const marketsIdx = children.findIndex(c => c.component === 'tradingMarkets');
-         children.splice(marketsIdx + 1, 0, aiToolItem);
+         children.push(aiToolItem);
     }
 
     augmentedMenuItem.children = children;

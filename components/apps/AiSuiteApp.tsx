@@ -3,11 +3,12 @@ import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
 import { PlaceholderView } from '../PlaceholderView';
-import { CodeBracketIcon, PencilIcon, ArrowPathIcon, HiveMindIcon, CloudIcon, CpuChipIcon, DnaIcon, CircleStackIcon } from '../Icons';
+import { CodeBracketIcon, PencilIcon, ArrowPathIcon, HiveMindIcon, CloudIcon, CpuChipIcon, DnaIcon, CircleStackIcon, UserCircleIcon } from '../Icons';
 import { HuggingFaceModelHub } from '../HuggingFaceModelHub';
 import { QuantumNeuralNetwork } from '../QuantumNeuralNetwork';
 import { QuantumDNACore } from '../QuantumDNACore';
 import { MemoryNode } from '../MemoryNode';
+import { AvatarForge } from '../AvatarForge';
 
 const aiSuiteComponentMap: { [key: string]: React.FC<any> } = {
   lovableClone: () => <PlaceholderView viewName="Lovable (App Builder) Clone" />,
@@ -22,6 +23,7 @@ const aiSuiteComponentMap: { [key: string]: React.FC<any> } = {
   quantumNN: QuantumNeuralNetwork,
   quantumDNACore: QuantumDNACore,
   memoryNode: MemoryNode,
+  avatarForge: AvatarForge,
 };
 
 interface AiSuiteAppProps {
@@ -34,11 +36,10 @@ export const AiSuiteApp: React.FC<AiSuiteAppProps> = ({ onSetView }) => {
         title: 'AI Suite',
         icon: HiveMindIcon,
         children: [
-            { title: 'Quantum Intelligence', icon: CpuChipIcon, component: 'quantumNN', children: [
-                { title: 'Quantum Neural Network', icon: CpuChipIcon, component: 'quantumNN' },
-            ]},
-            { title: 'Memory & Context', icon: CircleStackIcon, component: 'memoryNode', children: [
-                { title: 'Memory Core', icon: CircleStackIcon, component: 'memoryNode' },
+            { title: 'Advanced Core', icon: HiveMindIcon, component: 'quantumNN', children: [
+                 { title: 'Quantum Neural Network', icon: CpuChipIcon, component: 'quantumNN' },
+                 { title: 'Memory Node', icon: CircleStackIcon, component: 'memoryNode' },
+                 { title: 'Avatar Forge', icon: UserCircleIcon, component: 'avatarForge' },
             ]},
             { title: 'Identity & Biology', icon: DnaIcon, component: 'quantumDNACore', children: [
                 { title: 'Quantum DNA Core', icon: DnaIcon, component: 'quantumDNACore' },

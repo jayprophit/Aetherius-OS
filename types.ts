@@ -37,6 +37,14 @@ export interface MenuGroup {
   type: 'group';
 }
 
+export interface TaskbarConfig {
+    position: 'bottom' | 'top' | 'left' | 'right';
+    alignment: 'start' | 'center';
+    color: string;
+    transparency: number; // 0-100
+    showLabels: boolean;
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -641,4 +649,11 @@ export interface SettingsCategory {
     description: string;
     icon: React.FC<any>;
     items: SettingsItem[];
+}
+
+export interface LaunchableApp {
+  component: string;
+  title: string;
+  icon: React.FC<any>;
+  context?: any;
 }
