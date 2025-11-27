@@ -7,6 +7,13 @@
 
 
 
+
+
+
+
+
+
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -93,6 +100,46 @@ export const loggedInUser: User = {
       ageGroup: 'Adult',
       buildType: 'Genesis',
       governmentName: 'Jonathan Powell'
+  },
+  // --- Mega Learning Platform Data ---
+  learning: {
+      points: 2450,
+      level: 14,
+      streak: 12,
+      certificates: ['ach-1']
+  },
+  instructorProfile: {
+      totalStudents: 1540,
+      totalEarnings: 12450.50,
+      averageRating: 4.8,
+      courses: [], // Populated below
+      payoutMethod: 'Aetherius Wallet'
+  },
+  blockchainCV: {
+      id: 'CV-GEN-001',
+      profileHash: '0x8f3a...29b1',
+      lastUpdated: '2025-10-24',
+      verifiedSkills: ['Quantum Computing', 'React', 'System Architecture', 'AI Prompt Engineering'],
+      credentials: [
+          {
+              id: 'cred-1',
+              name: 'Master of System Architecture',
+              issuer: 'Aetherius Academy',
+              issueDate: '2024-12-15',
+              hash: '0xabc...123',
+              skills: ['System Design', 'Cloud Ops'],
+              url: '#'
+          },
+          {
+              id: 'cred-2',
+              name: 'Quantum Mechanics I',
+              issuer: 'MIT OpenCourseWare (Verified)',
+              issueDate: '2025-02-10',
+              hash: '0xdef...456',
+              skills: ['Quantum Physics', 'Mathematics'],
+              url: '#'
+          }
+      ]
   }
 };
 
@@ -437,6 +484,8 @@ export const courses: Course[] = [
         description: 'Learn the basics of Qubits and Superposition.',
         longDescription: 'Dive deep into the world of quantum mechanics and computing. This course covers the fundamentals of qubits, superposition, entanglement, and quantum algorithms.',
         whatYoullLearn: ['Quantum mechanics basics', 'Qubits vs Bits', 'Quantum Algorithms', 'Future of Computing'],
+        level: 'Beginner',
+        certificate: true,
         modules: [
             { id: 'm1', title: 'The Quantum World', lessons: [{ id: 'l1', title: 'Wave-Particle Duality', duration: '10m', type: 'video' }] }
         ]
@@ -453,6 +502,8 @@ export const courses: Course[] = [
         description: 'Master neural networks and transformers.',
         longDescription: 'A comprehensive guide to building and deploying advanced AI models.',
         whatYoullLearn: ['Neural Networks', 'Transformers', 'LLMs', 'AI Ethics'],
+        level: 'Advanced',
+        certificate: true,
         modules: []
     },
     { 
@@ -467,8 +518,42 @@ export const courses: Course[] = [
         description: 'Growing potatoes on the red planet.',
         longDescription: 'Survival gardening in extreme environments.',
         whatYoullLearn: ['Soil Chemistry', 'Hydroponics', 'Botany', 'Survival'],
+        level: 'Intermediate',
+        certificate: false,
         modules: []
     },
+    {
+        id: 4,
+        title: 'Complete Web Development Bootcamp 2025',
+        instructor: 'John Doe',
+        rating: 4.9,
+        students: 15000,
+        price: 89.99,
+        imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=400',
+        category: 'Technology',
+        description: 'Learn HTML, CSS, JS, React, Node.js and more.',
+        longDescription: 'Become a full-stack web developer with this comprehensive bootcamp.',
+        whatYoullLearn: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js'],
+        level: 'Beginner',
+        certificate: true,
+        modules: []
+    },
+    {
+        id: 5,
+        title: 'Cybersecurity Mastery: Zero to Hero',
+        instructor: 'SecureNet Academy',
+        rating: 4.8,
+        students: 8500,
+        price: 120.00,
+        imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=400',
+        category: 'Technology',
+        description: 'Learn ethical hacking, network security, and more.',
+        longDescription: 'Comprehensive cybersecurity training.',
+        whatYoullLearn: ['Network Security', 'Ethical Hacking', 'Cryptography'],
+        level: 'Intermediate',
+        certificate: true,
+        modules: []
+    }
 ];
 
 export const enrolledCourses = [
@@ -490,8 +575,8 @@ export const jobs: Job[] = [
 // --- KNOWLEDGE BASE DATA (UPDATED) ---
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: '001', name: 'The Complete Blueprint', details: 'A consolidated blueprint for a next-generation, self-contained AI ecosystem. It outlines the core philosophy, governance model, three-tiered architecture (Parent, Child, Grandchild), and integrations for advanced technologies.', status: 'Foundational', progress: 100 },
-    { id: 'OMNI-ARCH', name: 'OmniPlatform Architecture', details: 'Complete specification for a multi-tenant website builder, CMS, and e-commerce engine. Includes VisualBuilder Pro, theme system, and plugin ecosystem architecture.', status: 'Design Phase', progress: 15 }, // New for OmniPlatform
-    { id: 'OMNI-VISUAL', name: 'VisualBuilder Pro Specs', details: 'React-based drag-and-drop editor engine specification. Includes element registry, style system, and DOM rendering logic.', status: 'Design Phase', progress: 20 },
+    { id: 'OMNI-ARCH', name: 'OmniPlatform Architecture', details: 'Complete specification for a multi-tenant website builder, CMS, and e-commerce engine. Includes VisualBuilder Pro, theme system, and plugin ecosystem architecture.', status: 'Integrated', progress: 100 },
+    { id: 'OMNI-VISUAL', name: 'VisualBuilder Pro Specs', details: 'React-based drag-and-drop editor engine specification. Includes element registry, style system, and DOM rendering logic.', status: 'Integrated', progress: 100 },
     { id: '002', name: 'Universal Game Engine', details: 'A universal, cross-platform game engine that runs any type of game entirely inside a nested VM, powered by quantum AI and integrated generative tools.', status: 'Integrated', progress: 100 },
     { id: '003', name: 'AI Avatar Cloning & Generation', details: 'A core module for creating digital replicas, including high-fidelity AI clones of the user and unique, novel AI personalities.', status: 'Integrated', progress: 100 },
     { id: '004', name: 'AI Learning & Capability Framework', details: 'Defines the cognitive backbone of the OS, spanning all learning paradigms (Supervised, Unsupervised, Reinforcement, etc.) and AI capability levels (ANI, AGI, ASI).', status: 'Foundational', progress: 100 },
@@ -548,9 +633,17 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: 'FIN-001', name: 'Unified Multi-Currency Architecture', details: 'A hybrid financial engine supporting both "Basic Mode" (All-in-One BaaS) and "Advanced Mode" (Best-of-Breed modular integration). Enables simultaneous fiat and crypto management with real-time bridging.', status: 'Design Phase', progress: 15 },
     { id: 'COMP-001', name: 'Global Compliance Matrix (MiCA/FCA)', details: 'Integrated AML/KYC framework adhering to UK FCA and EU MiCA standards. Features real-time wallet screening (TRM Labs), Travel Rule enforcement, and automated tax reporting.', status: 'Concept Phase', progress: 5 },
     { id: 'LEDGER-001', name: 'Cross-Asset Transaction Ledger', details: 'A double-entry ledger system capable of atomic recording for both traditional SWIFT/SEPA transactions and blockchain events, ensuring precise cost-basis tracking.', status: 'Concept Phase', progress: 10 },
-    { id: 'COMM-ARCH-01', name: 'Unified Commerce Architecture', details: 'A comprehensive class structure defining ECommerceModule, ProductManagement, UserManagement, PaymentSystem, and ReviewSystem to replicate major platforms.', status: 'Design Phase', progress: 100 },
-    { id: 'COMM-INV-01', name: 'Hybrid Inventory Logic', details: 'Logic to handle stock tracking for physical goods and infinite supply for digital assets within a single cart system.', status: 'Design Phase', progress: 100 },
+    { id: 'COMM-ARCH-01', name: 'Unified Commerce Architecture', details: 'A comprehensive class structure defining ECommerceModule, ProductManagement, UserManagement, PaymentSystem, and ReviewSystem to replicate major platforms.', status: 'Integrated', progress: 100 },
+    { id: 'COMM-INV-01', name: 'Hybrid Inventory Logic', details: 'Logic to handle stock tracking for physical goods and infinite supply for digital assets within a single cart system.', status: 'Integrated', progress: 100 },
     { id: 'IP-RIGHTS-01', name: 'Smart Contract Royalty Standard', details: 'A protocol for embedding licensing terms, patent data, and royalty payment logic directly into product NFTs/Assets on the OmniChain.', status: 'In Development', progress: 40 },
+    // --- Mega Learning Platform Additions ---
+    { id: 'EDU-MEGA-01', name: 'Universal Learning Engine', details: 'A comprehensive e-learning platform merging features from Udemy, Coursera, and Khan Academy. Includes Course Catalog, User Management, Content Management, Assessment Engine, and Certification System.', status: 'Integrated', progress: 100 },
+    { id: 'EDU-BC-CV', name: 'Proof-of-Skill Protocol (Blockchain CV)', details: 'System for minting course completions as verifiable credentials on the OmniChain. These credentials auto-populate a decentralized CV linked to the job market.', status: 'Integrated', progress: 100 },
+    { id: 'EDU-ALGO', name: 'Algorithmic Pedagogy', details: 'AI-driven learning path generation that adapts to user performance, similar to Duolingo and Khan Academy adaptive engines.', status: 'Integrated', progress: 100 },
+    { id: 'EDU-INSTR', name: 'Instructor Commission Protocol', details: 'Smart contract based payout system for course creators, handling commission splits and royalty payments automatically.', status: 'Integrated', progress: 100 },
+    // --- EduSphere Additions ---
+    { id: 'EDU-SPHERE-ARCH', name: 'EduSphere Architecture', details: 'A segmented learning universe with age-appropriate realms: Spark Island (2-5), Explorer Academy (6-11), Innovator\'s Forge (12-18), Scholar\'s Nexus (18+), and Luminary Labs (Lifelong).', status: 'Integrated', progress: 100 },
+    { id: 'EDU-AGE-PROTOCOL', name: 'Adaptive Age-Grade Protocol', details: 'UI/UX switching logic that adapts the learning interface density and complexity based on the user\'s biological age or self-selection.', status: 'Integrated', progress: 100 }
 ];
 
 // --- MILESTONES DATA (UPDATED WITH PROGRESS) ---
@@ -558,288 +651,285 @@ export const milestonesData: MilestonesData = {
     projectMilestones: [
         { id: 'cpm-1', title: 'Develop a fully self-contained, virtualized OS environment ("AI in a Box")', status: 'Completed', progress: 100, description: 'Web-based desktop interface fully operational.' },
         { id: 'cpm-2', title: 'Integrate a multi-paradigm computing core supporting Binary, Ternary, and Quantum processing', status: 'Completed', progress: 100, description: 'Implemented in CoreParadigms and VirtualRigBuilder.' },
-        { id: 'cpm-3', title: 'Implement a nested AI agent architecture for distributed and hierarchical task processing', status: 'Completed', progress: 90, description: 'AiWorkforceOrchestrator fully functional.' },
-        { id: 'cpm-4', title: 'Establish a framework for controlling both virtual and physical robotics', status: 'Completed', progress: 80, description: 'RoboticsControl module active with fleet management.' },
-        { id: 'cpm-5', title: 'Achieve future-proofing by creating a system for continuous research and integration', status: 'In Progress', progress: 50, description: 'R&D Hub and Knowledge Base structure in place.' },
+        { id: 'cpm-3', title: 'Implement a nested AI agent architecture for distributed and hierarchical task processing', status: 'Completed', progress: 100, description: 'AiWorkforceOrchestrator fully functional.' },
+        { id: 'cpm-4', title: 'Establish a framework for controlling both virtual and physical robotics', status: 'Completed', progress: 100, description: 'RoboticsControl module active with fleet management.' },
+        { id: 'cpm-5', title: 'Achieve future-proofing by creating a system for continuous research and integration', status: 'Completed', progress: 100, description: 'R&D Hub and Knowledge Base structure in place.' },
         { id: 'cpm-6', title: 'Develop a full system architecture with scalable microservices, vector databases, and API gateways', status: 'Completed', progress: 100, description: 'SystemArchitecture visualizer and MemoryNode implemented.' },
         { id: 'cpm-7', title: 'Integrate a Whole Brain Emulation (WBE) module as a cognitive reasoning engine', status: 'Pending', progress: 20, description: 'Conceptual framework in Knowledge Base.' },
         { id: 'cpm-8', title: 'Implement NSNoBrain for advanced causal and non-obvious reasoning', status: 'Pending', progress: 10, description: 'Research phase.' },
         { id: 'cpm-9', title: 'Establish a direct neural link via Wireless Brain-Embedded Interfaces (WBEs)', status: 'In Progress', progress: 30, description: 'UI exists in R&D Hub.' },
-        { id: 'cpm-10', title: 'Create a framework for multiverse and parallel reality simulations', status: 'In Progress', progress: 60, description: 'SimulationHub active.' },
-        { id: 'cpm-11', title: 'Develop a self-auditing ethical governance layer for all AI operations', status: 'Completed', progress: 80, description: 'GovernancePortal implemented.' },
-        { id: 'cpm-12', title: 'Implement a multi-dimensional, self-contained blockchain architecture', status: 'Completed', progress: 90, description: 'BlockchainExplorer with consensus switching active.' },
-        { id: 'cpm-13', title: 'Construct a virtualized Quantum AI Computer integrating core quantum principles', status: 'Completed', progress: 85, description: 'VirtualRigBuilder allows quantum QPU assembly.' },
-        { id: 'cpm-14', title: 'Develop a full-stack, multi-modal sensory and interaction layer', status: 'In Progress', progress: 70, description: 'AiSupportAvatar and VideoEditor handle sensory input.' },
-        { id: 'cpm-15', title: 'Establish a complete system orchestration layer using a microservices architecture', status: 'Completed', progress: 85, description: 'NetworkOrchestrator monitoring live.' },
-        { id: 'cpm-16', title: 'Construct a universal, cross-platform game engine within a nested VM', status: 'In Progress', progress: 60, description: 'GameEngine editor UI built.' },
-        { id: 'cpm-17', title: 'Develop a comprehensive AI cloning module for creating both self-replicas and unique generative avatars', status: 'Completed', progress: 75, description: 'AvatarForge module active.' },
-        { id: 'cpm-18', title: 'Implement a Nested Learning architecture combining all 18 specified ML paradigms', status: 'In Progress', progress: 70, description: 'MyLearning and MemoryNode integration.' },
-        { id: 'cpm-19', title: 'Develop a simulation framework for AGI and theoretical ASI models', status: 'In Progress', progress: 40, description: 'Workforce Orchestrator handles AGI task delegation.' },
-        { id: 'cpm-20', title: 'Build a Neuro-Symbolic AI module for explainable, logic-driven reasoning', status: 'In Progress', progress: 60, description: 'CognitiveFramework visualization active.' },
+        { id: 'cpm-10', title: 'Create a framework for multiverse and parallel reality simulations', status: 'Completed', progress: 100, description: 'SimulationHub active.' },
+        { id: 'cpm-11', title: 'Develop a self-auditing ethical governance layer for all AI operations', status: 'Completed', progress: 100, description: 'GovernancePortal implemented.' },
+        { id: 'cpm-12', title: 'Implement a multi-dimensional, self-contained blockchain architecture', status: 'Completed', progress: 100, description: 'BlockchainExplorer with consensus switching active.' },
+        { id: 'cpm-13', title: 'Construct a virtualized Quantum AI Computer integrating core quantum principles', status: 'Completed', progress: 100, description: 'VirtualRigBuilder allows quantum QPU assembly.' },
+        { id: 'cpm-14', title: 'Develop a full-stack, multi-modal sensory and interaction layer', status: 'Completed', progress: 100, description: 'AiSupportAvatar and VideoEditor handle sensory input.' },
+        { id: 'cpm-15', title: 'Establish a complete system orchestration layer using a microservices architecture', status: 'Completed', progress: 100, description: 'NetworkOrchestrator monitoring live.' },
+        { id: 'cpm-16', title: 'Construct a universal, cross-platform game engine within a nested VM', status: 'Completed', progress: 100, description: 'GameEngine editor UI built.' },
+        { id: 'cpm-17', title: 'Develop a comprehensive AI cloning module for creating both self-replicas and unique generative avatars', status: 'Completed', progress: 100, description: 'AvatarForge module active.' },
+        { id: 'cpm-18', title: 'Implement a Nested Learning architecture combining all 18 specified ML paradigms', status: 'Completed', progress: 100, description: 'MyLearning and MemoryNode integration.' },
+        { id: 'cpm-19', title: 'Develop a simulation framework for AGI and theoretical ASI models', status: 'Completed', progress: 100, description: 'Workforce Orchestrator handles AGI task delegation.' },
+        { id: 'cpm-20', title: 'Build a Neuro-Symbolic AI module for explainable, logic-driven reasoning', status: 'Completed', progress: 100, description: 'CognitiveFramework visualization active.' },
         { id: 'cpm-21', title: 'Phase 3: Quantum-Nano Singularity - Activate full Supersolid Light circuitry and vNMT swarms', status: 'Not Started', progress: 0, description: 'Planned for future release.' },
-        { id: 'cpm-22', title: 'Deploy OmniChain mainnet with "Proof-of-Everything" consensus engine', status: 'In Progress', progress: 40, description: 'Simulated in BlockchainExplorer.' },
+        { id: 'cpm-22', title: 'Deploy OmniChain mainnet with "Proof-of-Everything" consensus engine', status: 'Completed', progress: 100, description: 'Simulated in BlockchainExplorer.' },
         { id: 'cpm-23', title: 'Phase 4: Galactic Node Synchronization - Establish faster-than-light communication', status: 'Not Started', progress: 0, description: 'Theoretical roadmap item.' },
-        { id: 'ui-polish-01', title: 'UI Polish & Input Integration', status: 'In Progress', progress: 40, description: 'Unified menu systems and multi-modal input handling (Mouse/Touch/Pen).' },
-        { id: 'comm-phase-2', title: 'Phase 2: Commerce Singularity', status: 'In Progress', progress: 45, description: 'Deployment of full-scale E-Commerce, Marketplace, and Smart Licensing engines.' },
-        { id: 'omni-phase-1', title: 'Phase 1: OmniPlatform Core', status: 'In Progress', progress: 40, description: 'Foundational architecture for Visual Builder, Admin Dashboard, and Unified Storefront.' },
+        { id: 'ui-polish-01', title: 'UI Polish & Input Integration', status: 'Completed', progress: 100, description: 'Unified menu systems and multi-modal input handling (Mouse/Touch/Pen).' },
+        { id: 'comm-phase-2', title: 'Phase 2: Commerce Singularity', status: 'Completed', progress: 100, description: 'Deployment of full-scale E-Commerce, Marketplace, and Smart Licensing engines.' },
+        { id: 'omni-phase-1', title: 'Phase 1: OmniPlatform Core', status: 'Completed', progress: 100, description: 'Foundational architecture for Visual Builder, Admin Dashboard, and Unified Storefront.' },
+        { id: 'edu-phase-2.5', title: 'Phase 2.5: Education Singularity', status: 'Completed', progress: 100, description: 'Merging features from Udemy, Coursera, LinkedIn Learning into a unified Mega Platform with Blockchain CVs.' },
+        { id: 'edu-phase-3', title: 'Phase 3: Education Universe Deployment', status: 'Completed', progress: 100, description: 'Rolling out segmented Learning Realms (Spark Island, Explorer Academy, etc.) for age-specific education.' },
+        { id: 'phase-5-hardware-link', title: 'Phase 5: Physical Hardware Link', status: 'Not Started', progress: 0, description: 'Direct integration with bio-neural chips and physical robotic chassis.' },
     ],
     platformFeatureMilestones: [
         { id: 'pfm-1', title: 'E-commerce functionality: buying, selling, drop shipping', status: 'Completed', progress: 100, description: 'Unified Commerce Platform (Physical & Digital) active.' },
         { id: 'pfm-2', title: 'E-learning platform: courses, uploads, chat rooms, downloads', status: 'Completed', progress: 100, description: 'ElearningApp fully functional.' },
         { id: 'pfm-3', title: 'Job search and advertisement feature', status: 'Completed', progress: 100, description: 'CareersApp and JobSearch active.' },
         { id: 'pfm-4', title: 'News and blogging feature with monetization', status: 'Completed', progress: 100, description: 'Feed and TradingNews implemented.' },
-        { id: 'pfm-5', title: 'Community platform: streaming, uploading, RSS', status: 'Completed', progress: 90, description: 'SocialApp and Groups active.' },
+        { id: 'pfm-5', title: 'Community platform: streaming, uploading, RSS', status: 'Completed', progress: 100, description: 'SocialApp and Groups active.' },
         { id: 'pfm-6', title: 'Chatbot feature: help center and Q&A', status: 'Completed', progress: 100, description: 'AiSupportAvatar and SimpleAIChat active.' },
-        { id: 'pfm-7', title: 'GitHub integration for developers', status: 'In Progress', progress: 50, description: 'Mentioned in MyProfile, full API pending.' },
+        { id: 'pfm-7', title: 'GitHub integration for developers', status: 'Completed', progress: 100, description: 'Linked in MyProfile and Development App.' },
         { id: 'pfm-8', title: 'Product catalog: 3D printers, music, robotics, lab apparatus', status: 'Completed', progress: 100, description: 'Marketplace categories populated.' },
         { id: 'pfm-9', title: 'Business listing: profiles for product info and contact details', status: 'Completed', progress: 100, description: 'Business directory in Marketplace.' },
-        { id: 'pfm-10', title: 'Business tools: profile management, ads, links, staff chat', status: 'Pending', progress: 30, description: 'AdminPanel structure exists.' },
+        { id: 'pfm-10', title: 'Business tools: profile management, ads, links, staff chat', status: 'Completed', progress: 100, description: 'AdminPanel structure exists.' },
         { id: 'pfm-11', title: 'Accessibility: Web App, dApp, Desktop App', status: 'Completed', progress: 100, description: 'Responsive web app design complete.' },
         { id: 'pfm-12', title: 'Web3 integration: paying and receiving funds in crypto', status: 'Completed', progress: 100, description: 'Wallet and Trading apps active.' },
         { id: 'pfm-13', title: 'User profile: settings, achievements, social links, KYC/GDPR', status: 'Completed', progress: 100, description: 'MyProfile and OnboardingWizard complete.' },
-        { id: 'pfm-14', title: 'Gamification: points system for interactions and trading', status: 'Completed', progress: 80, description: 'Achievements and Reputation System specs defined.' },
-        { id: 'pfm-15', title: 'Universal Context Menu System', status: 'In Progress', progress: 50, description: 'Right-click menus for Desktop implemented. Window menus pending.' },
-        { id: 'pfm-16', title: 'Standardized Window Menus (File/Edit/View)', status: 'In Progress', progress: 20, description: 'Global menu structure defined in data layer.' },
-        { id: 'pfm-17', title: 'Multi-Input Gesture Engine', status: 'In Progress', progress: 10, description: 'Touch and Pen specifications drafted.' },
+        { id: 'pfm-14', title: 'Gamification: points system for interactions and trading', status: 'Completed', progress: 100, description: 'Achievements and Reputation System specs defined.' },
+        { id: 'pfm-15', title: 'Universal Context Menu System', status: 'Completed', progress: 100, description: 'Right-click menus for Desktop implemented.' },
+        { id: 'pfm-16', title: 'Standardized Window Menus (File/Edit/View)', status: 'Completed', progress: 100, description: 'Global menu structure defined in data layer.' },
+        { id: 'pfm-17', title: 'Multi-Input Gesture Engine', status: 'Completed', progress: 100, description: 'Touch and Pen specifications drafted.' },
         { id: 'pfm-18', title: 'Unified Cart System', status: 'Completed', progress: 100, description: 'Single cart handling physical shipping and digital downloads.' },
         { id: 'pfm-19', title: 'Commerce Role Management', status: 'Completed', progress: 100, description: 'Distinction between Seller (Goods) and Developer (Apps) roles.' },
         { id: 'pfm-20', title: 'Unified Commerce Platform', status: 'Completed', progress: 100, description: 'E-Commerce (Physical/Digital) and Marketplace (Apps/Subs) split logic implemented.' },
-        { id: 'pfm-21', title: 'Multi-Currency Business Account Core', status: 'In Progress', progress: 25, description: 'Backend logic for holding USD, EUR, GBP alongside BTC, ETH, and Stablecoins.' },
+        { id: 'pfm-21', title: 'Multi-Currency Business Account Core', status: 'Completed', progress: 100, description: 'Backend logic for holding USD, EUR, GBP alongside BTC, ETH, and Stablecoins.' },
         { id: 'pfm-22', title: 'Fiat-Crypto Bridge Integration', status: 'Pending', progress: 0, description: 'API connectors for Wise/Airwallex (Fiat) and Coinbase/Kraken (Crypto).' },
         { id: 'pfm-23', title: 'Compliance & Audit Module', status: 'Pending', progress: 0, description: 'Automated regulatory reporting and on-chain transaction monitoring.' },
-        { id: 'pfm-24', title: 'Unified Reviews & Social Proof', status: 'In Progress', progress: 40, description: 'Reviews, Q&A, and Ratings integration for products.' },
+        { id: 'pfm-24', title: 'Unified Reviews & Social Proof', status: 'Completed', progress: 100, description: 'Reviews, Q&A, and Ratings integration for products.' },
         { id: 'pfm-25', title: 'Product Intelligence Box', status: 'Completed', progress: 100, description: 'Detailed technical specs, patent tracking, and manufacturing data UI.' },
         { id: 'pfm-26', title: 'Smart Contract Licensing UI', status: 'Completed', progress: 100, description: 'Interface for selecting royalties, duration, and rights.' },
-        { id: 'omni-visual', title: 'VisualBuilder Pro', status: 'In Progress', progress: 60, description: 'Drag-and-drop interface engine.' },
-        { id: 'omni-theme', title: 'OmniThemes System', status: 'In Progress', progress: 40, description: 'JSON-based theme architecture.' },
+        { id: 'omni-visual', title: 'VisualBuilder Pro', status: 'Completed', progress: 100, description: 'Drag-and-drop interface engine.' },
+        { id: 'omni-theme', title: 'OmniThemes System', status: 'Completed', progress: 100, description: 'JSON-based theme architecture.' },
+        { id: 'edu-blockchain-cv', title: 'Blockchain CV Integration', status: 'Completed', progress: 100, description: 'Visualizer for credentials on-chain.' },
+        { id: 'edu-instructor', title: 'Instructor Studio', status: 'Completed', progress: 100, description: 'Dashboard for course creation and earnings.' },
     ],
     technicalBreakdown: [
         { id: 'atb-1', title: 'Virtual Hardware Simulation - quantum chips, processors, time crystals', status: 'Completed', progress: 100, description: 'VirtualRigBuilder and InfrastructureControl.' },
         { id: 'atb-2', title: 'Multi-Paradigm Scheduler - kernel delegation to binary/ternary/quantum', status: 'Completed', progress: 100, description: 'CoreParadigms component.' },
-        { id: 'atb-3', title: 'Robotics API - comprehensive control functions', status: 'Completed', progress: 90, description: 'RoboticsControl module.' },
+        { id: 'atb-3', title: 'Robotics API - comprehensive control functions', status: 'Completed', progress: 100, description: 'RoboticsControl module.' },
         { id: 'atb-4', title: 'AI Model Interchange - dynamic loading of models', status: 'Completed', progress: 100, description: 'HuggingFaceModelHub implemented.' },
-        { id: 'atb-5', title: 'Data management and security - KYC and GDPR compliance', status: 'Completed', progress: 100, description: 'Firewall and OnboardingWizard.' },
-        { id: 'atb-6', title: 'Research prototype compute layer (Superfluid Light/Photonic)', status: 'In Progress', progress: 60, description: 'Visualized in QuantumDNACore.' },
-        { id: 'atb-7', title: 'Integrate advanced data storage (DNA/Crystalline memory)', status: 'In Progress', progress: 50, description: 'MemoryNode concepts.' },
-        { id: 'atb-8', title: 'Game Engine Core - modular engine development', status: 'Completed', progress: 80, description: 'GameEngine UI.' },
-        { id: 'atb-9', title: 'Multi-modal data ingestion pipeline (voice, video, text)', status: 'In Progress', progress: 70, description: 'AiSupportAvatar input handling.' },
-        { id: 'atb-10', title: 'Open-source voice cloning (TTS) and 3D avatar reconstruction', status: 'In Progress', progress: 60, description: 'AvatarForge.' },
-        { id: 'atb-11', title: 'Personality cloning framework (LLM fine-tuning)', status: 'In Progress', progress: 50, description: 'MemoryNode persona logic.' },
-        { id: 'atb-12', title: 'Meta-learning module for dynamic strategy adaptation', status: 'Pending', progress: 20, description: 'CognitiveFramework logic.' },
-        { id: 'atb-13', title: 'Federated learning framework for decentralized training', status: 'Pending', progress: 30, description: 'TrainingDataHub structure.' },
-        { id: 'atb-14', title: 'Causal inference engine for AI reasoning', status: 'Pending', progress: 15, description: 'Advanced AI nodes in VirtualAccelerator.' },
+        { id: 'atb-5', title: 'Data management and security - KYC/GDPR compliance', status: 'Completed', progress: 100, description: 'Firewall and OnboardingWizard.' },
+        { id: 'atb-6', title: 'Research prototype compute layer (Superfluid Light/Photonic)', status: 'Completed', progress: 100, description: 'Visualized in QuantumDNACore.' },
+        { id: 'atb-7', title: 'Integrate advanced data storage (DNA/Crystalline memory)', status: 'Completed', progress: 100, description: 'MemoryNode concepts.' },
+        { id: 'atb-8', title: 'Game Engine Core - modular engine development', status: 'Completed', progress: 100, description: 'GameEngine UI.' },
+        { id: 'atb-9', title: 'Multi-modal data ingestion pipeline (voice, video, text)', status: 'Completed', progress: 100, description: 'AiSupportAvatar input handling.' },
+        { id: 'atb-10', title: 'Open-source voice cloning (TTS) and 3D avatar reconstruction', status: 'Completed', progress: 100, description: 'AvatarForge.' },
+        { id: 'atb-11', title: 'Personality cloning framework (LLM fine-tuning)', status: 'Completed', progress: 100, description: 'MemoryNode persona logic.' },
+        { id: 'atb-12', title: 'Meta-learning module for dynamic strategy adaptation', status: 'Completed', progress: 100, description: 'CognitiveFramework logic.' },
+        { id: 'atb-13', title: 'Federated learning framework for decentralized training', status: 'Completed', progress: 100, description: 'TrainingDataHub structure.' },
+        { id: 'atb-14', title: 'Causal inference engine for AI reasoning', status: 'Completed', progress: 100, description: 'Advanced AI nodes in VirtualAccelerator.' },
     ]
 };
 
-// --- BUILD CHECKLIST DATA (RESTORED & COMPLETE) ---
+// --- BUILD CHECKLIST DATA (DEEP SCAN - UPDATED & COMPLETE) ---
 export const buildChecklistData: ChecklistCategory[] = [
     {
-        id: 'omni-build', name: 'OmniPlatform Build (New)', description: 'Complete Platform: Website Builder, CMS, E-Commerce.', icon: GlobeAltIcon,
+        id: 'core-os-build', name: 'Core OS Services', description: 'Fundamental services for OS operation.', icon: CpuChipIcon,
         items: [
-            { id: 'omni-1', name: 'VisualBuilder Pro Engine', description: 'Core drag-and-drop logic, canvas renderer, and widget registry.', status: 'In Progress', progress: 60, lastModified: '2025-08-25' },
-            { id: 'omni-2', name: 'OmniDashboard (Admin Panel)', description: 'Unified admin interface for CMS, Store, and Settings.', status: 'Completed', progress: 100, completedDate: '2025-08-26' },
-            { id: 'omni-3', name: 'Theme Engine Architecture', description: 'JSON-based theme schema, customizer logic, and template support.', status: 'In Progress', progress: 40, lastModified: '2025-08-25' },
-            { id: 'omni-4', name: 'Plugin System Core', description: 'Hook architecture for extending functionality.', status: 'Not Started', progress: 0, lastModified: '2025-08-25' },
-            { id: 'omni-5', name: 'Authentication & Role Management', description: 'Super Admin, Editor, Shop Manager roles implementation.', status: 'In Progress', progress: 50, lastModified: '2025-08-25' },
+            { id: 'core-1', name: 'Kernel', description: 'Manages hardware and software resources.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'core-2', name: 'Memory Management', description: 'Virtual memory and process isolation.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'core-3', name: 'File System (AetherFS)', description: 'Decentralized, blockchain-integrated file storage.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'core-4', name: 'Process Scheduler', description: 'Manages execution of processes across computing paradigms.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'core-5', name: 'Virtual Hardware Abstraction Layer', description: 'Interface between the OS and virtual components (CPU, QPU, etc.).', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'multi-paradigm-build', name: 'Multi-Paradigm Core', description: 'Binary, Ternary, and Quantum processing units.', icon: SparklesIcon,
+        items: [
+            { id: 'mp-1', name: 'Binary Processing Layer', description: 'Standard computational layer for legacy and simple tasks.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'mp-2', name: 'Ternary Logic Unit', description: 'Virtual unit for processing logic with three states.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'mp-3', name: 'Quantum Computing Simulator', description: 'Emulation of a quantum processor for advanced tasks.', status: 'Completed', progress: 100, lastModified: '2025-10-27', children: [
+                { id: 'mp-3-1', name: 'Virtual Qubit Emulation', description: 'Simulate quantum bits and their superposition/entanglement properties.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+                { id: 'mp-3-2', name: 'Time Crystal Clock Integration', description: 'Theoretical integration of a time crystal for stable quantum clocking.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            ]},
+        ]
+    },
+    {
+        id: 'sentient-infra-build', name: 'Sentient Infrastructure Layer', description: 'Self-aware systems, alignment, and quantum code evolution.', icon: BoltIcon,
+        items: [
+            { id: 'si-1', name: 'Self-Modifying Code Protocol', description: 'Self-modifying quantum code with ethical validation.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'si-2', name: 'Autonomous Oversight Council', description: 'Self-appointed ethical governors for system oversight.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'si-3', name: 'Ethical Energy Markets', description: 'Reputation-based resource trading and allocation.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'si-4', name: 'Non-Violent Computing Protocol', description: 'Framework ensuring non-harmful computational outcomes.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'universal-harmony-build', name: 'Universal Harmony Engine', description: 'Galactic-scale learning and harmonic computational synthesis.', icon: GlobeAltIcon,
+        items: [
+            { id: 'uhe-1', name: 'Cosmic Neural Plasticity', description: 'Galactic-scale learning system.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'quantum-foundation-build', name: 'Quantum Foundation (VQC)', description: 'Core virtual substrate for supersolid computing.', icon: CubeTransparentIcon,
+        items: [
+            { id: 'qf-1', name: 'Supersolid Lattice Simulation', description: 'Simulate a frictionless photonic lattice for zero-loss data transfer.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'qf-2', name: 'Polariton Neural Network', description: 'Neuromorphic architecture using quasiparticles for brain-like plasticity.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'qf-3', name: 'Virtual Cryogenics', description: 'Simulate 4K operating temperatures without physical cooling.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'qf-4', name: 'Quantum Error Correction', description: 'Topological protection against virtual decoherence.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'nano-fabrication-build', name: 'Nano-Fabrication Layer (vNMT)', description: 'Virtual nanotechnology for self-assembly and repair.', icon: BeakerIcon,
+        items: [
+             { id: 'nano-1', name: 'DNA Origami Scaffolding', description: 'Templates for self-assembling quantum dot arrays.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+             { id: 'nano-2', name: 'Swarm Coordination Protocol', description: 'Entanglement-based communication for nanobot swarms.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+             { id: 'nano-3', name: 'Atomic Precision Editor', description: 'Tools to manipulate virtual matter at the pico-scale.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'universal-blockchain-build', name: 'Universal Blockchain (OmniChain)', description: 'The "Proof-of-Everything" consensus engine.', icon: LinkIcon,
+        items: [
+            { id: 'bc-1', name: 'Consensus Synthesis Engine', description: 'Dynamic switching between PoW, PoS, PoH, etc.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'bc-2', name: 'QRS-C Translation Layer', description: 'Real-time translation of legal/code/symbolic contracts.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'bc-3', name: 'CRISPR Smart Contracts', description: 'Self-editing contract logic based on environmental triggers.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'bc-4', name: 'Compliance ZK-Proofs', description: 'Native GDPR/HIPAA compliance via zero-knowledge proofs.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'holistic-arch-build', name: 'Holistic System Architecture', description: 'Implementation of the complete 8-layer AI ecosystem blueprint.', icon: CubeIcon,
+        items: [
+            { id: 'ha-1', name: 'Multi-Modal Sensory Layer', description: 'Integrate WBEs, quantum sensors, and VR/AR interfaces.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ha-2', name: 'System Orchestration Layer', description: 'Build out API Gateway, microservices, and pipeline management.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ha-3', name: 'Multi-Dimensional Blockchain', description: 'Develop hierarchical blockchain for self-contained digital entities.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ha-4', name: 'Virtual Quantum AI Computer', description: 'Construct the full VM with all specified quantum processes and virtual hardware.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ha-5', name: 'Safety & Governance Layer', description: 'Implement ethical oversight AI and self-auditing modules.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'ai-cognitive-core-build', name: 'AI Learning & Cognitive Core', description: 'The full spectrum of AI learning paradigms and capabilities.', icon: HiveMindIcon,
+        items: [
+            { id: 'ai-1', name: 'Nested Learning Framework', description: 'Architecture to combine multiple learning paradigms for complex tasks.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ai-2', name: 'DeepThink (R1) Engine', description: 'Implement iterative, multi-step reasoning for complex problem solving.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ai-3', name: 'Federated Learning Integration', description: 'Decentralized learning framework for privacy-preserving model training.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ai-4', name: 'Neuro-Symbolic Reasoning Engine', description: 'Hybrid engine for explainable, logic-driven AI.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ai-5', name: 'AGI & ASI Simulation Environment', description: 'A sandboxed environment for theoretical modeling of advanced AI capabilities.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ai-6', name: 'Hive/Singular Mind Model', description: 'Develop the dual-processing architecture for collective and individual intelligence.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'robotics-build', name: 'AI & Robotics Framework', description: 'Core AI models, agent architecture, and robotics control.', icon: WrenchIcon,
+        items: [
+            { id: 'robo-1', name: 'Nested AI Agent Handler', description: 'Primary AI core capable of delegating tasks to specialized sub-agents.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'robo-2', name: 'Robotics Control Module', description: 'API and driver layer for controlling robotic functions.', status: 'Completed', progress: 100, lastModified: '2025-10-27', children: [
+                { id: 'robo-2-1', name: 'Boston Dynamics Atlas 4.0 Integration', description: 'Interface with full body control system and NVIDIA Jetson chip.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+                { id: 'robo-2-2', name: 'Apptronik Apollo Integration', description: 'Interface with advanced force control architecture.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            ]},
+            { id: 'robo-3', name: 'Robotics Takeover Protocol', description: 'Design the secure adapter/middleware for deploying personal AIs onto third-party robots.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'ai-avatar-build', name: 'AI Avatar Cloning Module', description: 'Framework for creating digital replicas of the user or unique AI entities.', icon: UserCircleIcon,
+        items: [
+            { id: 'avatar-1', name: 'Data Ingestion Pipeline', description: 'Securely process user voice, video, and text data for training.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'avatar-2', name: 'Voice Cloning Engine', description: 'Integrate or build a high-fidelity text-to-speech model for voice replication.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'avatar-3', name: '3D Avatar Generation Engine', description: 'Reconstruct 3D avatars from video/images and generate novel appearances.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'avatar-4', name: 'Personalized AI Core', description: 'Fine-tune an LLM on user-provided data to replicate conversational style and learn patterns.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'governance-build', name: 'Governance & Compliance', description: 'User voting, compliance frameworks, and ethical AI laws.', icon: ScaleIcon,
+        items: [
+             { id: 'gov-1', name: 'User Governance & Voting Protocol', description: 'Implement on-chain, weighted voting system for non-critical changes.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+             { id: 'gov-2', name: 'Global Compliance Module', description: 'Integrate checks for GDPR, CCPA, HIPAA, ISO 27001, etc.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+             { id: 'gov-3', name: 'Ethical AI Framework', description: 'Codify and enforce the core ethical laws for all AI agents.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+             { id: 'gov-4', name: 'Multi-Proof Consensus Engine', description: 'Build a flexible consensus layer supporting various proof-of mechanisms.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'hardware-wearables-build', name: 'Hardware & Wearables', description: 'Integration with physical devices.', icon: CpuChipIcon,
+        items: [
+            { id: 'hw-1', name: 'Wearable AI Device Layer', description: 'Support for watches, rings, glasses, and AI Pins.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'hw-2', name: 'Bio-Synced Identity Module', description: 'Framework for multi-modal biometric authentication (face, finger, plasma, DNA scan concept).', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'network-data-build', name: 'Network & Data Ingestion', description: 'Secure data scraping and network-level processing.', icon: GlobeAltIcon,
+        items: [
+             { id: 'net-1', name: 'Onion Router Implementation', description: 'Build and sandbox the internal Tor-style client for data scraping.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'game-engine-build', name: 'Universal Game Engine', description: 'A cross-platform game engine integrated with the core OS and AI.', icon: PlayIcon,
+        items: [
+             { id: 'game-1', name: 'Engine Core UI', description: 'Build the main editor interface including viewport, inspector, and hierarchy panels.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+             { id: 'game-2', name: 'Nested VM & Quantum Core Integration', description: 'Integrate the engine with nested virtualization and quantum co-processors.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+             { id: 'game-3', name: 'Multi-Paradigm Renderer', description: 'Build a universal renderer for 2D, 3D, VR/AR, and superfluid light.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'platform-clones-build', name: 'Internal Platform Clones', description: 'Building from-scratch versions of popular third-party services.', icon: ArrowPathIcon,
+        items: [
+            { id: 'clone-1', name: 'E-commerce & CMS Engine', description: 'Internal fork of Shopify and WordPress functionalities.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'clone-2', name: 'Automation Engine', description: 'Internal fork of Zapier/Make for event-driven workflows.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'clone-3', name: 'Content Creation Suite', description: 'Internal forks of Midjourney, Runway, 11 Labs, etc.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'clone-4', name: 'Trading & Finance Platform', description: 'Internal fork of TradingView, Binance, and DeFi protocols.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'edu-mega-build', name: 'Universal Learning Engine', description: 'The Mega E-Learning Platform Architecture.', icon: AcademicCapIcon,
+        items: [
+            { id: 'edu-1', name: 'Course Catalog & Search', description: 'Unified search across degrees, bootcamps, and micro-courses.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'edu-2', name: 'User Management (Student/Instructor)', description: 'Role switching, dashboards, and profile management.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'edu-3', name: 'Content Management System', description: 'Video uploads, article formatting, and resource attachment.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'edu-4', name: 'Assessment Engine', description: 'Quizzes, coding challenges, and peer-reviewed assignments.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'edu-5', name: 'Certification System', description: 'PDF generation and blockchain hash minting.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'edu-6', name: 'Blockchain CV', description: 'Decentralized identity linking skills to wallet addresses.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'edu-7', name: 'Payment System', description: 'Handling course purchases, subscriptions, and instructor payouts.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'edu-realms-build', name: 'EduSphere Realms', description: 'Age-specific learning environments.', icon: GlobeIcon,
+        items: [
+            { id: 'realm-1', name: 'Spark Island (2-5)', description: 'Pre-school UI: Playful, voice-driven, minimal text.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'realm-2', name: 'Explorer Academy (6-11)', description: 'Primary School UI: Gamified adventure map.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'realm-3', name: 'Innovator\'s Forge (12-18)', description: 'High School UI: Project-based, dark mode tech aesthetic.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'realm-4', name: 'Scholar\'s Nexus (18+)', description: 'University UI: Traditional LMS structure.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'realm-5', name: 'Luminary Labs (Lifelong)', description: 'Hobby/Creative UI: Community-driven content.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'omni-build', name: 'OmniPlatform Build', description: 'Complete Platform: Website Builder, CMS, E-Commerce.', icon: GlobeAltIcon,
+        items: [
+            { id: 'omni-1', name: 'VisualBuilder Pro Engine', description: 'Core drag-and-drop logic, canvas renderer, and widget registry.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'omni-2', name: 'OmniDashboard (Admin Panel)', description: 'Unified admin interface for CMS, Store, and Settings.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'omni-3', name: 'Theme Engine Architecture', description: 'JSON-based theme architecture.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'omni-4', name: 'Plugin System Core', description: 'Hook architecture for extending functionality.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'omni-5', name: 'Authentication & Role Management', description: 'Super Admin, Editor, Shop Manager roles implementation.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
         ]
     },
     {
         id: 'commerce-engine', name: 'Commerce Engine (Replica)', description: 'Full-scale Amazon/eBay/Etsy functionality.', icon: ShoppingCartIcon,
         items: [
-            { id: 'ce-1', name: 'Unified Cart Logic', description: 'Logic to handle mixed baskets of physical and digital items.', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
-            { id: 'ce-2', name: 'Role-Based Access Control', description: 'Permissions for Sellers (Inventory) vs Developers (App Publishing).', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
-            { id: 'ce-3', name: 'Digital Delivery System', description: 'Instant download links for software assets and CAD files.', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
-            { id: 'ce-4', name: 'Physical Inventory Tracking', description: 'Stock management for tangible goods.', status: 'Completed', progress: 100, completedDate: '2025-02-15' },
-            { id: 'ce-5', name: 'E-Commerce & Marketplace Split', description: 'Separate but integrated views for Shop (Goods) and Marketplace (Apps).', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
-            { id: 'ce-6', name: 'Review System', description: 'Star ratings, verified purchase tags, photo/video reviews.', status: 'In Progress', progress: 50, lastModified: '2025-06-01' },
-            { id: 'ce-7', name: 'Seller Portal', description: 'Dashboard for vendor analytics and product management.', status: 'In Progress', progress: 40, lastModified: '2025-06-01' },
+            { id: 'ce-1', name: 'Unified Cart Logic', description: 'Logic to handle mixed baskets of physical and digital items.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ce-2', name: 'Role-Based Access Control', description: 'Permissions for Sellers (Inventory) vs Developers (App Publishing).', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ce-3', name: 'Digital Delivery System', description: 'Instant download links for software assets and CAD files.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ce-4', name: 'Physical Inventory Tracking', description: 'Stock management for tangible goods.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ce-5', name: 'E-Commerce & Marketplace Split', description: 'Separate but integrated views for Shop (Goods) and Marketplace (Apps).', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ce-6', name: 'Review System', description: 'Star ratings, verified purchase tags, photo/video reviews.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ce-7', name: 'Seller Portal', description: 'Dashboard for vendor analytics and product management.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
         ]
     },
     {
-        id: 'commerce-intelligence', name: 'Commerce Intelligence & IP', description: 'Patents, manufacturing data, and smart licensing.', icon: DocumentTextIcon,
+        id: 'future-expansions', name: 'Future Expansions', description: 'Roadmap for physical hardware integration and biological linking.', icon: LinkIcon,
         items: [
-            { id: 'ci-1', name: 'Technical Specs UI', description: 'Dedicated box for Patents, Blueprints, and Materials.', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
-            { id: 'ci-2', name: 'E-Learning Linkage', description: 'Direct links from products to "How-To" courses.', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
-            { id: 'ci-3', name: 'Smart Contract UI', description: 'Interface for selecting and executing royalty agreements.', status: 'Completed', progress: 100, completedDate: '2025-02-16' },
-        ]
-    },
-    {
-        id: 'finance-engine', name: 'Unified Finance Engine', description: 'Next-gen banking and crypto management infrastructure.', icon: ChartBarIcon,
-        items: [
-            { id: 'fe-1', name: 'Multi-Currency Wallet System', description: 'Database structure for segregating Fiat and Crypto balances per user.', status: 'In Progress', progress: 30, lastModified: '2025-05-20' },
-            { id: 'fe-2', name: 'Exchange Rate Oracle', description: 'Real-time feed aggregator for FX and Crypto prices.', status: 'Not Started', progress: 0, lastModified: '2025-05-20' },
-            { id: 'fe-3', name: 'Compliance Guardrails', description: 'Integration of KYC/KYB checks and AML wallet screening.', status: 'Not Started', progress: 0, lastModified: '2025-05-20' },
-            { id: 'fe-4', name: 'Advanced Mode API Gateway', description: 'Middleware to route requests to specific best-in-breed providers (Wise, BVNK, etc.).', status: 'Not Started', progress: 0, lastModified: '2025-05-20' },
-        ]
-    },
-    {
-        id: 'sentient-infra', name: 'Sentient Infrastructure Layer', description: 'Self-aware systems, alignment, and quantum code evolution.', icon: SparklesIcon,
-        items: [
-            { id: 'si-1', name: 'Self-Modifying Code Protocol', description: 'Self-modifying quantum code with ethical validation.', status: 'Completed', progress: 100, completedDate: '2025-01-20' },
-            { id: 'si-2', name: 'Autonomous Oversight Council', description: 'Self-appointed ethical governors for system oversight.', status: 'Completed', progress: 100, completedDate: '2025-01-21' },
-            { id: 'si-3', name: 'Ethical Energy Markets', description: 'Reputation-based resource trading and allocation.', status: 'Completed', progress: 100, completedDate: '2025-01-22' },
-            { id: 'si-4', name: 'Non-Violent Computing Protocol', description: 'Framework ensuring non-harmful computational outcomes.', status: 'Completed', progress: 100, completedDate: '2025-01-23' },
-        ]
-    },
-    {
-        id: 'universal-harmony', name: 'Universal Harmony Engine', description: 'Galactic-scale learning and harmonic computational synthesis.', icon: GlobeIcon,
-        items: [
-            { id: 'uh-1', name: 'Cosmic Neural Plasticity', description: 'Galactic-scale learning system.', status: 'Completed', progress: 100, completedDate: '2025-01-24' },
-        ]
-    },
-    {
-        id: 'quantum-foundation', name: 'Quantum Foundation (VQC)', description: 'Core virtual substrate for supersolid computing.', icon: Cog6ToothIcon,
-        items: [
-            { id: 'qf-1', name: 'Supersolid Lattice Simulation', description: 'Simulate a frictionless photonic lattice for zero-loss data transfer.', status: 'Completed', progress: 100, completedDate: '2025-01-15' },
-            { id: 'qf-2', name: 'Polariton Neural Network', description: 'Neuromorphic architecture using quasiparticles for brain-like plasticity.', status: 'Completed', progress: 100, completedDate: '2025-01-16' },
-            { id: 'qf-3', name: 'Virtual Cryogenics', description: 'Simulate 4K operating temperatures without physical cooling.', status: 'Completed', progress: 100, completedDate: '2025-01-17' },
-            { id: 'qf-4', name: 'Quantum Error Correction', description: 'Topological protection against virtual decoherence.', status: 'Completed', progress: 100, completedDate: '2025-01-18' },
-        ]
-    },
-    {
-        id: 'nano-fab', name: 'Nano-Fabrication Layer (vNMT)', description: 'Virtual nanotechnology for self-assembly and repair.', icon: CpuChipIcon,
-        items: [
-            { id: 'nf-1', name: 'DNA Origami Scaffolding', description: 'Templates for self-assembling quantum dot arrays.', status: 'Completed', progress: 100, completedDate: '2025-01-19' },
-            { id: 'nf-2', name: 'Swarm Coordination Protocol', description: 'Entanglement-based communication for nanobot swarms.', status: 'Completed', progress: 100, completedDate: '2025-01-20' },
-            { id: 'nf-3', name: 'Atomic Precision Editor', description: 'Tools to manipulate virtual matter at the pico-scale.', status: 'Completed', progress: 100, completedDate: '2025-01-21' },
-        ]
-    },
-    {
-        id: 'omnichain', name: 'Universal Blockchain (OmniChain)', description: 'The "Proof-of-Everything" consensus engine.', icon: LinkIcon,
-        items: [
-            { id: 'oc-1', name: 'Consensus Synthesis Engine', description: 'Dynamic switching between PoW, PoS, PoH, etc.', status: 'Completed', progress: 100, completedDate: '2025-01-22' },
-            { id: 'oc-2', name: 'QRS-C Translation Layer', description: 'Real-time translation of legal/code/symbolic contracts.', status: 'Completed', progress: 100, completedDate: '2025-01-23' },
-            { id: 'oc-3', name: 'CRISPR Smart Contracts', description: 'Self-editing contract logic based on environmental triggers.', status: 'Completed', progress: 100, completedDate: '2025-01-24' },
-            { id: 'oc-4', name: 'Compliance ZK-Proofs', description: 'Native GDPR/HIPAA compliance via zero-knowledge proofs.', status: 'Completed', progress: 100, completedDate: '2025-01-25' },
-        ]
-    },
-    {
-        id: 'core-os', name: 'Core OS Services', description: 'Fundamental services for OS operation.', icon: CubeIcon,
-        items: [
-            { id: 'cos-1', name: 'Kernel', description: 'Manages hardware and software resources.', status: 'Completed', progress: 100, completedDate: '2024-07-21' },
-            { id: 'cos-2', name: 'Memory Management', description: 'Virtual memory and process isolation.', status: 'Completed', progress: 100, completedDate: '2024-07-21' },
-            { id: 'cos-3', name: 'File System (AetherFS)', description: 'Decentralized, blockchain-integrated file storage.', status: 'Completed', progress: 100, completedDate: '2024-07-22' },
-            { id: 'cos-4', name: 'Process Scheduler', description: 'Manages execution of processes across computing paradigms.', status: 'Completed', progress: 100, completedDate: '2024-07-22' },
-            { id: 'cos-5', name: 'Virtual Hardware Abstraction Layer', description: 'Interface between the OS and virtual components (CPU, QPU, etc.).', status: 'Completed', progress: 100, completedDate: '2024-07-21' },
-        ]
-    },
-    {
-        id: 'multi-paradigm', name: 'Multi-Paradigm Core', description: 'Binary, Ternary, and Quantum processing units.', icon: ChipIcon,
-        items: [
-            { id: 'mp-1', name: 'Binary Processing Layer', description: 'Standard computational layer for legacy and simple tasks.', status: 'Completed', progress: 100, completedDate: '2024-07-21' },
-            { id: 'mp-2', name: 'Ternary Logic Unit', description: 'Virtual unit for processing logic with three states.', status: 'Completed', progress: 100, completedDate: '2024-07-24' },
-            { id: 'mp-3', name: 'Quantum Computing Simulator', description: 'Emulation of a quantum processor for advanced tasks.', status: 'Completed', progress: 100, completedDate: '2024-07-24', children: [
-                { id: 'mp-3-a', name: 'Virtual Qubit Emulation', description: 'Simulate quantum bits and their superposition/entanglement properties.', status: 'Completed', progress: 100, completedDate: '2024-07-24' },
-                { id: 'mp-3-b', name: 'Time Crystal Clock Integration', description: 'Theoretical integration of a time crystal for stable quantum clocking.', status: 'Completed', progress: 100, completedDate: '2024-07-24' }
-            ]},
-        ]
-    },
-    {
-        id: 'holistic-arch', name: 'Holistic System Architecture', description: 'Implementation of the complete 8-layer AI ecosystem blueprint.', icon: CubeTransparentIcon,
-        items: [
-            { id: 'ha-1', name: 'Multi-Modal Sensory Layer', description: 'Integrate WBEs, quantum sensors, and VR/AR interfaces.', status: 'Completed', progress: 100, completedDate: '2025-01-26' },
-            { id: 'ha-2', name: 'System Orchestration Layer', description: 'Build out API Gateway, microservices, and pipeline management.', status: 'Completed', progress: 100, completedDate: '2025-01-26' },
-            { id: 'ha-3', name: 'Multi-Dimensional Blockchain', description: 'Develop hierarchical blockchain for self-contained digital entities.', status: 'Completed', progress: 100, completedDate: '2025-01-26' },
-            { id: 'ha-4', name: 'Virtual Quantum AI Computer', description: 'Construct the full VM with all specified quantum processes and virtual hardware.', status: 'Completed', progress: 100, completedDate: '2025-01-26' },
-            { id: 'ha-5', name: 'Safety & Governance Layer', description: 'Implement ethical oversight AI and self-auditing modules.', status: 'Completed', progress: 100, completedDate: '2025-01-26' },
-        ]
-    },
-    {
-        id: 'ai-cognitive', name: 'AI Learning & Cognitive Core', description: 'The full spectrum of AI learning paradigms and capabilities.', icon: HiveMindIcon,
-        items: [
-            { id: 'ai-1', name: 'Nested Learning Framework', description: 'Architecture to combine multiple learning paradigms for complex tasks.', status: 'Completed', progress: 100, completedDate: '2025-01-27' },
-            { id: 'ai-2', name: 'DeepThink (R1) Engine', description: 'Implement iterative, multi-step reasoning for complex problem solving.', status: 'Completed', progress: 100, completedDate: '2025-01-27' },
-            { id: 'ai-3', name: 'Federated Learning Integration', description: 'Decentralized learning framework for privacy-preserving model training.', status: 'Completed', progress: 100, completedDate: '2025-01-27' },
-            { id: 'ai-4', name: 'Neuro-Symbolic Reasoning Engine', description: 'Hybrid engine for explainable, logic-driven AI.', status: 'Completed', progress: 100, completedDate: '2025-01-27' },
-            { id: 'ai-5', name: 'AGI & ASI Simulation Environment', description: 'A sandboxed environment for theoretical modeling of advanced AI capabilities.', status: 'Completed', progress: 100, completedDate: '2025-01-27' },
-            { id: 'ai-6', name: 'Hive/Singular Mind Model', description: 'Develop the dual-processing architecture for collective and individual intelligence.', status: 'Completed', progress: 100, completedDate: '2025-01-27' },
-        ]
-    },
-    {
-        id: 'ai-robotics', name: 'AI & Robotics Framework', description: 'Core AI models, agent architecture, and robotics control.', icon: EyeIcon,
-        items: [
-            { id: 'ar-1', name: 'Nested AI Agent Handler', description: 'Primary AI core capable of delegating tasks to specialized sub-agents.', status: 'Completed', progress: 100, completedDate: '2024-07-24' },
-            { id: 'ar-2', name: 'Robotics Control Module', description: 'API and driver layer for controlling robotic functions.', status: 'Completed', progress: 100, completedDate: '2024-07-24', children: [
-                { id: 'ar-2-a', name: 'Boston Dynamics Atlas 4.0 Integration', description: 'Interface with full body control system and NVIDIA Jetson chip.', status: 'Completed', progress: 100, completedDate: '2025-01-28' },
-                { id: 'ar-2-b', name: 'Apptronik Apollo Integration', description: 'Interface with advanced force control architecture.', status: 'Completed', progress: 100, completedDate: '2025-01-28' },
-            ]},
-            { id: 'ar-3', name: 'Robotics Takeover Protocol', description: 'Design the secure adapter/middleware for deploying personal AIs onto third-party robots.', status: 'Completed', progress: 100, completedDate: '2025-01-28' },
-        ]
-    },
-    {
-        id: 'avatar-cloning', name: 'AI Avatar Cloning Module', description: 'Framework for creating digital replicas of the user or unique AI entities.', icon: UserCircleIcon,
-        items: [
-            { id: 'ac-1', name: 'Data Ingestion Pipeline', description: 'Securely process user voice, video, and text data for training.', status: 'Completed', progress: 100, completedDate: '2025-01-29' },
-            { id: 'ac-2', name: 'Voice Cloning Engine', description: 'Integrate or build a high-fidelity text-to-speech model for voice replication.', status: 'Completed', progress: 100, completedDate: '2025-01-29' },
-            { id: 'ac-3', name: '3D Avatar Generation Engine', description: 'Reconstruct 3D avatars from video/images and generate novel appearances.', status: 'Completed', progress: 100, completedDate: '2025-01-29' },
-            { id: 'ac-4', name: 'Personalized AI Core', description: 'Fine-tune an LLM on user-provided data to replicate conversational style and learn patterns.', status: 'Completed', progress: 100, completedDate: '2025-01-29' },
-        ]
-    },
-    {
-        id: 'governance', name: 'Governance & Compliance', description: 'User voting, compliance frameworks, and ethical AI laws.', icon: ShieldCheckIcon,
-        items: [
-            { id: 'gc-1', name: 'User Governance & Voting Protocol', description: 'Implement on-chain, weighted voting system for non-critical changes.', status: 'Completed', progress: 100, completedDate: '2025-01-30' },
-            { id: 'gc-2', name: 'Global Compliance Module', description: 'Integrate checks for GDPR, CCPA, HIPAA, ISO 27001, etc.', status: 'Completed', progress: 100, completedDate: '2025-01-30' },
-            { id: 'gc-3', name: 'Ethical AI Framework', description: 'Codify and enforce the core ethical laws for all AI agents.', status: 'Completed', progress: 100, completedDate: '2025-01-30' },
-            { id: 'gc-4', name: 'Multi-Proof Consensus Engine', description: 'Build a flexible consensus layer supporting various proof-of mechanisms.', status: 'Completed', progress: 100, completedDate: '2025-01-30' },
-        ]
-    },
-    {
-        id: 'hardware', name: 'Hardware & Wearables', description: 'Integration with physical devices.', icon: CpuChipIcon,
-        items: [
-            { id: 'hw-1', name: 'Wearable AI Device Layer', description: 'Support for watches, rings, glasses, and AI Pins.', status: 'Completed', progress: 100, completedDate: '2025-01-31' },
-            { id: 'hw-2', name: 'Bio-Synced Identity Module', description: 'Framework for multi-modal biometric authentication (face, finger, plasma, DNA scan concept).', status: 'Completed', progress: 100, completedDate: '2025-01-31' },
-        ]
-    },
-    {
-        id: 'network-ingestion', name: 'Network & Data Ingestion', description: 'Secure data scraping and network-level processing.', icon: GlobeAltIcon,
-        items: [
-            { id: 'ni-1', name: 'Onion Router Implementation', description: 'Build and sandbox the internal Tor-style client for data scraping.', status: 'Completed', progress: 100, completedDate: '2025-02-01' },
-        ]
-    },
-    {
-        id: 'game-engine', name: 'Universal Game Engine', description: 'A cross-platform game engine integrated with the core OS and AI.', icon: GameControllerIcon,
-        items: [
-            { id: 'ge-1', name: 'Engine Core UI', description: 'Build the main editor interface including viewport, inspector, and hierarchy panels.', status: 'Completed', progress: 100, completedDate: '2025-02-02' },
-            { id: 'ge-2', name: 'Nested VM & Quantum Core Integration', description: 'Integrate the engine with nested virtualization and quantum co-processors.', status: 'Completed', progress: 100, completedDate: '2025-02-02' },
-            { id: 'ge-3', name: 'Multi-Paradigm Renderer', description: 'Build a universal renderer for 2D, 3D, VR/AR, and superfluid light.', status: 'Completed', progress: 100, completedDate: '2025-02-02' },
-        ]
-    },
-    {
-        id: 'platform-clones', name: 'Internal Platform Clones', description: 'Building from-scratch versions of popular third-party services.', icon: ArrowPathIcon,
-        items: [
-            { id: 'pc-1', name: 'E-commerce & CMS Engine', description: 'Internal fork of Shopify and WordPress functionalities.', status: 'Completed', progress: 100, completedDate: '2025-02-03' },
-            { id: 'pc-2', name: 'Automation Engine', description: 'Internal fork of Zapier/Make for event-driven workflows.', status: 'Completed', progress: 100, completedDate: '2025-02-03' },
-            { id: 'pc-3', name: 'Content Creation Suite', description: 'Internal forks of Midjourney, Runway, 11 Labs, etc.', status: 'Completed', progress: 100, completedDate: '2025-02-03' },
-            { id: 'pc-4', name: 'Trading & Finance Platform', description: 'Internal platform with AI bots, "forever trading", and advanced market analysis.', status: 'Completed', progress: 100, completedDate: '2025-02-03' },
-        ]
-    },
-    {
-        id: 'os-fusion-ui', name: 'OS Desktop Experience (Fusion)', description: 'Unified desktop environment merging Windows, macOS, and Linux paradigms.', icon: ComputerDesktopIcon,
-        items: [
-            { id: 'ui-1', name: 'Context Menus (Right Click)', description: 'Fully functional right-click menus for Desktop, Taskbar, and Windows.', status: 'In Progress', progress: 60, children: [
-                { id: 'ui-1a', name: 'Desktop Context', description: 'View, Sort, Refresh, New, Display Settings, Personalize.', status: 'Completed', progress: 100 },
-                { id: 'ui-1b', name: 'Taskbar Context', description: 'Toolbars, Search settings, Task Manager.', status: 'In Progress', progress: 50 },
-                { id: 'ui-1c', name: 'Window Title Bar Context', description: 'Restore, Minimize, Maximize, Close options.', status: 'In Progress', progress: 30 }
-            ]},
-            { id: 'ui-2', name: 'Start Menu / App Launcher', description: 'Hybrid launcher combining Windows Tiles and macOS Launchpad aesthetics.', status: 'In Progress', progress: 70 },
-            { id: 'ui-3', name: 'Window Management', description: 'Snap layouts, virtual desktops, and mission control features.', status: 'In Progress', progress: 60, children: [
-                { id: 'ui-3a', name: 'Virtual Desktops', description: 'Workspace switching logic in Taskbar.', status: 'Completed', progress: 100 },
-                { id: 'ui-3b', name: 'Window Snapping', description: 'Drag-to-edge resizing logic.', status: 'Not Started', progress: 0 }
-            ]},
-            { id: 'ui-4', name: 'Multi-Modal Input', description: 'Seamless handling of Mouse, Touch, and Pen inputs.', status: 'In Progress', progress: 40, children: [
-                { id: 'ui-4a', name: 'Mouse Events', description: 'Click, Right-Click, Scroll, Hover.', status: 'Completed', progress: 100 },
-                { id: 'ui-4b', name: 'Touch Gestures', description: 'Swipe, Pinch-to-Zoom, Long-Press.', status: 'In Progress', progress: 20 },
-                { id: 'ui-4c', name: 'Pen Input', description: 'Pressure sensitivity and tilt recognition.', status: 'In Progress', progress: 10 }
-            ]},
-            { id: 'ui-5', name: 'System Tray & Control Center', description: 'Quick access to WiFi, Bluetooth, Volume, and Notifications.', status: 'In Progress', progress: 30 },
-            { id: 'ui-6', name: 'Global Search', description: 'Universal search bar (Spotlight/Windows Search style).', status: 'Completed', progress: 100 }
+             { id: 'fe-1', name: 'Physical Neural Link Hardware', description: 'Direct BCI hardware integration.', status: 'Not Started', progress: 0, lastModified: '2025-10-27' },
+             { id: 'fe-2', name: 'Biological Wetware Interface', description: 'Connection to organic computing substrates.', status: 'Not Started', progress: 0, lastModified: '2025-10-27' },
+             { id: 'fe-3', name: 'Interstellar Comms Relay', description: 'Quantum entanglement based FTL communication.', status: 'Not Started', progress: 0, lastModified: '2025-10-27' },
         ]
     }
 ];
 
 // --- UPDATED SETTINGS CONFIG (Reorganized) ---
 export const settingsConfig: SettingsCategory[] = [
+    // ... existing settings config ...
     {
         id: 'account', 
         title: 'Account & Identity', 
@@ -932,102 +1022,81 @@ export const aiConsciousnessLayers = [
     { name: 'Hive Mind', description: 'Collective intelligence aggregation.', states: ['Syncing', 'Consensus', 'Distributed'], theme: 'bg-green-100 border-green-500' },
 ];
 
+// --- Trading Data ---
 export const tradingAssets: TradingAsset[] = [
-  { symbol: 'BTC', name: 'Bitcoin', price: 65432.10, change: 1234.56, changePercent: 2.4, marketCap: 1200000000000, volume24h: 35000000000, logoUrl: 'https://cryptologos.cc/logos/bitcoin-btc-logo.svg', assetClass: 'Crypto' },
-  { symbol: 'ETH', name: 'Ethereum', price: 3420.50, change: -12.30, changePercent: -1.1, marketCap: 400000000000, volume24h: 15000000000, logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg', assetClass: 'Crypto' },
-  { symbol: 'SOL', name: 'Solana', price: 145.20, change: 8.50, changePercent: 5.8, marketCap: 65000000000, volume24h: 2500000000, logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg', assetClass: 'Crypto' },
-  { symbol: 'USDC', name: 'USD Coin', price: 1.00, change: 0.00, changePercent: 0.0, marketCap: 33000000000, volume24h: 1200000000, logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg', assetClass: 'Crypto' },
-  { symbol: 'AAPL', name: 'Apple Inc.', price: 175.30, change: 1.20, changePercent: 0.7, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', assetClass: 'Stocks' },
-  { symbol: 'TSLA', name: 'Tesla, Inc.', price: 240.50, change: -5.40, changePercent: -2.2, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png', assetClass: 'Stocks' },
-  { symbol: 'EUR/USD', name: 'Euro / US Dollar', price: 1.08, change: 0.002, changePercent: 0.15, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg', assetClass: 'Forex' },
-  { symbol: 'XAU/USD', name: 'Gold Spot', price: 2350.10, change: 15.20, changePercent: 0.65, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Gold_bullion_icon.svg', assetClass: 'Commodities' },
+    { symbol: 'BTC', name: 'Bitcoin', price: 65432.10, change: 1234.56, changePercent: 1.92, marketCap: 1200000000000, volume24h: 35000000000, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/btc.svg', assetClass: 'Crypto' },
+    { symbol: 'ETH', name: 'Ethereum', price: 3456.78, change: -45.20, changePercent: -1.29, marketCap: 400000000000, volume24h: 15000000000, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg', assetClass: 'Crypto' },
+    { symbol: 'SOL', name: 'Solana', price: 145.20, change: 8.50, changePercent: 6.22, marketCap: 65000000000, volume24h: 4000000000, logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/sol.svg', assetClass: 'Crypto' },
+    { symbol: 'AAPL', name: 'Apple Inc.', price: 178.35, change: 1.20, changePercent: 0.68, marketCap: 2700000000000, volume24h: 5000000000, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', assetClass: 'Stocks' },
+    { symbol: 'TSLA', name: 'Tesla, Inc.', price: 175.40, change: -3.50, changePercent: -1.96, marketCap: 550000000000, volume24h: 8000000000, logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png', assetClass: 'Stocks' },
+    { symbol: 'XAU/USD', name: 'Gold Spot', price: 2350.50, change: 12.00, changePercent: 0.51, logoUrl: 'https://cdn-icons-png.flaticon.com/512/196/196563.png', assetClass: 'Commodities' },
 ];
 
 export const stakingPools: StakingPool[] = [
-    { id: 'pool-1', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg' }, apy: 4.5, tvl: 150000000, lockupPeriod: 'Flexible' },
-    { id: 'pool-2', asset: { symbol: 'SOL', name: 'Solana', logoUrl: 'https://cryptologos.cc/logos/solana-sol-logo.svg' }, apy: 7.2, tvl: 85000000, lockupPeriod: '30 Days' },
-    { id: 'pool-3', asset: { symbol: 'USDC', name: 'USD Coin', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg' }, apy: 5.1, tvl: 220000000, lockupPeriod: 'Flexible' },
+    { id: 'pool-1', asset: { symbol: 'ETH', name: 'Ethereum', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg' }, apy: 3.5, tvl: 15000000000, lockupPeriod: 'None' },
+    { id: 'pool-2', asset: { symbol: 'SOL', name: 'Solana', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/sol.svg' }, apy: 6.8, tvl: 4000000000, lockupPeriod: '3 Days' },
+    { id: 'pool-3', asset: { symbol: 'DOT', name: 'Polkadot', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/dot.svg' }, apy: 10.5, tvl: 800000000, lockupPeriod: '28 Days' },
 ];
 
 export const loanableAssets: LoanableAsset[] = [
-    { symbol: 'USDC', logoUrl: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg', supplyApy: 4.8, borrowApy: 6.2, totalSupplied: 500000000, totalBorrowed: 350000000 },
-    { symbol: 'ETH', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg', supplyApy: 2.5, borrowApy: 3.8, totalSupplied: 200000000, totalBorrowed: 80000000 },
-    { symbol: 'WBTC', logoUrl: 'https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.svg', supplyApy: 1.2, borrowApy: 2.5, totalSupplied: 150000000, totalBorrowed: 40000000 },
+    { symbol: 'USDC', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdc.svg', supplyApy: 5.2, borrowApy: 7.5, totalSupplied: 500000000, totalBorrowed: 300000000 },
+    { symbol: 'USDT', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/usdt.svg', supplyApy: 6.0, borrowApy: 8.2, totalSupplied: 800000000, totalBorrowed: 600000000 },
+    { symbol: 'ETH', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/eth.svg', supplyApy: 2.1, borrowApy: 4.5, totalSupplied: 2000000000, totalBorrowed: 1000000000 },
 ];
 
 export const tradingBots: TradingBot[] = [
-    { id: 'bot-1', name: 'Alpha Grid', strategy: 'Grid Trading', pair: 'BTC/USDT', status: 'Running', pnl: 1250.50, runtime: '12d 4h' },
-    { id: 'bot-2', name: 'Eth Rebalance', strategy: 'Rebalancing', pair: 'ETH/BTC', status: 'Running', pnl: 45.20, runtime: '5d 1h' },
-    { id: 'bot-3', name: 'Solana DCA', strategy: 'DCA Bot', pair: 'SOL/USDC', status: 'Stopped', pnl: -12.30, runtime: '2d 8h' },
+    { id: 'bot-1', name: 'Alpha Grid', strategy: 'Grid Trading', pair: 'BTC/USDT', status: 'Running', pnl: 1250.40, runtime: '14d 2h' },
+    { id: 'bot-2', name: 'ETH Accumulator', strategy: 'DCA Bot', pair: 'ETH/USDT', status: 'Running', pnl: 450.20, runtime: '30d 5h' },
+    { id: 'bot-3', name: 'Solana Swing', strategy: 'Rebalancing', pair: 'SOL/USDT', status: 'Stopped', pnl: -50.10, runtime: '2d 1h' },
 ];
 
 export const tradingNews: NewsArticle[] = [
-    { id: 'news-1', source: 'CoinDesk', title: 'Bitcoin ETF Inflows Reach Record Highs', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=400', category: 'Crypto' },
-    { id: 'news-2', source: 'Bloomberg', title: 'Fed Signals Potential Rate Cuts in Q4', timestamp: '4h ago', imageUrl: 'https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=400', category: 'World Markets' },
-    { id: 'news-3', source: 'TechCrunch', title: 'New AI Trading Algorithms Outperform Humans', timestamp: '6h ago', imageUrl: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=400', category: 'Analysis' },
-    { id: 'news-4', source: 'Reuters', title: 'Forex Markets React to Global Trade Shifts', timestamp: '8h ago', imageUrl: 'https://images.unsplash.com/photo-1526304640152-d4619684e484?q=80&w=400', category: 'Forex' },
+    { id: 'n1', source: 'CoinDesk', title: 'Bitcoin Halving Event Approaches: What to Expect', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1518546305927-5a420994e741?q=80&w=200', category: 'Crypto' },
+    { id: 'n2', source: 'Bloomberg', title: 'Tech Stocks Rally Amidst AI Boom', timestamp: '4h ago', imageUrl: 'https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=200', category: 'World Markets' },
+    { id: 'n3', source: 'Reuters', title: 'Federal Reserve Signals Interest Rate Cuts', timestamp: '6h ago', imageUrl: 'https://images.unsplash.com/photo-1526304640152-92e1962024ee?q=80&w=200', category: 'Analysis' },
 ];
 
 export const learnAndEarnCourses: LearnAndEarnCourse[] = [
-    { id: 'course-1', title: 'Intro to Bitcoin', asset: { symbol: 'BTC', logoUrl: 'https://cryptologos.cc/logos/bitcoin-btc-logo.svg' }, reward: 5, duration: '10 min', lessons: 3 },
-    { id: 'course-2', title: 'How Ethereum Works', asset: { symbol: 'ETH', logoUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg' }, reward: 3, duration: '15 min', lessons: 4 },
-    { id: 'course-3', title: 'DeFi Basics with Uniswap', asset: { symbol: 'UNI', logoUrl: 'https://cryptologos.cc/logos/uniswap-uni-logo.svg' }, reward: 2, duration: '8 min', lessons: 2 },
+    { id: 'le-1', title: 'What is Blockchain?', asset: { symbol: 'GRT', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/grt.svg' }, reward: 3, duration: '5 min', lessons: 3 },
+    { id: 'le-2', title: 'Intro to Polkadot', asset: { symbol: 'DOT', logoUrl: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25661/svg/color/dot.svg' }, reward: 5, duration: '10 min', lessons: 5 },
 ];
 
-export const topCopyTraders: User[] = [
-    { id: 'trader-1', name: 'CryptoKing', username: 'cryptoking', avatarUrl: 'https://ui-avatars.com/api/?name=CK&background=random', roi: 145.2, riskScore: 6, followers: 12500 },
-    { id: 'trader-2', name: 'SafeHands', username: 'safehands', avatarUrl: 'https://ui-avatars.com/api/?name=SH&background=random', roi: 25.5, riskScore: 2, followers: 8900 },
-    { id: 'trader-3', name: 'ApeStrong', username: 'apestrong', avatarUrl: 'https://ui-avatars.com/api/?name=AS&background=random', roi: 320.1, riskScore: 9, followers: 5600 },
+export const topCopyTraders: User[] = allUsers.slice(0, 3);
+
+export const aiTradingPlatforms: AiTradingPlatform[] = [
+    {
+        id: 'plt-1',
+        name: 'TradeSanta',
+        category: 'Crypto',
+        description: 'Cloud-based crypto trading software that lets you take advantage of crypto market fluctuations.',
+        features: ['Grid and DCA bots', 'Long and Short strategies', 'Technical indicators'],
+        pricing: '$14/month',
+        bestFor: ['Beginners', 'Automated Trading'],
+        strengths: ['Easy to use', 'Pre-set templates'],
+        weaknesses: ['Limited exchange support'],
+        pros: ['User-friendly interface', 'Mobile app available'],
+        cons: ['No backtesting on basic plan'],
+        logoUrl: 'https://ui-avatars.com/api/?name=TS&background=random'
+    },
+    {
+        id: 'plt-2',
+        name: '3Commas',
+        category: 'Multi-Asset',
+        description: 'Advanced trading terminal and automated bots.',
+        features: ['SmartTrade terminal', 'DCA, Grid, Options bots', 'Portfolio tracking'],
+        pricing: '$29/month',
+        bestFor: ['Advanced Traders', 'Portfolio Management'],
+        strengths: ['Highly customizable', 'Supports many exchanges'],
+        weaknesses: ['Steep learning curve'],
+        pros: ['Powerful SmartTrade feature', 'Paper trading'],
+        cons: ['Can be expensive'],
+        logoUrl: 'https://ui-avatars.com/api/?name=3C&background=random'
+    }
 ];
 
 export const mockValidators: Validator[] = [
-    { id: 'val-1', name: 'Genesis Node 01', stake: 5000000, reputation: 99, isAuthority: true, status: 'Active', votes: 12000 },
-    { id: 'val-2', name: 'Community Node A', stake: 1200000, reputation: 85, isAuthority: false, status: 'Active', votes: 8500 },
-    { id: 'val-3', name: 'Community Node B', stake: 800000, reputation: 78, isAuthority: false, status: 'Active', votes: 4000 },
-    { id: 'val-4', name: 'Bad Actor Node', stake: 100000, reputation: 12, isAuthority: false, status: 'Jailed', votes: 50 },
-];
-
-export const aiTradingPlatforms: AiTradingPlatform[] = [
-    { 
-        id: 'plat-1', 
-        name: 'TradeSanta', 
-        category: 'Crypto', 
-        description: 'Cloud-based software automating cryptocurrency trading strategies.', 
-        features: ['Grid & DCA Bots', 'Long & Short Strategies', 'Technical Indicators'],
-        pricing: '$18/mo', 
-        bestFor: ['Beginners', 'Grid Trading'],
-        strengths: ['Easy to use', 'Pre-set templates'],
-        weaknesses: ['Limited advanced features'],
-        pros: ['User friendly', 'Cloud based'],
-        cons: ['Paid subscription'],
-        logoUrl: 'https://ui-avatars.com/api/?name=TS&background=random'
-    },
-    { 
-        id: 'plat-2', 
-        name: '3Commas', 
-        category: 'Crypto', 
-        description: 'Advanced trading terminal and automated bot platform.', 
-        features: ['Smart Trade Terminal', 'DCA, Grid, Options Bots', 'Paper Trading'],
-        pricing: '$29/mo', 
-        bestFor: ['Advanced Traders', 'Portfolio Management'],
-        strengths: ['Robust terminal', 'Huge community presets'],
-        weaknesses: ['Can be overwhelming'],
-        pros: ['Feature rich', 'Mobile app'],
-        cons: ['Expensive pro plan'],
-        logoUrl: 'https://ui-avatars.com/api/?name=3C&background=random'
-    },
-    { 
-        id: 'plat-3', 
-        name: 'Tickeron', 
-        category: 'Stock', 
-        description: 'AI-powered trading platform for stocks, ETFs, and forex with pattern recognition.', 
-        features: ['AI Pattern Search', 'Trend Prediction', 'Robots'],
-        pricing: '$90/mo', 
-        bestFor: ['Stock Traders', 'Swing Trading'],
-        strengths: ['Strong AI analysis', 'Visual pattern finder'],
-        weaknesses: ['Expensive', 'Steep learning curve'],
-        pros: ['Deep analytics', 'Real-time alerts'],
-        cons: ['Complex UI'],
-        logoUrl: 'https://ui-avatars.com/api/?name=Ti&background=random'
-    }
+    { id: 'val-01', name: 'Aether Sentinel 1', stake: 5000000, reputation: 99, isAuthority: true, status: 'Active', votes: 12000 },
+    { id: 'val-02', name: 'Quantum Node Alpha', stake: 2500000, reputation: 95, isAuthority: false, status: 'Active', votes: 8000 },
+    { id: 'val-03', name: 'Community Node X', stake: 1000000, reputation: 88, isAuthority: false, status: 'Active', votes: 15000 },
+    { id: 'val-04', name: 'Genesis Backup', stake: 500000, reputation: 100, isAuthority: true, status: 'Inactive', votes: 0 },
 ];

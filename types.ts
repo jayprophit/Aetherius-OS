@@ -71,6 +71,9 @@ export interface Course {
   longDescription: string;
   whatYoullLearn: string[];
   modules: Module[];
+  // New fields for Mega Platform
+  level?: 'Beginner' | 'Intermediate' | 'Advanced';
+  certificate?: boolean;
 }
 
 export interface SystemIdentity {
@@ -111,6 +114,42 @@ export interface User {
   riskScore?: number;
   followers?: number;
   systemIdentity?: SystemIdentity;
+  
+  // Mega Learning Extensions
+  learning?: {
+      points: number;
+      level: number;
+      streak: number;
+      certificates: string[];
+  };
+  instructorProfile?: InstructorProfile;
+  blockchainCV?: BlockchainCV;
+}
+
+export interface InstructorProfile {
+    totalStudents: number;
+    totalEarnings: number;
+    averageRating: number;
+    courses: Course[];
+    payoutMethod: string;
+}
+
+export interface BlockchainCredential {
+    id: string;
+    name: string;
+    issuer: string;
+    issueDate: string;
+    hash: string;
+    skills: string[];
+    url: string;
+}
+
+export interface BlockchainCV {
+    id: string;
+    credentials: BlockchainCredential[];
+    verifiedSkills: string[];
+    lastUpdated: string;
+    profileHash: string;
 }
 
 export interface Comment {

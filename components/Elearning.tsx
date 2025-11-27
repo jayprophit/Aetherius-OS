@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { StarIcon, SearchIcon, ChevronDownIcon, GlobeIcon, CodeBracketIcon, AcademicCapIcon, HeartIcon, PuzzlePieceIcon, BeakerIcon, MusicNoteIcon } from './Icons';
 import { courses } from '../data';
