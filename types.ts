@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 
 export interface ChatMessage {
@@ -364,6 +365,15 @@ export interface HealingWebAilment {
   };
 }
 
+export interface DetailedHealingItem {
+    category: string;
+    description: string;
+    pros: string[];
+    cons: string[];
+    uses: string[];
+    relatedConditions: string[];
+}
+
 export interface Recipe {
   title: string;
   description: string;
@@ -383,6 +393,10 @@ export interface HealthWellnessData {
   };
   frequencyHealing: FrequencyHealingConcept[];
   healingWeb: HealingWebAilment[];
+  healingWebFull: {
+      nature: Record<string, DetailedHealingItem>;
+      pharmaceutical: Record<string, DetailedHealingItem>;
+  };
   nutrition: {
     cleanRecipes: Recipe[];
     dirtyFoods: DirtyFood[];
@@ -757,6 +771,11 @@ export interface Company {
     locations: string[];
     logoUrl: string;
     verified: boolean;
+    socialLinks?: {
+        linkedin?: string;
+        twitter?: string;
+        facebook?: string;
+    };
 }
 
 export interface Job {
@@ -794,6 +813,29 @@ export interface FreelanceProject {
     clientName: string;
     postedDate: string;
     proposalsCount: number;
+}
+
+export interface JobApplication {
+    id: string;
+    jobId: number;
+    jobTitle: string;
+    companyName: string;
+    status: 'Applied' | 'Screening' | 'Interview' | 'Offer' | 'Rejected';
+    dateApplied: string;
+    updates: { date: string; message: string }[];
+}
+
+export interface Interview {
+    id: string;
+    applicationId: string;
+    jobTitle: string;
+    companyName: string;
+    date: string;
+    time: string;
+    type: 'Video' | 'Phone' | 'On-site';
+    participants: string[];
+    link?: string;
+    status: 'Scheduled' | 'Completed' | 'Cancelled';
 }
 
 export interface SettingsItem {

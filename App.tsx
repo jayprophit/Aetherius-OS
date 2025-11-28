@@ -1,6 +1,8 @@
 
 
 
+
+
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { LeftSidebar } from './components/Dock';
 import { TopBar } from './components/TopBar';
@@ -99,6 +101,7 @@ import { BodyComposition } from './components/health/BodyComposition';
 import { FrequencyHealing } from './components/health/FrequencyHealing';
 import { HealingWeb } from './components/health/HealingWeb';
 import { NutritionGuide } from './components/health/NutritionGuide';
+import { HealthHub } from './components/health/HealthHub'; // NEW IMPORT
 import { Markets } from './components/trading/Markets';
 import { AdvancedChart } from './components/trading/AdvancedChart';
 import { Swap } from './components/trading/Swap';
@@ -212,6 +215,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   memoryNode: MemoryNode,
 
   // Health
+  healthHub: HealthHub,
   bodyComposition: BodyComposition,
   frequencyHealing: FrequencyHealing,
   healingWeb: HealingWeb,

@@ -18,6 +18,12 @@
 
 
 
+
+
+
+
+
+
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
   ShoppingCartIcon, BeakerIcon, BriefcaseIcon, AcademicCapIcon,
@@ -68,7 +74,7 @@ import {
   KnowledgeBaseItem, MilestonesData, ChecklistCategory, MenuGroup, ChecklistItem,
   ReputationSystemSpec, ErpSystemSpec, QuantumNetworkSpec, DesktopItem, SettingsCategory,
   Validator, AiTradingPlatform, Achievement, Company, FreelanceProject,
-  SocialCommunity, SocialStream
+  SocialCommunity, SocialStream, JobApplication, Interview
 } from './types';
 
 // --- Users ---
@@ -169,6 +175,15 @@ export const aetheriusMenuItems: MenuItemData[] = [
     { title: 'Shut Down', icon: PowerIcon, action: 'shutdown' },
 ];
 
+// Define Health App Children Structure
+const healthAppChildren: MenuItemData[] = [
+    { title: 'Health Hub', icon: HeartIcon, component: 'healthHub' },
+    { title: 'Body Composition', icon: BeakerIcon, component: 'bodyComposition' },
+    { title: 'Frequency Healing', icon: SpeakerWaveIcon, component: 'frequencyHealing' },
+    { title: 'The Healing Web', icon: GlobeAltIcon, component: 'healingWeb' },
+    { title: 'Nutrition Guide', icon: AcademicCapIcon, component: 'nutritionGuide' },
+];
+
 export const mainMenuItems: MenuItemData[] = [
     { title: 'Social Hub', icon: UsersIcon, component: 'socialApp' },
     { title: 'Creation Labs', icon: BeakerIcon, component: 'mediaApp' },
@@ -177,7 +192,8 @@ export const mainMenuItems: MenuItemData[] = [
     { title: 'Labs', icon: CubeTransparentIcon, component: 'rdHub' },
     { title: 'Careers Hub', icon: BriefcaseIcon, component: 'careersApp' },
     { title: 'E-Learning', icon: AcademicCapIcon, component: 'elearningApp' },
-    { title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' }, // New Addition
+    { title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' },
+    { title: 'Health & Wellness', icon: HeartIcon, component: 'healthApp', children: healthAppChildren },
 ];
 
 export const menuGroups: (MenuGroup | MenuItemData)[] = [
@@ -214,7 +230,12 @@ export const menuGroups: (MenuGroup | MenuItemData)[] = [
         children: [
             { title: 'Social Hub', icon: DocumentTextIcon, component: 'socialApp' },
             { title: 'Messenger', icon: MessageIcon, component: 'messenger' },
-            { title: 'Health', icon: HeartIcon, component: 'healthApp' },
+            { 
+                title: 'Health', 
+                icon: HeartIcon, 
+                component: 'healthApp',
+                children: healthAppChildren
+            },
             { title: 'Learning', icon: AcademicCapIcon, component: 'elearningApp' },
         ]
     },
@@ -224,7 +245,7 @@ export const menuGroups: (MenuGroup | MenuItemData)[] = [
         icon: ShoppingCartIcon,
         type: 'group',
         children: [
-            { title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' }, // New Addition
+            { title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' },
             { title: 'Commerce', icon: ShoppingCartIcon, component: 'eCommerceApp' },
             { title: 'Finance', icon: ChartBarIcon, component: 'financeApp' },
             { title: 'Wallet', icon: WalletIcon, component: 'tradingWallet' },
@@ -239,11 +260,11 @@ export const desktopItems: DesktopItem[] = [
     { id: 'browser', type: 'app', title: 'Browser', icon: GlobeAltIcon, component: 'browser' },
     { id: 'ai-hub', type: 'app', title: 'AI Hub', icon: HiveMindIcon, component: 'aiHub' },
     { id: 'settings', type: 'app', title: 'Settings', icon: Cog6ToothIcon, component: 'settings' },
-    { id: 'cloud-ops', type: 'app', title: 'Cloud Ops', icon: CloudIcon, component: 'cloudOps' },
+    { id: 'health', type: 'app', title: 'Health', icon: HeartIcon, component: 'healthApp' },
     { id: 'terminal', type: 'app', title: 'Terminal', icon: CommandLineIcon, component: 'terminal' },
     { id: 'social', type: 'app', title: 'Social', icon: UsersIcon, component: 'socialApp' },
     { id: 'market', type: 'app', title: 'Commerce', icon: ShoppingCartIcon, component: 'eCommerceApp' },
-    { id: 'omni', type: 'app', title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' }, // New Desktop Icon
+    { id: 'omni', type: 'app', title: 'OmniPlatform', icon: GlobeAltIcon, component: 'omniPlatform' },
     { id: 'milestones', type: 'app', title: 'Milestones', icon: FlagIcon, component: 'milestones' },
     { id: 'checklist', type: 'app', title: 'Checklist', icon: ClipboardDocumentCheckIcon, component: 'buildChecklist' },
 ];
@@ -708,6 +729,47 @@ export const mockFreelanceProjects: FreelanceProject[] = [
     }
 ];
 
+export const mockApplications: JobApplication[] = [
+    {
+        id: 'app-1',
+        jobId: 1,
+        jobTitle: 'Quantum Software Engineer',
+        companyName: 'Tech Innovations Inc',
+        status: 'Screening',
+        dateApplied: '2025-10-21',
+        updates: [
+            { date: '2025-10-21', message: 'Application received.' },
+            { date: '2025-10-22', message: 'Application moved to screening stage.' }
+        ]
+    },
+    {
+        id: 'app-2',
+        jobId: 2,
+        jobTitle: 'AI Ethicist',
+        companyName: 'OpenFuture',
+        status: 'Applied',
+        dateApplied: '2025-10-23',
+        updates: [
+            { date: '2025-10-23', message: 'Application received.' }
+        ]
+    }
+];
+
+export const mockInterviews: Interview[] = [
+    {
+        id: 'int-1',
+        applicationId: 'app-1',
+        jobTitle: 'Quantum Software Engineer',
+        companyName: 'Tech Innovations Inc',
+        date: '2025-10-30',
+        time: '10:00 AM PST',
+        type: 'Video',
+        participants: ['Dr. Quantum', 'HR Manager'],
+        link: '#',
+        status: 'Scheduled'
+    }
+];
+
 
 // --- SOCIAL PLATFORM MOCK DATA ---
 
@@ -834,7 +896,7 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: 'COMM-INV-01', name: 'Hybrid Inventory Logic', details: 'Logic to handle stock tracking for physical goods and infinite supply for digital assets within a single cart system.', status: 'Integrated', progress: 100 },
     { id: 'IP-RIGHTS-01', name: 'Smart Contract Royalty Standard', details: 'A protocol for embedding licensing terms, patent data, and royalty payment logic directly into product NFTs/Assets on the OmniChain.', status: 'In Development', progress: 40 },
     // --- Mega Learning Platform Additions ---
-    { id: 'EDU-MEGA-01', name: 'Universal Learning Engine', details: 'A comprehensive e-learning platform merging features from Udemy, Coursera, and Khan Academy. Includes Course Catalog, User Management, Content Management, Assessment Engine, and Certification System.', status: 'Integrated', progress: 100 },
+    { id: 'EDU-MEGA-01', name: 'Universal Learning Engine', details: 'A comprehensive e-learning platform merging features from Udemy, Coursera, and Khan Academy. Includes Course Catalog, User Management, Content Management, Assessment Engine, Certification System.', status: 'Integrated', progress: 100 },
     { id: 'EDU-BC-CV', name: 'Proof-of-Skill Protocol (Blockchain CV)', details: 'System for minting course completions as verifiable credentials on the OmniChain. These credentials auto-populate a decentralized CV linked to the job market.', status: 'Integrated', progress: 100 },
     { id: 'EDU-ALGO', name: 'Algorithmic Pedagogy', details: 'AI-driven learning path generation that adapts to user performance, similar to Duolingo and Khan Academy adaptive engines.', status: 'Integrated', progress: 100 },
     { id: 'EDU-INSTR', name: 'Instructor Commission Protocol', details: 'Smart contract based payout system for course creators, handling commission splits and royalty payments automatically.', status: 'Integrated', progress: 100 },
@@ -844,7 +906,18 @@ export const knowledgeBaseData: KnowledgeBaseItem[] = [
     // --- Comprehensive Jobs Platform Additions ---
     { id: 'JOB-PLAT-ARCH', name: 'Comprehensive Jobs Platform Architecture', details: 'A unified architecture combining features from major job sites (Monster, Reed, AngelList) and freelancing platforms (Upwork, Fiverr). Includes JobManagement, CandidateManagement, EmployerManagement, MatchingEngine, ApplicationSystem, InterviewSystem, FreelanceSystem, and PaymentSystem.', status: 'Integrated', progress: 100 },
     { id: 'JOB-MATCH-ENG', name: 'AI Matching Engine', details: 'Algorithms for matching candidates to jobs based on skills, location, salary, experience, and cultural fit. Includes weighted scoring and geo-location filtering.', status: 'Integrated', progress: 100 },
-    { id: 'JOB-FREELANCE', name: 'Freelance System Integration', details: 'Modules for project creation, proposal submission, contract management, and milestone-based payments within the jobs ecosystem.', status: 'Integrated', progress: 100 }
+    { id: 'JOB-FREELANCE', name: 'Freelance System Integration', details: 'Modules for project creation, proposal submission, contract management, and milestone-based payments within the jobs ecosystem.', status: 'Integrated', progress: 100 },
+    { id: 'JOB-CAND-PORT', name: 'Candidate Portfolio System', details: 'Module allowing candidates to upload resumes, link portfolios, and sync with blockchain credentials.', status: 'Integrated', progress: 100 },
+    { id: 'JOB-EMP-PROF', name: 'Employer Profile System', details: 'Enhanced company profiles including verification, social links, benefits, and company culture sections.', status: 'Integrated', progress: 100 },
+    { id: 'JOB-APP-TRACK', name: 'Application Tracking System (ATS)', details: 'Full lifecycle management for job applications including status updates, timeline view, and automated notifications.', status: 'Integrated', progress: 100 },
+    { id: 'JOB-INT-SYS', name: 'Interview Scheduling System', details: 'Integrated scheduling tool for coordinating interviews between candidates and employers, supporting video/phone types.', status: 'Integrated', progress: 100 },
+    // --- OmniGenome-X & Health Additions ---
+    { id: 'OGX-001', name: 'OmniGenome-X Core', details: 'Transdimensional health platform integrating 3D Genomics, CRISPR simulation, parental genetic comparison, and holistic health optimization modules.', status: 'Integrated', progress: 100 },
+    { id: 'OGX-CHAIN', name: 'HealthChain™ Consensus', details: 'Adaptive multi-consensus engine securing health data. Supports: Proof of Work, Stake, Activity, Location, Importance, Elapsed Time, Authority, Burn, Capacity, Space, Time Stake, Brain, Physical Address, Bank Account, Concept, Leased PoS, Weight, BFT, PBFT, DBFT, History, Federated Byzantine, Space & Time, Contribution, Impact, Reputation, Liquidity, Affinity, Chaos, Discovery, Engagement, Transaction History, Network Activity, Identity, Legacy, Environmental Impact, Data Integrity, User Consent, Customization, Interoperability, and Trust.', status: 'Deployed', progress: 100 },
+    { id: 'OGX-RES', name: 'Bio-Acoustic Resonance Framework', details: 'Integration of Rife frequency principles, Walter Russell periodic table mappings, and Tesla wave propagation theories for theoretical cellular harmonization.', status: 'Integrated', progress: 100 },
+    { id: 'OGX-NAD', name: 'NAD+ Metabolic Optimization', details: 'Scientific module for tracking and optimizing Nicotinamide Adenine Dinucleotide levels through precursors (NMN/NR), sirtuin activation, and lifestyle interventions.', status: 'Integrated', progress: 100 },
+    { id: 'OGX-HOLISTIC', name: 'Holistic Health Matrix', details: 'Comprehensive tracking for Alkaline/Grounding diets, Herbal Medicine protocols, Sleep/Stress biometrics, and Environmental Allergy mapping.', status: 'Integrated', progress: 100 },
+    { id: 'OGX-HEALING-WEB', name: 'Healing Web Database', details: 'Comprehensive database mapping natural remedies vs pharmaceutical interventions, including detailed pros, cons, and use cases.', status: 'Integrated', progress: 100 },
 ];
 
 // --- MILESTONES DATA (UPDATED WITH PROGRESS) ---
@@ -880,7 +953,13 @@ export const milestonesData: MilestonesData = {
         { id: 'edu-phase-3', title: 'Phase 3: Education Universe Deployment', status: 'Completed', progress: 100, description: 'Rolling out segmented Learning Realms (Spark Island, Explorer Academy, etc.) for age-specific education.' },
         { id: 'job-phase-1', title: 'Jobs & Careers Module', status: 'Completed', progress: 100, description: 'Implementation of Job Search, Freelance Marketplace, and Company Profiles.' },
         { id: 'social-phase-1', title: 'Social & Community Singularity', status: 'Completed', progress: 100, description: 'Integrated Feed, Communities (Discord-style), Watch (TikTok-style), and Messaging modules.' },
+        { id: 'job-phase-2', title: 'Advanced Career Features', status: 'Completed', progress: 100, description: 'Added Application Tracking, Interview Scheduling, and Enhanced Candidate/Employer Profiles.' },
         { id: 'phase-5-hardware-link', title: 'Phase 5: Physical Hardware Link', status: 'Not Started', progress: 0, description: 'Direct integration with bio-neural chips and physical robotic chassis.' },
+        { id: 'health-phase-1', title: 'OmniGenome-X Phase 1: Genomics', status: 'Completed', progress: 100, description: '3D DNA visualization, variant calling, and genetic risk assessment deployed.' },
+        { id: 'health-phase-2', title: 'OmniGenome-X Phase 2: Bioenergetics', status: 'Completed', progress: 100, description: 'NAD+ optimization, resonance mapping, and theoretical frequency modules integrated.' },
+        { id: 'health-phase-3', title: 'OmniGenome-X Phase 3: HealthChain', status: 'Completed', progress: 100, description: 'Native blockchain with multi-consensus support for health record sovereignty.' },
+        { id: 'health-phase-4', title: 'OmniGenome-X Phase 4: Holistic', status: 'Completed', progress: 100, description: 'Full integration of habit tracking, allergy mapping, and lifestyle optimization.' },
+        { id: 'health-phase-5', title: 'OmniGenome-X Phase 5: Healing Web', status: 'Completed', progress: 100, description: 'Interactive database of natural vs pharmaceutical remedies.' },
     ],
     platformFeatureMilestones: [
         { id: 'pfm-1', title: 'E-commerce functionality: buying, selling, drop shipping', status: 'Completed', progress: 100, description: 'Unified Commerce Platform (Physical & Digital) active.' },
@@ -915,6 +994,11 @@ export const milestonesData: MilestonesData = {
         { id: 'edu-instructor', title: 'Instructor Studio', status: 'Completed', progress: 100, description: 'Dashboard for course creation and earnings.' },
         { id: 'social-communities', title: 'Community Server Engine', status: 'Completed', progress: 100, description: 'Discord-style server architecture with channel types.' },
         { id: 'social-streams', title: 'Live Streaming Module', status: 'Completed', progress: 100, description: 'Twitch/TikTok style video feed and live interaction.' },
+        { id: 'job-resume-upload', title: 'Candidate Resume Upload', status: 'Completed', progress: 100, description: 'UI for candidates to upload and manage CVs/Portfolios.' },
+        { id: 'job-app-tracking', title: 'Application Status Tracking', status: 'Completed', progress: 100, description: 'Dashboard for candidates to view application progress.' },
+        { id: 'job-interviews', title: 'Interview Scheduling', status: 'Completed', progress: 100, description: 'System for scheduling and managing interviews.' },
+        { id: 'health-healing-web', title: 'Healing Web Interface', status: 'Completed', progress: 100, description: 'Interactive UI for comparing natural vs pharmaceutical remedies.' },
+        { id: 'health-and-wellness', title: 'Health & Wellness Suite', status: 'Completed', progress: 100, description: 'Full integration of Body Composition, Frequency Healing, Nutrition Guide, and Healing Web.' },
     ],
     technicalBreakdown: [
         { id: 'atb-1', title: 'Virtual Hardware Simulation - quantum chips, processors, time crystals', status: 'Completed', progress: 100, description: 'VirtualRigBuilder and InfrastructureControl.' },
@@ -972,6 +1056,22 @@ export const buildChecklistData: ChecklistCategory[] = [
             { id: 'car-1', name: 'Job Board Engine', description: 'Logic for listing, filtering, and searching jobs.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
             { id: 'car-2', name: 'Company Profiles', description: 'Database and UI for employer branding.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
             { id: 'car-3', name: 'Freelance Marketplace', description: 'Project listings, proposals, and gig management.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'car-4', name: 'Application Tracking', description: 'System for tracking job application status.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'car-5', name: 'Interview Scheduling', description: 'Calendar integration for interviews.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'car-6', name: 'Candidate Profiles', description: 'Resume upload and portfolio management.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+        ]
+    },
+    {
+        id: 'health-omnigenome-build', name: 'OmniGenome-X Health Suite', description: 'Integrated Genomics, Bioenergetics, and Blockchain Health.', icon: HeartIcon,
+        items: [
+            { id: 'ogx-1', name: 'Genomic Engine', description: '3D DNA visualization, variant calling, risk assessment.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ogx-2', name: 'NAD+ Optimizer', description: 'Metabolic tracking, supplement protocols, pathway analysis.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ogx-3', name: 'Resonance Therapy Module', description: 'Rife/Russell frequency generation and audio engine.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ogx-4', name: 'HealthChain Integration', description: 'Proof-of-Everything consensus, NFT minting, Token economy.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ogx-5', name: 'Holistic Health Tracks', description: 'Allergy mapping, habit tracking, nutritional alchemy.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ogx-6', name: 'Security & Compliance Core', description: 'HIPAA/GDPR/CCPA rules engine, Zero-Knowledge Proofs.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ogx-7', name: 'Interactive Healing Web', description: 'Detailed database of natural vs pharmaceutical remedies.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'ogx-8', name: 'Health App UI', description: 'Unified interface for all health modules.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
         ]
     },
     {
@@ -1044,7 +1144,7 @@ export const buildChecklistData: ChecklistCategory[] = [
                 { id: 'robo-2-1', name: 'Boston Dynamics Atlas 4.0 Integration', description: 'Interface with full body control system and NVIDIA Jetson chip.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
                 { id: 'robo-2-2', name: 'Apptronik Apollo Integration', description: 'Interface with advanced force control architecture.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
             ]},
-            { id: 'robo-3', name: 'Robotics Takeover Protocol', description: 'Design the secure adapter/middleware for deploying personal AIs onto third-party robots.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
+            { id: 'robo-3', name: 'Robotics Takeover Protocol', description: 'Design the secure adapter/middleware for deploying personal AIs onto third-party robotics platforms.', status: 'Completed', progress: 100, lastModified: '2025-10-27' },
         ]
     },
     {

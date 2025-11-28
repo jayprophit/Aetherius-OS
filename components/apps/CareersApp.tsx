@@ -2,7 +2,7 @@
 import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
-import { JobsPlatform } from '../JobSearch'; // Import the new JobsPlatform (exported as JobSearch for compatibility or renamed)
+import { JobsPlatform } from '../JobSearch'; // Renamed file export but keeping import consistent
 import { CvBuilder } from '../CvBuilder';
 import { BriefcaseIcon, UserCircleIcon, GlobeAltIcon } from '../Icons';
 
@@ -26,7 +26,7 @@ export const CareersApp: React.FC<CareersAppProps> = ({ context, onSetView }) =>
     const augmentedMenuItem = { ...context.menuItem };
     
     const children: MenuItemData[] = [
-        { title: 'Jobs & Freelance', icon: GlobeAltIcon, component: 'jobsPlatform' },
+        { title: 'Jobs Platform', icon: GlobeAltIcon, component: 'jobsPlatform' },
         { title: 'CV Builder', icon: UserCircleIcon, component: 'cvBuilder' },
     ];
 
