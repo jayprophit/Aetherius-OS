@@ -4,12 +4,12 @@ import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
 import { Members } from '../Members';
 import { Groups } from '../Groups';
-import { PlaceholderView } from '../PlaceholderView';
 import { SocialFeed } from '../SocialFeed';
 import { GovernancePortal } from '../GovernancePortal'; 
 import { Messenger } from '../Messenger';
 import { CommunityView } from '../social/CommunityView';
 import { WatchView } from '../social/WatchView';
+import { UniversalAppRenderer } from '../UniversalAppRenderer';
 import { ScaleIcon, ChatBubbleLeftRightIcon, UserGroupIcon, PlayCircleIcon, HomeIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon } from '../Icons';
 
 // Helper Icons for Menu
@@ -17,7 +17,6 @@ const FeedIcon = (props: any) => <HomeIcon {...props} />;
 const CommunitiesIcon = (props: any) => <UserGroupIcon {...props} />;
 const WatchIcon = (props: any) => <PlayCircleIcon {...props} />;
 const MessageIcon = (props: any) => <ChatBubbleOvalLeftEllipsisIcon {...props} />;
-const ProfileIcon = (props: any) => <UserCircleIcon {...props} />;
 
 const FeedView: React.FC<{ onSetView: (view: string, context?:any) => void }> = ({ onSetView }) => (
     <div className="p-4"><SocialFeed onSetView={onSetView} /></div>
@@ -31,8 +30,8 @@ const socialComponentMap: { [key: string]: React.FC<any> } = {
   communities: CommunityView,
   watch: WatchView,
   governance: GovernancePortal,
-  forums: () => <PlaceholderView viewName="Forums" />,
-  events: () => <PlaceholderView viewName="Events" />,
+  forums: () => <UniversalAppRenderer type="dashboard" title="Forums" />,
+  events: () => <UniversalAppRenderer type="calendar" title="Events" />, // Use calendar layout
 };
 
 interface SocialAppProps {

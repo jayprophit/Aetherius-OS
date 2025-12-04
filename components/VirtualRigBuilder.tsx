@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { 
     CpuChipIcon, CircleStackIcon, ServerIcon, BoltIcon, 
@@ -431,7 +433,7 @@ export const VirtualRigBuilder: React.FC = () => {
                         <ServerIcon className="w-8 h-8 text-blue-500" />
                         <div>
                             <h1 className="text-xl font-bold text-white">Virtual Rig Builder</h1>
-                            <p className="text-xs text-gray-400 font-mono">3D Multi-Chip Assembly Environment</p>
+                            <p className="text-xs text-gray-400 font-mono">3D Multi-Chip Assembly Environment | Cloud-Synced Virtual Hardware</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -453,7 +455,7 @@ export const VirtualRigBuilder: React.FC = () => {
                 rig={rig} 
                 issues={validation.issues} 
                 onBoot={handleBoot} 
-                onReset={handleReset}
+                onReset={handleReset} 
                 inspectionMode={inspectionMode}
                 setInspectionMode={setInspectionMode}
             />

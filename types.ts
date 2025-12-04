@@ -1,6 +1,19 @@
 
-
 import React from 'react';
+
+export type ViewMode = 'desktop' | 'mobile';
+
+export interface SystemLocale {
+    timezone: string;
+    locale: string;
+    location: {
+        city: string;
+        country: string;
+        lat?: number;
+        lng?: number;
+    } | null;
+    isAuto: boolean;
+}
 
 export interface ChatMessage {
   role: 'user' | 'model';
@@ -26,11 +39,11 @@ export interface MenuItemData {
   icon?: React.FC<any>;
   component?: string;
   children?: MenuItemData[];
-  type?: 'item' | 'divider' | 'title';
+  type?: 'item' | 'divider' | 'title' | 'group';
   action?: string | (() => void);
 }
 
-export interface MenuGroup {
+export interface MenuGroup extends MenuItemData {
   id: string;
   title: string;
   icon: React.FC<any>;
@@ -196,7 +209,7 @@ export interface Group {
   members: number;
   memberAvatars: (string | null)[];
   isOrganizer: boolean;
-  lastActive: string;
+  lastActive?: string;
 }
 
 // --- Social Platform Architecture Types ---
@@ -242,6 +255,7 @@ export interface AppItem {
     title: string;
     icon: React.FC<any>;
     component: string;
+    context?: any;
 }
 
 export interface FolderItem {

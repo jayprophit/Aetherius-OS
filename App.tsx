@@ -1,21 +1,20 @@
 
-
-
-
-
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { LeftSidebar } from './components/Dock';
 import { TopBar } from './components/TopBar';
-import { menuGroups, aetheriusMenuItems, loggedInUser as initialUser } from './data';
-import { MenuItemData, WindowState, MenuGroup, SystemIdentity, TaskbarConfig } from './types';
+import { menuGroups, aetheriusMenuItems, loggedInUser as initialUser, desktopItems } from './data';
+import { MenuItemData, WindowState, MenuGroup, SystemIdentity, TaskbarConfig, AppItem, ViewMode, SystemLocale } from './types';
 import { FloatingActionButton } from './components/FloatingActionButton';
 import { Desktop } from './components/Desktop';
+import { MobileHome } from './components/MobileHome';
 import { WindowFrame } from './components/WindowFrame';
 import { Taskbar } from './components/Taskbar';
 import { PlaceholderView } from './components/PlaceholderView';
-import { GyeNyameIcon, ArrowRightIcon, FingerPrintIcon, Cog6ToothIcon } from './components/Icons';
+import { GyeNyameIcon, ArrowRightIcon, FingerPrintIcon, Cog6ToothIcon, ChevronLeftIcon, ComputerDesktopIcon } from './components/Icons';
 import { OnboardingWizard } from './components/OnboardingWizard';
 import { CartDrawer } from './components/CartDrawer';
+import { CommandPalette } from './components/CommandPalette';
+import { NotificationCenter } from './components/NotificationCenter';
 
 // --- Component Imports for Window Content ---
 import { ProductPage } from './components/ProductPage';
@@ -65,6 +64,26 @@ import { GovernancePortal } from './components/GovernancePortal';
 import { NanoFabricator } from './components/NanoFabricator';
 import { GuestOS } from './components/apps/GuestOS';
 import { CloudOpsApp } from './components/apps/CloudOpsApp';
+import { SystemAudit } from './components/SystemAudit';
+import { EnterpriseDashboard } from './components/business/EnterpriseDashboard';
+
+// New Utility Apps
+import { FileManager } from './components/apps/FileManager';
+import { TaskManager } from './components/apps/TaskManager';
+import { ServiceRegistry } from './components/apps/ServiceRegistry';
+import { Calculator } from './components/apps/Calculator';
+import { Notepad } from './components/apps/Notepad';
+import { SystemMonitor } from './components/apps/SystemMonitor';
+
+// New Advanced Components
+import { QuantumCircuitDesigner } from './components/quantum/QuantumCircuitDesigner';
+import { AIOpsMonitor } from './components/ops/AIOpsMonitor';
+import { IoTMap } from './components/iot/IoTMap';
+import { SheetEditor } from './components/SheetEditor';
+import { PhotoEditor } from './components/PhotoEditor';
+import { MediaPlayer } from './components/MediaPlayer';
+import { CodeIDE } from './components/CodeIDE';
+import { OmniVisualBuilder } from './components/apps/OmniVisualBuilder';
 
 // App Containers
 import { SocialApp } from './components/apps/SocialApp';
@@ -76,6 +95,7 @@ import { MediaApp } from './components/apps/MediaApp';
 import { ContentGenApp } from './components/apps/ContentGenApp';
 import { EngineeringApp } from './components/apps/EngineeringApp';
 import { ECommerceApp } from './components/apps/ECommerceApp';
+import { AppMarketApp } from './components/apps/AppMarketApp';
 import { FinanceApp } from './components/apps/FinanceApp';
 import { ElearningApp } from './components/apps/ElearningApp';
 import { GamingApp } from './components/apps/GamingApp';
@@ -83,9 +103,12 @@ import { HealthApp } from './components/apps/HealthApp';
 import { AccountApp } from './components/apps/AccountApp';
 import { RD_HubApp } from './components/apps/RD_HubApp';
 import { AiSuiteApp } from './components/apps/AiSuiteApp';
-import { OmniPlatformApp } from './components/apps/OmniPlatformApp'; // NEW IMPORT
+import { OmniPlatformApp } from './components/apps/OmniPlatformApp'; 
+import { AiProductivityPlatform } from './components/apps/AiProductivityPlatform';
+import { QuantumLabApp } from './components/apps/QuantumLabApp';
+import { OperationsCenterApp } from './components/apps/OperationsCenterApp';
 
-// E-Learning sub-views
+// Sub-views
 import { CourseDetail } from './components/CourseDetail';
 import { MyLearning, LearningAssistant, Achievements } from './components/MyLearning';
 import { SparkIsland, ExplorerAcademy, InnovatorsForge, ScholarsNexus, LuminaryLabs } from './components/Elearning';
@@ -101,7 +124,7 @@ import { BodyComposition } from './components/health/BodyComposition';
 import { FrequencyHealing } from './components/health/FrequencyHealing';
 import { HealingWeb } from './components/health/HealingWeb';
 import { NutritionGuide } from './components/health/NutritionGuide';
-import { HealthHub } from './components/health/HealthHub'; // NEW IMPORT
+import { HealthHub } from './components/health/HealthHub';
 import { Markets } from './components/trading/Markets';
 import { AdvancedChart } from './components/trading/AdvancedChart';
 import { Swap } from './components/trading/Swap';
@@ -122,17 +145,61 @@ export interface LaunchableApp {
   context?: any;
 }
 
-// Safe fallback for missing components
 const SafePlaceholder = (props: any) => <PlaceholderView viewName={props.viewName || 'Application'} />;
 
 const componentMap: { [key: string]: React.FC<any> } = {
+  // Main Apps
   socialFeed: SocialFeed,
   productPage: ProductPage,
   browser: Browser,
   aiHub: AIHub,
   messenger: Messenger,
+  messaging: Messenger, // Consolidate duplicate
   settings: SettingsView,
   folderView: FolderView,
+  
+  // Utilities
+  fileManager: FileManager,
+  taskManager: TaskManager,
+  systemMonitor: SystemMonitor,
+  serviceRegistry: ServiceRegistry,
+  calculator: Calculator,
+  notepad: Notepad,
+  sheetEditor: SheetEditor,
+  photoEditor: PhotoEditor,
+  mediaPlayer: MediaPlayer,
+  terminal: Terminal,
+  
+  // Specialized Editors
+  codeEditor: CodeIDE,
+  websiteBuilder: ({ onSetView }: any) => <div className="fixed inset-0 z-[100] bg-white dark:bg-gray-900"><OmniVisualBuilder onExit={() => onSetView('dashboard')} /></div>,
+  videoEditor: VideoEditor,
+
+  // App Containers (Super Apps)
+  socialApp: SocialApp,
+  productivityApp: ProductivityApp,
+  careersApp: CareersApp,
+  enterpriseApp: EnterpriseApp,
+  developmentApp: DevelopmentApp,
+  mediaApp: MediaApp,
+  contentGenApp: ContentGenApp,
+  engineeringApp: EngineeringApp,
+  eCommerceApp: ECommerceApp,
+  appMarket: AppMarketApp,
+  financeApp: FinanceApp,
+  elearningApp: ElearningApp,
+  gamingApp: GamingApp,
+  healthApp: HealthApp,
+  accountApp: AccountApp,
+  rdHub: RD_HubApp,
+  aiSuite: AiSuiteApp, // GenAI Studio
+  omniPlatform: OmniPlatformApp,
+  aiProductivityPlatform: AiProductivityPlatform, // Tool Catalog
+  quantumLabApp: QuantumLabApp,
+  opsCenterApp: OperationsCenterApp,
+
+  // Sub-Components & Views
+  enterpriseDashboard: EnterpriseDashboard,
   aetherialNetworks: AetherialNetworksPricing,
   myProfile: MyProfile,
   members: Members,
@@ -161,35 +228,19 @@ const componentMap: { [key: string]: React.FC<any> } = {
   engineeringHub: InfrastructureControl,
   rigBuilder: VirtualRigBuilder,
   digitalTwinSim: DigitalTwinEngine,
-  terminal: Terminal,
   hypervisor: Hypervisor,
   guestOS: GuestOS,
   systemRequirements: SystemRequirements,
+  systemAudit: SystemAudit,
   roboticsControl: RoboticsControl,
   governance: GovernancePortal,
   nanoFab: NanoFabricator,
   cloudOps: CloudOpsApp,
-  omniPlatform: OmniPlatformApp, // NEW
+  circuitDesigner: QuantumCircuitDesigner,
+  aiOps: AIOpsMonitor,
+  iotManager: IoTMap,
   
-  // App Containers
-  socialApp: SocialApp,
-  productivityApp: ProductivityApp,
-  careersApp: CareersApp,
-  enterpriseApp: EnterpriseApp,
-  developmentApp: DevelopmentApp,
-  mediaApp: MediaApp,
-  contentGenApp: ContentGenApp,
-  engineeringApp: EngineeringApp,
-  eCommerceApp: ECommerceApp,
-  financeApp: FinanceApp,
-  elearningApp: ElearningApp,
-  gamingApp: GamingApp,
-  healthApp: HealthApp,
-  accountApp: AccountApp,
-  rdHub: RD_HubApp,
-  aiSuite: AiSuiteApp,
-  
-  // E-Learning sub-views
+  // Learning Sub-views
   courseDetail: CourseDetail,
   myLearning: MyLearning,
   learningAssistant: LearningAssistant,
@@ -200,7 +251,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
   scholarsNexus: ScholarsNexus,
   luminaryLabs: LuminaryLabs,
 
-  // AI Suite
+  // AI & Research
   aiSupportAvatar: AiSupportAvatar,
   networkOrchestrator: NetworkOrchestrator,
   blockchainHub: BlockchainExplorer,
@@ -208,20 +259,19 @@ const componentMap: { [key: string]: React.FC<any> } = {
   aiWorkforce: AiWorkforceOrchestrator,
   avatarForge: AvatarForge,
   simulationHub: SimulationHub,
-  videoEditor: VideoEditor,
   huggingFaceHub: HuggingFaceModelHub,
   quantumNN: QuantumNeuralNetwork,
   quantumDNACore: QuantumDNACore,
   memoryNode: MemoryNode,
 
-  // Health
+  // Health Sub-views
   healthHub: HealthHub,
   bodyComposition: BodyComposition,
   frequencyHealing: FrequencyHealing,
   healingWeb: HealingWeb,
   nutritionGuide: NutritionGuide,
   
-  // Trading
+  // Finance Sub-views
   tradingMarkets: Markets,
   tradingAdvancedChart: AdvancedChart,
   tradingSwap: Swap,
@@ -239,7 +289,7 @@ const componentMap: { [key: string]: React.FC<any> } = {
 
 const BootScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
     useEffect(() => {
-        const timer = setTimeout(onComplete, 3000); // 3 second boot
+        const timer = setTimeout(onComplete, 3000); 
         return () => clearTimeout(timer);
     }, [onComplete]);
 
@@ -341,13 +391,29 @@ const App: React.FC = () => {
   const [hasOnboarded, setHasOnboarded] = useState(false);
   const [currentUser, setCurrentUser] = useState(initialUser);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  const [isNotificationCenterOpen, setIsNotificationCenterOpen] = useState(false);
   
+  // View Mode
+  const [viewMode, setViewMode] = useState<ViewMode>('desktop');
+  const [mobileActiveApp, setMobileActiveApp] = useState<LaunchableApp | null>(null);
+  
+  // System Locale & Time
+  const [systemLocale, setSystemLocale] = useState<SystemLocale>({
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    locale: navigator.language,
+    location: null,
+    isAuto: true
+  });
+
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
   const nextZIndex = useRef(100);
-  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false); // Default closed for cleaner desktop
+  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false); 
   const [zoom, setZoom] = useState(1);
   const [wallpaper, setWallpaper] = useState<string>('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto-format=fit-crop');
+  const [accentColor, setAccentColor] = useState<string>('#3b82f6'); // Default blue-500
+  const [pinnedAppIds, setPinnedAppIds] = useState<string[]>(['my-computer', 'browser', 'messenger', 'ai-productivity', 'terminal']);
   
   const [activeWorkspace, setActiveWorkspace] = useState(0);
   const [taskbarConfig, setTaskbarConfig] = useState<TaskbarConfig>({
@@ -371,33 +437,57 @@ const App: React.FC = () => {
               setCurrentUser(JSON.parse(savedUser));
           } catch(e) { console.error("Failed to load user", e); }
       }
-  }, []);
 
-  const handleOnboardingComplete = (identity: SystemIdentity, avatarUrl: string) => {
-      const newUser = {
-          ...currentUser,
-          name: identity.governmentName || 'User',
-          avatarUrl: avatarUrl,
-          systemIdentity: identity
-      };
-      setCurrentUser(newUser);
-      localStorage.setItem('aetherius_user', JSON.stringify(newUser));
-      localStorage.setItem('aetherius_onboarded', 'true');
-      setHasOnboarded(true);
-  };
-
-  useEffect(() => {
-    if (desktopRef.current) {
-      setDesktopRect(desktopRef.current.getBoundingClientRect());
-    }
-    const handleResize = () => {
-      if (desktopRef.current) {
-        setDesktopRect(desktopRef.current.getBoundingClientRect());
+      const savedPinned = localStorage.getItem('aetherius_pinned_apps');
+      if (savedPinned) {
+          try { setPinnedAppIds(JSON.parse(savedPinned)); } catch(e){}
       }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+      
+      const savedWallpaper = localStorage.getItem('aetherius_wallpaper');
+      if (savedWallpaper) {
+          setWallpaper(savedWallpaper);
+      }
+
+      const savedAccent = localStorage.getItem('aetherius_accent');
+      if (savedAccent) {
+          setAccentColor(savedAccent);
+      }
+
+      const savedViewMode = localStorage.getItem('aetherius_viewMode');
+      if (savedViewMode === 'mobile' || savedViewMode === 'desktop') {
+          setViewMode(savedViewMode);
+      }
   }, []);
+
+  // System Locale Detection
+  useEffect(() => {
+    // Infer city from timezone
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const city = tz.split('/')[1]?.replace(/_/g, ' ') || 'Unknown';
+    
+    setSystemLocale(prev => ({
+        ...prev,
+        timezone: tz,
+        location: { city: city, country: '' } 
+    }));
+
+    // Attempt precise geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+             setSystemLocale(prev => ({
+                 ...prev,
+                 location: { ...prev.location!, lat: pos.coords.latitude, lng: pos.coords.longitude }
+             }))
+        }, (err) => {
+            console.log("Geo permission denied or error", err);
+        });
+    }
+  }, []);
+
+  const handleSetWallpaper = (url: string) => {
+      setWallpaper(url);
+      localStorage.setItem('aetherius_wallpaper', url);
+  };
 
   const bringToFront = (id: string) => {
     nextZIndex.current += 1;
@@ -414,16 +504,21 @@ const App: React.FC = () => {
   }, [windows, activeWorkspace]);
 
   const launchApp = useCallback((app: LaunchableApp) => {
-    const existingWindow = windows.find(w => w.id === app.component && !w.isMinimized);
-    if (existingWindow) {
-      focusWindow(existingWindow.id);
-      return;
-    }
-    
-    const minimizedWindow = windows.find(w => w.id === app.component && w.isMinimized);
-    if (minimizedWindow) {
-        focusWindow(minimizedWindow.id);
+    if (viewMode === 'mobile') {
+        setMobileActiveApp(app);
         return;
+    }
+
+    const existingWindow = windows.find(w => w.component === app.component);
+    if (existingWindow) {
+      if (existingWindow.isMinimized) {
+          setWindows(prev => prev.map(w => w.id === existingWindow.id ? { ...w, isMinimized: false, zIndex: bringToFront(existingWindow.id) } : w));
+          setActiveWindowId(existingWindow.id);
+          if(existingWindow.workspace !== activeWorkspace) setActiveWorkspace(existingWindow.workspace);
+      } else {
+          focusWindow(existingWindow.id);
+      }
+      return;
     }
     
     const newWindow: WindowState = {
@@ -431,10 +526,10 @@ const App: React.FC = () => {
       title: app.title,
       icon: app.icon,
       component: app.component,
-      context: app.context,
-      position: { x: Math.random() * 100 + 50, y: Math.random() * 100 + 50 },
-      size: { width: 900, height: 600 },
-      zIndex: bringToFront(app.component),
+      context: { ...app.context, setWallpaper: handleSetWallpaper, setTaskbarConfig, setAccentColor, systemLocale },
+      position: { x: Math.random() * 50 + 50, y: Math.random() * 50 + 50 },
+      size: { width: 1000, height: 700 },
+      zIndex: bringToFront(`${app.component}-${Date.now()}`),
       isMaximized: false,
       isMinimized: false,
       workspace: activeWorkspace,
@@ -442,7 +537,7 @@ const App: React.FC = () => {
     
     setWindows(prev => [...prev, newWindow]);
     setActiveWindowId(newWindow.id);
-  }, [windows, activeWorkspace, focusWindow]);
+  }, [windows, activeWorkspace, focusWindow, viewMode, systemLocale]);
 
   const closeWindow = (id: string) => {
     setWindows(windows => windows.filter(w => w.id !== id));
@@ -456,7 +551,83 @@ const App: React.FC = () => {
         }
     }
   };
-  
+
+  // Global Keyboard Listeners
+  useEffect(() => {
+      const handleKeyDown = (e: KeyboardEvent) => {
+          // Command+K or Ctrl+K for Palette
+          if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+              e.preventDefault();
+              setIsCommandPaletteOpen(prev => !prev);
+          }
+          
+          // Cmd/Ctrl + E for File Explorer
+          if ((e.metaKey || e.ctrlKey) && e.key === 'e') {
+              e.preventDefault();
+              launchApp({ component: 'fileManager', title: 'My Computer', icon: ComputerDesktopIcon });
+          }
+
+          // Cmd/Ctrl + / for AI Assistant
+          if ((e.metaKey || e.ctrlKey) && e.key === '/') {
+              e.preventDefault();
+              launchApp({ component: 'aiHub', title: 'AI Hub', icon: GyeNyameIcon });
+          }
+          
+          // Cmd/Ctrl + Q to close active window
+          if ((e.metaKey || e.ctrlKey) && e.key === 'q') {
+              e.preventDefault();
+              if (activeWindowId) {
+                  closeWindow(activeWindowId);
+              }
+          }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeWindowId, launchApp]);
+
+  const handleOnboardingComplete = (identity: SystemIdentity, avatarUrl: string) => {
+      const newUser = {
+          ...currentUser,
+          name: identity.governmentName || 'User',
+          avatarUrl: avatarUrl,
+          systemIdentity: identity
+      };
+      setCurrentUser(newUser);
+      localStorage.setItem('aetherius_user', JSON.stringify(newUser));
+      localStorage.setItem('aetherius_onboarded', 'true');
+      setHasOnboarded(true);
+  };
+
+  const togglePinApp = (appId: string) => {
+      let newPinned;
+      if (pinnedAppIds.includes(appId)) {
+          newPinned = pinnedAppIds.filter(id => id !== appId);
+      } else {
+          newPinned = [...pinnedAppIds, appId];
+      }
+      setPinnedAppIds(newPinned);
+      localStorage.setItem('aetherius_pinned_apps', JSON.stringify(newPinned));
+  };
+
+  const handleToggleViewMode = () => {
+      const newMode = viewMode === 'desktop' ? 'mobile' : 'desktop';
+      setViewMode(newMode);
+      localStorage.setItem('aetherius_viewMode', newMode);
+  };
+
+  useEffect(() => {
+    if (desktopRef.current) {
+      setDesktopRect(desktopRef.current.getBoundingClientRect());
+    }
+    const handleResize = () => {
+      if (desktopRef.current) {
+        setDesktopRect(desktopRef.current.getBoundingClientRect());
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const minimizeWindow = (id: string) => {
     setWindows(windows => windows.map(w => w.id === id ? { ...w, isMinimized: true } : w));
     if(id === activeWindowId) {
@@ -482,13 +653,39 @@ const App: React.FC = () => {
           onSetView: (view: string, context: any) => launchApp({ component: view, title: view, icon: () => null, context }),
           context: win.context,
           launchApp: launchApp,
-          onClose: () => closeWindow(win.id)
+          onClose: () => closeWindow(win.id),
+          setWallpaper: handleSetWallpaper,
+          setTaskbarConfig,
+          setAccentColor,
+          systemLocale
       };
       
       if (win.component === 'placeholder') {
         props.viewName = win.title;
       }
       
+      return <Component {...props} />;
+  }
+
+  const renderMobileAppContent = (app: LaunchableApp) => {
+       const Component = componentMap[app.component] || componentMap['placeholder'];
+       if (typeof Component !== 'function') return <SafePlaceholder viewName={app.title + " (Error)"} />;
+
+       const props: any = {
+          onSetView: (view: string, context: any) => launchApp({ component: view, title: view, icon: () => null, context }),
+          context: app.context,
+          launchApp: launchApp,
+          onClose: () => setMobileActiveApp(null),
+          setWallpaper: handleSetWallpaper,
+          setTaskbarConfig,
+          setAccentColor,
+          systemLocale
+      };
+      
+      if (app.component === 'placeholder') {
+        props.viewName = app.title;
+      }
+
       return <Component {...props} />;
   }
 
@@ -505,22 +702,42 @@ const App: React.FC = () => {
   }
 
   const visibleWindows = windows.filter(w => !w.isMinimized && w.workspace === activeWorkspace);
-  
-  // Dynamic Layout Calculations
   const isHorizontal = taskbarConfig.position === 'bottom' || taskbarConfig.position === 'top';
   const flexDir = isHorizontal ? 'flex-col' : 'flex-row';
   
-  const orderClasses = {
-      top: 'order-first',
-      bottom: 'order-last',
-      left: 'order-first',
-      right: 'order-last'
-  };
+  // Calculate layout classes based on taskbar position
+  let mainContainerClass = 'flex-1 flex relative overflow-hidden';
+  let taskbarContainerClass = 'z-50';
+  
+  if (taskbarConfig.position === 'top') {
+      mainContainerClass += ' flex-col';
+      taskbarContainerClass += ' h-12 w-full order-first';
+  } else if (taskbarConfig.position === 'bottom') {
+      mainContainerClass += ' flex-col';
+      taskbarContainerClass += ' h-12 w-full order-last';
+  } else if (taskbarConfig.position === 'left') {
+      mainContainerClass += ' flex-row';
+      taskbarContainerClass += ' w-16 h-full order-first';
+  } else if (taskbarConfig.position === 'right') {
+      mainContainerClass += ' flex-row';
+      taskbarContainerClass += ' w-16 h-full order-last';
+  }
 
   return (
-    <div className={`h-screen w-screen bg-background-light dark:bg-background-dark text-content-light dark:text-content-dark font-sans overflow-hidden flex ${flexDir} animate-fade-in transition-colors duration-300`} style={{ zoom }}>
+    <div 
+        className={`h-screen w-screen bg-background-light dark:bg-background-dark text-content-light dark:text-content-dark font-sans overflow-hidden flex flex-col animate-fade-in transition-colors duration-300`} 
+        style={{ zoom, '--color-primary': accentColor } as any}
+    >
+      {/* Inject dynamic accent color styles */}
+      <style>{`
+        :root { --color-primary: ${accentColor}; }
+        .text-primary { color: var(--color-primary) !important; }
+        .bg-primary { background-color: var(--color-primary) !important; }
+        .border-primary { border-color: var(--color-primary) !important; }
+        .ring-primary { --tw-ring-color: var(--color-primary) !important; }
+      `}</style>
       
-      {/* Optional Mac-Style Top Bar (Hidden if taskbar is Top to avoid conflict) */}
+      {/* Top Bar (Only visible if taskbar isn't at the top, or we can allow both) */}
       {taskbarConfig.position !== 'top' && (
           <div className="flex-shrink-0 z-20">
             <TopBar 
@@ -531,49 +748,103 @@ const App: React.FC = () => {
               zoom={zoom}
               onZoom={setZoom}
               onOpenCart={() => setIsCartOpen(true)}
+              viewMode={viewMode}
+              onToggleViewMode={handleToggleViewMode}
+              onToggleNotifications={() => setIsNotificationCenterOpen(!isNotificationCenterOpen)}
+              systemLocale={systemLocale}
             />
           </div>
       )}
 
-      <div className={`flex-1 flex relative overflow-hidden ${flexDir}`}>
-          
-          {/* Taskbar Component - Dynamic Ordering */}
-          <div className={`z-50 ${orderClasses[taskbarConfig.position]} ${isHorizontal ? 'h-12 w-full' : 'w-16 h-full'}`}>
-             <Taskbar 
-                windows={windows.filter(w => w.workspace === activeWorkspace)}
-                onFocus={focusWindow} 
-                activeWindowId={activeWindowId} 
-                activeWorkspace={activeWorkspace}
-                onSwitchWorkspace={setActiveWorkspace}
-                config={taskbarConfig}
-                onLaunchApp={launchApp}
-            />
-          </div>
+      <div className={mainContainerClass}>
+          {viewMode === 'desktop' ? (
+            <>
+               {/* Taskbar */}
+              <div className={taskbarContainerClass}>
+                 <Taskbar 
+                    windows={windows}
+                    pinnedAppIds={pinnedAppIds}
+                    onFocus={focusWindow} 
+                    activeWindowId={activeWindowId} 
+                    activeWorkspace={activeWorkspace}
+                    onSwitchWorkspace={setActiveWorkspace}
+                    config={taskbarConfig}
+                    onLaunchApp={launchApp}
+                    onTogglePin={togglePinApp}
+                    systemLocale={systemLocale}
+                />
+              </div>
 
-          {/* Main Workspace */}
-          <div className="flex-1 relative flex flex-row overflow-hidden">
-               <LeftSidebar isOpen={isLeftSidebarOpen} onLaunchApp={launchApp} menuGroups={menuGroups} />
-               
-               <main className="flex-1 relative" ref={desktopRef}>
-                  <Desktop launchApp={launchApp} wallpaperUrl={wallpaper} />
-                  {visibleWindows.map(win => (
-                    <WindowFrame 
-                      key={win.id} 
-                      windowState={win}
-                      onClose={closeWindow}
-                      onFocus={focusWindow}
-                      onMinimize={minimizeWindow}
-                      onUpdate={updateWindow}
-                      isActive={win.id === activeWindowId}
-                      desktopRect={desktopRect}
-                    >
-                      {renderWindowContent(win)}
-                    </WindowFrame>
-                  ))}
-                  <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-               </main>
-          </div>
+              {/* Main Desktop Area */}
+              <div className="flex-1 relative flex flex-row overflow-hidden">
+                   {/* Dock Sidebar (optional) */}
+                   {taskbarConfig.position !== 'left' && (
+                       <LeftSidebar isOpen={isLeftSidebarOpen} onLaunchApp={launchApp} menuGroups={menuGroups} />
+                   )}
+                   
+                   <main className="flex-1 relative" ref={desktopRef}>
+                      <Desktop 
+                        launchApp={launchApp} 
+                        wallpaperUrl={wallpaper} 
+                        systemLocale={systemLocale}
+                      />
+                      {visibleWindows.map(win => (
+                        <WindowFrame 
+                          key={win.id} 
+                          windowState={win}
+                          onClose={closeWindow}
+                          onFocus={focusWindow}
+                          onMinimize={minimizeWindow}
+                          onUpdate={updateWindow}
+                          isActive={win.id === activeWindowId}
+                          desktopRect={desktopRect}
+                        >
+                          {renderWindowContent(win)}
+                        </WindowFrame>
+                      ))}
+                      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+                      <CommandPalette 
+                         isOpen={isCommandPaletteOpen} 
+                         onClose={() => setIsCommandPaletteOpen(false)} 
+                         onLaunchApp={launchApp} 
+                      />
+                      <NotificationCenter 
+                         isOpen={isNotificationCenterOpen} 
+                         onClose={() => setIsNotificationCenterOpen(false)} 
+                      />
+                   </main>
+              </div>
+            </>
+          ) : (
+            <div className="flex-1 relative w-full h-full bg-black">
+                <MobileHome 
+                    onLaunchApp={launchApp} 
+                    activeApp={mobileActiveApp} 
+                    onCloseApp={() => setMobileActiveApp(null)}
+                    wallpaperUrl={wallpaper}
+                />
+                 {mobileActiveApp && (
+                    <div className="absolute inset-0 z-[100] bg-white dark:bg-gray-900 flex flex-col animate-slide-up">
+                         <div className="h-12 flex items-center justify-between px-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
+                            <button onClick={() => setMobileActiveApp(null)} className="flex items-center text-blue-500 font-semibold">
+                                <ChevronLeftIcon className="w-6 h-6" /> Back
+                            </button>
+                            <span className="font-bold text-gray-800 dark:text-white truncate max-w-[200px]">{mobileActiveApp.title}</span>
+                            <div className="w-10"></div>
+                        </div>
+                        <div className="flex-1 overflow-hidden relative">
+                             {renderMobileAppContent(mobileActiveApp)}
+                        </div>
+                        <div className="h-6 flex justify-center items-center bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex-shrink-0 cursor-pointer" onClick={() => setMobileActiveApp(null)}>
+                            <div className="w-32 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                        </div>
+                    </div>
+                 )}
+            </div>
+          )}
       </div>
+      
+      <FloatingActionButton onLaunchAi={() => launchApp({ component: 'aiHub', title: 'AI Hub', icon: GyeNyameIcon })} showCart={false} />
     </div>
   );
 };

@@ -16,20 +16,20 @@ interface HFModel {
 
 const mockModels: HFModel[] = [
     {
-        id: 'meta-llama/Meta-Llama-3-8B-Instruct',
-        name: 'Llama 3 8B Instruct',
-        publisher: 'Meta',
+        id: 'aether-models/Aether-LLM-8B-Instruct',
+        name: 'Alpaca 3 8B Instruct',
+        publisher: 'OpenModels',
         task: 'Text Generation',
         size: '4.7 GB (Q4_K_M)',
         params: '8B',
         downloads: '2.5M',
-        description: 'The official Meta Llama 3 8B Instruct model. Optimized for dialogue use cases.',
+        description: 'The official Open Alpaca 3 8B Instruct model. Optimized for dialogue use cases.',
         tags: ['NLP', 'Chat', 'SOTA']
     },
     {
-        id: 'deepseek-ai/DeepSeek-R1-Distill-Llama-8B',
-        name: 'DeepSeek R1 Distill',
-        publisher: 'DeepSeek',
+        id: 'deep-reason/DeepThink-R1-Distill-8B',
+        name: 'DeepThink R1 Distill',
+        publisher: 'DeepReason',
         task: 'Reasoning (LRM)',
         size: '5.1 GB (Q4_K_M)',
         params: '8B',
@@ -38,20 +38,20 @@ const mockModels: HFModel[] = [
         tags: ['Reasoning', 'CoT', 'Project Builder']
     },
     {
-        id: 'Qwen/Qwen1.5-72B-Chat',
-        name: 'Qwen 1.5 72B Chat',
-        publisher: 'Alibaba Cloud',
+        id: 'cloud-ai/Nebula-1.5-72B-Chat',
+        name: 'Nebula 1.5 72B Chat',
+        publisher: 'Cloud AI',
         task: 'Text Generation',
         size: '40 GB (Q4_K_M)',
         params: '72B',
         downloads: '500k',
-        description: 'High-performance 72B model matching GPT-4 on many benchmarks. Requires significant VRAM.',
+        description: 'High-performance 72B model matching top proprietary models on many benchmarks. Requires significant VRAM.',
         tags: ['Open Source', 'Multi-Language', 'Heavy']
     },
     {
-        id: 'tiiuae/falcon-180B-chat',
-        name: 'Falcon 180B',
-        publisher: 'TII',
+        id: 'inst-tech/hawk-180B-chat',
+        name: 'Hawk 180B',
+        publisher: 'Institute of Tech',
         task: 'Text Generation',
         size: '100 GB (Q2_K)',
         params: '180B',
@@ -60,20 +60,20 @@ const mockModels: HFModel[] = [
         tags: ['Research', 'Massive', 'Foundation']
     },
     {
-        id: '01-ai/Yi-34B-Chat',
-        name: 'Yi 34B Chat',
-        publisher: '01.ai',
+        id: 'zero-one/Zen-34B-Chat',
+        name: 'Zen 34B Chat',
+        publisher: 'ZeroOne',
         task: 'Text Generation',
         size: '19 GB (Q4_K_M)',
         params: '34B',
         downloads: '350k',
-        description: 'Strong bilingual (English/Chinese) capabilities and long context window support.',
+        description: 'Strong bilingual capabilities and long context window support.',
         tags: ['Bilingual', 'Long Context']
     },
     {
-        id: 'TinyLlama/TinyLlama-1.1B-Chat-v1.0',
-        name: 'TinyLlama 1.1B',
-        publisher: 'TinyLlama',
+        id: 'micro-llm/NanoAlpaca-1.1B-Chat-v1.0',
+        name: 'NanoAlpaca 1.1B',
+        publisher: 'MicroLLM',
         task: 'Text Generation',
         size: '0.7 GB',
         params: '1.1B',
@@ -82,31 +82,31 @@ const mockModels: HFModel[] = [
         tags: ['Mobile', 'Edge', 'Fast']
     },
     {
-        id: 'mistralai/Mistral-7B-Instruct-v0.3',
-        name: 'Mistral 7B v0.3',
-        publisher: 'Mistral AI',
+        id: 'north-wind/Borealis-7B-Instruct-v0.3',
+        name: 'Borealis 7B v0.3',
+        publisher: 'NorthWind AI',
         task: 'Text Generation',
         size: '4.1 GB (Q4_K_M)',
         params: '7B',
         downloads: '1.2M',
-        description: 'The latest 7B model from Mistral AI with improved function calling and context window.',
+        description: 'The latest 7B model from NorthWind AI with improved function calling and context window.',
         tags: ['Efficient', 'Function Calling']
     },
     {
-        id: 'google/gemma-7b-it',
-        name: 'Gemma 7B IT',
-        publisher: 'Google',
+        id: 'search-corp/gem-7b-it',
+        name: 'Gem 7B IT',
+        publisher: 'SearchCorp',
         task: 'Text Generation',
         size: '4.5 GB',
         params: '7B',
         downloads: '900k',
-        description: 'Built from the same research and technology used to create the Gemini models.',
-        tags: ['Open Weights', 'Google']
+        description: 'Built from advanced research technology.',
+        tags: ['Open Weights', 'Research']
     },
     {
-        id: 'stabilityai/stable-diffusion-xl-base-1.0',
-        name: 'Stable Diffusion XL',
-        publisher: 'Stability AI',
+        id: 'stable-gen/stable-diffusion-xl-base-1.0',
+        name: 'Stable Vision XL',
+        publisher: 'StableGen',
         task: 'Image Generation',
         size: '6.9 GB',
         params: '3.5B',
@@ -115,9 +115,9 @@ const mockModels: HFModel[] = [
         tags: ['Art', 'Vision']
     },
     {
-        id: 'microsoft/Phi-3-mini-4k-instruct',
-        name: 'Phi-3 Mini',
-        publisher: 'Microsoft',
+        id: 'micro-soft/Theta-3-mini-4k-instruct',
+        name: 'Theta-3 Mini',
+        publisher: 'MicroSoftClone',
         task: 'Text Generation',
         size: '2.2 GB',
         params: '3.8B',
@@ -131,7 +131,7 @@ export const HuggingFaceModelHub: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [activeTab, setActiveTab] = useState<'explore' | 'local'>('explore');
     const [downloading, setDownloading] = useState<Record<string, number>>({}); // modelId -> progress %
-    const [localModels, setLocalModels] = useState<string[]>(['microsoft/Phi-3-mini-4k-instruct']); // Pre-installed
+    const [localModels, setLocalModels] = useState<string[]>(['micro-soft/Theta-3-mini-4k-instruct']); // Pre-installed
     const [runningModels, setRunningModels] = useState<string[]>([]);
     const [vramUsage, setVramUsage] = useState(1.2); // Start with OS overhead
 
@@ -211,7 +211,7 @@ export const HuggingFaceModelHub: React.FC = () => {
                 <div className="flex justify-between items-start">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2">
-                             <span className="text-3xl">🤗</span> Hugging Face Hub
+                             <span className="text-3xl">🤗</span> Open Model Hub
                         </h1>
                         <p className="text-gray-600 dark:text-gray-400 mt-1">Discover and run open-source LLMs & LRMs locally on your Aetherius Node.</p>
                     </div>

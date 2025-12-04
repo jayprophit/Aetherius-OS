@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { 
     CloudIcon, ServerIcon, ShieldCheckIcon, CircleStackIcon, BoltIcon, 
     CheckCircleIcon, GlobeAltIcon, LockClosedIcon, KeyIcon, 
-    ArrowPathIcon, ChartBarIcon, ExclamationTriangleIcon, PlayIcon
+    ArrowPathIcon, ChartBarIcon, ExclamationTriangleIcon, PlayIcon,
+    ShareIcon
 } from '../Icons';
 
 // --- Types ---
@@ -71,7 +72,7 @@ const InputField: React.FC<{ label: string; placeholder: string; type?: string; 
 );
 
 export const CloudOpsApp: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'Overview' | 'Infrastructure' | 'Security' | 'Database' | 'Integrations'>('Overview');
+    const [activeTab, setActiveTab] = useState<'Overview' | 'Infrastructure' | 'Security' | 'Database' | 'Integrations' | 'Quantum Networking'>('Overview');
     const [isDeployed, setIsDeployed] = useState(false);
     const [deployProgress, setDeployProgress] = useState(0);
     const [isSeeding, setIsSeeding] = useState(false);
@@ -247,7 +248,7 @@ export const CloudOpsApp: React.FC = () => {
                     <p className="text-xs text-gray-500 mt-1">Management Console v2.4</p>
                 </div>
                 <nav className="flex-1 p-4 space-y-1">
-                    {['Overview', 'Infrastructure', 'Security', 'Database', 'Integrations'].map((tab) => (
+                    {['Overview', 'Infrastructure', 'Security', 'Database', 'Integrations', 'Quantum Networking'].map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab as any)}
@@ -258,6 +259,7 @@ export const CloudOpsApp: React.FC = () => {
                             {tab === 'Security' && <ShieldCheckIcon className="w-5 h-5"/>}
                             {tab === 'Database' && <CircleStackIcon className="w-5 h-5"/>}
                             {tab === 'Integrations' && <BoltIcon className="w-5 h-5"/>}
+                            {tab === 'Quantum Networking' && <ShareIcon className="w-5 h-5"/>}
                             {tab}
                         </button>
                     ))}
@@ -409,6 +411,48 @@ export const CloudOpsApp: React.FC = () => {
                              <div className="mt-6 pt-4 border-t border-gray-700 flex justify-end">
                                 <button className="px-6 py-2 bg-green-600 text-white rounded-lg font-bold hover:bg-green-500">Save Securely</button>
                             </div>
+                        </div>
+                    </div>
+                )}
+
+                {activeTab === 'Quantum Networking' && (
+                    <div className="space-y-6 max-w-4xl">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <MetricCard label="Entanglement Fidelity" value="99.98%" status="good" />
+                            <MetricCard label="QKD Rate" value="14.2 kbps" status="good" />
+                            <MetricCard label="Active Q-Nodes" value="128" status="neutral" />
+                        </div>
+                        
+                        <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                            <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                                <GlobeAltIcon className="w-5 h-5 text-blue-400"/> Quantum Grid Topology
+                            </h3>
+                            {/* Visualization placeholder or settings */}
+                            <div className="h-48 bg-black rounded-lg border border-gray-600 relative overflow-hidden flex items-center justify-center">
+                                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+                                <div className="text-cyan-500 font-mono text-xs">
+                                    &lt;Quantum Repeater Mesh Visualization&gt;
+                                </div>
+                                {/* Simple CSS animation for nodes */}
+                                <div className="absolute w-2 h-2 bg-purple-500 rounded-full top-1/4 left-1/4 animate-ping"></div>
+                                <div className="absolute w-2 h-2 bg-blue-500 rounded-full top-1/2 right-1/3 animate-ping delay-700"></div>
+                                <div className="absolute w-2 h-2 bg-green-500 rounded-full bottom-1/4 left-1/2 animate-ping delay-300"></div>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <ToggleCard 
+                                title="Entanglement Swapping" 
+                                desc="Enable multi-hop entanglement distribution."
+                                active={true}
+                                onToggle={() => {}}
+                            />
+                            <ToggleCard 
+                                title="Decoherence Correction" 
+                                desc="Active error correction for quantum states."
+                                active={true}
+                                onToggle={() => {}}
+                            />
                         </div>
                     </div>
                 )}

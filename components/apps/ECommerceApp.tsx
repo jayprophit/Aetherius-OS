@@ -2,7 +2,6 @@
 import React, { useState, useMemo } from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
-import { CreatorMarketplace } from '../CreatorMarketplace'; 
 import { ProductPage } from '../ProductPage';
 import { commerceData } from '../../data';
 import { 
@@ -12,7 +11,7 @@ import {
     HeartIcon, ArrowPathIcon, CheckCircleIcon, FireIcon, ArrowUpCircleIcon
 } from '../Icons';
 
-// --- Amazon-Style Shop Components ---
+// --- AetherStore Components ---
 
 const ShopHeader: React.FC<{ 
     cartCount: number; 
@@ -22,19 +21,19 @@ const ShopHeader: React.FC<{
     const [searchTerm, setSearchTerm] = useState('');
 
     return (
-        <div className="bg-[#131921] text-white p-2 flex items-center gap-4 sticky top-0 z-20 shadow-md">
+        <div className="bg-[#1a202c] text-white p-2 flex items-center gap-4 sticky top-0 z-20 shadow-md">
             {/* Logo */}
-            <div className="flex items-center gap-1 px-2 hover:border hover:border-white rounded cursor-pointer">
-                <ShoppingCartIcon className="w-8 h-8 text-orange-400" />
+            <div className="flex items-center gap-1 px-2 hover:bg-white/10 rounded cursor-pointer">
+                <ShoppingCartIcon className="w-8 h-8 text-blue-400" />
                 <div className="flex flex-col leading-tight">
-                    <span className="font-bold text-lg tracking-tight">AetherStore</span>
+                    <span className="font-bold text-lg tracking-tight">AetherPrime</span>
                     <span className="text-[10px] text-gray-300 -mt-1">Global Commerce</span>
                 </div>
             </div>
 
             {/* Location */}
-            <div className="hidden md:flex flex-col leading-tight text-xs px-2 hover:border hover:border-white rounded cursor-pointer">
-                <span className="text-gray-300 ml-4">Deliver to John</span>
+            <div className="hidden md:flex flex-col leading-tight text-xs px-2 hover:bg-white/10 rounded cursor-pointer">
+                <span className="text-gray-300 ml-4">Deliver to User</span>
                 <div className="flex items-center font-bold">
                     <MapPinIcon className="w-4 h-4" />
                     <span>San Francisco 94103</span>
@@ -42,7 +41,7 @@ const ShopHeader: React.FC<{
             </div>
 
             {/* Search Bar */}
-            <div className="flex-1 flex h-10 rounded overflow-hidden focus-within:ring-2 focus-within:ring-orange-400">
+            <div className="flex-1 flex h-10 rounded overflow-hidden focus-within:ring-2 focus-within:ring-blue-400">
                 <select className="bg-gray-100 text-gray-700 text-xs w-14 border-r border-gray-300 px-1 outline-none">
                     <option>All</option>
                     <option>Electronics</option>
@@ -52,35 +51,35 @@ const ShopHeader: React.FC<{
                 <input 
                     type="text" 
                     className="flex-1 px-3 text-black outline-none"
-                    placeholder="Search AetherStore"
+                    placeholder="Search AetherPrime..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && onSearch(searchTerm)}
                 />
                 <button 
-                    className="bg-orange-400 hover:bg-orange-500 px-4 flex items-center justify-center"
+                    className="bg-blue-500 hover:bg-blue-600 px-4 flex items-center justify-center transition-colors"
                     onClick={() => onSearch(searchTerm)}
                 >
-                    <SearchIcon className="w-6 h-6 text-black" />
+                    <SearchIcon className="w-6 h-6 text-white" />
                 </button>
             </div>
 
             {/* Right Nav */}
             <div className="flex items-center gap-4 text-xs">
-                <div className="hidden md:block cursor-pointer hover:border hover:border-white p-2 rounded">
-                    <p>Hello, John</p>
+                <div className="hidden md:block cursor-pointer hover:bg-white/10 p-2 rounded">
+                    <p>Hello, User</p>
                     <p className="font-bold text-sm">Account & Lists</p>
                 </div>
-                <div className="hidden md:block cursor-pointer hover:border hover:border-white p-2 rounded">
+                <div className="hidden md:block cursor-pointer hover:bg-white/10 p-2 rounded">
                     <p>Returns</p>
                     <p className="font-bold text-sm">& Orders</p>
                 </div>
                 <div 
-                    className="flex items-end cursor-pointer hover:border hover:border-white p-2 rounded relative"
+                    className="flex items-end cursor-pointer hover:bg-white/10 p-2 rounded relative"
                     onClick={onOpenCart}
                 >
                     <ShoppingCartIcon className="w-8 h-8" />
-                    <span className="font-bold text-orange-400 text-base absolute top-0 right-2">{cartCount}</span>
+                    <span className="font-bold text-blue-400 text-base absolute top-0 right-2">{cartCount}</span>
                     <span className="font-bold text-sm mb-1 hidden md:inline">Cart</span>
                 </div>
             </div>
@@ -89,22 +88,22 @@ const ShopHeader: React.FC<{
 };
 
 const ShopSubHeader: React.FC = () => (
-    <div className="bg-[#232f3e] text-white text-sm px-4 py-1.5 flex items-center gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
-        <div className="flex items-center gap-1 font-bold cursor-pointer hover:text-orange-400">
+    <div className="bg-[#2d3748] text-white text-sm px-4 py-1.5 flex items-center gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <div className="flex items-center gap-1 font-bold cursor-pointer hover:text-blue-400">
             <Bars3Icon className="w-5 h-5" /> All
         </div>
-        {['Today\'s Deals', 'Customer Service', 'Registry', 'Gift Cards', 'Sell', 'Electronics', 'Home', 'Fashion', 'Books', 'Computers'].map(link => (
-            <span key={link} className="cursor-pointer hover:border hover:border-white px-2 py-0.5 rounded">{link}</span>
+        {['Daily Deals', 'Customer Care', 'Registry', 'Gift Cards', 'Sell', 'Electronics', 'Home', 'Fashion', 'Books', 'Computers'].map(link => (
+            <span key={link} className="cursor-pointer hover:bg-white/10 px-2 py-0.5 rounded">{link}</span>
         ))}
     </div>
 );
 
 const ProductCard: React.FC<{ item: any, onOpen: (id: string) => void }> = ({ item, onOpen }) => (
     <div 
-        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-4 flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
+        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-4 flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow rounded-md"
         onClick={() => onOpen(item.id)}
     >
-        <div className="h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-900 mb-4 relative overflow-hidden group">
+        <div className="h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-900 mb-4 relative overflow-hidden group rounded-md">
             <img src={item.iconUrl} alt={item.name} className="max-h-full max-w-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-105 transition-transform duration-300" />
             {item.type === 'Digital Asset' && (
                 <span className="absolute top-2 right-2 bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-1 rounded">DIGITAL</span>
@@ -112,7 +111,7 @@ const ProductCard: React.FC<{ item: any, onOpen: (id: string) => void }> = ({ it
         </div>
         
         <div className="flex-1 flex flex-col">
-            <h3 className="font-medium text-gray-900 dark:text-gray-100 line-clamp-2 hover:text-orange-600 dark:hover:text-orange-400 text-sm mb-1">
+            <h3 className="font-medium text-gray-900 dark:text-gray-100 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 text-sm mb-1">
                 {item.name}
             </h3>
             
@@ -132,7 +131,7 @@ const ProductCard: React.FC<{ item: any, onOpen: (id: string) => void }> = ({ it
                     <span className="text-xs align-top">{((item.price % 1) * 100).toFixed(0)}</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                    Get it by <span className="font-bold text-gray-700 dark:text-gray-300">Tomorrow, Oct 25</span>
+                    Get it by <span className="font-bold text-gray-700 dark:text-gray-300">Tomorrow</span>
                 </p>
                 {item.deliveryMethod === 'shipping' && (
                     <div className="text-xs text-blue-600 flex items-center gap-1 mt-1">
@@ -146,7 +145,7 @@ const ProductCard: React.FC<{ item: any, onOpen: (id: string) => void }> = ({ it
 );
 
 const DealsCarousel: React.FC = () => (
-    <div className="bg-white dark:bg-gray-800 p-4 mb-6 border-t border-gray-200 dark:border-gray-700">
+    <div className="bg-white dark:bg-gray-800 p-4 mb-6 border-t border-gray-200 dark:border-gray-700 rounded-md shadow-sm">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
             <FireIcon className="w-5 h-5 text-red-500" /> Today's Lightning Deals
         </h3>
@@ -173,7 +172,7 @@ const SellerDashboard: React.FC = () => (
     <div className="p-6 bg-gray-50 dark:bg-gray-900 min-h-full">
         <header className="flex justify-between items-center mb-8">
             <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Seller Central</h1>
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded text-sm font-bold">Add New Product</button>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm font-bold">Add New Product</button>
         </header>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -229,7 +228,7 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
     const [cartCount, setCartCount] = useState(3);
     const [searchQuery, setSearchQuery] = useState('');
 
-    const allProducts = [...commerceData.physical, ...commerceData.digitalGoods];
+    const allProducts = [...commerceData.physical]; // Only physical for this app
     const filteredProducts = useMemo(() => {
         if (!searchQuery) return allProducts;
         return allProducts.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -251,7 +250,7 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
                 
                 {/* Hero Banner */}
                 {!searchQuery && (
-                    <div className="relative h-64 md:h-80 bg-gradient-to-r from-gray-800 to-gray-600 mb-6 -mx-4 md:mx-0 md:rounded-lg overflow-hidden shadow-md">
+                    <div className="relative h-64 md:h-80 bg-gradient-to-r from-gray-900 to-gray-800 mb-6 -mx-4 md:mx-0 md:rounded-lg overflow-hidden shadow-md">
                         <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 z-10">
                             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">Future Tech Festival</h2>
                             <p className="text-white text-lg mb-6 drop-shadow-md">Up to 40% off Quantum Processors & Neural Interfaces.</p>
@@ -259,7 +258,7 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
                         </div>
                         <img 
                             src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" 
-                            className="absolute right-0 top-0 h-full w-2/3 object-cover opacity-60 mask-linear-fade" 
+                            className="absolute right-0 top-0 h-full w-2/3 object-cover opacity-50 mask-linear-fade" 
                             alt="Banner" 
                         />
                     </div>
@@ -271,11 +270,11 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
                          <div>
                             <h3 className="font-bold mb-2 text-sm">Department</h3>
                             <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
-                                <li className="hover:text-orange-500 font-bold text-black dark:text-white">Electronics</li>
-                                <li className="hover:text-orange-500">Computers</li>
-                                <li className="hover:text-orange-500">Smart Home</li>
-                                <li className="hover:text-orange-500">Arts & Crafts</li>
-                                <li className="hover:text-orange-500">Software</li>
+                                <li className="hover:text-blue-500 font-bold text-black dark:text-white">Electronics</li>
+                                <li className="hover:text-blue-500">Computers</li>
+                                <li className="hover:text-blue-500">Smart Home</li>
+                                <li className="hover:text-blue-500">Arts & Crafts</li>
+                                <li className="hover:text-blue-500">Software</li>
                             </ul>
                          </div>
                          
@@ -283,7 +282,7 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
                             <h3 className="font-bold mb-2 text-sm">Avg. Customer Review</h3>
                             <div className="space-y-1 cursor-pointer">
                                 {[4,3,2,1].map(stars => (
-                                    <div key={stars} className="flex items-center gap-1 hover:text-orange-500">
+                                    <div key={stars} className="flex items-center gap-1 hover:text-blue-500">
                                         <div className="flex text-yellow-400">
                                             {[...Array(5)].map((_, i) => <StarIcon key={i} solid={i < stars} className="w-4 h-4"/>)}
                                         </div>
@@ -296,11 +295,11 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
                          <div>
                              <h3 className="font-bold mb-2 text-sm">Price</h3>
                              <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
-                                 <li className="hover:text-orange-500">Under $25</li>
-                                 <li className="hover:text-orange-500">$25 to $50</li>
-                                 <li className="hover:text-orange-500">$50 to $100</li>
-                                 <li className="hover:text-orange-500">$100 to $200</li>
-                                 <li className="hover:text-orange-500">$200 & Above</li>
+                                 <li className="hover:text-blue-500">Under $25</li>
+                                 <li className="hover:text-blue-500">$25 to $50</li>
+                                 <li className="hover:text-blue-500">$50 to $100</li>
+                                 <li className="hover:text-blue-500">$100 to $200</li>
+                                 <li className="hover:text-blue-500">$200 & Above</li>
                              </ul>
                          </div>
                     </aside>
@@ -321,7 +320,7 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
                                     onOpen={(id) => onSetView('productPage', { productId: id })} 
                                 />
                             ))}
-                            {/* Dummy Fillers to make it look like Amazon */}
+                            {/* Dummy Fillers to make it look full */}
                             {[1,2,3,4].map(i => (
                                 <ProductCard 
                                     key={`dummy-${i}`} 
@@ -349,29 +348,29 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
                         <h4 className="font-bold text-white">Get to Know Us</h4>
                         <p className="hover:underline cursor-pointer">Careers</p>
                         <p className="hover:underline cursor-pointer">Blog</p>
-                        <p className="hover:underline cursor-pointer">About Aetherius</p>
+                        <p className="hover:underline cursor-pointer">About AetherPrime</p>
                     </div>
                     <div className="space-y-2">
                         <h4 className="font-bold text-white">Make Money with Us</h4>
-                        <p className="hover:underline cursor-pointer" onClick={() => setView('seller')}>Sell products on Aetherius</p>
+                        <p className="hover:underline cursor-pointer" onClick={() => setView('seller')}>Sell products on AetherPrime</p>
                         <p className="hover:underline cursor-pointer">Sell apps on Aetherius</p>
                         <p className="hover:underline cursor-pointer">Become an Affiliate</p>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-bold text-white">Aetherius Payment Products</h4>
-                        <p className="hover:underline cursor-pointer">Aetherius Business Card</p>
+                        <h4 className="font-bold text-white">Payment Products</h4>
+                        <p className="hover:underline cursor-pointer">Business Card</p>
                         <p className="hover:underline cursor-pointer">Shop with Points</p>
                         <p className="hover:underline cursor-pointer">Reload Your Balance</p>
                     </div>
                     <div className="space-y-2">
                         <h4 className="font-bold text-white">Let Us Help You</h4>
-                        <p className="hover:underline cursor-pointer">Aetherius and COVID-19</p>
+                        <p className="hover:underline cursor-pointer">AetherPrime & COVID-19</p>
                         <p className="hover:underline cursor-pointer">Your Account</p>
                         <p className="hover:underline cursor-pointer">Your Orders</p>
                     </div>
                 </div>
                 <div className="border-t border-gray-600 pt-4 mt-4">
-                    <p>&copy; 2024-2025, Aetherius.com, Inc. or its affiliates</p>
+                    <p>&copy; 2024-2025, Aetherius Corporation or its affiliates</p>
                 </div>
             </footer>
         </div>
@@ -381,8 +380,6 @@ const ECommerceModule: React.FC<{ onSetView: (view: string, context?: any) => vo
 // --- Component Map ---
 
 const eCommerceComponentMap: { [key: string]: React.FC<any> } = {
-  commerceSearch: ECommerceModule, // Default to main shop
-  marketplaceModule: CreatorMarketplace, 
   ecommerceModule: ECommerceModule,
   productPage: ProductPage,
 };
@@ -401,10 +398,8 @@ export const ECommerceApp: React.FC<ECommerceAppProps> = ({ context, onSetView }
     const augmentedMenuItem = { ...context.menuItem };
     
     const children: MenuItemData[] = [
-        { title: 'AetherStore (Amazon Style)', icon: ShoppingCartIcon, component: 'ecommerceModule' },
-        { title: 'App Marketplace (AppStore Style)', icon: CloudIcon, component: 'marketplaceModule' },
-        { type: 'divider' },
-        { title: 'Unified Search', icon: SearchIcon, component: 'commerceSearch' },
+        { title: 'AetherPrime Home', icon: ShoppingCartIcon, component: 'ecommerceModule' },
+        { title: 'Seller Central', icon: ShoppingCartIcon, component: 'ecommerceModule' },
     ];
 
     augmentedMenuItem.children = children;

@@ -1,6 +1,8 @@
 
+
+
 import React, { useState, useEffect } from 'react';
-import { ComputerDesktopIcon, CommandLineIcon, GlobeAltIcon, UserCircleIcon, SignalIcon, BatteryIcon, SearchIcon, WifiIcon } from '../Icons';
+import { ComputerDesktopIcon, CommandLineIcon, GlobeAltIcon, UserCircleIcon, SignalIcon, BatteryIcon, SearchIcon, WifiIcon, SparklesIcon, CubeTransparentIcon } from '../Icons';
 
 interface GuestOSProps {
     context: { os: 'Linux' | 'Windows' | 'macOS' | 'Custom'; name: string };
@@ -12,16 +14,18 @@ const BootScreen: React.FC<{ os: string; onComplete: () => void }> = ({ os, onCo
     useEffect(() => {
         let mounted = true;
         const bootSequence = [
-            `BIOS Date 01/15/25 14:22:51 Ver: 08.00.15`,
-            `CPU: Virtual Quantum Core (4) @ 4.5GHz`,
-            `Memory Test: 8192MB OK`,
-            `Detecting Primary Master ... Aetherius Virtual Disk`,
-            `Detecting Primary Slave ... None`,
-            `Booting from Hard Disk...`,
+            `BIOS Date 01/28/25 14:22:51 Ver: 09.00.22`,
+            `CPU: Virtual Quantum Core (12) @ 6.0GHz`,
+            `Memory Test: 32768MB OK`,
+            `Detecting Primary Master ... Aetherius Quantum Drive (1TB)`,
+            `Detecting Secondary ... Neural Cache (256GB)`,
+            `Booting from Hypervisor...`,
             `Loading ${os} Kernel...`,
             `Mounting root file system...`,
+            `Initializing ZPE Power Grid...`,
+            `Syncing Time Crystal Clock...`,
             `Starting system services...`,
-            `Initializing graphics adapter...`,
+            `Initializing Holographic Adapter...`,
             `Welcome to ${os}!`
         ];
 
@@ -29,7 +33,7 @@ const BootScreen: React.FC<{ os: string; onComplete: () => void }> = ({ os, onCo
         const timeouts: number[] = [];
 
         bootSequence.forEach((line, index) => {
-            delay += Math.random() * 500 + 200;
+            delay += Math.random() * 300 + 100;
             const t = window.setTimeout(() => {
                 if (mounted) {
                     setLines(prev => [...prev, line]);
@@ -50,9 +54,9 @@ const BootScreen: React.FC<{ os: string; onComplete: () => void }> = ({ os, onCo
 
     return (
         <div className="h-full w-full bg-black text-gray-300 font-mono p-4 text-sm overflow-hidden flex flex-col">
-            <div className="mb-4">Aetherius Virtual Machine BIOS v1.0</div>
+            <div className="mb-4 text-blue-400">Aetherius Virtual Machine BIOS v2.0</div>
             {lines.map((line, i) => (
-                <div key={i}>{line}</div>
+                <div key={i} className="text-green-500">{`> ${line}`}</div>
             ))}
             <div className="animate-pulse mt-2">_</div>
         </div>
@@ -187,40 +191,56 @@ const MacOSDesktop: React.FC = () => (
     </div>
 );
 
-const KaliDesktop: React.FC = () => (
-    <div className="h-full w-full bg-gray-900 relative flex flex-col font-mono">
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-         <div className="absolute top-10 left-10 w-3/4 h-3/4 bg-black border border-blue-600 shadow-2xl rounded-t-lg overflow-hidden flex flex-col">
-            <div className="bg-gray-800 h-8 flex items-center px-3 text-xs text-gray-300 gap-2 border-b border-gray-700">
-                <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                <span className="ml-4">root@kali:~</span>
-            </div>
-            <div className="flex-1 p-4 text-green-400 text-sm font-bold">
-                <p>root@kali:~# nmap -sV 192.168.1.1</p>
-                <p className="text-gray-400 mt-1">Starting Nmap 7.94 at 2025-01-25 14:35 UTC</p>
-                <p className="text-gray-400">Nmap scan report for 192.168.1.1</p>
-                <p className="text-gray-400">Host is up (0.0012s latency).</p>
-                <p className="mt-2">PORT   STATE SERVICE VERSION</p>
-                <p>22/tcp open  ssh     OpenSSH 8.2p1</p>
-                <p>80/tcp open  http    nginx 1.18.0</p>
-                <p className="animate-pulse mt-2">_</p>
-            </div>
+const AetheriusDesktop: React.FC = () => (
+    <div className="h-full w-full bg-black relative flex flex-col font-mono text-cyan-300 overflow-hidden">
+         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+         
+         {/* Custom Desktop UI */}
+         <div className="flex-1 p-6 grid grid-cols-3 gap-4 relative z-10">
+             {/* Left Panel: Quantum Status */}
+             <div className="border border-cyan-900 bg-black/60 backdrop-blur p-4 rounded-lg">
+                 <h3 className="text-sm font-bold border-b border-cyan-900 pb-2 mb-2 flex items-center gap-2">
+                     <SparklesIcon className="w-4 h-4"/> QUANTUM COHERENCE
+                 </h3>
+                 <div className="space-y-2 text-xs">
+                     <div className="flex justify-between"><span>Qubit Stability:</span><span className="text-green-400">99.99%</span></div>
+                     <div className="flex justify-between"><span>Entanglement:</span><span className="text-blue-400">LOCKED</span></div>
+                     <div className="flex justify-between"><span>Error Rate:</span><span className="text-green-400">0.0001%</span></div>
+                 </div>
+                 <div className="mt-4 h-24 border border-cyan-900/50 rounded flex items-center justify-center">
+                     <div className="w-full h-full bg-cyan-500/5 animate-pulse"></div>
+                 </div>
+             </div>
+
+             {/* Center: Terminal */}
+             <div className="col-span-2 border border-cyan-900 bg-black/80 backdrop-blur p-0 rounded-lg flex flex-col font-mono text-sm">
+                 <div className="bg-cyan-900/20 p-2 border-b border-cyan-900 flex justify-between">
+                     <span>user@aetherius-prime:~/workspace</span>
+                     <span className="text-xs opacity-70">v2.0.4</span>
+                 </div>
+                 <div className="p-4 flex-1 text-green-400">
+                     <p>user@aetherius-prime:~$ ./init_neural_link.sh</p>
+                     <p className="text-cyan-500">[INFO] Establishing bridge to neural cortex...</p>
+                     <p className="text-cyan-500">[INFO] Handshake successful. Latency: 2ms</p>
+                     <p className="text-cyan-500">[INFO] Loading ternary logic gates...</p>
+                     <p className="text-white">System Ready.</p>
+                     <p className="mt-2">user@aetherius-prime:~$ <span className="animate-pulse">_</span></p>
+                 </div>
+             </div>
          </div>
          
-         {/* Kali Top Bar */}
-         <div className="h-8 bg-black border-b border-blue-900 flex items-center px-4 justify-between z-10">
-             <div className="flex gap-6 text-gray-300 text-sm font-bold">
-                 <span className="text-blue-400">Applications</span>
-                 <span>Places</span>
+         {/* Bottom Bar */}
+         <div className="h-10 bg-cyan-950/30 border-t border-cyan-900 flex items-center px-4 justify-between z-10">
+             <div className="flex gap-4 text-xs font-bold">
+                 <span className="cursor-pointer hover:text-white">APPLICATIONS</span>
+                 <span className="cursor-pointer hover:text-white">PLACES</span>
+                 <span className="cursor-pointer hover:text-white">SYSTEM</span>
              </div>
-             <div className="flex gap-4 text-blue-400 text-xs">
-                 <span>eth0: 100Mb/s</span>
-                 <span>root</span>
-                 <span>14:35</span>
+             <div className="flex gap-4 text-xs text-cyan-500">
+                 <span>CPU: 12%</span>
+                 <span>MEM: 24GB</span>
+                 <span>NET: 10Gbps</span>
+                 <span className="text-white">14:35 UTC</span>
              </div>
          </div>
     </div>
@@ -233,13 +253,13 @@ export const GuestOS: React.FC<GuestOSProps> = ({ context }) => {
     return (
         <div className="h-full w-full flex flex-col bg-black overflow-hidden select-none">
             {!booted ? (
-                <BootScreen os={os} onComplete={() => setBooted(true)} />
+                <BootScreen os={os === 'Custom' ? 'AetheriusOS' : os} onComplete={() => setBooted(true)} />
             ) : (
                 <>
                     {os === 'Linux' && <UbuntuDesktop />}
                     {os === 'Windows' && <WindowsDesktop />}
                     {os === 'macOS' && <MacOSDesktop />}
-                    {(os === 'Custom') && <KaliDesktop />}
+                    {os === 'Custom' && <AetheriusDesktop />}
                 </>
             )}
         </div>

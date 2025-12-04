@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { CpuChipIcon, BoltIcon, CircleStackIcon, ChartBarIcon, AdjustmentsHorizontalIcon, InformationCircleIcon, PlayIcon, CubeTransparentIcon, ShieldCheckIcon, GlobeAltIcon, SparklesIcon } from './Icons';
 import { aiConsciousnessLayers } from '../data';
+import { rigService } from '../services/RigService';
 
 type Precision = 'FP32' | 'BF16' | 'FP8' | 'FP4' | 'FP2' | 'FP1' | 'Binary';
 
@@ -137,6 +138,12 @@ export const VirtualAccelerator: React.FC = () => {
     const [gradEstimator, setGradEstimator] = useState(false);
     const [isTraining, setIsTraining] = useState(false);
     const [advancedNodes, setAdvancedNodes] = useState<Record<string, boolean>>({});
+    const [rigState, setRigState] = useState(rigService.getRig());
+
+    useEffect(() => {
+        const sub = rigService.rigState$.subscribe(setRigState);
+        return () => sub.unsubscribe();
+    }, []);
 
     const toggleNode = (id: string) => {
         setAdvancedNodes(prev => ({ ...prev, [id]: !prev[id] }));
@@ -160,6 +167,26 @@ export const VirtualAccelerator: React.FC = () => {
         if (ste) { stab += 10; acc += 10; } 
         if (gradEstimator) { acc += 15; stab += 10; }
 
+        // Apply Rig Hardware Boosts
+        // REAL hardware boosts simulation significantly
+        const realGpu = rigState.Binary_GPU.find(g => g.name.includes('[REAL]'));
+        const bridgeAcc = rigState.Bridge_Accelerator.length;
+        const quantumQPU = rigState.Quantum_QPU.length;
+        
+        if (realGpu) {
+            throughput *= 5.0; // Massive boost for real hardware
+            acc += 0.5;
+        }
+        
+        if (bridgeAcc > 0) {
+            throughput *= (1.5 * bridgeAcc);
+            stab += (10 * bridgeAcc);
+        }
+        if (quantumQPU > 0) {
+            throughput *= (2.0 * quantumQPU);
+            energy *= 0.2; // Significant energy reduction
+        }
+
         // Apply Advanced Nodes
         Object.entries(advancedNodes).forEach(([nodeId, isActive]) => {
             if (isActive) {
@@ -181,7 +208,7 @@ export const VirtualAccelerator: React.FC = () => {
             stability: Math.min(100, stab),
             throughput: throughput
         };
-    }, [precision, uUp, sparsity, ste, gradEstimator, advancedNodes]);
+    }, [precision, uUp, sparsity, ste, gradEstimator, advancedNodes, rigState]);
 
     return (
         <div className="h-full bg-gray-900 text-gray-100 p-4 sm:p-6 overflow-y-auto animate-fade-in">
@@ -191,7 +218,7 @@ export const VirtualAccelerator: React.FC = () => {
                         <CpuChipIcon className="w-10 h-10" />
                         Virtual Quantum-AI Accelerator
                     </h1>
-                    <p className="text-gray-400 mt-1 font-mono text-sm">VPU-9000 | Emulation Mode: {precision} | Active Nodes: {Object.values(advancedNodes).filter(Boolean).length}</p>
+                    <p className="text-gray-400 mt-1 font-mono text-sm">VPU-9000 | Emulation Mode: {precision} | Hardware Links: {rigState.Bridge_Accelerator.length + rigState.Quantum_QPU.length}</p>
                 </div>
                 <button 
                     onClick={() => setIsTraining(!isTraining)}
@@ -350,11 +377,13 @@ export const VirtualAccelerator: React.FC = () => {
                                 <InformationCircleIcon className="w-4 h-4"/> System Analysis
                             </h4>
                             <p className="text-xs text-blue-200 leading-relaxed">
-                                {advancedNodes['quantum'] ? 'Quantum Advantage active. Processing in Hilbert space with zero-point energy optimization.' : 
+                                {rigState.Quantum_QPU.length > 0 ? 'Quantum Core Detected. Hybrid-Optimization Enabled.' : 
+                                 rigState.Bridge_Accelerator.length > 0 ? 'Hardware Accelerator Online. Throughput Boosted.' :
+                                 rigState.Binary_GPU.some(g => g.name.includes('[REAL]')) ? 'WebGPU Hardware Acceleration Active. Maximum Performance.' :
                                  advancedNodes['hyperdim'] ? 'Hyperdimensional vectors active. Massive stability boost detected.' :
                                  advancedNodes['deepthink'] ? 'R1 Protocol Active. Reasoning depth maximized at energy cost.' :
                                  precision === 'Binary' ? 'Extreme quantization. Recommend activating Neuromorphic Learning for stability.' :
-                                 'Standard configuration. Activate Advanced Nodes to push performance boundaries.'}
+                                 'Standard configuration. Install Bridge Accelerator in Rig to boost performance.'}
                             </p>
                         </div>
                     </div>

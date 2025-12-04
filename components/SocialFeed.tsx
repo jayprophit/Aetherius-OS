@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Post, Blog, User, Group, MenuItemData, Course } from '../types';
 import { loggedInUser, posts, blogs, following, profileCompletion, latestUpdates, groups, peopleYouMayKnowData, sponsoredDataFB, contactsDataFB, mainMenuItems, creatorMarketplaceItems, enrolledCourses, courses, jobs } from '../data';
@@ -86,9 +88,19 @@ const Shortcut: React.FC<{ item: MenuItemData; onSetView: (view: string, context
 };
 
 const DashboardShortcuts: React.FC<{ onSetView: (view: string, context?: any) => void; }> = ({ onSetView }) => {
-    const shortcutItems = mainMenuItems.filter(item =>
-        ['Social Hub', 'Creation Labs', 'E-Commerce Hub', 'Labs', 'Careers Hub', 'E-Learning'].includes(item.title || '')
-    );
+    const shortcutItems: MenuItemData[] = [];
+    
+    // Flatten groups to find items for shortcuts
+    mainMenuItems.forEach(group => {
+        if (group.children) {
+             group.children.forEach(child => {
+                 if (['Social Hub', 'Creation Labs', 'E-Commerce Hub', 'Labs', 'Careers Hub', 'E-Learning'].includes(child.title || '')) {
+                     shortcutItems.push(child);
+                 }
+             })
+        }
+    });
+
     return (
         <div className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-start gap-2 flex-wrap">
             {shortcutItems.map(item => item.title && <Shortcut key={item.title} item={item} onSetView={onSetView} />)}

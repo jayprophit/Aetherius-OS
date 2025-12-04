@@ -1,6 +1,8 @@
 
+
+
 import React, { useState } from 'react';
-import { PlayIcon, StopIcon, PlusIcon, ServerIcon, ComputerDesktopIcon, CpuChipIcon, CircleStackIcon, TrashIcon } from '../Icons';
+import { PlayIcon, StopIcon, PlusIcon, ServerIcon, ComputerDesktopIcon, CpuChipIcon, CircleStackIcon, TrashIcon, CloudIcon } from '../Icons';
 import { LaunchableApp } from '../../App';
 
 interface VirtualMachine {
@@ -12,13 +14,14 @@ interface VirtualMachine {
     ram: number; // GB
     disk: number; // GB
     ip: string;
+    mode: 'Local' | 'Cloud-Synced';
 }
 
 const initialVMs: VirtualMachine[] = [
-    { id: 'vm-1', name: 'Ubuntu 24.04 LTS', os: 'Linux', status: 'Running', cpu: 4, ram: 8, disk: 64, ip: '192.168.122.101' },
-    { id: 'vm-2', name: 'Win11 Dev Env', os: 'Windows', status: 'Stopped', cpu: 8, ram: 16, disk: 128, ip: '192.168.122.102' },
-    { id: 'vm-4', name: 'macOS Sequoia', os: 'macOS', status: 'Stopped', cpu: 6, ram: 12, disk: 256, ip: '192.168.122.104' },
-    { id: 'vm-3', name: 'Kali Security', os: 'Custom', status: 'Stopped', cpu: 2, ram: 4, disk: 32, ip: '192.168.122.103' },
+    { id: 'vm-1', name: 'Aetherius Prime (Genesis)', os: 'Custom', status: 'Running', cpu: 16, ram: 64, disk: 1024, ip: '10.0.0.1 (VLAN 0)', mode: 'Cloud-Synced' },
+    { id: 'vm-2', name: 'Dev Environment (Win11)', os: 'Windows', status: 'Stopped', cpu: 16, ram: 32, disk: 512, ip: '192.168.122.102', mode: 'Cloud-Synced' },
+    { id: 'vm-4', name: 'macOS Sequoia (Build Server)', os: 'macOS', status: 'Stopped', cpu: 16, ram: 64, disk: 1024, ip: '192.168.122.104', mode: 'Cloud-Synced' },
+    { id: 'vm-3', name: 'Kali Security Node', os: 'Linux', status: 'Stopped', cpu: 8, ram: 16, disk: 256, ip: '192.168.122.103', mode: 'Cloud-Synced' },
 ];
 
 const VMCard: React.FC<{ vm: VirtualMachine; onAction: (id: string, action: string) => void; onConsole: (vm: VirtualMachine) => void }> = ({ vm, onAction, onConsole }) => {
@@ -28,8 +31,13 @@ const VMCard: React.FC<{ vm: VirtualMachine; onAction: (id: string, action: stri
                     vm.os === 'Linux' ? 'bg-orange-100 text-orange-600' : 'bg-purple-100 text-purple-600';
 
     return (
-        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-start mb-4">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow relative overflow-hidden">
+            {vm.mode === 'Cloud-Synced' && (
+                <div className="absolute top-0 right-0 bg-blue-600 text-white text-[9px] px-2 py-0.5 rounded-bl-md font-bold flex items-center gap-1">
+                    <CloudIcon className="w-3 h-3" /> HYBRID CLOUD
+                </div>
+            )}
+            <div className="flex justify-between items-start mb-4 mt-2">
                 <div className="flex items-center gap-3">
                     <div className={`p-2 rounded-lg ${osColor} dark:bg-gray-700 dark:text-gray-200`}>
                         <ComputerDesktopIcon className="w-6 h-6" />
@@ -141,11 +149,16 @@ export const Hypervisor: React.FC<HypervisorProps> = ({ launchApp }) => {
             </div>
             
             {/* Resource Footer */}
-            <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-3 flex gap-6 text-xs font-mono text-gray-500">
-                <span className="flex items-center gap-2"><div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div> HOST ONLINE</span>
-                <span>CPU: 12% / 1024 CORES</span>
-                <span>RAM: 24 / 2048 GB</span>
-                <span>STORAGE: 1.2 PB FREE</span>
+            <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-3 flex flex-col md:flex-row justify-between gap-4 text-xs font-mono text-gray-500">
+                <div className="flex gap-6">
+                    <span className="flex items-center gap-2"><div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div> HOST ONLINE</span>
+                    <span>CPU: 12% / 1024 CORES (Cloud-Boosted)</span>
+                    <span>RAM: 24 / 4096 GB</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <CloudIcon className="w-4 h-4 text-blue-500" />
+                    <span>Universal Access: Enabled (Any Device Sync)</span>
+                </div>
             </footer>
         </div>
     );

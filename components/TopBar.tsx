@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon, GyeNyameIcon, SunIcon, MoonIcon, Cog6ToothIcon } from './Icons';
-import { MenuItemData } from '../types';
+import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon, GyeNyameIcon, SunIcon, MoonIcon, Cog6ToothIcon, ComputerDesktopIcon, DevicePhoneMobileIcon, MapPinIcon } from './Icons';
+import { MenuItemData, ViewMode, SystemLocale } from '../types';
 import { ICON_BUTTON_CLASSES } from '../constants';
 import { LaunchableApp } from '../App';
 import { mainMenuItems } from '../data';
@@ -27,7 +27,7 @@ const AetheriusMenu: React.FC<{
     if (item.component && item.icon && item.title) {
         onLaunchApp({ component: item.component, title: item.title, icon: item.icon, context: { menuItem: item } });
     } else if (item.action) {
-        alert(`Action: ${item.action}`); // Placeholder for actions
+        alert(`Action: ${item.action}`); 
     }
     setIsOpen(false);
   }
@@ -83,6 +83,13 @@ const ThemeToggle: React.FC = () => {
     return false;
   });
 
+  useEffect(() => {
+      // Sync state with initial load
+      if (document.documentElement.classList.contains('dark')) {
+          setIsDark(true);
+      }
+  }, []);
+
   const toggleTheme = () => {
     if (isDark) {
       document.documentElement.classList.remove('dark');
@@ -114,31 +121,47 @@ export const TopBar: React.FC<{
   zoom: number;
   onZoom: (zoom: number) => void;
   onOpenCart?: () => void;
-}> = ({ toggleLeftSidebar, onLaunchApp, contextualActions, aetheriusMenu, zoom, onZoom, onOpenCart }) => {
+  viewMode: ViewMode;
+  onToggleViewMode: () => void;
+  onToggleNotifications: () => void;
+  systemLocale?: SystemLocale;
+}> = ({ 
+    toggleLeftSidebar, onLaunchApp, contextualActions, aetheriusMenu, 
+    zoom, onZoom, onOpenCart, viewMode, onToggleViewMode, onToggleNotifications, systemLocale
+}) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState('');
   
+  useEffect(() => {
+      const timer = setInterval(() => {
+          if (systemLocale) {
+              setCurrentTime(new Date().toLocaleTimeString(systemLocale.locale, { 
+                  timeZone: systemLocale.timezone,
+                  hour: '2-digit',
+                  minute: '2-digit'
+              }));
+          }
+      }, 1000);
+      return () => clearInterval(timer);
+  }, [systemLocale]);
+
   const actions = contextualActions.filter(a => a.type !== 'divider' && a.component);
   
   const handleLaunch = (app: LaunchableApp) => {
     onLaunchApp(app);
-    setIsProfileOpen(false); // Close menu on action
+    setIsProfileOpen(false); 
   }
 
   const findApp = (component: string): LaunchableApp | undefined => {
-    for (const item of mainMenuItems) {
-        if (item.component === component && item.title && item.icon) {
-            return { component: item.component, title: item.title, icon: item.icon, context: { menuItem: item } };
-        }
-        if (item.children) {
-             for (const child of item.children) {
+    for (const group of mainMenuItems) {
+        if (group.children) {
+             for (const child of group.children) {
                  if (child.component === component && child.title && child.icon) {
-                     return { component: child.component, title: child.title, icon: child.icon, context: { menuItem: item } };
+                     return { component: child.component, title: child.title, icon: child.icon, context: { menuItem: child } };
                  }
              }
         }
     }
-    // FIX: Explicitly define the Settings app with a valid icon to prevent "undefined" icon error
     if(component === 'settings') {
         return { component: 'settings', title: 'Settings', icon: Cog6ToothIcon };
     }
@@ -172,27 +195,43 @@ export const TopBar: React.FC<{
 
         {/* Right section */}
         <div className="flex items-center space-x-2">
+          
+          {/* Locale Info */}
+          {systemLocale && (
+            <div className="hidden lg:flex flex-col items-end text-[10px] text-gray-500 dark:text-gray-400 mr-2 font-mono leading-tight">
+                <span className="font-bold text-gray-800 dark:text-gray-200">{currentTime}</span>
+                <div className="flex items-center gap-1">
+                    <MapPinIcon className="w-3 h-3" />
+                    <span>{systemLocale.location?.city || systemLocale.timezone}</span>
+                </div>
+            </div>
+          )}
+
+          {/* View Mode Toggle */}
+          <button 
+            onClick={onToggleViewMode}
+            className={`${ICON_BUTTON_CLASSES} bg-gray-200 dark:bg-gray-700`}
+            title={viewMode === 'desktop' ? "Switch to Mobile/Simple View" : "Switch to Advanced Desktop View"}
+          >
+            {viewMode === 'desktop' ? <DevicePhoneMobileIcon className="w-5 h-5" /> : <ComputerDesktopIcon className="w-5 h-5" />}
+          </button>
+
           <ZoomControls zoom={zoom} onZoom={onZoom} />
           <ThemeToggle />
           <div className="relative hidden sm:block">
               <SearchIcon className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input type="text" placeholder="Search..." title="Global Search - Find apps, files, and web results" className="bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-full h-9 pl-10 pr-4 w-48 text-sm focus:outline-none focus:ring-1 focus:ring-primary text-content-light dark:text-content-dark" />
+              <input type="text" placeholder="Search..." title="Global Search" className="bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-full h-9 pl-10 pr-4 w-48 text-sm focus:outline-none focus:ring-1 focus:ring-primary text-content-light dark:text-content-dark" />
           </div>
            <button onClick={() => handleLaunch(findApp('messenger')!)} className={`${ICON_BUTTON_CLASSES} relative`} title="Open Messenger">
               <MessageIcon className="w-6 h-6" />
               <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-800"></span>
           </button>
-          <div className="relative">
-            <button onClick={() => setIsNotificationsOpen(!isNotificationsOpen)} className={`${ICON_BUTTON_CLASSES} relative`} title="Show Notifications">
-              <BellIcon className="w-6 h-6" />
-              <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-800"></span>
-            </button>
-            {isNotificationsOpen && (
-              <div className="absolute right-0 mt-2 w-64 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-md shadow-lg border border-gray-200 dark:border-gray-700 p-2 z-50">
-                <p className="text-sm text-gray-500 dark:text-gray-400">No new notifications</p>
-              </div>
-            )}
-          </div>
+          
+          <button onClick={onToggleNotifications} className={`${ICON_BUTTON_CLASSES} relative`} title="Show Notifications">
+            <BellIcon className="w-6 h-6" />
+            <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-800"></span>
+          </button>
+
            <button onClick={onOpenCart} className={ICON_BUTTON_CLASSES} title="Open Shopping Cart">
               <ShoppingCartIcon className="w-6 h-6" />
           </button>
@@ -207,7 +246,7 @@ export const TopBar: React.FC<{
                 <button onClick={() => handleLaunch(findApp('myProfile')!)} className="w-full text-left block px-4 py-2 text-sm text-content-light dark:text-content-dark hover:bg-primary/20" title="Go to My Profile">Your Profile</button>
                 <button onClick={() => handleLaunch(findApp('settings')!)} className="w-full text-left block px-4 py-2 text-sm text-content-light dark:text-content-dark hover:bg-primary/20" title="Open System Settings">Settings</button>
                 <div className="border-t border-gray-200 dark:border-gray-700 my-1"></div>
-                <a href="#" className="block px-4 py-2 text-sm text-content-light dark:text-content-dark hover:bg-primary/20" title="Log out of current session">Sign out</a>
+                <a href="#" className="block px-4 py-2 text-sm text-content-light dark:text-content-dark hover:bg-primary/20" title="Log out">Sign out</a>
               </div>
             )}
           </div>

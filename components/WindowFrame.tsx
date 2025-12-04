@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { WindowState } from '../types';
 
@@ -13,8 +12,8 @@ interface WindowFrameProps {
   desktopRect: DOMRect | null;
 }
 
-const MIN_WIDTH = 300;
-const MIN_HEIGHT = 200;
+const MIN_WIDTH = 350;
+const MIN_HEIGHT = 250;
 
 export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, onFocus, onMinimize, onUpdate, isActive, children, desktopRect }) => {
   const { id, title, icon: Icon, position, size, zIndex, isMaximized } = windowState;
@@ -27,6 +26,7 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, 
   
   const [isResizing, setIsResizing] = useState(false);
   const [resizeDirection, setResizeDirection] = useState('');
+  const resizeStart = useRef({ x: 0, y: 0, w: 0, h: 0, px: 0, py: 0 });
   
   const handleFocus = useCallback(() => {
     onFocus(id);
@@ -49,8 +49,6 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, 
   const onDragTouchStart = (e: React.TouchEvent) => {
     if (isMaximized) return;
     if ((e.target as HTMLElement).closest('button')) return;
-    // Don't prevent default immediately to allow scrolling if needed, 
-    // but for a window header usually we want to grab it.
     handleFocus();
     setIsDragging(true);
     const touch = e.touches[0];
@@ -66,12 +64,21 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, 
     handleFocus();
     setIsResizing(true);
     setResizeDirection(direction);
+    resizeStart.current = {
+        x: e.clientX,
+        y: e.clientY,
+        w: size.width,
+        h: size.height,
+        px: position.x,
+        py: position.y
+    };
   };
   
   // Global End Handler
   const handleInteractionEnd = useCallback(() => {
     setIsDragging(false);
     setIsResizing(false);
+    setResizeDirection('');
   }, []);
 
   // Global Move Handler
@@ -83,9 +90,8 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, 
       let newY = clientY - dragOffset.y;
 
       // Relaxed boundaries: allow window to go partially offscreen but keep header visible
-      // Keep at least 50px visible horizontally
       const minVisibleWidth = 50;
-      const minVisibleHeight = 30; // Keep header somewhat visible
+      const minVisibleHeight = 30; 
       
       newX = Math.max(minVisibleWidth - size.width, Math.min(newX, desktopRect.width - minVisibleWidth));
       newY = Math.max(0, Math.min(newY, desktopRect.height - minVisibleHeight));
@@ -94,62 +100,47 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, 
     }
 
     if (isResizing) {
-        let newWidth = size.width;
-        let newHeight = size.height;
-        let newX = position.x;
-        let newY = position.y;
+        const dx = clientX - resizeStart.current.x;
+        const dy = clientY - resizeStart.current.y;
         
-        // Calculate deltas based on current mouse position vs window edges would be cleaner,
-        // but simplified relative movement works if we track start points. 
-        // Here we just use movementX from MouseEvent which isn't available in raw coordinates easily without prev state.
-        // Switched to absolute calculation for robustness.
-        
-        // Note: Implementing robust resize for touch is complex, sticking to mouse for resize for now 
-        // as it's a precise operation usually done with a pointer.
+        let newWidth = resizeStart.current.w;
+        let newHeight = resizeStart.current.h;
+        let newX = resizeStart.current.px;
+        let newY = resizeStart.current.py;
+
+        if (resizeDirection.includes('right')) {
+            newWidth = Math.max(MIN_WIDTH, resizeStart.current.w + dx);
+        }
+        if (resizeDirection.includes('bottom')) {
+            newHeight = Math.max(MIN_HEIGHT, resizeStart.current.h + dy);
+        }
+        if (resizeDirection.includes('left')) {
+            const possibleWidth = resizeStart.current.w - dx;
+            if (possibleWidth >= MIN_WIDTH) {
+                newWidth = possibleWidth;
+                newX = resizeStart.current.px + dx;
+            }
+        }
+        if (resizeDirection.includes('top')) {
+             const possibleHeight = resizeStart.current.h - dy;
+             if (possibleHeight >= MIN_HEIGHT) {
+                 newHeight = possibleHeight;
+                 newY = resizeStart.current.py + dy;
+             }
+        }
+        onUpdate(id, { size: {width: newWidth, height: newHeight }, position: {x: newX, y: newY}});
     }
-  }, [isDragging, isResizing, dragOffset, resizeDirection, id, onUpdate, position, size, desktopRect]);
+  }, [isDragging, isResizing, dragOffset, resizeDirection, id, onUpdate, size, desktopRect]);
 
   // Mouse Move Wrapper
   const handleMouseMove = useCallback((e: MouseEvent) => {
       handleMove(e.clientX, e.clientY);
-      
-      if (isResizing) {
-        const dx = e.movementX;
-        const dy = e.movementY;
-        let newWidth = size.width;
-        let newHeight = size.height;
-        let newX = position.x;
-        let newY = position.y;
-
-        if (resizeDirection.includes('right')) {
-            newWidth = Math.max(MIN_WIDTH, size.width + dx);
-        }
-        if (resizeDirection.includes('bottom')) {
-            newHeight = Math.max(MIN_HEIGHT, size.height + dy);
-        }
-        if (resizeDirection.includes('left')) {
-            const calculatedWidth = size.width - dx;
-            if (calculatedWidth >= MIN_WIDTH) {
-                newWidth = calculatedWidth;
-                newX = position.x + dx;
-            }
-        }
-        if (resizeDirection.includes('top')) {
-            const calculatedHeight = size.height - dy;
-            if (calculatedHeight >= MIN_HEIGHT) {
-                newHeight = calculatedHeight;
-                newY = position.y + dy;
-            }
-        }
-        onUpdate(id, { size: {width: newWidth, height: newHeight }, position: {x: newX, y: newY}});
-      }
-
-  }, [handleMove, isResizing, resizeDirection, size, position, onUpdate]);
+  }, [handleMove]);
 
   // Touch Move Wrapper
   const handleTouchMove = useCallback((e: TouchEvent) => {
       if (isDragging) {
-        e.preventDefault(); // Prevent scrolling while dragging window
+        e.preventDefault(); // Prevent scrolling
         const touch = e.touches[0];
         handleMove(touch.clientX, touch.clientY);
       }
@@ -189,22 +180,28 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, 
   return (
     <div
       ref={frameRef}
-      className={`fixed bg-white/90 dark:bg-gray-900/90 backdrop-blur-2xl rounded-lg flex flex-col border border-black/10 dark:border-white/10 overflow-hidden transition-shadow duration-200 ease-in-out ${isActive ? 'shadow-2xl ring-1 ring-black/5 dark:ring-white/10' : 'shadow-lg'}`}
+      className={`fixed bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl rounded-lg flex flex-col border border-black/10 dark:border-white/10 overflow-hidden transition-shadow duration-200 ease-in-out ${isActive ? 'shadow-2xl ring-1 ring-black/5 dark:ring-white/10' : 'shadow-lg'}`}
       style={{ ...styles, zIndex }}
       onMouseDown={handleFocus}
       onTouchStart={handleFocus}
     >
-      {/* Resizers - Mouse Only for now */}
+      {/* Resizing Overlay: Provides visual feedback when resizing */}
+      {isResizing && (
+         <div className="absolute inset-0 z-50 border-2 border-blue-500 bg-blue-500/10 pointer-events-none" />
+      )}
+
+      {/* Resizers - Mouse Only */}
       {!isMaximized && (
         <>
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'top')} className="absolute -top-1 left-0 w-full h-3 cursor-ns-resize z-50" />
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'bottom')} className="absolute -bottom-1 left-0 w-full h-3 cursor-ns-resize z-50" />
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'left')} className="absolute top-0 -left-1 w-3 h-full cursor-ew-resize z-50" />
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'right')} className="absolute top-0 -right-1 w-3 h-full cursor-ew-resize z-50" />
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'top-left')} className="absolute -top-1 -left-1 w-4 h-4 cursor-nwse-resize z-50" />
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'top-right')} className="absolute -top-1 -right-1 w-4 h-4 cursor-nesw-resize z-50" />
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'bottom-left')} className="absolute -bottom-1 -left-1 w-4 h-4 cursor-nesw-resize z-50" />
-            <div onMouseDown={(e) => onResizeMouseDown(e, 'bottom-right')} className="absolute -bottom-1 -right-1 w-4 h-4 cursor-nwse-resize z-50" />
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'top')} className="absolute -top-1 left-0 w-full h-4 cursor-ns-resize z-50 hover:bg-blue-500/20 transition-colors" />
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'bottom')} className="absolute -bottom-1 left-0 w-full h-4 cursor-ns-resize z-50 hover:bg-blue-500/20 transition-colors" />
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'left')} className="absolute top-0 -left-1 w-4 h-full cursor-ew-resize z-50 hover:bg-blue-500/20 transition-colors" />
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'right')} className="absolute top-0 -right-1 w-4 h-full cursor-ew-resize z-50 hover:bg-blue-500/20 transition-colors" />
+            
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'top-left')} className="absolute -top-1 -left-1 w-5 h-5 cursor-nwse-resize z-50 hover:bg-blue-500/50 rounded-full" />
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'top-right')} className="absolute -top-1 -right-1 w-5 h-5 cursor-nesw-resize z-50 hover:bg-blue-500/50 rounded-full" />
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'bottom-left')} className="absolute -bottom-1 -left-1 w-5 h-5 cursor-nesw-resize z-50 hover:bg-blue-500/50 rounded-full" />
+            <div onMouseDown={(e) => onResizeMouseDown(e, 'bottom-right')} className="absolute -bottom-1 -right-1 w-5 h-5 cursor-nwse-resize z-50 hover:bg-blue-500/50 rounded-full" />
         </>
       )}
 
@@ -234,7 +231,9 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ windowState, onClose, 
         </div>
         <div className="w-14"></div> {/* Spacer */}
       </header>
-      <div className="flex-1 overflow-auto bg-gray-50/50 dark:bg-gray-900/50">
+      <div className="flex-1 overflow-auto bg-gray-50/50 dark:bg-gray-900/50 relative">
+        {/* Interaction blocker during resize to prevent iframe stealing mouse events */}
+        {isResizing && <div className="absolute inset-0 z-40 bg-transparent" />}
         {children}
       </div>
     </div>

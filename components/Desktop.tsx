@@ -1,14 +1,16 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { desktopItems, osMenuStructures } from '../data';
-import { AppItem, FolderItem, DesktopItem } from '../types';
+import { AppItem, FolderItem, DesktopItem, SystemLocale } from '../types';
 import { LaunchableApp } from '../App';
 import { FolderIcon } from './Icons';
 import { ContextMenu } from './ContextMenu';
+import { WeatherWidget, SystemWidget, CalendarWidget } from './DesktopWidgets';
 
 interface DesktopProps {
   launchApp: (launchable: LaunchableApp) => void;
   wallpaperUrl?: string;
+  systemLocale?: SystemLocale;
 }
 
 interface Position {
@@ -24,7 +26,7 @@ const sizeConfig = {
     large: { width: 112, height: 112, iconSize: 64, textSize: 'text-sm' },
 };
 
-export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => {
+export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl, systemLocale }) => {
     const [positions, setPositions] = useState<{ [key: string]: Position }>({});
     const [draggedIcon, setDraggedIcon] = useState<{ id: string; offset: Position } | null>(null);
     const dragStartPos = useRef<Position | null>(null);
@@ -32,6 +34,7 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
     const isClick = useRef(true);
     const [iconSize, setIconSize] = useState<IconSize>('medium');
     const [contextMenu, setContextMenu] = useState<{ x: number, y: number, visible: boolean }>({ x: 0, y: 0, visible: false });
+    const [showWidgets, setShowWidgets] = useState(true);
 
     const currentSize = sizeConfig[iconSize];
 
@@ -44,8 +47,8 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
             const row = Math.floor(index / columns);
             const col = index % columns;
             newPositions[item.id] = {
-                x: col * currentSize.width,
-                y: row * currentSize.height,
+                x: 20 + (col * currentSize.width), // Added margin left
+                y: 20 + (row * currentSize.height), // Added margin top
             };
         });
         setPositions(newPositions);
@@ -68,17 +71,14 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
             if (savedSize) {
                 setIconSize(savedSize as IconSize);
             }
+            const widgetsEnabled = localStorage.getItem('desktopWidgets');
+            if (widgetsEnabled !== null) setShowWidgets(widgetsEnabled === 'true');
+
         } catch (e) {
-            console.error("Failed to load icon positions", e);
+            console.error("Failed to load desktop state", e);
             gridLayout();
         }
     }, []);
-
-    useEffect(() => {
-        // Re-grid on size change, but this might override user's manual placement.
-        // For this implementation, we won't auto-regrid on size change to respect placement.
-    }, [iconSize, gridLayout]);
-
 
     const handleMouseDown = (e: React.MouseEvent, item: DesktopItem) => {
         if (e.button !== 0) return;
@@ -122,13 +122,11 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
 
     const handleMouseUp = useCallback(() => {
         if (draggedIcon) {
-            if (!isClick.current) { // It was a drag, save positions
+            if (!isClick.current) { 
                 setPositions(currentPositions => {
                     try {
                         localStorage.setItem('desktopIconPositions', JSON.stringify(currentPositions));
-                    } catch (err) {
-                        console.error("Failed to save icon positions", err);
-                    }
+                    } catch (err) {}
                     return currentPositions;
                 });
             }
@@ -141,7 +139,7 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
         if (isClick.current) {
             if (item.type === 'app') {
                 launchApp(item);
-            } else { // it's a folder
+            } else { 
                  launchApp({
                     component: 'folderView',
                     title: item.title,
@@ -161,6 +159,12 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
         setIconSize(size);
         localStorage.setItem('desktopIconSize', size);
     };
+    
+    const toggleWidgets = () => {
+        const newState = !showWidgets;
+        setShowWidgets(newState);
+        localStorage.setItem('desktopWidgets', String(newState));
+    }
 
     useEffect(() => {
         if (draggedIcon) {
@@ -176,8 +180,6 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
 
     const defaultWallpaper = 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto-format=fit-crop';
   
-    // Map actions for the context menu based on osMenuStructures
-    // Helper to map static data to functions
     const mapAction = (item: any): any => {
         if (item.type === 'divider') return item;
         
@@ -197,12 +199,10 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
             action = () => changeIconSize('medium');
         } else if (item.label.includes('Small Icons')) {
             action = () => changeIconSize('small');
-        } else if (item.type !== 'submenu') {
-            // Default action for placeholder items
-             action = () => console.log(`Clicked ${item.label}`);
+        } else if (item.label === 'Toggle Widgets') {
+            action = toggleWidgets;
         }
 
-        // Recursively map submenus
         if (item.submenu || item.items) {
             return {
                 ...item,
@@ -214,18 +214,39 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl }) => 
         return { ...item, action };
     };
 
-    const contextMenuItems = osMenuStructures.desktopContext.map(mapAction);
+    // Inject Toggle Widgets option if missing
+    const menuItems = [...osMenuStructures.desktopContext];
+    if (!menuItems.find((i: any) => i.label === 'Toggle Widgets')) {
+        menuItems.splice(1, 0, { label: 'Toggle Widgets', action: 'toggleWidgets' });
+    }
+
+    const contextMenuItems = menuItems.map(mapAction);
 
     return (
         <div 
             ref={desktopRef}
-            className="w-full h-full bg-cover bg-center absolute inset-0"
+            className="w-full h-full bg-cover bg-center absolute inset-0 transition-all duration-700 ease-in-out"
             style={{ backgroundImage: `url(${wallpaperUrl || defaultWallpaper})` }}
             onContextMenu={handleContextMenu}
             onClick={() => setContextMenu({ ...contextMenu, visible: false })}
             title="Desktop Workspace"
         >
-            <div className="w-full h-full p-2 relative">
+            {/* Widgets Layer */}
+            {showWidgets && (
+                <div className="absolute top-8 right-8 w-80 flex flex-col gap-6 pointer-events-none z-0">
+                    <div className="h-40 pointer-events-auto transform hover:scale-105 transition-transform">
+                        <WeatherWidget city={systemLocale?.location?.city} />
+                    </div>
+                    <div className="h-40 pointer-events-auto transform hover:scale-105 transition-transform">
+                        <CalendarWidget />
+                    </div>
+                    <div className="h-32 pointer-events-auto transform hover:scale-105 transition-transform">
+                        <SystemWidget />
+                    </div>
+                </div>
+            )}
+
+            <div className="w-full h-full p-2 relative z-10">
                 {desktopItems.map(item => {
                     const position = positions[item.id];
                     if (!position) return null;

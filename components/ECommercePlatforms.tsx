@@ -19,35 +19,35 @@ const eCommerceData: Category[] = [
   {
     name: 'Global General Marketplaces',
     platforms: [
-      { name: 'Amazon', logo: ShoppingCartIcon, features: 'Largest GMV, FBA fulfillment, Prime membership', regions: 'Worldwide', metrics: '390M monthly users' },
-      { name: 'eBay', logo: ShoppingCartIcon, features: 'Auction and fixed-price, global shipping program', regions: 'Worldwide', metrics: '134M active buyers' },
-      { name: 'Alibaba', logo: ShoppingCartIcon, features: 'B2B focus, trade assurance, supplier ratings', regions: 'Worldwide (China-centric)', metrics: '900M+ active users' },
-      { name: 'AliExpress', logo: ShoppingCartIcon, features: 'B2C, low prices, dropshipping-friendly', regions: 'Worldwide', metrics: '525M monthly visitors' },
-      { name: 'Rakuten', logo: ShoppingCartIcon, features: 'Cashback rewards, diverse categories', regions: 'Japan, Global', metrics: '563M monthly visitors' },
+      { name: 'AetherPrime', logo: ShoppingCartIcon, features: 'Largest GMV, FBA fulfillment, Prime membership', regions: 'Worldwide', metrics: '390M monthly users' },
+      { name: 'BidNexus', logo: ShoppingCartIcon, features: 'Auction and fixed-price, global shipping program', regions: 'Worldwide', metrics: '134M active buyers' },
+      { name: 'GlobalSupply', logo: ShoppingCartIcon, features: 'B2B focus, trade assurance, supplier ratings', regions: 'Worldwide (China-centric)', metrics: '900M+ active users' },
+      { name: 'ExpressMart', logo: ShoppingCartIcon, features: 'B2C, low prices, dropshipping-friendly', regions: 'Worldwide', metrics: '525M monthly visitors' },
+      { name: 'R-Market', logo: ShoppingCartIcon, features: 'Cashback rewards, diverse categories', regions: 'Japan, Global', metrics: '563M monthly visitors' },
     ],
   },
   {
     name: 'Niche-Specific Marketplaces',
     platforms: [
-      { name: 'Etsy', logo: ShoppingCartIcon, features: 'Handmade, vintage, craft supplies', regions: 'Global', metrics: '547M monthly visits' },
-      { name: 'Wayfair', logo: ShoppingCartIcon, features: 'Home goods & furniture', regions: 'North America, Europe', metrics: 'Wholesale model' },
-      { name: 'StockX', logo: ShoppingCartIcon, features: 'Sneakers, streetwear, collectibles, with authentication', regions: 'Global', metrics: 'Limited-edition items' },
+      { name: 'ArtisanAlley', logo: ShoppingCartIcon, features: 'Handmade, vintage, craft supplies', regions: 'Global', metrics: '547M monthly visits' },
+      { name: 'HomeHaven', logo: ShoppingCartIcon, features: 'Home goods & furniture', regions: 'North America, Europe', metrics: 'Wholesale model' },
+      { name: 'TrendVault', logo: ShoppingCartIcon, features: 'Sneakers, streetwear, collectibles, with authentication', regions: 'Global', metrics: 'Limited-edition items' },
     ],
   },
   {
     name: 'Regional Marketplaces',
     platforms: [
-      { name: 'Mercado Libre', logo: GlobeAltIcon, features: 'Largest in region, operates in 18 countries', regions: 'Latin America', metrics: 'Dominant regional player' },
-      { name: 'Flipkart', logo: GlobeAltIcon, features: 'Acquired by Walmart; strong in electronics/fashion', regions: 'India', metrics: 'Leading Indian platform' },
-      { name: 'Shopee', logo: GlobeAltIcon, features: 'Mobile-first, expanding from SEA to Latin America', regions: 'Southeast Asia', metrics: '559M monthly visitors' },
+      { name: 'LatAm Trade', logo: GlobeAltIcon, features: 'Largest in region, operates in 18 countries', regions: 'Latin America', metrics: 'Dominant regional player' },
+      { name: 'IndiKart', logo: GlobeAltIcon, features: 'Acquired by Walmart; strong in electronics/fashion', regions: 'India', metrics: 'Leading Indian platform' },
+      { name: 'SEAShop', logo: GlobeAltIcon, features: 'Mobile-first, expanding from SEA to Latin America', regions: 'Southeast Asia', metrics: '559M monthly visitors' },
     ],
   },
   {
     name: 'P2P & Secondhand Marketplaces',
     platforms: [
-      { name: 'Facebook Marketplace', logo: UsersIcon, features: 'Local buying/selling, free listings, integrated with social network', regions: 'Global', metrics: '31.8M visits (2023)' },
-      { name: 'Poshmark', logo: UsersIcon, features: 'Fashion resale, social commerce', regions: 'US, Canada', metrics: 'Strong fashion community' },
-      { name: 'Vinted', logo: UsersIcon, features: 'Secondhand fashion, eco-conscious focus', regions: 'Europe, US', metrics: 'Popular in Europe' },
+      { name: 'SocialSphere Market', logo: UsersIcon, features: 'Local buying/selling, free listings, integrated with social network', regions: 'Global', metrics: '31.8M visits (2023)' },
+      { name: 'StyleSwap', logo: UsersIcon, features: 'Fashion resale, social commerce', regions: 'US, Canada', metrics: 'Strong fashion community' },
+      { name: 'EcoThreads', logo: UsersIcon, features: 'Secondhand fashion, eco-conscious focus', regions: 'Europe, US', metrics: 'Popular in Europe' },
     ],
   },
 ];
@@ -75,8 +75,8 @@ export const ECommercePlatforms: React.FC = () => {
   return (
     <div className="animate-fade-in p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 h-full overflow-y-auto">
       <header className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">E-Commerce Platforms</h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-1">A curated list of major e-commerce platforms, from global marketplaces to niche-specific sites.</p>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Global Commerce Platforms</h1>
+        <p className="text-gray-600 dark:text-gray-400 mt-1">A curated list of major Aetherius-integrated marketplaces.</p>
       </header>
 
       <div className="space-y-8">

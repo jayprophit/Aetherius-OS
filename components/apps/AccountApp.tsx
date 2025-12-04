@@ -1,12 +1,13 @@
+
 import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
 import MyProfile from '../MyProfile';
-import { PlaceholderView } from '../PlaceholderView';
+import { UniversalAppRenderer } from '../UniversalAppRenderer';
 
 const accountComponentMap: { [key: string]: React.FC<any> } = {
   myProfile: MyProfile,
-  linkedDevices: () => <PlaceholderView viewName="Linked Devices" />,
+  linkedDevices: () => <UniversalAppRenderer type="devices" title="Linked Devices" />,
 };
 
 interface AccountAppProps {

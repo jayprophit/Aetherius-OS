@@ -15,11 +15,11 @@ import { CryptoGames } from '../trading/CryptoGames';
 import { Wallet } from '../trading/Wallet';
 import { AiTradingTools } from '../trading/AiTradingTools';
 import { UnifiedTerminal } from '../trading/UnifiedTerminal';
-import { PlaceholderView } from '../PlaceholderView';
-import { ChartBarIcon, CpuChipIcon, GlobeAltIcon, ArrowPathIcon, LockClosedIcon, ScaleIcon, UsersIcon, AcademicCapIcon, GameControllerIcon, WalletIcon } from '../Icons';
+import { BlockchainExplorer } from '../BlockchainExplorer';
+import { ChartBarIcon, CpuChipIcon, GlobeAltIcon, ArrowPathIcon, LockClosedIcon, ScaleIcon, UsersIcon, AcademicCapIcon, GameControllerIcon, WalletIcon, CubeTransparentIcon } from '../Icons';
 
 const financeComponentMap: { [key: string]: React.FC<any> } = {
-  tradingTerminal: UnifiedTerminal, // Main Pro View
+  tradingTerminal: UnifiedTerminal, 
   tradingMarkets: Markets,
   tradingAdvancedChart: AdvancedChart,
   tradingSwap: Swap,
@@ -32,7 +32,7 @@ const financeComponentMap: { [key: string]: React.FC<any> } = {
   tradingGames: CryptoGames,
   tradingWallet: Wallet,
   aiTradingTools: AiTradingTools,
-  blockchainHub: () => <PlaceholderView viewName="Blockchain Hub" />,
+  blockchainHub: BlockchainExplorer,
 };
 
 interface FinanceAppProps {
@@ -48,7 +48,6 @@ export const FinanceApp: React.FC<FinanceAppProps> = ({ context, onSetView }) =>
     const augmentedMenuItem = { ...context.menuItem };
     let children = augmentedMenuItem.children ? [...augmentedMenuItem.children] : [];
     
-    // Insert Unified Terminal at the top
     if (!children.some(c => c.component === 'tradingTerminal')) {
          children.unshift({ 
              title: 'Genesis Trade Deck', 
@@ -57,7 +56,6 @@ export const FinanceApp: React.FC<FinanceAppProps> = ({ context, onSetView }) =>
          });
     }
 
-    // Explicitly add the requested sub-menu items if they are missing
     const requiredItems: MenuItemData[] = [
         { title: 'Markets', icon: ChartBarIcon, component: 'tradingMarkets' },
         { title: 'Swap', icon: ArrowPathIcon, component: 'tradingSwap' },
@@ -76,14 +74,12 @@ export const FinanceApp: React.FC<FinanceAppProps> = ({ context, onSetView }) =>
         }
     });
 
-    // Ensure AI Platform Explorer is present
     if (!children.some(c => c.component === 'aiTradingTools')) {
-         const aiToolItem: MenuItemData = { 
-             title: 'AI Platform Explorer', 
-             icon: CpuChipIcon, 
-             component: 'aiTradingTools' 
-         };
-         children.push(aiToolItem);
+         children.push({ title: 'AI Platform Explorer', icon: CpuChipIcon, component: 'aiTradingTools' });
+    }
+    
+    if (!children.some(c => c.component === 'blockchainHub')) {
+         children.push({ title: 'Blockchain Explorer', icon: CubeTransparentIcon, component: 'blockchainHub' });
     }
 
     augmentedMenuItem.children = children;

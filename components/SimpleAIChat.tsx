@@ -9,7 +9,20 @@ export const SimpleAIChat: React.FC = () => {
   const identity = loggedInUser.systemIdentity;
   const aiName = identity?.aiNickname || identity?.aiCoreName || 'Aether';
 
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  // Load history from localStorage
+  const [messages, setMessages] = useState<ChatMessage[]>(() => {
+      try {
+          const saved = localStorage.getItem('aetherius_simple_chat_history');
+          if (saved) {
+              return JSON.parse(saved);
+          }
+      } catch (e) {
+          console.error("Failed to load simple chat history", e);
+      }
+      // Default initial message if no history
+      return [{ role: 'model', text: Kernel.getDynamicGreeting(loggedInUser) }];
+  });
+
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -19,11 +32,14 @@ export const SimpleAIChat: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Initialize with dynamic greeting
+  // Persist history on change
   useEffect(() => {
-    const greeting = Kernel.getDynamicGreeting(loggedInUser);
-    setMessages([{ role: 'model', text: greeting }]);
-  }, []);
+      try {
+          localStorage.setItem('aetherius_simple_chat_history', JSON.stringify(messages));
+      } catch (e) {
+          console.error("Failed to save chat history", e);
+      }
+  }, [messages]);
 
   useEffect(scrollToBottom, [messages]);
 
@@ -71,8 +87,18 @@ export const SimpleAIChat: React.FC = () => {
   
   return (
     <div className="flex flex-col h-full bg-white dark:bg-gray-800">
-      <header className="p-4 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
+      <header className="p-4 border-b border-gray-200 dark:border-gray-700 flex-shrink-0 flex justify-between items-center">
           <h2 className="font-semibold text-lg text-gray-800 dark:text-gray-100">{aiName} (AI Assistant)</h2>
+          <button 
+            onClick={() => {
+                setMessages([{ role: 'model', text: Kernel.getDynamicGreeting(loggedInUser) }]);
+                localStorage.removeItem('aetherius_simple_chat_history');
+            }}
+            className="text-xs text-gray-500 hover:text-red-500"
+            title="Clear History"
+          >
+              Clear
+          </button>
       </header>
       <div className="flex-grow p-4 overflow-y-auto space-y-4">
         {messages.map((msg, index) => (

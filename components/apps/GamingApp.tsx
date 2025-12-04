@@ -1,11 +1,12 @@
+
 import React from 'react';
 import { AppContainer } from './AppContainer';
 import { MenuItemData } from '../../types';
-import { PlaceholderView } from '../PlaceholderView';
+import { UniversalAppRenderer } from '../UniversalAppRenderer';
 
 const gamingComponentMap: { [key: string]: React.FC<any> } = {
-  gamingHub: () => <PlaceholderView viewName="Gaming Hub" />,
-  myLibrary: () => <PlaceholderView viewName="My Library" />,
+  gamingHub: () => <UniversalAppRenderer type="grid" title="Gaming Hub" />,
+  myLibrary: () => <UniversalAppRenderer type="grid" title="My Library" />,
 };
 
 interface GamingAppProps {

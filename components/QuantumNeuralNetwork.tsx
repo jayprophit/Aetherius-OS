@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CpuChipIcon, BoltIcon, ChartBarIcon, PlayIcon, StopIcon, ArrowPathIcon, SparklesIcon } from './Icons';
+import { quantumBackend } from '../services/QuantumBackendService';
+import { rigService } from '../services/RigService';
 
 const MetricCard: React.FC<{ label: string; value: string; color: string }> = ({ label, value, color }) => (
     <div className={`bg-gray-800/50 border border-gray-700 p-3 rounded-lg flex flex-col items-center justify-center`}>
@@ -26,14 +28,34 @@ export const QuantumNeuralNetwork: React.FC = () => {
     const [temperature, setTemperature] = useState(100); // mK
     const [prediction, setPrediction] = useState<string | null>(null);
     const [confidence, setConfidence] = useState(0);
+    const [backendStatus, setBackendStatus] = useState<string>('Offline');
+    const [isHardwareAccelerated, setIsHardwareAccelerated] = useState(false);
     
     // Mock Qubit States
     const [qubits, setQubits] = useState(Array.from({ length: 8 }, () => Math.random()));
+
+    // Check Backend & Rig Status
+    useEffect(() => {
+        const checkConnection = async () => {
+            const secured = await quantumBackend.establishSecureChannel();
+            setBackendStatus(secured ? 'Quantum-Safe Link Active' : 'Simulation Mode');
+        };
+        checkConnection();
+        
+        const rigSub = rigService.rigState$.subscribe(state => {
+            setIsHardwareAccelerated(state.Bridge_Accelerator.length > 0 || state.Quantum_QPU.length > 0);
+        });
+        
+        return () => rigSub.unsubscribe();
+    }, []);
 
     // Simulation Loop
     useEffect(() => {
         let interval: ReturnType<typeof setInterval>;
         if (isAnnealing) {
+            // Speed up if hardware accelerated
+            const tickRate = isHardwareAccelerated ? 25 : 50;
+            
             interval = setInterval(() => {
                 setProgress(prev => {
                     if (prev >= 100) {
@@ -54,18 +76,27 @@ export const QuantumNeuralNetwork: React.FC = () => {
                     return Math.max(0, Math.min(1, q + noise));
                 }));
 
-            }, 50);
+            }, tickRate);
         }
         return () => clearInterval(interval);
-    }, [isAnnealing, progress]);
+    }, [isAnnealing, progress, isHardwareAccelerated]);
 
-    const startAnnealing = () => {
+    const startAnnealing = async () => {
         setIsAnnealing(true);
         setProgress(0);
         setEnergy(1.0);
         setTemperature(100);
         setPrediction(null);
         setConfidence(0);
+
+        // Trigger actual backend task if connected
+        try {
+            if (backendStatus.includes('Active')) {
+                await quantumBackend.runQuantumTask('optimize', { params: { layers: 2 } });
+            }
+        } catch (e) {
+            console.warn("Running in simulation mode");
+        }
     };
 
     const completeAnnealing = () => {
@@ -78,7 +109,9 @@ export const QuantumNeuralNetwork: React.FC = () => {
         ];
         const result = patterns[Math.floor(Math.random() * patterns.length)];
         setPrediction(result);
-        setConfidence(94 + Math.random() * 5.9);
+        // Hardware boosts confidence
+        const baseConf = 94 + Math.random() * 5.9;
+        setConfidence(Math.min(100, isHardwareAccelerated ? baseConf + 0.5 : baseConf));
         setQubits(prev => prev.map(() => Math.round(Math.random()))); // Collapse to 0 or 1
     };
 
@@ -90,7 +123,10 @@ export const QuantumNeuralNetwork: React.FC = () => {
                     <h1 className="text-2xl font-bold text-cyan-400 flex items-center gap-3">
                         <CpuChipIcon className="w-8 h-8" /> Quantum Neural Network
                     </h1>
-                    <p className="text-sm text-gray-400 mt-1 font-mono">Q-Annealer v4.0 | Topology: Chimera Graph | Qubits: 2048</p>
+                    <p className="text-sm text-gray-400 mt-1 font-mono">
+                        Q-Annealer v4.0 | Topology: Chimera Graph | Status: {backendStatus}
+                        {isHardwareAccelerated && <span className="ml-2 text-green-400 font-bold">[HARDWARE ACCELERATED]</span>}
+                    </p>
                 </div>
                 <div className="flex gap-3">
                     <button 
@@ -115,7 +151,7 @@ export const QuantumNeuralNetwork: React.FC = () => {
                             <MetricCard label="System Energy" value={`${energy.toFixed(4)} eV`} color="text-yellow-400" />
                             <MetricCard label="Temperature" value={`${temperature.toFixed(1)} mK`} color="text-blue-400" />
                             <MetricCard label="Coherence" value={`${(100 - progress * 0.1).toFixed(1)}%`} color="text-purple-400" />
-                            <MetricCard label="Tunneling Rate" value={`${(energy * 40).toFixed(1)} MHz`} color="text-green-400" />
+                            <MetricCard label="Tunneling Rate" value={`${(energy * (isHardwareAccelerated ? 80 : 40)).toFixed(1)} MHz`} color="text-green-400" />
                         </div>
                     </div>
 
@@ -146,6 +182,7 @@ export const QuantumNeuralNetwork: React.FC = () => {
                         <div className="text-gray-500 border-b border-gray-800 pb-2 mb-2">QPU Output Log</div>
                         <div className="flex-1 overflow-y-auto space-y-1">
                             <p className="text-green-500">>> System initialized.</p>
+                            {isHardwareAccelerated && <p className="text-yellow-500">>> Bridge Accelerator detected. Optimizing path.</p>}
                             {isAnnealing && (
                                 <>
                                     <p className="text-gray-400">>> Applying transverse magnetic field...</p>

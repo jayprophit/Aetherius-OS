@@ -1,12 +1,8 @@
 
-
-
-
-
 import React, { useState } from 'react';
-import { CameraIcon, StarIcon, HeartIcon, ShareIcon, ShoppingCartIcon, ArrowDownTrayIcon, CubeTransparentIcon, TruckIcon, CpuChipIcon, UserCircleIcon, CheckCircleIcon, HandThumbUpIcon, SearchIcon, MapPinIcon, ScaleIcon, DocumentTextIcon, AcademicCapIcon, BeakerIcon } from './Icons';
+import { CameraIcon, StarIcon, HeartIcon, ShareIcon, ShoppingCartIcon, ArrowDownTrayIcon, CubeTransparentIcon, TruckIcon, CpuChipIcon, UserCircleIcon, CheckCircleIcon, HandThumbUpIcon, SearchIcon, MapPinIcon, ScaleIcon, DocumentTextIcon, AcademicCapIcon, BeakerIcon, ExclamationTriangleIcon } from './Icons';
 import { commerceData, courses } from '../data';
-import { SmartContractOption, TechnicalSpecification } from '../types';
+import { SmartContractOption, TechnicalSpecification, MarketplaceItem } from '../types';
 
 const ProductInfoCard: React.FC<{title: string, children: React.ReactNode, icon?: React.FC<any>}> = ({title, children, icon: Icon}) => (
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
@@ -17,8 +13,56 @@ const ProductInfoCard: React.FC<{title: string, children: React.ReactNode, icon?
     </div>
 )
 
+const ReviewForm: React.FC = () => {
+    const [rating, setRating] = useState(0);
+    const [text, setText] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+
+    if (submitted) {
+        return (
+            <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-center gap-2 text-green-700 dark:text-green-300 animate-fade-in">
+                <CheckCircleIcon className="w-5 h-5"/>
+                <span>Thanks! Your review has been submitted for approval.</span>
+            </div>
+        );
+    }
+
+    return (
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg border border-gray-200 dark:border-gray-700 mt-6">
+            <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-2">Write a Review</h4>
+            <div className="flex gap-1 mb-3">
+                {[1,2,3,4,5].map(i => (
+                    <button 
+                        key={i} 
+                        onClick={() => setRating(i)} 
+                        className={`transition-colors ${i <= rating ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}
+                    >
+                        <StarIcon solid={i <= rating} className="w-6 h-6"/>
+                    </button>
+                ))}
+            </div>
+            <textarea 
+                className="w-full p-3 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-sm focus:ring-2 focus:ring-blue-500 outline-none mb-3" 
+                rows={3} 
+                placeholder="Share your thoughts about this product..."
+                value={text}
+                onChange={e => setText(e.target.value)}
+            />
+            <button 
+                onClick={() => setSubmitted(true)} 
+                disabled={rating === 0}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-bold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                Submit Review
+            </button>
+        </div>
+    );
+};
+
 const ReviewList: React.FC = () => (
     <div className="space-y-6">
+        <ReviewForm />
+        <div className="border-t border-gray-200 dark:border-gray-700 my-6"></div>
         {[1, 2, 3].map(i => (
             <div key={i} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
                 <div className="flex items-center gap-2 mb-2">
@@ -45,6 +89,89 @@ const ReviewList: React.FC = () => (
         ))}
     </div>
 );
+
+const ComparisonView: React.FC<{ currentProduct: MarketplaceItem, allProducts: MarketplaceItem[] }> = ({ currentProduct, allProducts }) => {
+    // Filter for similar products (same type, exclude current)
+    const comparisons = allProducts
+        .filter(p => p.id !== currentProduct.id && p.type === currentProduct.type)
+        .slice(0, 2);
+    
+    if (comparisons.length === 0) return <div className="p-4 text-gray-500">No similar products available for comparison.</div>;
+
+    const items = [currentProduct, ...comparisons];
+
+    return (
+        <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left border-collapse">
+                <thead>
+                    <tr className="bg-gray-100 dark:bg-gray-800">
+                        <th className="p-4 border-b border-gray-200 dark:border-gray-700 min-w-[150px]">Feature</th>
+                        {items.map(p => (
+                            <th key={p.id} className="p-4 border-b border-gray-200 dark:border-gray-700 min-w-[200px]">
+                                <div className="flex flex-col items-center text-center gap-2">
+                                    <img src={p.iconUrl} className="w-12 h-12 object-contain" alt={p.name}/>
+                                    <span className={`font-bold ${p.id === currentProduct.id ? 'text-blue-600 dark:text-blue-400' : 'text-gray-800 dark:text-gray-100'}`}>
+                                        {p.name}
+                                    </span>
+                                </div>
+                            </th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                    <tr>
+                        <td className="p-4 font-semibold bg-gray-50 dark:bg-gray-800/50">Price</td>
+                        {items.map(p => (
+                            <td key={p.id} className="p-4 text-center font-mono font-bold">
+                                {p.price === 'Free' ? 'Free' : `$${p.price}`}
+                            </td>
+                        ))}
+                    </tr>
+                    <tr>
+                        <td className="p-4 font-semibold bg-gray-50 dark:bg-gray-800/50">Rating</td>
+                        {items.map(p => (
+                            <td key={p.id} className="p-4 text-center">
+                                <div className="flex items-center justify-center gap-1 text-yellow-500">
+                                    <StarIcon solid className="w-4 h-4"/> {p.rating}
+                                </div>
+                            </td>
+                        ))}
+                    </tr>
+                    <tr>
+                        <td className="p-4 font-semibold bg-gray-50 dark:bg-gray-800/50">Creator</td>
+                        {items.map(p => <td key={p.id} className="p-4 text-center">{p.creator.name}</td>)}
+                    </tr>
+                    <tr>
+                        <td className="p-4 font-semibold bg-gray-50 dark:bg-gray-800/50">Delivery</td>
+                        {items.map(p => (
+                            <td key={p.id} className="p-4 text-center">
+                                <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-xs">
+                                    {p.deliveryMethod}
+                                </span>
+                            </td>
+                        ))}
+                    </tr>
+                    <tr>
+                        <td className="p-4 font-semibold bg-gray-50 dark:bg-gray-800/50">Type</td>
+                        {items.map(p => <td key={p.id} className="p-4 text-center text-xs text-gray-500">{p.type}</td>)}
+                    </tr>
+                    <tr>
+                         <td className="p-4 bg-gray-50 dark:bg-gray-800/50"></td>
+                         {items.map(p => (
+                            <td key={p.id} className="p-4 text-center">
+                                {p.id === currentProduct.id ? (
+                                    <span className="text-xs font-bold text-gray-400">Viewing</span>
+                                ) : (
+                                    <button className="text-xs font-bold text-blue-600 hover:underline">View Details</button>
+                                )}
+                            </td>
+                        ))}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    );
+};
 
 const QuestionsList: React.FC = () => (
     <div className="space-y-4">
@@ -185,18 +312,40 @@ const LearningCard: React.FC<{ relatedIds: number[], onSetView: Function }> = ({
 };
 
 export const ProductPage: React.FC<{ context?: { productId?: string }, onSetView: Function }> = ({ context, onSetView }) => {
-  const [activeTab, setActiveTab] = useState<'details' | 'reviews' | 'qa' | 'specs'>('details');
-  const allItems = [...commerceData.physical, ...commerceData.digitalGoods, ...commerceData.apps];
-  const defaultProduct = allItems[0];
+  const [activeTab, setActiveTab] = useState<'details' | 'reviews' | 'qa' | 'specs' | 'compare'>('details');
+  const allItems = [...commerceData.physical, ...commerceData.digitalGoods, ...commerceData.apps] as MarketplaceItem[];
   
-  // Find product from combined list
-  const product = context?.productId 
-    ? allItems.find(p => p.id === context.productId) || defaultProduct
-    : defaultProduct;
+  // Improved Error Handling
+  if (context?.productId && !allItems.find(p => p.id === context.productId)) {
+      return (
+          <div className="flex flex-col items-center justify-center h-full text-center p-8 animate-fade-in">
+              <ExclamationTriangleIcon className="w-16 h-16 text-red-500 mb-4"/>
+              <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Product Not Found</h1>
+              <p className="text-gray-500 dark:text-gray-400 mb-6">
+                  We couldn't locate the product with ID: <code className="bg-gray-200 dark:bg-gray-800 px-1 rounded">{context.productId}</code>. 
+                  It may have been removed or you followed a broken link.
+              </p>
+              <button 
+                onClick={() => onSetView('marketplace')} 
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700"
+              >
+                  Return to Marketplace
+              </button>
+          </div>
+      );
+  }
+
+  const defaultProduct = allItems[0];
+  const product = (context?.productId 
+    ? allItems.find(p => p.id === context.productId)
+    : defaultProduct) as MarketplaceItem;
 
   const isPhysical = product.deliveryMethod === 'shipping';
-  const isDigital = product.deliveryMethod === 'digital-download';
+  const isDigital = product.deliveryMethod === 'digital-download' || product.deliveryMethod === 'app-install';
   const isCAD = product.digitalType === 'cad';
+  const isSoftware = product.type === 'App' || product.type === 'Software';
+  
+  const price = typeof product.price === 'number' ? product.price : 0;
 
   return (
     <div className="animate-fade-in grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 h-full overflow-y-auto bg-gray-50 dark:bg-gray-900/50">
@@ -221,30 +370,15 @@ export const ProductPage: React.FC<{ context?: { productId?: string }, onSetView
         {/* Tabbed Content */}
         <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
             <div className="flex border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
-                <button 
-                    onClick={() => setActiveTab('details')} 
-                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'details' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
-                >
-                    Details
-                </button>
-                <button 
-                    onClick={() => setActiveTab('specs')} 
-                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'specs' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
-                >
-                    Specs & Rights
-                </button>
-                <button 
-                    onClick={() => setActiveTab('reviews')} 
-                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'reviews' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
-                >
-                    Reviews (121)
-                </button>
-                <button 
-                    onClick={() => setActiveTab('qa')} 
-                    className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'qa' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
-                >
-                    Q&A (4)
-                </button>
+                {['details', 'specs', 'compare', 'reviews', 'qa'].map(tab => (
+                    <button 
+                        key={tab}
+                        onClick={() => setActiveTab(tab as any)} 
+                        className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap capitalize ${activeTab === tab ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white'}`}
+                    >
+                        {tab === 'qa' ? 'Q&A' : tab}
+                    </button>
+                ))}
             </div>
             
             <div className="p-6">
@@ -282,6 +416,7 @@ export const ProductPage: React.FC<{ context?: { productId?: string }, onSetView
                         )}
                     </div>
                 )}
+                {activeTab === 'compare' && <ComparisonView currentProduct={product} allProducts={allItems} />}
                 {activeTab === 'reviews' && <ReviewList />}
                 {activeTab === 'qa' && <QuestionsList />}
             </div>
@@ -298,7 +433,7 @@ export const ProductPage: React.FC<{ context?: { productId?: string }, onSetView
                       <div className="w-16 h-16 bg-blue-100 rounded flex items-center justify-center text-xs text-blue-500 font-bold">Accessory</div>
                  </div>
                  <div className="flex-1 ml-4">
-                     <div className="text-sm font-bold text-gray-800 dark:text-white">Total price: ${((typeof product.price === 'number' ? product.price : 0) + 25).toFixed(2)}</div>
+                     <div className="text-sm font-bold text-gray-800 dark:text-white">Total price: ${(price + 25).toFixed(2)}</div>
                      <button className="mt-2 px-4 py-1 bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-bold rounded shadow-sm">Add both to Cart</button>
                  </div>
              </div>
@@ -326,9 +461,9 @@ export const ProductPage: React.FC<{ context?: { productId?: string }, onSetView
                 <div className="flex items-start gap-1">
                     <span className="text-xs mt-1">$</span>
                     <p className="text-3xl font-bold text-gray-900 dark:text-white">
-                        {product.price === 'Free' ? '0.00' : Math.floor(product.price)}
+                        {product.price === 'Free' ? '0.00' : Math.floor(price)}
                     </p>
-                    <span className="text-xs mt-1">{product.price !== 'Free' && ((product.price % 1) * 100).toFixed(0)}</span>
+                    <span className="text-xs mt-1">{product.price !== 'Free' && ((price % 1) * 100).toFixed(0)}</span>
                 </div>
                 
                 {isPhysical && (
@@ -372,6 +507,13 @@ export const ProductPage: React.FC<{ context?: { productId?: string }, onSetView
                 <button className="w-full bg-orange-500 text-white font-bold py-3 rounded-full hover:bg-orange-600 transition-colors shadow-sm">
                     Buy Now
                 </button>
+                
+                {/* Download Source Code Button for Software */}
+                {isSoftware && (
+                     <button className="w-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-bold py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-2">
+                        <ArrowDownTrayIcon className="w-4 h-4"/> Download Source Code
+                    </button>
+                )}
                 
                 <div className="text-xs text-gray-500 mt-4 space-y-1">
                     <div className="flex justify-between"><span>Ships from</span> <span>Aetherius</span></div>

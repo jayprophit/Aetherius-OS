@@ -1,6 +1,4 @@
 
-
-
 import React from 'react';
 import { ShieldCheckIcon, CheckCircleIcon, BriefcaseIcon, AcademicCapIcon, LinkIcon, ShareIcon, QrCodeIcon } from '../Icons';
 import { loggedInUser } from '../../data';

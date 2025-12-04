@@ -7,6 +7,7 @@ import {
     ScaleIcon, CpuChipIcon, BoltIcon, SparklesIcon, PlayIcon, ServerIcon
 } from './Icons';
 import { aiConsciousnessLayers } from '../data';
+import { rigService } from '../services/RigService';
 
 const initialParentAI: AIAgentProfile = {
   id: 'parent-ai-01',
@@ -66,6 +67,12 @@ const useSimulatedOrchestrator = (initialGoal: string) => {
     const [processingMode, setProcessingMode] = useState<ProcessingMode>('Hive Mind');
     const [activeHardware, setActiveHardware] = useState<string[]>([]);
     const [consciousnessState, setConsciousnessState] = useState<string>("Idle");
+    const [rigState, setRigState] = useState(rigService.getRig());
+
+    useEffect(() => {
+        const sub = rigService.rigState$.subscribe(setRigState);
+        return () => sub.unsubscribe();
+    }, []);
 
     // Initialize departments structure
     useEffect(() => {
@@ -137,8 +144,13 @@ const useSimulatedOrchestrator = (initialGoal: string) => {
         // 1. Parent AI Analysis Phase
         addLog(`Parent AI received objective: "${goalToProcess}"`);
         
+        // Determine available hardware from Rig
+        const availableHw = ['vQPU']; // Base
+        if (rigState.Bridge_Accelerator.length > 0) availableHw.push('Time Crystal');
+        if (rigState.Binary_CPU.length > 0 && rigState.Binary_CPU[0].name.includes('Neural')) availableHw.push('Neuromorphic Array');
+        
         if (processingMode === 'Deep Think (R1)') {
-             setActiveHardware(['vQPU', 'Time Crystal', 'Neuromorphic Array']);
+             setActiveHardware(availableHw);
              setConsciousnessState("R1 Protocol: Iterative Reasoning");
              addLog("R1 Deep Think engaged. Analyzing multi-file context and dependency graph...");
         } else {
@@ -154,7 +166,7 @@ const useSimulatedOrchestrator = (initialGoal: string) => {
             
             if (processingMode !== 'Deep Think (R1)') {
                 setConsciousnessState("Hive Mind: Agent Generation");
-                setActiveHardware(['vQPU', 'Time Crystal']);
+                setActiveHardware(availableHw.filter(h => h !== 'Neuromorphic Array'));
             }
 
             // Activate Managers of all relevant departments
@@ -183,7 +195,7 @@ const useSimulatedOrchestrator = (initialGoal: string) => {
             if (processingMode === 'Deep Think (R1)') {
                  addLog("R1 CoT: Distilling tasks with recursive refinement...");
             } else {
-                 setActiveHardware(['vQPU', 'Time Crystal', 'Neuromorphic Array']);
+                 setActiveHardware(availableHw);
                  setConsciousnessState("Collective Intelligence: Swarm Processing");
                  addLog("Sub-Cores spawning specialized worker agents...");
             }
@@ -251,7 +263,7 @@ const useSimulatedOrchestrator = (initialGoal: string) => {
 
         }, 9000);
 
-    }, [initialGoal, processingMode]);
+    }, [initialGoal, processingMode, rigState]);
 
     return { 
         parentAI, departments, log, tasks, runSimulation, isRunning, 
@@ -378,7 +390,7 @@ export const AiWorkforceOrchestrator: React.FC = () => {
                 
                 {/* Hardware & State Monitor */}
                 <div className="flex flex-wrap gap-3 items-center bg-black/5 dark:bg-white/5 p-2 rounded-lg border border-black/5 dark:border-white/5">
-                    <span className="text-xs font-bold uppercase text-gray-500 px-2 flex items-center gap-1"><ServerIcon className="w-3 h-3"/> Load:</span>
+                    <span className="text-xs font-bold uppercase text-gray-500 px-2 flex items-center gap-1"><ServerIcon className="w-3 h-3"/> Hardware Link:</span>
                     <HardwareIndicator name="vQPU Core" isActive={activeHardware.includes('vQPU')} />
                     <HardwareIndicator name="Time Crystal" isActive={activeHardware.includes('Time Crystal')} />
                     <HardwareIndicator name="Neuromorphic Net" isActive={activeHardware.includes('Neuromorphic Array')} />
