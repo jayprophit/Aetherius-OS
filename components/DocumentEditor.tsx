@@ -1,4 +1,5 @@
 
+
 import React, { useState, useRef, useEffect } from 'react';
 import { marked } from 'marked';
 import { 
@@ -115,7 +116,8 @@ export const DocumentEditor: React.FC = () => {
         if (!findText) return;
         
         if (replaceAll) {
-            const newContent = content.replaceAll(findText, replaceText);
+            // Using split/join instead of replaceAll for broader compatibility with older TS configs
+            const newContent = content.split(findText).join(replaceText);
             if (newContent !== content) updateContent(newContent);
         } else {
             const newContent = content.replace(findText, replaceText);

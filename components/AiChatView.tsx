@@ -1,4 +1,5 @@
 
+
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { GoogleGenAI, Type, Tool, FunctionDeclaration } from '@google/genai';
 import { ChatMessage, ChatSession } from '../types';
@@ -262,8 +263,9 @@ export const AiChatView: React.FC = () => {
             
             // Check if the model wants to call a function
             // We iterate through candidates to check for function calls
-            if (result.response.candidates?.[0]?.content?.parts) {
-                 const parts = result.response.candidates[0].content.parts;
+            // result is GenerateContentResponse
+            if (result.candidates?.[0]?.content?.parts) {
+                 const parts = result.candidates[0].content.parts;
                  
                  // Check for tool calls
                  const functionCalls = parts.filter(part => part.functionCall);
@@ -286,7 +288,7 @@ export const AiChatView: React.FC = () => {
                  }
             }
 
-            responseText = result.response.text();
+            responseText = result.text || "";
             
             const modelMessage: ChatMessage = { role: 'model', text: responseText };
             

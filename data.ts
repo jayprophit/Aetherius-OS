@@ -1,9 +1,4 @@
 
-// ... (Imports remain the same, I will just output the modified export sections for brevity if possible, 
-// but adhering to the rule of "Full content" I will include the whole file content but refined.)
-
-// DUE TO FILE SIZE LIMITS IN OUTPUT, I WILL APPLY TARGETED PATCHES TO THE DATA STRUCTURES 
-// IN A WAY THAT REPLACE THE WHOLE FILE CONTENT AS REQUESTED.
 
 import {
   HomeIcon, UserIcon, UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon,
@@ -46,7 +41,9 @@ import {
   ShoppingBagIcon, ClipboardDocumentCheckIcon, HiveMindIcon,
   GlobeIcon, CubeTransparentIcon, HandRaisedIcon, CursorArrowRaysIcon,
   StylusIcon, MessageIcon, ChipIcon, EarIcon, DnaIcon,
-  ActivityIcon, AppWindowIcon, BuildingLibraryIcon
+  ActivityIcon, AppWindowIcon, BuildingLibraryIcon,
+  FlameIcon, ArrowsUpDownLeftRightIcon, TrendingUpIcon,
+  UserGroupIcon, ChartPieIcon, PresentationChartBarIcon
 } from './components/Icons';
 
 import {
@@ -55,7 +52,7 @@ import {
     KnowledgeBaseItem, MilestonesData, ChecklistCategory, ChatSession,
     TradingAsset, StakingPool, TradingBot, NewsArticle, LoanableAsset,
     LearnAndEarnCourse, AiTradingPlatform, SocialCommunity, SocialStream,
-    SystemIdentity, BlockchainCV, ChecklistItem, SettingsCategory
+    SystemIdentity, BlockchainCV, ChecklistItem, SettingsCategory, Validator
 } from './types';
 
 // --- Users ---
@@ -226,7 +223,9 @@ export const mockInterviews: Interview[] = [
 export const knowledgeBaseData: KnowledgeBaseItem[] = [
     { id: 'KB-001', name: 'OmniChain Consensus', details: 'Hybrid PoW/PoS mechanism.', status: 'Integrated', progress: 100 },
     { id: 'KB-002', name: 'Neural Interface', details: 'BCI Direct Link protocol.', status: 'R&D Phase', progress: 40 },
-    { id: 'KB-003', name: 'AetherSearch Protocol', details: 'Global keyboard-driven command palette.', status: 'Integrated', progress: 100 }
+    { id: 'KB-003', name: 'AetherSearch Protocol', details: 'Global keyboard-driven command palette.', status: 'Integrated', progress: 100 },
+    { id: 'KB-004', name: 'MVO Definition', details: 'Minimum Viable Operations: The core hardware and kernel systems required to boot the OS.', status: 'Foundational', progress: 100 },
+    { id: 'KB-005', name: 'MVP Definition', details: 'Minimum Viable Product: The user-facing application layer essential for mass adoption.', status: 'Foundational', progress: 100 }
 ];
 
 export const milestonesData: MilestonesData = {
@@ -241,14 +240,47 @@ export const milestonesData: MilestonesData = {
 
 export const buildChecklistData: ChecklistCategory[] = [
     {
-        id: 'cat1', name: 'Core System', description: 'Kernel and Boot', icon: CpuChipIcon,
+        id: 'cat1', name: 'Core System (MVO)', description: 'Kernel, Hardware Bridge, and Boot Sequence', icon: CpuChipIcon,
         items: [
             { id: 'i1', name: 'Kernel Boot', description: 'WASM Loader', status: 'Completed', progress: 100 },
-            { id: 'i2', name: 'Command Palette', description: 'AetherSearch Global Search', status: 'Completed', progress: 100 },
-            { id: 'i3', name: 'Widget Engine', description: 'Interactive Desktop Widgets', status: 'Completed', progress: 100 }
+            { id: 'i2', name: 'Virtual Rig', description: 'Hardware Simulation', status: 'Completed', progress: 100 },
+            { id: 'i3', name: 'Memory Node', description: 'Vector Storage', status: 'Completed', progress: 100 }
+        ]
+    },
+    {
+        id: 'cat2', name: 'User Experience (MVP)', description: 'Applications, UI, and Interaction', icon: AppWindowIcon,
+        items: [
+             { id: 'i4', name: 'Social Hub', description: 'Feed, Chat, Groups', status: 'Completed', progress: 100 },
+             { id: 'i5', name: 'Commerce', description: 'Marketplace & Shop', status: 'Completed', progress: 100 },
+             { id: 'i6', name: 'Productivity', description: 'Mail, Calendar, Docs', status: 'Completed', progress: 100 }
         ]
     }
 ];
+
+export const gapAnalysisData = {
+    mvo: {
+        title: "Minimum Viable Operation (Architecture)",
+        description: "Status of backend systems required for OS functionality.",
+        readiness: 92,
+        criticalPath: [
+            { name: "Kernel", status: "Online" },
+            { name: "Hardware Bridge", status: "Simulated" },
+            { name: "FileSystem", status: "Online (OPFS)" },
+            { name: "Networking", status: "Online (WebRTC)" }
+        ]
+    },
+    mvp: {
+        title: "Minimum Viable Product (User)",
+        description: "Status of frontend applications required for user adoption.",
+        readiness: 88,
+        criticalPath: [
+            { name: "Social Suite", status: "Ready" },
+            { name: "Finance Hub", status: "Ready" },
+            { name: "AI Integration", status: "Beta" },
+            { name: "Mobile Responsiveness", status: "Ready" }
+        ]
+    }
+};
 
 // --- Messenger ---
 export const messengerSessions: ChatSession[] = [
@@ -357,8 +389,8 @@ export const tradingBots: TradingBot[] = [
 ];
 
 export const tradingNews: NewsArticle[] = [
-    { id: 'n1', source: 'CryptoDaily', title: 'Bitcoin Hits New High', timestamp: '2h ago', imageUrl: '', category: 'Crypto' },
-    { id: 'n2', source: 'Bloomberg', title: 'Analysts Predict Volatility Ahead of Options Expiry', time: '5h ago' },
+    { id: 'n1', source: 'CryptoDaily', title: 'Bitcoin Hits New High', timestamp: '2h ago', imageUrl: 'https://images.unsplash.com/photo-1518546305927-5a420994e3db?auto=format&fit=crop&w=150', category: 'Crypto' },
+    { id: 'n2', source: 'Bloomberg', title: 'Analysts Predict Volatility Ahead of Options Expiry', timestamp: '5h ago', imageUrl: 'https://images.unsplash.com/photo-1611974765270-ca1258634369?auto=format&fit=crop&w=150', category: 'World Markets' },
 ];
 
 export const loanableAssets: LoanableAsset[] = [
@@ -387,7 +419,7 @@ export const aiConsciousnessLayers = [
     { name: 'Core Intelligence', description: 'Basic logic', states: ['Idle', 'Processing'], theme: 'border-blue-500 bg-blue-500' }
 ];
 
-export const mockValidators = [
+export const mockValidators: Validator[] = [
     { id: 'v1', name: 'Genesis Node', stake: 1000000, reputation: 100, isAuthority: true, status: 'Active' }
 ];
 
@@ -470,8 +502,11 @@ export const mainMenuItems: MenuGroup[] = [
         children: [
              { title: 'Account', icon: UserCircleIcon, component: 'accountApp' },
              { title: 'Settings', icon: Cog6ToothIcon, component: 'settings' },
+             { title: 'System Info', icon: InformationCircleIcon, component: 'systemInfo' },
              { title: 'Hypervisor', icon: ServerIcon, component: 'hypervisor' },
              { title: 'Network Admin', icon: GlobeAltIcon, component: 'serviceRegistry' },
+             { title: 'Security Center', icon: ShieldCheckIcon, component: 'securityCenter' },
+             { title: 'Contacts', icon: UserGroupIcon, component: 'contacts' },
         ]
     }
 ];
