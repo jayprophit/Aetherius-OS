@@ -1,0 +1,1 @@
+node_modules/ dist/ build/ *.log *.tmp *.cache __pycache__/.venv/ venv/ *.log */.git/
