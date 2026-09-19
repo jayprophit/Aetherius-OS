@@ -1,1 +1,12 @@
-node_modules/ dist/ build/ *.log *.tmp *.cache __pycache__/.venv/ venv/ *.log */.git/
+node_modules/
+dist/
+build/
+out/
+.next/
+.cache/
+coverage/
+*.log
+*.log.*
+*.node
+local/legacy-intake/
+vendor/
