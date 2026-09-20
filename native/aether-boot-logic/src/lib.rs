@@ -4,6 +4,7 @@
 #![cfg_attr(not(test), no_std)]
 pub mod fb;
 pub mod frames;
+pub mod gdt;
 pub mod int;
 pub mod memmap;
 pub mod sched;
