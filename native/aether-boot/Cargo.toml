@@ -1,0 +1,15 @@
+[package]
+name = "aether-boot"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+uefi = { version = "0.35", default-features = false, features = ["alloc", "global_allocator", "panic_handler"] }
+aether-boot-logic = { path = "../aether-boot-logic" }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true

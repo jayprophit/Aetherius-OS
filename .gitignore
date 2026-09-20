@@ -10,3 +10,10 @@ coverage/
 *.node
 local/legacy-intake/
 vendor/
+
+# Rust native builds
+
+native/target/
+native/**/*.img
+native/**/serial*.log
+__pycache__/
