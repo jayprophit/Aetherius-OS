@@ -1,0 +1,67 @@
+// Canonical shared types (P10 shell increment).
+//
+// Most domains are any-typed until their providers land: the shell renders
+// empty states rather than demo rows. Tighten each type when its real
+// provider is integrated.
+export type AgentChatMessage = any;
+export type NotificationData = any;
+export type AITask = any;
+export type AIDepartment = any;
+export type AIAgentProfile = any;
+export type AIAgentTask = any;
+export type ProcessingMode = any;
+export type AppItem = any;
+export type FolderItem = any;
+export type DesktopItem = any;
+export type SystemLocale = any;
+export type ChatMessage = any;
+export type ChatSession = any;
+export type ChecklistItem = any;
+export type ChecklistCategory = any;
+export type ConsensusMechanism = any;
+export type Validator = any;
+export type Transaction = any;
+export type Block = any;
+export type Course = any;
+export type LearningPath = any;
+export type Group = any;
+export type User = any;
+export type Job = any;
+export type Company = any;
+export type FreelanceProject = any;
+export type JobApplication = any;
+export type Interview = any;
+export type MarketplaceItem = any;
+export type MarketplaceItemType = any;
+export type DeliveryMethod = any;
+export type SmartContractOption = any;
+export type TechnicalSpecification = any;
+export type MemoryVector = any;
+export type MenuItemData = any;
+export type MenuGroup = any;
+export type ViewMode = any;
+export type MilestoneItem = any;
+export type Server = any;
+export type RpcLog = any;
+export type ServerStatus = any;
+export type SettingsCategory = any;
+export type SettingsItem = any;
+export type SystemIdentity = any;
+export type TaskbarConfig = any;
+export type TrainingDataSample = any;
+export type Post = any;
+export type Blog = any;
+export type WindowState = any;
+export type AiTradingPlatform = any;
+export type DetailedHealingItem = any;
+export type LearnAndEarnCourse = any;
+export type LoanableAsset = any;
+export type NewsArticle = any;
+export type SocialCommunity = any;
+export type SocialStream = any;
+export type StakingPool = any;
+export type TradingAsset = any;
+export type AssetClass = any;
+export type AssetMetric = any;
+export type AssetNews = any;
+export type TradingBot = any;

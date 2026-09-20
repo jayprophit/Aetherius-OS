@@ -25,5 +25,22 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "include": [
+    "App.tsx",
+    "types.ts",
+    "data.ts",
+    "constants.ts",
+    "components",
+    "frontend/src",
+    "services",
+    "utils",
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "local"
+  ]
 }

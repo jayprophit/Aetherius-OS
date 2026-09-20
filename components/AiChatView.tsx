@@ -1,7 +1,7 @@
 
 
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { GoogleGenAI, Type, Tool, FunctionDeclaration } from '@google/genai';
+import { GoogleGenAI, Type, Tool, FunctionDeclaration, createPartFromFunctionResponse } from '@google/genai';
 import { ChatMessage, ChatSession } from '../types';
 import { 
     PlusIcon, UserCircleIcon, EllipsisHorizontalIcon, HiveMindIcon,
@@ -271,20 +271,19 @@ export const AiChatView: React.FC = () => {
                  const functionCalls = parts.filter(part => part.functionCall);
                  
                  if (functionCalls.length > 0) {
-                     // Execute all requested tools
-                     const functionResponses = await Promise.all(functionCalls.map(async (call) => {
-                         const fc = call.functionCall!;
-                         const toolResult = await executeTool(fc.name, fc.args);
-                         return {
-                             functionResponse: {
-                                 name: fc.name,
-                                 response: { result: toolResult }
-                             }
-                         };
-                     }));
+                      // Execute all requested tools
+                      const functionResponses = await Promise.all(functionCalls.map(async (call) => {
+                          const fc = call.functionCall!;
+                          const toolResult = await executeTool(fc.name, fc.args);
+                          return createPartFromFunctionResponse(
+                              fc.id ?? fc.name,
+                              fc.name,
+                              { result: toolResult },
+                          );
+                      }));
 
-                     // Send tool outputs back to model
-                     result = await chat.sendMessage(functionResponses);
+                      // Send tool outputs back to model
+                      result = await chat.sendMessage({ message: functionResponses });
                  }
             }
 

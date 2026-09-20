@@ -109,18 +109,20 @@ export const HealingWeb: React.FC = () => {
     const [selectedItem, setSelectedItem] = useState<(DetailedHealingItem & { name: string, type: 'nature' | 'pharmaceutical' }) | null>(null);
 
     const allNature = useMemo(() => {
-        return Object.entries(healthAndWellnessData.healingWebFull.nature).map(([name, data]) => ({
-            name, ...data, type: 'nature' as const
+        const group: Record<string, any> = healthAndWellnessData.healingWebFull?.nature || {};
+        return Object.entries(group).map(([name, data]) => ({
+            name, ...(data as Record<string, any>), type: 'nature' as const
         }));
     }, []);
 
     const allPharma = useMemo(() => {
-        return Object.entries(healthAndWellnessData.healingWebFull.pharmaceutical).map(([name, data]) => ({
-            name, ...data, type: 'pharmaceutical' as const
+        const group: Record<string, any> = healthAndWellnessData.healingWebFull?.pharmaceutical || {};
+        return Object.entries(group).map(([name, data]) => ({
+            name, ...(data as Record<string, any>), type: 'pharmaceutical' as const
         }));
     }, []);
 
-    const filterItems = <T extends DetailedHealingItem & { name: string }>(items: T[]) => {
+    const filterItems = (items: any[]) => {
         if (!searchTerm) return items;
         const lowerSearch = searchTerm.toLowerCase();
         return items.filter(item => 

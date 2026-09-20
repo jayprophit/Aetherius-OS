@@ -1,6 +1,6 @@
 import React from 'react';
 import { FolderItem, AppItem } from '../types';
-import { LaunchableApp } from '../../App';
+import { LaunchableApp } from '../App';
 
 interface FolderViewProps {
   context: { folder: FolderItem };
