@@ -17,6 +17,27 @@ use aether_boot_logic::fb::FramebufferMode;
 use aether_boot_logic::memmap::{self, Descriptor, MemoryKind};
 
 mod idt;
+mod sched;
+
+extern "C" fn demo_task_a() {
+    for round in 0..3u32 {
+        crate::idt::serial_emit("SCHED: task A round ");
+        crate::idt::serial_emit_u32(round);
+        crate::idt::serial_emit("\n");
+        crate::sched::sched_yield();
+    }
+    crate::sched::task_done();
+}
+
+extern "C" fn demo_task_b() {
+    for round in 0..3u32 {
+        crate::idt::serial_emit("SCHED: task B round ");
+        crate::idt::serial_emit_u32(round);
+        crate::idt::serial_emit("\n");
+        crate::sched::sched_yield();
+    }
+    crate::sched::task_done();
+}
 
 struct SerialOut {
     serial: ScopedProtocol<Serial>,
@@ -294,6 +315,15 @@ fn main() -> Status {
         let ms = aether_boot_logic::int::ticks_to_ms(ticks, 100);
         let mut line = alloc::string::String::new();
         let _ = core::write!(&mut line, "TICKS: {ticks} ~= {ms}ms @100Hz");
+        emit(&line);
+    }
+    {
+        let (switches, all_done) = crate::sched::run_demo(demo_task_a, demo_task_b);
+        let mut line = alloc::string::String::new();
+        let _ = core::write!(
+            &mut line,
+            "SCHED: switches={switches} all_done={all_done}"
+        );
         emit(&line);
     }
     emit("AETHERIUS-HALT: controlled halt");

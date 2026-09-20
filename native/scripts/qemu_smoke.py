@@ -19,6 +19,9 @@ MARKERS = [
     "ALLOC: total_frames=",
     "INT: breakpoint OK",
     "TIMER: irq_ticks=",
+    "SCHED: switches=",
+    "SCHED: task A round 2",
+    "SCHED: task B round 2",
     "AETHERIUS-HALT",
 ]
 
