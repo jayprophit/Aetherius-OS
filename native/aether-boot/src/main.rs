@@ -149,6 +149,29 @@ fn main() -> Status {
                 summary.usable_regions
             );
             emit(&line);
+
+            // Frame allocator proof: adopt conventional regions, take 16
+            // frames of bookkeeping ownership, report the counters.
+            let mut frames = aether_boot_logic::frames::FrameAllocator::empty();
+            if frames.adopt(&descriptors) {
+                let mut taken = 0u32;
+                while taken < 16 {
+                    if frames.alloc().is_err() {
+                        break;
+                    }
+                    taken += 1;
+                }
+                let mut alloc_line = alloc::string::String::new();
+                let _ = core::write!(
+                    &mut alloc_line,
+                    "ALLOC: total_frames={} free_frames={} probation_taken={taken}",
+                    frames.total_frames(),
+                    frames.free_frames()
+                );
+                emit(&alloc_line);
+            } else {
+                emit("ALLOC: no usable frames adopted");
+            }
         }
         Err(error) => {
             let mut line = alloc::string::String::new();

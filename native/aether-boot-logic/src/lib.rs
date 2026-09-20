@@ -3,4 +3,5 @@
 //! core-only so the same code compiles for the UEFI target.
 #![cfg_attr(not(test), no_std)]
 pub mod fb;
+pub mod frames;
 pub mod memmap;

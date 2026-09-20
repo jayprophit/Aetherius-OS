@@ -13,7 +13,12 @@ import sys
 import time
 from pathlib import Path
 
-MARKERS = ["AETHERIUS-BOOT v0.1.0", "MEMMAP: regions=", "AETHERIUS-HALT"]
+MARKERS = [
+    "AETHERIUS-BOOT v0.1.0",
+    "MEMMAP: regions=",
+    "ALLOC: total_frames=",
+    "AETHERIUS-HALT",
+]
 
 QEMU_CANDIDATES = [
     os.environ.get("QEMU_SYSTEM_X86_64", ""),
