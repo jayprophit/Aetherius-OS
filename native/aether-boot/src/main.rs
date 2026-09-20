@@ -16,6 +16,8 @@ use uefi::boot::{MemoryType, ScopedProtocol, SearchType};
 use aether_boot_logic::fb::FramebufferMode;
 use aether_boot_logic::memmap::{self, Descriptor, MemoryKind};
 
+mod idt;
+
 struct SerialOut {
     serial: ScopedProtocol<Serial>,
 }
@@ -180,6 +182,120 @@ fn main() -> Status {
         }
     }
 
+    // Interrupts + timer: IDT, PIC remap, 100 Hz PIT, INT3 self-test,
+    // then count 200 ticks (~2 s) as the timekeeping proof.
+    emit("INIT: idt enter");
+    unsafe {
+        crate::idt::init_stage1();
+    }
+    emit("INIT: idt loaded, int3 next");
+    emit("MAIN: calling selftest");
+    let breakpoint = unsafe { crate::idt::int3_selftest() };
+    emit("MAIN: selftest returned");
+    match breakpoint {
+        Some((3, _)) => emit("INT: breakpoint OK"),
+        other => {
+            let mut line = alloc::string::String::new();
+            let _ = core::write!(&mut line, "INT: breakpoint FAILED: {other:?}");
+            emit(&line);
+        }
+    }
+    emit("INIT: int3 done, enabling timer");
+    unsafe {
+        crate::idt::init_stage2(100);
+    }
+    emit("INIT: timer live");
+    // Timekeeping via firmware timer events (correct owner in the
+    // boot-services epoch): 200 wakes at 100 Hz ~= 2000 ms.
+    unsafe extern "efiapi" fn timer_notify(
+        _event: uefi::Event,
+        _context: Option<core::ptr::NonNull<core::ffi::c_void>>,
+    ) {
+    }
+    let ticks: u64 = 'timer: {
+        use uefi::boot::{EventType, TimerTrigger, Tpl};
+        emit("TIMER: creating event");
+        let mut event = match unsafe {
+            uefi::boot::create_event(
+                EventType::NOTIFY_WAIT | EventType::TIMER,
+                Tpl::CALLBACK,
+                Some(timer_notify),
+                None,
+            )
+        } {
+            Ok(event) => event,
+            Err(error) => {
+                let mut line = alloc::string::String::new();
+                let _ = core::write!(&mut line, "TIMER: create failed ({error:?})");
+                emit(&line);
+                break 'timer 0;
+            }
+        };
+        emit("TIMER: arming");
+        if let Err(error) = uefi::boot::set_timer(&event, TimerTrigger::Periodic(100_000)) {
+            let mut line = alloc::string::String::new();
+            let _ = core::write!(&mut line, "TIMER: arm failed ({error:?})");
+            emit(&line);
+            let _ = uefi::boot::close_event(event);
+            break 'timer 0;
+        }
+        emit("TIMER: waiting");
+        // Firmware timer ticks require IF; the IDT is fully installed.
+        unsafe {
+            core::arch::asm!("sti", options(nostack));
+        }
+        // Primary: our own IRQ0 ticks (bounded spins so a dead timer
+        // reports STALLED instead of hanging the harness). Any foreign
+        // vector is reported as it arrives.
+        let start_ticks = crate::idt::ticks();
+        let mut spins: u64 = 0;
+        let mut last_report = 0u64;
+        let mut foreign: u64 = 0;
+        let mut foreign_vector: u64 = 0;
+        while crate::idt::ticks() - start_ticks < 200 {
+            unsafe {
+                core::arch::asm!("hlt", options(nomem, nostack, preserves_flags));
+            }
+            spins += 1;
+            while let Some((vector, _)) = unsafe { crate::idt::poll_event() } {
+                if vector != 0x28 {
+                    foreign += 1;
+                    foreign_vector = vector;
+                }
+            }
+            if foreign >= 200 {
+                break;
+            }
+            if spins - last_report >= 2_000_000 {
+                last_report = spins;
+                let mut line = alloc::string::String::new();
+                let _ = core::write!(
+                    &mut line,
+                    "TICKS: waiting ticks={} spins={spins} foreign={foreign} last_foreign={foreign_vector}",
+                    crate::idt::ticks() - start_ticks
+                );
+                emit(&line);
+            }
+            if spins > 20_000_000 {
+                break;
+            }
+        }
+        let _ = uefi::boot::close_event(event);
+        let elapsed = crate::idt::ticks() - start_ticks;
+        let mut line = alloc::string::String::new();
+        let _ = core::write!(
+            &mut line,
+            "TIMER: irq_ticks={elapsed} firmware_ticks={foreign} spins={spins}"
+        );
+        emit(&line);
+        elapsed.max(foreign)
+    };
+    {
+        let ms = aether_boot_logic::int::ticks_to_ms(ticks, 100);
+        let mut line = alloc::string::String::new();
+        let _ = core::write!(&mut line, "TICKS: {ticks} ~= {ms}ms @100Hz");
+        emit(&line);
+    }
     emit("AETHERIUS-HALT: controlled halt");
     // Controlled halt: stall forever; the emulator harness cuts power after
     // the marker line appears on serial.

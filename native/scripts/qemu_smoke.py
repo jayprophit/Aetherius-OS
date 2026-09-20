@@ -17,6 +17,8 @@ MARKERS = [
     "AETHERIUS-BOOT v0.1.0",
     "MEMMAP: regions=",
     "ALLOC: total_frames=",
+    "INT: breakpoint OK",
+    "TIMER: irq_ticks=",
     "AETHERIUS-HALT",
 ]
 
@@ -60,6 +62,8 @@ def main(argv: list[str]) -> int:
         "-serial", f"file:{serial_log}",
         "-no-reboot",
     ]
+    if "--trace" in argv:
+        cmd += ["-d", "int", "-D", argv[argv.index("--trace") + 1]]
     proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     deadline = time.time() + 90
     text = ""
