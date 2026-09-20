@@ -10,30 +10,32 @@ import { createMatProvider } from "./providers/mat";
 import { createComputeProvider } from "./providers/compute";
 import { createGenesisProvider } from "./providers/genesis";
 import { createIdeProvider } from "./providers/ide";
+import { SettingsStore } from "./settings/store";
 import type { LaunchableApp } from "../App";
 
 function launchApp(_app: LaunchableApp): void {}
 
-function useProviders(): ProviderRegistry {
+function useProviders(): { registry: ProviderRegistry; pollMs: number } {
   return useMemo(() => {
+    const settings = new SettingsStore().get();
     const registry = new ProviderRegistry();
-    registry.register(createAgentBridgeProvider());
-    registry.register(createMatProvider());
+    registry.register(createAgentBridgeProvider(settings.bridgeEndpoint));
+    registry.register(createMatProvider(settings.matEndpoint));
     registry.register(createComputeProvider());
     registry.register(createGenesisProvider());
     registry.register(createIdeProvider());
-    return registry;
+    return { registry, pollMs: settings.providerPollMs };
   }, []);
 }
 
 function Shell() {
-  const registry = useProviders();
+  const { registry, pollMs } = useProviders();
   return (
     <div>
       <div role="status">
         Backend unreachable — showing empty shell. No demo data.
       </div>
-      <ProviderStatus registry={registry} />
+      <ProviderStatus registry={registry} pollMs={pollMs} />
       <TopBar />
       <Desktop launchApp={launchApp} />
       <Taskbar
