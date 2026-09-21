@@ -1,36 +1,36 @@
 //! MAT → Genesis Integration (P10-MG).
 //!
-//! Provides the knowledge connector between Genesis and the MAT query service.
-//! This is the P10-MG task: connecting the Materials Atlas Table Codex
-//! query service to Genesis's knowledge/concept system.
+//! Knowledge connector between Genesis and the MAT query service.
+//! Preserves provenance, evidence class, uncertainty/status and
+//! error/unavailable paths across the integration contract.
+
+extern crate alloc;
 
 use alloc::string::String;
+use alloc::string::ToString;
 use alloc::vec::Vec;
-use alloc::collections::BTreeMap;
-use alloc::format;
-use core::fmt;
 
 use crate::mat_query::{
-    MatQueryService, MatQueryRequest, MatQueryResponse,
-    EvidenceClass, EvidenceType,
+    EvidenceClass, MatPropertyDatum, MatQueryError, MatQueryRequest, MatQueryResponse,
+    MatQueryService, MatSearchResult,
 };
 
 /// Genesis-facing MAT knowledge connector.
-///
-/// This module provides the integration layer between Genesis's
-/// knowledge/cognition system and the MAT query service.
 pub struct MatGenesisConnector {
     query_service: MatQueryService,
 }
 
 impl MatGenesisConnector {
-    /// Create a new MAT-Genesis connector.
     pub fn new(query_service: MatQueryService) -> Self {
         Self { query_service }
     }
 
-    /// Query MAT for a material by symbol (e.g., "H", "Fe", "Au").
-    pub fn query_by_symbol(&self, symbol: &str, properties: &[&str]) -> Result<MatGenesisResponse, MatGenesisError> {
+    /// Query MAT for a material by symbol (e.g. "H", "Fe", "Au").
+    pub fn query_by_symbol(
+        &self,
+        symbol: &str,
+        properties: &[&str],
+    ) -> Result<MatGenesisResponse, MatGenesisError> {
         let request = MatQueryRequest {
             symbol: Some(symbol.to_string()),
             mat_id: None,
@@ -40,8 +40,12 @@ impl MatGenesisConnector {
         Ok(MatGenesisResponse::from(response))
     }
 
-    /// Query MAT for a material by MAT ID (e.g., "MAT:0026").
-    pub fn query_by_mat_id(&self, mat_id: &str, properties: &[&str]) -> Result<MatGenesisResponse, MatGenesisError> {
+    /// Query MAT for a material by MAT ID (e.g. "MAT:0026").
+    pub fn query_by_mat_id(
+        &self,
+        mat_id: &str,
+        properties: &[&str],
+    ) -> Result<MatGenesisResponse, MatGenesisError> {
         let request = MatQueryRequest {
             symbol: None,
             mat_id: Some(mat_id.to_string()),
@@ -57,28 +61,20 @@ impl MatGenesisConnector {
         Ok(results.into_iter().map(MatGenesisSearchResult::from).collect())
     }
 
-    /// Query a specific property of a material with evidence preservation.
+    /// Query a specific property with evidence preservation.
     pub fn query_property(
         &self,
         symbol: &str,
         property_path: &str,
     ) -> Result<MatPropertyValue, MatGenesisError> {
-        let request = MatQueryRequest {
-            symbol: Some(symbol.to_string()),
-            mat_id: None,
-            properties: vec![property_path.to_string()],
-        };
-        let response = self.query_service.query(request)?;
-        let prop = response.results.into_iter().next().ok_or(MatGenesisError::PropertyNotFound)?;
-        let prop_value = prop.read_property(property_path)?;
-        Ok(MatPropertyValue {
-            property: property_path.to_string(),
-            value: prop_value,
-        })
+        let datum = self
+            .query_service
+            .read_property(symbol, property_path)?;
+        Ok(MatPropertyValue::from_datum(datum))
     }
 }
 
-/// Response from MAT query, converted for Genesis consumption.
+/// Response converted for Genesis consumption.
 #[derive(Debug, Clone)]
 pub struct MatGenesisResponse {
     pub found: bool,
@@ -112,13 +108,13 @@ pub struct MatPropertyResult {
 pub struct MatPropertyValue {
     pub property: String,
     pub value: MatPropertyValueInner,
+    pub uncertainty: Option<f64>,
+    pub evidence_class: EvidenceClass,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MatPropertyValueInner {
-    Scalar { value: f64, unit: Option<String>, uncertainty: Option<f64> },
-    Range { min: f64, max: f64, unit: Option<String> },
-    Enum { value: String, options: Vec<String> },
+    Scalar { value: f64, unit: Option<String> },
     Unavailable,
 }
 
@@ -141,21 +137,38 @@ pub struct MatProvenance {
 }
 
 /// Error types for MAT-Genesis integration.
-#[derive(Debug, thiserror::Error)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum MatGenesisError {
-    #[error("Material not found: {0}")]
     NotFound(String),
-    #[error("Property not found: {0}")]
     PropertyNotFound(String),
-    #[error("Query service error: {0}")]
     QueryServiceError(String),
-    #[error("Property not found in record: {0}")]
-    PropertyNotFound(String),
-    #[error("Serialization error: {0}")]
-    SerializationError(String),
+    InvalidRequest(String),
 }
 
-impl MatGenesisResponse {
+impl core::fmt::Display for MatGenesisError {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            MatGenesisError::NotFound(s) => write!(f, "material not found: {}", s),
+            MatGenesisError::PropertyNotFound(s) => write!(f, "property not found: {}", s),
+            MatGenesisError::QueryServiceError(s) => write!(f, "query service error: {}", s),
+            MatGenesisError::InvalidRequest(s) => write!(f, "invalid request: {}", s),
+        }
+    }
+}
+
+impl core::error::Error for MatGenesisError {}
+
+impl From<MatQueryError> for MatGenesisError {
+    fn from(e: MatQueryError) -> Self {
+        match e {
+            MatQueryError::NotFound(s) => MatGenesisError::NotFound(s),
+            MatQueryError::PropertyNotFound(s) => MatGenesisError::PropertyNotFound(s),
+            MatQueryError::InvalidRequest(s) => MatGenesisError::InvalidRequest(s),
+        }
+    }
+}
+
+impl From<MatQueryResponse> for MatGenesisResponse {
     fn from(response: MatQueryResponse) -> Self {
         Self {
             found: response.found,
@@ -173,72 +186,133 @@ impl MatGenesisResponse {
     }
 }
 
-impl MatPropertyResult {
-    fn from(result: MatPropertyResult) -> Self {
+impl From<MatPropertyDatum> for MatPropertyResult {
+    fn from(d: MatPropertyDatum) -> Self {
         Self {
-            property: result.property,
-            value: result.value,
-            unit: result.unit,
-            minimum: result.minimum,
-            maximum: result.maximum,
-            uncertainty: result.uncertainty,
-            confidence: result.confidence,
-            evidence_type: result.evidence_type,
-            evidence_class: result.evidence_class,
-            source_id: result.source_id,
-            source_alias: result.source_alias,
-            source_locator: result.source_locator,
-            method: result.method,
+            property: d.property,
+            value: d.value,
+            unit: d.unit,
+            minimum: d.minimum,
+            maximum: d.maximum,
+            uncertainty: d.uncertainty,
+            confidence: d.confidence,
+            evidence_type: d.evidence_type,
+            evidence_class: d.evidence_class,
+            source_id: d.source_id,
+            source_alias: d.source_alias,
+            source_locator: d.source_locator,
+            method: d.method,
         }
     }
 }
 
-impl MatGenesisSearchResult {
-    fn from(result: MatSearchResult) -> Self {
+impl From<MatSearchResult> for MatGenesisSearchResult {
+    fn from(r: MatSearchResult) -> Self {
         Self {
-            mat_id: result.mat_id,
-            record_name: result.record_name,
-            symbol: result.symbol,
-            path: result.path,
+            mat_id: r.mat_id,
+            record_name: r.record_name,
+            symbol: r.symbol,
+            path: r.path,
         }
     }
 }
 
 impl MatPropertyValue {
-    fn from(result: MatPropertyResult) -> Self {
+    fn from_datum(d: MatPropertyDatum) -> Self {
+        let inner = match d.value {
+            Some(v) => MatPropertyValueInner::Scalar { value: v, unit: d.unit.clone() },
+            None => MatPropertyValueInner::Unavailable,
+        };
         Self {
-            property: result.property,
-            value: MatPropertyValueInner::from_result(result),
+            property: d.property.clone(),
+            value: inner,
+            uncertainty: d.uncertainty,
+            evidence_class: d.evidence_class.clone(),
         }
     }
 }
 
-impl MatPropertyValueInner {
-    fn from_result(result: MatPropertyResult) -> Self {
-        if let Some(value) = result.value {
-            if let (Some(min), Some(max)) = (result.minimum, result.maximum) {
-                if min == max {
-                    MatPropertyValueInner::Scalar {
-                        value,
-                        unit: result.unit,
-                        uncertainty: result.uncertainty,
-                    }
-                } else {
-                    MatPropertyValueInner::Range {
-                        min: result.minimum.unwrap_or(value),
-                        max: result.maximum.unwrap_or(value),
-                        unit: result.unit,
-                    }
-                }
-            } else {
-                MatPropertyValueInner::Scalar {
-                    value,
-                    unit: result.unit,
-                    uncertainty: result.uncertainty,
-                }
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use alloc::vec;
+
+    fn connector() -> MatGenesisConnector {
+        MatGenesisConnector::new(MatQueryService::new())
+    }
+
+    #[test]
+    fn genesis_can_issue_mat_request() {
+        let c = connector();
+        let r = c.query_by_symbol("H", &["ionization.first"]).unwrap();
+        assert!(r.found);
+        assert_eq!(r.symbol, "H");
+    }
+
+    #[test]
+    fn real_mat_data_returns() {
+        let c = connector();
+        let v = c.query_property("H", "ionization.first").unwrap();
+        match v.value {
+            MatPropertyValueInner::Scalar { value, .. } => {
+                assert!((value - 13.598).abs() < 1e-9);
             }
-        } else {
-            MatPropertyValueInner::Unavailable
+            MatPropertyValueInner::Unavailable => panic!("expected scalar"),
         }
+    }
+
+    #[test]
+    fn result_crosses_contract_with_provenance() {
+        let c = connector();
+        let r = c.query_by_mat_id("MAT:0026", &[]).unwrap();
+        assert_eq!(r.symbol, "Fe");
+        assert_eq!(r.provenance.service, "mat-query-service");
+        assert!(!r.provenance.record_path.is_empty());
+        assert!(!r.results.is_empty());
+    }
+
+    #[test]
+    fn evidence_class_survives() {
+        let c = connector();
+        let r = c.query_by_symbol("H", &["ionization.first"]).unwrap();
+        assert_eq!(r.results[0].evidence_class, EvidenceClass::Calculated);
+        assert_eq!(r.results[0].evidence_type, "ionization-energy");
+    }
+
+    #[test]
+    fn uncertainty_status_survives() {
+        let c = connector();
+        let v = c.query_property("H", "ionization.first").unwrap();
+        assert!(v.uncertainty.is_some());
+        let r = c.query_by_symbol("Au", &[]).unwrap();
+        assert!(r.results[0].uncertainty.is_some());
+        assert!(r.results[0].confidence.is_some());
+    }
+
+    #[test]
+    fn error_unavailable_handled() {
+        let c = connector();
+        let e = c.query_by_symbol("Xx", &[]).unwrap_err();
+        assert_eq!(e, MatGenesisError::NotFound("symbol Xx".to_string()));
+        let e2 = c.query_by_symbol("H", &["bogus.prop"]).unwrap_err();
+        assert!(matches!(e2, MatGenesisError::PropertyNotFound(_)));
+    }
+
+    #[test]
+    fn search_crosses_contract() {
+        let c = connector();
+        let hits = c.search("gold").unwrap();
+        assert!(hits.iter().any(|h| h.symbol == "Au"));
+        assert!(!hits[0].path.is_empty());
+    }
+
+    #[test]
+    fn query_by_id_and_symbol_agree() {
+        let c = connector();
+        let a = c.query_by_symbol("Fe", &[]).unwrap();
+        let b = c.query_by_mat_id("MAT:0026", &[]).unwrap();
+        assert_eq!(a.mat_id, b.mat_id);
+        assert_eq!(a.results.len(), b.results.len());
+        let _ = vec![a, b];
     }
 }

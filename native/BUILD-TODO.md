@@ -1,5 +1,15 @@
 # Aetherius Full Build — 2026-09-21
 
+## CONTINUOUS BUILD STATE (HARD LOOP CONTROLLER)
+CONTINUOUS_BUILD_ACTIVE = YES
+OVERALL_BUILD_COMPLETE = NO
+RETURN_TO_OWNER_ALLOWED = NO
+CURRENT_ACTIVE_PHASE = P10-PROVIDERS
+CURRENT_ACTIVE_TODO = P10 master-handoff coverage + plugin/media/comms
+NEXT_EXECUTABLE_TODO = P10-PLUGIN adapter framework
+LAST_VERIFIED_COMMIT = pending (72/72 host tests: mat_query 6, mat_genesis 8, storage 10, settings 8, search 3, notifications 4, appreg 3)
+LAST_REMOTE_VERIFIED_COMMIT = db3d047..a4d6020 pushed; new milestone pending push
+
 ## COMPLETED PHASES
 
 ### P0-P11: FOUNDATION COMPLETE
@@ -46,35 +56,35 @@ SCHED: switches=9 all_done=true
 AETHERIUS-HALT: controlled halt
 ```
 
-### P10-PROVIDERS (IN_PROGRESS)
+### P10-PROVIDERS (IN_PROGRESS — 72/72 host tests)
 - Provider framework with registry ✓
 - Identity & Profile system ✓
 - Policy Engine (RBAC/ABAC) ✓
-- MAT query service ✓
-- Policy → Agent Bridge integration ✓
-- MAT query service → Genesis integration ✓ DONE
-- File/Storage provider ✓ DONE
-- Settings/Config provider IN_PROGRESS
-- Search provider
-- Notification provider
-- Application registry
-- Plugin/Adapter framework
+- MAT query service ✓ (mat_query.rs 6/6)
+- Policy → Agent Bridge integration ✓ (P10-PA 7be15dd)
+- MAT query service → Genesis integration ✓ DONE (mat_genesis.rs 8/8: request/receive/real-data/contract/provenance/evidence/uncertainty/error)
+- File/Storage provider ✓ DONE (storage.rs 10/10: allowed/denied read/write, missing, invalid, traversal, read-only, policy-unavailable, audit)
+- Settings/Config provider ✓ DONE (settings.rs 8/8: defaults/user/app/env, validation, secrets-reject, privileged-policy, reset, migration)
+- Search provider ✓ DONE (search.rs 3/3: adapters apps/files/MAT/settings/commands, rank, deny-filter)
+- Notification provider ✓ DONE (notifications.rs 4/4: send/list/unread/expiry/recipient-isolation)
+- Application registry ✓ DONE (appreg.rs 3/3: IDE/MAT/Poietek canonical, metadata, health)
+- Plugin/Adapter framework (NEXT)
 - Media abstraction
 - Communication core
 
-### P10-PROVIDERS (IN_PROGRESS)
+### P10-PROVIDERS (IN_PROGRESS — 72/72 host tests)
 - Provider framework with registry ✓
 - Identity & Profile system ✓
 - Policy Engine (RBAC/ABAC) ✓
-- MAT query service ✓
-- Policy → Agent Bridge integration ✓
-- MAT query service → Genesis integration ✓ DONE
-- File/Storage provider ✓ DONE
-- Settings/Config provider
-- Search provider
-- Notification provider
-- Application registry
-- Plugin/Adapter framework
+- MAT query service ✓ (mat_query.rs 6/6)
+- Policy → Agent Bridge integration ✓ (P10-PA 7be15dd)
+- MAT query service → Genesis integration ✓ DONE (mat_genesis.rs 8/8)
+- File/Storage provider ✓ DONE (storage.rs 10/10)
+- Settings/Config provider ✓ DONE (settings.rs 8/8)
+- Search provider ✓ DONE (search.rs 3/3)
+- Notification provider ✓ DONE (notifications.rs 4/4)
+- Application registry ✓ DONE (appreg.rs 3/3)
+- Plugin/Adapter framework (NEXT)
 - Media abstraction
 - Communication core
 
@@ -91,11 +101,36 @@ Policy → Agent Bridge integration completed. Policy engine evaluation gate add
 9. Policy-engine failure defaults safely
 10. Existing Agent Bridge test suite does not regress
 
+### MASTER HANDOFF COVERAGE — ADDED 2026-09-21 (from GENESIS/AGENT-BRIDGE/AETHERIUS/MAT docs)
+Source: user master-prompt handoffs (Genesis master chat, Aetherius ecosystem handoffs, YouTube research).
+Status vocabulary: EXISTS / PARTIAL / MISSING / DUPLICATE / LEGACY / CONFLICTING / EXPERIMENTAL / RESEARCH / DEFERRED.
+- D-GENESIS-ROLES: role/capability templates (AI-employee conversion) — PARTIAL (policy roles exist; templates MISSING)
+- D-GENESIS-EVAL: capability eval/benchmarks (reasoning/coding/tool/memory/safety) — MISSING
+- D-GENESIS-EPISTEMIC: evidence classes ESTABLISHED/SUPPORTED/EXPERIMENTAL/HYPOTHESIS/etc + provenance — PARTIAL (MAT evidence_class+provenance DONE; Genesis-wide engine MISSING)
+- D-BRIDGE-PROTOCOLS: MCP/A2A/OpenAPI/REST/JSON-RPC/GraphQL/WS/gRPC/IPC/device adapters — PARTIAL (P10-PA gate DONE; registry MISSING)
+- D-MAT-EVIDENCE: measured/calculated/predicted/hypothesis/speculative + uncertainty — PARTIAL (native connector DONE; full MAT100% MISSING)
+- D-P10-SERVICES: shared identity/policy/storage/search/notify/settings/appreg/media/comms — PARTIAL (7/10 native DONE; plugin/media/comms NEXT)
+- D-P10-ENTITIES: Identity/Profile/Org/Post/Message/Product/Order/Course/Job/Event/Wallet/etc — DEFERRED (create as apps require)
+- D-POLICY-ENGINE: RBAC/ABAC/PBAC/capabilities/least-privilege — PARTIAL (RBAC/ABAC DONE; PBAC/cap-tokens NEXT in P13)
+- D-AUDIO-ROUTE: MIDI/MPC/VST3/AU/endpoints/BT/WiFi/latency/clock — DEFERRED to Universal-Bridge/Poietek
+- D-P12-GROUPS: football-card-game as first external P12 proof — MISSING (after P10-CORE)
+- D-P12-WORKFLOWS: learning→cert→CV→job; product→MAT→CAD→mfg — DEFERRED to P12
+- D-P12-SIFDAT: legacy marketplace/course/job/reward schemas — RESEARCH
+- D-P13-SECINFRA: sandbox/encryption/secret-isolation/audit/supply-chain/signed-builds — PARTIAL (audit receipts DONE; rest in P13)
+- D-FUTURE-REWARD: points/token/treasury/staking/governance — DEFERRED (needs econ/legal gates)
+- D-FUTURE-RND: pots/funding/milestones/verification — DEFERRED
+- D-FUTURE-HEALTH: dashboard/genetics/wearables/3D-DNA — DEFERRED (high-risk validation required)
+- D-FUTURE-RF: WiFi/CSI/RSSI sensing, presence — RESEARCH
+- D-FUTURE-GAMES: CryptoMonopoly/MMO/procedural worlds — DEFERRED (shared infra first)
+- P4-GAPS: 7 missing organism-loop stages — MISSING (tracked, after P10-CORE)
+- P11-DEBT: uefi panic_impl, duplicate-def warnings — MISSING (bounded, non-blocking)
+- P14-E2E: expand MAT→envelope→host to full user→Aetherius→Genesis→policy→Bridge→app loop — PARTIAL (1/1 PASS; expansion NEXT after P12 start)
+- P15-BENCH: policy/MAT/Bridge/provider/search/storage/startup benches + Genesis capability eval — PARTIAL (baselines recorded; new benches NEXT)
+
 ### KNOWN ISSUES
 - Test execution on UEFI target blocked by `panic_impl` conflict (uefi vs std)
-- `aether-boot-logic` test warnings: 3 duplicate definitions
+- `aether-boot-logic` test warnings: unused imports in policy.rs/provider.rs (non-blocking)
 - `aether-boot` test fails due to `panic_impl` conflict between `uefi` and `std` crates
-- `aether-boot-logic` warnings: 3 duplicate definitions in tests
 
 ### BLOCKERS
 - None currently blocking main build. Test execution on UEFI requires separate test runner.

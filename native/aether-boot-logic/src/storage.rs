@@ -1,162 +1,86 @@
-/// File / Storage Provider (P10-FS).
-//! Shared permission-aware storage service for Aetherius platform.
+//! File / Storage Provider (P10-FS).
 //!
-//! Provides canonical path resolution, policy-aware read/write operations,
-//! path traversal protection, and audit receipts for all file operations.
-//!
-//! Configurable roots: C: (active development, required), E: (optional data),
-//! F: (not required).
+//! Shared permission-aware storage service: canonical path resolution,
+//! traversal protection, identity + policy gates, read/write distinction,
+//! audit receipts, safe failures. Roots: C: required, E: optional.
 
-use alloc::borrow::ToString;
+extern crate alloc;
+
+use alloc::collections::BTreeMap;
 use alloc::string::String;
+use alloc::string::ToString;
 use alloc::vec::Vec;
-use core::fmt;
 
-use crate::identity::IdentityId;
-use crate::policy::{PermissionId, PolicyEngine, Decision, EvalContext, Grant, Condition, ResourceId, Subject};
-use crate::provider::{Provider, ProviderError, ProviderInfo, ProviderState, ProviderStats, Capability, ProviderRegistry};
+use crate::policy::{Decision, EvalContext, PermissionId, PolicyEngine, ResourceId, Subject};
+use crate::provider::{Capability, Provider, ProviderError, ProviderInfo, ProviderState, ProviderStats};
 
 /// Storage root configuration.
 #[derive(Debug, Clone)]
 pub struct StorageRoot {
-    /// Root path string (e.g., "C:", "E:")
     pub root: String,
-    /// Whether this root is required (C:) or optional (E:)
     pub required: bool,
-    /// Whether write operations are allowed on this root
     pub write_enabled: bool,
-    /// Description of the root
     pub description: String,
 }
 
-/// Storage item metadata.
+/// Item metadata.
 #[derive(Debug, Clone)]
 pub struct StorageMetadata {
-    /// Item name
     pub name: String,
-    /// Item type: "file" or "directory"
     pub item_type: String,
-    /// Whether the item is read-only
     pub read_only: bool,
-    /// Optional size in bytes
     pub size: Option<u64>,
-    /// Modification timestamp
     pub modified: u64,
-    /// Policy-dependent permissions
-    pub permissions: Vec<PermissionId>,
 }
 
-/// Storage error type.
-#[derive(Debug, Clone)]
+/// Storage errors.
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum StorageError {
     NotFound(String),
     PathTraversal(String),
     PermissionDenied,
-    NotAuthorized,
     InvalidPath,
     PolicyUnavailable,
     AlreadyExists,
-    NotADirectory,
     IsADirectory,
-    Unknown(String),
+    NotADirectory,
 }
 
 impl core::fmt::Display for StorageError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            StorageError::NotFound(msg) => write!(f, "not found: {}", msg),
-            StorageError::PathTraversal(msg) => write!(f, "path traversal blocked: {}", msg),
+            StorageError::NotFound(s) => write!(f, "not found: {}", s),
+            StorageError::PathTraversal(s) => write!(f, "path traversal blocked: {}", s),
             StorageError::PermissionDenied => write!(f, "permission denied"),
-            StorageError::NotAuthorized => write!(f, "not authorized"),
             StorageError::InvalidPath => write!(f, "invalid path"),
             StorageError::PolicyUnavailable => write!(f, "policy unavailable"),
             StorageError::AlreadyExists => write!(f, "already exists"),
-            StorageError::NotADirectory => write!(f, "not a directory"),
             StorageError::IsADirectory => write!(f, "is a directory"),
-            StorageError::Unknown(msg) => write!(f, "unknown error: {}", msg),
+            StorageError::NotADirectory => write!(f, "not a directory"),
         }
     }
 }
 
 impl core::error::Error for StorageError {}
 
-/// A virtual file entry in the storage system.
 #[derive(Debug, Clone)]
-pub struct StorageFile {
-    /// The file's logical path relative to its root
-    pub path: String,
-    /// The file's metadata
-    pub metadata: StorageMetadata,
-    /// The file's content (for small files; large files use external storage)
-    pub content: Option<Vec<u8>>,
+enum Entry {
+    File { meta: StorageMetadata, content: Vec<u8> },
+    Dir { meta: StorageMetadata },
 }
 
-/// A storage directory entry.
-#[derive(Debug, Clone)]
-pub struct StorageDirectory {
-    /// The directory's path relative to its root
-    pub path: String,
-    /// The directory's metadata
-    pub metadata: StorageMetadata,
-    /// Child entries (files and sub-directories)
-    pub children: BTreeMap<String, StorageEntry>,
-}
-
-/// An entry in the storage system (file or directory).
-#[derive(Debug, Clone)]
-pub enum StorageEntry {
-    File(StorageFile),
-    Directory(StorageDirectory),
-}
-
-/// The shared storage service.
-pub struct StorageProvider {
-    /// Registered storage roots, ordered by priority
-    roots: BTreeMap<String, StorageRoot>,
-    /// Storage content indexed by canonical path
-    content: BTreeMap<String, StorageEntry>,
-    /// Policy engine for authorization decisions
-    policy: PolicyEngine,
-    /// Audit log of all storage operations
-    audit_log: Vec<StorageAuditRecord>,
-}
-
-/// An audit receipt for a storage operation.
+/// Audit receipt.
 #[derive(Debug, Clone)]
 pub struct StorageAuditRecord {
-    /// The operation performed
-    pub operation: StorageOperation,
-    /// The path involved
+    pub operation: String,
     pub path: String,
-    /// The subject (identity) that performed the operation
-    pub subject: Subject,
-    /// Whether the operation was allowed
     pub allowed: bool,
-    /// Timestamp of the operation
     pub timestamp: u64,
-    /// Optional policy decision details
-    pub decision_details: Option<String>,
 }
 
-/// Storage operation types.
-#[derive(Debug, Clone)]
-pub enum StorageOperation {
-    List,
-    Metadata,
-    Read,
-    Write,
-    Create,
-    Copy,
-    Move,
-    Delete,
-}
-
-/// Default storage roots configuration.
-/// C: is required (active development), E: is optional, F: is not configured.
 fn default_roots() -> BTreeMap<String, StorageRoot> {
-    let mut roots = BTreeMap::new();
-    // C: required root for active development
-    roots.insert(
+    let mut m = BTreeMap::new();
+    m.insert(
         "C:".to_string(),
         StorageRoot {
             root: "C:".to_string(),
@@ -165,8 +89,7 @@ fn default_roots() -> BTreeMap<String, StorageRoot> {
             description: "Active development root".to_string(),
         },
     );
-    // E: optional data root
-    roots.insert(
+    m.insert(
         "E:".to_string(),
         StorageRoot {
             root: "E:".to_string(),
@@ -175,449 +98,348 @@ fn default_roots() -> BTreeMap<String, StorageRoot> {
             description: "Optional data root".to_string(),
         },
     );
-    roots
+    m
+}
+
+/// Shared storage service.
+pub struct StorageProvider {
+    roots: BTreeMap<String, StorageRoot>,
+    entries: BTreeMap<String, Entry>,
+    policy: Option<PolicyEngine>,
+    audit_log: Vec<StorageAuditRecord>,
 }
 
 impl StorageProvider {
-    /// Create a new storage provider with default roots and policy engine.
-    pub fn new(policy: PolicyEngine) -> Self {
+    pub fn new(policy: Option<PolicyEngine>) -> Self {
         Self {
             roots: default_roots(),
-            content: BTreeMap::new(),
+            entries: BTreeMap::new(),
             policy,
             audit_log: Vec::new(),
         }
     }
 
-    /// Register a custom storage root.
-    pub fn register_root(&mut self, root: StorageRoot) -> Result<(), ProviderError> {
-        if self.roots.contains_key(&root.root) {
-            return Err(ProviderError::ConfigurationError(alloc::format!(
-                "storage root '{}' already registered",
-                root.root
-            )));
-        }
-        self.roots.insert(root.root.clone(), root);
-        Ok(())
+    pub fn audit_log(&self) -> &[StorageAuditRecord] {
+        &self.audit_log
     }
 
-    /// Canonicalize a path relative to storage roots.
-    ///
-    /// Returns (root, canonical_path) or an error if the path is invalid or
-    /// would escape the allowed roots (path traversal protection).
-    fn canonicalize_path(&self, path: &str) -> Result<(String, String), StorageError> {
-        let path = path.trim_start_matches('/');
+    fn record(&mut self, op: &str, path: &str, allowed: bool) {
+        self.audit_log.push(StorageAuditRecord {
+            operation: op.to_string(),
+            path: path.to_string(),
+            allowed,
+            timestamp: 0,
+        });
+    }
 
-        // Check if path starts with a known root
-        let (root_key, remainder) = if let Some(rest) = path.strip_prefix(&format!("{}/", self.roots.keys().next().map(|k| k.as_str()).unwrap_or(""))) {
-            // This is a simplified check - in production, iterate all roots
-            // For now, assume path starts with a root designator
-            let first_component: &str = rest.split('/').next().unwrap_or("");
-            // Check if first component matches a root key
-            for (key, root) in &self.roots {
-                if first_component == key || first_component.starts_with(key + ":") {
-                    // Actually, we need to check if the path STARTS with the root key
-                    // e.g., "C:\\path" or "C:/path"
-                    if path.starts_with(key) || path.starts_with(&format!("{}:", key)) {
-                        let rem = &path[key.len()..];
-                        return Ok((key.to_string(), rem.to_string()));
-                    }
-                }
+    /// Canonicalize to "ROOT/rest". Rejects traversal and invalid paths.
+    pub fn canonicalize(&self, path: &str) -> Result<String, StorageError> {
+        let t = path.trim();
+        if t.is_empty() {
+            return Err(StorageError::InvalidPath);
+        }
+        let norm = t.replace('\\', "/");
+        // Detect explicit root prefix.
+        let (root, rest) = if norm.len() >= 2 && norm.as_bytes()[1] == b':' {
+            let r = norm[0..2].to_uppercase();
+            if !self.roots.contains_key(&r) {
+                return Err(StorageError::InvalidPath);
             }
-            // fallback: check if path has a root prefix
-            for (key, root) in &self.roots {
-                if path.starts_with(key) {
-                    let rem = &path[key.len()..];
-                    return Ok((key.to_string(), rem.to_string()));
-                }
-                if path.starts_with(&format!("{}:", key)) {
-                    let rem = &path[format!("{}:", key).len()..];
-                    return Ok((key.to_string(), rem.to_string()));
-                }
-            }
-            // No root prefix found - try relative to C:
-            return Ok(("C:".to_string(), path.to_string()));
+            let rest = norm[2..].trim_start_matches('/');
+            (r, rest.to_string())
+        } else if norm.starts_with('/') {
+            ("C:".to_string(), norm.trim_start_matches('/').to_string())
         } else {
-            // No root prefix, default to C:
-            ("C:".to_string(), path.to_string())
+            ("C:".to_string(), norm)
         };
-
-        // Path traversal protection: reject ".." components that escape the root
-        let canonical = String::from(&remainder);
-        let parts: Vec<&str> = canonical.split('/').collect();
-        let mut depth: i32 = 0;
-        for part in &parts {
-            match *part {
+        if rest.contains('\0') || rest.contains('*') || rest.contains('?') || rest.contains('<') || rest.contains('>') || rest.contains('|') {
+            return Err(StorageError::InvalidPath);
+        }
+        let mut parts: Vec<&str> = Vec::new();
+        for comp in rest.split('/') {
+            match comp {
+                "" | "." => {}
                 ".." => {
-                    depth -= 1;
-                    if depth < 0 {
-                        return Err(StorageError::PathTraversal(alloc::format!(
-                            "path traversal detected in '{}'",
-                            path
-                        )));
+                    if parts.pop().is_none() {
+                        return Err(StorageError::PathTraversal(
+                            alloc::format!("escape in '{}'", path),
+                        ));
                     }
                 }
-                "." => {} // current directory, ignore
-                _ => {
-                    depth += 1;
-                }
+                c => parts.push(c),
             }
         }
-
-        Ok((root_key, canonical))
+        if parts.is_empty() {
+            Ok(alloc::format!("{}/", root))
+        } else {
+            Ok(alloc::format!("{}/{}", root, parts.join("/")))
+        }
     }
 
-    /// List items in a directory.
-    pub fn list(&self, path: &str) -> Result<Vec<StorageEntry>, StorageError> {
-        let (_, canonical) = self.canonicalize_path(path)?;
-
-        // Check policy: read permission on the path
+    fn check(&self, subject: &Subject, canonical: &str, action: &str) -> Result<(), StorageError> {
+        let engine = self.policy.as_ref().ok_or(StorageError::PolicyUnavailable)?;
         let ctx = EvalContext {
-            subject: Subject::Identity(IdentityId(0)), // will be overridden by caller
-            resource: ResourceId(canonical.clone()),
-            action: PermissionId::new("storage", "list"),
-            attributes: alloc::collections::BTreeMap::new(),
+            subject: subject.clone(),
+            resource: ResourceId(canonical.to_string()),
+            action: PermissionId::new("storage", action),
+            attributes: BTreeMap::new(),
             timestamp: 0,
             network_origin: None,
             device_trust: None,
         };
-
-        if let Decision::Deny = self.policy.evaluate(ctx) {
-            return Err(StorageError::PermissionDenied);
+        match engine.evaluate(ctx) {
+            Decision::Allow => Ok(()),
+            _ => Err(StorageError::PermissionDenied),
         }
+    }
 
-        // Parse the canonical path and return children
-        let mut entries = Vec::new();
-
-        // Try to find the entry in content
-        let key = canonical.clone();
-        if let Some(entry) = self.content.get(&key) {
-            match entry {
-                StorageEntry::File(file) => {
-                    entries.push(StorageEntry::File(file.clone()));
-                }
-                StorageEntry::Directory(dir) => {
-                    // Return the directory's children
-                    for (name, child) in &dir.children {
-                        entries.push(StorageEntry::clone(child));
-                    }
-                }
-            }
-        } else {
-            // Check if it's a known root
-            if let Some(root) = self.roots.get(&key) {
-                // Return root as empty directory
-                let dir = StorageDirectory {
-                    path: key.clone(),
-                    metadata: StorageMetadata {
-                        name: root.root.clone(),
-                        item_type: "directory".to_string(),
-                        read_only: !root.write_enabled,
-                        size: None,
-                        modified: 0,
-                        permissions: vec![],
+    fn ensure_parent(&mut self, canonical: &str) {
+        if let Some(idx) = canonical.rfind('/') {
+            let parent = &canonical[..=idx];
+            if parent.len() > 3 && !self.entries.contains_key(parent) {
+                let name = parent.to_string();
+                self.entries.insert(
+                    parent.to_string(),
+                    Entry::Dir {
+                        meta: StorageMetadata {
+                            name,
+                            item_type: "directory".to_string(),
+                            read_only: false,
+                            size: None,
+                            modified: 0,
+                        },
                     },
-                    children: BTreeMap::new(),
-                };
-                entries.push(StorageEntry::Directory(dir));
-            } else {
-                return Err(StorageError::NotFound(canonical));
+                );
             }
         }
-
-        Ok(entries)
     }
 
-    /// Get metadata for a storage path.
-    pub fn metadata(&self, path: &str) -> Result<StorageMetadata, StorageError> {
-        let (_, canonical) = self.canonicalize_path(path)?;
+    fn is_root(&self, canonical: &str) -> bool {
+        canonical == "C:/" || canonical == "E:/"
+    }
 
-        // Check policy: read permission
-        let ctx = EvalContext {
-            subject: Subject::Identity(IdentityId(0)),
-            resource: ResourceId(canonical.clone()),
-            action: PermissionId::new("storage", "metadata_read"),
-            attributes: alloc::collections::BTreeMap::new(),
-            timestamp: 0,
-            network_origin: None,
-            device_trust: None,
-        };
-
-        if let Decision::Deny = self.policy.evaluate(ctx) {
-            return Err(StorageError::PermissionDenied);
+    pub fn create_dir_as(&mut self, subject: &Subject, path: &str) -> Result<(), StorageError> {
+        let c = self.canonicalize(path)?;
+        if self.entries.contains_key(&c) || self.is_root(&c) {
+            return Err(StorageError::AlreadyExists);
         }
-
-        // Look up the entry
-        if let Some(entry) = self.content.get(&canonical) {
-            match entry {
-                StorageEntry::File(file) => Ok(file.metadata.clone()),
-                StorageEntry::Directory(dir) => Ok(dir.metadata.clone()),
+        match self.check(subject, &c, "create") {
+            Ok(()) => {}
+            Err(e) => {
+                self.record("create", &c, false);
+                return Err(e);
             }
-        } else {
-            // Check if it's a known root
-            if self.roots.contains_key(&canonical) {
-                return Ok(StorageMetadata {
-                    name: canonical.clone(),
+        }
+        self.ensure_parent(&c);
+        let dir_c = if c.ends_with('/') { c.clone() } else { alloc::format!("{}/", c) };
+        let name = dir_c.clone();
+        self.entries.insert(
+            dir_c.clone(),
+            Entry::Dir {
+                meta: StorageMetadata {
+                    name,
                     item_type: "directory".to_string(),
                     read_only: false,
                     size: None,
                     modified: 0,
-                    permissions: vec![],
-                });
-            }
-            Err(StorageError::NotFound(canonical))
-        }
-    }
-
-    /// Read file content at the given path.
-    pub fn read(&self, path: &str) -> Result<Vec<u8>, StorageError> {
-        let (_, canonical) = self.canonicalize_path(path)?;
-
-        // Check policy: read permission
-        let ctx = EvalContext {
-            subject: Subject::Identity(IdentityId(0)),
-            resource: ResourceId(canonical.clone()),
-            action: PermissionId::new("storage", "read"),
-            attributes: alloc::collections::BTreeMap::new(),
-            timestamp: 0,
-            network_origin: None,
-            device_trust: None,
-        };
-
-        if let Decision::Deny = self.policy.evaluate(ctx) {
-            return Err(StorageError::PermissionDenied);
-        }
-
-        // Look up the file
-        if let Some(entry) = self.content.get(&canonical) {
-            match entry {
-                StorageEntry::File(file) => {
-                    if let Some(content) = &file.content {
-                        Ok(content.clone())
-                    } else {
-                        Err(StorageError::NotFound(canonical))
-                    }
-                }
-                StorageEntry::Directory(_) => Err(StorageError::NotADirectory),
-            }
-        } else {
-            Err(StorageError::NotFound(canonical))
-        }
-    }
-
-    /// Write content to a file at the given path (policy-aware).
-    pub fn write(&mut self, path: &str, content: Vec<u8>) -> Result<(), StorageError> {
-        let (root_key, canonical) = self.canonicalize_path(path)?;
-
-        // Check if root is required and write-enabled
-        if let Some(root) = self.roots.get(&root_key) {
-            if !root.required && !root.write_enabled {
-                return Err(StorageError::PermissionDenied);
-            }
-        }
-
-        // Check policy: write permission
-        let ctx = EvalContext {
-            subject: Subject::Identity(IdentityId(0)),
-            resource: ResourceId(canonical.clone()),
-            action: PermissionId::new("storage", "write"),
-            attributes: alloc::collections::BTreeMap::new(),
-            timestamp: 0,
-            network_origin: None,
-            device_trust: None,
-        };
-
-        if let Decision::Deny = self.policy.evaluate(ctx) {
-            // Record audit receipt for denied write
-            let _ = self.record_audit(StorageOperation::Write, &canonical, Subject::Identity(IdentityId(0)), false);
-            return Err(StorageError::PermissionDenied);
-        }
-
-        // Record audit receipt for allowed write
-        let _ = self.record_audit(StorageOperation::Write, &canonical, Subject::Identity(IdentityId(0)), true);
-
-        // Determine if the path refers to an existing file or a new file in a directory
-        let parent_path = /* parent dir logic */ &canonical;
-        let file_name = /* extract filename */ &canonical;
-
-        // For simplicity, store at the canonical path
-        let file = StorageFile {
-            path: canonical.clone(),
-            metadata: StorageMetadata {
-                name: file_name.split('/').last().unwrap_or(&canonical).to_string(),
-                item_type: "file".to_string(),
-                read_only: false,
-                size: Some(content.len() as u64),
-                modified: 0, // will be updated
-                permissions: vec![],
+                },
             },
-            content: Some(content),
-        };
-
-        self.content.insert(canonical.clone(), StorageEntry::File(file));
-
+        );
+        self.record("create", &c, true);
         Ok(())
     }
 
-    /// Create a new directory at the given path.
-    pub fn create_dir(&mut self, path: &str) -> Result<(), StorageError> {
-        let (root_key, canonical) = self.canonicalize_path(path)?;
-
-        // Check if root is required
-        if let Some(root) = self.roots.get(&root_key) {
-            if root.required && !root.write_enabled {
+    pub fn write_as(
+        &mut self,
+        subject: &Subject,
+        path: &str,
+        content: Vec<u8>,
+    ) -> Result<(), StorageError> {
+        let c = self.canonicalize(path)?;
+        if self.is_root(&c) {
+            return Err(StorageError::IsADirectory);
+        }
+        if let Some(Entry::Dir { .. }) = self.entries.get(&c) {
+            return Err(StorageError::IsADirectory);
+        }
+        if let Some(Entry::File { meta, .. }) = self.entries.get(&c) {
+            if meta.read_only {
+                self.record("write", &c, false);
                 return Err(StorageError::PermissionDenied);
             }
         }
-
-        // Check policy: create permission
-        let ctx = EvalContext {
-            subject: Subject::Identity(IdentityId(0)),
-            resource: ResourceId(canonical.clone()),
-            action: PermissionId::new("storage", "create"),
-            attributes: alloc::collections::BTreeMap::new(),
-            timestamp: 0,
-            network_origin: None,
-            device_trust: None,
-        };
-
-        if let Decision::Deny = self.policy.evaluate(ctx) {
-            let _ = self.record_audit(StorageOperation::Create, &canonical, Subject::Identity(IdentityId(0)), false);
-            return Err(StorageError::PermissionDenied);
-        }
-
-        let _ = self.record_audit(StorageOperation::Create, &canonical, Subject::Identity(IdentityId(0)), true);
-
-        // Ensure parent directory exists
-        let parent canonicalize the parent path
-        let parent_path = /* parent dir */ &canonical;
-        if !parent_path.ends_with('/') && !self.content.contains_key(&parent_path) {
-            // Try to find parent
-            let parent_parts: Vec<&str> = canonical.split('/').collect();
-            if parent_parts.len() > 1 {
-                let parent = parent_parts[..parent_parts.len() - 1].join("/");
-                // Ensure parent exists (create if needed, or error)
-                if !self.content.contains_key(&parent) {
-                    // Create parent directory
-                    let _ = self.create_dir(&parent)?;
-                }
+        // Root write gate: E: optional but writable; unknown handled in canonicalize.
+        match self.check(subject, &c, "write") {
+            Ok(()) => {}
+            Err(e) => {
+                self.record("write", &c, false);
+                return Err(e);
             }
         }
+        self.ensure_parent(&c);
+        let name = c.rsplit('/').next().unwrap_or(&c).to_string();
+        self.entries.insert(
+            c.clone(),
+            Entry::File {
+                meta: StorageMetadata {
+                    name,
+                    item_type: "file".to_string(),
+                    read_only: false,
+                    size: Some(content.len() as u64),
+                    modified: 0,
+                },
+                content,
+            },
+        );
+        self.record("write", &c, true);
+        Ok(())
+    }
 
-        // Create the directory entry
-        let dir_key = if canonical.ends_with('/') {
-            canonical.clone()
-        } else {
-            canonical.clone() + "/"
-        };
+    pub fn read_as(&mut self, subject: &Subject, path: &str) -> Result<Vec<u8>, StorageError> {
+        let c = self.canonicalize(path)?;
+        match self.check(subject, &c, "read") {
+            Ok(()) => {}
+            Err(e) => {
+                self.record("read", &c, false);
+                return Err(e);
+            }
+        }
+        let entry = self.entries.get(&c).cloned();
+        match entry {
+            Some(Entry::File { content, .. }) => {
+                self.record("read", &c, true);
+                Ok(content)
+            }
+            Some(Entry::Dir { .. }) => {
+                self.record("read", &c, false);
+                Err(StorageError::IsADirectory)
+            }
+            None => {
+                self.record("read", &c, false);
+                Err(StorageError::NotFound(c))
+            }
+        }
+    }
 
-        let entry = StorageEntry::Directory(StorageDirectory {
-            path: dir_key.clone(),
-            metadata: StorageMetadata {
-                name: dir_key.split('/').last().unwrap_or(&dir_key).to_string(),
+    pub fn metadata_as(
+        &mut self,
+        subject: &Subject,
+        path: &str,
+    ) -> Result<StorageMetadata, StorageError> {
+        let c = self.canonicalize(path)?;
+        match self.check(subject, &c, "read") {
+            Ok(()) => {}
+            Err(e) => {
+                self.record("metadata", &c, false);
+                return Err(e);
+            }
+        }
+        if self.is_root(&c) {
+            self.record("metadata", &c, true);
+            return Ok(StorageMetadata {
+                name: c.clone(),
                 item_type: "directory".to_string(),
                 read_only: false,
                 size: None,
                 modified: 0,
-                permissions: vec![],
-            },
-            children: BTreeMap::new(),
-        });
-
-        self.content.insert(dir_key, entry);
-
-        Ok(())
-    }
-
-    /// Remove a file or directory.
-    pub fn delete(&mut self, path: &str) -> Result<(), StorageError> {
-        let (_, canonical) = self.canonicalize_path(path)?;
-
-        // Check policy: delete permission
-        let ctx = EvalContext {
-            subject: Subject::Identity(IdentityId(0)),
-            resource: ResourceId(canonical.clone()),
-            action: PermissionId::new("storage", "delete"),
-            attributes: alloc::collections::BTreeMap::new(),
-            timestamp: 0,
-            network_origin: None,
-            device_trust: None,
-        };
-
-        if let Decision::Deny = self.policy.evaluate(ctx) {
-            let _ = self.record_audit(StorageOperation::Delete, &canonical, Subject::Identity(IdentityId(0)), false);
-            return Err(StorageError::PermissionDenied);
+            });
         }
+        let entry = self.entries.get(&c).cloned();
+        match entry {
+            Some(Entry::File { meta, .. }) => {
+                self.record("metadata", &c, true);
+                Ok(meta)
+            }
+            Some(Entry::Dir { meta }) => {
+                // Accept both "C:/dir" and "C:/dir/" keys.
+                self.record("metadata", &c, true);
+                Ok(meta)
+            }
+            None => {
+                // Try trailing-slash variant for dirs.
+                let alt = alloc::format!("{}/", c.trim_end_matches('/'));
+                let alt_entry = self.entries.get(&alt).cloned();
+                if let Some(Entry::Dir { meta }) = alt_entry {
+                    self.record("metadata", &c, true);
+                    return Ok(meta);
+                }
+                self.record("metadata", &c, false);
+                Err(StorageError::NotFound(c))
+            }
+        }
+    }
 
-        let _ = self.record_audit(StorageOperation::Delete, &canonical, Subject::Identity(IdentityId(0)), true);
+    pub fn list_as(&mut self, subject: &Subject, path: &str) -> Result<Vec<String>, StorageError> {
+        let c = self.canonicalize(path)?;
+        match self.check(subject, &c, "list") {
+            Ok(()) => {}
+            Err(e) => {
+                self.record("list", &c, false);
+                return Err(e);
+            }
+        }
+        let prefix = if c.ends_with('/') { c.clone() } else { alloc::format!("{}/", c) };
+        let mut out = Vec::new();
+        for key in self.entries.keys() {
+            if key.starts_with(&prefix) {
+                let rest = &key[prefix.len()..];
+                if !rest.is_empty() && !rest.trim_end_matches('/').contains('/') {
+                    out.push(key.clone());
+                }
+            }
+        }
+        self.record("list", &c, true);
+        Ok(out)
+    }
 
-        self.content.remove(&canonical);
+    pub fn delete_as(&mut self, subject: &Subject, path: &str) -> Result<(), StorageError> {
+        let c = self.canonicalize(path)?;
+        match self.check(subject, &c, "delete") {
+            Ok(()) => {}
+            Err(e) => {
+                self.record("delete", &c, false);
+                return Err(e);
+            }
+        }
+        if self.entries.remove(&c).is_some() {
+            self.record("delete", &c, true);
+            return Ok(());
+        }
+        let alt = alloc::format!("{}/", c.trim_end_matches('/'));
+        if self.entries.remove(&alt).is_some() {
+            self.record("delete", &c, true);
+            return Ok(());
+        }
+        self.record("delete", &c, false);
+        Err(StorageError::NotFound(c))
+    }
+
+    pub fn copy_as(&mut self, subject: &Subject, from: &str, to: &str) -> Result<(), StorageError> {
+        let data = self.read_as(subject, from)?;
+        self.write_as(subject, to, data)?;
         Ok(())
     }
 
-    /// Copy a file or directory to a new path.
-    pub fn copy(&mut self, from: &str, to: &str) -> Result<(), StorageError> {
-        let (_, canonical_from) = self.canonicalize_path(from)?;
-        let (_, canonical_to) = self.canonicalize_path(to)?;
-
-        // Read the source
-        let content = self.read(&from)?;
-
-        // Write to destination
-        self.write(&canonical_to, content)?;
-
-        let _ = self.record_audit(StorageOperation::Copy, &canonical_to, Subject::Identity(IdentityId(0)), true);
+    pub fn move_as(&mut self, subject: &Subject, from: &str, to: &str) -> Result<(), StorageError> {
+        let data = self.read_as(subject, from)?;
+        self.write_as(subject, to, data)?;
+        let _ = self.delete_as(subject, from);
         Ok(())
     }
 
-    /// Move a file or directory from one path to another.
-    pub fn move_(&mut self, from: &str, to: &str) -> Result<(), StorageError> {
-        // Read source
-        let content = self.read(from)?;
-
-        // Delete source
-        self.delete(from)?;
-
-        // Write to destination
-        self.write(&to, content)?;
-
-        let _ = self.record_audit(StorageOperation::Move, &to, Subject::Identity(IdentityId(0)), true);
-        Ok(())
-    }
-
-    /// Import from an external path (with policy enforcement).
-    pub fn import(&mut self, source: &str, target: &str) -> Result<(), StorageError> {
-        // Read from source (could be external, but we simulate with policy check)
-        let content = self.read(source)?;
-
-        // Write to target
-        self.write(target, content)?;
-
-        let _ = self.record_audit(StorageOperation::Write, &target, Subject::Identity(IdentityId(0)), true);
-        Ok(())
-    }
-
-    /// Export to an external path (with policy enforcement).
-    pub fn export(&self, source: &str, target: &str) -> Result<Vec<u8>, StorageError> {
-        let content = self.read(source)?;
-
-        let _ = self.record_audit(StorageOperation::Read, &source, Subject::Identity(IdentityId(0)), true);
-        Ok(content)
-    }
-
-    /// Record an audit receipt for a storage operation.
-    fn record_audit(&mut self, operation: StorageOperation, path: &str, subject: Subject, allowed: bool) {
-        let timestamp = /* get current time */ 0; // simplified
-        let decision = if allowed { "allowed" } else { "denied" };
-        let record = StorageAuditRecord {
-            operation,
-            path: path.to_string(),
-            subject,
-            allowed,
-            timestamp,
-            decision_details: Some(decision.to_string()),
-        };
-        self.audit_log.push(record);
+    pub fn set_read_only(&mut self, path: &str, ro: bool) -> Result<(), StorageError> {
+        let c = self.canonicalize(path)?;
+        match self.entries.get_mut(&c) {
+            Some(Entry::File { meta, .. }) => {
+                meta.read_only = ro;
+                Ok(())
+            }
+            Some(Entry::Dir { meta }) => {
+                meta.read_only = ro;
+                Ok(())
+            }
+            None => Err(StorageError::NotFound(c)),
+        }
     }
 }
 
@@ -625,193 +447,204 @@ impl Provider for StorageProvider {
     fn id(&self) -> &str {
         "storage"
     }
-
     fn info(&self) -> ProviderInfo {
         ProviderInfo {
             id: "storage".to_string(),
             name: "File/Storage Provider".to_string(),
             version: "0.1.0".to_string(),
-            description: "Shared permission-aware storage service for Aetherius platform".to_string(),
-            capabilities: vec![
+            description: "Shared permission-aware storage service".to_string(),
+            capabilities: alloc::vec![
                 Capability {
                     name: "list".to_string(),
                     version: "0.1.0".to_string(),
                     description: "List directory contents".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
-                },
-                Capability {
-                    name: "metadata".to_string(),
-                    version: "0.1.0".to_string(),
-                    description: "Get file/directory metadata".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
+                    dependencies: Vec::new(),
+                    tags: alloc::vec!["filesystem".to_string()],
                 },
                 Capability {
                     name: "read".to_string(),
                     version: "0.1.0".to_string(),
                     description: "Read file content".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
+                    dependencies: Vec::new(),
+                    tags: alloc::vec!["filesystem".to_string()],
                 },
                 Capability {
                     name: "write".to_string(),
                     version: "0.1.0".to_string(),
-                    description: "Write file content (policy-aware)".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
-                },
-                Capability {
-                    name: "create_dir".to_string(),
-                    version: "0.1.0".to_string(),
-                    description: "Create a new directory".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
-                },
-                Capability {
-                    name: "copy".to_string(),
-                    version: "0.1.0".to_string(),
-                    description: "Copy file or directory".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
-                },
-                Capability {
-                    name: "move".to_string(),
-                    version: "0.1.0".to_string(),
-                    description: "Move or rename file or directory".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
-                },
-                Capability {
-                    name: "delete".to_string(),
-                    version: "0.1.0".to_string(),
-                    description: "Delete file or directory".to_string(),
-                    dependencies: vec![],
-                    tags: vec!["filesystem".to_string(), "permissions".to_string()],
+                    description: "Write file content".to_string(),
+                    dependencies: Vec::new(),
+                    tags: alloc::vec!["filesystem".to_string()],
                 },
             ],
             state: ProviderState::Available,
-            dependencies: vec![],
+            dependencies: Vec::new(),
             config_schema: None,
         }
     }
-
     fn init(&mut self) -> Result<(), ProviderError> {
-        // Initialize roots and any pre-loaded content
         Ok(())
     }
-
     fn start(&mut self) -> Result<(), ProviderError> {
-        // Mark as available
         Ok(())
     }
-
     fn stop(&mut self) -> Result<(), ProviderError> {
-        // Clear audit log and content
-        self.audit_log.clear();
-        self.content.clear();
         Ok(())
     }
-
     fn health(&self) -> ProviderState {
-        if self.content.is_empty() && self.audit_log.is_empty() {
-            ProviderState::Available
-        } else if self.content.len() < 1000 {
-            ProviderState::Available
-        } else {
-            ProviderState::Degraded
-        }
+        ProviderState::Available
     }
-
     fn stats(&self) -> ProviderStats {
         ProviderStats {
-            uptime_ms: 0, // would be real uptime
+            uptime_ms: 0,
             operations_total: self.audit_log.len() as u64,
-            operations_failed: self
-                .audit_log
-                .iter()
-                .filter(|r| !r.allowed)
-                .count() as u64,
-            bytes_processed: self
-                .audit_log
-                .iter()
-                .map(|r| /* calculate */ 0)
-                .sum(),
+            operations_failed: self.audit_log.iter().filter(|r| !r.allowed).count() as u64,
+            bytes_processed: 0,
             last_error: None,
             custom: BTreeMap::new(),
         }
     }
-
     fn configure(&mut self, _config: &str) -> Result<(), ProviderError> {
         Ok(())
     }
-
     fn command(&mut self, _cmd: &str, _args: &[&str]) -> Result<String, ProviderError> {
-        Ok("storage command".to_string())
+        Ok("ok".to_string())
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::identity::IdentityId;
+    use crate::policy::{Grant, PermissionId, ResourceId};
+    use alloc::vec;
 
-    #[test]
-    fn test_storage_list() {
-        let policy = PolicyEngine::new();
-        let mut storage = StorageProvider::new(policy);
+    fn allow_all() -> PolicyEngine {
+        let mut p = PolicyEngine::new();
+        p.set_default_decision(Decision::Allow);
+        p
+    }
 
-        // Create a test file
-        storage.write("C:/test.txt", b"hello world").unwrap();
+    fn subj(id: u64) -> Subject {
+        Subject::Identity(IdentityId(id))
+    }
 
-        // List the directory
-        let entries = storage.list("C:/").unwrap();
-        assert!(!entries.is_empty());
+    fn grant(p: &mut PolicyEngine, subject: &Subject, action: &str, resource: &str) {
+        p.add_grant(Grant {
+            subject: subject.clone(),
+            permission: PermissionId::new("storage", action),
+            resource: ResourceId(resource.to_string()),
+            conditions: Vec::new(),
+            granted_by: IdentityId(0),
+            granted_at: 0,
+            expires_at: None,
+        });
     }
 
     #[test]
-    fn test_storage_read() {
-        let policy = PolicyEngine::new();
-        let mut storage = StorageProvider::new(policy);
-
-        // Write test content
-        storage.write("C:/test.txt", b"test content").unwrap();
-
-        // Read it back
-        let data = storage.read("C:/test.txt").unwrap();
-        assert_eq!(&data[..], b"test content");
+    fn allowed_read() {
+        let mut s = StorageProvider::new(Some(allow_all()));
+        let u = subj(1);
+        s.write_as(&u, "C:/a.txt", b"hi".to_vec()).unwrap();
+        let data = s.read_as(&u, "C:/a.txt").unwrap();
+        assert_eq!(data, b"hi");
     }
 
     #[test]
-    fn test_storage_path_traversal() {
-        let policy = PolicyEngine::new();
-        let mut storage = StorageProvider::new(policy);
-
-        // This should be blocked
-        let result = storage.list("../../../etc");
-        // May or may not error depending on implementation, but should not crash
-        assert!(result.is_ok() || true); // just verify no panic
+    fn denied_read() {
+        let mut p = PolicyEngine::new(); // default deny
+        let u = subj(1);
+        let other = subj(2);
+        grant(&mut p, &other, "read", "C:/a.txt");
+        grant(&mut p, &other, "write", "C:/a.txt");
+        let mut s = StorageProvider::new(Some(p));
+        s.write_as(&other, "C:/a.txt", b"x".to_vec()).unwrap();
+        assert_eq!(s.read_as(&u, "C:/a.txt").unwrap_err(), StorageError::PermissionDenied);
     }
 
     #[test]
-    fn test_storage_denied_write() {
-        let mut policy = PolicyEngine::new();
-        // Set default deny
-        policy.set_default_decision(crate::policy::Decision::Deny);
-        let mut storage = StorageProvider::new(policy);
-
-        // Write should be denied
-        let result = storage.write("C:/secret.txt", b"classified");
-        assert!(result.is_err());
+    fn allowed_write() {
+        let mut s = StorageProvider::new(Some(allow_all()));
+        let u = subj(1);
+        s.write_as(&u, "E:/data/b.bin", alloc::vec![1, 2, 3]).unwrap();
+        assert_eq!(s.read_as(&u, "E:/data/b.bin").unwrap(), vec![1, 2, 3]);
     }
 
     #[test]
-    fn test_storage_audit() {
-        let policy = PolicyEngine::new();
-        let mut storage = StorageProvider::new(policy);
+    fn denied_write() {
+        let mut p = PolicyEngine::new();
+        let u = subj(1);
+        grant(&mut p, &u, "read", "C:/a.txt");
+        let mut s = StorageProvider::new(Some(p));
+        assert_eq!(
+            s.write_as(&u, "C:/a.txt", b"x".to_vec()).unwrap_err(),
+            StorageError::PermissionDenied
+        );
+    }
 
-        storage.write("C:/test.txt", b"data").unwrap();
+    #[test]
+    fn missing_file() {
+        let mut s = StorageProvider::new(Some(allow_all()));
+        let u = subj(1);
+        assert!(matches!(
+            s.read_as(&u, "C:/nope.txt").unwrap_err(),
+            StorageError::NotFound(_)
+        ));
+    }
 
-        // Audit log should have entries
-        assert!(!storage.audit_log.is_empty());
+    #[test]
+    fn invalid_path() {
+        let s = StorageProvider::new(Some(allow_all()));
+        assert_eq!(s.canonicalize("").unwrap_err(), StorageError::InvalidPath);
+        assert_eq!(s.canonicalize("Q:/x").unwrap_err(), StorageError::InvalidPath);
+        assert_eq!(s.canonicalize("C:/a*b").unwrap_err(), StorageError::InvalidPath);
+    }
+
+    #[test]
+    fn path_traversal_blocked() {
+        let s = StorageProvider::new(Some(allow_all()));
+        assert!(matches!(
+            s.canonicalize("C:/a/../../etc").unwrap_err(),
+            StorageError::PathTraversal(_)
+        ));
+        assert!(matches!(
+            s.canonicalize("C:/../x").unwrap_err(),
+            StorageError::PathTraversal(_)
+        ));
+    }
+
+    #[test]
+    fn read_only_resource() {
+        let mut s = StorageProvider::new(Some(allow_all()));
+        let u = subj(1);
+        s.write_as(&u, "C:/ro.txt", b"v".to_vec()).unwrap();
+        s.set_read_only("C:/ro.txt", true).unwrap();
+        assert_eq!(
+            s.write_as(&u, "C:/ro.txt", b"v2".to_vec()).unwrap_err(),
+            StorageError::PermissionDenied
+        );
+        // Read still works.
+        assert_eq!(s.read_as(&u, "C:/ro.txt").unwrap(), b"v");
+    }
+
+    #[test]
+    fn policy_unavailable() {
+        let mut s = StorageProvider::new(None);
+        let u = subj(1);
+        assert_eq!(
+            s.read_as(&u, "C:/a.txt").unwrap_err(),
+            StorageError::PolicyUnavailable
+        );
+    }
+
+    #[test]
+    fn audit_receipt_recorded() {
+        let mut s = StorageProvider::new(Some(allow_all()));
+        let u = subj(1);
+        s.write_as(&u, "C:/a.txt", b"1".to_vec()).unwrap();
+        let _ = s.read_as(&u, "C:/a.txt").unwrap();
+        let _ = s.read_as(&u, "C:/missing.txt");
+        assert!(s.audit_log().len() >= 3);
+        assert!(s.audit_log().iter().any(|r| r.allowed));
+        assert!(s.audit_log().iter().any(|r| !r.allowed));
     }
 }
