@@ -107,9 +107,9 @@ pub struct PolicyEngine {
 impl Default for PolicyEngine {
     fn default() -> Self {
         Self {
-            grants: BTreeMap::new(),
-            roles: BTreeMap::new(),
-            subject_roles: BTreeMap::new(),
+            grants: alloc::collections::BTreeMap::new(),
+            roles: alloc::collections::BTreeMap::new(),
+            subject_roles: alloc::collections::BTreeMap::new(),
             default_decision: Decision::Deny,
         }
     }
@@ -152,10 +152,65 @@ impl PolicyEngine {
 
     /// Evaluate an access request.
     pub fn evaluate(&self, ctx: EvalContext) -> Decision {
-        Decision::Deny
-    }
+        // Check explicit grants for the subject.
+        if let Some(grants) = self.grants.get(&ctx.subject) {
+            for grant in grants {
+                if grant.permission == ctx.action && grant.resource == ctx.resource {
+                    if self.check_conditions(&grant.conditions, &ctx) {
+                        return Decision::Allow;
+                    }
+                }
+            }
 
-    fn check_conditions(&self, _conditions: &[Condition], _ctx: &EvalContext) -> bool {
+            // Check roles assigned to subject.
+            if let Some(roles) = self.subject_roles.get(&ctx.subject) {
+                for role_id in roles {
+                    if let Some(role) = self.roles.get(role_id) {
+                        if role.permissions.contains(&ctx.action) {
+                            if self.check_role_conditions(role, &ctx) {
+                                return Decision::Allow;
+}
+}
+                        }
+                    }
+                }
+            }
+
+            self.default_decision
+        }
+
+    fn check_conditions(&self, conditions: &[Condition], ctx: &EvalContext) -> bool {
+        for cond in conditions {
+            match cond {
+                Condition::TimeRange(start, end) => {
+                    if ctx.timestamp < *start || ctx.timestamp > *end {
+                        return false;
+                    }
+                }
+                Condition::NetworkPrefix(prefix) => {
+                    if let Some(origin) = &ctx.network_origin {
+                        if !origin.starts_with(prefix) {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+                Condition::DeviceTrust(min) => {
+                    if ctx.device_trust.unwrap_or(0) < *min {
+                        return false;
+                    }
+                }
+                Condition::Attribute(key, value) => {
+                    if ctx.attributes.get(key) != Some(value) {
+                        return false;
+                    }
+                }
+                Condition::Predicate(_id) => {
+                    return false;
+                }
+            }
+        }
         true
     }
 
