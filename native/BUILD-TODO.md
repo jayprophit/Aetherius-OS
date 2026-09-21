@@ -46,8 +46,23 @@ SCHED: switches=9 all_done=true
 AETHERIUS-HALT: controlled halt
 ```
 
+### P10-PROVIDERS (IN_PROGRESS)
+- Provider framework with registry ✓
+- Identity & Profile system ✓
+- Policy Engine (RBAC/ABAC) ✓
+- MAT query service ✓
+- Policy → Agent Bridge integration
+- MAT query service → Genesis integration
+- File/Storage provider
+- Settings/Config provider
+- Search provider
+- Notification provider
+- Application registry
+- Plugin/Adapter framework
+- Media abstraction
+- Communication core
+
 ### NEXT PRIORITIES
-1. **P10-PROVIDERS**: Complete shared platform services (identity, permission, notification, search, storage, chat, media, observability, plugin, provenance, settings, app registry, update/recovery)
 2. **P12**: Application ecosystem (football-card-game proof first)
 3. **P4-GAPS**: Close 7 remaining Genesis loop stages
 3. **P14**: Expand E2E scenarios (restart, rollback, failure, offline, IDE task, UB sim)
