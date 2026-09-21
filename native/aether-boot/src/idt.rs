@@ -89,6 +89,27 @@ fn serial_write(text: &str) {
     }
 }
 
+pub fn serial_emit(text: &str) {
+    serial_write(text);
+}
+
+pub fn serial_emit_u32(mut value: u32) {
+    if value == 0 {
+        serial_write_byte(b'0');
+        return;
+    }
+    let mut digits = [0u8; 10];
+    let mut length = 0usize;
+    while value > 0 {
+        digits[length] = b'0' + (value % 10) as u8;
+        value /= 10;
+        length += 1;
+    }
+    for index in (0..length).rev() {
+        serial_write_byte(digits[index]);
+    }
+}
+
 /// Pending interrupt record. Written by the common entry through a Rust
 /// handler (relative call); drained in main context. Firmware GS state is
 /// never touched.
