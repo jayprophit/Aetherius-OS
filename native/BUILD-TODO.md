@@ -52,7 +52,7 @@ AETHERIUS-HALT: controlled halt
 - Policy Engine (RBAC/ABAC) ✓
 - MAT query service ✓
 - Policy → Agent Bridge integration ✓
-- MAT query service → Genesis integration
+- MAT query service → Genesis integration ✓ DONE
 - File/Storage provider
 - Settings/Config provider
 - Search provider
@@ -68,7 +68,7 @@ AETHERIUS-HALT: controlled halt
 - Policy Engine (RBAC/ABAC) ✓
 - MAT query service ✓
 - Policy → Agent Bridge integration ✓
-- MAT query service → Genesis integration
+- MAT query service → Genesis integration ✓ DONE
 - File/Storage provider
 - Settings/Config provider
 - Search provider
