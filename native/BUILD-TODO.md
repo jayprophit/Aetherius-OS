@@ -5,10 +5,11 @@ CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
 CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
-CURRENT_ACTIVE_TODO = P14-E2E-FAIL DONE (Agent-Bridge d7c1277 local; 4/4 + adjacent 14/14); NEXT = P4 missing loop stages
-NEXT_EXECUTABLE_TODO = P4-GAPS: OBSERVE Genesis LoopDriver + organism_loop_tests to scope first missing stage
-LAST_VERIFIED_COMMIT = Agent-Bridge d7c1277 (gate wired to real default-deny; was allow-stub) + Aetherius-OS 1b0f170
-LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS 1b0f170 + IDE d5db272 pushed; Agent-Bridge d7c1277 LOCAL (push blocked: env deny-rule on main)
+CURRENT_ACTIVE_TODO = P4-PREDERR DONE (Genesis d930d22 local; loop tests PASS); NEXT = P4-INTERO scope
+NEXT_EXECUTABLE_TODO = P4-INTERO: OBSERVE systems.hpp/HomeostasisController to design canonical interoceptive snapshot (first _na stage in loop order)
+LAST_VERIFIED_COMMIT = Genesis d930d22 (prediction_error resolved in-driver; 7 _na remain) + Aetherius-OS 3cf783a
+LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS 3cf783a + IDE d5db272 pushed; Agent-Bridge d7c1277 + Genesis d930d22 LOCAL (push blocked: env deny-rule on main)
+### P4-PREDERR — DONE (bounded): only loop.hpp/loop.cpp + loop test consume the stage enum; resolve_prediction wired post-OBSERVE with digest evidence; refuted path proven (counterevidence==1); MSVC build + ctest PASS. PUSH BLOCKED: repo=Genesis branch=main SHA=d930d22 blocker=environment deny-rule on main (owner: run `git push origin main` in Projects/Genesis from a permitted shell). Missing set now exactly 7 _na: interoception, mental_state, drive, goal, plan, action, allostasis.
 ### P15-PROVBENCH — DONE (bounded): perf.rs floors (policy 20k evals, MAT 2k queries, storage 2k reads, each <10s; suite 0.07s); regression net for production bar
 ### P14-E2E-FAIL — DONE (bounded): found bridge gate was allow-stub; wired evaluate_capability_request/check_capability to shared default-deny engine (stable Subject identity, true singleton); tests 4/4 (deny-before-execution, grant-allows, subject-scoping, MAT unknown→found=false); adjacent binding+terminal 14/14 no regression. PUSH BLOCKED: repo=Agent-Bridge branch=main SHA=d7c1277 cmd=`git push origin main` blocker=environment deny-rule on main (owner: run from permitted shell). Local commit preserved.
 
