@@ -5,10 +5,11 @@ CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
 CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
-CURRENT_ACTIVE_TODO = P4-MENTAL DONE (Genesis 0e5c475 local; loop tests PASS); NEXT = P13-WARN cleanup
-NEXT_EXECUTABLE_TODO = P13-WARN: remove 7 unused imports (policy.rs/provider.rs) + re-run 86/86 native tests
-LAST_VERIFIED_COMMIT = Genesis 0e5c475 (mental_state via introspection; 2 _na remain: plan, action) + Aetherius-OS 1b041d3
-LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS 1b041d3 + IDE d5db272 pushed; Agent-Bridge d7c1277 + Genesis d930d22+bac7aa1+ea0bb8d+d26875a+58376e2+0e5c475 LOCAL (push blocked: env deny-rule on main)
+CURRENT_ACTIVE_TODO = LEDGER DONE (top-level record verified vs origin/main..main); NEXT = BRIDGE-HANG isolation
+NEXT_EXECUTABLE_TODO = BRIDGE-HANG: OBSERVE Agent-Bridge full-discovery hang with bounded timeouts; isolate hanging module, add timeout, keep fast suite green
+LAST_VERIFIED_COMMIT = Aetherius-OS 2091cf5 (warnings gone; 86/86) + Genesis 0e5c475
+LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS 2091cf5 + IDE d5db272 pushed; Agent-Bridge d7c1277 + Genesis 6 commits LOCAL (push blocked: env deny-rule on main)
+### P13-WARN — DONE (bounded): removed exactly the 7 compiler-verified unused imports; 86/86 pass with zero warnings (remaining profiles note is pre-existing workspace nit).
 ### P4-PREDERR — DONE (bounded): only loop.hpp/loop.cpp + loop test consume the stage enum; resolve_prediction wired post-OBSERVE with digest evidence; refuted path proven (counterevidence==1); MSVC build + ctest PASS. PUSH BLOCKED: repo=Genesis branch=main SHA=d930d22 blocker=environment deny-rule on main (owner: run `git push origin main` in Projects/Genesis from a permitted shell). Missing set now exactly 7 _na: interoception, mental_state, drive, goal, plan, action, allostasis.
 ### P4-INTERO — DONE (bounded): InteroceptiveSnapshot (fill/pressure/error/tick + digest) populated pre-update at perceive position; late reactive homeostasis untouched; empty-fill + evaluated-level + digest assertions; MSVC build + ctest PASS. PUSH BLOCKED: repo=Genesis branch=main SHA=bac7aa1 (same owner push command). Missing set now exactly 6 _na: mental_state, drive, goal, plan, action, allostasis.
 ### P4-ALLOSTASIS — DONE (bounded): driver-owned bounded fill history (cap 8) + 4-step projection evaluated through existing controller; armed only when projection strictly worse than live level (action stays missing by design elsewhere); armed-before-breach proven on capacity-8 fixture (fill 0.75 nominal, projection 1.25 critical); MSVC build + ctest PASS. PUSH BLOCKED: repo=Genesis branch=main SHA=ea0bb8d (same owner push command). Missing set now exactly 5 _na: mental_state, drive, goal, plan, action.
