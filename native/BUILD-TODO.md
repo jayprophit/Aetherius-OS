@@ -62,12 +62,34 @@ AETHERIUS-HALT: controlled halt
 - Media abstraction
 - Communication core
 
-### NEXT PRIORITIES
-2. **P12**: Application ecosystem (football-card-game proof first)
-3. **P4-GAPS**: Close 7 remaining Genesis loop stages
-3. **P14**: Expand E2E scenarios (restart, rollback, failure, offline, IDE task, UB sim)
-4. **P13**: Security hardening (capabilities, sandboxing, secrets, provenance)
-4. **P15**: Benchmark regression framework
+### P10-PROVIDERS (IN_PROGRESS)
+- Provider framework with registry ✓
+- Identity & Profile system ✓
+- Policy Engine (RBAC/ABAC) ✓
+- MAT query service ✓
+- Policy → Agent Bridge integration ✓
+- MAT query service → Genesis integration
+- File/Storage provider
+- Settings/Config provider
+- Search provider
+- Notification provider
+- Application registry
+- Plugin/Adapter framework
+- Media abstraction
+- Communication core
+
+### P10-PA — DONE
+Policy → Agent Bridge integration completed. Policy engine evaluation gate added before standard approval gate. All 10 acceptance criteria met:
+1. Explicitly allowed capability succeeds
+2. Explicitly denied capability never reaches execution
+3. Default-deny behavior works
+4. Role-based grant works
+5. Attribute condition works
+6. Revoked grant stops access
+7. Device-trust condition honored
+8. Audit receipt records policy decision
+9. Policy-engine failure defaults safely
+10. Existing Agent Bridge test suite does not regress
 
 ### KNOWN ISSUES
 - Test execution on UEFI target blocked by `panic_impl` conflict (uefi vs std)
