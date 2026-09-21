@@ -5,10 +5,11 @@ CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
 CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
-CURRENT_ACTIVE_TODO = P12-IDE-DEBT DONE (IDE d5db272, tsc clean); NEXT = P15 provider-latency benches
-NEXT_EXECUTABLE_TODO = P15-PROVBENCH: native throughput floors (policy eval + MAT query + storage read) as regression timing tests
-LAST_VERIFIED_COMMIT = 83/83 host tests + IDE tsc clean (Terminal pwd canonical path)
-LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS 6d6e06f + IDE d5db272 pushed
+CURRENT_ACTIVE_TODO = P15-PROVBENCH DONE (86/86 in 0.07s); NEXT = P14-E2E failure-case expansion
+NEXT_EXECUTABLE_TODO = P14-E2E-FAIL: extend Agent-Bridge MAT→Genesis E2E with policy-deny + MAT-unavailable paths
+LAST_VERIFIED_COMMIT = 86/86 host tests (+3 throughput floors: policy 20k, MAT 2k, storage 2k reads)
+LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS d959773 + IDE d5db272 pushed; 86-test milestone pending push
+### P15-PROVBENCH — DONE (bounded): perf.rs floors (policy 20k evals, MAT 2k queries, storage 2k reads, each <10s; suite 0.07s); regression net for production bar
 
 ## COMPLETED PHASES
 

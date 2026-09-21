@@ -23,3 +23,5 @@ pub mod appreg;
 pub mod plugins;
 pub mod media;
 pub mod comms;
+#[cfg(test)]
+mod perf;
