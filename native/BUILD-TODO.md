@@ -5,8 +5,8 @@ CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
 CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
-CURRENT_ACTIVE_TODO = LEDGER DONE (top-level record verified vs origin/main..main); NEXT = BRIDGE-HANG isolation
-NEXT_EXECUTABLE_TODO = BRIDGE-HANG: OBSERVE Agent-Bridge full-discovery hang with bounded timeouts; isolate hanging module, add timeout, keep fast suite green
+CURRENT_ACTIVE_TODO = BRIDGE-HANG verdict recorded; NEXT = BRIDGE-GATE-COMPAT (session-scoped grants + test updates, landed together)
+NEXT_EXECUTABLE_TODO = BRIDGE-GATE-COMPAT/1: design session-scoped workspace grants at session start (approval mode = owner pre-auth); then update failing runtime tests file-by-file; full-suite re-measure at end
 LAST_VERIFIED_COMMIT = Aetherius-OS 2091cf5 (warnings gone; 86/86) + Genesis 0e5c475
 LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS 2091cf5 + IDE d5db272 pushed; Agent-Bridge d7c1277 + Genesis 6 commits LOCAL (push blocked: env deny-rule on main)
 ### P13-WARN — DONE (bounded): removed exactly the 7 compiler-verified unused imports; 86/86 pass with zero warnings (remaining profiles note is pre-existing workspace nit).
@@ -141,10 +141,17 @@ Status vocabulary: EXISTS / PARTIAL / MISSING / DUPLICATE / LEGACY / CONFLICTING
 - P14-E2E: expand MAT→envelope→host to full user→Aetherius→Genesis→policy→Bridge→app loop — PARTIAL (1/1 PASS; expansion NEXT after P12 start)
 - P15-BENCH: policy/MAT/Bridge/provider/search/storage/startup benches + Genesis capability eval — PARTIAL (baselines recorded; new benches NEXT)
 
+### BRIDGE-HANG VERDICT 2026-09-21 (OBSERVE+DIAGNOSE, full evidence)
+- NO infinite hang: `python -m unittest discover -s tests -t . -b` COMPLETES: 1066 tests / 404s / failures=41 errors=6 skipped=1. Historical "hang" = slowness + observer timeouts. Reframed: BRIDGE-SLOW (future: fast/slow lane split).
+- SELF-CORRECTION: P14-E2E-FAIL "no regression (14/14)" claim OVERTURNED by full-suite evidence. ~30 failures caused by wiring the bridge gate to default-deny: runtime tests drive bridge.run() with fake models and no grants, so every write/edit/test/list is POLICY-DENIED. Targeted regression sampling was insufficient — full suite is the bar.
+- PRE-EXISTING/ENV (not gate-caused): Ollama-dependent (fallback_skips_dead_model, ollama_protocol_detection, inventory_shape, models_sessions_schema, diagnostics ollama FAIL, unavailable_model_surfaced_honestly, live_rotation_granite_to_qwen), phase1 02 CERT artifact (baseline TBD), secret_hygiene .bridge (SUITE-CREATED residue taskcenter.json 11:47 during this run; removed; test is order-dependent by design).
+- 6 ERRORs (dryrun_replay x2, execution_contract, phase1 12_worker, routing_review revise_then_approve, runtime_api idempotent_submit) need attribution next cycle from saved output.
+- DECISION: KEEP Agent-Bridge d7c1277 local (hole stays closed; 4 new gate tests green). NEXT = BRIDGE-GATE-COMPAT: session-scoped workspace grants issued at session start (approval mode AUTO_SAFE etc. = owner pre-authorization) + update tests asserting pre-gate error kinds (ADMIN_REQUIRED, NO_PROGRESS_*, etc.); land gate+compat TOGETHER; re-measure full suite at end. Do NOT revert to allow-stub.
+
 ### KNOWN ISSUES
 - Test execution on UEFI target blocked by `panic_impl` conflict (uefi vs std)
-- `aether-boot-logic` test warnings: unused imports in policy.rs/provider.rs (non-blocking)
 - `aether-boot` test fails due to `panic_impl` conflict between `uefi` and `std` crates
+- Agent-Bridge full suite slow (~404s/1066 tests); 41F+6E (see verdict: ~30 gate-compat, ~10 env/pre-existing, 6 errors TBD)
 
 ### BLOCKERS
 - None currently blocking main build. Test execution on UEFI requires separate test runner.
