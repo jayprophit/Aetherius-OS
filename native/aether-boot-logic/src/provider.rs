@@ -4,15 +4,9 @@
 //! Provides a unified interface for all platform capabilities with
 // lifecycle management, health monitoring, and capability discovery.
 
-use alloc::boxed::Box;
-use alloc::collections::BTreeMap;
-use alloc::collections::BTreeSet;
 use alloc::string::String;
 use alloc::string::ToString;
 use alloc::vec::Vec;
-use core::fmt;
-
-use crate::identity::IdentityId;
 
 /// Provider lifecycle states.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
