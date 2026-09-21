@@ -5,11 +5,12 @@ CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
 CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
-CURRENT_ACTIVE_TODO = P15-PROVBENCH DONE (86/86 in 0.07s); NEXT = P14-E2E failure-case expansion
-NEXT_EXECUTABLE_TODO = P14-E2E-FAIL: extend Agent-Bridge MAT→Genesis E2E with policy-deny + MAT-unavailable paths
-LAST_VERIFIED_COMMIT = 86/86 host tests (+3 throughput floors: policy 20k, MAT 2k, storage 2k reads)
-LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS d959773 + IDE d5db272 pushed; 86-test milestone pending push
+CURRENT_ACTIVE_TODO = P14-E2E-FAIL DONE (Agent-Bridge d7c1277 local; 4/4 + adjacent 14/14); NEXT = P4 missing loop stages
+NEXT_EXECUTABLE_TODO = P4-GAPS: OBSERVE Genesis LoopDriver + organism_loop_tests to scope first missing stage
+LAST_VERIFIED_COMMIT = Agent-Bridge d7c1277 (gate wired to real default-deny; was allow-stub) + Aetherius-OS 1b0f170
+LAST_REMOTE_VERIFIED_COMMIT = Aetherius-OS 1b0f170 + IDE d5db272 pushed; Agent-Bridge d7c1277 LOCAL (push blocked: env deny-rule on main)
 ### P15-PROVBENCH — DONE (bounded): perf.rs floors (policy 20k evals, MAT 2k queries, storage 2k reads, each <10s; suite 0.07s); regression net for production bar
+### P14-E2E-FAIL — DONE (bounded): found bridge gate was allow-stub; wired evaluate_capability_request/check_capability to shared default-deny engine (stable Subject identity, true singleton); tests 4/4 (deny-before-execution, grant-allows, subject-scoping, MAT unknown→found=false); adjacent binding+terminal 14/14 no regression. PUSH BLOCKED: repo=Agent-Bridge branch=main SHA=d7c1277 cmd=`git push origin main` blocker=environment deny-rule on main (owner: run from permitted shell). Local commit preserved.
 
 ## COMPLETED PHASES
 
