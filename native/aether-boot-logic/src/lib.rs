@@ -20,3 +20,6 @@ pub mod settings;
 pub mod search;
 pub mod notifications;
 pub mod appreg;
+pub mod plugins;
+pub mod media;
+pub mod comms;

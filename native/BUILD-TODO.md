@@ -4,11 +4,11 @@
 CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
-CURRENT_ACTIVE_PHASE = P10-PROVIDERS
-CURRENT_ACTIVE_TODO = P10 master-handoff coverage + plugin/media/comms
-NEXT_EXECUTABLE_TODO = P10-PLUGIN adapter framework
-LAST_VERIFIED_COMMIT = pending (72/72 host tests: mat_query 6, mat_genesis 8, storage 10, settings 8, search 3, notifications 4, appreg 3)
-LAST_REMOTE_VERIFIED_COMMIT = db3d047..a4d6020 pushed; new milestone pending push
+CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
+CURRENT_ACTIVE_TODO = P10-CORE DONE (81/81); P12 first-app proof starting (football-card-game inspect)
+NEXT_EXECUTABLE_TODO = P12 football-card-game integration (identity/appreg/settings/storage/search/notify)
+LAST_VERIFIED_COMMIT = 81/81 host tests (mat_query 6, mat_genesis 8, storage 10, settings 8, search 3, notify 4, appreg 3, plugins 4, media 2, comms 3, +30 P11/identity/policy)
+LAST_REMOTE_VERIFIED_COMMIT = 1fb988d pushed; 81-test milestone pending push
 
 ## COMPLETED PHASES
 
@@ -68,10 +68,12 @@ AETHERIUS-HALT: controlled halt
 - Search provider ✓ DONE (search.rs 3/3: adapters apps/files/MAT/settings/commands, rank, deny-filter)
 - Notification provider ✓ DONE (notifications.rs 4/4: send/list/unread/expiry/recipient-isolation)
 - Application registry ✓ DONE (appreg.rs 3/3: IDE/MAT/Poietek canonical, metadata, health)
-- Plugin/Adapter framework (NEXT)
-- Media abstraction
-- Communication core
+- Plugin/Adapter framework ✓ DONE (plugins.rs 4/4: register/duplicate/dep/policy-gate)
+- Media abstraction ✓ DONE (media.rs 2/2: provenance/permissions/kind-filter)
+- Communication core ✓ DONE (comms.rs 3/3: open/post/presence/non-participant-deny)
 
+### P10-CORE = DONE (81/81 host tests — P12 apps can use identity/policy/apps/files/settings/search/notify/Genesis/Bridge/MAT)
+### P12-APPLICATION-ECOSYSTEM = IN_PROGRESS (first proof: football-card-game inspect, no rebuild)
 ### P10-PROVIDERS (IN_PROGRESS — 72/72 host tests)
 - Provider framework with registry ✓
 - Identity & Profile system ✓
