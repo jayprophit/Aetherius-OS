@@ -43,6 +43,7 @@ impl AppRegistry {
         r.register(canonical_ide());
         r.register(canonical_mat());
         r.register(canonical_poietek());
+        r.register(canonical_football_card_game());
         r
     }
 
@@ -135,6 +136,45 @@ fn canonical_poietek() -> AppInfo {
     }
 }
 
+/// P12 first external proof: football-card-game (reference implementation in
+/// Temp/Repository-Reconciliation/football-card-game). Registered, not rebuilt;
+/// no blockchain forced (blockchain adapter optional, not a dependency).
+fn canonical_football_card_game() -> AppInfo {
+    AppInfo {
+        id: "football-card-game".to_string(),
+        name: "Football Card Game".to_string(),
+        version: "0.1.0".to_string(),
+        publisher: "Aetherius".to_string(),
+        description: "16x8 pitch strategy: 4 zones, chess-like movement, movement/action/special/tactical cards".to_string(),
+        entrypoint: "fcg://board".to_string(),
+        icon: "fcg".to_string(),
+        capabilities: alloc::vec![
+            "game-loop".to_string(),
+            "cards".to_string(),
+            "collection".to_string(),
+            "profiles".to_string(),
+            "persistence".to_string(),
+        ],
+        required_permissions: alloc::vec![
+            "storage:read".to_string(),
+            "storage:write".to_string(),
+            "settings:read".to_string(),
+        ],
+        supported_platform: "aetherius-hosted".to_string(),
+        integration_endpoints: alloc::vec![
+            "appreg".to_string(),
+            "settings".to_string(),
+            "notifications".to_string(),
+            "storage".to_string(),
+            "search".to_string(),
+        ],
+        health: "unknown".to_string(),
+        launch_method: "embedded".to_string(),
+        dependencies: Vec::new(),
+        update_uri: "".to_string(),
+    }
+}
+
 impl Provider for AppRegistry {
     fn id(&self) -> &str {
         "appreg"
@@ -190,7 +230,18 @@ mod tests {
         assert!(r.get("ide-workspace").is_some());
         assert!(r.get("mat").is_some());
         assert!(r.get("poietek").is_some());
-        assert!(r.list().len() >= 3);
+        assert!(r.get("football-card-game").is_some());
+        assert!(r.list().len() >= 4);
+    }
+
+    #[test]
+    fn football_card_game_uses_shared_services_no_blockchain() {
+        let r = AppRegistry::new();
+        let fcg = r.get("football-card-game").unwrap();
+        assert!(fcg.integration_endpoints.contains(&"storage".to_string()));
+        assert!(fcg.integration_endpoints.contains(&"settings".to_string()));
+        assert!(!fcg.dependencies.iter().any(|d| d.contains("blockchain")));
+        assert!(fcg.required_permissions.contains(&"storage:read".to_string()));
     }
 
     #[test]

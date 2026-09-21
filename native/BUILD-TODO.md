@@ -5,10 +5,10 @@ CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
 CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
-CURRENT_ACTIVE_TODO = P10-CORE DONE (81/81); P12 first-app proof starting (football-card-game inspect)
-NEXT_EXECUTABLE_TODO = P12 football-card-game integration (identity/appreg/settings/storage/search/notify)
-LAST_VERIFIED_COMMIT = 81/81 host tests (mat_query 6, mat_genesis 8, storage 10, settings 8, search 3, notify 4, appreg 3, plugins 4, media 2, comms 3, +30 P11/identity/policy)
-LAST_REMOTE_VERIFIED_COMMIT = 1fb988d pushed; 81-test milestone pending push
+CURRENT_ACTIVE_TODO = P12-FCG DONE (82/82); NEXT = P12 IDE/MAT/Poietek shared-service wiring + P14-E2E expansion + P15 benches
+NEXT_EXECUTABLE_TODO = P12-IDE: verify IDE-Workspace/MAT/Poietek consume shared appreg/settings/notify/storage/search (no scattered defs)
+LAST_VERIFIED_COMMIT = 82/82 host tests (+P12-FCG appreg test, no-blockchain gate)
+LAST_REMOTE_VERIFIED_COMMIT = ede83cf pushed; 82-test milestone pending push
 
 ## COMPLETED PHASES
 
@@ -73,7 +73,8 @@ AETHERIUS-HALT: controlled halt
 - Communication core ✓ DONE (comms.rs 3/3: open/post/presence/non-participant-deny)
 
 ### P10-CORE = DONE (81/81 host tests — P12 apps can use identity/policy/apps/files/settings/search/notify/Genesis/Bridge/MAT)
-### P12-APPLICATION-ECOSYSTEM = IN_PROGRESS (first proof: football-card-game inspect, no rebuild)
+### P12-APPLICATION-ECOSYSTEM = IN_PROGRESS (first proof: football-card-game)
+### P12-FCG — DONE (bounded): design inspected (16x8 pitch, 4 zones, chess-movement, 4 card types); reference impl EXISTS in Temp/Repository-Reconciliation/football-card-game (tsx+docs+blockchain-js+devops); registered in AppRegistry as 4th canonical app with shared-service endpoints (storage/settings/notify/search), no rebuild, no forced blockchain; 82/82 host tests
 ### P10-PROVIDERS (IN_PROGRESS — 72/72 host tests)
 - Provider framework with registry ✓
 - Identity & Profile system ✓
