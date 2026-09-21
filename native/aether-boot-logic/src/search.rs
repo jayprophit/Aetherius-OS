@@ -11,6 +11,7 @@ use alloc::string::String;
 use alloc::string::ToString;
 use alloc::vec::Vec;
 
+use crate::appreg::AppRegistry;
 use crate::policy::{Decision, EvalContext, PermissionId, PolicyEngine, ResourceId, Subject};
 use crate::provider::{Capability, Provider, ProviderError, ProviderInfo, ProviderState, ProviderStats};
 
@@ -50,6 +51,30 @@ impl SearchProvider {
 
     pub fn register_adapter(&mut self, adapter: SearchAdapter) {
         self.adapters.push(adapter);
+    }
+
+    /// P12 consumption proof: index every registered application so P12
+    /// apps are discoverable through the shared search interface instead
+    /// of scattered hardcoded definitions.
+    pub fn index_applications(&mut self, registry: &AppRegistry) {
+        let items: Vec<SearchResult> = registry
+            .list()
+            .into_iter()
+            .map(|app| SearchResult {
+                kind: "app".to_string(),
+                source: "appreg".to_string(),
+                identifier: app.id.clone(),
+                title: app.name.clone(),
+                summary: app.description.clone(),
+                score: 80,
+                provenance: app.entrypoint.clone(),
+                resource: alloc::format!("apps:{}", app.id),
+            })
+            .collect();
+        self.adapters.push(SearchAdapter {
+            name: "applications".to_string(),
+            items,
+        });
     }
 
     fn allowed(&self, subject: &Subject, resource: &str) -> bool {
@@ -198,6 +223,20 @@ mod tests {
         let hits = s.search_as(&subj(), "");
         assert!(hits.len() >= 5);
         assert!(hits[0].score >= hits[1].score);
+    }
+
+    #[test]
+    fn applications_indexed_from_registry() {
+        use crate::appreg::AppRegistry;
+        let reg = AppRegistry::new();
+        let mut s = SearchProvider::new(None);
+        s.index_applications(&reg);
+        for id in ["ide-workspace", "mat", "poietek", "football-card-game"] {
+            let hits = s.search_as(&subj(), id);
+            assert_eq!(hits.len(), 1, "app {} not discoverable", id);
+            assert_eq!(hits[0].source, "appreg");
+            assert!(!hits[0].provenance.is_empty());
+        }
     }
 
     #[test]

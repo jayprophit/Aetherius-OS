@@ -5,10 +5,10 @@ CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
 RETURN_TO_OWNER_ALLOWED = NO
 CURRENT_ACTIVE_PHASE = P10-PROVIDERS -> P12-ECOSYSTEM (transition)
-CURRENT_ACTIVE_TODO = P12-FCG DONE (82/82); NEXT = P12 IDE/MAT/Poietek shared-service wiring + P14-E2E expansion + P15 benches
-NEXT_EXECUTABLE_TODO = P12-IDE: verify IDE-Workspace/MAT/Poietek consume shared appreg/settings/notify/storage/search (no scattered defs)
-LAST_VERIFIED_COMMIT = 82/82 host tests (+P12-FCG appreg test, no-blockchain gate)
-LAST_REMOTE_VERIFIED_COMMIT = ede83cf pushed; 82-test milestone pending push
+CURRENT_ACTIVE_TODO = P12-APPSEARCH DONE (83/83); NEXT = P12-IDE stale-path debt + P14-E2E expansion + P15 benches + P4 gaps
+NEXT_EXECUTABLE_TODO = P12-IDE-DEBT: fix stale pre-Projects absolute path in IDE Terminal.tsx (C:\Users\jpowe\Desktop\IDE-Workspace) → PROJECTS_ROOT/env-relative
+LAST_VERIFIED_COMMIT = 83/83 host tests (+index_applications: all 4 canonical apps discoverable via shared search)
+LAST_REMOTE_VERIFIED_COMMIT = a887871 pushed; 83-test milestone pending push
 
 ## COMPLETED PHASES
 
@@ -75,6 +75,8 @@ AETHERIUS-HALT: controlled halt
 ### P10-CORE = DONE (81/81 host tests — P12 apps can use identity/policy/apps/files/settings/search/notify/Genesis/Bridge/MAT)
 ### P12-APPLICATION-ECOSYSTEM = IN_PROGRESS (first proof: football-card-game)
 ### P12-FCG — DONE (bounded): design inspected (16x8 pitch, 4 zones, chess-movement, 4 card types); reference impl EXISTS in Temp/Repository-Reconciliation/football-card-game (tsx+docs+blockchain-js+devops); registered in AppRegistry as 4th canonical app with shared-service endpoints (storage/settings/notify/search), no rebuild, no forced blockchain; 82/82 host tests
+### P12-APPSEARCH — DONE (bounded): SearchProvider::index_applications wires AppRegistry → shared search; all 4 canonical apps discoverable with provenance; 83/83 host tests
+### P12-IDE-DEBT — NEXT (bounded): IDE Terminal.tsx line 100 hardcodes stale pre-Projects path C:\Users\jpowe\Desktop\IDE-Workspace; fix to PROJECTS_ROOT/env-relative per P2-GB portability rule
 ### P10-PROVIDERS (IN_PROGRESS — 72/72 host tests)
 - Provider framework with registry ✓
 - Identity & Profile system ✓
