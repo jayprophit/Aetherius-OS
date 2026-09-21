@@ -53,8 +53,8 @@ AETHERIUS-HALT: controlled halt
 - MAT query service ✓
 - Policy → Agent Bridge integration ✓
 - MAT query service → Genesis integration ✓ DONE
-- File/Storage provider IN_PROGRESS
-- Settings/Config provider
+- File/Storage provider ✓ DONE
+- Settings/Config provider IN_PROGRESS
 - Search provider
 - Notification provider
 - Application registry
@@ -69,7 +69,7 @@ AETHERIUS-HALT: controlled halt
 - MAT query service ✓
 - Policy → Agent Bridge integration ✓
 - MAT query service → Genesis integration ✓ DONE
-- File/Storage provider
+- File/Storage provider ✓ DONE
 - Settings/Config provider
 - Search provider
 - Notification provider
