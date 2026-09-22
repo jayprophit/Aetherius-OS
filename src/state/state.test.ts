@@ -137,9 +137,9 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // P17 IN_PROGRESS + P18 BLOCKED + P19 COMPLETE: the reload path must
-    // agree with the direct path — next READY task is the P22 identity rule.
-    expect(result.selected_task).toBe("REQ-genesis-identity-rule");
+    // P17 IN_PROGRESS + P18 BLOCKED + P19/P22 COMPLETE: the reload path
+    // must agree with the direct path — next READY task is P23 chat/work.
+    expect(result.selected_task).toBe("REQ-p23-chat-work-depths");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

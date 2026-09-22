@@ -241,15 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: P19 complete yields P22 identity rule", () => {
+  it("real registry advances: P22 identity complete yields P23 chat/work", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // P17 IN_PROGRESS, P18 BLOCKED, P19 COMPLETE: among priority-4 READY
-    // tasks (P22 identity, P23 chat depths, P25 full control) the earliest
-    // phase wins deterministically.
-    expect(r.selected_task).toBe("REQ-genesis-identity-rule");
-    expect(r.phase).toBe("P22");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-genesis-identity-rule");
+    // P17 IN_PROGRESS, P18 BLOCKED, P19/P22 COMPLETE: among priority-4 READY
+    // tasks (P23 chat depths, P25 full control) the earliest phase wins.
+    expect(r.selected_task).toBe("REQ-p23-chat-work-depths");
+    expect(r.phase).toBe("P23");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p23-chat-work-depths");
   });
 
 });

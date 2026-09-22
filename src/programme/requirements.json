@@ -195,11 +195,11 @@
       "title": "One Genesis identity across models, workers and modes",
       "description": "Enforce MODEL/WORKER/TOOL != GENESIS; specialist names become temporary workers/profiles, never permanent identities. Applies to P22 integration and rejects the prototype permanent cast.",
       "source": {"class": "OWNER_DECISION", "ref": "continuous-build directive 2026-09-22", "location": "owner chat"},
-      "owner": "genesis", "phase": "P22", "status": "PARTIAL",
+      "owner": "genesis", "phase": "P22", "status": "PROVEN",
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["owner directive section 7", "P22/1 identity root + bindings", "Genesis 8343005 (8 tests)", "Aetherius 9f4693b (7 tests)", "211/211 suite"],
+      "evidence": ["owner directive section 7", "P22/1 identity root + bindings", "Genesis 8343005 (8 tests)", "Aetherius 9f4693b (7 tests)", "211/211 suite", "Bridge principal context (18 tests, 204/204 suite)"],
       "provenance": "owner decision 2026-09-22",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-omniagent-reference-index",
@@ -343,7 +343,7 @@
       "owner": "aetherius-os", "phase": "P18", "status": "PARTIAL",
       "priority": 4, "depends_on": ["REQ-p16-control"],
       "blockers": ["remaining P18 work needs cloud credentials (owner) + live daemon (environment down)"],
-      "evidence": ["P18 exit gate", "P18/1 capability contract + router", "P18/2 live cards + health + benchmarks", "P18/3 invocation + Ollama adapter"],
+      "evidence": ["P18 exit gate", "P18/1 capability contract + router", "P18/2 live cards + health + benchmarks", "P18/3 invocation + Ollama adapter", "identity-swap continuity proven at contract level (P22/1 fixtures); live-provider proof still blocked"],
       "also_from": [{"class": "TEST_EVIDENCE", "ref": "81/81 suite, tsc clean", "location": "Aetherius-OS"}],
       "provenance": "owner decision 2026-09-22",
       "owner_gate": false, "work_state": "BLOCKED"
