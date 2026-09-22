@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync, fsyncSync, openSync, closeSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync, fsyncSync, openSync, closeSync } from "node:fs";
 import { join } from "node:path";
 import type { SchemaJudgment, StateEnvelope } from "./types";
 import { StateError, assertSecretReferenceShape } from "./types";
@@ -63,6 +63,15 @@ export class FileStateStore implements OwnedStore {
 
   exists(id: string): boolean {
     return existsSync(fileFor(this.root, id));
+  }
+
+  /** List record ids, optionally filtered by prefix. Read-only. */
+  listIds(prefix = ""): string[] {
+    return readdirSync(this.root)
+      .filter((name) => name.endsWith(".json") && !name.includes(".tmp") && !name.includes(".removed-"))
+      .map((name) => name.slice(0, -".json".length))
+      .filter((id) => id.startsWith(prefix))
+      .sort();
   }
 
   load<T>(id: string): StateEnvelope<T> {

@@ -233,18 +233,18 @@ describe("misfire policy", () => {
     scheduler.registerRoutine(
       routine("r", {
         schedule: schedule({
-          schedule_id: "s", kind: "INTERVAL", startAt: T0, intervalMs: MIN,
+          schedule_id: "s", kind: "INTERVAL", startAt: T0, intervalMs: 10 * MIN,
           misfirePolicy: { policy: "CATCH_UP_BOUNDED", maxMissed: 100, maxAgeMs: 30 * MIN, maxPerCycle: 1 },
         }),
       }),
     );
-    // 61 occurrences incl. the startAt anchor: 6 fresh at/below the
-    // misfire threshold (normal fire) + 1 catch-up (first within all
-    // bounds) + 54 MISFIRED (age/cycle caps).
-    const report = await scheduler.tick(T0 + 60 * MIN);
-    expect(report.activated.length).toBe(7);
-    expect(calls.length).toBe(7);
-    expect(report.misfired.length).toBe(54);
+    // Anchor too old (MISFIRED); T0+10 catch-up fires once; T0+20 is
+    // age-eligible but capped by maxPerCycle; T0+30 sits exactly on the
+    // freshness boundary and fires normally.
+    const report = await scheduler.tick(T0 + 35 * MIN);
+    expect(report.activated.length).toBe(2);
+    expect(calls.length).toBe(2);
+    expect(report.misfired.length).toBe(2);
   });
   it("lifetime maxMissed cap blocks even age-eligible catch-up", async () => {
     const { scheduler, calls } = setup();

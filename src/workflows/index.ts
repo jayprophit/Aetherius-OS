@@ -5,4 +5,6 @@ export * from "./executors";
 export * from "./routines";
 export * from "./modelInvoke";
 export * from "./bridgeAction";
+export * from "./promotion";
+export * from "./lifecycle";
 export * from "./runtime";

@@ -5,6 +5,17 @@
   "provenance": "Every item below cites verified session evidence; statuses reflect real code/tests, never handoff claims.",
   "requirements": [
     {
+      "id": "REQ-p19-promotion",
+      "title": "Governed skill promotion lifecycle",
+      "description": "Staged candidates, content hashes, provenance, schema/safety/permission gates, multidimensional evaluation, independent review, deterministic policy, owner approval, atomic promotion, rollback, revocation.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "Aetherius-OS P19/5", "location": "Aetherius-OS/src/workflows"},
+      "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
+      "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["27 promotion tests", "204/204 full suite", "tsc clean"],
+      "provenance": "P19/5 session record",
+      "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
       "id": "REQ-p19-executors",
       "title": "Model-invoke and bridge-action workflow executors",
       "description": "P18-routed model steps and governed bridge-action steps with approval resume, interruption truthfulness, OWNER_FULL_CONTROL broad grants and trace correlation.",

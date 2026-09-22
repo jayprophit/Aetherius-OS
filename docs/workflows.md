@@ -51,6 +51,24 @@ P18 model invocation and Agent Bridge actions attach later as registered
 executor kinds behind their own policy. Genesis cognition lives in P22;
 workflow runs are operational state, not identity or memory.
 
+## Skill promotion governance (P19/5)
+
+Generated skill != trusted skill. Candidates live in P17-backed staging,
+never in the active registry; production resolution ignores them. Pipeline:
+schema validation → controlled tests → multidimensional evaluation (no
+universal score) → static safety scan + permission-diff analysis → independent
+review (generators cannot approve their own) → deterministic policy
+(PROMOTABLE / REQUIRES_REVIEW / REQUIRES_OWNER_APPROVAL / REJECTED /
+QUARANTINED) → owner approval where required → atomic promotion (artifact,
+active pointer with optimistic concurrency, append-preserving record,
+reload verification). Content hashes invalidate stale evaluations; promoted
+versions are immutable (change means a new version). Rollback moves the
+active pointer (history preserved); revocation refuses execution until
+rolled back. Low-risk candidates promote without owner approval; privilege
+expansion, high-risk classes and critical findings escalate or quarantine.
+OWNER_FULL_CONTROL never auto-promotes. Pinned workflow consumers keep
+their versions across promotions.
+
 ## Subworkflows (P19/4)
 
 Steps of kind `subworkflow` reference `workflow:<id>@<x.y.z>` and compose

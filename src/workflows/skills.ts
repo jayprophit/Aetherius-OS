@@ -6,7 +6,7 @@ function versionParts(version: string): number[] | null {
   return [Number(match[1]), Number(match[2]), Number(match[3])];
 }
 
-function validateSkill(def: Skill): string | null {
+export function validateSkill(def: Skill): string | null {
   if (!def.skill_id.trim()) return "skill_id is required";
   if (!versionParts(def.version)) return `invalid version ${def.version} (x.y.z required)`;
   if (!def.name.trim()) return "name is required";
