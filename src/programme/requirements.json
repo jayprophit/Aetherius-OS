@@ -97,11 +97,11 @@
       "title": "Owned durable state and core service contracts",
       "description": "Versioned schemas, durable storage, migrations, backup/restore, permission/event/provenance linkage per P17 gate.",
       "source": {"class": "OWNER_DECISION", "ref": "P16-P31 forward programme", "location": "BUILD-TODO.md"},
-      "owner": "aetherius-os", "phase": "P17", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P17", "status": "PARTIAL",
       "priority": 5, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P17 exit gate"],
+      "evidence": ["P17 exit gate", "6fc85f6 state foundation"],
       "provenance": "owner decision 2026-09-22",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "IN_PROGRESS"
     },
     {
       "id": "REQ-p18-model-fabric",
