@@ -110,7 +110,8 @@
       "source": {"class": "OWNER_DECISION", "ref": "P16-P31 forward programme", "location": "BUILD-TODO.md"},
       "owner": "aetherius-os", "phase": "P18", "status": "PARTIAL",
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P18 exit gate", "P18/1 capability contract + router"],
+      "evidence": ["P18 exit gate", "P18/1 capability contract + router", "P18/2 live cards + health + benchmarks"],
+      "also_from": [{"class": "TEST_EVIDENCE", "ref": "81/81 suite, tsc clean", "location": "Aetherius-OS"}],
       "provenance": "owner decision 2026-09-22",
       "owner_gate": false, "work_state": "READY"
     },
