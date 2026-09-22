@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "generated_by": "P16/2",
+  "date": "2026-09-22",
+  "provenance": "Edges carry evidence links only; no edge without a test/commit/handoff citation. External runtimes are nodes, never owners.",
+  "nodes": [
+    {"id": "aetherius-os"}, {"id": "genesis"}, {"id": "agent-bridge"},
+    {"id": "mat"}, {"id": "ide"}, {"id": "universal-bridge"}, {"id": "poietek"},
+    {"id": "external:ollama"}, {"id": "external:codex"}, {"id": "external:hermes"}
+  ],
+  "edges": [
+    {"from": "agent-bridge", "to": "genesis", "type": "integration", "evidence": "P5-cdba481,P2-GB-binding"},
+    {"from": "genesis", "to": "agent-bridge", "type": "tool-use", "evidence": "P22-target,P5-observation-flow"},
+    {"from": "mat", "to": "genesis", "type": "data-service", "evidence": "P10-MG,P14-E2E-envelope"},
+    {"from": "genesis", "to": "mat", "type": "query", "evidence": "P10-mat-genesis-connector"},
+    {"from": "aetherius-os", "to": "agent-bridge", "type": "policy-contract", "evidence": "P10-PA-7be15dd,P14-d7c1277"},
+    {"from": "ide", "to": "agent-bridge", "type": "integration", "evidence": "P7-dc4a38b,P12-IDE-DEBT"},
+    {"from": "universal-bridge", "to": "agent-bridge", "type": "session-reader", "evidence": "P8-86d7d55"},
+    {"from": "agent-bridge", "to": "universal-bridge", "type": "device-inventory", "evidence": "P8-UB-capability-proof"},
+    {"from": "agent-bridge", "to": "mat", "type": "policy-query", "evidence": "P14-MAT-unavailable-tests"},
+    {"from": "poietek", "to": "agent-bridge", "type": "reference", "evidence": "P8-proof-coverage"},
+    {"from": "agent-bridge", "to": "external:ollama", "type": "inference", "evidence": "REG-CERT/1-qwen2.5-coder-3b"},
+    {"from": "ide", "to": "external:codex", "type": "delegated-review", "evidence": "CODEX-REVIEW/1-0f7c2a6"},
+    {"from": "ide", "to": "external:hermes", "type": "delegated-research", "evidence": "HERMES-SMOKE-1/2/3"}
+  ]
+}
