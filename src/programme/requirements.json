@@ -151,11 +151,11 @@
       "title": "Chat and Work as interface depths over one system",
       "description": "CHAT (simplified conversational) and WORK (full IDE) share Genesis, project, task, files, workflows, tools, models, bridge, permissions, context, memory and evidence. Same task/state across both; modes never gate capability or identity.",
       "source": {"class": "OWNER_DECISION", "ref": "continuous-build directive 2026-09-22", "location": "owner chat"},
-      "owner": "aetherius-os", "phase": "P23", "status": "SPECIFIED",
+      "owner": "aetherius-os", "phase": "P23", "status": "PROVEN",
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["owner directive sections 9-12, 18"],
+      "evidence": ["owner directive sections 9-12, 18", "P23/1 shared-state depths + dock/sidebar hosts", "14 vitest", "20/20 verify-shell"],
       "provenance": "owner decision 2026-09-22",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p23-layout-system",
