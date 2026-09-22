@@ -108,9 +108,9 @@
       "title": "Provider-neutral model fabric",
       "description": "Capability-request routing across many providers with failover, privacy routing and benchmarks.",
       "source": {"class": "OWNER_DECISION", "ref": "P16-P31 forward programme", "location": "BUILD-TODO.md"},
-      "owner": "aetherius-os", "phase": "P18", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P18", "status": "PARTIAL",
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P18 exit gate"],
+      "evidence": ["P18 exit gate", "P18/1 capability contract + router"],
       "provenance": "owner decision 2026-09-22",
       "owner_gate": false, "work_state": "READY"
     },
