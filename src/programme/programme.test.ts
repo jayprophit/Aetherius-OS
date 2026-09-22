@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: P25 profile complete yields P16 refmap", () => {
+  it("real registry advances: refmap complete yields P21 fabric", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // P17 IN_PROGRESS, P18 BLOCKED, P19/P22/P23-depths/P25-profile COMPLETE:
-    // among priority-3 READY tasks the earliest phase (P16 refmap) wins.
-    expect(r.selected_task).toBe("REQ-refmap-followup");
-    expect(r.phase).toBe("P16");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-refmap-followup");
+    // P16-refmap COMPLETE with the rest: among priority-3 READY tasks the
+    // earliest phase (P21 desktop fabric) wins deterministically.
+    expect(r.selected_task).toBe("REQ-desktop-capability-fabric");
+    expect(r.phase).toBe("P21");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-desktop-capability-fabric");
   });
 
 });

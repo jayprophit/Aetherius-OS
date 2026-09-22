@@ -5,6 +5,90 @@
   "provenance": "Every item below cites verified session evidence; statuses reflect real code/tests, never handoff claims.",
   "requirements": [
     {
+      "id": "REQ-p19-skill-discovery",
+      "title": "Semantic discovery over the skill registry",
+      "description": "Embedding/keyword search across registered skills with moderation-aware ranking; registry mechanics stay first-party.",
+      "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clawhub (v0.23.3, MIT)", "location": "reference audit 2026-09-22"},
+      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["clawhub vector-search capability record"],
+      "provenance": "REFMAP capability audit; STUDY_ONLY source",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p19-skill-packages",
+      "title": "Versioned skill/plugin package format with trust metadata",
+      "description": "Publishable skill and plugin packages (code/bundle) carrying family, trust and capability metadata with exact artifact resolution.",
+      "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clawhub (v0.23.3, MIT)", "location": "reference audit 2026-09-22"},
+      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["clawhub package-catalog capability record"],
+      "provenance": "REFMAP capability audit; STUDY_ONLY source",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p27-realtime-transport",
+      "title": "Realtime comms transport with durable event log",
+      "description": "WebSocket live delivery backed by a durable event log with reconnect semantics and backlog access control.",
+      "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clickclack (v0.5.1, MIT)", "location": "reference audit 2026-09-22"},
+      "owner": "aetherius-os", "phase": "P27", "status": "RESEARCH",
+      "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["clickclack realtime capability record"],
+      "provenance": "REFMAP capability audit; STUDY_ONLY source",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p16-steward-automation",
+      "title": "Guarded repository steward automation",
+      "description": "Scheduled/event issue-PR review with durable reports, marker comments, maintainer commands and guarded repair; readiness never equals merge authority.",
+      "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clawsweeper (v0.3.0, MIT)", "location": "reference audit 2026-09-22"},
+      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["clawsweeper review/marker/repair capability records"],
+      "provenance": "REFMAP capability audit; STUDY_ONLY source",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p21-remote-desktop",
+      "title": "Governed remote-desktop adapter",
+      "description": "VNC-class remote desktop reach with authenticated transport, scoped clipboard/file transfer and saved-endpoint registry using vault references.",
+      "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/crabfleet (v0.3.1, MIT)", "location": "reference audit 2026-09-22"},
+      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["crabfleet remote-desktop capability record (not a fleet controller)"],
+      "provenance": "REFMAP capability audit; STUDY_ONLY source",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p21-sandbox-runners",
+      "title": "Sandboxed remote/container runners with workspace sync",
+      "description": "Remote/SSH/container execution with warm workspaces, diff sync, streaming and teardown; isolation labels added beyond the reference trust model (no adversarial-tenant assumption).",
+      "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/crabbox (v0.64.0, MIT)", "location": "reference audit 2026-09-22"},
+      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["crabbox runner/sync capability records + SECURITY.md trust model"],
+      "provenance": "REFMAP capability audit; STUDY_ONLY source",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p30-repo-relay",
+      "title": "Authorized scoped repository relay-cache",
+      "description": "Self-hosted read relay with shared cache, budget-aware identity routing and scoped tokens; owner-authorized only, never a rate-limit/ToS evasion tool.",
+      "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/octopool (v0.7.1, MIT)", "location": "reference audit 2026-09-22"},
+      "owner": "aetherius-os", "phase": "P30", "status": "RESEARCH",
+      "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["octopool relay/budget capability records"],
+      "provenance": "REFMAP capability audit; STUDY_ONLY source",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
       "id": "REQ-doe-mapping",
       "title": "DOE agentic-workflow reference mapping (attributed)",
       "description": "Nick Saraev Agentic Workflows (2026): Directive→P19, Orchestration→Genesis/P22, Execution→Bridge/P21+deterministic executors, Host/Governance→Aetherius. External research, not Aetherius IP.",
@@ -375,11 +459,11 @@
       "title": "Deep per-capability overlap audits",
       "description": "Follow REFMAP/1 survey with deep audits per reference capability before any adapter build.",
       "source": {"class": "BUILD_TODO", "ref": "BUILD-TODO REFMAP/1", "location": "Projects/BUILD-TODO.md"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 3, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["REFMAP/1 survey verdicts"],
+      "evidence": ["REFMAP/1 survey verdicts", "8 systems pinned", "31 capabilities audited", "matrix + synthesis", "7 gap requirements"],
       "provenance": "REFMAP/1 session record",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     }
   ]
 }
