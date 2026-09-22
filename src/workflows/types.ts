@@ -118,6 +118,8 @@ export interface StepRun {
   attempts: StepAttempt[];
   output?: unknown;
   approvals: Array<{ decision: "ALLOW" | "DENY"; at: string; by: string }>;
+  /** Linked child run for subworkflow steps (exact version pinned at start). */
+  child_run_id?: string;
 }
 
 export interface HistoryEvent {
@@ -132,6 +134,8 @@ export interface WorkflowRun {
   run_id: string;
   workflow_id: string;
   workflow_version: string;
+  /** Ancestor workflow ids for subworkflow cycle/depth protection. */
+  ancestors?: string[];
   routine_id?: string;
   /** Pinned skill versions resolved at start: skill_id -> version. */
   skill_pins: Record<string, string>;

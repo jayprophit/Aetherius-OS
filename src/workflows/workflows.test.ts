@@ -533,6 +533,161 @@ describe("pause, resume and recovery", () => {
   });
 });
 
+// ---------- subworkflows ----------
+
+describe("subworkflows", () => {
+  const childDef = (id: string, out: unknown = { result: 1 }) => ({
+    workflow_id: id,
+    version: "1.0.0",
+    description: id,
+    inputs: ["v"] as string[],
+    steps: [
+      {
+        id: "c", kind: "skill" as const, ref: "skill:echo@1.0.0", depends_on: [] as string[],
+        inputs: { value: "$input.v" }, outputs: ["result"], retry_safety: "safe" as const,
+      },
+    ],
+  });
+  const subStep = (id: string, ref: string, deps: string[] = [], inputs: Record<string, string> = {}) => ({
+    id, kind: "subworkflow" as const, ref, depends_on: deps,
+    inputs, outputs: ["c"] as string[], retry_safety: "safe" as const,
+  });
+  function subSetup() {
+    const registries = new SkillRegistry();
+    registries.register(testSkill("echo"));
+    const executors = new ExecutorRegistry();
+    executors.register(new TestExecutor({ echo }));
+    const store = new FileStateStore(mkdtempSync(join(tmpdir(), "wf-sub-")), 1);
+    const runtime = new WorkflowRuntime(registries, executors, store, {
+      now: () => "2026-09-22T00:00:00.000Z",
+      id: (() => { let n = 0; return () => `run-${++n}`; })(),
+    });
+    return { runtime, store };
+  }
+  it("parent composes versioned child outputs", async () => {
+    const { runtime } = subSetup();
+    runtime.define({ ...childDef("child"), steps: childDef("child").steps });
+    runtime.define({
+      workflow_id: "parent", version: "1.0.0", description: "p", inputs: ["v"],
+      steps: [subStep("s", "workflow:child@1.0.0", [], { v: "$input.v" })],
+    });
+    const done = await runtime.advance(runtime.start("parent", "1.0.0", { v: 9 }).run_id);
+    expect(done.state).toBe("SUCCEEDED");
+    expect(done.steps[0].output).toEqual({ c: { result: 9 } });
+  });
+  it("nests three deep with provenance", async () => {
+    const { runtime } = subSetup();
+    runtime.define(childDef("l3"));
+    runtime.define({
+      workflow_id: "l2", version: "1.0.0", description: "l2", inputs: ["v"],
+      steps: [subStep("s", "workflow:l3@1.0.0", [], { v: "$input.v" })],
+    });
+    runtime.define({
+      workflow_id: "l1", version: "1.0.0", description: "l1", inputs: ["v"],
+      steps: [subStep("s", "workflow:l2@1.0.0", [], { v: "$input.v" })],
+    });
+    const done = await runtime.advance(runtime.start("l1", "1.0.0", { v: 2 }).run_id);
+    expect(done.state).toBe("SUCCEEDED");
+  });
+  it("child failure propagates with provenance, not silently", async () => {
+    const registries = new SkillRegistry();
+    registries.register(testSkill("echo"));
+    const executors = new ExecutorRegistry();
+    executors.register(new TestExecutor({ echo: () => ({ ok: false, retryable: false, error: "child blew up" }) }));
+    const runtime = new WorkflowRuntime(registries, executors, null, {
+      now: () => "2026-09-22T00:00:00.000Z",
+      id: (() => { let n = 0; return () => `run-${++n}`; })(),
+    });
+    runtime.define(childDef("child"));
+    runtime.define({
+      workflow_id: "parent", version: "1.0.0", description: "p", inputs: ["v"],
+      steps: [subStep("s", "workflow:child@1.0.0", [], { v: "$input.v" })],
+    });
+    const done = await runtime.advance(runtime.start("parent", "1.0.0", { v: 1 }).run_id);
+    expect(done.state).toBe("FAILED");
+    expect(done.failure).toContain("child blew up");
+  });
+  it("approval inside child pauses parent; approve resumes both", async () => {
+    const { runtime } = subSetup();
+    runtime.define({
+      workflow_id: "child", version: "1.0.0", description: "c", inputs: [],
+      steps: [
+        { id: "g", kind: "approval", ref: "review", depends_on: [], inputs: {}, outputs: [], approval: { approver: "owner", reason: "check" }, retry_safety: "unknown" },
+      ],
+    });
+    runtime.define({
+      workflow_id: "parent", version: "1.0.0", description: "p", inputs: [],
+      steps: [subStep("s", "workflow:child@1.0.0")],
+    });
+    const started = runtime.start("parent", "1.0.0");
+    const waiting = await runtime.advance(started.run_id);
+    expect(waiting.state).toBe("WAITING_APPROVAL");
+    const done = await runtime.approve(waiting.run_id, "s", "ALLOW", "owner");
+    expect(done.state).toBe("SUCCEEDED");
+  });
+  it("cycles and depth excess fail honestly", async () => {
+    const { runtime } = subSetup();
+    expect(() =>
+      runtime.define({
+        workflow_id: "selfish", version: "1.0.0", description: "s", inputs: [],
+        steps: [subStep("s", "workflow:selfish@1.0.0")],
+      }),
+    ).toThrowError(/cannot include itself/);
+    runtime.define({
+      workflow_id: "a", version: "1.0.0", description: "a", inputs: [],
+      steps: [subStep("s", "workflow:b@1.0.0")],
+    });
+    runtime.define({
+      workflow_id: "b", version: "1.0.0", description: "b", inputs: [],
+      steps: [subStep("s", "workflow:a@1.0.0")],
+    });
+    const cyclic = await runtime.advance(runtime.start("a", "1.0.0").run_id);
+    expect(cyclic.state).toBe("FAILED");
+    expect(cyclic.failure).toContain("cycle detected");
+    // Depth cap: 10-deep chain must stop, not recurse forever.
+    for (let i = 0; i < 10; i++) {
+      runtime.define({
+        workflow_id: `d${i}`, version: "1.0.0", description: "d", inputs: [],
+        steps: [subStep("s", `workflow:d${i + 1}@1.0.0`)],
+      });
+    }
+    runtime.define(childDef("d10"));
+    const deep = await runtime.advance(runtime.start("d0", "1.0.0").run_id);
+    expect(deep.state).toBe("FAILED");
+    expect(deep.failure).toContain("depth exceeds");
+  });
+  it("missing child fails at runtime with evidence", async () => {
+    const { runtime } = subSetup();
+    runtime.define({
+      workflow_id: "parent", version: "1.0.0", description: "p", inputs: [],
+      steps: [subStep("s", "workflow:ghost@1.0.0")],
+    });
+    const done = await runtime.advance(runtime.start("parent", "1.0.0").run_id);
+    expect(done.state).toBe("FAILED");
+    expect(done.failure).toContain("missing workflow");
+  });
+  it("child version stays pinned after registry moves on", async () => {
+    const registries = new SkillRegistry();
+    registries.register(testSkill("echo"));
+    const executors = new ExecutorRegistry();
+    executors.register(new TestExecutor({ echo }));
+    const runtime = new WorkflowRuntime(registries, executors, null, {
+      now: () => "2026-09-22T00:00:00.000Z",
+      id: (() => { let n = 0; return () => `run-${++n}`; })(),
+    });
+    runtime.define(childDef("child"));
+    runtime.define({
+      workflow_id: "parent", version: "1.0.0", description: "p", inputs: [],
+      steps: [subStep("s", "workflow:child@1.0.0", [], { v: "1" })],
+    });
+    // v2 appears after the run starts: the activation must keep v1.
+    const started = runtime.start("parent", "1.0.0");
+    runtime.define({ ...childDef("child"), version: "2.0.0" });
+    const done = await runtime.advance(started.run_id);
+    expect(done.state).toBe("SUCCEEDED");
+  });
+});
+
 // ---------- routines ----------
 
 describe("routines", () => {

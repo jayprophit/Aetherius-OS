@@ -1,6 +1,6 @@
 import type { FileStateStore } from "../state/store";
 import { parseSkillRef, type SkillRegistry } from "./skills";
-import { validateWorkflow } from "./validate";
+import { parseWorkflowRef, validateWorkflow } from "./validate";
 import type { ExecutorRegistry, StepOutcome } from "./executors";
 import type {
   Routine,
@@ -221,6 +221,17 @@ export class WorkflowRuntime {
         // Approval checkpoint passed: the approval itself was the work.
         step.state = "SUCCEEDED";
         this.emit(run, "step.approved", stepId, `approved by ${by}`);
+      } else if (def.kind === "subworkflow" && step.child_run_id) {
+        // Approval propagates INTO the waiting child run first (recursive:
+        // nesting of any depth resolves bottom-up), then the parent
+        // re-executes to reconcile the completed child exactly once.
+        const child = this.runs.get(step.child_run_id);
+        const waitingChildStep = child?.steps.find((s) => s.state === "WAITING_APPROVAL");
+        if (child && waitingChildStep) {
+          await this.approve(child.run_id, waitingChildStep.step_id, decision, by);
+        }
+        step.state = "PENDING";
+        this.emit(run, "step.approved-will-execute", stepId, `approved by ${by}; resuming child`);
       } else {
         // Executor-signalled approval (e.g. bridge action): the approved
         // action must now execute exactly once. Re-queue so advance
@@ -458,6 +469,137 @@ export class WorkflowRuntime {
     return skill.execution_kind;
   }
 
+  /** Maximum subworkflow nesting depth (cycle + runaway protection). */
+  private static readonly MAX_DEPTH = 8;
+
+  /**
+   * Compose a versioned child workflow as one parent step. The child runs
+   * through the same runtime (same policy, history and persistence); its
+   * outputs become the step output. Approval pauses propagate upward and
+   * resume downward; failures propagate with provenance.
+   */
+  private async executeSubworkflow(run: WorkflowRun, step: StepRun, def: WorkflowStep): Promise<void> {
+    const ref = parseWorkflowRef(def.ref);
+    if (!ref) {
+      return this.failStep(run, step, def.id, `bad workflow ref ${def.ref}`);
+    }
+    const ancestors = [...(run.ancestors ?? []), run.workflow_id];
+    if (ancestors.includes(ref.workflowId)) {
+      return this.failStep(run, step, def.id, `subworkflow cycle detected: ${[...ancestors, ref.workflowId].join(" -> ")}`);
+    }
+    if (ancestors.length > WorkflowRuntime.MAX_DEPTH) {
+      return this.failStep(run, step, def.id, `subworkflow depth exceeds ${WorkflowRuntime.MAX_DEPTH}`);
+    }
+    const childDef = this.getWorkflow(ref.workflowId, ref.version ?? this.latestWorkflowVersion(ref.workflowId));
+    if (!childDef) {
+      return this.failStep(run, step, def.id, `missing workflow ${def.ref}`);
+    }
+    let inputs: Record<string, unknown>;
+    try {
+      inputs = this.resolveInputs(run, step.step_id, def.inputs);
+    } catch (error) {
+      return this.failStep(run, step, def.id, error instanceof Error ? error.message : String(error));
+    }
+    // Reuse an existing child across resume/retry instead of spawning anew.
+    let child = step.child_run_id ? this.runs.get(step.child_run_id) ?? null : null;
+    if (!child) {
+      // Child ids must satisfy P17 state-id charset: sanitize separators.
+      const childRunId = `${run.run_id}-${def.id}`.replace(/[^A-Za-z0-9_-]+/g, "-");
+      const childRun: WorkflowRun = {
+        run_id: childRunId,
+        workflow_id: childDef.workflow_id,
+        workflow_version: childDef.version,
+        ancestors,
+        skill_pins: {},
+        inputs,
+        state: "READY",
+        steps: childDef.steps.map((s) => ({ step_id: s.id, state: "PENDING", attempts: [], approvals: [] })),
+        history: [],
+        created_at: this.now(),
+        updated_at: this.now(),
+      };
+      for (const s of childDef.steps) {
+        if (s.kind !== "skill") continue;
+        const skillRef = parseSkillRef(s.ref);
+        const skill = skillRef ? this.skills.lookup(skillRef.skillId, skillRef.version) : null;
+        if (!skill) {
+          return this.failStep(run, step, def.id, `missing skill ${s.ref} in child ${childDef.workflow_id}`);
+        }
+        childRun.skill_pins[skillRef?.skillId ?? s.id] = skill.version;
+      }
+      childRun.state = "RUNNING";
+      this.emit(childRun, "run.defined", undefined, `subworkflow of ${run.run_id}`);
+      this.emit(childRun, "run.started");
+      this.runs.set(childRun.run_id, childRun);
+      step.child_run_id = childRun.run_id;
+      this.persist(childRun);
+      child = childRun;
+    }
+    step.state = "RUNNING";
+    this.emit(run, "step.subworkflow-started", step.step_id, `child ${child.run_id}`);
+    const childLive = (this.runs.get(child.run_id) as WorkflowRun).state;
+    if (childLive === "PAUSED") {
+      // The parent owns the child: advancing the parent resumes a paused
+      // child explicitly (recorded), never silently.
+      const pausedChild = this.runs.get(child.run_id) as WorkflowRun;
+      pausedChild.state = "RUNNING";
+      this.emit(pausedChild, "run.resumed", undefined, `resumed by parent ${run.run_id}`);
+      this.persist(pausedChild);
+    }
+    if (["RUNNING", "RECOVERING"].includes((this.runs.get(child.run_id) as WorkflowRun).state)) {
+      await this.advance(child.run_id);
+    }
+    const finished = this.runs.get(child.run_id) as WorkflowRun;
+    this.persist(run);
+    if (finished.state === "SUCCEEDED") {
+      const outputs: Record<string, unknown> = {};
+      for (const s of finished.steps) {
+        if (s.output !== undefined) outputs[s.step_id] = s.output;
+      }
+      if (def.output_required_keys && def.output_required_keys.length > 0) {
+        const missing = def.output_required_keys.filter((k) => !(k in outputs));
+        if (missing.length > 0) {
+          return this.failStep(run, step, def.id, `child outputs missing required keys ${missing.join(",")}`);
+        }
+      }
+      step.output = outputs;
+      step.state = "SUCCEEDED";
+      this.emit(run, "step.succeeded", step.step_id, `child ${child.run_id} succeeded`);
+      return;
+    }
+    if (finished.state === "WAITING_APPROVAL") {
+      step.state = "WAITING_APPROVAL";
+      run.state = "WAITING_APPROVAL";
+      this.emit(run, "step.subworkflow-waiting", step.step_id, `child ${child.run_id} is waiting approval`);
+      this.persist(run);
+      return;
+    }
+    step.state = "FAILED";
+    run.state = "FAILED";
+    run.failure = `subworkflow ${child.run_id} ended ${finished.state}: ${finished.failure ?? "failed"}`;
+    this.emit(run, "step.failed", step.step_id, run.failure);
+    this.persist(run);
+  }
+
+  private failStep(run: WorkflowRun, step: StepRun, stepId: string, message: string): void {
+    step.state = "FAILED";
+    run.state = "FAILED";
+    run.failure = message;
+    this.emit(run, "step.failed", stepId, message);
+    this.persist(run);
+  }
+
+  private latestWorkflowVersion(workflowId: string): string {
+    const versions: string[] = [];
+    for (const key of this.workflows.keys()) {
+      const at = key.lastIndexOf("@");
+      if (key.slice(0, at) === workflowId) versions.push(key.slice(at + 1));
+    }
+    versions.sort();
+    if (versions.length === 0) throw new Error(`unknown workflow ${workflowId}`);
+    return versions[versions.length - 1];
+  }
+
   private async executeStep(run: WorkflowRun, stepId: string): Promise<void> {
     const def = this.stepDef(run, stepId);
     const step = run.steps.find((s) => s.step_id === stepId) as StepRun;
@@ -473,6 +615,11 @@ export class WorkflowRuntime {
       run.state = "WAITING_APPROVAL";
       this.emit(run, "step.waiting-approval", stepId, def.approval?.reason ?? def.ref);
       this.persist(run);
+      return;
+    }
+
+    if (def.kind === "subworkflow") {
+      await this.executeSubworkflow(run, step, def);
       return;
     }
 

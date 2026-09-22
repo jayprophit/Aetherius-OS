@@ -42,11 +42,22 @@ function hasCycle(steps: WorkflowStep[]): string[] | null {
   return null;
 }
 
+export function parseWorkflowRef(ref: string): { workflowId: string; version?: string } | null {
+  const match = /^workflow:([A-Za-z0-9_.-]+)(?:@(\d+\.\d+\.\d+))?$/.exec(ref.trim());
+  if (!match) return null;
+  return { workflowId: match[1], version: match[2] };
+}
+
 /**
  * Validate a workflow BEFORE execution. Malformed definitions fail here,
- * never "try to run anyway". Pure + deterministic.
+ * never "try to run anyway". Pure + deterministic. Pass known workflows to
+ * also resolve subworkflow references.
  */
-export function validateWorkflow(workflow: Workflow, skills: SkillRegistry): string[] {
+export function validateWorkflow(
+  workflow: Workflow,
+  skills: SkillRegistry,
+  knownWorkflows: Array<{ workflow_id: string; version: string }> = [],
+): string[] {
   const problems: string[] = [];
   if (!workflow.workflow_id.trim()) problems.push("workflow_id is required");
   if (!/^\d+\.\d+\.\d+$/.test(workflow.version)) {
@@ -76,6 +87,19 @@ export function validateWorkflow(workflow: Workflow, skills: SkillRegistry): str
       } else {
         const skill = skills.lookup(ref.skillId, ref.version);
         if (!skill) problems.push(`step ${step.id}: missing skill ${step.ref}`);
+      }
+    }
+    if (step.kind === "subworkflow") {
+      const ref = parseWorkflowRef(step.ref);
+      if (!ref) {
+        problems.push(`step ${step.id}: bad workflow ref ${step.ref} (workflow:<id>@<x.y.z>)`);
+      } else if (ref.workflowId === workflow.workflow_id) {
+        problems.push(`step ${step.id}: workflow cannot include itself`);
+      } else if (
+        knownWorkflows.length > 0 &&
+        !knownWorkflows.some((w) => w.workflow_id === ref.workflowId && (!ref.version || w.version === ref.version))
+      ) {
+        problems.push(`step ${step.id}: missing workflow ${step.ref}`);
       }
     }
     if (step.retry) {

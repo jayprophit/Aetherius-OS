@@ -51,6 +51,17 @@ P18 model invocation and Agent Bridge actions attach later as registered
 executor kinds behind their own policy. Genesis cognition lives in P22;
 workflow runs are operational state, not identity or memory.
 
+## Subworkflows (P19/4)
+
+Steps of kind `subworkflow` reference `workflow:<id>@<x.y.z>` and compose
+versioned children through the same runtime: same policy, history and
+persistence. The child run id, ancestors chain and resolved versions persist
+with the parent, so resume and recovery survive restarts. Approvals
+propagate into waiting children bottom-up; failures propagate with
+provenance; cycle (A→B→A), self-include, depth excess (>8) and missing
+children fail honestly instead of recursing. Definitions are code and must
+be registered on every fresh instance.
+
 ## External executors (P19/3)
 
 Two registered kinds give workflows controlled capabilities:
