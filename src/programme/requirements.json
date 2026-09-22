@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0.0",
+  "generated_by": "P16/3-seed",
+  "date": "2026-09-22",
+  "provenance": "Every item below cites verified session evidence; statuses reflect real code/tests, never handoff claims.",
+  "requirements": [
+    {
+      "id": "REQ-bridge-gate-compat",
+      "title": "Bridge default-deny gate compatibility",
+      "description": "Wire policy gate to real default-deny engine with session-scoped workspace grants; fix resulting runtime regressions.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "Agent-Bridge 186/186 (d606b91)", "location": "Agent-Bridge"},
+      "owner": "agent-bridge", "phase": "P14", "status": "PROVEN",
+      "priority": 5, "depends_on": [], "blockers": [],
+      "evidence": ["186/186 pytest", "probe sibling/traversal/session isolation"],
+      "provenance": "BRIDGE-GATE-COMPAT/1 + POLICY-HARDENING/1 session records",
+      "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
+      "id": "REQ-cert-regeneration",
+      "title": "Regenerate real delegation certification",
+      "description": "Canonical producer run clearing the 3 missing-certification failures; fixed fresh-intake plan fields + worker edit grants.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "Agent-Bridge 0f7c2a6", "location": "Agent-Bridge"},
+      "owner": "agent-bridge", "phase": "P14", "status": "PROVEN",
+      "priority": 5, "depends_on": [], "blockers": [],
+      "evidence": ["2/2 VERIFIED worker runs", "3/3 cert tests pass"],
+      "provenance": "REG-CERT/1 session record",
+      "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
+      "id": "REQ-mat-derived-matrices",
+      "title": "Regenerate MAT derived quality matrices",
+      "description": "Rebuild advanced-completion, gap-analysis and state-flow derived artifacts after stale-hash failures.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "MAT 6ef9675", "location": "Materials-Atlas-Table-Codex---MAT"},
+      "owner": "mat", "phase": "P6", "status": "PROVEN",
+      "priority": 5, "depends_on": [], "blockers": [],
+      "evidence": ["validate exit 0", "node tests 62/62"],
+      "provenance": "MAT-HYDROGEN-REGEN session record",
+      "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
+      "id": "REQ-p16-registry",
+      "title": "Machine-readable programme + dependency registries",
+      "description": "programme.json (32 phases) and depgraph.json (10 nodes, 13 evidence-linked edges), validated and committed.",
+      "source": {"class": "BUILD_TODO", "ref": "BUILD-TODO P16/1+P16/2", "location": "Projects/BUILD-TODO.md"},
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
+      "priority": 5, "depends_on": [], "blockers": [],
+      "evidence": ["0503294", "fb64534", "structural validation"],
+      "provenance": "P16/1 + P16/2 session records",
+      "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
+      "id": "REQ-p16-control",
+      "title": "Requirement ingestion, registry validation, deterministic selector",
+      "description": "This P16/3 unit: ingest path, auto-validator, next-task selector with aggressive tests.",
+      "source": {"class": "OWNER_DECISION", "ref": "P16 exit-gate remainder", "location": "owner directive 2026-09-22"},
+      "owner": "aetherius-os", "phase": "P16", "status": "SPECIFIED",
+      "priority": 5, "depends_on": ["REQ-p16-registry"], "blockers": [],
+      "evidence": ["P16 exit-gate checklist"],
+      "provenance": "P16/3 session record",
+      "owner_gate": false, "work_state": "IN_PROGRESS"
+    },
+    {
+      "id": "REQ-codex-review",
+      "title": "Independent Codex diff review of policy work",
+      "description": "Read-only Codex review of 0f7c2a6 yielding 5 findings; all fixed under POLICY-HARDENING/1.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "Agent-Bridge d606b91", "location": "Agent-Bridge"},
+      "owner": "agent-bridge", "phase": "P14", "status": "PROVEN",
+      "priority": 4, "depends_on": ["REQ-cert-regeneration"], "blockers": [],
+      "evidence": ["5 findings", "probe verification", "186/186"],
+      "provenance": "CODEX-REVIEW/1 session record",
+      "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
+      "id": "REQ-genesis-actuator",
+      "title": "Genesis P4 plan/action actuator repertoire",
+      "description": "Loop plan+action stages need an actuator catalog; genuine architecture decision, blocked for engineering.",
+      "source": {"class": "BUILD_TODO", "ref": "native BUILD-TODO P4-MENTAL", "location": "Aetherius-OS/native/BUILD-TODO.md"},
+      "owner": "genesis", "phase": "P4", "status": "SPECIFIED",
+      "priority": 4, "depends_on": [], "blockers": ["actuator repertoire owner architecture decision"],
+      "evidence": ["2 _na remain: plan, action"],
+      "provenance": "P4 session records",
+      "owner_gate": true, "work_state": "OWNER_GATED"
+    },
+    {
+      "id": "REQ-spawn-flake",
+      "title": "test_spawn_status_kill aggregate timing flake",
+      "description": "Process-timing flake failing only in aggregate runs; passes solo. Tracked debt, do not chase.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "Agent-Bridge 186-set", "location": "Agent-Bridge/tests/test_owner_tools.py"},
+      "owner": "agent-bridge", "phase": "P13", "status": "RESEARCH",
+      "priority": 2, "depends_on": [], "blockers": [],
+      "evidence": ["fails aggregate", "passes solo 0.84s"],
+      "provenance": "REG-CERT/1 + POLICY-HARDENING/1 session records",
+      "owner_gate": false, "work_state": "DEFERRED"
+    },
+    {
+      "id": "REQ-p17-owned-state",
+      "title": "Owned durable state and core service contracts",
+      "description": "Versioned schemas, durable storage, migrations, backup/restore, permission/event/provenance linkage per P17 gate.",
+      "source": {"class": "OWNER_DECISION", "ref": "P16-P31 forward programme", "location": "BUILD-TODO.md"},
+      "owner": "aetherius-os", "phase": "P17", "status": "RESEARCH",
+      "priority": 5, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["P17 exit gate"],
+      "provenance": "owner decision 2026-09-22",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p18-model-fabric",
+      "title": "Provider-neutral model fabric",
+      "description": "Capability-request routing across many providers with failover, privacy routing and benchmarks.",
+      "source": {"class": "OWNER_DECISION", "ref": "P16-P31 forward programme", "location": "BUILD-TODO.md"},
+      "owner": "aetherius-os", "phase": "P18", "status": "RESEARCH",
+      "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["P18 exit gate"],
+      "provenance": "owner decision 2026-09-22",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p19-workflows",
+      "title": "Skills, workflows, routines runtime",
+      "description": "Versioned skills, deterministic workflows, scheduler, approval/pause/resume/retry per P19 gate.",
+      "source": {"class": "OWNER_DECISION", "ref": "P16-P31 forward programme", "location": "BUILD-TODO.md"},
+      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["P19 exit gate"],
+      "provenance": "owner decision 2026-09-22",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-native-header-provenance",
+      "title": "Establish provenance of native TODO header",
+      "description": "Four-line programme header in native/BUILD-TODO.md has unknown authorship; leave untouched until provenance is established.",
+      "source": {"class": "GIT_HISTORY", "ref": "Aetherius-OS uncommitted header", "location": "Aetherius-OS/native/BUILD-TODO.md"},
+      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "priority": 3, "depends_on": [], "blockers": [],
+      "evidence": ["git diff 4 insertions, unknown author"],
+      "provenance": "workstation audit session record",
+      "owner_gate": true, "work_state": "OWNER_GATED"
+    },
+    {
+      "id": "REQ-refmap-followup",
+      "title": "Deep per-capability overlap audits",
+      "description": "Follow REFMAP/1 survey with deep audits per reference capability before any adapter build.",
+      "source": {"class": "BUILD_TODO", "ref": "BUILD-TODO REFMAP/1", "location": "Projects/BUILD-TODO.md"},
+      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "priority": 3, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["REFMAP/1 survey verdicts"],
+      "provenance": "REFMAP/1 session record",
+      "owner_gate": false, "work_state": "READY"
+    }
+  ]
+}
