@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: P22 identity complete yields P23 chat/work", () => {
+  it("real registry advances: P23 depths complete yields P25 full control", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // P17 IN_PROGRESS, P18 BLOCKED, P19/P22 COMPLETE: among priority-4 READY
-    // tasks (P23 chat depths, P25 full control) the earliest phase wins.
-    expect(r.selected_task).toBe("REQ-p23-chat-work-depths");
-    expect(r.phase).toBe("P23");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p23-chat-work-depths");
+    // P17 IN_PROGRESS, P18 BLOCKED, P19/P22/P23-depths COMPLETE: the
+    // priority-4 READY P25 full-control requirement wins deterministically.
+    expect(r.selected_task).toBe("REQ-owner-full-control");
+    expect(r.phase).toBe("P25");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-owner-full-control");
   });
 
 });

@@ -137,9 +137,9 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // P17 IN_PROGRESS + P18 BLOCKED + P19/P22 COMPLETE: the reload path
-    // must agree with the direct path — next READY task is P23 chat/work.
-    expect(result.selected_task).toBe("REQ-p23-chat-work-depths");
+    // P17 IN_PROGRESS + P18 BLOCKED + P19/P22/P23-depths COMPLETE: the
+    // reload path must agree with the direct path — P25 full control next.
+    expect(result.selected_task).toBe("REQ-owner-full-control");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
