@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "registry:validate": "vitest run src/programme"
+    "registry:validate": "vitest run src/programme src/state"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
