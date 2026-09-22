@@ -237,7 +237,7 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["P19 exit gate 9/9", "P19/1 runtime", "P19/2 scheduler", "P19/3 executors", "P19/4 subworkflows", "P19/5 promotion"],
       "provenance": "owner decision 2026-09-22",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-native-header-provenance",
