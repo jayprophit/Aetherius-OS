@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: P23 depths complete yields P25 full control", () => {
+  it("real registry advances: P25 profile complete yields P21 fabric", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // P17 IN_PROGRESS, P18 BLOCKED, P19/P22/P23-depths COMPLETE: the
-    // priority-4 READY P25 full-control requirement wins deterministically.
-    expect(r.selected_task).toBe("REQ-owner-full-control");
-    expect(r.phase).toBe("P25");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-owner-full-control");
+    // P17 IN_PROGRESS, P18 BLOCKED, P19/P22/P23-depths/P25-profile COMPLETE:
+    // among priority-3 READY tasks the earliest phase (P21 fabric) wins.
+    expect(r.selected_task).toBe("REQ-desktop-capability-fabric");
+    expect(r.phase).toBe("P21");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-desktop-capability-fabric");
   });
 
 });
