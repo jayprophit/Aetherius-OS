@@ -241,14 +241,15 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: P16/3 complete unlocks P17 owned-state", () => {
+  it("real registry advances: P17 in progress yields P18 model-fabric", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // REQ-p16-control is COMPLETE, so the highest-priority READY dependent
-    // (P17 owned-state, priority 5) must now be selected deterministically.
-    expect(r.selected_task).toBe("REQ-p17-owned-state");
-    expect(r.phase).toBe("P17");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p17-owned-state");
+    // REQ-p17-owned-state is IN_PROGRESS (owned by the active unit), so the
+    // machine must skip it and select the next READY task deterministically:
+    // P18 model-fabric (priority 4 beats P19 on earlier phase).
+    expect(r.selected_task).toBe("REQ-p18-model-fabric");
+    expect(r.phase).toBe("P18");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p18-model-fabric");
   });
 
 });
