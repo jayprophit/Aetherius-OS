@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "generated_by": "P16/1",
+  "date": "2026-09-22",
+  "provenance": "P0-P15 per Aetherius-OS/native/BUILD-TODO.md programme chain + master handoff section 33; P16-P31 per owner decision 2026-09-22 (forward-canonical, NOT recovered). Statuses reflect verified evidence only.",
+  "projects": [
+    {"id": "aetherius-os", "path": "Aetherius-OS", "role": "owned OS environment/platform", "remote": "in-sync"},
+    {"id": "genesis", "path": "Genesis", "role": "one persistent AI organism", "remote": "in-sync"},
+    {"id": "agent-bridge", "path": "Agent-Bridge", "role": "controlled external reach", "remote": "in-sync"},
+    {"id": "mat", "path": "Materials-Atlas-Table-Codex---MAT", "role": "structured scientific knowledge", "remote": "in-sync"},
+    {"id": "ide", "path": "IDE-Workspace", "role": "work/creation environment", "remote": "in-sync"},
+    {"id": "universal-bridge", "path": "Universal-Bridge", "role": "hardware/music integration", "remote": "in-sync"},
+    {"id": "poietek", "path": "Poietek", "role": "media/content systems", "remote": "in-sync"}
+  ],
+  "phases": [
+    {"id": "P0", "name": "recovery", "status": "established", "evidence": "handoff-s33,BUILD-TODO"},
+    {"id": "P1", "name": "baselines", "status": "established", "evidence": "handoff-s33"},
+    {"id": "P2", "name": "contracts", "status": "established", "evidence": "handoff-s33"},
+    {"id": "P3", "name": "host/runtime+rollback", "status": "established", "evidence": "handoff-s33"},
+    {"id": "P4", "name": "organism/cognition", "status": "partial", "evidence": "loop-stages-done-except-plan/action;plan-blocked-owner-decision", "blockers": ["actuator-repertoire-owner-decision"]},
+    {"id": "P5", "name": "bridge-integration", "status": "established", "evidence": "handoff-s33,cdba481"},
+    {"id": "P6", "name": "mat-connector", "status": "established", "evidence": "8f0d654,6ef9675,validate-exit-0,node-62/62"},
+    {"id": "P7", "name": "ide-loopback", "status": "established", "evidence": "handoff-s33,dc4a38b"},
+    {"id": "P8", "name": "ub-poietek-proof", "status": "established", "evidence": "handoff-s33"},
+    {"id": "P9", "name": "vm-b-registry", "status": "established", "evidence": "handoff-s33"},
+    {"id": "P10", "name": "shell-services", "status": "established", "evidence": "handoff-s33,P10-CORE-DONE"},
+    {"id": "P11", "name": "native-os", "status": "established", "evidence": "handoff-s33,USER-mode"},
+    {"id": "P12", "name": "apps-search", "status": "partial", "evidence": "P12-CORE/APPSEARCH/IDE-DEBT-DONE"},
+    {"id": "P13", "name": "quality", "status": "partial", "evidence": "P13-WARN-DONE,flake-debt-test_spawn_status_kill"},
+    {"id": "P14", "name": "e2e", "status": "established", "evidence": "handoff-s33,d7c1277,BRIDGE-GATE-COMPAT/1,REG-CERT/1"},
+    {"id": "P15", "name": "provenance-bench", "status": "established", "evidence": "handoff-s33,P15-PROVBENCH-DONE"},
+    {"id": "P16", "name": "programme-truth-registry", "status": "in_progress", "evidence": "P16/1-this-registry"},
+    {"id": "P17", "name": "owned-state-services", "status": "planned", "evidence": "none-yet"},
+    {"id": "P18", "name": "model-fabric", "status": "planned", "evidence": "none-yet"},
+    {"id": "P19", "name": "skills-workflows-routines", "status": "planned", "evidence": "none-yet"},
+    {"id": "P20", "name": "execution-fleet", "status": "planned", "evidence": "none-yet"},
+    {"id": "P21", "name": "bridge-adapters", "status": "planned", "evidence": "none-yet"},
+    {"id": "P22", "name": "genesis-cognition", "status": "planned", "evidence": "none-yet"},
+    {"id": "P23", "name": "ide-avatar-workspace", "status": "planned", "evidence": "none-yet"},
+    {"id": "P24", "name": "native-userland", "status": "planned", "evidence": "none-yet"},
+    {"id": "P25", "name": "identity-trust", "status": "planned", "evidence": "none-yet"},
+    {"id": "P26", "name": "knowledge-mat-search", "status": "planned", "evidence": "none-yet"},
+    {"id": "P27", "name": "comms-social", "status": "planned", "evidence": "none-yet"},
+    {"id": "P28", "name": "app-family", "status": "planned", "evidence": "none-yet"},
+    {"id": "P29", "name": "creative-engineering", "status": "planned", "evidence": "none-yet"},
+    {"id": "P30", "name": "distributed", "status": "planned", "evidence": "none-yet"},
+    {"id": "P31", "name": "hardening-release", "status": "continuous", "evidence": "P31-continuous-per-directive"}
+  ],
+  "placements": {
+    "OpenClaw": ["P21"], "Lobster": ["P19"], "ClawHub": ["P19"], "ClickClack": ["P27"],
+    "ClawSweeper": ["P16"], "CrabFleet": ["P20"], "CrabBox": ["P20"], "OctoPool": ["P30"],
+    "OwnedLayer": ["P17"], "ModelFabric": ["P18"], "ExecutionFabric": ["P20"],
+    "SkillRegistry": ["P19"], "CredentialVault": ["P25"], "CheckpointSystem": ["P16", "P17"]
+  },
+  "blockers": [
+    {"id": "push-main", "status": "cleared-2026-09-22", "note": "owner pushed all; deny-rule still applies to this environment"},
+    {"id": "p16plus-definition", "status": "resolved-2026-09-22", "note": "owner authorized forward-canonical P16-P31"},
+    {"id": "genesis-actuator-repertoire", "status": "open", "note": "P4 plan/action needs owner architecture decision"},
+    {"id": "codex-cli-signin", "status": "cleared-2026-09-22", "note": "codex-cli 0.155.1 healthy, ChatGPT auth"}
+  ],
+  "debt": [
+    {"id": "test-spawn-status-kill-flake", "status": "tracked", "note": "aggregate-only timing flake, passes solo; do not chase"}
+  ]
+}
