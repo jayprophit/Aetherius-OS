@@ -137,9 +137,9 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // P17 owned-state is IN_PROGRESS, so the reload path must agree with
-    // the direct path: next READY task is P18 model-fabric.
-    expect(result.selected_task).toBe("REQ-p18-model-fabric");
+    // P17 IN_PROGRESS + P18 BLOCKED: the reload path must agree with the
+    // direct path — next READY task is P19 workflows.
+    expect(result.selected_task).toBe("REQ-p19-workflows");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
