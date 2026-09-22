@@ -5,6 +5,17 @@
   "provenance": "Every item below cites verified session evidence; statuses reflect real code/tests, never handoff claims.",
   "requirements": [
     {
+      "id": "REQ-p18-invoke",
+      "title": "Provider-neutral invocation contract + Ollama adapter",
+      "description": "Neutral request/response/error taxonomy, adapter registry, route-then-invoke pipeline with privacy re-check, Ollama adapter with tri-state availability, P17 evidence metadata.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "Aetherius-OS P18/3", "location": "Aetherius-OS/src/providers"},
+      "owner": "aetherius-os", "phase": "P18", "status": "PROVEN",
+      "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["93/93 suite", "tsc clean", "live daemon down: honest UNAVAILABLE"],
+      "provenance": "P18/3 session record",
+      "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
       "id": "REQ-bridge-gate-compat",
       "title": "Bridge default-deny gate compatibility",
       "description": "Wire policy gate to real default-deny engine with session-scoped workspace grants; fix resulting runtime regressions.",
