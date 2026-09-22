@@ -216,8 +216,19 @@ export class WorkflowRuntime {
     }
     step.approvals.push({ decision, at: this.now(), by });
     if (decision === "ALLOW") {
-      step.state = "SUCCEEDED";
-      this.emit(run, "step.approved", stepId, `approved by ${by}`);
+      const def = this.stepDef(run, stepId);
+      if (def.kind === "approval" || def.approval) {
+        // Approval checkpoint passed: the approval itself was the work.
+        step.state = "SUCCEEDED";
+        this.emit(run, "step.approved", stepId, `approved by ${by}`);
+      } else {
+        // Executor-signalled approval (e.g. bridge action): the approved
+        // action must now execute exactly once. Re-queue so advance
+        // re-executes it; downstream idempotency (same action/request id)
+        // guarantees single execution.
+        step.state = "PENDING";
+        this.emit(run, "step.approved-will-execute", stepId, `approved by ${by}; re-executing once`);
+      }
       run.state = "RUNNING";
       this.persist(run);
       return this.advance(runId);
@@ -538,6 +549,22 @@ export class WorkflowRuntime {
           attempt, started_at: started, ended_at: this.now(),
           ok: outcome.ok, retryable: outcome.retryable, error: outcome.error,
         });
+        // Executor-signalled states take precedence over ok/failed.
+        if (outcome.waitingApproval) {
+          step.state = "WAITING_APPROVAL";
+          run.state = "WAITING_APPROVAL";
+          this.emit(run, "step.waiting-approval", stepId, outcome.approvalId ?? outcome.error ?? "external approval");
+          this.persist(run);
+          return;
+        }
+        if (outcome.unknownOutcome) {
+          // Transmitted but unconfirmed: never assume success or failure.
+          step.state = "RECOVERING";
+          run.state = "RECOVERING";
+          this.emit(run, "step.unknown-outcome", stepId, outcome.error ?? "unknown outcome; reconcile required");
+          this.persist(run);
+          return;
+        }
         if (outcome.ok) {
           if (def.output_required_keys && def.output_required_keys.length > 0) {
             const missing = def.output_required_keys.filter(

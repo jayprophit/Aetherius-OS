@@ -33,7 +33,9 @@ export type StepKind =
   | "condition"
   | "approval"
   | "wait"
-  | "subworkflow";
+  | "subworkflow"
+  | "model-invoke"
+  | "bridge-action";
 
 export interface RetryPolicy {
   max_attempts: number;

@@ -28,6 +28,8 @@ export interface ModelCapabilities {
 export interface ModelCard {
   id: string;
   providerId: string;
+  /** Runtime carrying this model; defaults resolve per provider at invoke time. */
+  runtimeId?: string;
   localRemote: LocalRemote;
   capabilities: ModelCapabilities;
   /** Lower is cheaper; relative units, documented per registry. */

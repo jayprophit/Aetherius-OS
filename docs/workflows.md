@@ -51,6 +51,27 @@ P18 model invocation and Agent Bridge actions attach later as registered
 executor kinds behind their own policy. Genesis cognition lives in P22;
 workflow runs are operational state, not identity or memory.
 
+## External executors (P19/3)
+
+Two registered kinds give workflows controlled capabilities:
+
+- **model-invoke**: step declares capability needs (capability,
+  min_context, privacy, prompt binding, optional pin); the executor routes
+  via P18 capability matching, invokes through the adapter registry, and
+  normalizes output. Steps never name providers or endpoints.
+- **bridge-action**: step declares `bridge:<domain>:<action>` plus resource
+  and provenance bindings; execution goes to Agent Bridge, which remains
+  the sole authority for DENY/APPROVAL/execution. Outcomes normalize to
+  SUCCEEDED/DENIED/WAITING_APPROVAL/FAILED/TIMED_OUT/CANCELLED/
+  UNKNOWN_OUTCOME — DENIED is never FAILED, approval pauses durably, and
+  unknown outcomes reconcile instead of assuming. Re-execution after ALLOW
+  relies on bridge-side idempotency (same action id executes once).
+
+OWNER_FULL_CONTROL is a broad explicit grant evaluated by policy, never a
+bypass: reversible operations proceed, protected irreversible ones still
+require approval. Skills, schedules and events grant nothing; only policy
+plus approval authorize external effects.
+
 ## Scheduler + triggers (P19/2)
 
 Time (`ONE_TIME`, `INTERVAL` anchored at startAt, `DAILY` UTC) and trusted

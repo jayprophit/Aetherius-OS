@@ -1,7 +1,15 @@
 import { parseSkillRef, type SkillRegistry } from "./skills";
 import type { Workflow, WorkflowStep } from "./types";
 
-const STEP_KINDS = new Set(["skill", "condition", "approval", "wait", "subworkflow"]);
+const STEP_KINDS = new Set([
+  "skill",
+  "condition",
+  "approval",
+  "wait",
+  "subworkflow",
+  "model-invoke",
+  "bridge-action",
+]);
 
 function bindingRefs(value: string): string[] {
   const refs: string[] = [];

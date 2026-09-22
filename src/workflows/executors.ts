@@ -6,6 +6,18 @@ export interface StepOutcome {
   /** Whether a retry is semantically safe for this outcome. */
   retryable: boolean;
   error?: string;
+  /**
+   * External approval required: the runtime must pause durably instead of
+   * succeeding or failing. Re-execution after ALLOW relies on downstream
+   * idempotency (same action/request id).
+   */
+  waitingApproval?: boolean;
+  approvalId?: string;
+  /**
+   * Result genuinely unknown (request sent, outcome unconfirmed): the
+   * runtime must mark RECOVERING, never assume success or failure.
+   */
+  unknownOutcome?: boolean;
 }
 
 export interface ExecContext {
