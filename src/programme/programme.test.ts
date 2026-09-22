@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: refmap complete yields P21 fabric", () => {
+  it("real registry advances: fabric in progress yields P23 layout", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // P16-refmap COMPLETE with the rest: among priority-3 READY tasks the
-    // earliest phase (P21 desktop fabric) wins deterministically.
-    expect(r.selected_task).toBe("REQ-desktop-capability-fabric");
-    expect(r.phase).toBe("P21");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-desktop-capability-fabric");
+    // P21 fabric IN_PROGRESS: among remaining priority-3 READY tasks the
+    // earliest phase (P23 layout) wins deterministically.
+    expect(r.selected_task).toBe("REQ-p23-layout-system");
+    expect(r.phase).toBe("P23");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p23-layout-system");
   });
 
 });

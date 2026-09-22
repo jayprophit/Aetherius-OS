@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // P16-refmap COMPLETE with the rest: reload path agrees - P21 fabric next.
-    expect(result.selected_task).toBe("REQ-desktop-capability-fabric");
+    // P21 fabric IN_PROGRESS: reload path agrees - P23 layout next.
+    expect(result.selected_task).toBe("REQ-p23-layout-system");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
