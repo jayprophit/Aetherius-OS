@@ -132,9 +132,9 @@
       "title": "Skills, workflows, routines runtime",
       "description": "Versioned skills, deterministic workflows, scheduler, approval/pause/resume/retry per P19 gate.",
       "source": {"class": "OWNER_DECISION", "ref": "P16-P31 forward programme", "location": "BUILD-TODO.md"},
-      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P19", "status": "PARTIAL",
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P19 exit gate"],
+      "evidence": ["P19 exit gate", "P19/1 runtime foundation"],
       "provenance": "owner decision 2026-09-22",
       "owner_gate": false, "work_state": "READY"
     },
