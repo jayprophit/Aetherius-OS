@@ -105,12 +105,12 @@
       "title": "Probabilistic planning, deterministic execution chain",
       "description": "Intelligence→structured decision→typed command→policy→deterministic executor→verification→evidence→reflection. Enforced by existing P18/P19/P21 contracts; record as standing principle.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "owner": "agent-bridge", "phase": "P21", "status": "PROVEN",
       "priority": 3, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P18 invokeRoute", "P19 executors", "Bridge policy gates"],
+      "evidence": ["P18 invokeRoute", "P19 executors", "Bridge policy gates", "P21-detexec: typed boundary proof", "15 detexec tests", "240/240 Bridge suite"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-progressive-disclosure",
