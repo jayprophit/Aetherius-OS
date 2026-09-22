@@ -53,11 +53,11 @@
       "title": "Requirement ingestion, registry validation, deterministic selector",
       "description": "This P16/3 unit: ingest path, auto-validator, next-task selector with aggressive tests.",
       "source": {"class": "OWNER_DECISION", "ref": "P16 exit-gate remainder", "location": "owner directive 2026-09-22"},
-      "owner": "aetherius-os", "phase": "P16", "status": "SPECIFIED",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 5, "depends_on": ["REQ-p16-registry"], "blockers": [],
-      "evidence": ["P16 exit-gate checklist"],
+      "evidence": ["25/25 vitest", "46/46 full suite", "tsc clean", "4b564eb"],
       "provenance": "P16/3 session record",
-      "owner_gate": false, "work_state": "IN_PROGRESS"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-codex-review",

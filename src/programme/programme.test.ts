@@ -241,16 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry selection is deterministic (currently nothing executable)", () => {
-    // Truthful programme state: every READY item depends on REQ-p16-control
-    // (IN_PROGRESS — this unit), so the selector must return null, not invent.
+  it("real registry advances: P16/3 complete unlocks P17 owned-state", () => {
     const real = loadReal();
-    const first = selectNextTask(real);
-    expect(first.selected_task).toBeNull();
-    for (let i = 0; i < 3; i++) {
-      const again = selectNextTask(real);
-      expect(again.selected_task).toBeNull();
-      expect(again.reason).toBe(first.reason);
-    }
+    const r = selectNextTask(real);
+    // REQ-p16-control is COMPLETE, so the highest-priority READY dependent
+    // (P17 owned-state, priority 5) must now be selected deterministically.
+    expect(r.selected_task).toBe("REQ-p17-owned-state");
+    expect(r.phase).toBe("P17");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p17-owned-state");
   });
+
 });
