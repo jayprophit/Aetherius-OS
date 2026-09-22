@@ -50,3 +50,21 @@ state is rejected, never reset.
 P18 model invocation and Agent Bridge actions attach later as registered
 executor kinds behind their own policy. Genesis cognition lives in P22;
 workflow runs are operational state, not identity or memory.
+
+## Scheduler + triggers (P19/2)
+
+Time (`ONE_TIME`, `INTERVAL` anchored at startAt, `DAILY` UTC) and trusted
+internal events cause routine activation. Schedules, triggers, activations
+and runs are four distinct types. The core is deterministic: pure
+due-occurrence calculation, controllable clock values, no background
+threads in tests (`tick()`/`dispatchEvent()`), no real sleeping.
+
+One logical occurrence yields at most one canonical activation, enforced
+by P17 optimistic-version claims (a racing instance observes the claim and
+exits cleanly). Event redelivery deduplicates on trigger+event identity.
+Misfires follow explicit policy (`SKIP` default, `RUN_ONCE_NOW`,
+bounded `CATCH_UP_BOUNDED` with age/cycle/lifetime caps — never a backlog
+storm). Disabled/expired routines never fire; stale claims reconcile
+explicitly. Activations pin routine/workflow/schedule versions. Scheduled
+runs that reach protected steps wait for approval like any other run;
+schedules and events never grant authority.
