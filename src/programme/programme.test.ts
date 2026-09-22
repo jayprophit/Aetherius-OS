@@ -241,15 +241,15 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: blocked P18 yields P19 workflows", () => {
+  it("real registry advances: P19 complete yields P22 identity rule", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // REQ-p17-owned-state is IN_PROGRESS and REQ-p18-model-fabric is BLOCKED
-    // (cloud creds + live daemon), so the machine must select the next READY
-    // task deterministically: P19 workflows.
-    expect(r.selected_task).toBe("REQ-p19-workflows");
-    expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-workflows");
+    // P17 IN_PROGRESS, P18 BLOCKED, P19 COMPLETE: among priority-4 READY
+    // tasks (P22 identity, P23 chat depths, P25 full control) the earliest
+    // phase wins deterministically.
+    expect(r.selected_task).toBe("REQ-genesis-identity-rule");
+    expect(r.phase).toBe("P22");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-genesis-identity-rule");
   });
 
 });
