@@ -197,7 +197,7 @@
       "source": {"class": "OWNER_DECISION", "ref": "continuous-build directive 2026-09-22", "location": "owner chat"},
       "owner": "genesis", "phase": "P22", "status": "PARTIAL",
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["owner directive section 7", "P22/1 identity root + bindings"],
+      "evidence": ["owner directive section 7", "P22/1 identity root + bindings", "Genesis 8343005 (8 tests)", "Aetherius 9f4693b (7 tests)", "211/211 suite"],
       "provenance": "owner decision 2026-09-22",
       "owner_gate": false, "work_state": "READY"
     },
