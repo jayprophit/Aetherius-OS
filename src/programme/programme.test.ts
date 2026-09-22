@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: fabric in progress yields P21 exec principle", () => {
+  it("real registry advances: detexec proven yields P23 layout", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // P21 fabric IN_PROGRESS: among remaining priority-3 READY tasks the
-    // earliest phase (P21 deterministic-exec principle) wins.
-    expect(r.selected_task).toBe("REQ-deterministic-exec-principle");
-    expect(r.phase).toBe("P21");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-deterministic-exec-principle");
+    // P21-detexec COMPLETE with P21-fabric IN_PROGRESS: among remaining
+    // priority-3 READY tasks the earliest phase (P23 layout) wins.
+    expect(r.selected_task).toBe("REQ-p23-layout-system");
+    expect(r.phase).toBe("P23");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p23-layout-system");
   });
 
 });
