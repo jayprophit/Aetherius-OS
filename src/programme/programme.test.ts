@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: temp workers proven yields MCP boundary", () => {
+  it("real registry advances: MCP proven yields remote desktop", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Temp-workers COMPLETE is skipped; among the remaining priority-2
-    // READY tasks the earliest phase/id (P21 MCP boundary) wins.
-    expect(r.selected_task).toBe("REQ-mcp-adapter-boundary");
+    // MCP-adapter COMPLETE is skipped; among the remaining priority-2
+    // READY tasks the earliest phase/id (P21 remote desktop) wins.
+    expect(r.selected_task).toBe("REQ-p21-remote-desktop");
     expect(r.phase).toBe("P21");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-mcp-adapter-boundary");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p21-remote-desktop");
   });
 
 });

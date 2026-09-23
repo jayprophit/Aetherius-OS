@@ -129,12 +129,12 @@
       "title": "MCP as versioned replaceable Bridge adapter",
       "description": "MCP != Agent Bridge; version negotiation, capability discovery and transport differences behind an adapter boundary under P21.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "owner": "agent-bridge", "phase": "P21", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["no MCP adapter exists yet"],
+      "evidence": ["no MCP adapter exists yet", "Agent-Bridge mcp_adapter.py: negotiation+discovery+transports, no execution surface", "9 adapter tests", "docs/MCP_ADAPTER_BOUNDARY.md", "14 pre-existing env failures verified on clean tree, unrelated"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-parallel-temp-workers",
