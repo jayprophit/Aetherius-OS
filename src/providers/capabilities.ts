@@ -35,6 +35,11 @@ export interface ModelCard {
   /** Lower is cheaper; relative units, documented per registry. */
   costRank: number;
   healthy: boolean;
+  /**
+   * Explicit tokenizer profile reference (REQ-p18-tokenizer-profile).
+   * Absent means UNKNOWN — never inferred from vendor/model names.
+   */
+  tokenizerProfileId?: string;
 }
 
 export interface CapabilityRequest {

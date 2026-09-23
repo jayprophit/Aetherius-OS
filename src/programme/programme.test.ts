@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: hardware proven yields tokenizer profile", () => {
+  it("real registry advances: tokenizer proven yields deliverable contract", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Hardware-profiles COMPLETE is skipped; among priority-2 READY
-    // tasks the earliest phase/id (P18 tokenizer profile) wins.
-    expect(r.selected_task).toBe("REQ-p18-tokenizer-profile");
-    expect(r.phase).toBe("P18");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p18-tokenizer-profile");
+    // Tokenizer-profile COMPLETE is skipped; among priority-2 READY
+    // tasks the earliest phase/id (P19 deliverable contract) wins.
+    expect(r.selected_task).toBe("REQ-p19-deliverable-contract");
+    expect(r.phase).toBe("P19");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-deliverable-contract");
   });
 
 });
