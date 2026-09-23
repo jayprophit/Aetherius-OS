@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Repo-relay COMPLETE leaves nothing executable: reload path agrees.
-    expect(result.selected_task).toBeNull();
+    // Reflex-fabric COMPLETE is skipped: P20 touch sets next.
+    expect(result.selected_task).toBe("REQ-p20-expected-touch-set");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
