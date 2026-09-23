@@ -818,12 +818,12 @@
       "title": "Invention disclosure registry",
       "description": "Invention records (problem, prior approaches, mechanism, effect, evidence, prior art, disclosure date, status) under P16 provenance; research catalogues are not invention records.",
       "source": {"class": "RESEARCH_NOTE", "ref": "programme provenance", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; zero invention records"],
+      "evidence": ["2026-09-23 classification: NEW; zero invention records", "src/programme/inventions.ts disclosure records + validation + immutable registration", "6 invention tests", "docs/invention-disclosure.md", "no legal conclusions; external work stays attributed"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p16-evidence-graph",

@@ -241,15 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: touch sets proven yields invention disclosure", () => {
+  it("real registry advances: disclosure proven yields hardware profiles", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Touch-sets COMPLETE (unblocking the pri-1 predictor) is skipped;
-    // among priority-2 READY tasks the earliest phase (P16 invention
-    // disclosure) wins.
-    expect(r.selected_task).toBe("REQ-p16-invention-disclosure");
-    expect(r.phase).toBe("P16");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p16-invention-disclosure");
+    // Invention-disclosure COMPLETE is skipped; among priority-2 READY
+    // tasks the earliest phase (P18 hardware profiles) wins.
+    expect(r.selected_task).toBe("REQ-p18-hardware-profiles");
+    expect(r.phase).toBe("P18");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p18-hardware-profiles");
   });
 
 });
