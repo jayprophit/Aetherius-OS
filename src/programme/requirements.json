@@ -57,12 +57,12 @@
       "title": "Governed remote-desktop adapter",
       "description": "VNC-class remote desktop reach with authenticated transport, scoped clipboard/file transfer and saved-endpoint registry using vault references.",
       "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/crabfleet (v0.3.1, MIT)", "location": "reference audit 2026-09-22"},
-      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "owner": "agent-bridge", "phase": "P21", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["crabfleet remote-desktop capability record (not a fleet controller)"],
+      "evidence": ["crabfleet remote-desktop capability record (not a fleet controller)", "Agent-Bridge remote_desktop.py: vault-ref endpoints+auth transport+scoped transfer+session lifecycle", "10 remote-desktop tests", "docs/REMOTE_DESKTOP_ADAPTER.md", "live VNC backend deferred (owner runtime work)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p21-sandbox-runners",

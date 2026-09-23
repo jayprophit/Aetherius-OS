@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // MCP-adapter COMPLETE is skipped: P21 remote desktop next.
-    expect(result.selected_task).toBe("REQ-p21-remote-desktop");
+    // Remote-desktop COMPLETE is skipped: P21 webhook triggers next.
+    expect(result.selected_task).toBe("REQ-webhook-triggers");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
