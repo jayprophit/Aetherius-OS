@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: tokenizer proven yields deliverable contract", () => {
+  it("real registry advances: deliverable proven yields event envelope", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Tokenizer-profile COMPLETE is skipped; among priority-2 READY
-    // tasks the earliest phase/id (P19 deliverable contract) wins.
-    expect(r.selected_task).toBe("REQ-p19-deliverable-contract");
+    // Deliverable-contract COMPLETE is skipped; among priority-2 READY
+    // tasks the earliest phase/id (P19 event envelope) wins.
+    expect(r.selected_task).toBe("REQ-p19-event-envelope");
     expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-deliverable-contract");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-event-envelope");
   });
 
 });

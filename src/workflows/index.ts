@@ -12,4 +12,5 @@ export * from "./discovery";
 export * from "./packages";
 export * from "./disclosure";
 export * from "./evidenceGate";
+export * from "./deliverable";
 export * from "./runtime";
