@@ -246,11 +246,11 @@
       "title": "Right cascading sidebar, bottom dock, canvas layout targets",
       "description": "Secondary surfaces dock right (collapsible/cascading/tabbed); terminal/problems/tests/logs bottom; Genesis in right side or maximized canvas. Reference boards inform tokens, not runtime data.",
       "source": {"class": "OWNER_DECISION", "ref": "continuous-build directive 2026-09-22", "location": "owner chat"},
-      "owner": "aetherius-os", "phase": "P23", "status": "PARTIAL",
+      "owner": "aetherius-os", "phase": "P23",       "status": "PROVEN",
       "priority": 3, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["owner directive sections 13-17", "P23-layout core: sidebar/dock/presets/persistence", "23 vitest", "29/29 verify-shell"],
+      "evidence": ["owner directive sections 13-17", "P23-layout core: sidebar/dock/presets/persistence", "P23 presets: specialist workspace presets", "P23 responsive: viewport classes + overlay drawer", "P23 detach: real secondary windows, shared backends", "38 vitest", "40/40 verify-shell", "IDE d45e4f5"],
       "provenance": "owner decision 2026-09-22",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-owner-full-control",

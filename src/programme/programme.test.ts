@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: detexec proven yields P23 layout", () => {
+  it("real registry advances: P23 layout proven yields steward automation", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // P21-detexec COMPLETE with P21-fabric IN_PROGRESS: among remaining
-    // priority-3 READY tasks the earliest phase (P23 layout) wins.
-    expect(r.selected_task).toBe("REQ-p23-layout-system");
-    expect(r.phase).toBe("P23");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p23-layout-system");
+    // P23-layout COMPLETE and P21-fabric IN_PROGRESS: highest-priority
+    // READY remainder (P16 steward automation) wins.
+    expect(r.selected_task).toBe("REQ-p16-steward-automation");
+    expect(r.phase).toBe("P16");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p16-steward-automation");
   });
 
 });

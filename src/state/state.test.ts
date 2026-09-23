@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // P21-detexec COMPLETE: reload path agrees - P23 layout next.
-    expect(result.selected_task).toBe("REQ-p23-layout-system");
+    // P23-layout COMPLETE: reload path agrees - P16 steward automation next.
+    expect(result.selected_task).toBe("REQ-p16-steward-automation");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
