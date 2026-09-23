@@ -241,14 +241,17 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: cloud exec proven yields repo relay", () => {
+  it("real registry reports the checkpoint: nothing executable remains", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Cloud-exec COMPLETE is skipped; among the remaining priority-2
-    // READY tasks the earliest phase/id (P30 repo relay) wins.
-    expect(r.selected_task).toBe("REQ-p30-repo-relay");
-    expect(r.phase).toBe("P30");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p30-repo-relay");
+    // All locally executable requirements are COMPLETE; the remainder is
+    // BLOCKED (credentials), OWNER_GATED (owner decisions), IN_PROGRESS
+    // elsewhere, or DEFERRED. The machine must say so exactly.
+    expect(r.selected_task).toBeNull();
+    expect(r.phase).toBeNull();
+    expect(r.dependencies_satisfied).toBe(false);
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: none");
+    expect(formatSelection(r)).toContain("no executable task:");
   });
 
 });
