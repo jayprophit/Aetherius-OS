@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Invention-disclosure COMPLETE is skipped: P18 hardware profiles next.
-    expect(result.selected_task).toBe("REQ-p18-hardware-profiles");
+    // Benchmark-registries COMPLETE is skipped: P19 evidence gate next.
+    expect(result.selected_task).toBe("REQ-p19-evidence-bound-completion");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

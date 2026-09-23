@@ -23,6 +23,11 @@ const VALID_METRICS = new Set([
   "resource_use",
 ]);
 
+/** Canonical metric vocabulary shared with the evaluation fabric (P19). */
+export function isValidMetric(metric: string): boolean {
+  return VALID_METRICS.has(metric);
+}
+
 export interface BenchmarkRecord {
   provider: string;
   model: string;
