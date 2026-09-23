@@ -165,12 +165,12 @@
       "title": "Runtime visual inspection surface",
       "description": "Visual workflow/worker/tool/event/approval inspection for P23, backed by real P19/P20 state (summarize/inspect contracts already exist).",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "ide", "phase": "P23", "status": "RESEARCH",
+      "owner": "ide", "phase": "P23", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P19 summarize()", "scheduler inspect()"],
+      "evidence": ["P19 summarize()", "scheduler inspect()", "IDE inspection.ts clients + Inspector runtime card (workers/approvals/sessions/events)", "6 inspection + 4 App inspection tests, 48/48 IDE", "42/42 verify-shell", "docs/design/RUNTIME-INSPECTION.md"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-webhook-triggers",

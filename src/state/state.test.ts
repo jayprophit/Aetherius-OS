@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // DOE-mapping COMPLETE is skipped: P23 runtime inspection next.
-    expect(result.selected_task).toBe("REQ-runtime-inspection");
+    // Runtime-inspection COMPLETE is skipped: P26 context layers next.
+    expect(result.selected_task).toBe("REQ-context-layers");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
