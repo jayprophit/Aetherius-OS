@@ -69,12 +69,12 @@
       "title": "Sandboxed remote/container runners with workspace sync",
       "description": "Remote/SSH/container execution with warm workspaces, diff sync, streaming and teardown; isolation labels added beyond the reference trust model (no adversarial-tenant assumption).",
       "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/crabbox (v0.64.0, MIT)", "location": "reference audit 2026-09-22"},
-      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P20", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["crabbox runner/sync capability records + SECURITY.md trust model"],
+      "evidence": ["crabbox runner/sync capability records + SECURITY.md trust model", "src/runners/ lifecycle+sync+honest-sim local runner+unavailable ssh/container", "isolation labels beyond reference trust model", "9 runner tests", "docs/sandbox-runners.md", "real ssh/container backends deferred: no engine/backend (owner runtime work)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p30-repo-relay",

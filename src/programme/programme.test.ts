@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: disclosure proven yields sandbox runners", () => {
+  it("real registry advances: runners proven yields temp workers", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Progressive-disclosure COMPLETE is skipped; among the remaining
-    // priority-2 READY tasks the earliest phase/id (P20 sandbox runners) wins.
-    expect(r.selected_task).toBe("REQ-p21-sandbox-runners");
+    // Sandbox-runners COMPLETE is skipped; among the remaining
+    // priority-2 READY tasks the earliest phase/id (P20 temp workers) wins.
+    expect(r.selected_task).toBe("REQ-parallel-temp-workers");
     expect(r.phase).toBe("P20");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p21-sandbox-runners");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-parallel-temp-workers");
   });
 
 });
