@@ -33,12 +33,12 @@
       "title": "Realtime comms transport with durable event log",
       "description": "WebSocket live delivery backed by a durable event log with reconnect semantics and backlog access control.",
       "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clickclack (v0.5.1, MIT)", "location": "reference audit 2026-09-22"},
-      "owner": "aetherius-os", "phase": "P27", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P27", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["clickclack realtime capability record"],
+      "evidence": ["clickclack realtime capability record", "src/realtime/ durable log+loopback transport+channel access control", "7 realtime tests", "docs/realtime-transport.md", "live WebSocket peer deferred (owner runtime work)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p16-steward-automation",
