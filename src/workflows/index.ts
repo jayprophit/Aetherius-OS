@@ -10,4 +10,5 @@ export * from "./lifecycle";
 export * from "./directives";
 export * from "./discovery";
 export * from "./packages";
+export * from "./disclosure";
 export * from "./runtime";

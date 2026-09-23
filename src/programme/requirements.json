@@ -117,12 +117,12 @@
       "title": "Progressive skill disclosure levels (L0-L3)",
       "description": "Load skill id/title, then capability, then instructions, then scripts/templates on demand. P19 owns the skill system; integrate when P19 scheduling matures.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P19 skill registry exists; disclosure levels not yet modeled"],
+      "evidence": ["P19 skill registry exists; disclosure levels not yet modeled", "src/workflows/disclosure.ts L0-L3 nested disclosure over SkillRegistry + package manifests", "6 disclosure tests", "docs/progressive-disclosure.md"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-mcp-adapter-boundary",

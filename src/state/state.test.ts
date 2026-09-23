@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Skill-packages COMPLETE is skipped: P19 progressive disclosure next.
-    expect(result.selected_task).toBe("REQ-progressive-disclosure");
+    // Progressive-disclosure COMPLETE is skipped: P20 sandbox runners next.
+    expect(result.selected_task).toBe("REQ-p21-sandbox-runners");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

@@ -241,15 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: packages proven yields progressive disclosure", () => {
+  it("real registry advances: disclosure proven yields sandbox runners", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Skill-packages COMPLETE is skipped; among the remaining
-    // priority-2 READY tasks the earliest phase/id (P19 progressive
-    // disclosure) wins.
-    expect(r.selected_task).toBe("REQ-progressive-disclosure");
-    expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-progressive-disclosure");
+    // Progressive-disclosure COMPLETE is skipped; among the remaining
+    // priority-2 READY tasks the earliest phase/id (P20 sandbox runners) wins.
+    expect(r.selected_task).toBe("REQ-p21-sandbox-runners");
+    expect(r.phase).toBe("P20");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p21-sandbox-runners");
   });
 
 });
