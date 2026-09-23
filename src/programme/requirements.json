@@ -542,12 +542,12 @@
       "title": "Pre-execution expected touch-set estimation",
       "description": "Estimate likely files/resources a worker will modify before execution, from skill package manifests, workflow bindings and history; feeds collision prediction and placement.",
       "source": {"class": "RESEARCH_NOTE", "ref": "spine-branch/worker research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P20", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; only declared writes_files + post-hoc diff exist"],
+      "evidence": ["2026-09-23 classification: NEW; only declared writes_files + post-hoc diff exist", "src/workers/touch.ts union estimator with provenance", "5 touch-set tests", "docs/expected-touch-set.md", "dynamic content reported unknown, never guessed"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p20-collision-predictor",
