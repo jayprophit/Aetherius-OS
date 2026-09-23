@@ -241,15 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: steward done yields directive artifact", () => {
+  it("real registry advances: directive proven yields skill discovery", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Steward COMPLETE (like IN_PROGRESS before it) is skipped; among the
-    // remaining priority-2 READY tasks the earliest phase (P19 directive
-    // artifact) wins.
-    expect(r.selected_task).toBe("REQ-directive-artifact");
+    // Directive-artifact COMPLETE is skipped; among the remaining
+    // priority-2 READY tasks the earliest phase/id (P19 skill discovery) wins.
+    expect(r.selected_task).toBe("REQ-p19-skill-discovery");
     expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-directive-artifact");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-skill-discovery");
   });
 
 });

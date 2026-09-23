@@ -201,12 +201,12 @@
       "title": "Directive/SOP planning artifact assessment",
       "description": "Assess whether a Directive (objective/constraints/DoD/recommended skills) belongs as a P19/Genesis planning artifact or is covered by Skill/Workflow contracts; do not build a second workflow engine.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P19 skill/workflow/routine contracts exist"],
+      "evidence": ["P19 skill/workflow/routine contracts exist", "src/workflows/directives.ts assessDirective", "5 directive tests", "docs/directive-assessment.md decision: COVERED, no new artifact, no second engine"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p19-promotion",

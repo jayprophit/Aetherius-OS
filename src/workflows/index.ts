@@ -7,4 +7,5 @@ export * from "./modelInvoke";
 export * from "./bridgeAction";
 export * from "./promotion";
 export * from "./lifecycle";
+export * from "./directives";
 export * from "./runtime";
