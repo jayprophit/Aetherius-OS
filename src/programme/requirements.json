@@ -141,12 +141,12 @@
       "title": "Parallel agents as temporary supervised workers",
       "description": "research parallel/sub-agent patterns map to P20 temporary workers under one Genesis, never permanent personalities.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P20", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P22 worker-separation contract (this unit)"],
+      "evidence": ["P22 worker-separation contract (this unit)", "src/genesis/workers.ts supervised pool: bounds+task binding+terminal retirement+lease expiry", "6 worker tests", "docs/temp-workers.md"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-context-layers",

@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: runners proven yields temp workers", () => {
+  it("real registry advances: temp workers proven yields MCP boundary", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Sandbox-runners COMPLETE is skipped; among the remaining
-    // priority-2 READY tasks the earliest phase/id (P20 temp workers) wins.
-    expect(r.selected_task).toBe("REQ-parallel-temp-workers");
-    expect(r.phase).toBe("P20");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-parallel-temp-workers");
+    // Temp-workers COMPLETE is skipped; among the remaining priority-2
+    // READY tasks the earliest phase/id (P21 MCP boundary) wins.
+    expect(r.selected_task).toBe("REQ-mcp-adapter-boundary");
+    expect(r.phase).toBe("P21");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-mcp-adapter-boundary");
   });
 
 });
