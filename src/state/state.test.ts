@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // P23-layout COMPLETE: reload path agrees - P16 steward automation next.
-    expect(result.selected_task).toBe("REQ-p16-steward-automation");
+    // Steward COMPLETE is skipped like IN_PROGRESS was: P19 directive artifact next.
+    expect(result.selected_task).toBe("REQ-directive-artifact");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

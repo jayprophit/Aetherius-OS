@@ -45,12 +45,12 @@
       "title": "Guarded repository steward automation",
       "description": "Scheduled/event issue-PR review with durable reports, marker comments, maintainer commands and guarded repair; readiness never equals merge authority.",
       "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clawsweeper (v0.3.0, MIT)", "location": "reference audit 2026-09-22"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["clawsweeper review/marker/repair capability records"],
+      "evidence": ["clawsweeper review/marker/repair capability records", "src/steward/ readiness+markers+commands+repair+reports+steward-review executor", "29 steward tests", "257/257 full suite", "tsc clean, vite build clean", "docs/steward.md", "future: GitHub comment projection, command runtime wiring (not registered slices)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p21-remote-desktop",

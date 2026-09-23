@@ -9,6 +9,7 @@ const STEP_KINDS = new Set([
   "subworkflow",
   "model-invoke",
   "bridge-action",
+  "steward-review",
 ]);
 
 function bindingRefs(value: string): string[] {
