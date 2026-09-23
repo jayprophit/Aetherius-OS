@@ -9,12 +9,12 @@
       "title": "Semantic discovery over the skill registry",
       "description": "Embedding/keyword search across registered skills with moderation-aware ranking; registry mechanics stay first-party.",
       "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clawhub (v0.23.3, MIT)", "location": "reference audit 2026-09-22"},
-      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["clawhub vector-search capability record"],
+      "evidence": ["clawhub vector-search capability record", "src/workflows/discovery.ts token-scored keyword retrieval + moderation-aware ranking", "7 discovery tests", "docs/skill-discovery.md", "dense embeddings explicitly deferred: no local embedding runtime (hardware + P18 owner-gate)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p19-skill-packages",

@@ -8,4 +8,5 @@ export * from "./bridgeAction";
 export * from "./promotion";
 export * from "./lifecycle";
 export * from "./directives";
+export * from "./discovery";
 export * from "./runtime";
