@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: registries proven yields evidence gate", () => {
+  it("real registry advances: evidence gate proven yields hardware profiles", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Benchmark-registries COMPLETE is skipped; among priority-2 READY
-    // tasks the evidence-bound gate wins by unblocking continuity.
-    expect(r.selected_task).toBe("REQ-p19-evidence-bound-completion");
-    expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-evidence-bound-completion");
+    // Evidence-gate COMPLETE is skipped; among priority-2 READY tasks
+    // the earliest phase (P18 hardware profiles) wins.
+    expect(r.selected_task).toBe("REQ-p18-hardware-profiles");
+    expect(r.phase).toBe("P18");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p18-hardware-profiles");
   });
 
 });
