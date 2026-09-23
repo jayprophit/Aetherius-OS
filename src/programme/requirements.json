@@ -153,12 +153,12 @@
       "title": "Layered context retrieval policy (L0-L7)",
       "description": "Identity/task/project/skill/memory/file/doc/archive layers loaded selectively; a retrieval policy over existing stores, not seven new databases.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "mat", "phase": "P26", "status": "RESEARCH",
+      "owner": "mat", "phase": "P26", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["MAT connector + Genesis memory exist; policy not yet defined"],
+      "evidence": ["MAT connector + Genesis memory exist; policy not yet defined", "src/context/layers.ts L0-L7 policy over existing stores", "6 context tests", "docs/context-layers.md", "L4 memory UNBOUND via bridge route; secret payloads withheld"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-runtime-inspection",

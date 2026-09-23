@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: inspection proven yields context layers", () => {
+  it("real registry advances: context layers proven yields realtime transport", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Runtime-inspection COMPLETE is skipped; among the remaining
-    // priority-2 READY tasks the earliest phase/id (P26 context layers) wins.
-    expect(r.selected_task).toBe("REQ-context-layers");
-    expect(r.phase).toBe("P26");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-context-layers");
+    // Context-layers COMPLETE is skipped; among the remaining priority-2
+    // READY tasks the earliest phase/id (P27 realtime transport) wins.
+    expect(r.selected_task).toBe("REQ-p27-realtime-transport");
+    expect(r.phase).toBe("P27");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p27-realtime-transport");
   });
 
 });
