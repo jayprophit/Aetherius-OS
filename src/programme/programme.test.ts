@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: deliverable proven yields event envelope", () => {
+  it("real registry advances: envelope proven yields target profile", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Deliverable-contract COMPLETE is skipped; among priority-2 READY
-    // tasks the earliest phase/id (P19 event envelope) wins.
-    expect(r.selected_task).toBe("REQ-p19-event-envelope");
-    expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-event-envelope");
+    // Event-envelope COMPLETE is skipped; among priority-2 READY tasks
+    // the earliest phase/id (P20 execution target profile) wins.
+    expect(r.selected_task).toBe("REQ-p20-execution-target-profile");
+    expect(r.phase).toBe("P20");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-execution-target-profile");
   });
 
 });

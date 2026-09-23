@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Deliverable-contract COMPLETE is skipped: P19 event envelope next.
-    expect(result.selected_task).toBe("REQ-p19-event-envelope");
+    // Event-envelope COMPLETE is skipped: P20 target profile next.
+    expect(result.selected_task).toBe("REQ-p20-execution-target-profile");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
