@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Realtime-transport COMPLETE is skipped: P30 cloud exec next.
-    expect(result.selected_task).toBe("REQ-cloud-persistent-exec");
+    // Cloud-exec COMPLETE is skipped: P30 repo relay next.
+    expect(result.selected_task).toBe("REQ-p30-repo-relay");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

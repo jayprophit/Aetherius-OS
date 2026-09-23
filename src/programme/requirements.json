@@ -189,12 +189,12 @@
       "title": "Cloud persistent execution placement",
       "description": "Always-on/scheduled heavy workloads on VPS/cloud runners under P20/P30 with the same worker bounds (temporary, observable, killable).",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "aetherius-os", "phase": "P30", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P30", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P20 execution fabric planned; no cloud runner exists"],
+      "evidence": ["P20 execution fabric planned; no cloud runner exists", "src/placement/placement.ts PLACE_LOCAL/DEFER_CLOUD/DENY with worker bounds as preconditions", "5 placement tests", "docs/cloud-persistent-exec.md", "cloud provisioning deferred (no backend; owner runtime work)"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-directive-artifact",
