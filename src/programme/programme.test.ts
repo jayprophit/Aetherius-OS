@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: remote desktop proven yields webhook triggers", () => {
+  it("real registry advances: webhooks proven yields DOE mapping", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Remote-desktop COMPLETE is skipped; among the remaining priority-2
-    // READY tasks the earliest phase/id (P21 webhook triggers) wins.
-    expect(r.selected_task).toBe("REQ-webhook-triggers");
-    expect(r.phase).toBe("P21");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-webhook-triggers");
+    // Webhook-triggers COMPLETE is skipped; among the remaining priority-2
+    // READY tasks the earliest phase/id (P22 DOE mapping) wins.
+    expect(r.selected_task).toBe("REQ-doe-mapping");
+    expect(r.phase).toBe("P22");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-doe-mapping");
   });
 
 });

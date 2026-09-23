@@ -177,12 +177,12 @@
       "title": "Webhook and external event trigger sources",
       "description": "External webhook/event ingestion as future P19 trigger sources with trust/signature policy; core trigger contract already supports trusted internal events.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
-      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "owner": "agent-bridge", "phase": "P21", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P19/2 event triggers (internal only)"],
+      "evidence": ["P19/2 event triggers (internal only)", "Agent-Bridge webhook_triggers.py: source allowlist+HMAC+freshness+dedup+allowlisted payloads", "8 webhook tests", "docs/WEBHOOK_TRIGGERS.md", "HTTP listener deferred (owner runtime work)"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-cloud-persistent-exec",

@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Remote-desktop COMPLETE is skipped: P21 webhook triggers next.
-    expect(result.selected_task).toBe("REQ-webhook-triggers");
+    // Webhook-triggers COMPLETE is skipped: P22 DOE mapping next.
+    expect(result.selected_task).toBe("REQ-doe-mapping");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
