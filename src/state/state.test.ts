@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Evidence-gate COMPLETE is skipped: P18 hardware profiles next.
-    expect(result.selected_task).toBe("REQ-p18-hardware-profiles");
+    // Hardware-profiles COMPLETE is skipped: P18 tokenizer profile next.
+    expect(result.selected_task).toBe("REQ-p18-tokenizer-profile");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

@@ -794,12 +794,12 @@
       "title": "Empirical hardware profiles for routing",
       "description": "Measured CPU/GPU/NPU profiles across precisions for P18/P20 routing (not name-pattern heuristics); detection exists, precision-matrix routing does not.",
       "source": {"class": "RESEARCH_NOTE", "ref": "hardware research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P18", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P18", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: LIKELY partial; profiler + heuristic overrides exist"],
+      "evidence": ["2026-09-23 classification: LIKELY partial; profiler + heuristic overrides exist", "src/providers/hardware.ts profiles+registry+precision routing", "src/providers/hardwareProbe.ts bounded CPU probe", "7 hardware tests", "docs/hardware-profiles.md", "measured i7-870 FP32 2.67ms LOCAL_EMPIRICAL; GPU/NPU unmeasured"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p25-supply-chain",
