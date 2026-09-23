@@ -93,12 +93,12 @@
       "title": "DOE agentic-workflow reference mapping (attributed)",
       "description": "Nick Saraev Agentic Workflows (2026): Directive→P19, Orchestration→Genesis/P22, Execution→Bridge/P21+deterministic executors, Host/Governance→Aetherius. External research, not Aetherius IP.",
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - AGENTIC WORKFLOWS: Build & Sell AI Automations (2026)", "location": "owner research handoff"},
-      "owner": "aetherius-os", "phase": "P22", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P22", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["owner directive sections 19-22"],
+      "evidence": ["owner directive sections 19-22", "src/programme/doeMapping.ts canonical mapping + validator", "5 DOE mapping tests", "docs/doe-mapping.md", "no DOE runtime created"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-deterministic-exec-principle",

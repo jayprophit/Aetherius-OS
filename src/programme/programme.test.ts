@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: webhooks proven yields DOE mapping", () => {
+  it("real registry advances: DOE mapping proven yields runtime inspection", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Webhook-triggers COMPLETE is skipped; among the remaining priority-2
-    // READY tasks the earliest phase/id (P22 DOE mapping) wins.
-    expect(r.selected_task).toBe("REQ-doe-mapping");
-    expect(r.phase).toBe("P22");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-doe-mapping");
+    // DOE-mapping COMPLETE is skipped; among the remaining priority-2
+    // READY tasks the earliest phase/id (P23 runtime inspection) wins.
+    expect(r.selected_task).toBe("REQ-runtime-inspection");
+    expect(r.phase).toBe("P23");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-runtime-inspection");
   });
 
 });
