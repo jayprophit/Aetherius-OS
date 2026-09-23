@@ -21,12 +21,12 @@
       "title": "Versioned skill/plugin package format with trust metadata",
       "description": "Publishable skill and plugin packages (code/bundle) carrying family, trust and capability metadata with exact artifact resolution.",
       "source": {"class": "OPEN_SOURCE_REF", "ref": "https://github.com/openclaw/clawhub (v0.23.3, MIT)", "location": "reference audit 2026-09-22"},
-      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["clawhub package-catalog capability record"],
+      "evidence": ["clawhub package-catalog capability record", "src/workflows/packages.ts build/verify/exact-resolve + trust metadata", "6 package tests", "docs/skill-packages.md"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p27-realtime-transport",

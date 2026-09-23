@@ -241,14 +241,15 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: discovery proven yields skill packages", () => {
+  it("real registry advances: packages proven yields progressive disclosure", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Skill-discovery COMPLETE is skipped; among the remaining
-    // priority-2 READY tasks the earliest phase/id (P19 skill packages) wins.
-    expect(r.selected_task).toBe("REQ-p19-skill-packages");
+    // Skill-packages COMPLETE is skipped; among the remaining
+    // priority-2 READY tasks the earliest phase/id (P19 progressive
+    // disclosure) wins.
+    expect(r.selected_task).toBe("REQ-progressive-disclosure");
     expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-skill-packages");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-progressive-disclosure");
   });
 
 });

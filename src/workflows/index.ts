@@ -9,4 +9,5 @@ export * from "./promotion";
 export * from "./lifecycle";
 export * from "./directives";
 export * from "./discovery";
+export * from "./packages";
 export * from "./runtime";
