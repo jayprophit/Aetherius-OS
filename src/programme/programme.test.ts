@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: harness proven yields abstention", () => {
+  it("real registry advances: abstention proven yields claim registry", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Causal-harness COMPLETE is skipped; among priority-1 READY tasks
-    // abstention wins by unblocking selective escalation.
-    expect(r.selected_task).toBe("REQ-p22-reflex-abstention");
-    expect(r.phase).toBe("P22");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p22-reflex-abstention");
+    // Abstention COMPLETE is skipped; among priority-1 READY tasks the
+    // claim registry wins by unblocking the epistemic graph.
+    expect(r.selected_task).toBe("REQ-mat-claim-registry");
+    expect(r.phase).toBe("P26");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-mat-claim-registry");
   });
 
 });
