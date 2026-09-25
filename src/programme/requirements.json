@@ -1262,6 +1262,17 @@
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
       "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p31-release-scope",
+      "title": "Public release scope owner decision",
+      "description": "Owner decision defining the public release scope (IN_RELEASE / OPTIONAL / POST_V1 / SEPARATE_PRODUCT / EXPERIMENTAL per component: core, Genesis, Bridge, IDE, MAT, Universal-Bridge, Poietek, verticals, economy, VM-B). No scope may be inferred by implementation; release gates depend on this decision.",
+      "source": {"class": "RESEARCH_NOTE", "ref": "public release readiness audit", "location": "docs/PUBLIC_RELEASE_READINESS.md 2026-09-25"},
+      "owner": "aetherius-os", "phase": "P31", "status": "RESEARCH",
+      "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": ["owner decision: which products and components ship"],
+      "evidence": ["release audit headline: scope UNDEFINED in programme truth"],
+      "provenance": "public release readiness audit 2026-09-25",
+      "owner_gate": true, "work_state": "OWNER_GATED"
     }
   ]
 }

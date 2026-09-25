@@ -4,6 +4,24 @@ Honest release audit. No percentage, no universal score — explicit
 gates with evidence. Conclusion up front: **NOT YET RELEASE-PROVEN**
 (see gates). This is programme state, not failure.
 
+## 2026-09-25 update (no verdict change)
+
+- Exhaustive legacy reconciliation complete: `registry/
+  legacy-coverage.json` (960 rows, counts sum to 960) + sampled
+  human verification. Verdict unchanged.
+- Human validation pack created: `docs/HUMAN_RELEASE_VALIDATION.md`
+  (offline, platform, IDE UI, accessibility, privacy/telemetry —
+  all remain HUMAN_REQUIRED, none self-passed).
+- Bridge failure disposition created: `Agent-Bridge/docs/
+  BRIDGE_FAILURE_DISPOSITION.md` (14 file-behaviour =
+  environment-specific release-blocking until fixed/scoped; 7
+  Ollama-down = backend-gated lanes, owner scope decision pending).
+- Release-scope owner decision registered:
+  `REQ-p31-release-scope` (OWNER_GATED). Scope remains UNDEFINED
+  until the owner decides.
+- Causal harness + evidence graph completed since the last audit;
+  they are primitives, not end-to-end release proof (§85 holds).
+
 ## 0. Release scope: UNDEFINED (headline finding)
 
 Programme truth defines no release scope: no in-release component
