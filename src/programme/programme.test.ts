@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: worker profiles proven yields speech profile", () => {
+  it("real registry advances: speech proven yields test impact", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Worker-profiles COMPLETE is skipped; among priority-2 READY tasks
-    // the earliest phase/id (P21 speech profile) wins.
-    expect(r.selected_task).toBe("REQ-p21-speech-profile");
+    // Speech-profile COMPLETE is skipped; among priority-2 READY tasks
+    // the earliest phase/id (P21 test impact) wins.
+    expect(r.selected_task).toBe("REQ-p21-test-impact");
     expect(r.phase).toBe("P21");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p21-speech-profile");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p21-test-impact");
   });
 
 });

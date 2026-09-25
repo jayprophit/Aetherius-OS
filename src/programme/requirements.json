@@ -991,12 +991,12 @@
       "title": "Speech backend profile",
       "description": "Replaceable speech backend profile (languages, streaming, offline, privacy, licence, consent) as an additive leaf over the multimodal router reusing consent machinery; backends honestly report NOT_INSTALLED.",
       "source": {"class": "RESEARCH_NOTE", "ref": "speech research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "owner": "agent-bridge", "phase": "P21", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: LIKELY partial; routing+stubs exist, no unified profile"],
+      "evidence": ["classification: LIKELY partial; routing+stubs exist, no unified profile", "Agent-Bridge multimodal/speech_profile.py leaf over router", "11 speech tests", "docs/SPEECH_BACKEND_PROFILE.md", "NOT_INSTALLED honest; no installs/downloads/fabrication"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p29-creative-ref-graph",

@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Worker-profiles COMPLETE is skipped: P21 speech profile next.
-    expect(result.selected_task).toBe("REQ-p21-speech-profile");
+    // Speech-profile COMPLETE is skipped: P21 test impact next.
+    expect(result.selected_task).toBe("REQ-p21-test-impact");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
