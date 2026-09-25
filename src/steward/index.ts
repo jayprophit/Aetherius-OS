@@ -4,4 +4,5 @@ export * from "./markers";
 export * from "./commands";
 export * from "./repair";
 export * from "./reports";
+export * from "./cohorts";
 export * from "./executor";

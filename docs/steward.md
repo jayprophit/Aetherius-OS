@@ -24,6 +24,7 @@ separate, owner-gated bridge action that does not exist here.
 | `commands.ts` | Strict `/steward <verb> <repo>#<kind>-<number>` grammar; explicit allowlist authorization (empty list denies everyone) |
 | `repair.ts` | `guardedRepair`: findings change only on an external policy `allowed` decision; deny leaves state untouched; apply never merges |
 | `reports.ts` | Durable reports over the P17 `FileStateStore` (atomic writes, integrity hashes, optimistic versions, target-mismatch rejection) |
+| `cohorts.ts` | Batch review over change cohorts: reuses stored per-target verdicts, rolls them up advisory-only, plans deterministic batches (`REQ-p16-change-cohort-review`, see `docs/change-cohort-review.md`) |
 | `executor.ts` | Workflow step kind `steward-review`: typed findings in → readiness + durable report out |
 
 ## Scheduling and events

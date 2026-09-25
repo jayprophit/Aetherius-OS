@@ -1135,12 +1135,13 @@
       "title": "Change cohort review batches",
       "description": "Batch review strategy over change cohorts reusing steward readiness verdicts (advisory-only, never grants); per-target reports exist, cohorts do not.",
       "source": {"class": "RESEARCH_NOTE", "ref": "review research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control", "REQ-p16-steward-automation"], "blockers": [],
-      "evidence": ["classification: NEW; zero cohort code"],
+      "evidence": ["classification: NEW; zero cohort code", "selected by deterministic selector 2026-09-26", "src/steward/cohorts.ts: cohortStateId, validateCohort, planCohortBatches, summarizeCohort, CohortReviewStore (kind steward.cohort, provenance p16-change-cohort-review)", "19 cohort tests: verdict rollup, unknown-not-ready, blocking-outranks-unknown, stored verdict reused not re-derived, deterministic triage batches, validation, durable round-trip, tamper detection, authority invariants", "docs/change-cohort-review.md", "reuses StewardReport.readiness verbatim; no second verdict vocabulary; every rollup carries merge_authority false and no grant/merge/approve/authorize surface"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "Cohort members are ReviewTargets; a member with no stored report is unknown, never assumed ready. Change fingerprinting stays with REQ-p20-change-impact.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p19-independent-review-gate",
