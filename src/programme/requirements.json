@@ -578,12 +578,12 @@
       "title": "Worker profile registry",
       "description": "Versioned worker profiles (role, required capabilities, model requirements, skills, tools, grants, touch set, budget, workspace, evidence contract, termination) as spawn templates for the P20 pool; templates only, never permanent identities.",
       "source": {"class": "RESEARCH_NOTE", "ref": "AI Employees reconciliation", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P20", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; WorkerInfo/TempWorker/capability contracts are thin fragments"],
+      "evidence": ["2026-09-23 classification: NEW; WorkerInfo/TempWorker/capability contracts are thin fragments", "src/workers/profiles.ts versioned templates + registry + spawn projection", "10 profile tests", "docs/worker-profiles.md", "templates only; pool still spawns, P25 still authorizes"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p21-test-impact",
