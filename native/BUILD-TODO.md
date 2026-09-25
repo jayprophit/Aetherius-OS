@@ -1,5 +1,9 @@
 # Aetherius Full Build — 2026-09-21
 
+## MASTER PROGRAMME (P0–P31, preserved 2026-09-21 — do NOT truncate to P0–P15)
+P0 recovery → P1 baselines → P2 contracts → P3 host/runtime+RB → P4 organism/cognition → P5 bridge integration → P6 MAT → P7 IDE loopback → P8 UB/Poietek → P9 VM-B → P10 shell/services → P11 native OS → P12 apps/search → P13 quality → P14 E2E → P15 provenance/bench → P16–P31 RESERVED EXISTING CANONICAL PHASES REQUIRING SOURCE RECOVERY (do not invent; recover from BUILD-TODO.md/docs/git-history/handoffs). Recovery is a bounded doc unit; it does not preempt engineering.
+### P16-P31-RECOVERY — PENDING (low): search BUILD-TODO.md, docs, .git history, milestones, handoffs, READMEs for exact P16..P31 names/requirements; record registry without renumbering.
+
 ## CONTINUOUS BUILD STATE (HARD LOOP CONTROLLER)
 CONTINUOUS_BUILD_ACTIVE = YES
 OVERALL_BUILD_COMPLETE = NO
@@ -155,3 +159,11 @@ Status vocabulary: EXISTS / PARTIAL / MISSING / DUPLICATE / LEGACY / CONFLICTING
 
 ### BLOCKERS
 - None currently blocking main build. Test execution on UEFI requires separate test runner.
+
+### REQ-p16-capability-graph — DONE 2026-09-26 (read-only capability view)
+- `src/programme/capabilityGraph.ts`: `CapabilityView` (deterministic queries list/byId/byOwner/byRequirement/byAdapter/byTarget/byGrant/withEvidence/withoutEvidence), `validateCapabilityNode`, `lintView`, `composeCapabilityView`. Deep-copies on construct and on every read; validates all nodes; rejects duplicate capability ids.
+- A VIEW, not a second registry and not a second execution fabric: no canonical capability records, no minted ids (`skill:<id>@<version>`, `app:<id>:<capability>`, `target:<id>`, `hardware:<id>`), no mutate/authorize/execute/install/provision/merge/delete/update surface. Authorization stays P25; execution stays REQ-desktop-capability-fabric, whose data is never read or written.
+- Latency is measured evidence only (`latencyMs` + required `latencySource`); absent stays absent. Unrecognised `risk_class` becomes `unknown`, never `low`. `lintView` reports only dimensions supplied as known — unchecked is not missing, and nothing is dropped or auto-filled.
+- SELF-CORRECTION: the targeted capability-graph test was reported failing 6 consecutive runs with "expected ['skill:review@1.0.0'] to deeply equal Array(2)". Cache-removal/`--force-rerun` hypotheses were WRONG — the vitest cache was never the cause. Actual root cause: the test fixture's second node overrode only `capabilityId`/`owner`, so it inherited every default ref array and matched all five dimension queries. Fixed by giving the app node its own refs and no evidence; 6/6 pass.
+- Gates: `vitest run src/programme/capabilityGraph.test.ts` 6/6; full `npm test` 442/442 (47 files); `npm run typecheck` clean; `npm run build` clean (46 modules); `npm run registry:validate` 73/73. Lint gate NOT_APPLICABLE (package.json defines no lint script or config — absence, not a pass).
+- Registry: REQ-p16-capability-graph RESEARCH -> PROVEN, work_state READY -> COMPLETE. Selector retargeted in `src/programme/programme.test.ts` and `src/state/state.test.ts`; NEXT_EXECUTABLE_TODO = REQ-p16-change-cohort-review. Push remains owner-gated; not pushed.

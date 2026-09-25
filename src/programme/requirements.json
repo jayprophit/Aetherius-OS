@@ -854,13 +854,13 @@
       "title": "Unified capability graph view",
       "description": "Read-only cross-reference view over capabilities (owner, schema, risk, grants, adapters, targets, verification, requirements, privacy, latency, evidence, benchmark, provenance); a view, never a second execution fabric — REQ-desktop-capability-fabric owns execution and must not be touched.",
       "source": {"class": "RESEARCH_NOTE", "ref": "capability research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW view; registries exist, no join"],
+      "evidence": ["2026-09-23 classification: NEW view; registries exist, no join", "selected by deterministic selector 2026-09-25", "src/programme/capabilityGraph.ts read-only CapabilityView + validateCapabilityNode + lintView + composeCapabilityView", "6 capability-graph tests: query discrimination, malformed/duplicate rejection, no mutation/authorize/execute surface, stale-ref reporting, registry composition, unknown risk preserved", "docs/capability-graph.md", "no canonical capability records and no minted ids by construction; REQ-desktop-capability-fabric data never read or written"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "Read-only view. Do not touch REQ-desktop-capability-fabric (IN_PROGRESS elsewhere).",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p25-reward-treasury",
