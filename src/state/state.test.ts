@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Event-envelope COMPLETE is skipped: P20 target profile next.
-    expect(result.selected_task).toBe("REQ-p20-execution-target-profile");
+    // Target-profile COMPLETE is skipped: P20 worker profiles next.
+    expect(result.selected_task).toBe("REQ-p20-worker-profiles");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
