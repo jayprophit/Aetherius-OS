@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: world audit proven yields token budget", () => {
+  it("real registry advances: token budget proven yields evidence graph", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // World-state-audit COMPLETE is skipped; among priority-2 READY
-    // tasks the earliest phase/id (P26 token budget) wins.
-    expect(r.selected_task).toBe("REQ-p26-token-context-budget");
-    expect(r.phase).toBe("P26");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p26-token-context-budget");
+    // Token-budget COMPLETE is skipped; among priority-1 READY tasks
+    // the evidence graph wins by unblocking verification-continuity.
+    expect(r.selected_task).toBe("REQ-p16-evidence-graph");
+    expect(r.phase).toBe("P16");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p16-evidence-graph");
   });
 
 });
