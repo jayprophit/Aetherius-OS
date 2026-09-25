@@ -590,12 +590,12 @@
       "title": "Test-impact prediction",
       "description": "Changed-files to dependency-graph to historical-failures to fast relevant test set, with honest RUN/SKIPPED_BY_PREDICTION states; skipped never reported as passed.",
       "source": {"class": "RESEARCH_NOTE", "ref": "test selection research", "location": "research addendum 2026-09-23"},
-      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "owner": "agent-bridge", "phase": "P21", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; only oracle quality verdicts exist"],
+      "evidence": ["2026-09-23 classification: NEW; only oracle quality verdicts exist", "Agent-Bridge test_impact.py plan composer over testmap/history/memory", "12 impact tests", "docs/TEST_IMPACT.md", "skipped never passed; plan separate from execution"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p20-clean-room",

@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: speech proven yields test impact", () => {
+  it("real registry advances: test impact proven yields world-state audit", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Speech-profile COMPLETE is skipped; among priority-2 READY tasks
-    // the earliest phase/id (P21 test impact) wins.
-    expect(r.selected_task).toBe("REQ-p21-test-impact");
+    // Test-impact COMPLETE is skipped; among priority-2 READY tasks the
+    // earliest phase/id (P21 world-state audit) wins.
+    expect(r.selected_task).toBe("REQ-p21-world-state-audit");
     expect(r.phase).toBe("P21");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p21-test-impact");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p21-world-state-audit");
   });
 
 });
