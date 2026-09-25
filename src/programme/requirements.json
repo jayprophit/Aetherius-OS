@@ -1202,6 +1202,66 @@
       "reuse": "STUDY_ONLY",
       "notes": "Must extend fabric/harness; respect sealed-vault no-train and contamination partitions.",
       "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p31-release-packaging",
+      "title": "Public release packaging and update pipeline",
+      "description": "Public installer/packaging with first-run setup, update/migration/rollback and uninstall for the defined release scope; developer checkout is not an installer. SBOM/signing compose with supply-chain attestation, not duplicated.",
+      "source": {"class": "RESEARCH_NOTE", "ref": "public release readiness audit", "location": "docs/PUBLIC_RELEASE_READINESS.md 2026-09-25"},
+      "owner": "aetherius-os", "phase": "P31", "status": "RESEARCH",
+      "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["release audit: no installer, no update path, versions 0.0.0/name-tbd"],
+      "provenance": "public release readiness audit 2026-09-25",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p20-toolchain-registry",
+      "title": "Toolchain inventory registry",
+      "description": "Versioned inventory of compilers, interpreters, SDKs, package managers, build systems and language runtimes with versions, executable paths, availability and provenance; generic tool capability refs do not satisfy this.",
+      "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (toolchain registry)", "location": "legacy coverage audit 2026-09-25"},
+      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p20-language-graph",
+      "title": "Mixed-language project graph",
+      "description": "Whole-project dependency graph across C/C++/Rust/Python/JS-TS/shell/build-files/manifests; distinct from the Python-only test-impact import graph and the programme system graph.",
+      "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (mixed-language project graph)", "location": "legacy coverage audit 2026-09-25"},
+      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p27-network-hierarchy",
+      "title": "Parent/Child/Grandchild network model",
+      "description": "Aetherius OS network hierarchy (isolated Parent authority, distributed Child layer, protocols, grants/inheritance, revocation, identity linkage); belongs to OS/network, never to Genesis identity.",
+      "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (Parent/Child/Grandchild)", "location": "legacy coverage audit 2026-09-25"},
+      "owner": "aetherius-os", "phase": "P27", "status": "RESEARCH",
+      "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
+      "reuse": "STUDY_ONLY",
+      "notes": "OS network model only. Must never be built as Genesis identities (REQ-genesis-identity-rule).",
+      "owner_gate": false, "work_state": "READY"
+    },
+    {
+      "id": "REQ-p24-service-orchestrator",
+      "title": "OS service lifecycle orchestration",
+      "description": "Service install/configure/start/stop/restart/health/dependency-ordering/recovery/registration lifecycle; P19 workflow is task orchestration, not OS service orchestration.",
+      "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (service orchestrator)", "location": "legacy coverage audit 2026-09-25"},
+      "owner": "aetherius-os", "phase": "P24", "status": "RESEARCH",
+      "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
+      "reuse": "STUDY_ONLY",
+      "owner_gate": false, "work_state": "READY"
     }
   ]
 }
