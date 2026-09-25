@@ -1171,12 +1171,12 @@
       "title": "Repository autonomy readiness dimensions",
       "description": "Machine-verifiable autonomy-readiness signals (clean build, lint, typecheck, test discovery, repro env, sandbox, docs freshness, observability, secret/dep scans, rollback/recovery evidence) as dimensions separate from five-star maturity and steward PR-readiness; never a universal score.",
       "source": {"class": "RESEARCH_NOTE", "ref": "factory readiness research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; zero readiness code"],
-      "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
+      "evidence": ["classification: NEW; zero readiness code", "src/programme/readiness.ts 14 dimensions + evidence-bound PASS", "6 readiness tests", "docs/autonomy-readiness.md", "no score/percentage/stars by construction"],
+      "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p17-verification-continuity",
