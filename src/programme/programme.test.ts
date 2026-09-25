@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: abstention proven yields claim registry", () => {
+  it("real registry advances: claim registry proven yields autonomy readiness", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Abstention COMPLETE is skipped; among priority-1 READY tasks the
-    // claim registry wins by unblocking the epistemic graph.
-    expect(r.selected_task).toBe("REQ-mat-claim-registry");
-    expect(r.phase).toBe("P26");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-mat-claim-registry");
+    // Claim-registry COMPLETE is skipped; among priority-1 READY tasks
+    // the earliest phase (P16 autonomy readiness) wins.
+    expect(r.selected_task).toBe("REQ-p16-autonomy-readiness");
+    expect(r.phase).toBe("P16");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p16-autonomy-readiness");
   });
 
 });

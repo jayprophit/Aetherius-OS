@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Abstention COMPLETE is skipped: P26 claim registry next.
-    expect(result.selected_task).toBe("REQ-mat-claim-registry");
+    // Claim-registry COMPLETE is skipped: P16 autonomy readiness next.
+    expect(result.selected_task).toBe("REQ-p16-autonomy-readiness");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
