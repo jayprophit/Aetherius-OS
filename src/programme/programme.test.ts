@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: evidence graph proven yields causal harness", () => {
+  it("real registry advances: harness proven yields abstention", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Evidence-graph COMPLETE is skipped; among priority-1 READY tasks
-    // the causal harness wins by unblocking e2e-completion.
-    expect(r.selected_task).toBe("REQ-p19-causal-harness");
-    expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-causal-harness");
+    // Causal-harness COMPLETE is skipped; among priority-1 READY tasks
+    // abstention wins by unblocking selective escalation.
+    expect(r.selected_task).toBe("REQ-p22-reflex-abstention");
+    expect(r.phase).toBe("P22");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p22-reflex-abstention");
   });
 
 });
