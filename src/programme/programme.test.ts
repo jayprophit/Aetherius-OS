@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: token budget proven yields evidence graph", () => {
+  it("real registry advances: evidence graph proven yields causal harness", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Token-budget COMPLETE is skipped; among priority-1 READY tasks
-    // the evidence graph wins by unblocking verification-continuity.
-    expect(r.selected_task).toBe("REQ-p16-evidence-graph");
-    expect(r.phase).toBe("P16");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p16-evidence-graph");
+    // Evidence-graph COMPLETE is skipped; among priority-1 READY tasks
+    // the causal harness wins by unblocking e2e-completion.
+    expect(r.selected_task).toBe("REQ-p19-causal-harness");
+    expect(r.phase).toBe("P19");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-causal-harness");
   });
 
 });

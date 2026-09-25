@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Token-budget COMPLETE is skipped: P16 evidence graph next.
-    expect(result.selected_task).toBe("REQ-p16-evidence-graph");
+    // Evidence-graph COMPLETE is skipped: P19 causal harness next.
+    expect(result.selected_task).toBe("REQ-p19-causal-harness");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
