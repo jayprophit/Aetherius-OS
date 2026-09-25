@@ -614,12 +614,12 @@
       "title": "Full world-state audit on execution",
       "description": "Generalize detexec read-back verification into post-op world audit: correct object/value changed, wrong objects untouched, policy satisfied — independent of agent claims.",
       "source": {"class": "RESEARCH_NOTE", "ref": "verification research", "location": "research addendum 2026-09-23"},
-      "owner": "agent-bridge", "phase": "P21", "status": "RESEARCH",
+      "owner": "agent-bridge", "phase": "P21", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control", "REQ-deterministic-exec-principle"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW gap; per-op VERIFICATION_FAILED exists, sibling/policy audit missing"],
+      "evidence": ["2026-09-23 classification: NEW gap; per-op VERIFICATION_FAILED exists, sibling/policy audit missing", "Agent-Bridge world_audit.py expectations+invariants+prohibited+policy audit", "16 audit tests", "docs/WORLD_STATE_AUDIT.md", "detexec untouched, suites green"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p26-context-compiler",

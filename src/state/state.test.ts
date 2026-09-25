@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Test-impact COMPLETE is skipped: P21 world-state audit next.
-    expect(result.selected_task).toBe("REQ-p21-world-state-audit");
+    // World-state-audit COMPLETE is skipped: P26 token budget next.
+    expect(result.selected_task).toBe("REQ-p26-token-context-budget");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
