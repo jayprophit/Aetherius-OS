@@ -1,4 +1,9 @@
-# Legacy Prompt Coverage Ledger (2026-09-25)
+# Legacy Prompt Coverage Ledger (2026-09-25, EXHAUSTIVE)
+
+Read-only reconciliation of older programme directives against the
+current programme. Prior sampled audit (20 rows) is superseded by the
+machine ledger below — sampled wording elsewhere in this document is
+historical context only, not coverage proof.
 
 Read-only reconciliation of older programme directives against the
 current programme (101 requirements at audit time). Four parallel
@@ -13,7 +18,34 @@ IN_PROGRESS_ELSEWHERE). `NO CURRENT COVERAGE FOUND` is stated
 explicitly where true. Proposed action is NONE unless noted —
 genuine gaps route through P16 classification only.
 
-## A. Master requirements 1–1040
+## 0. Exhaustive machine reconciliation (2026-09-25)
+
+- Source: `Agent-Bridge/true_gap_index.json` — 960 real records read.
+- Absent range 801–880 confirmed (80 ids, present in `missing`, no
+  records manufactured).
+- Ledger: `registry/legacy-coverage.json` — 960 rows classified,
+  0 unclassified, counts sum to 960 (asserted by the audit script).
+- Method: deterministic keyword scoring vs the 106-requirement
+  registry + code/test/doc filename evidence; 20 previously
+  human-audited rows applied as verbatim overrides; EXACT never
+  assigned by automation (fuzzy similarity cannot become EXACT);
+  single-token overlaps claim no requirement links; NEW rows carry
+  action NONE (P16 review only if later confirmed).
+- Quality gate: sampled NEW bucket (10 rows: genuinely unmapped
+  hardware/domain topics), RELATED bucket (8 rows: sensible adjacent
+  links incl. DTN→degraded-link, contamination→contamination,
+  agent-harness→causal-harness), LIKELY row (long-horizon memory →
+  orchestrator/context/graph, PARTIAL pending human verification).
+- Classification totals: LIKELY 1, NEW 278, RELATED 75,
+  RESEARCH_ONLY 606 (= 960).
+- Implementation states: BACKLOG 344, RESEARCH 606, PARTIAL 4,
+  SPECIFICATION 4, VERIFIED_IMPLEMENTED 1, IN_PROGRESS_ELSEWHERE 1
+  (= 960).
+- FULL LEGACY RECONCILIATION: COMPLETE as machine ledger (SAMPLE
+  AUDIT SUPERSEDED). Human verification of LIKELY/PARTIAL rows
+  remains open work, explicitly not claimed.
+
+## A. Master requirements 1–1040 (sampled context, see §0 for ledger)
 
 - Historical `.txt` source: SOURCE_NOT_FOUND as a file (census scripts
   read it via `AGENT_BRIDGE_REQUIREMENTS_SRC` env). Closest directive
