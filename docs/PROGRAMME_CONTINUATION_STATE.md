@@ -18,20 +18,21 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p19-online-eval` (P19, priority 1, READY, owner `aetherius-os`).
+`REQ-p19-sealed-vault` (P19, priority 1, READY, owner `aetherius-os`) — the last remaining P19 priority-1 READY item.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
 ## Last completed requirement
 
-`REQ-p19-independent-review-gate` — Independent model review gate.
+`REQ-p19-online-eval` — Online trace-correlation evaluation.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
-| _(pending)_ | REQ-p19-independent-review-gate |
+| _(pending)_ | REQ-p19-online-eval |
+| `55d6343` | REQ-p19-independent-review-gate |
 | `ee65b82` | REQ-p19-e2e-completion |
 | `2086622` | REQ-p19-context-position |
 | `15f0d43` | REQ-p19-benchmark-freshness |
@@ -46,8 +47,7 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p19-online-eval` (selected now)
-2. `REQ-p19-sealed-vault` (READY, deferred behind id order this run)
+1. `REQ-p19-sealed-vault` (selected now; last P19 priority-1 READY item)
 
 `REQ-p19-independent-review-gate` scope, already surveyed: the registered
 description says *"gates exist, model-gate and composition do not; emits
@@ -75,8 +75,8 @@ claim clean-room proof, since `REQ-p20-clean-room` is BLOCKED. Reusable:
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 742/742, 57 files |
-| Related (programme, steward, workflows, eval) | 490/490 |
+| Full test suite | 767/767, 58 files |
+| Related (eval, events, programme, state) | 369/369 |
 | Registry validation | 167/167, 11 files |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -135,7 +135,7 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
 
 - P16: 11 COMPLETE, 1 OWNER_GATED, 0 executable
 - P18: 5 COMPLETE, 1 BLOCKED, 0 executable
-- P19: 18 COMPLETE, 2 READY (`online-eval`, `sealed-vault`)
+- P19: 19 COMPLETE, 1 READY (`sealed-vault`)
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
