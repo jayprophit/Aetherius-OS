@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: spine branch proven yields the P20 toolchain registry", () => {
+  it("real registry advances: toolchain registry proven yields the P22 project orchestrator", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Spine-branch COMPLETE is skipped; P20 still has eligible work.
-    expect(r.selected_task).toBe("REQ-p20-toolchain-registry");
-    expect(r.phase).toBe("P20");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-toolchain-registry");
+    // Toolchain-registry COMPLETE is skipped; P22 project orchestrator is next.
+    expect(r.selected_task).toBe("REQ-p22-project-orchestrator");
+    expect(r.phase).toBe("P22");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p22-project-orchestrator");
   });
 
 });

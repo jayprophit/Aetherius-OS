@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Spine-branch COMPLETE is skipped; P20 toolchain registry next.
-    expect(result.selected_task).toBe("REQ-p20-toolchain-registry");
+    // Toolchain-registry COMPLETE is skipped; P22 project orchestrator next.
+    expect(result.selected_task).toBe("REQ-p22-project-orchestrator");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

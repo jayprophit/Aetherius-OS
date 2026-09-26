@@ -1233,12 +1233,13 @@
       "title": "Toolchain inventory registry",
       "description": "Versioned inventory of compilers, interpreters, SDKs, package managers, build systems and language runtimes with versions, executable paths, availability and provenance; generic tool capability refs do not satisfy this.",
       "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (toolchain registry)", "location": "legacy coverage audit 2026-09-25"},
-      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P20", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant", "selected by deterministic selector 2026-09-26 after REQ-p20-spine-branch closed in 8ce72d1", "src/toolchain/registry.ts + 40 tests in src/toolchain/registry.test.ts: versioned inventory over the six registered kinds (COMPILER, INTERPRETER, SDK, PACKAGE_MANAGER, BUILD_SYSTEM, RUNTIME) with versions, executable paths, availability and provenance; see docs/toolchain-registry.md and the BUILD-TODO entry for full evidence and the standing boundaries"],
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "Versioned inventory of the six registered tool kinds with versions, executable paths, availability and provenance. GENERIC TOOL CAPABILITY REF != TOOLCHAIN INVENTORY; CAPABILITY FLAG != VERSION; CAPABILITY FLAG != EXECUTABLE PATH. AVAILABILITY IS DERIVED NEVER ASSERTED - a caller supplying availability is rejected; AVAILABLE requires a REPORTED version and a REPORTED VERIFIED path. UNKNOWN VERSION != AVAILABLE TOOL; CLAIMED PATH != VERIFIED PATH; NEVER INVENTED VERSION, NEVER latest. NOT_FOUND != RECORDED_BUT_UNKNOWN != UNAVAILABLE. VERSION_UNKNOWN, PATH_UNKNOWN, PATH_UNVERIFIED and NOT_INSTALLED stay distinct because they call for different responses. SIMILARITY != RESOLUTION; NAME != IDENTITY; TWO CANDIDATES != PICK ONE. INVENTORY != EXECUTION AUTHORITY; TOOL PRESENT != AUTHORIZED TO EXECUTE; INVENTORY != PROVISIONING. Not an installer, downloader or resolver: nothing fetches, installs, shells out or repairs. REGISTRY != DURABLE STORE; in-memory and caller-constructed, reading no clock, filesystem or network. src/providers/capabilities.ts is the generic ref that does NOT satisfy this and was not modified.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p20-language-graph",
