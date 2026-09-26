@@ -137,8 +137,9 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Superposition-lab COMPLETE is skipped: P18 training compute next.
-    expect(result.selected_task).toBe("REQ-p18-training-compute");
+    // Training-compute-lifecycle COMPLETE is skipped; P18 has no executable
+    // work left, so P19 benchmark contamination is next.
+    expect(result.selected_task).toBe("REQ-p19-benchmark-contamination");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

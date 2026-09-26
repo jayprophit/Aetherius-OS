@@ -967,12 +967,13 @@
       "title": "Training compute lifecycle profile",
       "description": "Model lifecycle metadata (pretraining/post-training stage, compute class, attention/position-encoding tags) as advisory routing evidence; host inference signals are a different domain.",
       "source": {"class": "RESEARCH_NOTE", "ref": "model lifecycle research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P18", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P18", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; no lifecycle metadata in code"],
+      "evidence": ["classification: NEW; no lifecycle metadata in code", "selected by deterministic selector 2026-09-26", "registered form is a LIFECYCLE METADATA PROFILE (pretraining/post-training stage, compute class, attention tags, position-encoding tags) used as advisory routing evidence; it is NOT a training-run record", "no numeric measurement fields exist BY CONSTRUCTION: the requirement asks for no measured training compute, and this repository has no energy sensor, no allocator/RSS probe and no training telemetry, so FLOPs/wall-time/memory/energy/cost/utilization/token counts are absent rather than zero-filled", "src/providers/trainingLifecycle.ts: TRAINING_STAGES (exactly the two terms the description names), CLAIM_SOURCES reusing the canonical BenchmarkSource vocabulary, LifecycleClaim, validateProfile, TrainingLifecycleRegistry (profileId@version, x.y.z, duplicate refused, deep copy), advisorySignals, canonicalProfile, trainingProfileIdFor", "30 tests: validation, the two-term stage vocabulary with no invented finer stages, open compute-class claim, attribution pairing (value requires claim, claim requires value, UNKNOWN-sourced claim rejected), absent dimension stays unknown, identity cannot masquerade as model/run/hardware/proposal/pack id, versioned idempotence-by-duplicate-refusal, deep copy on write and read, canonical ordering and serialization, advisory-only signals with explicit unclaimed list, no training runtime surface, ModelCard not modified, no inference from model name, no host-inference-signal fields", "docs/training-compute-lifecycle.md", "advisory only: routeCapabilityRequest and routeWithLiveState were NOT modified and nothing in the routing path calls advisorySignals; host inference signals (hardware.ts, runners/targets.ts, placement) are a different domain per the requirement and are not referenced", "no primary source document exists: source is a RESEARCH_NOTE ref only"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "Describes lifecycle metadata; it does not train, schedule, provision or measure. MORE TRAINING COMPUTE != BETTER MODEL. ModelCard remains the sole owner of model metadata; this profile references the model and the model does not reference the profile.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p18-superposition-lab",

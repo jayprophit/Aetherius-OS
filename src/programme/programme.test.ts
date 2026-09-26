@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: superposition lab proven yields P18 training compute", () => {
+  it("real registry advances: training compute lifecycle proven yields P19 benchmark contamination", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Superposition-lab COMPLETE is skipped; P18 still has eligible work and
-    // outranks every later phase.
-    expect(r.selected_task).toBe("REQ-p18-training-compute");
-    expect(r.phase).toBe("P18");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p18-training-compute");
+    // Training-compute-lifecycle COMPLETE is skipped, and P18 has no further
+    // executable work, so P19 becomes the earliest eligible phase.
+    expect(r.selected_task).toBe("REQ-p19-benchmark-contamination");
+    expect(r.phase).toBe("P19");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-benchmark-contamination");
   });
 
 });
