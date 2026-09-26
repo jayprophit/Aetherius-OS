@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Change-cohort-review COMPLETE is skipped: P16 governance proposals next.
-    expect(result.selected_task).toBe("REQ-p16-governance-proposals");
+    // Governance-proposals COMPLETE is skipped: P16 review context pack next.
+    expect(result.selected_task).toBe("REQ-p16-review-context-pack");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

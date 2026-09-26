@@ -905,12 +905,13 @@
       "title": "Governance proposal fabric",
       "description": "Proposal to review to vote to funding to milestones to evidence to staged release; skill promotion lifecycle is the template, not the reuse.",
       "source": {"class": "RESEARCH_NOTE", "ref": "project data integration", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; R&D pots deferred separately"],
+      "evidence": ["2026-09-23 classification: NEW; R&D pots deferred separately", "selected by deterministic selector 2026-09-26", "src/programme/proposals.ts: proposalIdFor, proposalVersionRef, proposalStateId, buildProposal, validateProposal, registerProposal (registered/identical/conflict/rejected), proposalDecision, 8 deterministic queries, supersessionChain, ProposalStore (kind governance.proposal)", "32 proposal tests: validation, authority-field rejection, raw-secret rejection, decision required/forbidden per stage, temporal conflict, idempotence, conflict, amendment+retained history, backwards-version rejection, input immutability, honest undecided, deterministic order, deep-copied reads, durable round-trip, tamper detection, no-side-effect/owner-gate invariants", "docs/governance-proposals.md", "stage vocabulary derived from the requirement's own chain (PROPOSED/REVIEW/VOTE + WITHDRAWN/SUPERSEDED); no APPROVED/AUTHORIZED/APPLIED/PROMOTED state exists; requirement's later links (FUNDING/MILESTONES/EVIDENCE/STAGED_RELEASE) are not implemented and not reachable", "promotion lifecycle used as template only, not reused; no voting/tally/quorum/delegation/staking surface; P25 authorization and owner gates untouched"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "Proposal record + query capability only. A proposal is a requested change, never a decision, authorization or execution. P31 release scope remains OWNER_GATED and is not decided here; P25 reward/treasury remains DEFERRED.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p17-service-primitives",

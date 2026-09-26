@@ -241,14 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: cohort review proven yields governance proposals", () => {
+  it("real registry advances: governance proposals proven yields review context pack", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Change-cohort-review COMPLETE is skipped; among priority-1 READY tasks
-    // the earliest phase/id (P16 governance proposals) wins.
-    expect(r.selected_task).toBe("REQ-p16-governance-proposals");
+    // Governance-proposals COMPLETE is skipped; among priority-1 READY tasks
+    // the earliest phase/id (P16 review context pack) wins.
+    expect(r.selected_task).toBe("REQ-p16-review-context-pack");
     expect(r.phase).toBe("P16");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p16-governance-proposals");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p16-review-context-pack");
   });
 
 });
