@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: context position proven yields P19 e2e completion", () => {
+  it("real registry advances: e2e completion proven yields P19 independent review gate", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Context-position COMPLETE is skipped; P19 still has eligible work.
-    expect(r.selected_task).toBe("REQ-p19-e2e-completion");
+    // E2E-completion COMPLETE is skipped; P19 still has eligible work.
+    expect(r.selected_task).toBe("REQ-p19-independent-review-gate");
     expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-e2e-completion");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-independent-review-gate");
   });
 
 });
