@@ -18,20 +18,33 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p20-execution-checkpoints` (P20, priority 1, READY, owner `aetherius-os`).
+`REQ-p20-language-graph` (P20, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
+Note: after `REQ-p20-execution-checkpoints` closed, the selector returned
+`REQ-p20-language-graph`. That is the selector's call, not a checkpoint
+prediction — `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the exact
+registered requirement before implementing it; do not assume it is the
+"source parser" scope that was explicitly ruled out for change impact.
+
 ## Last completed requirement
 
-`REQ-p20-collision-predictor` — Worker collision prediction. **P19 is 20/20 COMPLETE; the programme is in P20.**
+`REQ-p20-execution-checkpoints` — Execution checkpoint envelope, commit
+`0161a86`. **P19 is 20/20 COMPLETE; the programme is in P20.**
+
+Verified starting position for that unit, now closed: `git grep -i checkpoint --
+src/` returned no checkpoint code, so the registered "fragments tested, join
+missing" described the existing per-system P17 typed envelopes and only the
+cross-fragment join was absent.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
-| _(pending)_ | REQ-p20-collision-predictor |
+| `0161a86` | REQ-p20-execution-checkpoints |
+| `82ab12c` | REQ-p20-collision-predictor |
 | `0d18468` | REQ-p20-change-impact |
 | `0a3776c` | REQ-p19-sealed-vault |
 | `aeecdcb` | REQ-p19-online-eval |
@@ -50,7 +63,13 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p20-execution-checkpoints` (selected now; P20 still has eligible work). Read its exact registered requirement before implementing.
+1. `REQ-p20-language-graph` (selected now). Read its exact registered
+   requirement, owner and dependencies before implementing.
+
+`REQ-p20-execution-checkpoints` and `REQ-p20-collision-predictor` are closed.
+Their scope boundaries still bind later units: a prediction is not prevention
+(`applySync` remains the reactive oracle), and a checkpoint is not recovery
+proof, not authorization, not completion, not memory and not placement.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -75,17 +94,29 @@ DEPENDENCY` — a dependency relation may not be inferred from name similarity.
 ## Open item: full-suite test TIMING (not a logic failure)
 
 The full suite intermittently reports 3-6 failures on this machine.
-Investigation established **3 timeouts and 0 assertion failures**, all in
-pre-existing filesystem-heavy tests this work never touched:
+Investigation established **timeouts only and 0 assertion failures**, always in
+pre-existing filesystem-heavy tests this work never touches.
+
+The failing *set* changes between runs, which is itself the evidence that this
+is machine-load timing rather than a logic defect. Runs observed so far:
 
 - `src/workflows/workflows.test.ts` — "cycles and depth excess fail honestly"
-  (measured 11.9s and 3.5s against a 5s per-test limit)
-- `src/workflows/promotion.test.ts` — two review/approval tests
+  (measured 11.9s, 3.5s, and 6.9s against a 5s per-test limit)
+- `src/workflows/promotion.test.ts` — review/approval cases, and "raw secrets
+  are critical findings leading to quarantine"
+- `src/programme/proposals.test.ts` — "rejects a non-proposal record on load"
+- `src/providers/invoke.test.ts` — "invocation evidence persists metadata only
+  through P17 state"
+- `src/scheduler/scheduler.test.ts` — "later ticks do not duplicate; next
+  recurrence creates anew"
+- `src/steward/integration.test.ts` — "event trigger -> activation -> durable
+  steward report with event provenance"
 
-The affected files pass when run in isolation, and the new units are clean.
-No timeout was raised, no test skipped, no assertion weakened. If it persists,
-the fix is to raise `testTimeout` for those pre-existing slow tests or profile
-them — an owner decision, not an agent workaround.
+Re-running the affected files in isolation clears all but the long-standing
+`workflows.test.ts` "cycles and depth excess" case, which still exceeds 5s on
+its own. No timeout was raised, no test skipped, no assertion weakened. If it
+persists, the fix is to raise `testTimeout` for those pre-existing slow tests
+or profile them — an owner decision, not an agent workaround.
 
 ## Remaining executable work
 
@@ -108,9 +139,10 @@ selector selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 848 tests. **See open timing item below — not a claimed clean pass.** |
-| Related (programme, workers, steward) | 251/251 |
-| Registry validation | 200/200, 12 files |
+| Full test suite | 891 tests. **Not a claimed clean pass — see open timing item.** Last run: 885 passed / 6 timeouts / 0 assertion failures. |
+| Execution-checkpoint unit | 43/43 |
+| Related (programme, state, workers, runners) | 297/297 |
+| Registry validation | clean, 243 (the prior 200 plus the 43 checkpoint tests) |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
 | Lint | `NOT_APPLICABLE` — no lint script and no eslint/biome/oxlint/tslint/stylelint/prettier config exists outside `node_modules`/`.git`/`dist`/`native/target`. **This is not a lint pass.** |
