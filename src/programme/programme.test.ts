@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: benchmark freshness proven yields P19 context position", () => {
+  it("real registry advances: context position proven yields P19 e2e completion", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Benchmark-freshness COMPLETE is skipped; P19 still has eligible work.
-    expect(r.selected_task).toBe("REQ-p19-context-position");
+    // Context-position COMPLETE is skipped; P19 still has eligible work.
+    expect(r.selected_task).toBe("REQ-p19-e2e-completion");
     expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-context-position");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-e2e-completion");
   });
 
 });

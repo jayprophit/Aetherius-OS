@@ -18,13 +18,14 @@ authoritative in:
 
 ## Last completed requirement
 
-`REQ-p19-benchmark-freshness` — Benchmark freshness and saturation policy.
+`REQ-p19-context-position` — Context position robustness scorer.
 
 ## Commits (Aetherius-OS, local only)
 
 | Commit | Requirement |
 | --- | --- |
-| _(pending)_ | REQ-p19-benchmark-freshness |
+| _(pending)_ | REQ-p19-context-position |
+| `15f0d43` | REQ-p19-benchmark-freshness |
 | `cb306ff` | REQ-p19-benchmark-contamination |
 | `428192c` | REQ-p18-training-compute |
 | `5a118b7` | REQ-p18-superposition-lab |
@@ -37,7 +38,7 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p19-context-position` (P19, priority 1, READY, owner `aetherius-os`).
+`REQ-p19-e2e-completion` (P19, priority 1, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc,
 phase number asc, id lexicographic asc. It is never overridden manually.
@@ -55,7 +56,7 @@ phase number asc, id lexicographic asc. It is never overridden manually.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 654/654, 54 files |
+| Full test suite | 685/685, 55 files |
 | Registry validation | 137/137, 10 files |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -106,7 +107,7 @@ phase number asc, id lexicographic asc. It is never overridden manually.
 
 - P16: 11 COMPLETE, 1 OWNER_GATED, 0 executable
 - P18: 5 COMPLETE, 1 BLOCKED, 0 executable
-- P19: in progress; `REQ-p19-context-position` next
+- P19: in progress; `REQ-p19-e2e-completion` next
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.

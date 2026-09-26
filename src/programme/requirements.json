@@ -957,12 +957,13 @@
       "title": "Context position robustness scorer",
       "description": "Lost-in-the-middle evaluation: position-sensitivity scorer + harness over BenchmarkStore + compiler; keep-recent/truncate-middle heuristics are unmeasured.",
       "source": {"class": "RESEARCH_NOTE", "ref": "context robustness research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; metric exists, no dataset/scorer"],
-      "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
+      "evidence": ["classification: NEW; metric exists, no dataset/scorer", "selected by deterministic selector 2026-09-26", "survey: NO context compiler exists anywhere in src/ (REQ-p26-context-compiler is registered and READY at requirements.json but has zero implementation), so a compiler is treated as an optional external reference and nothing pretends to have compiled anything", "the shared VALID_METRICS vocabulary (9 provider metrics) was NOT widened: results are recorded under the existing context_handling metric, so the canonical vocabulary stays canonical", "src/eval/contextPosition.ts: CONTEXT_STRATEGIES, STRATEGY measurement states, scorePositionSensitivity, declareStrategy, buildPositionDataset, readPositionSamples, runPositionHarness", "31 tests: observed spread with lowest-position tie-break, middle-deficit detection without causal claim, zero deficit case, position ordering, no quality/winner field, malformed sample rejection (NaN, out-of-range, negative, duplicate, undersized), MEASURED-requires-profile and UNMEASURED-refuses-profile, both requirement-named heuristics declared UNMEASURED, dataset build against the existing DatasetRegistry shape with reused DATASET_SPLITS, store-only sample reading, strategy isolation, no-position-suffix skipped not guessed, out-of-range value skipped not clamped, measured:false with NO profile when the store is thin, model isolation, no compiler surface, no ranking surface, no second store/registry, no clock", "reuse: BenchmarkStore.add/query, Dataset/DatasetItem/DATASET_SPLITS from evaluation.ts, isValidMetric, BenchmarkRecord as-is", "no primary source document exists: source is a RESEARCH_NOTE ref only"],
+      "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "keep-recent and truncate-middle are declared UNMEASURED by default: a strategy name is not evidence of behaviour. POSITION SENSITIVITY != MODEL QUALITY; HIGHER SPREAD != BETTER MODEL; MIDDLE DEFICIT != CAUSAL EXPLANATION; NO SAMPLES != ZERO SENSITIVITY. Reuses context_handling rather than adding a position metric to the shared vocabulary.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p18-training-compute",
