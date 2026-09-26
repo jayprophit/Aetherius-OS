@@ -18,19 +18,20 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p19-independent-review-gate` (P19, priority 1, READY, owner `aetherius-os`).
+`REQ-p19-online-eval` (P19, priority 1, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
 ## Last completed requirement
 
-`REQ-p19-e2e-completion` — End-to-end workflow completion benchmark.
+`REQ-p19-independent-review-gate` — Independent model review gate.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| _(pending)_ | REQ-p19-independent-review-gate |
 | `ee65b82` | REQ-p19-e2e-completion |
 | `2086622` | REQ-p19-context-position |
 | `15f0d43` | REQ-p19-benchmark-freshness |
@@ -45,9 +46,8 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p19-independent-review-gate` (selected now)
-2. `REQ-p19-sealed-vault` (READY)
-3. `REQ-p19-online-eval` (READY)
+1. `REQ-p19-online-eval` (selected now)
+2. `REQ-p19-sealed-vault` (READY, deferred behind id order this run)
 
 `REQ-p19-independent-review-gate` scope, already surveyed: the registered
 description says *"gates exist, model-gate and composition do not; emits
@@ -75,9 +75,9 @@ claim clean-room proof, since `REQ-p20-clean-room` is BLOCKED. Reusable:
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 712/712, 56 files |
-| Related (eval, providers, programme, state) | 396/396 |
-| Registry validation | 137/137, 10 files |
+| Full test suite | 742/742, 57 files |
+| Related (programme, steward, workflows, eval) | 490/490 |
+| Registry validation | 167/167, 11 files |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
 | Lint | `NOT_APPLICABLE` — no lint script and no eslint/biome/oxlint/tslint/stylelint/prettier config exists outside `node_modules`/`.git`/`dist`/`native/target`. **This is not a lint pass.** |
@@ -135,8 +135,7 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
 
 - P16: 11 COMPLETE, 1 OWNER_GATED, 0 executable
 - P18: 5 COMPLETE, 1 BLOCKED, 0 executable
-- P19: 17 COMPLETE, 3 READY (`independent-review-gate`, `sealed-vault`,
-  `online-eval`)
+- P19: 18 COMPLETE, 2 READY (`online-eval`, `sealed-vault`)
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.

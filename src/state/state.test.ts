@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // E2E-completion COMPLETE is skipped; P19 independent review gate next.
-    expect(result.selected_task).toBe("REQ-p19-independent-review-gate");
+    // Independent-review-gate COMPLETE is skipped; P19 online eval next.
+    expect(result.selected_task).toBe("REQ-p19-online-eval");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

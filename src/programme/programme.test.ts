@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: e2e completion proven yields P19 independent review gate", () => {
+  it("real registry advances: independent review gate proven yields P19 online eval", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // E2E-completion COMPLETE is skipped; P19 still has eligible work.
-    expect(r.selected_task).toBe("REQ-p19-independent-review-gate");
+    // Independent-review-gate COMPLETE is skipped; the selector picks the next priority-1 READY P19 unit by phase then id.
+    expect(r.selected_task).toBe("REQ-p19-online-eval");
     expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-independent-review-gate");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-online-eval");
   });
 
 });
