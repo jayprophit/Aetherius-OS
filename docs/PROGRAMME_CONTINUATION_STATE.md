@@ -18,15 +18,15 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p22-project-orchestrator` (P22, READY). **The programme has left P20** —
+`REQ-p22-reflex-calibration` (P22, READY). **The programme has left P20** —
 P20's aetherius-owned READY units are closed. A phase transition is not a stop
 condition.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved four times since `REQ-p20-execution-checkpoints` closed
-(`language-graph`, `spine-branch`, `toolchain-registry`, `project-orchestrator`). Those were the
+The selector has moved five times since `REQ-p20-execution-checkpoints` closed
+(`language-graph`, `spine-branch`, `toolchain-registry`, `project-orchestrator`, `reflex-calibration`). Those were the
 selector's calls, not checkpoint predictions â€” `CHECKPOINT PREDICTION !=
 SELECTOR RESULT`. Read the exact registered requirement before implementing the
 next one.
@@ -54,6 +54,7 @@ Boundaries that still bind later units:
 
 | Commit | Requirement |
 | --- | --- |
+| `e2ab7e3` | REQ-p22-project-orchestrator |
 | `eb8ce6e` | REQ-p20-toolchain-registry |
 | `8ce72d1` | REQ-p20-spine-branch |
 | `b888395` | REQ-p20-language-graph |
@@ -77,14 +78,15 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p22-project-orchestrator` (selected now). Read its exact registered
+1. `REQ-p22-reflex-calibration` (selected now). Read its exact registered
    requirement, owner and dependencies before implementing.
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
-`REQ-p20-toolchain-registry`.
+`REQ-p20-toolchain-registry`, `REQ-p22-project-orchestrator`.
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
-`docs/execution-checkpoints.md`, `docs/project-language-graph.md` and `docs/spine-branch.md`.
+`docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
+`docs/toolchain-registry.md` and `docs/project-orchestrator.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -174,11 +176,12 @@ selector selects.
 | Gate | State |
 | --- | --- |
 | Full test suite | 949 tests. **Not a claimed clean pass â€” see open timing item.** Last run: 946 passed / 3 timeouts / 0 assertion failures. |
+| Project-orchestrator unit | 33/33 |
 | Toolchain-registry unit | 40/40 |
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (toolchain, workers, analysis, programme, state, runners, providers) | 519/519 |
+| Related (genesis, toolchain, workers, analysis, programme, state, runners, scheduler) | 519/519 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
