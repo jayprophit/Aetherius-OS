@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: toolchain registry proven yields the P22 project orchestrator", () => {
+  it("real registry advances: project orchestrator proven yields the P22 reflex calibration", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Toolchain-registry COMPLETE is skipped; P22 project orchestrator is next.
-    expect(r.selected_task).toBe("REQ-p22-project-orchestrator");
+    // Project-orchestrator COMPLETE is skipped; P22 reflex calibration is next.
+    expect(r.selected_task).toBe("REQ-p22-reflex-calibration");
     expect(r.phase).toBe("P22");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p22-project-orchestrator");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p22-reflex-calibration");
   });
 
 });
