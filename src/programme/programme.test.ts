@@ -241,14 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: training compute lifecycle proven yields P19 benchmark contamination", () => {
+  it("real registry advances: contamination guards proven yields P19 benchmark freshness", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Training-compute-lifecycle COMPLETE is skipped, and P18 has no further
-    // executable work, so P19 becomes the earliest eligible phase.
-    expect(r.selected_task).toBe("REQ-p19-benchmark-contamination");
+    // Contamination-guards COMPLETE is skipped; P19 still has eligible work.
+    expect(r.selected_task).toBe("REQ-p19-benchmark-freshness");
     expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-benchmark-contamination");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-benchmark-freshness");
   });
 
 });

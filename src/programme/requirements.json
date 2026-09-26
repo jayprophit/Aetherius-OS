@@ -734,12 +734,13 @@
       "title": "Benchmark contamination guards",
       "description": "Train/valid/internal held-out/OOD/adversarial/temporal/private-sealed partitions with contamination detection; listed as gap, never implemented.",
       "source": {"class": "RESEARCH_NOTE", "ref": "benchmark research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P19", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; zero guards in code"],
+      "evidence": ["2026-09-23 classification: NEW; zero guards in code", "selected by deterministic selector 2026-09-26", "the seven partitions ALREADY EXIST as DatasetSplit/DATASET_SPLITS in src/eval/evaluation.ts (train, validation, held-out, out-of-domain, adversarial, temporal, sealed) and are REUSED; BenchmarkPartition2 was NOT created; the real gap named by the requirement is contamination detection", "src/eval/contamination.ts: CONTAMINATION_STATUSES (no CLEAN, no boolean), partitionExpectation, normalizeForFingerprint, fingerprintItem, fingerprintItems, assessContamination, queryAssessments, independentEvidenceFor, canonicalAssessment, assessmentIdFor, validateAssessment", "37 tests: partition reuse, label-only expectations, no-CLEAN status vocabulary, evidence-required-for-NO_KNOWN_EXPOSURE, exposure-required-for-KNOWN_EXPOSED, UNKNOWN-sourced exposure rejected, unknown-field rejection (no silent repair), real-sha256 fingerprint requirement, normalization that does not case-fold or collapse inner whitespace, computed-not-asserted fingerprint intersection, match upgrades but never downgrades, no-match is not proof, no score field anywhere, train/validation expected-exposure, sealed-label-is-policy-only, relational per-subject status, deterministic id and ordering, canonical serialization, deep-copied reads, no raw benchmark content serialized", "reuse: DatasetSplit/DATASET_SPLITS, sha256HexBytes (runners/sync.ts), ClaimSource (providers/trainingLifecycle.ts); no second dataset registry, benchmark registry, evidence graph or scorer", "no primary source document exists: source is a RESEARCH_NOTE ref only"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "Contamination is RELATIONAL to a benchmark+subject pair, never a global dataset property. HIGH SCORE != CONTAMINATION PROOF; NO KNOWN EXPOSURE != PROVEN CLEAN; SEALED LABEL != PROVEN SEALED HISTORY. Qualifies interpretation; never alters an observed score. SEALED BENCHMARK != CLEAN-ROOM EXECUTION. No primary source: RESEARCH_NOTE != CITATION.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p19-sealed-vault",
