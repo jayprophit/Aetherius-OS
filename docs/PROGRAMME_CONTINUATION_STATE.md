@@ -18,32 +18,41 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p20-spine-branch` (P20, READY, owner `aetherius-os`).
+`REQ-p20-toolchain-registry` (P20, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved twice since `REQ-p20-execution-checkpoints` closed
-(`language-graph`, then `spine-branch`). Those were the selector's calls, not
-checkpoint predictions — `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the
-exact registered requirement before implementing the next one.
+The selector has moved three times since `REQ-p20-execution-checkpoints` closed
+(`language-graph`, `spine-branch`, `toolchain-registry`). Those were the
+selector's calls, not checkpoint predictions — `CHECKPOINT PREDICTION !=
+SELECTOR RESULT`. Read the exact registered requirement before implementing the
+next one.
 
 ## Last completed requirement
 
-`REQ-p20-language-graph` — Whole-project mixed-language dependency graph, commit
-`b888395`. **P19 is 20/20 COMPLETE; the programme is in P20.**
+`REQ-p20-spine-branch` — canonical spine, branch isolates, typed structured-output
+merge-back, commit `8ce72d1`. **P19 is 20/20 COMPLETE; the programme is in P20.**
 
-`REQ-p20-execution-checkpoints` (commit `0161a86`) closed immediately before it.
-Their scope boundaries still bind later units: a prediction is not prevention
-(`applySync` remains the reactive oracle); a checkpoint is not recovery proof,
-not authorization, not completion, not memory and not placement; and the
-project language graph produces edges while change-impact remains the owner of
-impact querying.
+Closed immediately before it: `REQ-p20-language-graph` (`b888395`) and
+`REQ-p20-execution-checkpoints` (`0161a86`).
+
+Boundaries that still bind later units:
+
+- a collision forecast is not prevention (`applySync` remains the reactive
+  oracle);
+- a checkpoint is not recovery proof, not authorization, not completion, not
+  memory and not placement;
+- the project language graph *produces* edges while change-impact remains the
+  owner of impact querying;
+- a branch merge-back is not completion, not merge authority, not recovery, and
+  branch workers stay temporary.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `8ce72d1` | REQ-p20-spine-branch |
 | `b888395` | REQ-p20-language-graph |
 | `0161a86` | REQ-p20-execution-checkpoints |
 | `82ab12c` | REQ-p20-collision-predictor |
@@ -65,12 +74,13 @@ impact querying.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p20-spine-branch` (selected now). Read its exact registered
-   requirement, owner and dependencies before implementing. `docs/change-impact.md`
-   and `docs/project-language-graph.md` record the boundaries that bind it.
+1. `REQ-p20-toolchain-registry` (selected now). Read its exact registered
+   requirement, owner and dependencies before implementing.
 
-`REQ-p20-execution-checkpoints`, `REQ-p20-collision-predictor` and
-`REQ-p20-language-graph` are closed.
+Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
+`REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`.
+Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
+`docs/execution-checkpoints.md`, `docs/project-language-graph.md` and `docs/spine-branch.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -160,9 +170,10 @@ selector selects.
 | Gate | State |
 | --- | --- |
 | Full test suite | 949 tests. **Not a claimed clean pass — see open timing item.** Last run: 946 passed / 3 timeouts / 0 assertion failures. |
+| Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (analysis, programme, state, workers, runners) | 355/355 |
+| Related (workers, analysis, programme, state, runners) | 389/389 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
