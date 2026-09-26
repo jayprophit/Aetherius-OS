@@ -1161,12 +1161,13 @@
       "title": "Reviewer context pack projection",
       "description": "Read-only projection joining diff, touch set, impact, tests, provenance, policy and verification for reviewers; disclosure/layers/reports exist separately, no joined pack.",
       "source": {"class": "RESEARCH_NOTE", "ref": "review research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P16", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P16", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control", "REQ-context-layers"], "blockers": [],
-      "evidence": ["classification: RELATED; parts exist, no projection"],
+      "evidence": ["classification: RELATED; parts exist, no projection", "selected by deterministic selector 2026-09-26", "src/programme/reviewPack.ts: PACK_DIMENSIONS (the 7 registered join legs), packIdFor, validateReviewContext, buildReviewContextPack, packChangedFiles, packTouchComparison, packRequirementContext, packUnresolved", "32 pack tests: validation, unsafe-path rejection via shared assertSafePath, authority-field and raw-secret rejection, diff projection, expected-vs-actual touch, impact UNAVAILABLE-with-reason, distinct test outcomes, bounded requirement context, truncation, stale-ref surfacing, scrambled-insertion ordering, global slug normalization, deep-copied reads, no live-reference leakage, no verdict/authority/storage surface", "docs/review-context-pack.md", "read-only projection: no store, no verdict, no authority, no execution; reuses WorkspaceDiff, TouchEstimate, VerificationState and the shared path guard without re-implementing them", "impact is REFERENCED or reported UNAVAILABLE because no code-level dependency graph exists and REQ-p20-change-impact is still READY with zero implementation; never computed from name similarity"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "Input to independent review, not a reviewer. A system that generated the code may generate its own pack; that is not independent verification. No completeness flag: NO ERROR != COMPLETE CONTEXT.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p16-autonomy-readiness",
