@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Review-context-pack COMPLETE is skipped: P18 superposition lab next.
-    expect(result.selected_task).toBe("REQ-p18-superposition-lab");
+    // Superposition-lab COMPLETE is skipped: P18 training compute next.
+    expect(result.selected_task).toBe("REQ-p18-training-compute");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

@@ -979,13 +979,13 @@
       "title": "Representation superposition lab (experimental)",
       "description": "Isolated STUDY_ONLY eval lane for superposition/quantization interaction (feature capacity, interference, width, sparsity, accuracy, memory, energy); never in the routing path, never a production dependency.",
       "source": {"class": "RESEARCH_NOTE", "ref": "representation research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P18", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P18", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; zero superposition code"],
+      "evidence": ["classification: NEW; zero superposition code", "selected by deterministic selector 2026-09-26", "no primary source document exists in this repository: source is a RESEARCH_NOTE reference only, so sourceClaimStatus is UNAVAILABLE_RESEARCH_NOTE_REFERENCE_ONLY and the mechanism is an explicitly attributed Aetherius analytical construction, not a reproduction of any paper", "src/eval/superposition.ts: LAB_METRICS (exactly the 7 registered metrics), runVariant, compareSuperposition, labRuns, runDispersion, validateConfig, validateVariant, canonicalSuperposition; per-metric provenance ANALYTIC/MEASURED/UNAVAILABLE", "36 lab tests: validation, false-control rejection, analytical cases, per-metric provenance, energy UNAVAILABLE not zero, NaN/Infinity rejection, seed/run determinism, run retention and ordering, confound detection and exclusion, no winner/composite, study-only + source-honesty markers, no routing/provider surface, encoder/decoder mapping invariant, precision-damage monotonicity", "docs/superposition-lab.md", "lab-only: no production routing, provider, Model Fabric, Genesis or Reflex code was read or modified by this unit; no network, download or credential use", "energy is always UNAVAILABLE because the only hardware measurement in the repository is hardwareProbe.ts (FP32 matmul latency); 1-bit dimensions are rejected because they cannot express superposition"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "notes": "STUDY_ONLY experimental lane.",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "STUDY_ONLY experimental lane. Representation superposition (packed feature directions), NOT quantum superposition, NOT MoE routing, NOT ensembling, NOT model merging, NOT BitNet/ternary compute. Toy synthetic scale only: TOY EXPERIMENT != PRODUCTION BENCHMARK.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p21-speech-profile",
