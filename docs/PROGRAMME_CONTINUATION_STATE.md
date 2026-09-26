@@ -18,31 +18,33 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p20-language-graph` (P20, READY, owner `aetherius-os`).
+`REQ-p20-spine-branch` (P20, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-Note: after `REQ-p20-execution-checkpoints` closed, the selector returned
-`REQ-p20-language-graph`. That is the selector's call, not a checkpoint
-prediction — `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the exact
-registered requirement before implementing it; do not assume it is the
-"source parser" scope that was explicitly ruled out for change impact.
+The selector has moved twice since `REQ-p20-execution-checkpoints` closed
+(`language-graph`, then `spine-branch`). Those were the selector's calls, not
+checkpoint predictions — `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the
+exact registered requirement before implementing the next one.
 
 ## Last completed requirement
 
-`REQ-p20-execution-checkpoints` — Execution checkpoint envelope, commit
-`0161a86`. **P19 is 20/20 COMPLETE; the programme is in P20.**
+`REQ-p20-language-graph` — Whole-project mixed-language dependency graph, commit
+`b888395`. **P19 is 20/20 COMPLETE; the programme is in P20.**
 
-Verified starting position for that unit, now closed: `git grep -i checkpoint --
-src/` returned no checkpoint code, so the registered "fragments tested, join
-missing" described the existing per-system P17 typed envelopes and only the
-cross-fragment join was absent.
+`REQ-p20-execution-checkpoints` (commit `0161a86`) closed immediately before it.
+Their scope boundaries still bind later units: a prediction is not prevention
+(`applySync` remains the reactive oracle); a checkpoint is not recovery proof,
+not authorization, not completion, not memory and not placement; and the
+project language graph produces edges while change-impact remains the owner of
+impact querying.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `b888395` | REQ-p20-language-graph |
 | `0161a86` | REQ-p20-execution-checkpoints |
 | `82ab12c` | REQ-p20-collision-predictor |
 | `0d18468` | REQ-p20-change-impact |
@@ -63,13 +65,12 @@ cross-fragment join was absent.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p20-language-graph` (selected now). Read its exact registered
-   requirement, owner and dependencies before implementing.
+1. `REQ-p20-spine-branch` (selected now). Read its exact registered
+   requirement, owner and dependencies before implementing. `docs/change-impact.md`
+   and `docs/project-language-graph.md` record the boundaries that bind it.
 
-`REQ-p20-execution-checkpoints` and `REQ-p20-collision-predictor` are closed.
-Their scope boundaries still bind later units: a prediction is not prevention
-(`applySync` remains the reactive oracle), and a checkpoint is not recovery
-proof, not authorization, not completion, not memory and not placement.
+`REQ-p20-execution-checkpoints`, `REQ-p20-collision-predictor` and
+`REQ-p20-language-graph` are closed.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -108,15 +109,34 @@ is machine-load timing rather than a logic defect. Runs observed so far:
 - `src/providers/invoke.test.ts` — "invocation evidence persists metadata only
   through P17 state"
 - `src/scheduler/scheduler.test.ts` — "later ticks do not duplicate; next
-  recurrence creates anew"
+  recurrence creates anew", and "restart loads persisted state and continues
+  without duplication"
 - `src/steward/integration.test.ts` — "event trigger -> activation -> durable
   steward report with event provenance"
+- `src/workflows/workflows.test.ts` — "interrupted safe steps resume; unsafe
+  steps require reconcile" in addition to "cycles and depth excess"
 
-Re-running the affected files in isolation clears all but the long-standing
-`workflows.test.ts` "cycles and depth excess" case, which still exceeds 5s on
-its own. No timeout was raised, no test skipped, no assertion weakened. If it
-persists, the fix is to raise `testTimeout` for those pre-existing slow tests
-or profile them — an owner decision, not an agent workaround.
+Re-running the affected files in isolation clears all of them; the
+long-standing `workflows.test.ts` "cycles and depth excess" case is the slowest,
+measured at 3341ms in isolation against 5831ms under full-suite load — the load
+signature rather than a slow assertion. No timeout was raised, no test skipped,
+no assertion weakened. If it persists, the fix is to raise `testTimeout` for
+those pre-existing slow tests or profile them — an owner decision, not an agent
+workaround.
+
+## Editing the requirement registry safely
+
+`src/programme/requirements.json` repeats boilerplate strings — notably
+`legacy audit: genuine uncovered delta, still relevant`, which appears in five
+records. An anchor-based edit can therefore match the **wrong record** and
+silently overwrite an unrelated requirement while reporting success.
+
+- Anchor edits on the record's unique `"id"` line.
+- Validate afterwards with `node -e "JSON.parse(...)"` or an equivalent parser.
+- Confirm with `git diff` that only the intended record changed.
+- Revert with `git checkout -- src/programme/requirements.json` if it did not.
+
+This happened once and was caught exactly this way.
 
 ## Remaining executable work
 
@@ -139,10 +159,11 @@ selector selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 891 tests. **Not a claimed clean pass — see open timing item.** Last run: 885 passed / 6 timeouts / 0 assertion failures. |
+| Full test suite | 949 tests. **Not a claimed clean pass — see open timing item.** Last run: 946 passed / 3 timeouts / 0 assertion failures. |
+| Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (programme, state, workers, runners) | 297/297 |
-| Registry validation | clean, 243 (the prior 200 plus the 43 checkpoint tests) |
+| Related (analysis, programme, state, workers, runners) | 355/355 |
+| Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
 | Lint | `NOT_APPLICABLE` — no lint script and no eslint/biome/oxlint/tslint/stylelint/prettier config exists outside `node_modules`/`.git`/`dist`/`native/target`. **This is not a lint pass.** |
