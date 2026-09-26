@@ -1244,12 +1244,12 @@
       "title": "Mixed-language project graph",
       "description": "Whole-project dependency graph across C/C++/Rust/Python/JS-TS/shell/build-files/manifests; distinct from the Python-only test-impact import graph and the programme system graph.",
       "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (mixed-language project graph)", "location": "legacy coverage audit 2026-09-25"},
-      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P20", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant", "selected by deterministic selector 2026-09-26 after REQ-p20-execution-checkpoints closed in 0161a86", "src/analysis/languageGraph.ts + 58 tests in src/analysis/languageGraph.test.ts: whole-project graph over C/C++/Rust/Python/JS-TS/shell/build-files/manifests, distinct from Agent-Bridge TestImpact and from registry/depgraph.json; see docs/project-language-graph.md and the BUILD-TODO entry for the full evidence, the five defects fixed, and the two corrected test expectations"],
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p27-network-hierarchy",
