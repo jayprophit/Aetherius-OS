@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: online eval proven yields P19 sealed vault", () => {
+  it("real registry advances: sealed vault proven yields P20 change impact", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Online-eval COMPLETE is skipped; sealed-vault is the last P19 priority-1 READY unit.
-    expect(r.selected_task).toBe("REQ-p19-sealed-vault");
-    expect(r.phase).toBe("P19");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p19-sealed-vault");
+    // Sealed-vault COMPLETE is skipped and P19 is exhausted, so P20 is next.
+    expect(r.selected_task).toBe("REQ-p20-change-impact");
+    expect(r.phase).toBe("P20");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-change-impact");
   });
 
 });

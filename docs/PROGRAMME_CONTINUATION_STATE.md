@@ -18,20 +18,21 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p19-sealed-vault` (P19, priority 1, READY, owner `aetherius-os`) — the last remaining P19 priority-1 READY item.
+`REQ-p20-change-impact` (P20, priority 1, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
 ## Last completed requirement
 
-`REQ-p19-online-eval` — Online trace-correlation evaluation.
+`REQ-p19-sealed-vault` — Sealed benchmark vault. **P19 is now 20/20 COMPLETE.**
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
-| _(pending)_ | REQ-p19-online-eval |
+| _(pending)_ | REQ-p19-sealed-vault |
+| `aeecdcb` | REQ-p19-online-eval |
 | `55d6343` | REQ-p19-independent-review-gate |
 | `ee65b82` | REQ-p19-e2e-completion |
 | `2086622` | REQ-p19-context-position |
@@ -47,7 +48,7 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p19-sealed-vault` (selected now; last P19 priority-1 READY item)
+1. `REQ-p20-change-impact` (selected now). **P19 has no remaining READY item: 20/20 COMPLETE.** This is the long-verified real gap: build a real code-level dependency graph, not the system-level `registry/depgraph.json`.
 
 `REQ-p19-independent-review-gate` scope, already surveyed: the registered
 description says *"gates exist, model-gate and composition do not; emits
@@ -75,8 +76,8 @@ claim clean-room proof, since `REQ-p20-clean-room` is BLOCKED. Reusable:
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 767/767, 58 files |
-| Related (eval, events, programme, state) | 369/369 |
+| Full test suite | 792/792, 59 files |
+| Related (eval, programme, state) | 386/386 |
 | Registry validation | 167/167, 11 files |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -135,7 +136,7 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
 
 - P16: 11 COMPLETE, 1 OWNER_GATED, 0 executable
 - P18: 5 COMPLETE, 1 BLOCKED, 0 executable
-- P19: 19 COMPLETE, 1 READY (`sealed-vault`)
+- P19: **20 COMPLETE, 0 READY — P19 exhausted**
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
