@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Project-orchestrator COMPLETE is skipped; P22 reflex calibration next.
-    expect(result.selected_task).toBe("REQ-p22-reflex-calibration");
+    // Reflex-calibration COMPLETE is skipped; P22 selective escalation next.
+    expect(result.selected_task).toBe("REQ-p22-selective-escalation");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
