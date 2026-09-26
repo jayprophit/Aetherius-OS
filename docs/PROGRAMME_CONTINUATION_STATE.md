@@ -31,7 +31,7 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 | Commit | Requirement |
 | --- | --- |
-| _(pending)_ | REQ-p19-sealed-vault |
+| `0a3776c` | REQ-p19-sealed-vault |
 | `aeecdcb` | REQ-p19-online-eval |
 | `55d6343` | REQ-p19-independent-review-gate |
 | `ee65b82` | REQ-p19-e2e-completion |
@@ -50,17 +50,32 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 1. `REQ-p20-change-impact` (selected now). **P19 has no remaining READY item: 20/20 COMPLETE.** This is the long-verified real gap: build a real code-level dependency graph, not the system-level `registry/depgraph.json`.
 
-`REQ-p19-independent-review-gate` scope, already surveyed: the registered
-description says *"gates exist, model-gate and composition do not; emits
-clean-room-ready evidence without claiming fresh-env proof while clean-room
-is blocked."* The honest minimum is therefore a **composition** of the
-existing gates plus a model-review leg whose result is **`UNAVAILABLE`**
-because `REQ-p18-model-fabric` is BLOCKED on cloud credentials. It must not
-claim clean-room proof, since `REQ-p20-clean-room` is BLOCKED. Reusable:
-`src/programme/reviewPack.ts`, `src/eval/contamination.ts`,
-`src/workflows/evidenceGate.ts`, `staticSafetyScan` in
-`src/workflows/promotion.ts`. Note: Aetherius-OS has **no linter**, so any
-"static" leg is `NOT_APPLICABLE`, not `PASS`.
+`REQ-p20-change-impact` scope, already surveyed. This is the gap this
+programme has repeatedly recorded as **ABSENT**, and it is finally
+scheduled. Read the exact registered requirement before implementing, but the
+verified starting position is:
+
+- `registry/depgraph.json` is **system-level only** — roughly 10 nodes
+  (`aetherius-os`, `agent-bridge`, `mat`, …) with no file, module or symbol
+  ids.
+- There is **no `depgraph.ts` module**, so no dependency query function exists.
+- `EvidenceGraph` (`src/programme/evidenceGraph.ts`) is an in-memory graph of
+  caller-recorded facts and **never reads** `depgraph.json`; it returns `[]`
+  for any file path.
+- `src/programme/reviewPack.ts` therefore reports its impact leg as
+  `REFERENCED` or `UNAVAILABLE` **with a reason**, and must not be changed to
+  fabricate impact data.
+
+Standing constraints for this unit: `SYSTEM DEPGRAPH != CODE DEPENDENCY
+GRAPH`, `EVIDENCE GRAPH != CHANGE IMPACT GRAPH`, and `SIMILARITY !=
+DEPENDENCY` — a dependency relation may not be inferred from name similarity.
+
+## Remaining executable work
+
+READY work still exists across P20 (6), P22 (4), P29 (4), P17 (4), P27 (3),
+P25 (2), P26 (2), P31 (2), P23 (1) and P24 (1). **P19 being exhausted is
+not a stop condition** — the programme continues into the next phase the
+selector selects.
 
 ## Repository state
 
