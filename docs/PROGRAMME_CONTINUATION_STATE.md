@@ -18,20 +18,21 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p20-collision-predictor` (P20, priority 1, READY, owner `aetherius-os`).
+`REQ-p20-execution-checkpoints` (P20, priority 1, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
 ## Last completed requirement
 
-`REQ-p20-change-impact` — Change impact graph over touch sets. **P19 is 20/20 COMPLETE; the programme is now in P20.**
+`REQ-p20-collision-predictor` — Worker collision prediction. **P19 is 20/20 COMPLETE; the programme is in P20.**
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
-| _(pending)_ | REQ-p20-change-impact |
+| _(pending)_ | REQ-p20-collision-predictor |
+| `0d18468` | REQ-p20-change-impact |
 | `0a3776c` | REQ-p19-sealed-vault |
 | `aeecdcb` | REQ-p19-online-eval |
 | `55d6343` | REQ-p19-independent-review-gate |
@@ -49,7 +50,7 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p20-collision-predictor` (selected now; P20 still has eligible work). Read its exact registered requirement before implementing.
+1. `REQ-p20-execution-checkpoints` (selected now; P20 still has eligible work). Read its exact registered requirement before implementing.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -70,6 +71,21 @@ verified starting position is:
 Standing constraints for this unit: `SYSTEM DEPGRAPH != CODE DEPENDENCY
 GRAPH`, `EVIDENCE GRAPH != CHANGE IMPACT GRAPH`, and `SIMILARITY !=
 DEPENDENCY` — a dependency relation may not be inferred from name similarity.
+
+## Open item: full-suite test TIMING (not a logic failure)
+
+The full suite intermittently reports 3-6 failures on this machine.
+Investigation established **3 timeouts and 0 assertion failures**, all in
+pre-existing filesystem-heavy tests this work never touched:
+
+- `src/workflows/workflows.test.ts` — "cycles and depth excess fail honestly"
+  (measured 11.9s and 3.5s against a 5s per-test limit)
+- `src/workflows/promotion.test.ts` — two review/approval tests
+
+The affected files pass when run in isolation, and the new units are clean.
+No timeout was raised, no test skipped, no assertion weakened. If it persists,
+the fix is to raise `testTimeout` for those pre-existing slow tests or profile
+them — an owner decision, not an agent workaround.
 
 ## Remaining executable work
 
@@ -92,7 +108,7 @@ selector selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 825/825, 60 files |
+| Full test suite | 848 tests. **See open timing item below — not a claimed clean pass.** |
 | Related (programme, workers, steward) | 251/251 |
 | Registry validation | 200/200, 12 files |
 | Typecheck | clean (exit 0) |
