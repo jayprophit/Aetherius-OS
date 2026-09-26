@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: collision predictor proven yields P20 execution checkpoints", () => {
+  it("real registry advances: execution checkpoints proven yields the P20 language graph", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Collision-predictor COMPLETE is skipped; P20 still has eligible work.
-    expect(r.selected_task).toBe("REQ-p20-execution-checkpoints");
+    // Execution-checkpoints COMPLETE is skipped; P20 still has eligible work.
+    expect(r.selected_task).toBe("REQ-p20-language-graph");
     expect(r.phase).toBe("P20");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-execution-checkpoints");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-language-graph");
   });
 
 });
