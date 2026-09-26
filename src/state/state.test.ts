@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Sealed-vault COMPLETE is skipped and P19 is exhausted; P20 change impact next.
-    expect(result.selected_task).toBe("REQ-p20-change-impact");
+    // Change-impact COMPLETE is skipped; P20 collision predictor next.
+    expect(result.selected_task).toBe("REQ-p20-collision-predictor");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

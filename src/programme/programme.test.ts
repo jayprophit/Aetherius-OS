@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: sealed vault proven yields P20 change impact", () => {
+  it("real registry advances: change impact proven yields P20 collision predictor", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Sealed-vault COMPLETE is skipped and P19 is exhausted, so P20 is next.
-    expect(r.selected_task).toBe("REQ-p20-change-impact");
+    // Change-impact COMPLETE is skipped; P20 still has eligible work.
+    expect(r.selected_task).toBe("REQ-p20-collision-predictor");
     expect(r.phase).toBe("P20");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-change-impact");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-collision-predictor");
   });
 
 });

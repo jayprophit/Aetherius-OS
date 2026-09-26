@@ -18,19 +18,20 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p20-change-impact` (P20, priority 1, READY, owner `aetherius-os`).
+`REQ-p20-collision-predictor` (P20, priority 1, READY, owner `aetherius-os`).
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
 ## Last completed requirement
 
-`REQ-p19-sealed-vault` — Sealed benchmark vault. **P19 is now 20/20 COMPLETE.**
+`REQ-p20-change-impact` — Change impact graph over touch sets. **P19 is 20/20 COMPLETE; the programme is now in P20.**
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| _(pending)_ | REQ-p20-change-impact |
 | `0a3776c` | REQ-p19-sealed-vault |
 | `aeecdcb` | REQ-p19-online-eval |
 | `55d6343` | REQ-p19-independent-review-gate |
@@ -48,7 +49,7 @@ number asc, id lexicographic asc. It is never overridden manually.
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p20-change-impact` (selected now). **P19 has no remaining READY item: 20/20 COMPLETE.** This is the long-verified real gap: build a real code-level dependency graph, not the system-level `registry/depgraph.json`.
+1. `REQ-p20-collision-predictor` (selected now; P20 still has eligible work). Read its exact registered requirement before implementing.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -91,9 +92,9 @@ selector selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 792/792, 59 files |
-| Related (eval, programme, state) | 386/386 |
-| Registry validation | 167/167, 11 files |
+| Full test suite | 825/825, 60 files |
+| Related (programme, workers, steward) | 251/251 |
+| Registry validation | 200/200, 12 files |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
 | Lint | `NOT_APPLICABLE` — no lint script and no eslint/biome/oxlint/tslint/stylelint/prettier config exists outside `node_modules`/`.git`/`dist`/`native/target`. **This is not a lint pass.** |
