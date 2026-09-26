@@ -567,12 +567,13 @@
       "title": "Spine-branch worker execution pattern",
       "description": "Canonical mutable spine state with branch worker isolates and typed structured-output merge-back; no naive VM-state merge; branch workers stay temporary.",
       "source": {"class": "RESEARCH_NOTE", "ref": "spine-branch research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P20", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P20", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; no spine concept in any repo"],
+      "evidence": ["2026-09-23 classification: NEW; no spine concept in any repo", "selected by deterministic selector 2026-09-26 after REQ-p20-language-graph closed in b888395", "src/workers/spineBranch.ts + 34 tests in src/workers/spineBranch.test.ts: canonical mutable spine (revision + per-slice revisions, three declared slice kinds), branch isolates opened against a base revision, typed structured-output merge-back, explicit refusal of naive VM-state merge, and temporary branch lifecycle; see docs/spine-branch.md and the BUILD-TODO entry for full evidence, the one real defect fixed and the two corrected test expectations"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "notes": "Canonical mutable spine + branch worker isolates + typed structured-output merge-back. BRANCH OUTPUT != VM STATE; STRUCTURED OUTPUT != NAIVE STATE MERGE; LAST WRITE WINS != MERGE-BACK; MERGE-BACK != TASK COMPLETION; MERGE-BACK != MERGE/DEPLOY AUTHORITY; MERGE-BACK != RECOVERY; MERGE-BACK != EXECUTION CHECKPOINT. BRANCH != WORKER IDENTITY; BRANCH != WORKER PROFILE; CLOSED BRANCH != RESIDENT WORKER; TEMPORARY BRANCH != PERMANENT WORKER. A branch receives a revision to merge against, never the spine. A branch appends to slices and never truncates, so omission cannot delete spine history. A conflict names both sides and leaves the spine byte-for-byte unchanged, revision included; this function never picks a winner. collisionPrediction remains the pre-execution forecast and applySync remains the reactive serialization oracle; neither is reimplemented. Caller-supplied merge time only; no clock, filesystem or network.",
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p20-worker-profiles",

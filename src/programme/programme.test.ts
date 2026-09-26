@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: language graph proven yields the P20 spine branch", () => {
+  it("real registry advances: spine branch proven yields the P20 toolchain registry", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Language-graph COMPLETE is skipped; P20 still has eligible work.
-    expect(r.selected_task).toBe("REQ-p20-spine-branch");
+    // Spine-branch COMPLETE is skipped; P20 still has eligible work.
+    expect(r.selected_task).toBe("REQ-p20-toolchain-registry");
     expect(r.phase).toBe("P20");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-spine-branch");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p20-toolchain-registry");
   });
 
 });
