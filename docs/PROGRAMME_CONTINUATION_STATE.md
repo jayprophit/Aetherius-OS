@@ -18,35 +18,37 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-epistemic-graph` (P26, READY, owner **`mat`**). This is the first
-non-Aetherius-OS owner in this stretch: per the ownership rule, implement it
-**in the MAT repository** (`Materials-Atlas-Table-Codex---MAT`) and do only
-programme bookkeeping in Aetherius-OS. A repository switch is not a stop
-condition. Precedent: the MAT Claim Registry lives in MAT.
+`REQ-p26-context-compiler` (P26, READY, owner `aetherius-os`). Back in
+Aetherius-OS after the MAT-owned unit. Note the standing finding: this
+requirement is registered READY with zero implementation — treat a compiler
+as an external reference until this unit builds it, never pretend compilation
+already happened.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved twelve times since `REQ-p20-execution-checkpoints`
+The selector has moved thirteen times since `REQ-p20-execution-checkpoints`
 closed (`language-graph`, `spine-branch`, `toolchain-registry`,
 `project-orchestrator`, `reflex-calibration`, `selective-escalation`,
 `world-model-lab`, `work-monitoring`, `service-orchestrator`, `reputation`,
-`supply-chain`, `epistemic-graph`). Those were the selector's calls, not
-checkpoint predictions — `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the
-exact registered requirement before implementing the next one.
+`supply-chain`, `epistemic-graph`, `context-compiler`). Those were the
+selector's calls, not checkpoint predictions — `CHECKPOINT PREDICTION !=
+SELECTOR RESULT`. Read the exact registered requirement before implementing
+the next one.
 
 ## Last completed requirement
 
-`REQ-p25-supply-chain` — per-artifact SBOM/licence/hash/signature-claim/
-provenance records plus per-domain coverage, commit `a503c48`. **P19 is 20/20
-COMPLETE; P20's READY units are closed; P22's executable units are all
-COMPLETE** (memory-integrity-boundary stays OWNER_GATED); **P23's executable
-units are all COMPLETE**; **P24's READY units are closed**; **P25's READY units
-are closed** (reward-treasury stays DEFERRED).
+`REQ-epistemic-graph` — graph traversal over claim epistemic states,
+implemented in the **MAT repository**, commit `de72b04`; Aetherius-OS
+bookkeeping commit `2bd27fa`. **P19 is 20/20 COMPLETE; P20's READY units are
+closed; P22's executable units are all COMPLETE** (memory-integrity-boundary
+stays OWNER_GATED); **P23's executable units are all COMPLETE**; **P24's
+READY units are closed**; **P25's READY units are closed** (reward-treasury
+stays DEFERRED).
 
-Closed immediately before it: `REQ-p25-reputation` (`6a9796e`),
-`REQ-p24-service-orchestrator` (`36ba3fe`), `REQ-p23-work-monitoring`
-(`7522e20`), `REQ-p22-world-model-lab` (`a8faad1`),
+Closed immediately before it: `REQ-p25-supply-chain` (`a503c48`),
+`REQ-p25-reputation` (`6a9796e`), `REQ-p24-service-orchestrator` (`36ba3fe`),
+`REQ-p23-work-monitoring` (`7522e20`), `REQ-p22-world-model-lab` (`a8faad1`),
 `REQ-p22-selective-escalation` (`fabdc4b`), `REQ-p22-reflex-calibration`
 (`a504052`), `REQ-p22-project-orchestrator` (`e2ab7e3`),
 `REQ-p20-toolchain-registry` (`eb8ce6e`) and `REQ-p20-spine-branch`
@@ -88,12 +90,17 @@ Boundaries that still bind later units:
   (sha256), SBOM completeness derived, signatures stay CLAIMED_UNVERIFIED (no
   backend, none faked), no SLSA conformance claimed; provenance digest binding
   checked by the module itself; per-domain counts without verdicts; release
-  gates unchanged (their pass-conditions are unmet).
+  gates unchanged (their pass-conditions are unmet);
+- **the epistemic graph traverses, never judges**: edges reference canonical
+  claim IDs (never copied); SUPERSEDES derived from registry truth, never
+  authored; contradictions coexist unreconciled; no truth scores, no
+  auto-promotion, no similarity inference, no memory/vector/RAG/compiler.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `2bd27fa` | REQ-epistemic-graph (bookkeeping; implementation in MAT `de72b04`) |
 | `a503c48` | REQ-p25-supply-chain |
 | `6a9796e` | REQ-p25-reputation |
 | `36ba3fe` | REQ-p24-service-orchestrator |
@@ -125,22 +132,23 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-epistemic-graph` (selected now, P26, owner `mat`). Implement in the
-   MAT repository; only programme bookkeeping in Aetherius-OS. Read its exact
-   registered requirement, dependencies, owner and evidence before
-   implementing. CLOSED so far: supply-chain (`a503c48`),
-   reputation (`6a9796e`).
+1. `REQ-p26-context-compiler` (selected now, P26, owner `aetherius-os`, in
+   Aetherius-OS). Read its exact registered requirement, dependencies, owner
+   and evidence before implementing. CLOSED so far: epistemic-graph (MAT
+   `de72b04` + bookkeeping `2bd27fa`), supply-chain (`a503c48`).
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
 `REQ-p20-toolchain-registry`, `REQ-p22-project-orchestrator`, `REQ-p22-reflex-calibration`,
 `REQ-p22-selective-escalation`, `REQ-p22-world-model-lab`, `REQ-p23-work-monitoring`,
-`REQ-p24-service-orchestrator`, `REQ-p25-reputation`, `REQ-p25-supply-chain`.
+`REQ-p24-service-orchestrator`, `REQ-p25-reputation`, `REQ-p25-supply-chain`,
+`REQ-epistemic-graph` (MAT `de72b04`).
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
 `docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`,
 `docs/selective-escalation.md`, `docs/world-model-lab.md`, `docs/work-monitoring.md`,
-`docs/service-orchestrator.md`, `docs/reputation.md` and `docs/supply-chain.md`.
+`docs/service-orchestrator.md`, `docs/reputation.md`, `docs/supply-chain.md`
+and `docs/epistemic-graph.md` (pointer: implementation lives in MAT).
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -212,12 +220,11 @@ This happened once and was caught exactly this way.
 
 ## Remaining executable work
 
-READY work still exists across P29 (4), P17 (4), P27 (3), P26 (2:
-`REQ-epistemic-graph` owner mat selected now, plus context-compiler), P31 (2)
-and P25 (0 — supply-chain was its last READY unit; reward-treasury DEFERRED).
-P19, P20, P22, P23, P24 and P25 have no READY units left (P22 keeps only its
-OWNER_GATED memory boundary). **Exhausted phases are not stop conditions** —
-the programme continues into whatever phase the selector selects.
+READY work still exists across P29 (4), P17 (4), P27 (3), P26 (1:
+`REQ-p26-context-compiler` selected now), P31 (2) and P25 (0). P19, P20, P22,
+P23, P24 and P25 have no READY units left (P22 keeps only its OWNER_GATED
+memory boundary). **Exhausted phases are not stop conditions** — the programme
+continues into whatever phase the selector selects.
 
 ## Repository state
 
@@ -234,6 +241,7 @@ the programme continues into whatever phase the selector selects.
 | Gate | State |
 | --- | --- |
 | Full test suite | 1273 tests, 1 scheduler timeout, **0 assertion failures**; same file 27/27 clean in isolation. **OPEN TIMING ITEM — see above.** |
+| Epistemic-graph unit (MAT) | 16/16 targeted; 29/29 related; full MAT suite 101/102 (1 pre-existing catalog failure, proven unrelated) |
 | Supply-chain unit | 27/27 |
 | Reputation unit | 24/24 |
 | Service-orchestrator unit | 32/32 |
@@ -246,7 +254,7 @@ the programme continues into whatever phase the selector selects.
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (supply, workflows, programme, toolchain, state) | 429/429 |
+| Related (Aetherius registry/programme/state) | 243/243 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -316,8 +324,8 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
   (owner-full-control already COMPLETE)
 - P25: **reputation + supply-chain COMPLETE, 0 READY — P25 exhausted**
   (`REQ-p25-reward-treasury` DEFERRED, `REQ-owner-full-control` COMPLETE)
-- P26: `REQ-epistemic-graph` READY (selected now, owner `mat` — implement in
-  the MAT repo), `REQ-p26-context-compiler` READY
+- P26: `REQ-epistemic-graph` COMPLETE (MAT `de72b04`),
+  `REQ-p26-context-compiler` READY (selected now, owner `aetherius-os`)
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
