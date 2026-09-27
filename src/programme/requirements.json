@@ -507,12 +507,12 @@
       "title": "Selective escalation decisions (P22 proposes, P25 disposes)",
       "description": "Typed EscalationDecision (can_continue, missing/ambiguous/contradictory info, resolvability routes, requires_human, confidence); cognition proposes, P25 authority disposes; never auto-grants or bypasses approvals.",
       "source": {"class": "RESEARCH_NOTE", "ref": "escalation research", "location": "research addendum 2026-09-23"},
-      "owner": "genesis", "phase": "P22", "status": "RESEARCH",
+      "owner": "genesis", "phase": "P22", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p22-reflex-abstention", "REQ-owner-full-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; only prose hints and untyped escalate strings exist"],
+      "evidence": ["2026-09-23 classification: NEW; only prose hints and untyped escalate strings exist", "2026-09-27 selected by deterministic selector; typed EscalationDecision implemented in src/genesis/escalation.ts (46 tests in src/genesis/escalation.test.ts), composed from the existing escalationSignal seam with can_continue/requires_human derived never asserted, P25-only disposal, no execution surface"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p22-world-model-lab",

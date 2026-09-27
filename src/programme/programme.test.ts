@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: reflex calibration proven yields the P22 selective escalation", () => {
+  it("real registry advances: selective escalation proven yields the P22 world-model lab", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Reflex-calibration COMPLETE is skipped; P22 selective escalation is next.
-    expect(r.selected_task).toBe("REQ-p22-selective-escalation");
+    // Selective-escalation COMPLETE is skipped; P22 world-model lab is next.
+    expect(r.selected_task).toBe("REQ-p22-world-model-lab");
     expect(r.phase).toBe("P22");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p22-selective-escalation");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p22-world-model-lab");
   });
 
 });
