@@ -678,12 +678,12 @@
       "title": "Epistemic status graph",
       "description": "Graph traversal over claim epistemic states (depends on the claim registry); materials knowledge-graph and associative memory graphs are wrong-domain neighbours.",
       "source": {"class": "RESEARCH_NOTE", "ref": "project data integration", "location": "research addendum 2026-09-23"},
-      "owner": "mat", "phase": "P26", "status": "RESEARCH",
+      "owner": "mat", "phase": "P26", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-mat-claim-registry"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; no claim graph anywhere"],
+      "evidence": ["2026-09-23 classification: NEW; no claim graph anywhere", "2026-09-27 implemented in MAT repo commit de72b04: scripts/epistemic-graph.mjs (EpistemicGraph with SUPPORTS/CONTRADICTS/DERIVED_FROM authored edges + SUPERSEDES derived from canonical claim supersession, directional queries, bounded cycle-safe traversal) + 16 node:test tests in scripts/tests/epistemic-graph.test.mjs + docs/02-data/11-Epistemic-Graph.md; Claim Registry and materials-relationship graph untouched; no truth scores, no auto-resolution, no memory/vector/RAG/compiler"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-regulated-evidence",
