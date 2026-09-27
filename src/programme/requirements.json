@@ -1111,12 +1111,12 @@
       "title": "Work monitoring fabric",
       "description": "Continuous monitoring composing summarize/inspect/observer over P27 transport: subscribe, progress stream, alerts, thresholds; snapshots and append-only logs exist, streaming/alerting join absent.",
       "source": {"class": "RESEARCH_NOTE", "ref": "observability research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "ide", "phase": "P23", "status": "RESEARCH",
+      "owner": "ide", "phase": "P23", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control", "REQ-runtime-inspection"], "blockers": [],
-      "evidence": ["classification: NEW streaming gap; snapshots only"],
+      "evidence": ["classification: NEW streaming gap; snapshots only", "2026-09-27 selected by deterministic selector; streaming/alerting join implemented in src/monitoring/workMonitoring.ts (23 tests in src/monitoring/workMonitoring.test.ts), composing WorkflowRuntime.summarize + Scheduler.inspect over RealtimeTransport with subscribe/progress-stream/alerts/thresholds, stateless projections only, no duplicate owners, no execution/auth/scheduling"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p27-degraded-link",
