@@ -241,12 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: degraded link proven yields Agent-Bridge multichannel messaging", () => {
+  it("real registry advances: multichannel messaging proven yields the P27 network hierarchy", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Degraded-link COMPLETE is skipped; Agent-Bridge-owned multichannel messaging is next (implemented in the Agent-Bridge repo).
-    expect(r.selected_task).toBe("REQ-p27-multichannel-messaging");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p27-multichannel-messaging");
+    // Multichannel-messaging COMPLETE is skipped; P27 network hierarchy is next (back in Aetherius-OS).
+    expect(r.selected_task).toBe("REQ-p27-network-hierarchy");
+    expect(r.phase).toBe("P27");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p27-network-hierarchy");
   });
 
 });
