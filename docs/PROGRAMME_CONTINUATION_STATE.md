@@ -18,29 +18,31 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p22-world-model-lab` (P22, READY, owner `genesis`). It is the last READY
-unit in P22; `REQ-memory-integrity-boundary` is OWNER_GATED. A phase transition
-is not a stop condition.
+`REQ-p23-work-monitoring` (P23, READY). **P22 is exhausted except its
+OWNER_GATED memory boundary** — all 8 executable P22 units are COMPLETE. A
+phase transition is not a stop condition.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved seven times since `REQ-p20-execution-checkpoints` closed
+The selector has moved eight times since `REQ-p20-execution-checkpoints` closed
 (`language-graph`, `spine-branch`, `toolchain-registry`, `project-orchestrator`,
-`reflex-calibration`, `selective-escalation`, `world-model-lab`). Those were the
-selector's calls, not checkpoint predictions — `CHECKPOINT PREDICTION !=
-SELECTOR RESULT`. Read the exact registered requirement before implementing the
-next one.
+`reflex-calibration`, `selective-escalation`, `world-model-lab`,
+`work-monitoring`). Those were the selector's calls, not checkpoint predictions
+— `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the exact registered
+requirement before implementing the next one.
 
 ## Last completed requirement
 
-`REQ-p22-selective-escalation` — typed EscalationDecision, P22 proposes / P25
-disposes, commit `fabdc4b`. **P19 is 20/20 COMPLETE; P20's aetherius-owned READY
-units are closed; P22 has one READY unit left.**
+`REQ-p22-world-model-lab` — scenario suite + per-dimension quality scoring for
+the Genesis world model, runtime untouched, commit `a8faad1`. **P19 is 20/20
+COMPLETE; P20's READY units are closed; P22's executable units are all
+COMPLETE** (memory-integrity-boundary stays OWNER_GATED).
 
-Closed immediately before it: `REQ-p22-reflex-calibration` (`a504052`),
-`REQ-p22-project-orchestrator` (`e2ab7e3`), `REQ-p20-toolchain-registry`
-(`eb8ce6e`) and `REQ-p20-spine-branch` (`8ce72d1`).
+Closed immediately before it: `REQ-p22-selective-escalation` (`fabdc4b`),
+`REQ-p22-reflex-calibration` (`a504052`), `REQ-p22-project-orchestrator`
+(`e2ab7e3`), `REQ-p20-toolchain-registry` (`eb8ce6e`) and `REQ-p20-spine-branch`
+(`8ce72d1`).
 
 Boundaries that still bind later units:
 
@@ -57,12 +59,17 @@ Boundaries that still bind later units:
   `requires_human` are derived, never supplied; requires_human follows only the
   closed human-only vocabulary (LOW CONFIDENCE != AUTOMATIC HUMAN REQUIREMENT);
   contradictions are preserved with no winner; unavailable resolvers keep their
-  blocker; confidence means decision-completeness only.
+  blocker; confidence means decision-completeness only;
+- **the world-model lab scores traces, never the runtime**: no runtime import,
+  call, or reimplementation; absent outcomes stay UNRESOLVED and never enter a
+  rate; verdicts require evidence; frozen-input tests prove non-mutation;
+  per-dimension quality with no composite figure; perf fields rejected.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `a8faad1` | REQ-p22-world-model-lab |
 | `fabdc4b` | REQ-p22-selective-escalation |
 | `a504052` | REQ-p22-reflex-calibration |
 | `e2ab7e3` | REQ-p22-project-orchestrator |
@@ -89,18 +96,18 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p22-world-model-lab` (selected now, P22, owner `genesis`). Read its
-   exact registered requirement, dependencies, owner and evidence before
-   implementing. CLOSED so far: selective-escalation (`fabdc4b`).
+1. `REQ-p23-work-monitoring` (selected now, P23). Read its exact registered
+   requirement, dependencies, owner and evidence before implementing. CLOSED
+   so far: world-model-lab (`a8faad1`), selective-escalation (`fabdc4b`).
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
 `REQ-p20-toolchain-registry`, `REQ-p22-project-orchestrator`, `REQ-p22-reflex-calibration`,
-`REQ-p22-selective-escalation`.
+`REQ-p22-selective-escalation`, `REQ-p22-world-model-lab`.
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
-`docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`
-and `docs/selective-escalation.md`.
+`docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`,
+`docs/selective-escalation.md` and `docs/world-model-lab.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -173,10 +180,10 @@ This happened once and was caught exactly this way.
 ## Remaining executable work
 
 READY work still exists across P29 (4), P17 (4), P27 (3), P25 (2), P26 (2),
-P31 (2), P23 (1), P24 (1) and P22 (1: `REQ-p22-world-model-lab`). P20 has no
-READY units left (11 COMPLETE, 1 BLOCKED). **Exhausted phases are not stop
-conditions** — the programme continues into whatever phase the selector
-selects.
+P31 (2) and P23 (1: `REQ-p23-work-monitoring`, selected now). P19, P20 and
+P22 have no READY units left (P22 keeps only its OWNER_GATED memory
+boundary). **Exhausted phases are not stop conditions** — the programme
+continues into whatever phase the selector selects.
 
 ## Repository state
 
@@ -192,7 +199,8 @@ selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1146/1146 CLEAN PASS this run (68 files, 28.58s, zero timeouts).** Timing item stays open on history — see above. |
+| Full test suite | 1167 tests with run-to-run variance (5, then 1, then 2 failures across three runs), **ZERO assertion failures in every run**. Affected files isolated 63/65 with the same 2 known-slow cases. **OPEN TIMING ITEM — see above.** |
+| World-model-lab unit | 21/21 |
 | Selective-escalation unit | 46/46 |
 | Reflex-calibration unit | 44/44 |
 | Project-orchestrator unit | 33/33 |
@@ -200,7 +208,7 @@ selects.
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (genesis, programme, state) | 396/396 |
+| Related (genesis, programme, state) | 417/417 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -261,8 +269,10 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
 - P18: 5 COMPLETE, 1 BLOCKED, 0 executable
 - P19: **20 COMPLETE, 0 READY — P19 exhausted**
 - P20: 11 COMPLETE, 1 BLOCKED, 0 executable
-- P22: 8 COMPLETE, 1 READY (`REQ-p22-world-model-lab`, selected now),
-  1 OWNER_GATED (`REQ-memory-integrity-boundary`)
+- P22: **9 COMPLETE, 0 READY — P22 exhausted except its OWNER_GATED
+  `REQ-memory-integrity-boundary`**
+- P23: `REQ-p23-work-monitoring` selected now (READY); full P23 census to be
+  recorded when that unit runs
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
