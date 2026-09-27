@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: work monitoring proven yields the P24 service orchestrator", () => {
+  it("real registry advances: service orchestrator proven yields the P25 reputation", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Work-monitoring COMPLETE is skipped; P24 service orchestrator is next.
-    expect(r.selected_task).toBe("REQ-p24-service-orchestrator");
-    expect(r.phase).toBe("P24");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p24-service-orchestrator");
+    // Service-orchestrator COMPLETE is skipped; P25 reputation is next.
+    expect(r.selected_task).toBe("REQ-p25-reputation");
+    expect(r.phase).toBe("P25");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p25-reputation");
   });
 
 });

@@ -1273,12 +1273,12 @@
       "title": "OS service lifecycle orchestration",
       "description": "Service install/configure/start/stop/restart/health/dependency-ordering/recovery/registration lifecycle; P19 workflow is task orchestration, not OS service orchestration.",
       "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (service orchestrator)", "location": "legacy coverage audit 2026-09-25"},
-      "owner": "aetherius-os", "phase": "P24", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P24", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant", "2026-09-27 selected by deterministic selector; service lifecycle orchestration as evidence-gated planning/state composition implemented in src/services/serviceOrchestrator.ts (32 tests in src/services/serviceOrchestrator.test.ts): typed definitions referencing apps/toolchain entries, deterministic start/stop ordering with cycle evidence, evidence-gated transitions, derived BLOCKED overlay, bounded restarts; AUDITOR not ACTUATOR, no shell/network/timers"],
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p31-release-scope",
