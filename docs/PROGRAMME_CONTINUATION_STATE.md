@@ -18,36 +18,39 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p27-degraded-link` (P27, READY, owner `aetherius-os`). P26's executable
-units are all COMPLETE (context-compiler just closed). A phase transition is
-not a stop condition.
+`REQ-p27-multichannel-messaging` (P27, READY, owner **`agent-bridge`**). This
+is the second non-Aetherius-OS owner in this stretch: per the ownership rule,
+implement it **in the Agent-Bridge repository** and do only programme
+bookkeeping in Aetherius-OS. A repository switch is **not** a stop condition.
+Precedent: MAT Claim Registry and Epistemic Graph live in MAT.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved fourteen times since `REQ-p20-execution-checkpoints`
+The selector has moved fifteen times since `REQ-p20-execution-checkpoints`
 closed (`language-graph`, `spine-branch`, `toolchain-registry`,
 `project-orchestrator`, `reflex-calibration`, `selective-escalation`,
 `world-model-lab`, `work-monitoring`, `service-orchestrator`, `reputation`,
-`supply-chain`, `epistemic-graph`, `context-compiler`, `degraded-link`).
-Those were the selector's calls, not checkpoint predictions — `CHECKPOINT
-PREDICTION != SELECTOR RESULT`. Read the exact registered requirement before
-implementing the next one.
+`supply-chain`, `epistemic-graph`, `context-compiler`, `degraded-link`,
+`multichannel-messaging`). Those were the selector's calls, not checkpoint
+predictions — `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the exact
+registered requirement before implementing the next one.
 
 ## Last completed requirement
 
-`REQ-p26-context-compiler` — assemble/collapse resolved L0–L7 layers under
-budget into skill-ready context, commit `8ce404b`. **P19 is 20/20 COMPLETE;
-P20's READY units are closed; P22's executable units are all COMPLETE**
-(memory-integrity-boundary stays OWNER_GATED); **P23's executable units are
-all COMPLETE**; **P24's READY units are closed**; **P25's READY units are
-closed** (reward-treasury stays DEFERRED); **P26's executable units are all
-COMPLETE** (epistemic-graph implemented in MAT `de72b04`).
+`REQ-p27-degraded-link` — delay-tolerant message semantics with
+store-and-forward over the durable log, commit `7003d9f`. **P19 is 20/20
+COMPLETE; P20's READY units are closed; P22's executable units are all
+COMPLETE** (memory-integrity-boundary stays OWNER_GATED); **P23's executable
+units are all COMPLETE**; **P24's READY units are closed**; **P25's READY units
+are closed** (reward-treasury stays DEFERRED); **P26's executable units are
+all COMPLETE** (epistemic-graph implemented in MAT `de72b04`).
 
-Closed immediately before it: `REQ-epistemic-graph` (MAT `de72b04` +
-bookkeeping `2bd27fa`), `REQ-p25-supply-chain` (`a503c48`),
-`REQ-p25-reputation` (`6a9796e`), `REQ-p24-service-orchestrator` (`36ba3fe`),
-`REQ-p23-work-monitoring` (`7522e20`), `REQ-p22-world-model-lab` (`a8faad1`),
+Closed immediately before it: `REQ-p26-context-compiler` (`8ce404b`),
+`REQ-epistemic-graph` (MAT `de72b04` + bookkeeping `2bd27fa`),
+`REQ-p25-supply-chain` (`a503c48`), `REQ-p25-reputation` (`6a9796e`),
+`REQ-p24-service-orchestrator` (`36ba3fe`), `REQ-p23-work-monitoring`
+(`7522e20`), `REQ-p22-world-model-lab` (`a8faad1`),
 `REQ-p22-selective-escalation` (`fabdc4b`), `REQ-p22-reflex-calibration`
 (`a504052`), `REQ-p22-project-orchestrator` (`e2ab7e3`),
 `REQ-p20-toolchain-registry` (`eb8ce6e`) and `REQ-p20-spine-branch`
@@ -97,12 +100,19 @@ Boundaries that still bind later units:
 - **the context compiler assembles, never invents**: resolved layers in,
   skill-ready units out; budgetContext called not cloned; explicit skillRef
   rules-into-skills; identity dedupe; required never displaced; no tokenizer
-  fabrication, no model calls, no memory writes.
+  fabrication, no model calls, no memory writes;
+- **the degraded link stores, forwards, and tells the truth**: link-gated
+  drain (OFFLINE/UNKNOWN hold, DEGRADED needs an explicit floor); SEND !=
+  DELIVERY != PROCESSING; acks idempotent with unknown rejection; retry is
+  eligibility never scheduling; fragment gaps named; digests verified,
+  signatures claimed-only; compression real or refused; no invented
+  guarantees, measurements, or timers.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `7003d9f` | REQ-p27-degraded-link |
 | `8ce404b` | REQ-p26-context-compiler |
 | `2bd27fa` | REQ-epistemic-graph (bookkeeping; implementation in MAT `de72b04`) |
 | `a503c48` | REQ-p25-supply-chain |
@@ -136,24 +146,26 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p27-degraded-link` (selected now, P27, owner `aetherius-os`). Read its
-   exact registered requirement, dependencies, owner and evidence before
-   implementing. CLOSED so far: context-compiler (`8ce404b`),
-   epistemic-graph (MAT `de72b04` + bookkeeping `2bd27fa`).
+1. `REQ-p27-multichannel-messaging` (selected now, P27, owner
+   `agent-bridge`). Implement in the Agent-Bridge repository; only programme
+   bookkeeping in Aetherius-OS. Read its exact registered requirement,
+   dependencies, owner and evidence before implementing. CLOSED so far:
+   degraded-link (`7003d9f`), context-compiler (`8ce404b`).
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
 `REQ-p20-toolchain-registry`, `REQ-p22-project-orchestrator`, `REQ-p22-reflex-calibration`,
 `REQ-p22-selective-escalation`, `REQ-p22-world-model-lab`, `REQ-p23-work-monitoring`,
 `REQ-p24-service-orchestrator`, `REQ-p25-reputation`, `REQ-p25-supply-chain`,
-`REQ-epistemic-graph` (MAT `de72b04`), `REQ-p26-context-compiler`.
+`REQ-epistemic-graph` (MAT `de72b04`), `REQ-p26-context-compiler`,
+`REQ-p27-degraded-link`.
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
 `docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`,
 `docs/selective-escalation.md`, `docs/world-model-lab.md`, `docs/work-monitoring.md`,
 `docs/service-orchestrator.md`, `docs/reputation.md`, `docs/supply-chain.md`,
-`docs/epistemic-graph.md` (pointer: implementation lives in MAT) and
-`docs/context-compiler.md`.
+`docs/epistemic-graph.md` (pointer: implementation lives in MAT),
+`docs/context-compiler.md` and `docs/degraded-link.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -225,12 +237,12 @@ This happened once and was caught exactly this way.
 
 ## Remaining executable work
 
-READY work still exists across P29 (4), P17 (4), P27 (3:
-`REQ-p27-degraded-link` selected now, plus 2 more), P26 (0), P31 (2) and P25
-(0). P19, P20, P22, P23, P24, P25 and P26 have no READY units left (P22 keeps
-only its OWNER_GATED memory boundary). **Exhausted phases are not stop
-conditions** — the programme continues into whatever phase the selector
-selects.
+READY work still exists across P29 (4), P17 (4), P27 (2:
+`REQ-p27-multichannel-messaging` owner agent-bridge selected now, plus
+network-hierarchy), P26 (0), P31 (2) and P25 (0). P19, P20, P22, P23, P24,
+P25 and P26 have no READY units left (P22 keeps only its OWNER_GATED memory
+boundary). **Exhausted phases are not stop conditions** — the programme
+continues into whatever phase the selector selects.
 
 ## Repository state
 
@@ -246,7 +258,8 @@ selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 1303 tests, 1 scheduler timeout, **0 assertion failures**; same file 27/27 clean in isolation. **OPEN TIMING ITEM — see above.** |
+| Full test suite | **1334/1334 CLEAN PASS this run (75 files, zero timeouts).** Timing item stays open on history — see above. |
+| Degraded-link unit | 31/31 |
 | Context-compiler unit | 30/30 |
 | Epistemic-graph unit (MAT) | 16/16 targeted; 29/29 related; full MAT suite 101/102 (1 pre-existing catalog failure, proven unrelated) |
 | Supply-chain unit | 27/27 |
@@ -261,7 +274,7 @@ selects.
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (context, genesis, programme, state, workflows) | 583/583 |
+| Related (realtime, events, relay, scheduler, monitoring, workflows, programme, state) | 464/464 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -333,7 +346,9 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
   (`REQ-p25-reward-treasury` DEFERRED, `REQ-owner-full-control` COMPLETE)
 - P26: **epistemic-graph + context-compiler COMPLETE, 0 READY — P26
   exhausted** (epistemic-graph implemented in MAT `de72b04`)
-- P27: `REQ-p27-degraded-link` READY (selected now, owner `aetherius-os`)
+- P27: `REQ-p27-degraded-link` COMPLETE, `REQ-p27-multichannel-messaging`
+  READY (selected now, owner `agent-bridge` — implement in Agent-Bridge),
+  `REQ-p27-network-hierarchy` READY
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
