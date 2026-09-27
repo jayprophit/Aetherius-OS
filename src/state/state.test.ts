@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Context-compiler COMPLETE is skipped; P27 degraded link next.
-    expect(result.selected_task).toBe("REQ-p27-degraded-link");
+    // Degraded-link COMPLETE is skipped; Agent-Bridge multichannel messaging next.
+    expect(result.selected_task).toBe("REQ-p27-multichannel-messaging");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

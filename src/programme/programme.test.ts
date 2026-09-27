@@ -241,13 +241,12 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: context compiler proven yields the P27 degraded link", () => {
+  it("real registry advances: degraded link proven yields Agent-Bridge multichannel messaging", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Context-compiler COMPLETE is skipped; P27 degraded link is next.
-    expect(r.selected_task).toBe("REQ-p27-degraded-link");
-    expect(r.phase).toBe("P27");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p27-degraded-link");
+    // Degraded-link COMPLETE is skipped; Agent-Bridge-owned multichannel messaging is next (implemented in the Agent-Bridge repo).
+    expect(r.selected_task).toBe("REQ-p27-multichannel-messaging");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p27-multichannel-messaging");
   });
 
 });
