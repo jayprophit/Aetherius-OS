@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: epistemic graph proven yields the P26 context compiler", () => {
+  it("real registry advances: context compiler proven yields the P27 degraded link", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Epistemic-graph COMPLETE is skipped; P26 context compiler is next (back in Aetherius-OS).
-    expect(r.selected_task).toBe("REQ-p26-context-compiler");
-    expect(r.phase).toBe("P26");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p26-context-compiler");
+    // Context-compiler COMPLETE is skipped; P27 degraded link is next.
+    expect(r.selected_task).toBe("REQ-p27-degraded-link");
+    expect(r.phase).toBe("P27");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p27-degraded-link");
   });
 
 });

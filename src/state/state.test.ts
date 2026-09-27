@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Epistemic-graph COMPLETE is skipped; P26 context compiler next.
-    expect(result.selected_task).toBe("REQ-p26-context-compiler");
+    // Context-compiler COMPLETE is skipped; P27 degraded link next.
+    expect(result.selected_task).toBe("REQ-p27-degraded-link");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

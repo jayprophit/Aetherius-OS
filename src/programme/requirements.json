@@ -630,12 +630,12 @@
       "title": "Context compiler over L0-L7",
       "description": "Assemble/collapse resolved L0-L7 layers under budget into skill-ready context (rules into skills, dedup, prioritization); retrieval policy exists, compilation does not.",
       "source": {"class": "RESEARCH_NOTE", "ref": "context research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P26", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P26", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control", "REQ-context-layers"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; resolveLayers selects, never compiles"],
+      "evidence": ["2026-09-23 classification: NEW; resolveLayers selects, never compiles", "2026-09-27 selected by deterministic selector; assemble/collapse of resolved L0-L7 layers under budget into skill-ready context implemented in src/context/compiler.ts (30 tests in src/context/compiler.test.ts), consuming resolveLayers output via a mechanical adapter and budgetContext for measurement/enforcement; explicit skillRef rules-into-skills, identity dedupe, priority with required guarantees; no memory/RAG/model-invocation, no tokenizer fabrication"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-memory-integrity-boundary",
