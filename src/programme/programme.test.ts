@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: service orchestrator proven yields the P25 reputation", () => {
+  it("real registry advances: reputation proven yields the P25 supply chain", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Service-orchestrator COMPLETE is skipped; P25 reputation is next.
-    expect(r.selected_task).toBe("REQ-p25-reputation");
+    // Reputation COMPLETE is skipped; P25 supply chain is next.
+    expect(r.selected_task).toBe("REQ-p25-supply-chain");
     expect(r.phase).toBe("P25");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p25-reputation");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p25-supply-chain");
   });
 
 });

@@ -901,12 +901,12 @@
       "title": "Reputation fabric",
       "description": "Contribution-scored reputation over validated actions; docs-only mentions today, no scoring code.",
       "source": {"class": "RESEARCH_NOTE", "ref": "project data integration", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P25", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P25", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW; no scoring code"],
+      "evidence": ["2026-09-23 classification: NEW; no scoring code", "2026-09-27 selected by deterministic selector; contribution-scored reputation over validated actions implemented in src/reputation/contribution.ts (24 tests in src/reputation/contribution.test.ts): explicit integer tallies gated on verified + known-outcome + subject-attributed actions, cold-start UNKNOWN, duplicate rejection, no trust number, no authorization effect"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p16-governance-proposals",
