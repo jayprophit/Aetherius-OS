@@ -241,13 +241,12 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: reputation proven yields the P25 supply chain", () => {
+  it("real registry advances: supply chain proven yields the MAT epistemic graph", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Reputation COMPLETE is skipped; P25 supply chain is next.
-    expect(r.selected_task).toBe("REQ-p25-supply-chain");
-    expect(r.phase).toBe("P25");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p25-supply-chain");
+    // Supply-chain COMPLETE is skipped; MAT-owned epistemic graph is next (implemented in the MAT repo).
+    expect(r.selected_task).toBe("REQ-epistemic-graph");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-epistemic-graph");
   });
 
 });

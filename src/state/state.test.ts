@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Reputation COMPLETE is skipped; P25 supply chain next.
-    expect(result.selected_task).toBe("REQ-p25-supply-chain");
+    // Supply-chain COMPLETE is skipped; MAT-owned epistemic graph next.
+    expect(result.selected_task).toBe("REQ-epistemic-graph");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

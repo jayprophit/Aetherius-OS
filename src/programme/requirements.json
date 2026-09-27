@@ -814,12 +814,12 @@
       "title": "Supply-chain attestation coverage",
       "description": "Per-artifact SBOM/licence/hash/signature/provenance (SLSA/Sigstore patterns) across apps/models/skills/plugins/workflows/datasets; package hashes + licence gates exist, SBOM/signatures/coverage do not.",
       "source": {"class": "RESEARCH_NOTE", "ref": "supply-chain research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P25", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P25", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: LIKELY partial; records exist, SBOM/SLSA absent"],
+      "evidence": ["2026-09-23 classification: LIKELY partial; records exist, SBOM/SLSA absent", "2026-09-27 selected by deterministic selector; per-artifact SBOM/licence/hash/signature-claim/provenance records plus per-domain coverage implemented in src/supply/attestation.ts (27 tests in src/supply/attestation.test.ts), reusing the packages.ts sha256 helper and the reference.ts UNKNOWN-licence semantics; signatures stay CLAIMED_UNVERIFIED with no backend, no SLSA conformance claimed, no release/deploy/authorization surface"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p16-invention-disclosure",
