@@ -18,26 +18,29 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p22-selective-escalation` (P22, READY). **The programme has left P20** �
-P20's aetherius-owned READY units are closed. A phase transition is not a stop
-condition.
+`REQ-p22-world-model-lab` (P22, READY, owner `genesis`). It is the last READY
+unit in P22; `REQ-memory-integrity-boundary` is OWNER_GATED. A phase transition
+is not a stop condition.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved six times since `REQ-p20-execution-checkpoints` closed
-(`language-graph`, `spine-branch`, `toolchain-registry`, `project-orchestrator`, `reflex-calibration`, `selective-escalation`). Those were the
+The selector has moved seven times since `REQ-p20-execution-checkpoints` closed
+(`language-graph`, `spine-branch`, `toolchain-registry`, `project-orchestrator`,
+`reflex-calibration`, `selective-escalation`, `world-model-lab`). Those were the
 selector's calls, not checkpoint predictions — `CHECKPOINT PREDICTION !=
 SELECTOR RESULT`. Read the exact registered requirement before implementing the
 next one.
 
 ## Last completed requirement
 
-`REQ-p20-spine-branch` — canonical spine, branch isolates, typed structured-output
-merge-back, commit `8ce72d1`. **P19 is 20/20 COMPLETE; the programme is in P20.**
+`REQ-p22-selective-escalation` — typed EscalationDecision, P22 proposes / P25
+disposes, commit `fabdc4b`. **P19 is 20/20 COMPLETE; P20's aetherius-owned READY
+units are closed; P22 has one READY unit left.**
 
-Closed immediately before it: `REQ-p20-language-graph` (`b888395`) and
-`REQ-p20-execution-checkpoints` (`0161a86`).
+Closed immediately before it: `REQ-p22-reflex-calibration` (`a504052`),
+`REQ-p22-project-orchestrator` (`e2ab7e3`), `REQ-p20-toolchain-registry`
+(`eb8ce6e`) and `REQ-p20-spine-branch` (`8ce72d1`).
 
 Boundaries that still bind later units:
 
@@ -48,12 +51,19 @@ Boundaries that still bind later units:
 - the project language graph *produces* edges while change-impact remains the
   owner of impact querying;
 - a branch merge-back is not completion, not merge authority, not recovery, and
-  branch workers stay temporary.
+  branch workers stay temporary;
+- **escalation proposes, P25 disposes**: an EscalationDecision never carries
+  authority, execution residue, persona, or secrets; `can_continue` and
+  `requires_human` are derived, never supplied; requires_human follows only the
+  closed human-only vocabulary (LOW CONFIDENCE != AUTOMATIC HUMAN REQUIREMENT);
+  contradictions are preserved with no winner; unavailable resolvers keep their
+  blocker; confidence means decision-completeness only.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `fabdc4b` | REQ-p22-selective-escalation |
 | `a504052` | REQ-p22-reflex-calibration |
 | `e2ab7e3` | REQ-p22-project-orchestrator |
 | `eb8ce6e` | REQ-p20-toolchain-registry |
@@ -79,17 +89,18 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p22-selective-escalation` (selected now). Read its exact registered
-   requirement, owner and dependencies before implementing. Note
-   `src/genesis/abstain.ts` already has an `escalationSignal` seam that this
-   unit must compose with rather than duplicate.
+1. `REQ-p22-world-model-lab` (selected now, P22, owner `genesis`). Read its
+   exact registered requirement, dependencies, owner and evidence before
+   implementing. CLOSED so far: selective-escalation (`fabdc4b`).
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
-`REQ-p20-toolchain-registry`, `REQ-p22-project-orchestrator`, `REQ-p22-reflex-calibration`.
+`REQ-p20-toolchain-registry`, `REQ-p22-project-orchestrator`, `REQ-p22-reflex-calibration`,
+`REQ-p22-selective-escalation`.
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
-`docs/toolchain-registry.md`, `docs/project-orchestrator.md` and `docs/reflex-calibration.md`.
+`docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`
+and `docs/selective-escalation.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -113,7 +124,7 @@ DEPENDENCY` — a dependency relation may not be inferred from name similarity.
 
 ## Open item: full-suite test TIMING (not a logic failure)
 
-The full suite intermittently reports 3-6 failures on this machine.
+The full suite intermittently reports 3-8 timeouts on this machine.
 Investigation established **timeouts only and 0 assertion failures**, always in
 pre-existing filesystem-heavy tests this work never touches.
 
@@ -121,25 +132,27 @@ The failing *set* changes between runs, which is itself the evidence that this
 is machine-load timing rather than a logic defect. Runs observed so far:
 
 - `src/workflows/workflows.test.ts` — "cycles and depth excess fail honestly"
-  (measured 11.9s, 3.5s, and 6.9s against a 5s per-test limit)
-- `src/workflows/promotion.test.ts` — review/approval cases, and "raw secrets
-  are critical findings leading to quarantine"
+  (measured 11.9s, 3.5s, 6.9s, and 13.8s against a 5s per-test limit), plus
+  "interrupted safe steps resume", "approval inside child pauses parent", and
+  "missing child fails at runtime" on the heaviest run
+- `src/workflows/promotion.test.ts` — review/approval cases, "raw secrets
+  are critical findings leading to quarantine", "missing and failing tests
+  block promotion", "low-risk candidate promotes end to end"
 - `src/programme/proposals.test.ts` — "rejects a non-proposal record on load"
 - `src/providers/invoke.test.ts` — "invocation evidence persists metadata only
   through P17 state"
 - `src/scheduler/scheduler.test.ts` — "later ticks do not duplicate; next
-  recurrence creates anew", and "restart loads persisted state and continues
-  without duplication"
-- `src/steward/integration.test.ts` — "event trigger -> activation -> durable
-  steward report with event provenance"
-- `src/workflows/workflows.test.ts` — "interrupted safe steps resume; unsafe
-  steps require reconcile" in addition to "cycles and depth excess"
+  recurrence creates anew", "restart loads persisted state", event-trigger and
+  P19/1 integration cases
 
-Re-running the affected files in isolation clears all of them; the
-long-standing `workflows.test.ts` "cycles and depth excess" case is the slowest,
-measured at 3341ms in isolation against 5831ms under full-suite load — the load
-signature rather than a slow assertion. No timeout was raised, no test skipped,
-no assertion weakened. If it persists, the fix is to raise `testTimeout` for
+Re-running the affected files in isolation clears most of them (6 of 8 on the
+heaviest observed run); the long-standing `workflows.test.ts` "cycles and depth
+excess" case is the slowest, measured at 2309–3930ms in isolation against
+5.8–13.8s under full-suite load — the load signature rather than a slow
+assertion. **Latest full run (2026-09-27): 1146/1146 CLEAN PASS, 68 files,
+28.58s, zero timeouts.** The item stays open because past runs flaked, not
+because the current run did. No timeout was raised, no test skipped, no
+assertion weakened. If it persists, the fix is to raise `testTimeout` for
 those pre-existing slow tests or profile them — an owner decision, not an agent
 workaround.
 
@@ -159,10 +172,11 @@ This happened once and was caught exactly this way.
 
 ## Remaining executable work
 
-READY work still exists across P20 (6), P22 (4), P29 (4), P17 (4), P27 (3),
-P25 (2), P26 (2), P31 (2), P23 (1) and P24 (1). **P19 being exhausted is
-not a stop condition** — the programme continues into the next phase the
-selector selects.
+READY work still exists across P29 (4), P17 (4), P27 (3), P25 (2), P26 (2),
+P31 (2), P23 (1), P24 (1) and P22 (1: `REQ-p22-world-model-lab`). P20 has no
+READY units left (11 COMPLETE, 1 BLOCKED). **Exhausted phases are not stop
+conditions** — the programme continues into whatever phase the selector
+selects.
 
 ## Repository state
 
@@ -178,14 +192,15 @@ selector selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 949 tests. **Not a claimed clean pass — see open timing item.** Last run: 946 passed / 3 timeouts / 0 assertion failures. |
+| Full test suite | **1146/1146 CLEAN PASS this run (68 files, 28.58s, zero timeouts).** Timing item stays open on history — see above. |
+| Selective-escalation unit | 46/46 |
 | Reflex-calibration unit | 44/44 |
 | Project-orchestrator unit | 33/33 |
 | Toolchain-registry unit | 40/40 |
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (genesis, toolchain, workers, analysis, programme, state) | 520/520 |
+| Related (genesis, programme, state) | 396/396 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -245,6 +260,9 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
 - P16: 11 COMPLETE, 1 OWNER_GATED, 0 executable
 - P18: 5 COMPLETE, 1 BLOCKED, 0 executable
 - P19: **20 COMPLETE, 0 READY — P19 exhausted**
+- P20: 11 COMPLETE, 1 BLOCKED, 0 executable
+- P22: 8 COMPLETE, 1 READY (`REQ-p22-world-model-lab`, selected now),
+  1 OWNER_GATED (`REQ-memory-integrity-boundary`)
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
