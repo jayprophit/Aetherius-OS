@@ -519,12 +519,12 @@
       "title": "World-model evaluation lab",
       "description": "Scenario suite + quality scoring for the Genesis world model (simulation divergence, intervention outcomes); read-only eval preserving counterfactual non-mutation, distinct from perf microbenchmarks.",
       "source": {"class": "RESEARCH_NOTE", "ref": "world-model research", "location": "research addendum 2026-09-23"},
-      "owner": "genesis", "phase": "P22", "status": "RESEARCH",
+      "owner": "genesis", "phase": "P22", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: NEW lab; runtime world_model exists and tested, no scoring lab"],
+      "evidence": ["2026-09-23 classification: NEW lab; runtime world_model exists and tested, no scoring lab", "2026-09-27 selected by deterministic selector; scenario suite + per-dimension quality scoring implemented in src/genesis/worldModelLab.ts (21 tests in src/genesis/worldModelLab.test.ts), scoring caller-supplied traces against the runtime's own digest-comparison semantics with absent outcomes UNRESOLVED, evidence-mandatory verdicts, frozen-input non-mutation, no composite figure"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p22-project-orchestrator",
