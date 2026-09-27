@@ -18,34 +18,35 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p25-reputation` (P25, READY, owner `aetherius-os`). **P24 is exhausted** —
-service-orchestrator was its only READY unit. A phase transition is not a stop
-condition.
+`REQ-p25-supply-chain` (P25, READY, owner `aetherius-os`). P25 still has READY
+work (supply-chain now, reputation just closed). A phase transition is not a
+stop condition.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved ten times since `REQ-p20-execution-checkpoints` closed
-(`language-graph`, `spine-branch`, `toolchain-registry`, `project-orchestrator`,
-`reflex-calibration`, `selective-escalation`, `world-model-lab`,
-`work-monitoring`, `service-orchestrator`, `reputation`). Those were the
-selector's calls, not checkpoint predictions — `CHECKPOINT PREDICTION !=
-SELECTOR RESULT`. Read the exact registered requirement before implementing the
-next one.
+The selector has moved eleven times since `REQ-p20-execution-checkpoints`
+closed (`language-graph`, `spine-branch`, `toolchain-registry`,
+`project-orchestrator`, `reflex-calibration`, `selective-escalation`,
+`world-model-lab`, `work-monitoring`, `service-orchestrator`, `reputation`,
+`supply-chain`). Those were the selector's calls, not checkpoint predictions —
+`CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the exact registered
+requirement before implementing the next one.
 
 ## Last completed requirement
 
-`REQ-p24-service-orchestrator` — OS service lifecycle orchestration as
-planning/state composition (AUDITOR not ACTUATOR), commit `36ba3fe`. **P19 is
-20/20 COMPLETE; P20's READY units are closed; P22's executable units are all
-COMPLETE** (memory-integrity-boundary stays OWNER_GATED); **P23's executable
-units are all COMPLETE**; **P24's READY units are closed**.
+`REQ-p25-reputation` — contribution-scored reputation over validated actions
+(explicit tallies, no trust number, no authorization effect), commit `6a9796e`.
+**P19 is 20/20 COMPLETE; P20's READY units are closed; P22's executable units
+are all COMPLETE** (memory-integrity-boundary stays OWNER_GATED); **P23's
+executable units are all COMPLETE**; **P24's READY units are closed**.
 
-Closed immediately before it: `REQ-p23-work-monitoring` (`7522e20`),
-`REQ-p22-world-model-lab` (`a8faad1`), `REQ-p22-selective-escalation`
-(`fabdc4b`), `REQ-p22-reflex-calibration` (`a504052`),
-`REQ-p22-project-orchestrator` (`e2ab7e3`), `REQ-p20-toolchain-registry`
-(`eb8ce6e`) and `REQ-p20-spine-branch` (`8ce72d1`).
+Closed immediately before it: `REQ-p24-service-orchestrator` (`36ba3fe`),
+`REQ-p23-work-monitoring` (`7522e20`), `REQ-p22-world-model-lab` (`a8faad1`),
+`REQ-p22-selective-escalation` (`fabdc4b`), `REQ-p22-reflex-calibration`
+(`a504052`), `REQ-p22-project-orchestrator` (`e2ab7e3`),
+`REQ-p20-toolchain-registry` (`eb8ce6e`) and `REQ-p20-spine-branch`
+(`8ce72d1`).
 
 Boundaries that still bind later units:
 
@@ -74,12 +75,17 @@ Boundaries that still bind later units:
 - **service orchestration plans, never actuates**: lifecycle stages as
   evidence-gated recorded transitions (no shell/network/timers); BLOCKED is a
   derived overlay, never stored; restart budgets enforced; references only
-  (`apps:`/`toolchain:`/`repo:`), never raw commands.
+  (`apps:`/`toolchain:`/`repo:`), never raw commands;
+- **reputation observes, grants nothing**: tallies count only verified +
+  known-outcome + subject-attributed actions; cold subjects are UNKNOWN, never
+  zero-rated; duplicate actionIds rejected; explicit integer tallies, no trust
+  number; subjects opaque; evidence owned elsewhere.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `6a9796e` | REQ-p25-reputation |
 | `36ba3fe` | REQ-p24-service-orchestrator |
 | `7522e20` | REQ-p23-work-monitoring |
 | `a8faad1` | REQ-p22-world-model-lab |
@@ -109,21 +115,21 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p25-reputation` (selected now, P25, owner `aetherius-os`). Read its
+1. `REQ-p25-supply-chain` (selected now, P25, owner `aetherius-os`). Read its
    exact registered requirement, dependencies, owner and evidence before
-   implementing. CLOSED so far: service-orchestrator (`36ba3fe`),
-   work-monitoring (`7522e20`).
+   implementing. CLOSED so far: reputation (`6a9796e`),
+   service-orchestrator (`36ba3fe`).
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
 `REQ-p20-toolchain-registry`, `REQ-p22-project-orchestrator`, `REQ-p22-reflex-calibration`,
 `REQ-p22-selective-escalation`, `REQ-p22-world-model-lab`, `REQ-p23-work-monitoring`,
-`REQ-p24-service-orchestrator`.
+`REQ-p24-service-orchestrator`, `REQ-p25-reputation`.
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
 `docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`,
-`docs/selective-escalation.md`, `docs/world-model-lab.md`, `docs/work-monitoring.md`
-and `docs/service-orchestrator.md`.
+`docs/selective-escalation.md`, `docs/world-model-lab.md`, `docs/work-monitoring.md`,
+`docs/service-orchestrator.md` and `docs/reputation.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -195,9 +201,9 @@ This happened once and was caught exactly this way.
 
 ## Remaining executable work
 
-READY work still exists across P29 (4), P17 (4), P27 (3), P25 (2: `REQ-p25-
-reputation` selected now, plus supply-chain), P26 (2), P31 (2) and P24 (0 —
-service-orchestrator was its only READY unit). P19, P20, P22, P23 and P24
+READY work still exists across P29 (4), P17 (4), P27 (3), P25 (1: `REQ-p25-
+supply-chain` selected now; reward-treasury DEFERRED), P26 (2: epistemic-graph
+owner mat, context-compiler), P31 (2) and P24 (0). P19, P20, P22, P23 and P24
 have no READY units left (P22 keeps only its OWNER_GATED memory boundary).
 **Exhausted phases are not stop conditions** — the programme continues into
 whatever phase the selector selects.
@@ -216,7 +222,8 @@ whatever phase the selector selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1222/1222 CLEAN PASS this run (71 files, zero timeouts).** Timing item stays open on history — see above. |
+| Full test suite | **1246/1246 CLEAN PASS this run (72 files, zero timeouts).** Timing item stays open on history — see above. |
+| Reputation unit | 24/24 |
 | Service-orchestrator unit | 32/32 |
 | Work-monitoring unit | 23/23 |
 | World-model-lab unit | 21/21 |
@@ -227,7 +234,7 @@ whatever phase the selector selects.
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (services, apps, genesis, toolchain, programme, state, workflows, scheduler) | 635/635 |
+| Related (reputation, policy, genesis, programme, state, eval) | 669/669 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -295,9 +302,9 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
   is RESEARCH/COMPLETE, untouched)
 - P24: **service-orchestrator COMPLETE; 0 READY — P24 exhausted**
   (owner-full-control already COMPLETE)
-- P25: `REQ-p25-reputation` READY (selected now), `REQ-p25-supply-chain`
-  READY, `REQ-p25-reward-treasury` DEFERRED, `REQ-owner-full-control`
-  COMPLETE
+- P25: `REQ-p25-reputation` COMPLETE, `REQ-p25-supply-chain` READY
+  (selected now), `REQ-p25-reward-treasury` DEFERRED,
+  `REQ-owner-full-control` COMPLETE
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
