@@ -241,12 +241,12 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: network hierarchy proven yields the Poietek creative ref graph", () => {
+  it("real registry advances: creative ref graph proven yields Poietek multimodal consistency", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Network-hierarchy COMPLETE is skipped; Poietek-owned creative ref graph is next (implemented in the Poietek repo).
-    expect(r.selected_task).toBe("REQ-p29-creative-ref-graph");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p29-creative-ref-graph");
+    // Creative-ref-graph COMPLETE is skipped; Poietek-owned multimodal consistency is next (implemented in the Poietek repo).
+    expect(r.selected_task).toBe("REQ-p29-multimodal-consistency");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p29-multimodal-consistency");
   });
 
 });

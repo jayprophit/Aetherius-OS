@@ -1014,12 +1014,12 @@
       "title": "Creative reference graph",
       "description": "Reference-linked creative project graph (style/character/environment refs to scenes/shots) over canonical project truth; DAW scenes are arrangement, not visual refs.",
       "source": {"class": "RESEARCH_NOTE", "ref": "creative production research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "poietek", "phase": "P29", "status": "RESEARCH",
+      "owner": "poietek", "phase": "P29", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; no visual ref graph"],
+      "evidence": ["classification: NEW; no visual ref graph", "2026-09-27 implemented in Poietek repo commit 1c55e2f: src/poietek/refs/creativeRefGraph.ts (scene/shot nodes with stable project-scoped ids, STYLE_REF/CHARACTER_REF/ENVIRONMENT_REF edges to scene/shot/asset/external targets, refsFor/referencedBy/nodesInProject/bounded deterministic traversal) + 19 node:test tests in tests/creative-ref-graph.test.js + docs/CREATIVE_REF_GRAPH.md; arrangement entities unrepresented by design, no scores/ranking/fetching/generation, no MAT/Aetherius graph duplication"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p29-multimodal-consistency",

@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Network-hierarchy COMPLETE is skipped; Poietek creative ref graph next.
-    expect(result.selected_task).toBe("REQ-p29-creative-ref-graph");
+    // Creative-ref-graph COMPLETE is skipped; Poietek multimodal consistency next.
+    expect(result.selected_task).toBe("REQ-p29-multimodal-consistency");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
