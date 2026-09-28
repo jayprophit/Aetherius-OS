@@ -241,12 +241,12 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: creative ref graph proven yields Poietek multimodal consistency", () => {
+  it("real registry advances: multimodal consistency proven yields Poietek ref-grounded design", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Creative-ref-graph COMPLETE is skipped; Poietek-owned multimodal consistency is next (implemented in the Poietek repo).
-    expect(r.selected_task).toBe("REQ-p29-multimodal-consistency");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p29-multimodal-consistency");
+    // Multimodal-consistency COMPLETE is skipped; Poietek-owned ref-grounded design is next (implemented in the Poietek repo).
+    expect(r.selected_task).toBe("REQ-p29-ref-grounded-design");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p29-ref-grounded-design");
   });
 
 });

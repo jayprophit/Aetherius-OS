@@ -1026,12 +1026,12 @@
       "title": "Multimodal asset consistency dimensions",
       "description": "Consistency dimensions across generated assets as scorer-registry entries (never a universal score); generation routing exists, consistency scoring does not.",
       "source": {"class": "RESEARCH_NOTE", "ref": "creative production research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "poietek", "phase": "P29", "status": "RESEARCH",
+      "owner": "poietek", "phase": "P29", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; audit prose only"],
+      "evidence": ["classification: NEW; audit prose only", "2026-09-27 implemented in Poietek repo commit 1a376c2: src/poietek/consistency/multimodalConsistency.ts (scorer registry with character/style/environment dimensions grounded in ref-graph vocabulary, per-dimension evaluate with agreement/conflict/unknown, evaluateAll with no universal score) + 17 node:test tests in tests/multimodal-consistency.test.js + docs/MULTIMODAL_CONSISTENCY.md; generation routing referenced never duplicated; no similarity/model judgment, no scores/ranking, no auto-repair, no generation"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p29-ref-grounded-design",
