@@ -1260,13 +1260,13 @@
       "title": "Parent/Child/Grandchild network model",
       "description": "Aetherius OS network hierarchy (isolated Parent authority, distributed Child layer, protocols, grants/inheritance, revocation, identity linkage); belongs to OS/network, never to Genesis identity.",
       "source": {"class": "RESEARCH_NOTE", "ref": "legacy directives (Parent/Child/Grandchild)", "location": "legacy coverage audit 2026-09-25"},
-      "owner": "aetherius-os", "phase": "P27", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P27", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["legacy audit: genuine uncovered delta, still relevant"],
+      "evidence": ["legacy audit: genuine uncovered delta, still relevant", "2026-09-27 selected by deterministic selector; Parent/Child/Grandchild network model implemented in src/network/hierarchy.ts (32 tests in src/network/hierarchy.test.ts): derived 3-level model with per-subtree grants, revocation-as-detach, opaque identity linkage, declared protocol labels; no Genesis lineage (lineage keys rejected), no authority/inheritance fabrication, no transport/placement surfaces"],
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
       "notes": "OS network model only. Must never be built as Genesis identities (REQ-genesis-identity-rule).",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p24-service-orchestrator",

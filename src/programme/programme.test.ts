@@ -241,13 +241,12 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: multichannel messaging proven yields the P27 network hierarchy", () => {
+  it("real registry advances: network hierarchy proven yields the Poietek creative ref graph", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Multichannel-messaging COMPLETE is skipped; P27 network hierarchy is next (back in Aetherius-OS).
-    expect(r.selected_task).toBe("REQ-p27-network-hierarchy");
-    expect(r.phase).toBe("P27");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p27-network-hierarchy");
+    // Network-hierarchy COMPLETE is skipped; Poietek-owned creative ref graph is next (implemented in the Poietek repo).
+    expect(r.selected_task).toBe("REQ-p29-creative-ref-graph");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p29-creative-ref-graph");
   });
 
 });
