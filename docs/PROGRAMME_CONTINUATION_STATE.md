@@ -18,35 +18,38 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p27-network-hierarchy` (P27, READY, owner `aetherius-os`). Back in
-Aetherius-OS after the Agent-Bridge-owned unit.
+`REQ-p29-creative-ref-graph` (P29, READY, owner **`poietek`**). This is the
+third non-Aetherius-OS owner in this stretch: per the ownership rule,
+implement it **in the Poietek repository** and do only programme bookkeeping
+in Aetherius-OS. A repository switch is **not** a stop condition. Precedent:
+MAT units live in MAT, Bridge units live in Agent-Bridge.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved sixteen times since `REQ-p20-execution-checkpoints`
+The selector has moved seventeen times since `REQ-p20-execution-checkpoints`
 closed (`language-graph`, `spine-branch`, `toolchain-registry`,
 `project-orchestrator`, `reflex-calibration`, `selective-escalation`,
 `world-model-lab`, `work-monitoring`, `service-orchestrator`, `reputation`,
 `supply-chain`, `epistemic-graph`, `context-compiler`, `degraded-link`,
-`multichannel-messaging`, `network-hierarchy`). Those were the selector's
-calls, not checkpoint predictions — `CHECKPOINT PREDICTION != SELECTOR
-RESULT`. Read the exact registered requirement before implementing the next
-one.
+`multichannel-messaging`, `network-hierarchy`, `creative-ref-graph`). Those
+were the selector's calls, not checkpoint predictions — `CHECKPOINT
+PREDICTION != SELECTOR RESULT`. Read the exact registered requirement before
+implementing the next one.
 
 ## Last completed requirement
 
-`REQ-p27-multichannel-messaging` — multichannel messaging fabric (typed
-profiles, explicit routing, consent, loopback provider seam), implemented in
-the **Agent-Bridge repository**, commit `1f82a01`; Aetherius-OS bookkeeping
-commit `dc97e53`. **P19 is 20/20 COMPLETE; P20's READY units are closed;
-P22's executable units are all COMPLETE** (memory-integrity-boundary stays
-OWNER_GATED); **P23's executable units are all COMPLETE**; **P24's READY
-units are closed**; **P25's READY units are closed** (reward-treasury stays
-DEFERRED); **P26's executable units are all COMPLETE** (epistemic-graph
-implemented in MAT `de72b04`).
+`REQ-p27-network-hierarchy` — Parent/Child/Grandchild network model
+(OS/network, never Genesis), commit `b0dfb69`. **P19 is 20/20 COMPLETE; P20's
+READY units are closed; P22's executable units are all COMPLETE**
+(memory-integrity-boundary stays OWNER_GATED); **P23's executable units are
+all COMPLETE**; **P24's READY units are closed**; **P25's READY units are
+closed** (reward-treasury stays DEFERRED); **P26's executable units are all
+COMPLETE** (epistemic-graph implemented in MAT `de72b04`); **P27's READY
+units are closed**.
 
-Closed immediately before it: `REQ-p27-degraded-link` (`7003d9f`),
+Closed immediately before it: `REQ-p27-multichannel-messaging` (Bridge
+`1f82a01` + bookkeeping `dc97e53`), `REQ-p27-degraded-link` (`7003d9f`),
 `REQ-p26-context-compiler` (`8ce404b`), `REQ-epistemic-graph` (MAT `de72b04`
 + bookkeeping `2bd27fa`), `REQ-p25-supply-chain` (`a503c48`),
 `REQ-p25-reputation` (`6a9796e`), `REQ-p24-service-orchestrator` (`36ba3fe`),
@@ -110,12 +113,18 @@ Boundaries that still bind later units:
 - **the messaging fabric routes, never sends for real**: explicit selection
   only (no ranking/fallback/broadcast); consent and authorization refs gated;
   loopback records, real providers stay PROVIDER_REQUIRED; SAME TEXT != SAME
-  MESSAGE; CONTENT != AUTHORITY; credential refs only.
+  MESSAGE; CONTENT != AUTHORITY; credential refs only;
+- **the network hierarchy maps topology, never power**: 3 levels derived
+  never stored; grants are membership only; revocation detaches never
+  deletes; orphans reported never repaired; lineage keys rejected outright
+  (never Genesis); no authority/inheritance fabrication; no transport or
+  placement surfaces.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `b0dfb69` | REQ-p27-network-hierarchy |
 | `dc97e53` | REQ-p27-multichannel-messaging (bookkeeping; implementation in Agent-Bridge `1f82a01`) |
 | `7003d9f` | REQ-p27-degraded-link |
 | `8ce404b` | REQ-p26-context-compiler |
@@ -151,10 +160,12 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p27-network-hierarchy` (selected now, P27, owner `aetherius-os`, in
-   Aetherius-OS). Read its exact registered requirement, dependencies, owner
-   and evidence before implementing. CLOSED so far: multichannel-messaging
-   (Bridge `1f82a01` + bookkeeping `dc97e53`), degraded-link (`7003d9f`).
+1. `REQ-p29-creative-ref-graph` (selected now, P29, owner `poietek`).
+   Implement in the Poietek repository; only programme bookkeeping in
+   Aetherius-OS. Read its exact registered requirement, dependencies, owner
+   and evidence before implementing. CLOSED so far: network-hierarchy
+   (`b0dfb69`), multichannel-messaging (Bridge `1f82a01` + bookkeeping
+   `dc97e53`).
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
@@ -162,16 +173,17 @@ Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predi
 `REQ-p22-selective-escalation`, `REQ-p22-world-model-lab`, `REQ-p23-work-monitoring`,
 `REQ-p24-service-orchestrator`, `REQ-p25-reputation`, `REQ-p25-supply-chain`,
 `REQ-epistemic-graph` (MAT `de72b04`), `REQ-p26-context-compiler`,
-`REQ-p27-degraded-link`, `REQ-p27-multichannel-messaging` (Bridge `1f82a01`).
+`REQ-p27-degraded-link`, `REQ-p27-multichannel-messaging` (Bridge `1f82a01`),
+`REQ-p27-network-hierarchy`.
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
 `docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`,
 `docs/selective-escalation.md`, `docs/world-model-lab.md`, `docs/work-monitoring.md`,
 `docs/service-orchestrator.md`, `docs/reputation.md`, `docs/supply-chain.md`,
 `docs/epistemic-graph.md` (pointer: implementation lives in MAT),
-`docs/context-compiler.md`, `docs/degraded-link.md` and
+`docs/context-compiler.md`, `docs/degraded-link.md`,
 `docs/multichannel-messaging.md` (pointer: implementation lives in
-Agent-Bridge).
+Agent-Bridge) and `docs/network-hierarchy.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -264,7 +276,8 @@ selects.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1334/1334 CLEAN PASS this run (75 files, zero timeouts).** Timing item stays open on history — see above. |
+| Full test suite | 76 files with 4 failures, ALL TIMEOUTS in pre-existing scheduler/modelInvoke/promotion timing-heavy tests this unit never touched, **0 assertion failures**; same 3 files 61/61 clean in isolation. **OPEN TIMING ITEM — see above.** |
+| Network-hierarchy unit | 32/32 |
 | Multichannel-messaging unit (Bridge) | 28/28 targeted; 10/10 related; full Bridge suite 1193/1214 (21 pre-existing failures, proven independent) |
 | Degraded-link unit | 31/31 |
 | Context-compiler unit | 30/30 |
@@ -281,7 +294,7 @@ selects.
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (Aetherius registry/programme/state) | 243/243 |
+| Related (network, realtime, relay, placement, policy, genesis, programme, state) | 507/507 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -353,9 +366,11 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
   (`REQ-p25-reward-treasury` DEFERRED, `REQ-owner-full-control` COMPLETE)
 - P26: **epistemic-graph + context-compiler COMPLETE, 0 READY — P26
   exhausted** (epistemic-graph implemented in MAT `de72b04`)
-- P27: `REQ-p27-degraded-link` COMPLETE, `REQ-p27-multichannel-messaging`
-  COMPLETE (Bridge `1f82a01`), `REQ-p27-network-hierarchy` READY (selected
-  now, owner `aetherius-os`)
+- P27: **degraded-link + multichannel-messaging + network-hierarchy
+  COMPLETE, 0 READY — P27 exhausted** (multichannel-messaging implemented in
+  Bridge `1f82a01`)
+- P29: `REQ-p29-creative-ref-graph` READY (selected now, owner `poietek` —
+  implement in Poietek)
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
