@@ -18,42 +18,42 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p29-creative-ref-graph` (P29, READY, owner **`poietek`**). This is the
-third non-Aetherius-OS owner in this stretch: per the ownership rule,
-implement it **in the Poietek repository** and do only programme bookkeeping
-in Aetherius-OS. A repository switch is **not** a stop condition. Precedent:
-MAT units live in MAT, Bridge units live in Agent-Bridge.
+`REQ-p29-multimodal-consistency` (P29, READY, owner **`poietek`**). Staying
+in Poietek per the ownership rule: implement there, bookkeeping only in
+Aetherius-OS.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved seventeen times since `REQ-p20-execution-checkpoints`
+The selector has moved eighteen times since `REQ-p20-execution-checkpoints`
 closed (`language-graph`, `spine-branch`, `toolchain-registry`,
 `project-orchestrator`, `reflex-calibration`, `selective-escalation`,
 `world-model-lab`, `work-monitoring`, `service-orchestrator`, `reputation`,
 `supply-chain`, `epistemic-graph`, `context-compiler`, `degraded-link`,
-`multichannel-messaging`, `network-hierarchy`, `creative-ref-graph`). Those
-were the selector's calls, not checkpoint predictions — `CHECKPOINT
-PREDICTION != SELECTOR RESULT`. Read the exact registered requirement before
-implementing the next one.
+`multichannel-messaging`, `network-hierarchy`, `creative-ref-graph`,
+`multimodal-consistency`). Those were the selector's calls, not checkpoint
+predictions — `CHECKPOINT PREDICTION != SELECTOR RESULT`. Read the exact
+registered requirement before implementing the next one.
 
 ## Last completed requirement
 
-`REQ-p27-network-hierarchy` — Parent/Child/Grandchild network model
-(OS/network, never Genesis), commit `b0dfb69`. **P19 is 20/20 COMPLETE; P20's
-READY units are closed; P22's executable units are all COMPLETE**
-(memory-integrity-boundary stays OWNER_GATED); **P23's executable units are
-all COMPLETE**; **P24's READY units are closed**; **P25's READY units are
-closed** (reward-treasury stays DEFERRED); **P26's executable units are all
-COMPLETE** (epistemic-graph implemented in MAT `de72b04`); **P27's READY
-units are closed**.
+`REQ-p29-creative-ref-graph` — style/character/environment refs to
+scenes/shots over canonical project truth, implemented in the **Poietek
+repository**, commit `1c55e2f`; Aetherius-OS bookkeeping commit `3ec7ef0`.
+**P19 is 20/20 COMPLETE; P20's READY units are closed; P22's executable units
+are all COMPLETE** (memory-integrity-boundary stays OWNER_GATED); **P23's
+executable units are all COMPLETE**; **P24's READY units are closed**;
+**P25's READY units are closed** (reward-treasury stays DEFERRED); **P26's
+executable units are all COMPLETE** (epistemic-graph implemented in MAT
+`de72b04`); **P27's READY units are closed**.
 
-Closed immediately before it: `REQ-p27-multichannel-messaging` (Bridge
-`1f82a01` + bookkeeping `dc97e53`), `REQ-p27-degraded-link` (`7003d9f`),
-`REQ-p26-context-compiler` (`8ce404b`), `REQ-epistemic-graph` (MAT `de72b04`
-+ bookkeeping `2bd27fa`), `REQ-p25-supply-chain` (`a503c48`),
-`REQ-p25-reputation` (`6a9796e`), `REQ-p24-service-orchestrator` (`36ba3fe`),
-`REQ-p23-work-monitoring` (`7522e20`), `REQ-p22-world-model-lab` (`a8faad1`),
+Closed immediately before it: `REQ-p27-network-hierarchy` (`b0dfb69`),
+`REQ-p27-multichannel-messaging` (Bridge `1f82a01` + bookkeeping `dc97e53`),
+`REQ-p27-degraded-link` (`7003d9f`), `REQ-p26-context-compiler` (`8ce404b`),
+`REQ-epistemic-graph` (MAT `de72b04` + bookkeeping `2bd27fa`),
+`REQ-p25-supply-chain` (`a503c48`), `REQ-p25-reputation` (`6a9796e`),
+`REQ-p24-service-orchestrator` (`36ba3fe`), `REQ-p23-work-monitoring`
+(`7522e20`), `REQ-p22-world-model-lab` (`a8faad1`),
 `REQ-p22-selective-escalation` (`fabdc4b`), `REQ-p22-reflex-calibration`
 (`a504052`), `REQ-p22-project-orchestrator` (`e2ab7e3`),
 `REQ-p20-toolchain-registry` (`eb8ce6e`) and `REQ-p20-spine-branch`
@@ -118,12 +118,17 @@ Boundaries that still bind later units:
   never stored; grants are membership only; revocation detaches never
   deletes; orphans reported never repaired; lineage keys rejected outright
   (never Genesis); no authority/inheritance fabrication; no transport or
-  placement surfaces.
+  placement surfaces;
+- **the creative ref graph references, never copies**: style/character/
+  environment refs to scenes/shots; arrangement entities unrepresented;
+  no authorship/licence inference; no scores/ranking/fetching/generation;
+  no MAT/Aetherius graph duplication.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `3ec7ef0` | REQ-p29-creative-ref-graph (bookkeeping; implementation in Poietek `1c55e2f`) |
 | `b0dfb69` | REQ-p27-network-hierarchy |
 | `dc97e53` | REQ-p27-multichannel-messaging (bookkeeping; implementation in Agent-Bridge `1f82a01`) |
 | `7003d9f` | REQ-p27-degraded-link |
@@ -160,12 +165,12 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p29-creative-ref-graph` (selected now, P29, owner `poietek`).
+1. `REQ-p29-multimodal-consistency` (selected now, P29, owner `poietek`).
    Implement in the Poietek repository; only programme bookkeeping in
    Aetherius-OS. Read its exact registered requirement, dependencies, owner
-   and evidence before implementing. CLOSED so far: network-hierarchy
-   (`b0dfb69`), multichannel-messaging (Bridge `1f82a01` + bookkeeping
-   `dc97e53`).
+   and evidence before implementing. CLOSED so far: creative-ref-graph
+   (Poietek `1c55e2f` + bookkeeping `3ec7ef0`), network-hierarchy
+   (`b0dfb69`).
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
@@ -174,7 +179,7 @@ Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predi
 `REQ-p24-service-orchestrator`, `REQ-p25-reputation`, `REQ-p25-supply-chain`,
 `REQ-epistemic-graph` (MAT `de72b04`), `REQ-p26-context-compiler`,
 `REQ-p27-degraded-link`, `REQ-p27-multichannel-messaging` (Bridge `1f82a01`),
-`REQ-p27-network-hierarchy`.
+`REQ-p27-network-hierarchy`, `REQ-p29-creative-ref-graph` (Poietek `1c55e2f`).
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
 `docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`,
@@ -183,7 +188,8 @@ Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predic
 `docs/epistemic-graph.md` (pointer: implementation lives in MAT),
 `docs/context-compiler.md`, `docs/degraded-link.md`,
 `docs/multichannel-messaging.md` (pointer: implementation lives in
-Agent-Bridge) and `docs/network-hierarchy.md`.
+Agent-Bridge), `docs/network-hierarchy.md` and `docs/creative-ref-graph.md`
+(pointer: implementation lives in Poietek).
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -255,12 +261,12 @@ This happened once and was caught exactly this way.
 
 ## Remaining executable work
 
-READY work still exists across P29 (4), P17 (4), P27 (1:
-`REQ-p27-network-hierarchy` selected now), P26 (0), P31 (2) and P25 (0).
-P19, P20, P22, P23, P24, P25 and P26 have no READY units left (P22 keeps only
-its OWNER_GATED memory boundary). **Exhausted phases are not stop
-conditions** — the programme continues into whatever phase the selector
-selects.
+READY work still exists across P29 (3: `REQ-p29-multimodal-consistency`
+owner poietek selected now, plus ref-grounded-design and visual-qa), P17
+(4), P27 (0), P26 (0), P31 (2) and P25 (0). P19, P20, P22, P23, P24, P25,
+P26 and P27 have no READY units left (P22 keeps only its OWNER_GATED memory
+boundary). **Exhausted phases are not stop conditions** — the programme
+continues into whatever phase the selector selects.
 
 ## Repository state
 
@@ -277,6 +283,7 @@ selects.
 | Gate | State |
 | --- | --- |
 | Full test suite | 76 files with 4 failures, ALL TIMEOUTS in pre-existing scheduler/modelInvoke/promotion timing-heavy tests this unit never touched, **0 assertion failures**; same 3 files 61/61 clean in isolation. **OPEN TIMING ITEM — see above.** |
+| Creative-ref-graph unit (Poietek) | 19/19 targeted; typecheck:core clean; format:check clean; full Poietek suite 340/340 clean |
 | Network-hierarchy unit | 32/32 |
 | Multichannel-messaging unit (Bridge) | 28/28 targeted; 10/10 related; full Bridge suite 1193/1214 (21 pre-existing failures, proven independent) |
 | Degraded-link unit | 31/31 |
@@ -294,7 +301,7 @@ selects.
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (network, realtime, relay, placement, policy, genesis, programme, state) | 507/507 |
+| Related (Aetherius registry/programme/state) | 243/243 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -369,8 +376,9 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
 - P27: **degraded-link + multichannel-messaging + network-hierarchy
   COMPLETE, 0 READY — P27 exhausted** (multichannel-messaging implemented in
   Bridge `1f82a01`)
-- P29: `REQ-p29-creative-ref-graph` READY (selected now, owner `poietek` —
-  implement in Poietek)
+- P29: `REQ-p29-creative-ref-graph` COMPLETE (Poietek `1c55e2f`),
+  `REQ-p29-multimodal-consistency` READY (selected now, owner `poietek` —
+  implement in Poietek), plus ref-grounded-design and visual-qa READY
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
