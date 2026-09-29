@@ -790,12 +790,12 @@
       "title": "Deployment qualification profile",
       "description": "Deployment readiness metrics (accuracy, reliability, escalation/human-review rates, model+execution+review costs, residual risk, evidence coverage, recovery success) as multidimensional profile; declarations exist, metrics do not; never a universal score.",
       "source": {"class": "RESEARCH_NOTE", "ref": "deployment research", "location": "research addendum 2026-09-23"},
-      "owner": "aetherius-os", "phase": "P31", "status": "RESEARCH",
+      "owner": "aetherius-os", "phase": "P31", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["2026-09-23 classification: RELATED; profiles declared, unmeasured"],
+      "evidence": ["2026-09-23 classification: RELATED; profiles declared, unmeasured", "2026-09-29 selected by deterministic selector; seven-dimension measured-or-missing qualification profile implemented in src/release/deploymentProfile.ts (23 tests in src/release/deploymentProfile.test.ts), each dimension with own units and evidence, derived rates computed never asserted, no universal score, no actuation/authorization/release-scope"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p18-hardware-profiles",

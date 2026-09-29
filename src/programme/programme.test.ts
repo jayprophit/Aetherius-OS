@@ -241,13 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: visual QA proven yields the P31 deployment profile", () => {
+  it("real registry advances: deployment profile proven yields P31 release packaging", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Visual-QA COMPLETE is skipped; P31 deployment profile is next (back in Aetherius-OS).
-    expect(r.selected_task).toBe("REQ-p31-deployment-profile");
+    // Deployment-profile COMPLETE is skipped; P31 release packaging is next (last executable unit).
+    expect(r.selected_task).toBe("REQ-p31-release-packaging");
     expect(r.phase).toBe("P31");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p31-deployment-profile");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p31-release-packaging");
   });
 
 });
