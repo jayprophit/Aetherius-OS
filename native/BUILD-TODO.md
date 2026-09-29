@@ -776,3 +776,8 @@ Status vocabulary: EXISTS / PARTIAL / MISSING / DUPLICATE / LEGACY / CONFLICTING
 - src/release/packaging.integration.test.ts proves the seam with REAL records on both sides (no mocks of the seam itself): attested digest verifies inside the package (VERIFIED not ASSERTED); tampered digest fails with DIGEST_MISMATCH; unattested artifact records ASSERTED explicitly with no silent upgrade; SBOM completeness is referenced never recomputed; unknown attestation refs stay unknown.
 - One test-side correction during development: the tamper fixture used a non-hex placeholder that tripped digest-shape validation before reaching the mismatch check - replaced with a valid-but-different hex digest. A FAILING TEST IS NOT AUTOMATICALLY A FAILING IMPLEMENTATION.
 - Gates: 5/5 new; related release+supply 74/74; typecheck clean; FULL SUITE 1413/1413 CLEAN (79 files, zero timeouts) - third consecutive clean full pass; build clean.
+
+## 2026-09-29 - COMPLETION MODE: docs audit (CLEAN, two false positives investigated)
+- All 25 docs/*.md paths referenced in PROGRAMME_CONTINUATION_STATE.md resolve on disk.
+- All src/*.ts paths cited across 20 unit docs resolve, except two apparent hits both cleared by inspection: docs/language-graph.md was never referenced anywhere (audit-list error, not a docs bug), and src/user.ts/userService.ts/userServiceHelper.ts in docs/change-impact.md are prose examples of the similarity-regression fixture, not file references.
+- No action taken beyond verification. No push.
