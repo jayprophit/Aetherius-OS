@@ -1,3 +1,10 @@
+/**
+ * REQ-p27-realtime-transport: realtime comms transport over a durable event
+ * log.
+ *
+ * Transports deliver only what the log has durably accepted; a live WebSocket
+ * peer is owner runtime work, not a claim made here.
+ */
 import { DurableEventLog } from "./log";
 import { assertChannel, assertEventShape, assertSubscriber, TransportError } from "./types";
 import type { LogEvent, Subscriber } from "./types";

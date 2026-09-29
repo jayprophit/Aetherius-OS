@@ -42,6 +42,8 @@
       "evidence": ["clickclack realtime capability record", "src/realtime/ durable log+loopback transport+channel access control", "7 realtime tests", "docs/realtime-transport.md", "live WebSocket peer deferred (owner runtime work)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/realtime/transport.ts","src/realtime/log.ts","src/realtime/types.ts"],
+      "test_refs": ["src/realtime/realtime.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
