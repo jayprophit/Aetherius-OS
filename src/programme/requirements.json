@@ -126,6 +126,8 @@
       "evidence": ["P18 invokeRoute", "P19 executors", "Bridge policy gates", "P21-detexec: typed boundary proof", "15 detexec tests", "240/240 Bridge suite"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["aether_policy_bridge.py","executor.py","protocol.py"],
+      "test_refs": ["tests/test_deterministic_execution.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -282,10 +284,12 @@
       "title": "Right cascading sidebar, bottom dock, canvas layout targets",
       "description": "Secondary surfaces dock right (collapsible/cascading/tabbed); terminal/problems/tests/logs bottom; Genesis in right side or maximized canvas. Reference boards inform tokens, not runtime data.",
       "source": {"class": "OWNER_DECISION", "ref": "continuous-build directive 2026-09-22", "location": "owner chat"},
-      "owner": "aetherius-os", "phase": "P23",       "status": "PROVEN",
+      "owner": "ide", "phase": "P23",       "status": "PROVEN",
       "priority": 3, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["owner directive sections 13-17", "P23-layout core: sidebar/dock/presets/persistence", "P23 presets: specialist workspace presets", "P23 responsive: viewport classes + overlay drawer", "P23 detach: real secondary windows, shared backends", "38 vitest", "40/40 verify-shell", "IDE d45e4f5"],
       "provenance": "owner decision 2026-09-22",
+      "implementation_refs": ["workspace/app/src/App.tsx","workspace/app/src/workspace/state.ts","workspace/app/src/workspace/detach.ts"],
+      "test_refs": ["workspace/app/src/App.test.tsx","workspace/app/src/workspace/state.test.ts","workspace/app/src/workspace/detach.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -321,6 +325,8 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["owner directive section 7", "P22/1 identity root + bindings", "Genesis 8343005 (8 tests)", "Aetherius 9f4693b (7 tests)", "211/211 suite", "Bridge principal context (18 tests, 204/204 suite)"],
       "provenance": "owner decision 2026-09-22",
+      "implementation_refs": ["include/genesis/identity/genesis_identity.hpp","include/genesis/identity/entity_registry.hpp"],
+      "test_refs": ["tests/genesis_identity_tests.cpp","src/genesis/identity.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {

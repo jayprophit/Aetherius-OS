@@ -124,7 +124,14 @@ function citationText(r: Requirement): string {
   return [...r.evidence, r.notes ?? "", ...(r.implementation_refs ?? []), ...(r.test_refs ?? [])].join("\n");
 }
 
-function looksLikeTest(path: string): boolean {
+/**
+ * Whether a path is a test file, by any convention this programme's
+ * repositories actually use. Exported because the rule has been re-implemented
+ * and drifted once already: a private copy in a test that only knew the
+ * TypeScript dot style would have reported Genesis's C++ suite as a
+ * non-test. One predicate, shared.
+ */
+export function looksLikeTest(path: string): boolean {
   return TEST_FILE.test(path);
 }
 
@@ -207,7 +214,18 @@ export function auditEvidenceTrace(
     // Traceability counts only citations that actually resolve. A declared
     // test_ref that names a missing file is a dangling citation, never a
     // satisfied one: declaring a path does not make it exist.
-    const hasTestCitation = [...resolved.keys()].some(looksLikeTest);
+    //
+    // A declared implementation is excluded from test detection by ROLE, not
+    // by name. Agent-Bridge's test-impact planner is a production module
+    // literally called test_impact.py, and a naming heuristic alone would
+    // classify it as a test - which is how a module could end up appearing to
+    // prove its own requirement.
+    const declaredImplementations = new Set(
+      [...(r.implementation_refs ?? [])].map((p) => p.replace(/^\.\//, "")),
+    );
+    const hasTestCitation = [...resolved.keys()]
+      .filter((p) => !declaredImplementations.has(p))
+      .some(looksLikeTest);
 
     let traceClass: TraceClass;
     if (r.evidence.length === 0 || r.evidence.every((e) => !e.trim())) traceClass = "NO_EVIDENCE";
