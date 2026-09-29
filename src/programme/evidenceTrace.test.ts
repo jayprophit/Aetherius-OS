@@ -253,6 +253,38 @@ describe("evidenceTrace: purity and determinism", () => {
   });
 });
 
+describe("evidenceTrace: cross-repo test naming conventions", () => {
+  it("recognises Python prefix-style test files", () => {
+    const [t] = audit(
+      [req({ owner: "agent-bridge", evidence: ["11 speech tests"], test_refs: ["tests/test_speech_profile.py"] })],
+      ["agent-bridge/tests/test_speech_profile.py"],
+    );
+    expect(t!.hasTestCitation).toBe(true);
+    expect(t!.untraceableComplete).toBe(false);
+  });
+
+  it("recognises a tests/ directory convention", () => {
+    const [t] = audit(
+      [req({ owner: "poietek", evidence: ["see it"], test_refs: ["tests/some_suite.js"] })],
+      ["poietek/tests/some_suite.js"],
+    );
+    expect(t!.hasTestCitation).toBe(true);
+  });
+
+  it("does not treat an ordinary module as a test", () => {
+    const [t] = audit(
+      [req({ owner: "agent-bridge", evidence: ["see it"], test_refs: ["world_audit.py"] })],
+      ["agent-bridge/world_audit.py"],
+    );
+    expect(t!.hasTestCitation).toBe(false);
+  });
+
+  it("does not treat a bare tests/ directory as a test file", () => {
+    const [t] = audit([req({ evidence: ["see it"], implementation_refs: ["tests/"] })], ["x/tests/"]);
+    expect(t!.hasTestCitation).toBe(false);
+  });
+});
+
 describe("evidenceTrace: summary", () => {
   it("counts classes, complete claims and dangling citations", () => {
     const traces = audit(

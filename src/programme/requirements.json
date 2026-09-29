@@ -66,6 +66,8 @@
       "evidence": ["crabfleet remote-desktop capability record (not a fleet controller)", "Agent-Bridge remote_desktop.py: vault-ref endpoints+auth transport+scoped transfer+session lifecycle", "10 remote-desktop tests", "docs/REMOTE_DESKTOP_ADAPTER.md", "live VNC backend deferred (owner runtime work)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["remote_desktop.py"],
+      "test_refs": ["tests/test_remote_desktop.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -142,6 +144,8 @@
       "evidence": ["no MCP adapter exists yet", "Agent-Bridge mcp_adapter.py: negotiation+discovery+transports, no execution surface", "9 adapter tests", "docs/MCP_ADAPTER_BOUNDARY.md", "14 pre-existing env failures verified on clean tree, unrelated"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["mcp_adapter.py"],
+      "test_refs": ["tests/test_mcp_adapter.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -194,6 +198,8 @@
       "evidence": ["P19/2 event triggers (internal only)", "Agent-Bridge webhook_triggers.py: source allowlist+HMAC+freshness+dedup+allowlisted payloads", "8 webhook tests", "docs/WEBHOOK_TRIGGERS.md", "HTTP listener deferred (owner runtime work)"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["webhook_triggers.py"],
+      "test_refs": ["tests/test_webhook_triggers.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -645,6 +651,8 @@
       "evidence": ["2026-09-23 classification: NEW; only oracle quality verdicts exist", "Agent-Bridge test_impact.py plan composer over testmap/history/memory", "12 impact tests", "docs/TEST_IMPACT.md", "skipped never passed; plan separate from execution"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["test_impact.py"],
+      "test_refs": ["tests/test_test_impact.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -669,6 +677,8 @@
       "evidence": ["2026-09-23 classification: NEW gap; per-op VERIFICATION_FAILED exists, sibling/policy audit missing", "Agent-Bridge world_audit.py expectations+invariants+prohibited+policy audit", "16 audit tests", "docs/WORLD_STATE_AUDIT.md", "detexec untouched, suites green"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["world_audit.py"],
+      "test_refs": ["tests/test_world_audit.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1101,6 +1111,8 @@
       "evidence": ["classification: LIKELY partial; routing+stubs exist, no unified profile", "Agent-Bridge multimodal/speech_profile.py leaf over router", "11 speech tests", "docs/SPEECH_BACKEND_PROFILE.md", "NOT_INSTALLED honest; no installs/downloads/fabrication"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["multimodal/speech_profile.py"],
+      "test_refs": ["tests/test_speech_profile.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {

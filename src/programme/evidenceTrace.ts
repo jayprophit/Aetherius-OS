@@ -93,7 +93,16 @@ export type PathResolver = (root: string, path: string) => boolean;
 export type OwnerRoots = Readonly<Record<string, readonly string[]>>;
 
 const PATH_LIKE = String.raw`(?:[A-Za-z0-9_.-]+/)+[A-Za-z0-9_.-]+\.[A-Za-z0-9]+`;
-const TEST_FILE = /\.(?:test|spec)\.[A-Za-z0-9]+$/;
+/**
+ * Test-file shapes actually used across this programme's repositories:
+ * dot-style everywhere (foo.test.ts / foo.test.mjs / foo.test.js), and
+ * Python's prefix style, which is how Agent-Bridge names every one of its
+ * suites. Recognising only the dot style made six correctly-cited
+ * Agent-Bridge requirements read as untraceable - the audit was blind to a
+ * whole repository's convention.
+ */
+const TEST_FILE =
+  /(?:\.(?:test|spec)\.[A-Za-z0-9]+$)|(?:(?:^|\/)test_[A-Za-z0-9_]+\.(?:py|mjs|js|ts|tsx)$)|(?:(?:^|\/)tests?\/[A-Za-z0-9_.-]+$)/;
 
 /**
  * Pull path-shaped tokens out of free text. A token must contain a separator
