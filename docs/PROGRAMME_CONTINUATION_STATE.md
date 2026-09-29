@@ -202,10 +202,13 @@ Boundaries that still bind later units:
    absent). BUILD49 first reconciliation pass recorded in BUILD-TODO
    (classify-only: action-receipts candidate gap NOT registered pending owner
    scoping; inference/model families STUDY_ONLY; workspace/bare-metal as
-   reference). Next: integration seams, then security/reliability, then
-   packaging evidence. CLOSED last: release-packaging (`1aab47b`),
-   deployment-profile (`1e83f2e`). Do NOT stop, do NOT report until a TRUE
-   final stop condition exists.
+    reference). Done since: attestation<->packaging integration proven
+    (5 tests), focused security audit over new modules (clean), docs audit
+    (clean), three consecutive clean full suites (1413/1413). Next:
+    reliability/recovery evidence, performance audit, packaging evidence,
+    deeper BUILD49 reconciliation. CLOSED last: release-packaging
+    (`1aab47b`), deployment-profile (`1e83f2e`). Do NOT stop, do NOT report
+    until a TRUE final stop condition exists.
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
