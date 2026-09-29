@@ -1038,12 +1038,12 @@
       "title": "Reference-grounded design rule",
       "description": "Design outputs cite reference IDs plus deltas; composes with the creative graph and consistency dimensions.",
       "source": {"class": "RESEARCH_NOTE", "ref": "creative production research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "poietek", "phase": "P29", "status": "RESEARCH",
+      "owner": "poietek", "phase": "P29", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; IDE map is layout fidelity, not grounding"],
+      "evidence": ["classification: NEW; IDE map is layout fidelity, not grounding", "2026-09-29 implemented in Poietek repo commit d6bd674: src/poietek/design/refGroundedDesign.ts (validateGrounding checks every design-output citation resolves in the ref graph with explicit deltas, reports unresolved without verdicts, preserves evaluation refs uninterrupted) + 10 node:test tests in tests/ref-grounded-design.test.js + docs/REF_GROUNDED_DESIGN.md; no generation/QA/scores/auto-repair, no graph duplication"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p29-visual-qa",
