@@ -770,3 +770,9 @@ Status vocabulary: EXISTS / PARTIAL / MISSING / DUPLICATE / LEGACY / CONFLICTING
 ## 2026-09-29 - COMPLETION MODE: repeated full-suite evidence (stability signal)
 - Full Aetherius suite re-run at current tree (after packaging unit + terminal retarget + docs-only commits): 78 files, 1408/1408 CLEAN, zero timeouts, zero assertion failures.
 - Combined with the immediately preceding 1408/1408 clean run: TWO CONSECUTIVE clean full passes. Historical timing incidents (scheduler/modelInvoke/promotion/Ollama-probe flakes, all isolated-clean with zero stable assertion failures) remain retained as history, not erased. Timing classification stays OPEN on history, CLEAN on the last two runs.
+
+## 2026-09-29 - COMPLETION MODE: attestation <-> packaging integration proven (5 tests)
+- Gap found by seam inspection, not by selector: release packaging was designed to compose with supply-chain attestation through a caller-supplied lookup, but no test exercised both sides together (IMPLEMENTED != INTEGRATED).
+- src/release/packaging.integration.test.ts proves the seam with REAL records on both sides (no mocks of the seam itself): attested digest verifies inside the package (VERIFIED not ASSERTED); tampered digest fails with DIGEST_MISMATCH; unattested artifact records ASSERTED explicitly with no silent upgrade; SBOM completeness is referenced never recomputed; unknown attestation refs stay unknown.
+- One test-side correction during development: the tamper fixture used a non-hex placeholder that tripped digest-shape validation before reaching the mismatch check - replaced with a valid-but-different hex digest. A FAILING TEST IS NOT AUTOMATICALLY A FAILING IMPLEMENTATION.
+- Gates: 5/5 new; related release+supply 74/74; typecheck clean; FULL SUITE 1413/1413 CLEAN (79 files, zero timeouts) - third consecutive clean full pass; build clean.
