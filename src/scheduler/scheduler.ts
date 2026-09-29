@@ -1,3 +1,9 @@
+/**
+ * REQ-p19-scheduler: durable routine scheduler and event triggers.
+ *
+ * Misfire policy, occurrence identity and trigger matching are recorded facts
+ * derived from the persisted schedule; activation is idempotent per occurrence.
+ */
 import type { FileStateStore } from "../state/store";
 import { StateError } from "../state/types";
 import { dueOccurrences, occurrenceKey, validateSchedule, DEFAULT_MISFIRE_AFTER_MS } from "./schedules";

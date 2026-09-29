@@ -1,3 +1,11 @@
+/**
+ * REQ-p16-registry: machine-readable programme, dependency and requirement
+ * registries.
+ *
+ * Validation is structural and read-only. It never repairs a registry and
+ * never decides whether work was actually done; evidence quality is a
+ * separate question, audited by evidenceTrace.
+ */
 import type { ProgrammeBundle, Requirement, ValidationIssue, WorkState } from "./types";
 
 const VALID_STATUSES = new Set([

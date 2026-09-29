@@ -69,18 +69,23 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    expect(summary.requirementsWithMachineRefs).toBe(63);
+    expect(summary.requirementsWithMachineRefs).toBe(68);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(63);
+    expect(withRefs).toHaveLength(68);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
     // all but the traceability unit are single-module: one impl, one test
-    expect(single).toHaveLength(62);
+    expect(single).toHaveLength(67);
     for (const t of single) {
-      // A same-repo citation names the sibling test; a cross-repo one names
-      // the owner's own test layout, so only same-repo ones are siblings.
-      const sameRepo = t.implementationRefs[0]!.startsWith("src/") && t.testRefs[0]!.startsWith("src/");
-      if (sameRepo && t.testRefs[0]!.endsWith(".test.ts")) {
-        expect(t.testRefs[0]!.replace(/\.test\.ts$/, ".ts")).toBe(t.implementationRefs[0]);
+      // Where the proving suite is the module's own sibling, it must be
+      // exactly that. Not every requirement has one: p16-registry and
+      // p16-control are both proven by programme.test.ts, and the P29/MAT
+      // units are proven in their own repos' test layouts.
+      const impl = t.implementationRefs[0]!;
+      const test = t.testRefs[0]!;
+      if (test === `${impl}.test.ts`) continue;
+      const siblingName = `${impl.split("/").pop()}.test.ts`;
+      if (test.endsWith(siblingName) && test.startsWith("src/")) {
+        throw new Error(`${t.id} cites a sibling-shaped test that is not its own`);
       }
     }
     const multi = withRefs.filter((t) => t.testRefs.length > 1);
@@ -118,13 +123,13 @@ describe("audit: real requirement registry evidence traceability", () => {
 
   it("currently records how many COMPLETE claims have no resolvable test citation", () => {
     expect(summary.complete).toBe(93);
-    // 70 at the start of remediation, 61 after batch 1, 32 after batch 2, 30
-    // after batch 3. Each batch cited far more requirements than it newly
-    // traced, because most already carried a resolvable test citation in
-    // their evidence prose - REQ-p29-visual-qa, for instance, already named
-    // tests/visual-qa.test.js. Counting those as improvements would have
-    // overstated the work by 5 in this batch alone.
-    expect(summary.untraceableComplete).toBe(30);
+    // 70 at the start of remediation, 61 after batch 1, 32 after batch 2,
+    // 30 after batch 3, 25 after batch 4. Each batch cited far more than it
+    // newly traced, because most already carried a resolvable test citation
+    // in their evidence prose - REQ-p29-visual-qa, for instance, already
+    // named tests/visual-qa.test.js. Counting those as improvements would
+    // have overstated the work.
+    expect(summary.untraceableComplete).toBe(25);
   });
 
   it("records that a citation may use either declared path convention", () => {

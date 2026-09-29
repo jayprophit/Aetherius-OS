@@ -1,3 +1,9 @@
+/**
+ * REQ-p19-workflows: skills, workflows and routines runtime.
+ *
+ * Workflow runs are recorded state machines advanced explicitly; cycle and
+ * depth violations fail with evidence rather than recursing.
+ */
 import type { FileStateStore } from "../state/store";
 import { parseSkillRef, type SkillRegistry } from "./skills";
 import { parseWorkflowRef, validateWorkflow } from "./validate";

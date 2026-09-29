@@ -233,6 +233,8 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["27 promotion tests", "204/204 full suite", "tsc clean"],
       "provenance": "P19/5 session record",
+      "implementation_refs": ["src/workflows/promotion.ts"],
+      "test_refs": ["src/workflows/promotion.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -323,6 +325,8 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["27 scheduler tests", "151/151 full suite", "tsc clean"],
       "provenance": "P19/2 session record",
+      "implementation_refs": ["src/scheduler/scheduler.ts"],
+      "test_refs": ["src/scheduler/scheduler.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -378,6 +382,8 @@
       "priority": 5, "depends_on": [], "blockers": [],
       "evidence": ["0503294", "fb64534", "structural validation"],
       "provenance": "P16/1 + P16/2 session records",
+      "implementation_refs": ["src/programme/validate.ts"],
+      "test_refs": ["src/programme/programme.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -389,6 +395,8 @@
       "priority": 5, "depends_on": ["REQ-p16-registry"], "blockers": [],
       "evidence": ["25/25 vitest", "46/46 full suite", "tsc clean", "4b564eb"],
       "provenance": "P16/3 session record",
+      "implementation_refs": ["src/programme/select.ts"],
+      "test_refs": ["src/programme/programme.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -457,6 +465,8 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["P19 exit gate 9/9", "P19/1 runtime", "P19/2 scheduler", "P19/3 executors", "P19/4 subworkflows", "P19/5 promotion"],
       "provenance": "owner decision 2026-09-22",
+      "implementation_refs": ["src/workflows/runtime.ts"],
+      "test_refs": ["src/workflows/workflows.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {

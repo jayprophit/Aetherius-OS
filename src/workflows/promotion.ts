@@ -1,3 +1,9 @@
+/**
+ * REQ-p19-promotion: governed skill promotion lifecycle.
+ *
+ * A promotion is a recorded fact - candidate, evidence, pointer and history -
+ * never an in-place mutation of the active version.
+ */
 import type { FileStateStore } from "../state/store";
 import { validateSkill, type SkillRegistry } from "./skills";
 import type { Skill } from "./types";

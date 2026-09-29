@@ -1,3 +1,10 @@
+/**
+ * REQ-p16-control: requirement ingestion, registry validation and the
+ * deterministic selector.
+ *
+ * Selection is a pure function of registry state: same input, same choice,
+ * or an explicit refusal when nothing is executable. It never invents work.
+ */
 import type { ProgrammeBundle, Requirement, SelectionResult } from "./types";
 
 function dependentsCount(r: Requirement, byId: Map<string, Requirement>): number {
