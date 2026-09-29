@@ -98,6 +98,8 @@
       "evidence": ["owner directive sections 19-22", "src/programme/doeMapping.ts canonical mapping + validator", "5 DOE mapping tests", "docs/doe-mapping.md", "no DOE runtime created"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/programme/doeMapping.ts"],
+      "test_refs": ["src/programme/doeMapping.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -831,6 +833,8 @@
       "evidence": ["2026-09-23 classification: NEW; zero invention records", "src/programme/inventions.ts disclosure records + validation + immutable registration", "6 invention tests", "docs/invention-disclosure.md", "no legal conclusions; external work stays attributed"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/programme/inventions.ts"],
+      "test_refs": ["src/programme/inventions.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -843,6 +847,8 @@
       "evidence": ["2026-09-23 classification: RELATED; per-system ids exist, no join", "src/programme/evidenceGraph.ts join+neighbors+closure+paths", "5 graph tests", "docs/evidence-graph.md", "read model only; no execution or authority"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/programme/evidenceGraph.ts"],
+      "test_refs": ["src/programme/evidenceGraph.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -868,6 +874,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "Read-only view. Do not touch REQ-desktop-capability-fabric (IN_PROGRESS elsewhere).",
+      "implementation_refs": ["src/programme/capabilityGraph.ts"],
+      "test_refs": ["src/programme/capabilityGraph.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -919,6 +927,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "Proposal record + query capability only. A proposal is a requested change, never a decision, authorization or execution. P31 release scope remains OWNER_GATED and is not decided here; P25 reward/treasury remains DEFERRED.",
+      "implementation_refs": ["src/programme/proposals.ts"],
+      "test_refs": ["src/programme/proposals.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1080,6 +1090,8 @@
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "A checkpoint preserves enough bounded execution state for an authorized execution to potentially continue. CHECKPOINT != RECOVERY PROOF; CHECKPOINT != RESUME AUTHORIZATION; CHECKPOINT != TASK COMPLETION; CHECKPOINT != PROJECT/GENESIS MEMORY; CHECKPOINT != ARTIFACT LIBRARY; CHECKPOINT != EXECUTION TARGET PROFILE OR PLACEMENT DECISION (P30 owns placement); CHECKPOINT != LEASE/HEARTBEAT/LIVENESS; WORKER PROFILE != WORKER INSTANCE; CHECKPOINT ID != TASK ID != WORKER ID. No resume, restart or recovery execution lives in this unit: the module writes and reads a record and reports replay risk, it never continues work. A pending irreversible action that is CLAIMED_UNVERIFIED blocks replay consideration and must never be rounded to done or to not-done. Persistence reuses the P17 OwnedStore so the record is durable across a process restart, which is still not recovery proof. Secret availability is stored as a reference only, never a value, and availability is not authorization. Out of scope, recorded as a limitation: after a recovery the persisted checkpoint may disagree with the real workspace, artifacts or external world, and this unit does not define reconciliation - it does not silently treat the checkpoint as truth.",
+      "implementation_refs": ["src/programme/executionCheckpoint.ts"],
+      "test_refs": ["src/programme/executionCheckpoint.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1141,6 +1153,8 @@
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "A JOIN, not an estimator and not a source-code parser. Consumes TouchEstimate and never re-implements estimation. SIMILARITY != DEPENDENCY; SAME NAME != DEPENDENCY; SAME DIRECTORY != DEPENDENCY; IMPORTED BY != NECESSARILY BEHAVIOURALLY AFFECTED. STATIC GRAPH != COMPLETE RUNTIME CAUSAL GRAPH. Unchanged by this unit: ReviewContextPack's impact leg, EvidenceGraph, Agent-Bridge TestImpact and registry/depgraph.json semantics.",
+      "implementation_refs": ["src/programme/changeImpact.ts"],
+      "test_refs": ["src/programme/changeImpact.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1167,6 +1181,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "Composes existing gates; owns none of them. SELF REVIEW != INDEPENDENT REVIEW; REVIEW CONTEXT != REVIEW VERDICT; STEWARD REPORT != INDEPENDENT REVIEW; COHORT REVIEW != INDEPENDENT REVIEW; TEST PASS != INDEPENDENT REVIEW; WORLD VERIFICATION != INDEPENDENT REVIEW; MODEL REVIEW != CLEAN-ROOM PROOF; REVIEW PASSED != MERGE AUTHORITY. No authority plane interaction: P25 remains the authority plane and is untouched.",
+      "implementation_refs": ["src/programme/independentReview.ts"],
+      "test_refs": ["src/programme/independentReview.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1180,6 +1196,8 @@
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "Input to independent review, not a reviewer. A system that generated the code may generate its own pack; that is not independent verification. No completeness flag: NO ERROR != COMPLETE CONTEXT.",
+      "implementation_refs": ["src/programme/reviewPack.ts"],
+      "test_refs": ["src/programme/reviewPack.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1192,6 +1210,8 @@
       "evidence": ["classification: NEW; zero readiness code", "src/programme/readiness.ts 14 dimensions + evidence-bound PASS", "6 readiness tests", "docs/autonomy-readiness.md", "no score/percentage/stars by construction"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/programme/readiness.ts"],
+      "test_refs": ["src/programme/readiness.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
