@@ -329,10 +329,10 @@ TRUE final stop condition exists.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1463/1463 CLEAN four times consecutively (81 files, zero timeouts).** Timing item stays open on history — see above. |
+| Full test suite | **1464/1464 CLEAN six times consecutively (81 files, zero timeouts).** Timing item stays open on history — see above. |
 | Integration evidence (new) | attestation registry <-> release packaging seam proven with real records both sides (5 tests: VERIFIED/mismatch/ASSERTED/no-recompute/unknown) |
 | Evidence traceability (new) | `REQ-p16-evidence-traceability` `1a2ada1`: 45 tests. TRUE BASELINE: 108 requirements, 93 COMPLETE, **70 COMPLETE claims with no resolvable test citation**, 1 using machine refs, exactly 4 dangling citations left reported. Open finding, deliberately not remediated. |
-| Traceability remediation (new) | `70a0a2e`: 10 requirements machine-cited, each verified (implementation exists AND cited test imports it). Machine refs 1→11, untraceable COMPLETE 70→**61**. 61 of 93 still untraceable — reported, not hidden. |
+| Traceability remediation (new) | `70a0a2e` batch 1 (10 verified) then `41c7862` batch 2 (45 code-derived: impl header names one REQ id, sibling test exists and imports it; 4 rejected with reasons). Machine refs 1→**56 of 108**, untraceable COMPLETE 70→**32 of 93**. Batch 2 cited 45 but newly traced only 29 — 16 already had resolvable prose citations. 32 still untraceable, reported not hidden. |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
 | Release-packaging unit | 19/19 |
 | Deployment-profile unit | 23/23 |
