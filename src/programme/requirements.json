@@ -82,6 +82,8 @@
       "evidence": ["crabbox runner/sync capability records + SECURITY.md trust model", "src/runners/ lifecycle+sync+honest-sim local runner+unavailable ssh/container", "isolation labels beyond reference trust model", "9 runner tests", "docs/sandbox-runners.md", "real ssh/container backends deferred: no engine/backend (owner runtime work)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/runners/types.ts","src/runners/lifecycle.ts","src/runners/backends.ts","src/runners/sync.ts"],
+      "test_refs": ["src/runners/runners.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -94,6 +96,8 @@
       "evidence": ["octopool relay/budget capability records", "src/relay/ allowlist+scoped tokens+shared cache+non-borrowing quotas", "6 relay tests", "docs/repo-relay.md", "anti-evasion by construction; no network inside"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/relay/policy.ts","src/relay/relay.ts"],
+      "test_refs": ["src/relay/relay.test.ts","src/relay/policy.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
