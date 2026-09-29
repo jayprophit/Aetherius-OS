@@ -329,10 +329,11 @@ TRUE final stop condition exists.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1464/1464 CLEAN six times consecutively (81 files, zero timeouts).** Timing item stays open on history — see above. |
+| Full test suite | **1464/1464 CLEAN (81 files, zero timeouts) — seventh consecutive clean run, and the first after the temp-leak fix removed a real load-sensitive timeout.** Timing item stays open on history — see above. |
 | Integration evidence (new) | attestation registry <-> release packaging seam proven with real records both sides (5 tests: VERIFIED/mismatch/ASSERTED/no-recompute/unknown) |
 | Evidence traceability (new) | `REQ-p16-evidence-traceability` `1a2ada1`: 45 tests. TRUE BASELINE: 108 requirements, 93 COMPLETE, **70 COMPLETE claims with no resolvable test citation**, 1 using machine refs, exactly 4 dangling citations left reported. Open finding, deliberately not remediated. |
-| Traceability remediation (new) | `70a0a2e` batch 1 (10 verified) then `41c7862` batch 2 (45 code-derived: impl header names one REQ id, sibling test exists and imports it; 4 rejected with reasons). Machine refs 1→**56 of 108**, untraceable COMPLETE 70→**32 of 93**. Batch 2 cited 45 but newly traced only 29 — 16 already had resolvable prose citations. 32 still untraceable, reported not hidden. |
+| Traceability remediation (new) | `70a0a2e` batch 1 (10 verified), `41c7862` batch 2 (45 code-derived), `094b03b` batch 3 (7 cross-repo, Poietek/MAT conventions). Machine refs 1→**63 of 108**, untraceable COMPLETE 70→**30 of 93**. Each batch cited more than it newly traced; the tests record the arithmetic. |
+| Test-suite temp leak (new) | `094b03b`: ~1826 leaked `%TEMP%` dirs found. `workflows.test.ts` now cleans all 8 of its own; `test.globalSetup.ts` removes only dirs created during the run, known prefixes only. Global timeout NOT raised, no assertion weakened — the previously timing-out test now passes under full load. |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
 | Release-packaging unit | 19/19 |
 | Deployment-profile unit | 23/23 |
