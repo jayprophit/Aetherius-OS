@@ -1,5 +1,5 @@
 /**
- * P18/3 provider-neutral invocation contract + adapter registry.
+ * REQ-p18-invoke: P18/3 provider-neutral invocation contract + adapter registry.
  *
  * Routing (P18/1 + P18/2) decides WHO is eligible; this layer performs the
  * call and normalizes the outcome. A provider may be healthy, compatible

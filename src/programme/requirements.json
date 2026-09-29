@@ -262,6 +262,8 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["19 executor tests", "170/170 full suite", "tsc clean"],
       "provenance": "P19/3 session record",
+      "implementation_refs": ["src/workflows/executors.ts","src/workflows/modelInvoke.ts","src/workflows/bridgeAction.ts"],
+      "test_refs": ["src/workflows/modelInvoke.test.ts","src/workflows/bridgeAction.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -295,6 +297,8 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["owner directive sections 20-23", "P25/1 profile + lifecycle", "9 TS tests", "21 Bridge tests", "225/225 Bridge", "220/220 Aetherius"],
       "provenance": "owner decision 2026-09-22",
+      "implementation_refs": ["src/policy/ownerProfile.ts"],
+      "test_refs": ["src/policy/ownerProfile.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -354,6 +358,8 @@
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["93/93 suite", "tsc clean", "live daemon down: honest UNAVAILABLE"],
       "provenance": "P18/3 session record",
+      "implementation_refs": ["src/providers/invoke.ts","src/providers/ollama.ts","src/workflows/modelInvoke.ts"],
+      "test_refs": ["src/workflows/modelInvoke.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {

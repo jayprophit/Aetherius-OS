@@ -1,5 +1,6 @@
 /**
- * P25/1 OWNER_FULL_CONTROL canonical profile definition (Aetherius side).
+ * REQ-owner-full-control: P25/1 OWNER_FULL_CONTROL canonical profile
+ * definition (Aetherius side).
  *
  * A broad EXPLICIT owner grant for ordinary reversible workstation
  * operations — never a policy bypass. The Python Agent Bridge enforces it

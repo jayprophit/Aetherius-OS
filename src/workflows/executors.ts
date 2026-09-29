@@ -1,3 +1,9 @@
+/**
+ * REQ-p19-executors: model-invoke and bridge-action workflow executors.
+ *
+ * Executors declare what they can run and how safely; authority is never
+ * granted by a step, only checked against it.
+ */
 import type { WorkflowStep } from "./types";
 
 export interface StepOutcome {

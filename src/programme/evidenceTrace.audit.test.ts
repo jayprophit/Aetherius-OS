@@ -69,12 +69,12 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    expect(summary.requirementsWithMachineRefs).toBe(81);
+    expect(summary.requirementsWithMachineRefs).toBe(84);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(81);
+    expect(withRefs).toHaveLength(84);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
     // all but the traceability unit are single-suite citations
-    expect(single).toHaveLength(79);
+    expect(single).toHaveLength(81);
     for (const t of single) {
       // Where the proving suite is the module's own sibling, it must be
       // exactly that. Not every requirement has one: p16-registry and
@@ -88,12 +88,14 @@ describe("audit: real requirement registry evidence traceability", () => {
         throw new Error(`${t.id} cites a sibling-shaped test that is not its own`);
       }
     }
-    // Two units legitimately cite two suites: the traceability requirement
-    // (unit + real-registry audit) and the relay requirement (relay.test.ts
-    // for the cache, policy.test.ts for the allowlist it depends on).
+    // Three units legitimately cite two suites: the traceability requirement
+    // (unit + real-registry audit), the relay requirement (relay.test.ts for
+    // the cache, policy.test.ts for the allowlist it depends on), and the
+    // executor requirement (model-invoke plus bridge-action executors).
     const multi = withRefs.filter((t) => t.testRefs.length > 1);
     expect(multi.map((t) => t.id).sort()).toEqual([
       "REQ-p16-evidence-traceability",
+      "REQ-p19-executors",
       "REQ-p30-repo-relay",
     ]);
   });
@@ -130,13 +132,13 @@ describe("audit: real requirement registry evidence traceability", () => {
   it("currently records how many COMPLETE claims have no resolvable test citation", () => {
     expect(summary.complete).toBe(93);
     // 70 at the start of remediation, then 61 / 32 / 30 / 25 / 18 / 17 / 15 /
-    // 12 after batches 1-9. Most batches cited more than they newly traced,
+    // 9 after batches 1-10. Most batches cited more than they newly traced,
     // because the requirement already named a resolvable test in its prose
     // (REQ-p29-visual-qa named tests/visual-qa.test.js before it was cited).
     // Batch 5 dropped one more than it cited, because fixing the auditor's
     // blindness to Python's test_*.py naming made an already-cited
     // Agent-Bridge requirement traceable at the same time.
-    expect(summary.untraceableComplete).toBe(12);
+    expect(summary.untraceableComplete).toBe(9);
   });
 
   it("records that a citation may use either declared path convention", () => {
