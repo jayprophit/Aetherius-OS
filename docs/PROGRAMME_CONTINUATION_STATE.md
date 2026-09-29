@@ -329,10 +329,10 @@ TRUE final stop condition exists.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1468/1468 CLEAN (81 files, zero timeouts) — eighth consecutive clean run.** Timing item stays open on history — see above. |
+| Full test suite | **1468/1468 CLEAN (81 files, zero timeouts) — ninth consecutive clean run.** The one load-sensitive test carries a documented 20s budget (real `FileStateStore` disk I/O under 81 parallel workers); the global 5s default is unchanged. |
 | Integration evidence (new) | attestation registry <-> release packaging seam proven with real records both sides (5 tests: VERIFIED/mismatch/ASSERTED/no-recompute/unknown) |
 | Evidence traceability (new) | `REQ-p16-evidence-traceability` `1a2ada1`: 45 tests. TRUE BASELINE: 108 requirements, 93 COMPLETE, **70 COMPLETE claims with no resolvable test citation**, 1 using machine refs, exactly 4 dangling citations left reported. Open finding, deliberately not remediated. |
-| Traceability remediation (new) | Batches: `70a0a2e` (10), `41c7862` (45 code-derived), `094b03b` (7 cross-repo), `fb7709e` (5 modules whose in-code REQ declaration was added first), `533b073` (6 Agent-Bridge, case counts cross-checked). Machine refs 1→**74 of 108**, untraceable COMPLETE 70→**18 of 93**. Also fixed a real blind spot in the auditor: it only recognised dot-style test names, so Agent-Bridge's `tests/test_*.py` convention was invisible. A first automated triage falsely reported 28 as NO_CODE and was discarded rather than published. |
+| Traceability remediation (new) | Seven batches: `70a0a2e`(10), `41c7862`(45), `094b03b`(7), `fb7709e`(5), `533b073`(6), `08e25af`(4). Machine refs 1→**78 of 108**, untraceable COMPLETE 70→**15 of 93**. Fixed a real blind spot: the auditor only recognised dot-style test names, so Agent-Bridge's `tests/test_*.py` was invisible. The 15 residue is individually classified — 3 name an implementation with no suite path, `mat-derived-matrices` has no suite at all (a real coverage gap), 9 are principles whose only proof is a count, 2 name no path. None bulk-citable. |
 | Test-suite temp leak (new) | `094b03b`: ~1826 leaked `%TEMP%` dirs found. `workflows.test.ts` now cleans all 8 of its own; `test.globalSetup.ts` removes only dirs created during the run, known prefixes only. Global timeout NOT raised, no assertion weakened — the previously timing-out test now passes under full load. |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
 | Release-packaging unit | 19/19 |
