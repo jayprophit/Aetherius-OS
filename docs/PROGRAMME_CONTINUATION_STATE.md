@@ -326,7 +326,8 @@ TRUE final stop condition exists.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1408/1408 CLEAN twice consecutively (78 files, zero timeouts).** Timing item stays open on history — see above. |
+| Full test suite | **1413/1413 CLEAN three times consecutively (79 files, zero timeouts).** Timing item stays open on history — see above. |
+| Integration evidence (new) | attestation registry <-> release packaging seam proven with real records both sides (5 tests: VERIFIED/mismatch/ASSERTED/no-recompute/unknown) |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
 | Release-packaging unit | 19/19 |
 | Deployment-profile unit | 23/23 |
