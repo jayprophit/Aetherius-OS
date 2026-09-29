@@ -657,6 +657,12 @@ describe("subworkflows", () => {
     const done = await runtime.approve(waiting.run_id, "s", "ALLOW", "owner");
     expect(done.state).toBe("SUCCEEDED");
   });
+  // The depth cap is a counter, not expansion (runtime.ts: MAX_DEPTH), so this
+  // is O(depth) and cheap. The cost here is the real FileStateStore: every
+  // nested advance persists state to disk, so the test is I/O-bound. Measured
+  // ~1.5s in isolation, over 5s when 81 test files do concurrent disk I/O.
+  // The global default stays at 5s so genuine hangs elsewhere still fail fast;
+  // only this test, whose assertions are unchanged, gets a realistic budget.
   it("cycles and depth excess fail honestly", async () => {
     const { runtime } = subSetup();
     expect(() =>
@@ -687,7 +693,7 @@ describe("subworkflows", () => {
     const deep = await runtime.advance(runtime.start("d0", "1.0.0").run_id);
     expect(deep.state).toBe("FAILED");
     expect(deep.failure).toContain("depth exceeds");
-  });
+  }, 20_000);
   it("missing child fails at runtime with evidence", async () => {
     const { runtime } = subSetup();
     runtime.define({

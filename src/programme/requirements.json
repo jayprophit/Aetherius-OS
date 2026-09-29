@@ -54,6 +54,8 @@
       "evidence": ["clawsweeper review/marker/repair capability records", "src/steward/ readiness+markers+commands+repair+reports+steward-review executor", "29 steward tests", "257/257 full suite", "tsc clean, vite build clean", "docs/steward.md", "future: GitHub comment projection, command runtime wiring (not registered slices)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/steward/readiness.ts","src/steward/markers.ts","src/steward/commands.ts","src/steward/repair.ts"],
+      "test_refs": ["src/steward/steward.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -186,6 +188,8 @@
       "evidence": ["P19 summarize()", "scheduler inspect()", "IDE inspection.ts clients + Inspector runtime card (workers/approvals/sessions/events)", "6 inspection + 4 App inspection tests, 48/48 IDE", "42/42 verify-shell", "docs/design/RUNTIME-INSPECTION.md"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["workspace/app/src/inspection.ts"],
+      "test_refs": ["workspace/app/src/inspection.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -355,6 +359,8 @@
       "priority": 5, "depends_on": [], "blockers": [],
       "evidence": ["186/186 pytest", "probe sibling/traversal/session isolation"],
       "provenance": "BRIDGE-GATE-COMPAT/1 + POLICY-HARDENING/1 session records",
+      "implementation_refs": ["aether_policy_bridge.py"],
+      "test_refs": ["tests/test_policy_deny_gate.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1224,6 +1230,8 @@
       "evidence": ["classification: NEW gap; transport exact, no fabric", "2026-09-27 implemented in Agent-Bridge repo commit 1f82a01: comms/fabric.py (ChannelProfile closed to kinds with adapters, explicit route_message with ordered gates, caller-held ConsentLedger, MessageProvider + LoopbackMessageProvider seam, normalized envelope with preserved channel_data, per-kind inbound normalization, id-based dedup with conflict refusal) + 28 unittest tests in tests/test_messaging_fabric.py + docs/MESSAGING_FABRIC.md; telephony/email/webhook adapters untouched; no provider integrations, no CRM/memory/policy, no auth decisions, no network calls"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["comms/fabric.py"],
+      "test_refs": ["tests/test_messaging_fabric.py"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {

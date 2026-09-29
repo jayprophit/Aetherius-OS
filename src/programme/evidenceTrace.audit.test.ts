@@ -69,12 +69,12 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    expect(summary.requirementsWithMachineRefs).toBe(74);
+    expect(summary.requirementsWithMachineRefs).toBe(78);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(74);
+    expect(withRefs).toHaveLength(78);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
-    // all but the traceability unit are single-module: one impl, one test
-    expect(single).toHaveLength(73);
+    // all but the traceability unit are single-suite citations
+    expect(single).toHaveLength(77);
     for (const t of single) {
       // Where the proving suite is the module's own sibling, it must be
       // exactly that. Not every requirement has one: p16-registry and
@@ -123,14 +123,14 @@ describe("audit: real requirement registry evidence traceability", () => {
 
   it("currently records how many COMPLETE claims have no resolvable test citation", () => {
     expect(summary.complete).toBe(93);
-    // 70 at the start of remediation, then 61 / 32 / 30 / 25 / 18 after
-    // batches 1-5. Most of those batches cited more than they newly traced,
+    // 70 at the start of remediation, then 61 / 32 / 30 / 25 / 18 / 17 / 15
+    // after batches 1-7. Most batches cited more than they newly traced,
     // because the requirement already named a resolvable test in its prose
     // (REQ-p29-visual-qa named tests/visual-qa.test.js before it was cited).
     // Batch 5 dropped one more than it cited, because fixing the auditor's
     // blindness to Python's test_*.py naming made an already-cited
     // Agent-Bridge requirement traceable at the same time.
-    expect(summary.untraceableComplete).toBe(18);
+    expect(summary.untraceableComplete).toBe(15);
   });
 
   it("records that a citation may use either declared path convention", () => {
