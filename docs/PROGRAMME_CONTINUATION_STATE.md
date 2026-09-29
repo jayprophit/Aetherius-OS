@@ -329,10 +329,10 @@ TRUE final stop condition exists.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1464/1464 CLEAN (81 files, zero timeouts) — seventh consecutive clean run, and the first after the temp-leak fix removed a real load-sensitive timeout.** Timing item stays open on history — see above. |
+| Full test suite | **1468/1468 CLEAN (81 files, zero timeouts) — eighth consecutive clean run.** Timing item stays open on history — see above. |
 | Integration evidence (new) | attestation registry <-> release packaging seam proven with real records both sides (5 tests: VERIFIED/mismatch/ASSERTED/no-recompute/unknown) |
 | Evidence traceability (new) | `REQ-p16-evidence-traceability` `1a2ada1`: 45 tests. TRUE BASELINE: 108 requirements, 93 COMPLETE, **70 COMPLETE claims with no resolvable test citation**, 1 using machine refs, exactly 4 dangling citations left reported. Open finding, deliberately not remediated. |
-| Traceability remediation (new) | `70a0a2e` b1 (10), `41c7862` b2 (45 code-derived), `094b03b` b3 (7 cross-repo), `fb7709e` b4 (5 modules whose in-code REQ declaration was ADDED first, then cited). Machine refs 1→**68 of 108**, untraceable COMPLETE 70→**25 of 93**. Each batch cited more than it newly traced; tests record the arithmetic. A first automated triage falsely reported 28 as NO_CODE and was discarded rather than published. |
+| Traceability remediation (new) | Batches: `70a0a2e` (10), `41c7862` (45 code-derived), `094b03b` (7 cross-repo), `fb7709e` (5 modules whose in-code REQ declaration was added first), `533b073` (6 Agent-Bridge, case counts cross-checked). Machine refs 1→**74 of 108**, untraceable COMPLETE 70→**18 of 93**. Also fixed a real blind spot in the auditor: it only recognised dot-style test names, so Agent-Bridge's `tests/test_*.py` convention was invisible. A first automated triage falsely reported 28 as NO_CODE and was discarded rather than published. |
 | Test-suite temp leak (new) | `094b03b`: ~1826 leaked `%TEMP%` dirs found. `workflows.test.ts` now cleans all 8 of its own; `test.globalSetup.ts` removes only dirs created during the run, known prefixes only. Global timeout NOT raised, no assertion weakened — the previously timing-out test now passes under full load. |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
 | Release-packaging unit | 19/19 |
