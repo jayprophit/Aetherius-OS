@@ -241,12 +241,13 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: ref-grounded design proven yields Poietek visual QA", () => {
+  it("real registry advances: visual QA proven yields the P31 deployment profile", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Ref-grounded-design COMPLETE is skipped; Poietek-owned visual QA is next (implemented in the Poietek repo).
-    expect(r.selected_task).toBe("REQ-p29-visual-qa");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p29-visual-qa");
+    // Visual-QA COMPLETE is skipped; P31 deployment profile is next (back in Aetherius-OS).
+    expect(r.selected_task).toBe("REQ-p31-deployment-profile");
+    expect(r.phase).toBe("P31");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p31-deployment-profile");
   });
 
 });

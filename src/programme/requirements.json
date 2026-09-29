@@ -1050,12 +1050,12 @@
       "title": "Visual QA dimension suite",
       "description": "Visual evaluation dimensions (reference/style/character consistency, continuity, AV sync, UI correctness) feeding promotion/eval runners.",
       "source": {"class": "RESEARCH_NOTE", "ref": "visual QA research", "location": "research addendum post-checkpoint 2026-09-23"},
-      "owner": "poietek", "phase": "P29", "status": "RESEARCH",
+      "owner": "poietek", "phase": "P29", "status": "PROVEN",
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["classification: NEW; screenshot mechanics only, no QA"],
+      "evidence": ["classification: NEW; screenshot mechanics only, no QA", "2026-09-29 implemented in Poietek repo commit 232cedb: src/poietek/qa/visualQa.ts (evaluateVisualQa over the six registered dimensions, consuming grounding reports and consistency results without reimplementing them, plus declared continuity/AV-sync/UI checks) + 17 node:test tests in tests/visual-qa.test.js + docs/VISUAL_QA.md; no model judgement, no scores, no auto-repair, no approval"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
-      "owner_gate": false, "work_state": "READY"
+      "owner_gate": false, "work_state": "COMPLETE"
     },
     {
       "id": "REQ-p20-execution-target-profile",

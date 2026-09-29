@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Ref-grounded-design COMPLETE is skipped; Poietek visual QA next.
-    expect(result.selected_task).toBe("REQ-p29-visual-qa");
+    // Visual-QA COMPLETE is skipped; P31 deployment profile next.
+    expect(result.selected_task).toBe("REQ-p31-deployment-profile");
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
