@@ -241,13 +241,14 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry advances: deployment profile proven yields P31 release packaging", () => {
+  it("real registry reports no executable unit once release packaging closes", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Deployment-profile COMPLETE is skipped; P31 release packaging is next (last executable unit).
-    expect(r.selected_task).toBe("REQ-p31-release-packaging");
-    expect(r.phase).toBe("P31");
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-p31-release-packaging");
+    // Release-packaging COMPLETE leaves zero executable units: the selector
+    // returns null with counts, never an invented task.
+    expect(r.selected_task).toBeNull();
+    expect(r.dependencies_satisfied).toBe(false);
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: none");
   });
 
 });

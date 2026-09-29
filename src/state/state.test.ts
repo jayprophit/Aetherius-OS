@@ -137,8 +137,8 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Deployment-profile COMPLETE is skipped; P31 release packaging next.
-    expect(result.selected_task).toBe("REQ-p31-release-packaging");
+    // Release-packaging COMPLETE leaves zero executable units; null, not a guess.
+    expect(result.selected_task).toBeNull();
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);
