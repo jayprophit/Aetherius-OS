@@ -329,8 +329,9 @@ TRUE final stop condition exists.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | **1413/1413 CLEAN three times consecutively (79 files, zero timeouts).** Timing item stays open on history — see above. |
+| Full test suite | **1463/1463 CLEAN four times consecutively (81 files, zero timeouts).** Timing item stays open on history — see above. |
 | Integration evidence (new) | attestation registry <-> release packaging seam proven with real records both sides (5 tests: VERIFIED/mismatch/ASSERTED/no-recompute/unknown) |
+| Evidence traceability (new) | `REQ-p16-evidence-traceability` `1a2ada1`: 45 tests. TRUE BASELINE: 108 requirements, 93 COMPLETE, **70 COMPLETE claims with no resolvable test citation**, 1 using machine refs, exactly 4 dangling citations left reported. Open finding, deliberately not remediated. |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
 | Release-packaging unit | 19/19 |
 | Deployment-profile unit | 23/23 |
