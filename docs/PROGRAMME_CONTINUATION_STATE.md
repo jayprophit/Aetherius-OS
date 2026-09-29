@@ -326,7 +326,7 @@ TRUE final stop condition exists.
 
 | Gate | State |
 | --- | --- |
-| Full test suite | 76 files with 4 failures, ALL TIMEOUTS in pre-existing scheduler/modelInvoke/promotion timing-heavy tests this unit never touched, **0 assertion failures**; same 3 files 61/61 clean in isolation. **OPEN TIMING ITEM — see above.** |
+| Full test suite | **1408/1408 CLEAN twice consecutively (78 files, zero timeouts).** Timing item stays open on history — see above. |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
 | Release-packaging unit | 19/19 |
 | Deployment-profile unit | 23/23 |
