@@ -18,35 +18,40 @@ authoritative in:
 
 ## Current selector result
 
-`REQ-p31-release-packaging` (P31, READY, owner `aetherius-os`). The LAST
-executable requirement registry-wide. Back in Aetherius-OS after the
-Poietek-owned unit.
+`selected_task: null` — ZERO executable requirements remain registry-wide.
+The selector returns null with counts, never an invented task. Per BUILD51
+this is NOT a stop: the programme now runs in FULL-SYSTEM COMPLETION MODE
+(audit, BUILD49 reconciliation, gap registration, integration/debug,
+security, packaging) until a TRUE final stop condition exists. Do NOT
+report; keep working.
 
 Selector order is deterministic: priority desc, dependents count desc, phase
 number asc, id lexicographic asc. It is never overridden manually.
 
-The selector has moved twenty-two times since `REQ-p20-execution-checkpoints`
+The selector made twenty-three moves since `REQ-p20-execution-checkpoints`
 closed (`language-graph`, `spine-branch`, `toolchain-registry`,
 `project-orchestrator`, `reflex-calibration`, `selective-escalation`,
 `world-model-lab`, `work-monitoring`, `service-orchestrator`, `reputation`,
 `supply-chain`, `epistemic-graph`, `context-compiler`, `degraded-link`,
 `multichannel-messaging`, `network-hierarchy`, `creative-ref-graph`,
 `multimodal-consistency`, `ref-grounded-design`, `visual-qa`,
-`deployment-profile`, `release-packaging`). Those were the selector's
-calls, not checkpoint predictions — `CHECKPOINT PREDICTION != SELECTOR
-RESULT`. Read the exact registered requirement before implementing the next
-one.
+`deployment-profile`, `release-packaging`, then terminal null). Those were
+the selector's calls, not checkpoint predictions — `CHECKPOINT PREDICTION
+!= SELECTOR RESULT`.
 
 ## Last completed requirement
 
-`REQ-p31-deployment-profile` — deployment qualification metrics as
-multidimensional profile (never a universal score), commit `1e83f2e`.
-**P19 is 20/20 COMPLETE; P20's READY units are closed; P22's executable
-units are all COMPLETE** (memory-integrity-boundary stays OWNER_GATED);
-**P23's executable units are all COMPLETE**; **P24's READY units are closed**;
-**P25's READY units are closed** (reward-treasury stays DEFERRED); **P26's
-executable units are all COMPLETE** (epistemic-graph implemented in MAT
-`de72b04`); **P27's READY units are closed**; **P29's READY units are closed**.
+`REQ-p31-release-packaging` — release package records and lifecycle plans
+(no execution), commit `1aab47b`. **P19 is 20/20 COMPLETE; P20's READY units
+are closed; P22's executable units are all COMPLETE**
+(memory-integrity-boundary stays OWNER_GATED); **P23's executable units are
+all COMPLETE**; **P24's READY units are closed**; **P25's READY units are
+closed** (reward-treasury stays DEFERRED); **P26's executable units are all
+COMPLETE** (epistemic-graph implemented in MAT `de72b04`); **P27's READY
+units are closed**; **P29's READY units are closed**; **P31's READY units
+are closed**. Every remaining non-complete requirement is BLOCKED,
+OWNER_GATED, HUMAN_REQUIRED, IN_PROGRESS_ELSEWHERE, DEPENDENCY_WAITING, or
+DEFERRED — verified by the executable count reaching exactly zero.
 
 Closed immediately before it: `REQ-p29-visual-qa` (Poietek `232cedb` +
 bookkeeping `d00f364`), `REQ-p29-ref-grounded-design` (Poietek
@@ -139,12 +144,16 @@ Boundaries that still bind later units:
   OBSERVED explicit; no model judgement, no scores, no approval;
 - **the deployment profile measures, never decides**: seven dimensions with
   own units and evidence; derived rates computed never asserted; no universal
-  score anywhere; no actuation, authorization, or release-scope.
+  score anywhere; no actuation, authorization, or release-scope;
+- **release packaging records, never executes**: manifest plus install/
+  update/rollback/uninstall plans as validated records; scope by reference
+  only; SBOM/signing composed; 0.0.0 refused; rollback points backward.
 
 ## Commits (Aetherius-OS, local only — never pushed)
 
 | Commit | Requirement |
 | --- | --- |
+| `1aab47b` | REQ-p31-release-packaging |
 | `1e83f2e` | REQ-p31-deployment-profile |
 | `d00f364` | REQ-p29-visual-qa (bookkeeping; implementation in Poietek `232cedb`) |
 | `766a29c` | REQ-p29-ref-grounded-design (bookkeeping; implementation in Poietek `d6bd674`) |
@@ -186,14 +195,12 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. `REQ-p31-release-packaging` (selected now, P31, owner `aetherius-os`,
-   in Aetherius-OS — the LAST executable requirement). Read its exact
-   registered requirement, dependencies, owner and evidence before
-   implementing. CLOSED so far: deployment-profile (`1e83f2e`),
-   visual-qa (Poietek `232cedb` + bookkeeping `d00f364`). After it closes,
-   executable work reaches zero: enter FULL-SYSTEM COMPLETION MODE (audit,
-   BUILD49 reconciliation, gap registration, integration/debug, security,
-   packaging) — do NOT stop, do NOT report.
+1. FULL-SYSTEM COMPLETION MODE (active now — zero executable requirements).
+   Next: system/capability audit across repos, then BUILD49 reconciliation
+   (classify every mechanism, register ONLY proven gaps), then
+   integration/debug, security, packaging. CLOSED last: release-packaging
+   (`1aab47b`), deployment-profile (`1e83f2e`). Do NOT stop, do NOT report
+   until a TRUE final stop condition exists.
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
@@ -205,7 +212,9 @@ Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predi
 `REQ-p27-network-hierarchy`, `REQ-p29-creative-ref-graph` (Poietek `1c55e2f`),
 `REQ-p29-multimodal-consistency` (Poietek `1a376c2`),
 `REQ-p29-ref-grounded-design` (Poietek `d6bd674`),
-`REQ-p29-visual-qa` (Poietek `232cedb`).
+`REQ-p29-visual-qa` (Poietek `232cedb`),
+`REQ-p31-deployment-profile` (`1e83f2e`),
+`REQ-p31-release-packaging` (`1aab47b`).
 Their boundaries are recorded in `docs/change-impact.md`, `docs/collision-predictor.md`,
 `docs/execution-checkpoints.md`, `docs/project-language-graph.md`, `docs/spine-branch.md`,
 `docs/toolchain-registry.md`, `docs/project-orchestrator.md`, `docs/reflex-calibration.md`,
@@ -218,8 +227,8 @@ Agent-Bridge), `docs/network-hierarchy.md`,
 `docs/creative-ref-graph.md` (pointer: implementation lives in Poietek),
 `docs/multimodal-consistency.md` (pointer: implementation lives in Poietek),
 `docs/ref-grounded-design.md` (pointer: implementation lives in Poietek),
-`docs/visual-qa.md` (pointer: implementation lives in Poietek) and
-`docs/deployment-profile.md`.
+`docs/visual-qa.md` (pointer: implementation lives in Poietek),
+`docs/deployment-profile.md` and `docs/release-packaging.md`.
 
 `REQ-p20-change-impact` scope, already surveyed. This is the gap this
 programme has repeatedly recorded as **ABSENT**, and it is finally
@@ -291,13 +300,12 @@ This happened once and was caught exactly this way.
 
 ## Remaining executable work
 
-READY work: exactly 1 executable unit remains registry-wide —
-`REQ-p31-release-packaging` (P31, owner `aetherius-os`, selected now).
-Everything else is COMPLETE, BLOCKED, OWNER_GATED, HUMAN_REQUIRED,
-IN_PROGRESS_ELSEWHERE, DEFERRED, or owner-gated P31 release-scope. When it
-closes, executable work reaches zero: enter FULL-SYSTEM COMPLETION MODE
-(audit, BUILD49 reconciliation, gap registration, integration/debug,
-security, packaging) — do NOT stop, do NOT report.
+READY work: ZERO executable units remain registry-wide. Everything else is
+COMPLETE, BLOCKED, OWNER_GATED, HUMAN_REQUIRED, IN_PROGRESS_ELSEWHERE,
+DEFERRED, or owner-gated P31 release-scope. FULL-SYSTEM COMPLETION MODE is
+now active: audit, BUILD49 reconciliation, gap registration,
+integration/debug, security, packaging — do NOT stop, do NOT report until a
+TRUE final stop condition exists.
 
 ## Repository state
 
@@ -315,6 +323,7 @@ security, packaging) — do NOT stop, do NOT report.
 | --- | --- |
 | Full test suite | 76 files with 4 failures, ALL TIMEOUTS in pre-existing scheduler/modelInvoke/promotion timing-heavy tests this unit never touched, **0 assertion failures**; same 3 files 61/61 clean in isolation. **OPEN TIMING ITEM — see above.** |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
+| Release-packaging unit | 19/19 |
 | Deployment-profile unit | 23/23 |
 | Visual-QA unit (Poietek) | 17/17 targeted; typecheck:core clean; format:check clean; full Poietek suite 384/384 clean |
 | Ref-grounded-design unit (Poietek) | 10/10 targeted; typecheck:core clean; format:check clean; full Poietek suite 367/367 clean |
@@ -337,7 +346,7 @@ security, packaging) — do NOT stop, do NOT report.
 | Spine-branch unit | 34/34 |
 | Language-graph unit | 58/58 |
 | Execution-checkpoint unit | 43/43 |
-| Related (release, supply, programme, state, eval) | 512/512 |
+| Related (release, supply, workflows, programme, state) | 431/431 |
 | Registry validation | clean, 243 |
 | Typecheck | clean (exit 0) |
 | Vite build | clean, 46 modules |
@@ -416,7 +425,8 @@ registry:validate → diff review → junk check → docs → BUILD-TODO → com
   + visual-qa COMPLETE, 0 READY — P29 exhausted** (all implemented in
   Poietek: `1c55e2f`, `1a376c2`, `d6bd674`, `232cedb`)
 - P31: `REQ-p31-deployment-profile` COMPLETE, `REQ-p31-release-packaging`
-  READY (selected now, owner `aetherius-os` — last executable unit)
+  COMPLETE — P31 executable units exhausted (release-scope stays
+  OWNER_GATED)
 
 **No executable items in a phase is not the same as that phase being
 complete.** Continue across phases per selector output.
