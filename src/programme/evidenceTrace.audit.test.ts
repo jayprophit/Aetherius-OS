@@ -63,27 +63,22 @@ describe("audit: real requirement registry evidence traceability", () => {
   it("records progress on the machine-readable evidence fields", () => {
     // The gap: the Requirement type declares test_refs/implementation_refs
     // for exactly this purpose and the registry populated neither (0 of 107).
-    // 11 now use them - the traceability requirement itself plus a first
-    // verified remediation batch of 10, where each cited test was confirmed
-    // to import the implementation module its requirement governs.
-    expect(summary.requirementsWithMachineRefs).toBe(11);
-    const withRefs = traces
-      .filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0)
-      .map((t) => t.id)
-      .sort();
-    expect(withRefs).toEqual([
-      "REQ-doe-mapping",
-      "REQ-p16-autonomy-readiness",
-      "REQ-p16-capability-graph",
-      "REQ-p16-evidence-graph",
-      "REQ-p16-evidence-traceability",
-      "REQ-p16-governance-proposals",
-      "REQ-p16-invention-disclosure",
-      "REQ-p16-review-context-pack",
-      "REQ-p19-independent-review-gate",
-      "REQ-p20-change-impact",
-      "REQ-p20-execution-checkpoints",
-    ]);
+    // 56 now use them. Every one was admitted by the same mechanical rule:
+    // the implementation file declares that REQ id in its own header, a
+    // sibling test exists, and that test imports the implementation. The
+    // mapping is read off the code, not guessed from filenames.
+    expect(summary.requirementsWithMachineRefs).toBe(56);
+    const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
+    expect(withRefs).toHaveLength(56);
+    // all but the traceability unit are single-module: one impl, one sibling test
+    const single = withRefs.filter((t) => t.testRefs.length === 1);
+    expect(single).toHaveLength(55);
+    for (const t of single) {
+      expect(t.testRefs[0]!.replace(/\.test\.ts$/, ".ts")).toBe(t.implementationRefs[0]);
+    }
+    // and the traceability unit is the one that deliberately cites two suites
+    const multi = withRefs.filter((t) => t.testRefs.length > 1);
+    expect(multi.map((t) => t.id)).toEqual(["REQ-p16-evidence-traceability"]);
   });
 
   it("never puts a test file in implementation_refs or a non-test in test_refs", () => {
@@ -91,25 +86,12 @@ describe("audit: real requirement registry evidence traceability", () => {
     // evidence-strength rules: they hold for every future remediation.
     for (const t of traces) {
       // A requirement that has adopted machine refs must have both kinds;
-      // the 97 that have not adopted them are reported, not failed.
+      // the ones that have not adopted them are reported, not failed.
       if (t.implementationRefs.length === 0 && t.testRefs.length === 0) continue;
       expect(t.implementationRefs.length).toBeGreaterThan(0);
       expect(t.testRefs.length).toBeGreaterThan(0);
       for (const ref of t.implementationRefs) expect(ref.endsWith(".test.ts")).toBe(false);
       for (const ref of t.testRefs) expect(ref.endsWith(".test.ts")).toBe(true);
-    }
-  });
-
-  it("cites the sibling test for the single-module remediation batch", () => {
-    // The 10 remediated requirements each govern exactly one module, so
-    // their proving test is its sibling. The traceability requirement is
-    // excluded because it deliberately cites two suites.
-    const batch = traces.filter(
-      (t) => t.implementationRefs.length === 1 && t.testRefs.length === 1 && t.id !== "REQ-p16-evidence-traceability",
-    );
-    expect(batch).toHaveLength(10);
-    for (const t of batch) {
-      expect(t.testRefs[0]!.replace(/\.test\.ts$/, ".ts")).toBe(t.implementationRefs[0]);
     }
   });
 
@@ -127,10 +109,13 @@ describe("audit: real requirement registry evidence traceability", () => {
 
   it("currently records how many COMPLETE claims have no resolvable test citation", () => {
     expect(summary.complete).toBe(93);
-    // 70 before remediation, less 9: REQ-p20-execution-checkpoints already
-    // carried a resolvable test citation in its evidence prose, so making it
-    // machine-readable did not newly trace it.
-    expect(summary.untraceableComplete).toBe(61);
+    // 70 at the start of remediation, then 61 after batch 1, then 32 after
+    // batch 2. The second batch cited 45 requirements but newly traced only
+    // 29: the other 16 already carried a resolvable test citation in their
+    // evidence prose, so making it machine-readable changed nothing about
+    // traceability. Counting a citation as newly-traceable would have
+    // overstated the improvement by 16.
+    expect(summary.untraceableComplete).toBe(32);
   });
 
   it("records that a citation may use either declared path convention", () => {

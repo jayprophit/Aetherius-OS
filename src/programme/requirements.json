@@ -14,6 +14,8 @@
       "evidence": ["clawhub vector-search capability record", "src/workflows/discovery.ts token-scored keyword retrieval + moderation-aware ranking", "7 discovery tests", "docs/skill-discovery.md", "dense embeddings explicitly deferred: no local embedding runtime (hardware + P18 owner-gate)"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workflows/discovery.ts"],
+      "test_refs": ["src/workflows/discovery.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -26,6 +28,8 @@
       "evidence": ["clawhub package-catalog capability record", "src/workflows/packages.ts build/verify/exact-resolve + trust metadata", "6 package tests", "docs/skill-packages.md"],
       "provenance": "REFMAP capability audit; STUDY_ONLY source",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workflows/packages.ts"],
+      "test_refs": ["src/workflows/packages.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -124,6 +128,8 @@
       "evidence": ["P19 skill registry exists; disclosure levels not yet modeled", "src/workflows/disclosure.ts L0-L3 nested disclosure over SkillRegistry + package manifests", "6 disclosure tests", "docs/progressive-disclosure.md"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workflows/disclosure.ts"],
+      "test_refs": ["src/workflows/disclosure.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -148,6 +154,8 @@
       "evidence": ["P22 worker-separation contract (this unit)", "src/genesis/workers.ts supervised pool: bounds+task binding+terminal retirement+lease expiry", "6 worker tests", "docs/temp-workers.md"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/genesis/workers.ts"],
+      "test_refs": ["src/genesis/workers.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -160,6 +168,8 @@
       "evidence": ["MAT connector + Genesis memory exist; policy not yet defined", "src/context/layers.ts L0-L7 policy over existing stores", "6 context tests", "docs/context-layers.md", "L4 memory UNBOUND via bridge route; secret payloads withheld"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/context/layers.ts"],
+      "test_refs": ["src/context/layers.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -196,6 +206,8 @@
       "evidence": ["P20 execution fabric planned; no cloud runner exists", "src/placement/placement.ts PLACE_LOCAL/DEFER_CLOUD/DENY with worker bounds as preconditions", "5 placement tests", "docs/cloud-persistent-exec.md", "cloud provisioning deferred (no backend; owner runtime work)"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/placement/placement.ts"],
+      "test_refs": ["src/placement/placement.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -208,6 +220,8 @@
       "evidence": ["P19 skill/workflow/routine contracts exist", "src/workflows/directives.ts assessDirective", "5 directive tests", "docs/directive-assessment.md decision: COVERED, no new artifact, no second engine"],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workflows/directives.ts"],
+      "test_refs": ["src/workflows/directives.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -477,6 +491,8 @@
       "evidence": ["2026-09-23 classification: NEW; no typed/probabilistic System-1 in Genesis loop, Bridge reflex_layer deterministic-only", "src/genesis/reflex.ts S0 rules + six decision envelopes + backend seam", "8 reflex tests", "docs/reflex-fabric.md", "S1 model backends deferred; Jev optional-provider only"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/genesis/reflex.ts"],
+      "test_refs": ["src/genesis/reflex.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -490,6 +506,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "NEVER NAME A TECHNIQUE NOT REPRODUCED is the binding constraint: both named techniques are really implemented and measured here - temperature scaling by a deterministic grid search on NLL, and isotonic regression by pool-adjacent-violators - and no third technique is mentioned because there is none. A FITTED PARAMETER IS NOT A PROVEN IMPROVEMENT: every fit reports before and after metrics and improved is only ever the comparison of those two measured numbers, so CALIBRATED != BETTER and NO MEASURED IMPROVEMENT != CLAIMED IMPROVEMENT. UNCALIBRATED != CALIBRATED: with no fit applied the report is uncalibrated and says so. Neither neighbour was reused: BRIDGE calibration_engine is hardware tuning and GENESIS confidence is a frequency blend, so SCORE CALIBRATION != HARDWARE TUNING != FREQUENCY BLEND. A CALIBRATION PROBABILITY MUST BE STRICTLY INSIDE (0, 1) and is deliberately NOT validAbstainProbability, which is inclusive because a certainty of abstaining is legitimate there while an endpoint makes NLL infinite here; neither endpoint is clamped to make a metric computable, and a caller-supplied endpoint is rejected. A fitted isotonic value CAN legitimately be exactly 0 or 1 because it is an empirical block rate, so fitted endpoints are clipped for scoring with the clip count RETURNED as endpointClips - DISCLOSED CLIP, NOT SILENT CLAMP. Too little calibration data reports INSUFFICIENT_CALIBRATION_DATA rather than a confident fit from one sample. CALIBRATION != POLICY AUTHORITY; CALIBRATION != ROUTING DECISION; CALIBRATION != REFLEX DECISION: the report grants no authority, decides no reflex, and emits no verdict, score, rank, winner or permission. Outcomes are caller-observed and never inferred; observations are canonically ordered before summation because floating-point addition is not associative; no clock, filesystem or network.",
+      "implementation_refs": ["src/genesis/calibration.ts"],
+      "test_refs": ["src/genesis/calibration.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -502,6 +520,8 @@
       "evidence": ["2026-09-23 classification: NEW; zero abstain contracts in any repo", "src/genesis/abstain.ts abstention records + explicit thresholds + escalation signal", "9 abstention tests", "docs/reflex-abstention.md", "uncalibrated fact preserved; P25/escalation untouched"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/genesis/abstain.ts"],
+      "test_refs": ["src/genesis/abstain.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -514,6 +534,8 @@
       "evidence": ["2026-09-23 classification: NEW; only prose hints and untyped escalate strings exist", "2026-09-27 selected by deterministic selector; typed EscalationDecision implemented in src/genesis/escalation.ts (46 tests in src/genesis/escalation.test.ts), composed from the existing escalationSignal seam with can_continue/requires_human derived never asserted, P25-only disposal, no execution surface"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/genesis/escalation.ts"],
+      "test_refs": ["src/genesis/escalation.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -526,6 +548,8 @@
       "evidence": ["2026-09-23 classification: NEW lab; runtime world_model exists and tested, no scoring lab", "2026-09-27 selected by deterministic selector; scenario suite + per-dimension quality scoring implemented in src/genesis/worldModelLab.ts (21 tests in src/genesis/worldModelLab.test.ts), scoring caller-supplied traces against the runtime's own digest-comparison semantics with absent outcomes UNRESOLVED, evidence-mandatory verdicts, frozen-input non-mutation, no composite figure"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/genesis/worldModelLab.ts"],
+      "test_refs": ["src/genesis/worldModelLab.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -539,6 +563,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "The missing piece was the COMPOSITION, not the fragments: goals, requirement/task graphs, worker/worktree registries, touch sets, budgets, attention, integration/artifact/evidence graphs, project memory and recovery already exist as tested fragments owned elsewhere. Each registered element is a LANE with a declared canonical owner (LANE_OWNERS) and the state records only whether a reference to that owner is present. ORCHESTRATOR != WORKFLOW ENGINE; ORCHESTRATOR != FRAGMENT REIMPLEMENTATION. A LINKED LANE IS A REFERENCE, NOT A COPY - a ref that parses as embedded JSON content is refused, and an owner re-point is refused. A MISSING LINK IS NOT AN EMPTY ELEMENT and NO REFERENCE != PROVEN ABSENCE: every lane appears in the assembly report whether linked or not. REGISTRIES NEVER STORE PERMANENT WORKER PERSONALITIES: personality, persona, traits, backstory, biography, identity, dna, soul, preferences and similar keys are rejected at any nesting depth, including inside arrays. WORKER REGISTRY != PERSONALITY; WORKER NAME != IDENTITY; SPECIALIST != PERMANENT CAST. PROJECT MEMORY IS AN OWNER DECISION, NOT AN IMPLEMENTATION: REQ-memory-integrity-boundary is OWNER_GATED on exactly the worker-scratch versus autobiographical-memory boundary, so the lane requires a gateRef and this unit synthesises no autobiographical memory. ATTENTION has no established owner in this repository and is declared UNASSIGNED rather than pointed at something that does not own it. TASK_GRAPH is owned by agent-bridge task_dag, which is not in this repository. No run, execute, step, schedule, dispatch, retry or queue surface: src/workflows keeps the engine, src/scheduler keeps scheduling, src/genesis/workers.ts keeps temporary-worker lifecycle, and none is duplicated or wrapped. In-memory and caller-constructed; no clock, filesystem or network.",
+      "implementation_refs": ["src/genesis/orchestrator.ts"],
+      "test_refs": ["src/genesis/orchestrator.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -551,6 +577,8 @@
       "evidence": ["2026-09-23 classification: NEW; only declared writes_files + post-hoc diff exist", "src/workers/touch.ts union estimator with provenance", "5 touch-set tests", "docs/expected-touch-set.md", "dynamic content reported unknown, never guessed"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workers/touch.ts"],
+      "test_refs": ["src/workers/touch.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -564,6 +592,8 @@
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "Prediction only; prevention and observation stay with the existing reactive serialization. PREDICTION != PREVENTION; PREDICTED COLLISION != OBSERVED COLLISION; NO PREDICTION != NO COLLISION; TOUCH PREDICTION != CODE DEPENDENCY. Consumes TouchEstimate and the change-impact graph; composes with REQ-p20-change-impact (0d18468) without merging ownership.",
+      "implementation_refs": ["src/workers/collisionPrediction.ts"],
+      "test_refs": ["src/workers/collisionPrediction.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -577,6 +607,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "Canonical mutable spine + branch worker isolates + typed structured-output merge-back. BRANCH OUTPUT != VM STATE; STRUCTURED OUTPUT != NAIVE STATE MERGE; LAST WRITE WINS != MERGE-BACK; MERGE-BACK != TASK COMPLETION; MERGE-BACK != MERGE/DEPLOY AUTHORITY; MERGE-BACK != RECOVERY; MERGE-BACK != EXECUTION CHECKPOINT. BRANCH != WORKER IDENTITY; BRANCH != WORKER PROFILE; CLOSED BRANCH != RESIDENT WORKER; TEMPORARY BRANCH != PERMANENT WORKER. A branch receives a revision to merge against, never the spine. A branch appends to slices and never truncates, so omission cannot delete spine history. A conflict names both sides and leaves the spine byte-for-byte unchanged, revision included; this function never picks a winner. collisionPrediction remains the pre-execution forecast and applySync remains the reactive serialization oracle; neither is reimplemented. Caller-supplied merge time only; no clock, filesystem or network.",
+      "implementation_refs": ["src/workers/spineBranch.ts"],
+      "test_refs": ["src/workers/spineBranch.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -589,6 +621,8 @@
       "evidence": ["2026-09-23 classification: NEW; WorkerInfo/TempWorker/capability contracts are thin fragments", "src/workers/profiles.ts versioned templates + registry + spawn projection", "10 profile tests", "docs/worker-profiles.md", "templates only; pool still spawns, P25 still authorizes"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workers/profiles.ts"],
+      "test_refs": ["src/workers/profiles.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -637,6 +671,8 @@
       "evidence": ["2026-09-23 classification: NEW; resolveLayers selects, never compiles", "2026-09-27 selected by deterministic selector; assemble/collapse of resolved L0-L7 layers under budget into skill-ready context implemented in src/context/compiler.ts (30 tests in src/context/compiler.test.ts), consuming resolveLayers output via a mechanical adapter and budgetContext for measurement/enforcement; explicit skillRef rules-into-skills, identity dedupe, priority with required guarantees; no memory/RAG/model-invocation, no tokenizer fabrication"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/context/compiler.ts"],
+      "test_refs": ["src/context/compiler.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -709,6 +745,8 @@
       "evidence": ["2026-09-23 classification: RELATED; scheduler envelope is the seed, no unifier", "src/events/envelope.ts five adapters over untouched domains", "8 envelope tests", "docs/event-envelope.md", "correlation view only; no bus, no registry, no graph"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/events/envelope.ts"],
+      "test_refs": ["src/events/envelope.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -721,6 +759,8 @@
       "evidence": ["2026-09-23 classification: RELATED; stores exist, registries+runner missing", "src/eval/evaluation.ts DatasetRegistry+ScorerRegistry+runEvaluation", "6 eval tests", "docs/benchmark-registries.md", "single-metric runs only; no universal score"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/eval/evaluation.ts"],
+      "test_refs": ["src/eval/evaluation.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -734,6 +774,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "Deprecation is append-only and never deletes a dataset or invalidates a historical result. TIMESTAMP EXISTS != FRESHNESS POLICY EXISTS. UNKNOWN != FRESH and UNKNOWN != STALE. SATURATION != QUALITY. REPEATED MEASUREMENT != ADDED INFORMATION. No VALID/OK/TRUSTED lifecycle state exists.",
+      "implementation_refs": ["src/eval/benchmarkFreshness.ts"],
+      "test_refs": ["src/eval/benchmarkFreshness.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -747,6 +789,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "Contamination is RELATIONAL to a benchmark+subject pair, never a global dataset property. HIGH SCORE != CONTAMINATION PROOF; NO KNOWN EXPOSURE != PROVEN CLEAN; SEALED LABEL != PROVEN SEALED HISTORY. Qualifies interpretation; never alters an observed score. SEALED BENCHMARK != CLEAN-ROOM EXECUTION. No primary source: RESEARCH_NOTE != CITATION.",
+      "implementation_refs": ["src/eval/contamination.ts"],
+      "test_refs": ["src/eval/contamination.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -760,6 +804,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "Manifest of identities, fingerprints and custody references only; never benchmark content, never an answer key, never an access grant. SEALED LABEL != PROVEN NEVER TRAINED; STAGING AREA != SEALED EVAL VAULT; TRUST MACHINE != SEALED EVAL VAULT; SEALED DATA != CLEAN-ROOM PROOF; UNKNOWN != VIOLATED. P25 secrecy and P31 hardening are named dependencies of the intent, NOT implemented here.",
+      "implementation_refs": ["src/eval/sealedVault.ts"],
+      "test_refs": ["src/eval/sealedVault.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -772,6 +818,8 @@
       "evidence": ["2026-09-23 classification: RELATED; single-metric sorts only", "src/eval/harness.ts controlled A/B with confound exclusion", "6 harness tests", "docs/causal-harness.md", "per-metric deltas only; no composite, no winner"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/eval/harness.ts"],
+      "test_refs": ["src/eval/harness.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -785,6 +833,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "Join and accounting only; no individual trace leg was rebuilt. CORRELATION != CAUSATION; EVENT OCCURRED != EVENT EVIDENCE PASSED; LEG UNRECORDED != LEG DID NOT RUN; NO TOKENIZER != ZERO TOKENS; NO COST SOURCE != ZERO COST; TRACE PRESENT != TRACE COMPLETE. No external observability dependency.",
+      "implementation_refs": ["src/eval/traceCorrelation.ts"],
+      "test_refs": ["src/eval/traceCorrelation.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -797,6 +847,8 @@
       "evidence": ["2026-09-23 classification: RELATED; profiles declared, unmeasured", "2026-09-29 selected by deterministic selector; seven-dimension measured-or-missing qualification profile implemented in src/release/deploymentProfile.ts (23 tests in src/release/deploymentProfile.test.ts), each dimension with own units and evidence, derived rates computed never asserted, no universal score, no actuation/authorization/release-scope"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/release/deploymentProfile.ts"],
+      "test_refs": ["src/release/deploymentProfile.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -809,6 +861,8 @@
       "evidence": ["2026-09-23 classification: LIKELY partial; profiler + heuristic overrides exist", "src/providers/hardware.ts profiles+registry+precision routing", "src/providers/hardwareProbe.ts bounded CPU probe", "7 hardware tests", "docs/hardware-profiles.md", "measured i7-870 FP32 2.67ms LOCAL_EMPIRICAL; GPU/NPU unmeasured"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/providers/hardware.ts"],
+      "test_refs": ["src/providers/hardware.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -821,6 +875,8 @@
       "evidence": ["2026-09-23 classification: LIKELY partial; records exist, SBOM/SLSA absent", "2026-09-27 selected by deterministic selector; per-artifact SBOM/licence/hash/signature-claim/provenance records plus per-domain coverage implemented in src/supply/attestation.ts (27 tests in src/supply/attestation.test.ts), reusing the packages.ts sha256 helper and the reference.ts UNKNOWN-licence semantics; signatures stay CLAIMED_UNVERIFIED with no backend, no SLSA conformance claimed, no release/deploy/authorization surface"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/supply/attestation.ts"],
+      "test_refs": ["src/supply/attestation.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -861,6 +917,8 @@
       "evidence": ["2026-09-23 classification: RELATED; promotion-scoped only", "src/workflows/evidenceGate.ts generic COMPLETE/NOT_PROVEN gate", "6 gate tests", "docs/evidence-bound-completion.md", "classification only; promotion rule untouched"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workflows/evidenceGate.ts"],
+      "test_refs": ["src/workflows/evidenceGate.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -914,6 +972,8 @@
       "evidence": ["2026-09-23 classification: NEW; no scoring code", "2026-09-27 selected by deterministic selector; contribution-scored reputation over validated actions implemented in src/reputation/contribution.ts (24 tests in src/reputation/contribution.test.ts): explicit integer tallies gated on verified + known-outcome + subject-attributed actions, cold-start UNKNOWN, duplicate rejection, no trust number, no authorization effect"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/reputation/contribution.ts"],
+      "test_refs": ["src/reputation/contribution.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -954,6 +1014,8 @@
       "evidence": ["classification: NEW; item-count/char budgets only, zero tokenizer code", "src/context/budget.ts runtime-injected exact budgeting", "11 budget tests", "docs/token-context-budget.md", "no runtime means UNAVAILABLE; never estimated"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/context/budget.ts"],
+      "test_refs": ["src/context/budget.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -966,6 +1028,8 @@
       "evidence": ["classification: NEW; zero tokenizer hits in src", "src/providers/tokenizer.ts profiles+registry+explicit resolution", "ModelCard.tokenizerProfileId additive leaf", "6 tokenizer tests", "docs/tokenizer-profile.md", "no vendor guessing; Model Fabric stays BLOCKED"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/providers/tokenizer.ts"],
+      "test_refs": ["src/providers/tokenizer.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -979,6 +1043,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
       "notes": "keep-recent and truncate-middle are declared UNMEASURED by default: a strategy name is not evidence of behaviour. POSITION SENSITIVITY != MODEL QUALITY; HIGHER SPREAD != BETTER MODEL; MIDDLE DEFICIT != CAUSAL EXPLANATION; NO SAMPLES != ZERO SENSITIVITY. Reuses context_handling rather than adding a position metric to the shared vocabulary.",
+      "implementation_refs": ["src/eval/contextPosition.ts"],
+      "test_refs": ["src/eval/contextPosition.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -992,6 +1058,8 @@
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "Describes lifecycle metadata; it does not train, schedule, provision or measure. MORE TRAINING COMPUTE != BETTER MODEL. ModelCard remains the sole owner of model metadata; this profile references the model and the model does not reference the profile.",
+      "implementation_refs": ["src/providers/trainingLifecycle.ts"],
+      "test_refs": ["src/providers/trainingLifecycle.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1005,6 +1073,8 @@
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "STUDY_ONLY experimental lane. Representation superposition (packed feature directions), NOT quantum superposition, NOT MoE routing, NOT ensembling, NOT model merging, NOT BitNet/ternary compute. Toy synthetic scale only: TOY EXPERIMENT != PRODUCTION BENCHMARK.",
+      "implementation_refs": ["src/eval/superposition.ts"],
+      "test_refs": ["src/eval/superposition.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1077,6 +1147,8 @@
       "evidence": ["classification: NEW narrow gap; fragments exact, no unified target", "src/runners/targets.ts profile+registry+compatibility with reasons", "7 target tests", "docs/execution-target-profile.md", "describes capability; never provisions, stores no secrets"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/runners/targets.ts"],
+      "test_refs": ["src/runners/targets.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1104,6 +1176,8 @@
       "evidence": ["classification: NEW generic gap; scoped proofs only", "src/workflows/deliverable.ts artifacts+gate+attestation contract", "5 deliverable tests", "docs/deliverable-contract.md", "verification never automatic"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/workflows/deliverable.ts"],
+      "test_refs": ["src/workflows/deliverable.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1128,6 +1202,8 @@
       "evidence": ["classification: NEW streaming gap; snapshots only", "2026-09-27 selected by deterministic selector; streaming/alerting join implemented in src/monitoring/workMonitoring.ts (23 tests in src/monitoring/workMonitoring.test.ts), composing WorkflowRuntime.summarize + Scheduler.inspect over RealtimeTransport with subscribe/progress-stream/alerts/thresholds, stateless projections only, no duplicate owners, no execution/auth/scheduling"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/monitoring/workMonitoring.ts"],
+      "test_refs": ["src/monitoring/workMonitoring.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1140,6 +1216,8 @@
       "evidence": ["classification: RELATED; redelivery dedup narrower, no message semantics", "2026-09-27 selected by deterministic selector; delay-tolerant message semantics with store-and-forward over the durable log implemented in src/realtime/degradedLink.ts (31 tests in src/realtime/degradedLink.test.ts), composing RealtimeTransport/DurableEventLog with link-gated drain, idempotent acks, bounded retries as eligibility only, fragment reassembly with named gaps, real gzip or refused compression, digest verification with claim-only signatures; no transport rebuild, no invented guarantees/measurements, no timers"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/realtime/degradedLink.ts"],
+      "test_refs": ["src/realtime/degradedLink.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1250,6 +1328,8 @@
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "Extends the causal harness; it does not replace it. MISSING FACET != ZERO FACET; NO COMPOSITE != NO QUALITY CLAIM; SUCCESS CLAIMED != SUCCESS VERIFIED; SEALED LABEL != PROVEN SEALED HISTORY. Produces no winner, score or quality figure — aggregation belongs to compareHarness.",
+      "implementation_refs": ["src/eval/completionBenchmark.ts"],
+      "test_refs": ["src/eval/completionBenchmark.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1261,6 +1341,8 @@
       "priority": 1, "depends_on": ["REQ-p16-control"], "blockers": [],
       "evidence": ["release audit: no installer, no update path, versions 0.0.0/name-tbd", "2026-09-29 selected by deterministic selector as the last executable requirement; release package manifest plus install/update/rollback/uninstall PLANS as validated records implemented in src/release/packaging.ts (19 tests in src/release/packaging.test.ts), scope by reference only, SBOM/signing composed with supply-chain attestation, no execution and no scope decision"],
       "provenance": "public release readiness audit 2026-09-25",
+      "implementation_refs": ["src/release/packaging.ts"],
+      "test_refs": ["src/release/packaging.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1274,6 +1356,8 @@
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
       "notes": "Versioned inventory of the six registered tool kinds with versions, executable paths, availability and provenance. GENERIC TOOL CAPABILITY REF != TOOLCHAIN INVENTORY; CAPABILITY FLAG != VERSION; CAPABILITY FLAG != EXECUTABLE PATH. AVAILABILITY IS DERIVED NEVER ASSERTED - a caller supplying availability is rejected; AVAILABLE requires a REPORTED version and a REPORTED VERIFIED path. UNKNOWN VERSION != AVAILABLE TOOL; CLAIMED PATH != VERIFIED PATH; NEVER INVENTED VERSION, NEVER latest. NOT_FOUND != RECORDED_BUT_UNKNOWN != UNAVAILABLE. VERSION_UNKNOWN, PATH_UNKNOWN, PATH_UNVERIFIED and NOT_INSTALLED stay distinct because they call for different responses. SIMILARITY != RESOLUTION; NAME != IDENTITY; TWO CANDIDATES != PICK ONE. INVENTORY != EXECUTION AUTHORITY; TOOL PRESENT != AUTHORIZED TO EXECUTE; INVENTORY != PROVISIONING. Not an installer, downloader or resolver: nothing fetches, installs, shells out or repairs. REGISTRY != DURABLE STORE; in-memory and caller-constructed, reading no clock, filesystem or network. src/providers/capabilities.ts is the generic ref that does NOT satisfy this and was not modified.",
+      "implementation_refs": ["src/toolchain/registry.ts"],
+      "test_refs": ["src/toolchain/registry.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1286,6 +1370,8 @@
       "evidence": ["legacy audit: genuine uncovered delta, still relevant", "selected by deterministic selector 2026-09-26 after REQ-p20-execution-checkpoints closed in 0161a86", "src/analysis/languageGraph.ts + 58 tests in src/analysis/languageGraph.test.ts: whole-project graph over C/C++/Rust/Python/JS-TS/shell/build-files/manifests, distinct from Agent-Bridge TestImpact and from registry/depgraph.json; see docs/project-language-graph.md and the BUILD-TODO entry for the full evidence, the five defects fixed, and the two corrected test expectations"],
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/analysis/languageGraph.ts"],
+      "test_refs": ["src/analysis/languageGraph.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1299,6 +1385,8 @@
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
       "notes": "OS network model only. Must never be built as Genesis identities (REQ-genesis-identity-rule).",
+      "implementation_refs": ["src/network/hierarchy.ts"],
+      "test_refs": ["src/network/hierarchy.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1311,6 +1399,8 @@
       "evidence": ["legacy audit: genuine uncovered delta, still relevant", "2026-09-27 selected by deterministic selector; service lifecycle orchestration as evidence-gated planning/state composition implemented in src/services/serviceOrchestrator.ts (32 tests in src/services/serviceOrchestrator.test.ts): typed definitions referencing apps/toolchain entries, deterministic start/stop ordering with cycle evidence, evidence-gated transitions, derived BLOCKED overlay, bounded restarts; AUDITOR not ACTUATOR, no shell/network/timers"],
       "provenance": "legacy prompt coverage audit 2026-09-25 (docs/LEGACY_PROMPT_COVERAGE.md); older directives reconciled",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/services/serviceOrchestrator.ts"],
+      "test_refs": ["src/services/serviceOrchestrator.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
