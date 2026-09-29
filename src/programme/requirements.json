@@ -709,6 +709,8 @@
       "evidence": ["2026-09-23 classification: RELATED; MAT schema adjacent, no claim registry", "MAT scripts/claims.mjs registry + 13 node tests", "MAT docs/02-data/10-Claim-Registry.md", "recorded != verified; no graph/memory/vector duplication"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["scripts/claims.mjs"],
+      "test_refs": ["scripts/tests/claims.test.mjs"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -721,6 +723,8 @@
       "evidence": ["2026-09-23 classification: NEW; no claim graph anywhere", "2026-09-27 implemented in MAT repo commit de72b04: scripts/epistemic-graph.mjs (EpistemicGraph with SUPPORTS/CONTRADICTS/DERIVED_FROM authored edges + SUPERSEDES derived from canonical claim supersession, directional queries, bounded cycle-safe traversal) + 16 node:test tests in scripts/tests/epistemic-graph.test.mjs + docs/02-data/11-Epistemic-Graph.md; Claim Registry and materials-relationship graph untouched; no truth scores, no auto-resolution, no memory/vector/RAG/compiler"],
       "provenance": "2026-09-23 research addendum ingestion; STUDY_ONLY sources; subagent-classified against registry/code/tests",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["scripts/epistemic-graph.mjs"],
+      "test_refs": ["scripts/tests/epistemic-graph.test.mjs"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1099,6 +1103,8 @@
       "evidence": ["classification: NEW; no visual ref graph", "2026-09-27 implemented in Poietek repo commit 1c55e2f: src/poietek/refs/creativeRefGraph.ts (scene/shot nodes with stable project-scoped ids, STYLE_REF/CHARACTER_REF/ENVIRONMENT_REF edges to scene/shot/asset/external targets, refsFor/referencedBy/nodesInProject/bounded deterministic traversal) + 19 node:test tests in tests/creative-ref-graph.test.js + docs/CREATIVE_REF_GRAPH.md; arrangement entities unrepresented by design, no scores/ranking/fetching/generation, no MAT/Aetherius graph duplication"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/poietek/refs/creativeRefGraph.ts"],
+      "test_refs": ["tests/creative-ref-graph.test.js"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1111,6 +1117,8 @@
       "evidence": ["classification: NEW; audit prose only", "2026-09-27 implemented in Poietek repo commit 1a376c2: src/poietek/consistency/multimodalConsistency.ts (scorer registry with character/style/environment dimensions grounded in ref-graph vocabulary, per-dimension evaluate with agreement/conflict/unknown, evaluateAll with no universal score) + 17 node:test tests in tests/multimodal-consistency.test.js + docs/MULTIMODAL_CONSISTENCY.md; generation routing referenced never duplicated; no similarity/model judgment, no scores/ranking, no auto-repair, no generation"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/poietek/consistency/multimodalConsistency.ts"],
+      "test_refs": ["tests/multimodal-consistency.test.js"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1123,6 +1131,8 @@
       "evidence": ["classification: NEW; IDE map is layout fidelity, not grounding", "2026-09-29 implemented in Poietek repo commit d6bd674: src/poietek/design/refGroundedDesign.ts (validateGrounding checks every design-output citation resolves in the ref graph with explicit deltas, reports unresolved without verdicts, preserves evaluation refs uninterrupted) + 10 node:test tests in tests/ref-grounded-design.test.js + docs/REF_GROUNDED_DESIGN.md; no generation/QA/scores/auto-repair, no graph duplication"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/poietek/design/refGroundedDesign.ts"],
+      "test_refs": ["tests/ref-grounded-design.test.js"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1135,6 +1145,8 @@
       "evidence": ["classification: NEW; screenshot mechanics only, no QA", "2026-09-29 implemented in Poietek repo commit 232cedb: src/poietek/qa/visualQa.ts (evaluateVisualQa over the six registered dimensions, consuming grounding reports and consistency results without reimplementing them, plus declared continuity/AV-sync/UI checks) + 17 node:test tests in tests/visual-qa.test.js + docs/VISUAL_QA.md; no model judgement, no scores, no auto-repair, no approval"],
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
+      "implementation_refs": ["src/poietek/qa/visualQa.ts"],
+      "test_refs": ["tests/visual-qa.test.js"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1246,6 +1258,8 @@
       "provenance": "post-checkpoint research ingestion 2026-09-23; STUDY_ONLY sources; subagent-classified",
       "reuse": "STUDY_ONLY",
       "notes": "Cohort members are ReviewTargets; a member with no stored report is unknown, never assumed ready. Change fingerprinting stays with REQ-p20-change-impact.",
+      "implementation_refs": ["src/steward/cohorts.ts"],
+      "test_refs": ["src/steward/cohorts.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {

@@ -1,8 +1,8 @@
-import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it } from "vitest";
 import { FileStateStore, sha256Hex } from "../state/store";
 import { ExecutorRegistry, type ExecContext, type StepExecutor, type StepOutcome } from "./executors";
 import { routineFor, validateRoutine } from "./routines";
@@ -14,6 +14,38 @@ import { validateWorkflow } from "./validate";
 // ---------- fixtures ----------
 
 let runCounter = 0;
+
+/**
+ * Every FileStateStore fixture in this file writes into a real temp directory.
+ * Without cleanup those directories accumulate for the lifetime of the machine
+ * (190 had piled up under %TEMP%\wf-sub-* before this was fixed), which is both
+ * a leak and extra disk contention for every later parallel test run.
+ */
+const tempDirs: string[] = [];
+
+function newStateStore(prefix = "wf-sub-"): FileStateStore {
+  const dir = mkdtempSync(join(tmpdir(), prefix));
+  tempDirs.push(dir);
+  return new FileStateStore(dir, 1);
+}
+
+/** A tracked temp directory for tests that need the path itself. */
+function newTempDir(prefix: string): string {
+  const dir = mkdtempSync(join(tmpdir(), prefix));
+  tempDirs.push(dir);
+  return dir;
+}
+
+afterAll(() => {
+  for (const dir of tempDirs) {
+    try {
+      rmSync(dir, { recursive: true, force: true, maxRetries: 3, retryDelay: 50 });
+    } catch {
+      // A leftover temp directory must never fail the suite.
+    }
+  }
+  tempDirs.length = 0;
+});
 
 function testSkill(id: string, over: Partial<Skill> = {}): Skill {
   return {
@@ -67,7 +99,7 @@ function setup(behaviors: Record<string, Behavior>, skills: Skill[] = []) {
   for (const s of skills) registries.register(s);
   const executors = new ExecutorRegistry();
   executors.register(new TestExecutor(behaviors));
-  const store = new FileStateStore(mkdtempSync(join(tmpdir(), "wf-")), 1);
+  const store = newStateStore("wf-");
   const runtime = new WorkflowRuntime(registries, executors, store, {
     now: () => "2026-09-22T00:00:00.000Z",
     id: () => `run-${++runCounter}`,
@@ -340,7 +372,7 @@ describe("pause, resume and recovery", () => {
         }
       })(),
     );
-    const storeDir = mkdtempSync(join(tmpdir(), "wf-pr-"));
+    const storeDir = newTempDir("wf-pr-");
     const mk = () =>
       new WorkflowRuntime(registries, executors, new FileStateStore(storeDir, 1), {
         now: () => "2026-09-22T00:00:00.000Z",
@@ -411,7 +443,7 @@ describe("pause, resume and recovery", () => {
         }
       })(),
     );
-    const storeDir = mkdtempSync(join(tmpdir(), "wf-rec-"));
+    const storeDir = newTempDir("wf-rec-");
     const mk = () =>
       new WorkflowRuntime(registries, executors, new FileStateStore(storeDir, 1), {
         now: () => "2026-09-22T00:00:00.000Z",
@@ -463,7 +495,7 @@ describe("pause, resume and recovery", () => {
         }
       })(),
     );
-    const storeDir = mkdtempSync(join(tmpdir(), "wf-rec2-"));
+    const storeDir = newTempDir("wf-rec2-");
     const mk = () =>
       new WorkflowRuntime(registries, executors, new FileStateStore(storeDir, 1), {
         now: () => "2026-09-22T00:00:00.000Z",
@@ -487,7 +519,7 @@ describe("pause, resume and recovery", () => {
   });
 
   it("corrupt and future-schema states are rejected, never reset", async () => {
-    const storeDir = mkdtempSync(join(tmpdir(), "wf-bad-"));
+    const storeDir = newTempDir("wf-bad-");
     const registries = new SkillRegistry();
     registries.register(testSkill("echo"));
     const executors = new ExecutorRegistry();
@@ -507,7 +539,7 @@ describe("pause, resume and recovery", () => {
   });
 
   it("version pins survive registry drift or fail loudly", async () => {
-    const storeDir = mkdtempSync(join(tmpdir(), "wf-pin-"));
+    const storeDir = newTempDir("wf-pin-");
     const store = new FileStateStore(storeDir, 1);
     const registries = new SkillRegistry();
     registries.register(testSkill("echo"));
@@ -557,7 +589,7 @@ describe("subworkflows", () => {
     registries.register(testSkill("echo"));
     const executors = new ExecutorRegistry();
     executors.register(new TestExecutor({ echo }));
-    const store = new FileStateStore(mkdtempSync(join(tmpdir(), "wf-sub-")), 1);
+    const store = newStateStore("wf-sub-");
     const runtime = new WorkflowRuntime(registries, executors, store, {
       now: () => "2026-09-22T00:00:00.000Z",
       id: (() => { let n = 0; return () => `run-${++n}`; })(),
