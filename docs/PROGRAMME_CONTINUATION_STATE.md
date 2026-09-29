@@ -195,12 +195,17 @@ Boundaries that still bind later units:
 
 ## Next work, in selector order after the current one
 
-1. FULL-SYSTEM COMPLETION MODE (active now — zero executable requirements).
-   Next: system/capability audit across repos, then BUILD49 reconciliation
-   (classify every mechanism, register ONLY proven gaps), then
-   integration/debug, security, packaging. CLOSED last: release-packaging
-   (`1aab47b`), deployment-profile (`1e83f2e`). Do NOT stop, do NOT report
-   until a TRUE final stop condition exists.
+1. FULL-SYSTEM COMPLETION MODE (active — zero executable requirements).
+   Blocker re-evaluation done, no state changes: model-fabric + clean-room
+   stay BLOCKED on fresh evidence (cloud creds still owner-supplied with
+   local Ollama insufficient for failover proof; no isolated backend, docker
+   absent). BUILD49 first reconciliation pass recorded in BUILD-TODO
+   (classify-only: action-receipts candidate gap NOT registered pending owner
+   scoping; inference/model families STUDY_ONLY; workspace/bare-metal as
+   reference). Next: integration seams, then security/reliability, then
+   packaging evidence. CLOSED last: release-packaging (`1aab47b`),
+   deployment-profile (`1e83f2e`). Do NOT stop, do NOT report until a TRUE
+   final stop condition exists.
 
 Closed so far in this stretch: `REQ-p20-change-impact`, `REQ-p20-collision-predictor`,
 `REQ-p20-execution-checkpoints`, `REQ-p20-language-graph`, `REQ-p20-spine-branch`,
