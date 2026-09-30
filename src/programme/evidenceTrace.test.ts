@@ -285,6 +285,61 @@ describe("evidenceTrace: cross-repo test naming conventions", () => {
   });
 });
 
+describe("evidenceTrace: absent owner repository is not a dangling citation", () => {
+  it("marks a citation rootUnavailable when no root exists at all", () => {
+    const traces = auditEvidenceTrace(
+      [req({ owner: "poietek", evidence: ["src/poietek/qa/visualQa.ts"] })],
+      ROOTS,
+      diskOf([]),
+      { rootExists: () => false },
+    );
+    expect(traces[0]!.dangling[0]!.rootUnavailable).toBe(true);
+  });
+
+  it("does not accuse the citation of being broken when the repo is absent", () => {
+    // In a clean clone of this repository alone, no sibling repo exists. A
+    // citation that could not be checked is unverifiable here, not broken.
+    const traces = auditEvidenceTrace(
+      [req({ owner: "poietek", evidence: ["src/poietek/qa/visualQa.ts"] })],
+      ROOTS,
+      diskOf([]),
+      { rootExists: () => false },
+    );
+    expect(traces[0]!.traceClass).not.toBe("DANGLING_CITATION");
+  });
+
+  it("still reports the requirement as untraceable rather than upgrading it", () => {
+    const traces = auditEvidenceTrace(
+      [req({ owner: "poietek", evidence: ["prose only"] })],
+      ROOTS,
+      diskOf([]),
+      { rootExists: () => false },
+    );
+    expect(traces[0]!.untraceableComplete).toBe(true);
+    expect(traces[0]!.hasTestCitation).toBe(false);
+  });
+
+  it("still calls it dangling when the repo IS present and the file is not", () => {
+    const traces = auditEvidenceTrace(
+      [req({ owner: "poietek", evidence: ["src/poietek/qa/ghost.ts"] })],
+      ROOTS,
+      diskOf([]),
+      { rootExists: () => true },
+    );
+    expect(traces[0]!.traceClass).toBe("DANGLING_CITATION");
+    expect(traces[0]!.dangling[0]!.rootUnavailable).toBe(false);
+  });
+
+  it("defaults to roots-present when no rootExists is supplied", () => {
+    const traces = auditEvidenceTrace(
+      [req({ owner: "poietek", evidence: ["src/poietek/qa/ghost.ts"] })],
+      ROOTS,
+      diskOf([]),
+    );
+    expect(traces[0]!.dangling[0]!.rootUnavailable).toBe(false);
+  });
+});
+
 describe("evidenceTrace: summary", () => {
   it("counts classes, complete claims and dangling citations", () => {
     const traces = audit(

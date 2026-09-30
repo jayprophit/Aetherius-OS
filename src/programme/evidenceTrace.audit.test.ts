@@ -1,4 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { auditEvidenceTrace, looksLikeTest, summariseEvidenceTrace } from "./evidenceTrace";
 import type { OwnerRoots, PathResolver } from "./evidenceTrace";
@@ -14,7 +16,14 @@ import type { Requirement } from "./types";
  * failure this module exists to prevent.
  */
 
-const REGISTRY = "src/programme/requirements.json";
+/**
+ * Repo root derived from this module's own URL, not from process.cwd(), which
+ * is not reliable under vitest workers. `.git` is checked as a path rather
+ * than assumed to be a directory, because in a linked worktree it is a FILE.
+ */
+const REPO_ROOT = fileURLToPath(new URL("../../", import.meta.url));
+
+const REGISTRY = join(REPO_ROOT, "src", "programme", "requirements.json");
 
 /**
  * Sibling repo directory name for each owner id appearing in the registry.
@@ -42,13 +51,37 @@ const ROOTS: OwnerRoots = Object.fromEntries(
   Object.entries(ROOT_DIRS).map(([owner, dir]) => [owner, [dir, "Aetherius-OS"]]),
 );
 
-const resolve: PathResolver = (root, path) => existsSync(`${root}/${path}`) || existsSync(`../${root}/${path}`);
+/**
+ * Root presence has to be judged by layout, not by directory name alone. In the
+ * multi-repo workspace the sibling repos sit at fixed paths, but a normal clone
+ * of this repository is named whatever the user chose - so "Aetherius-OS" here
+ * means THIS repository (REPO_ROOT above), not a directory of that name.
+ */
+const IN_SELF_REPO = existsSync(join(REPO_ROOT, ".git"));
+/** Map a logical root name to a directory on disk. */
+const rootDir = (root: string): string =>
+  root === "Aetherius-OS" ? REPO_ROOT : join(REPO_ROOT, "..", root);
+const rootPresent = (root: string): boolean => existsSync(rootDir(root));
+const resolve: PathResolver = (root, path) => existsSync(join(rootDir(root), path));
+
+/**
+ * This file audits the REAL registry, which makes cross-repo evidence part of
+ * what it measures. A clean clone of this repository alone has no sibling
+ * repos, and there the cross-repo numbers are genuinely UNVERIFIABLE rather
+ * than wrong. So cross-repo assertions skip, explicitly, instead of failing
+ * and accusing dozens of requirements of broken references. Every
+ * in-repository assertion still runs unconditionally.
+ */
+const SIBLINGS_PRESENT = Object.values(ROOT_DIRS).some((dir) =>
+  existsSync(join(REPO_ROOT, "..", dir)),
+);
+const crossRepoIt = SIBLINGS_PRESENT ? it : it.skip;
 
 function registry(): Requirement[] {
   return JSON.parse(readFileSync(REGISTRY, "utf8")).requirements as Requirement[];
 }
 
-const traces = auditEvidenceTrace(registry(), ROOTS, resolve);
+const traces = auditEvidenceTrace(registry(), ROOTS, resolve, { rootExists: rootPresent });
 const summary = summariseEvidenceTrace(traces);
 
 describe("audit: real requirement registry evidence traceability", () => {
@@ -141,7 +174,7 @@ describe("audit: real requirement registry evidence traceability", () => {
     expect(self.untraceableComplete).toBe(false);
   });
 
-  it("currently records how many COMPLETE claims have no resolvable test citation", () => {
+  crossRepoIt("currently records how many COMPLETE claims have no resolvable test citation", () => {
     expect(summary.complete).toBe(93);
     // 70 at the start of remediation, then 61 / 32 / 30 / 25 / 18 / 17 / 15 /
     // 5 after the OmniAgent provenance record (batches 1-11 plus the record). Most batches cited more than they newly traced,
@@ -172,7 +205,7 @@ describe("audit: real requirement registry evidence traceability", () => {
     ]);
   });
 
-  it("records that owner names a project, not the repository holding the code", () => {
+  crossRepoIt("records that owner names a project, not the repository holding the code", () => {
     // 9 requirements are owned by a project other than aetherius-os yet
     // resolve at least one citation inside the Aetherius-OS monorepo. This is
     // why resolution searches both roots; it is a recorded fact, not a
@@ -241,7 +274,7 @@ describe("audit: real requirement registry evidence traceability", () => {
 });
 
 describe("audit: dangling citations in the real registry", () => {
-  it("reports exactly the four prose fixture filenames, and nothing else", () => {
+  crossRepoIt("reports exactly the four prose fixture filenames, and nothing else", () => {
     // These four are NOT file references. They are fixture filenames quoted
     // inside evidence prose describing a defect that tests found
     // (a dependent-write pair wrongly joined to 'src/consumer.ts'; a

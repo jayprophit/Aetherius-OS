@@ -1,8 +1,18 @@
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { FileStateStore } from "../state/store";
+
+/**
+ * The scheduler's tests persist through a real FileStateStore, so they are
+ * disk-bound: ~16s on the development volume, ~34s from a clean checkout on a
+ * slower one, with individual tests crossing vitest's 5s default purely because
+ * of storage speed. Raised for THIS FILE ONLY, with the reason recorded, so a
+ * genuinely slow test elsewhere still fails fast against the unchanged global
+ * default. No assertion is relaxed.
+ */
+vi.setConfig({ testTimeout: 30_000 });
 import { ExecutorRegistry, type StepExecutor } from "../workflows/executors";
 import { WorkflowRuntime } from "../workflows/runtime";
 import { SkillRegistry } from "../workflows/skills";

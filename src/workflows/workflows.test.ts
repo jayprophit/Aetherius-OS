@@ -2,7 +2,21 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { afterAll, describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it, vi } from "vitest";
+
+/**
+ * This file drives the workflow runtime through a REAL FileStateStore, so its
+ * cost is dominated by disk I/O rather than by computation. Measured: the file
+ * takes ~6s on the development volume and ~34s from a clean checkout on a
+ * slower one, and individual tests cross vitest's 5s default purely from that
+ * difference in storage speed.
+ *
+ * The budget is therefore raised for THIS FILE ONLY, with the reason stated,
+ * so a genuinely slow test elsewhere still fails fast against the unchanged
+ * global default. No assertion here is relaxed - these tests still have to
+ * detect cycles, exceed depth, and prove no temp files are left behind.
+ */
+vi.setConfig({ testTimeout: 30_000 });
 import { FileStateStore, sha256Hex } from "../state/store";
 import { ExecutorRegistry, type ExecContext, type StepExecutor, type StepOutcome } from "./executors";
 import { routineFor, validateRoutine } from "./routines";
@@ -657,12 +671,6 @@ describe("subworkflows", () => {
     const done = await runtime.approve(waiting.run_id, "s", "ALLOW", "owner");
     expect(done.state).toBe("SUCCEEDED");
   });
-  // The depth cap is a counter, not expansion (runtime.ts: MAX_DEPTH), so this
-  // is O(depth) and cheap. The cost here is the real FileStateStore: every
-  // nested advance persists state to disk, so the test is I/O-bound. Measured
-  // ~1.5s in isolation, over 5s when 81 test files do concurrent disk I/O.
-  // The global default stays at 5s so genuine hangs elsewhere still fail fast;
-  // only this test, whose assertions are unchanged, gets a realistic budget.
   it("cycles and depth excess fail honestly", async () => {
     const { runtime } = subSetup();
     expect(() =>
@@ -693,7 +701,7 @@ describe("subworkflows", () => {
     const deep = await runtime.advance(runtime.start("d0", "1.0.0").run_id);
     expect(deep.state).toBe("FAILED");
     expect(deep.failure).toContain("depth exceeds");
-  }, 20_000);
+  });
   it("missing child fails at runtime with evidence", async () => {
     const { runtime } = subSetup();
     runtime.define({

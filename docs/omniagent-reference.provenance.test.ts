@@ -23,12 +23,26 @@ const GENESIS = join("..", "Genesis");
 const VENDOR_DIR = join("references", "omniagent-runtime-&-workspace");
 const INDEX = "docs/omniagent-reference-index.md";
 
+/**
+ * This guard deliberately spans repositories: the whole point is that
+ * unlicensed third-party source must not be committed in Genesis, and that the
+ * refused capabilities must not have been adopted in IDE-Workspace. A clean
+ * clone of Aetherius-OS alone has neither sibling, and there these checks are
+ * UNVERIFIABLE rather than passing or failing. They skip, explicitly, instead
+ * of failing for the wrong reason. The provenance-record checks at the bottom
+ * are repository-local and always run.
+ */
+const GENESIS_PRESENT = existsSync(GENESIS);
+const IDE_PRESENT = existsSync(join("..", "IDE-Workspace", "workspace", "app", "src"));
+const needsGenesis = GENESIS_PRESENT ? it : it.skip;
+const needsIde = IDE_PRESENT ? it : it.skip;
+
 function git(args: string[], cwd: string): string {
   return execFileSync("git", args, { cwd, encoding: "utf8" });
 }
 
 describe("omniagent reference: third-party tree stays untracked", () => {
-  it("the vendored directory is not tracked by Genesis", () => {
+  needsGenesis("the vendored directory is not tracked by Genesis", () => {
     const tracked = git(["ls-files", "--", "references"], GENESIS)
       .split("\n")
       .filter((l) => l.includes("omniagent"));
@@ -42,7 +56,7 @@ describe("omniagent reference: third-party tree stays untracked", () => {
     expect(tracked).toEqual([]);
   });
 
-  it("Genesis does not ignore references/ - which is exactly why this guard exists", () => {
+  needsGenesis("Genesis does not ignore references/ - which is exactly why this guard exists", () => {
     // If references/ ever becomes gitignored the risk drops to zero, but the
     // guard must not be the only thing standing between the tree and a commit.
     let ignored = "";
@@ -56,7 +70,7 @@ describe("omniagent reference: third-party tree stays untracked", () => {
 });
 
 describe("omniagent reference: the material really is unlicensed and third-party", () => {
-  it("carries no LICENSE file", () => {
+  needsGenesis("carries no LICENSE file", () => {
     const root = join(GENESIS, VENDOR_DIR);
     expect(existsSync(root)).toBe(true);
     const found: string[] = [];
@@ -74,14 +88,14 @@ describe("omniagent reference: the material really is unlicensed and third-party
     expect(found, `licence files present: ${found.join(", ")}`).toEqual([]);
   });
 
-  it("is still the unmodified vendor scaffold, not first-party code", () => {
+  needsGenesis("is still the unmodified vendor scaffold, not first-party code", () => {
     const pkg = JSON.parse(readFileSync(join(GENESIS, VENDOR_DIR, "package.json"), "utf8"));
     expect(pkg.name).toBe("react-example");
     expect(pkg.private).toBe(true);
     expect(pkg.dependencies["@google/genai"]).toBeTruthy();
   });
 
-  it("declares the two capabilities this programme refuses", () => {
+  needsGenesis("declares the two capabilities this programme refuses", () => {
     const meta = JSON.parse(readFileSync(join(GENESIS, VENDOR_DIR, "metadata.json"), "utf8"));
     expect(meta.majorCapabilities).toContain("MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API");
     expect(meta.requestFramePermissions).toEqual(expect.arrayContaining(["camera", "microphone"]));
@@ -91,7 +105,7 @@ describe("omniagent reference: the material really is unlicensed and third-party
 describe("omniagent reference: refused capabilities were not adopted", () => {
   const ideSrc = join("..", "IDE-Workspace", "workspace", "app", "src");
 
-  it("tracked IDE code contains no Gemini server key usage", () => {
+  needsIde("tracked IDE code contains no Gemini server key usage", () => {
     const hits: string[] = [];
     const walk = (dir: string): void => {
       for (const e of readdirSync(dir)) {
@@ -107,7 +121,7 @@ describe("omniagent reference: refused capabilities were not adopted", () => {
     expect(hits, `Gemini usage in tracked IDE code: ${hits.join(", ")}`).toEqual([]);
   });
 
-  it("tracked IDE code requests no camera or microphone", () => {
+  needsIde("tracked IDE code requests no camera or microphone", () => {
     const hits: string[] = [];
     const walk = (dir: string): void => {
       for (const e of readdirSync(dir)) {

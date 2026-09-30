@@ -1,8 +1,17 @@
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { FileStateStore } from "../state/store";
+
+/**
+ * Promotion runs against a real FileStateStore, so this file is disk-bound:
+ * ~12s on the development volume, ~46s from a clean checkout on a slower one.
+ * Raised for THIS FILE ONLY, with the reason recorded, so a genuinely slow
+ * test elsewhere still fails fast against the unchanged global default. No
+ * assertion is relaxed - DENY must still reject and ALLOW must still promote.
+ */
+vi.setConfig({ testTimeout: 30_000 });
 import { SkillLifecycle } from "./lifecycle";
 import type { CandidateProvenance } from "./promotion";
 import {
@@ -230,13 +239,6 @@ describe("review and approval", () => {
     expect(lc.decide(id).decision).toBe("PROMOTABLE");
     expect(lc.promote(id, "opencode").state).toBe("PROMOTED");
   });
-  // Drives two full promotion lifecycles (security, review, owner approval,
-  // promote) through a real FileStateStore, so its cost is dominated by disk
-  // I/O: ~963ms in isolation, and over 5s when 81 test files do concurrent
-  // state writes. The budget is sized from that measurement. The global 5s
-  // default is deliberately left alone so a genuine hang elsewhere still fails
-  // fast, and no assertion here is relaxed - this still requires DENY to
-  // reject and ALLOW to promote.
   it("owner deny rejects; owner allow promotes risky candidates", async () => {
     const { lc } = lifecycle();
     const risky = lowSkill("risky", "1.0.0", { required_permissions: ["shell:execute"], risk_class: "high" });
@@ -254,7 +256,7 @@ describe("review and approval", () => {
     lc.approveOwner(id2, "ALLOW", "owner");
     expect(lc.decide(id2).decision).toBe("PROMOTABLE");
     expect(lc.promote(id2, "owner").state).toBe("PROMOTED");
-  }, 20_000);
+  });
   it("review failure and reject verdicts are terminal with history", async () => {
     const { lc } = lifecycle();
     const id = await driveLowRisk(lc, lowSkill("contested"));

@@ -58,6 +58,15 @@ export interface DanglingCitation {
   searchedRoots: string[];
   /** Which prefixes were tried under each root, sorted. */
   searchedPrefixes: string[];
+  /**
+   * True when NONE of the searched roots exists on disk - i.e. the owning
+   * repository is simply not present, as in a clean clone of this repository
+   * alone. A citation that cannot be checked because the repository is absent
+   * is not the same finding as a citation that was checked and did not
+   * resolve, and reporting the two identically is how a fresh clone would
+   * accuse every cross-repo requirement of a dangling reference.
+   */
+  rootUnavailable: boolean;
 }
 
 /** Default prefixes: repo-root-relative and src-relative shorthand. */
@@ -169,6 +178,13 @@ export interface EvidenceTraceOptions {
    * tried: an undeclared convention is reported, never inferred.
    */
   prefixes?: readonly string[];
+  /**
+   * Decides whether a root exists on disk. Defaults to always-present, which
+   * is the right assumption for a caller that has already checked. Supplying
+   * it lets a fresh clone report "repository absent" honestly instead of
+   * reporting every cross-repo citation as broken.
+   */
+  rootExists?: (root: string) => boolean;
 }
 
 /**
@@ -183,9 +199,14 @@ export function auditEvidenceTrace(
   options: EvidenceTraceOptions = {},
 ): EvidenceTrace[] {
   const prefixes = options.prefixes ?? DEFAULT_SEARCH_PREFIXES;
+  const rootExists = options.rootExists ?? (() => true);
   const traces = requirements.map((r): EvidenceTrace => {
     const owner = r.owner;
-    const searchedRoots = [...new Set(roots[owner] ?? [owner])].sort();
+    const declaredRoots = [...new Set(roots[owner] ?? [owner])].sort();
+    const searchedRoots = declaredRoots.filter((root) => rootExists(root));
+    // Every root the owner could have resolved in is absent: this environment
+    // cannot check the citation at all.
+    const rootUnavailable = searchedRoots.length === 0;
     const declared = [
       ...(r.implementation_refs ?? []).map((p) => ({ path: p.replace(/^\.\//, ""), root: owner })),
       ...(r.test_refs ?? []).map((p) => ({ path: p.replace(/^\.\//, ""), root: owner })),
@@ -202,8 +223,9 @@ export function auditEvidenceTrace(
         dangling.set(c.path, {
           citation: c.path,
           path: c.path,
-          searchedRoots,
+          searchedRoots: declaredRoots,
           searchedPrefixes: [...prefixes].sort(),
+          rootUnavailable,
         });
       }
     }
@@ -227,9 +249,17 @@ export function auditEvidenceTrace(
       .filter((p) => !declaredImplementations.has(p))
       .some(looksLikeTest);
 
+    // A citation is only DANGLING if the environment could actually check it.
+    // When every root for this owner is absent - a clean clone of this
+    // repository without its siblings - the reference is unverifiable here,
+    // not broken, and calling it broken would be a false accusation. It stays
+    // listed in `dangling` with rootUnavailable set, and the requirement is
+    // still reported untraceable, so nothing is quietly upgraded.
+    const checkableDangling = [...dangling.values()].filter((d) => !d.rootUnavailable);
+
     let traceClass: TraceClass;
     if (r.evidence.length === 0 || r.evidence.every((e) => !e.trim())) traceClass = "NO_EVIDENCE";
-    else if (dangling.size > 0) traceClass = "DANGLING_CITATION";
+    else if (checkableDangling.length > 0) traceClass = "DANGLING_CITATION";
     else if (implementationRefs.length > 0 || testRefs.length > 0) traceClass = "MACHINE_REFS";
     else if (resolved.size > 0) traceClass = "CITED_PATHS";
     else traceClass = "PROSE_ONLY";
