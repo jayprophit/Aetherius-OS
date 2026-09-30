@@ -193,7 +193,15 @@
       "source": {"class": "MEDIA_REF", "ref": "Nick Saraev - Agentic Workflows (2026)", "location": "owner research handoff"},
       "owner": "ide", "phase": "P23", "status": "PROVEN",
       "priority": 2, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["P19 summarize()", "scheduler inspect()", "IDE inspection.ts clients + Inspector runtime card (workers/approvals/sessions/events)", "6 inspection + 4 App inspection tests, 48/48 IDE", "42/42 verify-shell", "docs/design/RUNTIME-INSPECTION.md"],
+      "evidence": [
+        "P19 summarize()",
+        "scheduler inspect()",
+        "IDE inspection.ts clients + Inspector runtime card (workers/approvals/sessions/events)",
+        "6 inspection + 4 App inspection tests, 48/48 IDE",
+        "42/42 verify-shell",
+        "docs/design/RUNTIME-INSPECTION.md",
+        "audit finding (2026-09-30): this surface was read-only for authority - it rendered approvals from /v1/runtime without ids a human could act on. Decisions now live in REQ-ide-genesis-task-loop; this requirement remains the inspection owner and was not given policy or execution duties"
+      ],
       "provenance": "external research reference; mapping is project architecture decision",
       "reuse": "STUDY_ONLY",
       "implementation_refs": ["workspace/app/src/inspection.ts"],
@@ -377,10 +385,28 @@
       "source": {"class": "TEST_EVIDENCE", "ref": "Agent-Bridge 186/186 (d606b91)", "location": "Agent-Bridge"},
       "owner": "agent-bridge", "phase": "P14", "status": "PROVEN",
       "priority": 5, "depends_on": [], "blockers": [],
-      "evidence": ["186/186 pytest", "probe sibling/traversal/session isolation"],
+      "evidence": [
+        "186/186 pytest",
+        "probe sibling/traversal/session isolation",
+        "defect D3 proved while building the IDE vertical slice: ASK_RISKY/ASK_ALL_WRITES/REQUIRE_APPROVAL carried read/list grants only, so the executor's default-deny gate refused every mutation even after a human approved it - the most supervised modes were the least functional, and the failure was buried in history as POLICY_DENIED",
+        "an approval verdict is now materialized as a narrow single-action grant for exactly the approved resource (aether_policy_bridge.issue_approved_action_grant) before the same policy evaluation runs, and revoked as soon as the dispatch returns, so an approval is one effect and not a standing capability; globs, workspace escapes and absolute/namespaced references are refused",
+        "defect D1: a served session could never surface a pending approval (create_session hard-coded non_interactive=True), so an ASK_* session silently denied instead of asking; the channel is now opt-in and refused with 403 when the runtime switch is off",
+        "defect D2: a run whose every mutation was denied reported COMPLETED with a positive reviewer verdict; build_task_result now derives effect_achieved/denied_actions/blocked from the execution journal and the recorded authority decisions",
+        "Executor.policy_resources now gates every resource an action touches, so an approved move/copy can no longer carry an unchecked destination",
+        "tests/test_external_approvals.py 25 tests over real HTTP (approve/deny/cancel/bad decision/token, single-use proof) and tests/test_approved_grant_mutations.py proving 8 mutations of these properties turn the suite red; pytest 1280 passed / 1 skipped, unittest discover 1271 OK"
+      ],
       "provenance": "BRIDGE-GATE-COMPAT/1 + POLICY-HARDENING/1 session records",
-      "implementation_refs": ["aether_policy_bridge.py"],
-      "test_refs": ["tests/test_policy_deny_gate.py"],
+      "implementation_refs": [
+        "aether_policy_bridge.py",
+        "bridge.py",
+        "executor.py",
+        "runtime.py"
+      ],
+      "test_refs": [
+        "tests/test_approved_grant_mutations.py",
+        "tests/test_external_approvals.py",
+        "tests/test_policy_deny_gate.py"
+      ],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
@@ -1477,6 +1503,26 @@
       "evidence": ["release audit headline: scope UNDEFINED in programme truth","OWNER DECISION 2026-09-30 - CORE FIRST RELEASE: the first public release candidate is the CORE platform - Aetherius OS core/runtime, Genesis, Agent Bridge, IDE/Workspace, and the core execution/governance/model/context/recovery infrastructure those require. Applications and vertical products (Poietek, MAT, Universal-Bridge, other specialists) may remain PARTIAL / RESEARCH / DEVELOPMENT / DEFERRED and are EXCLUDED from the first release scope unless explicitly required by a core dependency.","Consequence recorded rather than acted on wholesale: a core dependency owned by an application still requires that SEAM to be verified, but NOT the application roadmap to be finished. CORE DEPENDENCY != FULL APPLICATION COMPLETION.","STILL OWNER-GATED after this decision, and deliberately not inferred from it: the final version number, the supported OS/platform matrix, the publication channel, and public push authorization. VERSION != RELEASE READINESS, and none of them may be read out of a scope decision.","This resolves the SCOPE question only. The release candidate is still NOT RELEASE-PROVEN: packaging, installer, clean-room/recovery evidence, privacy, supply chain, platform evidence and human UI/accessibility gates remain open, and are tracked as such rather than folded into a scope claim."],
       "provenance": "public release readiness audit 2026-09-25",
       "owner_gate": true, "work_state": "OWNER_GATED"
+    },
+    {
+      "id": "REQ-ide-genesis-task-loop",
+      "title": "IDE-hosted Genesis task loop with human approvals and effect truth",
+      "description": "The IDE could display bridge approvals but had no way to submit a task, no way to see a session's pending approval ids, and no way to approve or deny one, so the minimum harness loop (user -> IDE -> Genesis -> P25 authorization -> Agent Bridge -> bounded action -> world-state readback -> IDE-visible evidence) was unreachable from the UI. Adds the session, task, approval-decision and effect-readback surface plus the human-in-the-loop bar, and renders a refused run as blocked rather than as a success.",
+      "source": {"class": "TEST_EVIDENCE", "ref": "IDE vertical slice over the real Agent Bridge HTTP service (IDE 2bf39ae)", "location": "IDE-Workspace"},
+      "owner": "ide", "phase": "P23", "status": "PROVEN",
+      "priority": 1, "depends_on": ["REQ-runtime-inspection", "REQ-bridge-gate-compat"], "blockers": [],
+      "evidence": [
+        "the gap was measured from code, not docs: the TypeScript client had no /v1/sessions, /tasks, /approvals or /export call at all, the inspector's approval rows were display-only and anonymous (approval-0, approval-1) with no id to act on, and the status bar's verification field was a hardcoded idle",
+        "workspace/app/src/genesisBridge.ts adds the session/task/approval/effect surface over the Bridge's documented /v1 API, with tolerant parsers that never invent state and read a missing effect_achieved as false",
+        "workspace/app/src/components/GenesisTaskBar.tsx renders a pending approval with its real action and risk, offers a decision only when the session reports a decision channel, and renders a run whose actions were all denied as blocked even when the Bridge status is COMPLETED",
+        "workspace/integration/tests/test_bridge_vertical_slice.py: 7 tests over real HTTP against the unmodified Agent Bridge service - approve -> act -> world-state readback -> evidence, approve-once leaves no standing grant, a second approval is refused, deny -> no effect and a blocked outcome, cancel of a waiting approval, and no decision channel -> session creation refused and asks denied rather than faked",
+        "the three defects the slice exposed are recorded in REQ-bridge-gate-compat and docs/phase-b-vertical-slice.md"
+      ],
+      "provenance": "Phase B IDE minimum-harness audit; the missing seam was proved by attempting the loop",
+      "reuse": "EXTEND",
+      "implementation_refs": ["workspace/app/src/genesisBridge.ts", "workspace/app/src/components/GenesisTaskBar.tsx", "workspace/integration/bridge_client.py", "workspace/integration/bridge_service.py"],
+      "test_refs": ["workspace/app/src/genesisBridge.test.ts", "workspace/app/src/components/GenesisTaskBar.test.tsx", "workspace/integration/tests/test_bridge_vertical_slice.py"],
+      "owner_gate": false, "work_state": "COMPLETE"
     }
   ]
 }
