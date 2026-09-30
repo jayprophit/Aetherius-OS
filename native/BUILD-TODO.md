@@ -1003,3 +1003,23 @@ Status vocabulary: EXISTS / PARTIAL / MISSING / DUPLICATE / LEGACY / CONFLICTING
 - THE 16 ARE UNTRACKED FIRST-PARTY SOURCE. Two test files exist only in the working tree: scripts/tests/mat-universal-core.test.mjs (10 cases) and scripts/tests/mat-reading.test.mjs (6 cases) - 10 + 6 = 16, exactly the delta. They are real first-party work in progress, not caches: mat-universal-core.test.mjs imports ../mat-universal-object.mjs and ../mat-composition.mjs, which are ALSO untracked, alongside scripts/validate-universal-core.mjs and data/schema/1.0.0/mat-universal-object.schema.json, plus docs/02-data/12-Universal-Core-Stage-1.md. The tracked generated data also differs (book/manifest.json, book/offline-index.json, book/cache-version.js, data/publication/generated/*).
 - CLASSIFIED, NOT COMMITTED. This is UNTRACKED FIRST-PARTY SOURCE: a release candidate must not depend on it unknowingly, and a clean clone genuinely cannot build the Universal Core Stage 1 capability because three of its source files, its schema, its test and its design note are all outside version control. It was NOT committed: it is the owner''s uncommitted work-in-progress, it predates this session, and AGENTS.md keeps data/ read-only for tooling work, so staging it is not an agent''s decision. The exact file list is recorded so the owner can act deliberately.
 - CONSEQUENCE FOR THE PROGRAMME: MAT is reproducible for everything that is TRACKED, and is not reproducible for Universal Core Stage 1. Stated that way rather than as a bare "MAT is green".
+
+## 2026-09-30 - COMPLETION MODE: FRESH-CLONE REPRODUCIBILITY MATRIX - all five owner repos characterised by doing it
+- Every row below was produced by creating an ISOLATED git worktree at HEAD, installing per the repository''s own declaration, and running the repository''s OWN test command. None is an argument; all are measurements. All worktrees were removed afterwards; every repo is back to a single worktree.
+
+| Repository | Install | Native test command | Clean-clone result | Defects found |
+| --- | --- | --- | --- | --- |
+| Aetherius-OS | npm ci, 153 pkgs | npm test | 1503 passed, 10 skipped, 0 failed (+ typecheck clean, build clean) | 3 - all fixed |
+| Agent-Bridge | ambient interpreter (no lockfile declared) | python -m unittest discover -s tests -p test_*.py | 1220 ran, OK, 7 skipped | 1 - fixed |
+| Poietek | npm ci | typecheck:core && prepare-core-tests.mjs && node --test | 384 / 384 passed | 0 |
+| MAT | npm ci, 7 pkgs | node --test scripts/tests/*.test.mjs | 109 / 109 passed | 1 finding, not a defect |
+| IDE-Workspace | npm ci, 170 pkgs | vitest run (in workspace/app) | 48 / 48 passed | 0 |
+
+- THE FOUR DEFECTS FOUND WERE ALL IN TESTS THAT PASSED LOCALLY AND FAILED OR MISBEHAVED ELSEWHERE - which is exactly the class that a green suite cannot reveal:
+  1. the evidence auditor could not tell an ABSENT owner repo from a DANGLING citation, so a clean clone falsely accused every cross-repo requirement (fixed in the capability, with 5 new unit tests);
+  2. two suites silently assumed the multi-repo workspace layout (now skip cross-repo assertions explicitly, never silently pass);
+  3. disk-bound state-store tests fitted their budget only on fast storage (now one documented file-scoped timeout each, global default untouched);
+  4. Agent-Bridge required a gitignored recorded-evidence artifact unconditionally (now skipped with a reason when absent, verified in full when present).
+- THE MAT ROW IS THE ONE THAT IS NOT SIMPLY "PASS": 109 in the clone against 125 in the workspace, and the 16-test delta is exactly two untracked first-party test files whose modules and schema are also untracked. Universal Core Stage 1 exists only in the working tree. Recorded with the file list; not committed, because it is uncommitted owner work and AGENTS.md keeps data/ read-only for tooling.
+- HONEST SCOPE LIMITS, NOT OMITTED: Agent-Bridge reproducibility was proven against the AMBIENT interpreter because the repo declares no lockfile and no venv, so its dependency set is NOT pinned. Genesis is C++ and was not clone-proven this session. VM-B, Universal-Bridge, Bare-Metal Kernel and the application repositories were not reached.
+- SUPPORTED LOCALLY IS NOT REPRODUCIBLE: two requirements now carry this distinction explicitly. REQ-omniagent-reference-index is supported by a tracked provenance record while its unlicensed third-party material stays untracked by policy, and REQ-cert-regeneration is supported by a real 2/2 VERIFIED artifact that is gitignored runtime state and therefore cannot be reconstructed from a clone.
