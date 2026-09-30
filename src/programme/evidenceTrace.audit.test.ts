@@ -69,9 +69,9 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    expect(summary.requirementsWithMachineRefs).toBe(87);
+    expect(summary.requirementsWithMachineRefs).toBe(88);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(87);
+    expect(withRefs).toHaveLength(88);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
     // most are single-suite citations
     expect(single.length).toBeGreaterThan(80);
@@ -144,13 +144,13 @@ describe("audit: real requirement registry evidence traceability", () => {
   it("currently records how many COMPLETE claims have no resolvable test citation", () => {
     expect(summary.complete).toBe(93);
     // 70 at the start of remediation, then 61 / 32 / 30 / 25 / 18 / 17 / 15 /
-    // 6 after batches 1-11. Most batches cited more than they newly traced,
+    // 5 after the OmniAgent provenance record (batches 1-11 plus the record). Most batches cited more than they newly traced,
     // because the requirement already named a resolvable test in its prose
     // (REQ-p29-visual-qa named tests/visual-qa.test.js before it was cited).
     // Batch 5 dropped one more than it cited, because fixing the auditor's
     // blindness to Python's test_*.py naming made an already-cited
     // Agent-Bridge requirement traceable at the same time.
-    expect(summary.untraceableComplete).toBe(6);
+    expect(summary.untraceableComplete).toBe(5);
   });
 
   it("records that a citation may use either declared path convention", () => {

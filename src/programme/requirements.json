@@ -340,6 +340,8 @@
       "provenance": "P19/3 intake session",
       "licence": "unknown - study-only, no reuse",
       "reuse": "REFERENCE_ONLY",
+      "implementation_refs": ["docs/omniagent-reference-index.md"],
+      "test_refs": ["docs/omniagent-reference.provenance.test.ts"],
       "owner_gate": false, "work_state": "COMPLETE"
     },
     {
