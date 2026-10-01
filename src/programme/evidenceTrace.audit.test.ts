@@ -102,11 +102,11 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    // 89 after REQ-ide-genesis-task-loop, which cites the IDE vertical slice
-    // and the real-HTTP vertical-slice suite that prove it.
-    expect(summary.requirementsWithMachineRefs).toBe(89);
+    // 90 after REQ-bridge-action-intake, which cites the intake module and the
+    // two real-service suites that prove it (89 after the IDE task loop).
+    expect(summary.requirementsWithMachineRefs).toBe(90);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(89);
+    expect(withRefs).toHaveLength(90);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
     // most are single-suite citations
     expect(single.length).toBeGreaterThan(80);
@@ -124,17 +124,19 @@ describe("audit: real requirement registry evidence traceability", () => {
         throw new Error(`${t.id} cites a sibling-shaped test that is not its own`);
       }
     }
-    // Seven units legitimately cite more than one suite: the traceability
+    // Eight units legitimately cite more than one suite: the traceability
     // requirement (unit + real-registry audit), the relay requirement
     // (relay.test.ts for the cache, policy.test.ts for the allowlist it depends
     // on), the executor requirement (model-invoke plus bridge-action), the
     // identity rule (Genesis's own C++ suite plus Aetherius's), the layout
     // system (its own component plus the App-level suite), the bridge gate (its
     // policy-deny suite plus the approval-channel and mutation suites added
-    // with the Phase B vertical slice), and the IDE task loop (client, component
-    // and the real-HTTP vertical-slice suite).
+    // with the Phase B vertical slice), the IDE task loop (client, component
+    // and the real-HTTP vertical-slice suite), and the action intake (the
+    // real-service suite plus its mutation proof).
     const multi = withRefs.filter((t) => t.testRefs.length > 1);
     expect(multi.map((t) => t.id).sort()).toEqual([
+      "REQ-bridge-action-intake",
       "REQ-bridge-gate-compat",
       "REQ-genesis-identity-rule",
       "REQ-ide-genesis-task-loop",
@@ -183,7 +185,7 @@ describe("audit: real requirement registry evidence traceability", () => {
   });
 
   crossRepoIt("currently records how many COMPLETE claims have no resolvable test citation", () => {
-    expect(summary.complete).toBe(94);
+    expect(summary.complete).toBe(95);
     // 70 at the start of remediation, then 61 / 32 / 30 / 25 / 18 / 17 / 15 /
     // 5 after the OmniAgent provenance record (batches 1-11 plus the record). Most batches cited more than they newly traced,
     // because the requirement already named a resolvable test in its prose
@@ -217,21 +219,20 @@ describe("audit: real requirement registry evidence traceability", () => {
   });
 
   crossRepoIt("records that owner names a project, not the repository holding the code", () => {
-    // 11 requirements are owned by a project other than aetherius-os yet
+    // 10 requirements are owned by a project other than aetherius-os yet
     // resolve at least one citation inside the Aetherius-OS monorepo. This is
     // why resolution searches both roots; it is a recorded fact, not a
     // fallback. The identity rule is a genuine two-repo requirement: its C++
     // suite lives in Genesis and its TypeScript suite here. The IDE task loop
     // is similar: owned by ide, proven partly by the vertical-slice record
-    // kept here. The action-intake requirement resolves its gap record here
-    // while being owned by agent-bridge.
+    // kept here. (The action-intake requirement's refs all resolve inside
+    // Agent-Bridge, so it is correctly absent from this list.)
     const crossOwner = traces
       .filter((t) => t.owner !== "aetherius-os")
       .filter((t) => t.resolved.some((c) => c.resolvedIn === "Aetherius-OS"))
       .map((t) => `${t.id}[${t.owner}]`)
       .sort();
     expect(crossOwner).toEqual([
-      "REQ-bridge-action-intake[agent-bridge]",
       "REQ-context-layers[mat]",
       "REQ-genesis-identity-rule[genesis]",
       "REQ-ide-genesis-task-loop[ide]",
