@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "registry:validate": "vitest run src/programme src/state"
+    "registry:validate": "vitest run src/programme src/state",
+    "capability:report": "vitest run src/programme/capabilityRegistry.test.ts -t regenerates"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
@@ -26,6 +27,7 @@
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.1",
+    "yaml": "^2.9.1"
   }
 }
