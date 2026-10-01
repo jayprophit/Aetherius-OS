@@ -25,7 +25,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 
 ## Recently added / moved (30 days)
 - Global Event Fabric `CAP-event-fabric` — created 2026-10-01
+- Ideal State Artifacts `CAP-ideal-state-artifacts` — created 2026-10-01
 - Repository and Ecosystem Registry `CAP-repository-registry` — created 2026-10-01
+- Continuous Verification (Sentinel Concept) `CAP-sentinel` — created 2026-10-01
 - Shared Infrastructure and Services `CAP-shared-infrastructure` — created 2026-10-01
 - Shared Service Candidates `CAP-shared-services-candidates` — created 2026-10-01
 - Authorized scoped repository relay-cache `REQ-p30-repo-relay` — imported 2026-10-01
@@ -36,4 +38,4 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Shared Infrastructure and Services `CAP-shared-infrastructure`
 
-_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 5._
+_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 7._

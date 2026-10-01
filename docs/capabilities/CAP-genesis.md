@@ -73,6 +73,7 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Genesis Security and Custody `CAP-genesis-security` — created 2026-10-01
 - Self Model and World Model Separation `CAP-genesis-self-model` — created 2026-10-01
 - Skill System `CAP-genesis-skill-system` — created 2026-10-01
+- Genesis Skill Schema `CAP-genesis-skills-schema` — created 2026-10-01
 - Tool Adapters `CAP-genesis-tools` — created 2026-10-01
 - World Model Evaluation `CAP-genesis-world-model` — created 2026-10-01
 - Genome-like Configuration `CAP-genome-config` — created 2026-10-01
@@ -106,4 +107,4 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Memory promotion boundary decision `REQ-memory-integrity-boundary`
 
-_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 59._
+_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 60._

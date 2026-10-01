@@ -26,6 +26,7 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 
 ## Recently added / moved (30 days)
 - Assumption Tracking `CAP-assumption-tracking` — created 2026-10-01
+- Biological Sciences Branch `CAP-biological-sciences` — created 2026-10-01
 - Causal Reasoning `CAP-causal-reasoning` — created 2026-10-01
 - Contradiction Graph `CAP-contradiction-graph` — created 2026-10-01
 - Cross-Domain Synthesis `CAP-cross-synthesis` — created 2026-10-01
@@ -35,6 +36,7 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Knowledge Resurrection `CAP-knowledge-resurrection` — created 2026-10-01
 - Materials Atlas Table Codex `CAP-mat` — created 2026-10-01
 - Mistake and Failure Lineage `CAP-mistake-lineage` — created 2026-10-01
+- Multiscale Science Graph `CAP-multiscale-science` — created 2026-10-01
 - Internal Scientific Method `CAP-scientific-method` — created 2026-10-01
 - Temporal Knowledge `CAP-temporal-knowledge` — created 2026-10-01
 - Trusted Provenance Records `CAP-trusted-provenance` — created 2026-10-01
@@ -51,4 +53,4 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 ## Research catalogue (status RESEARCH, required)
 - none
 
-_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 19._
+_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 21._

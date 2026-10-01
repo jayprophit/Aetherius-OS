@@ -3,7 +3,7 @@
 Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
 
 ## Programme summary (all children)
-- Aetherius Ecosystem ████░░░░░░░░░░░░░░░░ 20.2% (26 counted, 0 excluded)
+- Aetherius Ecosystem ████░░░░░░░░░░░░░░░░ 19.8% (26 counted, 0 excluded)
 
 ## Programme summary (required only)
 - Aetherius Ecosystem █████████████░░░░░░░ 63% (10 counted, 0 excluded)
@@ -156,6 +156,7 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
     🔬 Genesis Constitution Candidate — 10% (status-map) `CAP-genesis-constitution`
     🔬 Canonical Avatar Identity — 10% (status-map) `CAP-avatar-identity`
     🔬 Sovereign Substrate Candidate — 10% (status-map) `CAP-sovereign-substrate`
+    🔬 Genesis Skill Schema — 10% (status-map) `CAP-genesis-skills-schema`
   ✅ Agent Bridge — 93.5% (child-rollup(17,required-only)) `CAP-agent-bridge`
     🟢 Bridge Execution Interface — 100% (child-rollup(1,required-only)) `CAP-bridge-execution`
       🟢 Model-invoke and bridge-action workflow executors — 100% (status-map) `REQ-p19-executors`
@@ -218,6 +219,8 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
     🔬 Discovery and Hypothesis Engine — 10% (status-map) `CAP-discovery-engine`
     🔬 Mistake and Failure Lineage — 10% (status-map) `CAP-mistake-lineage`
     🔬 Knowledge Resurrection — 10% (status-map) `CAP-knowledge-resurrection`
+    🔬 Multiscale Science Graph — 10% (status-map) `CAP-multiscale-science`
+    🔬 Biological Sciences Branch — 10% (status-map) `CAP-biological-sciences`
   ⚠️ Applications — 50% (unmeasured-partial-estimate) `CAP-applications`
     ⚠️ Poietek — 100% (child-rollup(3,required-only)) `CAP-poietek`
       🟢 Creative reference graph — 100% (status-map) `REQ-p29-creative-ref-graph`
@@ -282,11 +285,23 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
     🔬 Unresolved Video Research B — 10% (status-map) `CAP-research-video-unresolved-b`
     🔬 Research - Adaptive Compute Depth — 10% (status-map) `CAP-research-adaptive-compute`
     🔬 Research - Whole-Machine Compute Fabric — 10% (status-map) `CAP-research-whole-machine-compute`
+    🔬 Research - Closed-Loop Chemistry and Assembly (Cronin/Chemify) — 10% (status-map) `CAP-research-cronin-chemify`
+    🔬 Research - Experiment Description Language Concept — 10% (status-map) `CAP-research-aedl`
+    🔬 Research - Assembly Theory (Contested) — 10% (status-map) `CAP-research-assembly-theory`
+    🔬 Research - Russell Historical Data Layer — 10% (status-map) `CAP-research-russell-layer`
+    🔬 Research - Rife Historical Claims Layer — 10% (status-map) `CAP-research-rife-layer`
+    🔬 Research - Frequency Observation Schema — 10% (status-map) `CAP-research-frequency-schema`
+    🔬 Research - Periodic Table Knowledge Graph — 10% (status-map) `CAP-research-periodic-expansion`
+    🔬 Research - Autonomous Materials Exploration Loop — 10% (status-map) `CAP-research-materials-explorer`
+    🔬 Research - LifeOS Concept Mapping — 10% (status-map) `CAP-research-miessler-lifeos`
+    🔬 Research - Sandboxed Worker Reference Architecture — 10% (status-map) `CAP-research-sandbox-workers`
     🟢 Deep per-capability overlap audits — 100% (status-map) `REQ-refmap-followup`
   🔬 Shared Infrastructure and Services — 100% (child-rollup(1,required-only)) `CAP-shared-infrastructure`
     🔬 Shared Service Candidates — 10% (status-map) `CAP-shared-services-candidates`
     🔬 Global Event Fabric — 10% (status-map) `CAP-event-fabric`
     🔬 Repository and Ecosystem Registry — 10% (status-map) `CAP-repository-registry`
+    🔬 Continuous Verification (Sentinel Concept) — 10% (status-map) `CAP-sentinel`
+    🔬 Ideal State Artifacts — 10% (status-map) `CAP-ideal-state-artifacts`
     🟢 Authorized scoped repository relay-cache — 100% (status-map) `REQ-p30-repo-relay`
   🔬 Organism Contract — 10% (status-map) `CAP-organism-contract`
   🔬 Organism Operating Model — 10% (status-map) `CAP-organism-operating-model`
@@ -385,6 +400,7 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Authority Plane Mapping `CAP-authority-plane` — created 2026-10-01
 - Canonical Avatar Identity `CAP-avatar-identity` — created 2026-10-01
 - Before and After Proof `CAP-before-after-proof` — created 2026-10-01
+- Biological Sciences Branch `CAP-biological-sciences` — created 2026-10-01
 - Kernel Adapters `CAP-bridge-adapters-kernel` — created 2026-10-01
 - Physical Adapters `CAP-bridge-adapters-physical` — created 2026-10-01
 - System Adapters `CAP-bridge-adapters-system` — created 2026-10-01
@@ -431,8 +447,7 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Action Consequence Model `CAP-genesis-consequence-model` — created 2026-10-01
 - Genesis Constitution Candidate `CAP-genesis-constitution` — created 2026-10-01
 - Developmental Learning Architecture `CAP-genesis-developmental` — created 2026-10-01
-- Emergency and Minimum-Operation Modes `CAP-genesis-emergency-modes` — created 2026-10-01
-- … 232 more
+- … 247 more
 
 ## Duplicate candidates (review, do not auto-merge)
 - none
@@ -457,4 +472,4 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🔬 Regulated-domain evidence schema `REQ-regulated-evidence`
 - 🔬 test_spawn_status_kill aggregate timing flake `REQ-spawn-flake`
 
-_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 292._
+_Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 307._

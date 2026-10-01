@@ -2022,6 +2022,167 @@ capabilities:
     history:
       - {date: 2026-10-01, action: created, note: research; check overlap}
 
+  # -- research ingestion BUILD68 (research-only, 2026-10-01) ----------------------------------
+  - id: CAP-research-cronin-chemify
+    name: Research - Closed-Loop Chemistry and Assembly (Cronin/Chemify)
+    type: research-concept
+    description: Ask-make-test-learn loops, literature-to-executable experiments, assembly theory with criticism preserved.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: single podcast source; claims need per-claim evidence states, nothing adopted
+    required: false
+    source: {type: video-research, source_document: https://youtu.be/Myj5oK-wKzI, source_date: 2026-10-01}
+    relationships: {related_to: [CAP-discovery-engine, CAP-scientific-method, CAP-mistake-lineage]}
+    history:
+      - {date: 2026-10-01, action: created, note: research only; podcast is not evidence}
+  - id: CAP-research-aedl
+    name: Research - Experiment Description Language Concept
+    type: research-concept
+    description: Machine-readable experiment structure with safety and authorization fields; core DSL plus domain extensions investigational.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: concept only, no implementation
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-research-assembly-theory
+    name: Research - Assembly Theory (Contested)
+    type: research-concept
+    description: Complexity-by-construction-path with peer criticism and alternative explanations co-stored.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: disputed scientific status; store theory plus criticism, adopt neither as fact
+    required: false
+    relationships: {related_to: [CAP-contradiction-graph, CAP-discovery-engine]}
+    history:
+      - {date: 2026-10-01, action: created, note: research only; disputed}
+  - id: CAP-research-russell-layer
+    name: Research - Russell Historical Data Layer
+    type: research-concept
+    description: Octave/position/polarity claims preserved as HISTORICAL MODEL, never silently converted to standard physics.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: historical model by design
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-research-rife-layer
+    name: Research - Rife Historical Claims Layer
+    type: research-concept
+    description: Frequency claims with modality, source and replication state; therapeutic claims never treated as medicine.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: historical/experimental claims by design
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-research-frequency-schema
+    name: Research - Frequency Observation Schema
+    type: research-concept
+    description: Modality-aware frequency records; no universal frequency per element.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: schema concept only
+    required: false
+    relationships: {related_to: [CAP-research-russell-layer, CAP-research-rife-layer]}
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-research-periodic-expansion
+    name: Research - Periodic Table Knowledge Graph
+    type: research-concept
+    description: Standard, Russell, biological, molecular, frequency and CRISPR layers kept scientifically distinguishable.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: concept only
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-research-materials-explorer
+    name: Research - Autonomous Materials Exploration Loop
+    type: research-concept
+    description: Model, choose, make, measure, classify, update loop for materials variables.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: concept only
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-research-miessler-lifeos
+    name: Research - LifeOS Concept Mapping
+    type: research-concept
+    description: Cortex, Synapse, Atlas, Ledger, ISA, Bunker and Fabric mapped to Genesis/memory/graph/ledger/requirement/Sentinel/skills owners; no duplication, no name cloning.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: single video source; mapping only, adopt nothing directly
+    required: false
+    source: {type: video-research, source_document: https://youtu.be/A-JBaNvv3Tk, source_date: 2026-10-01}
+    relationships: {related_to: [CAP-genesis-memory, CAP-world-knowledge-fabric, CAP-continuity-ledger]}
+    history:
+      - {date: 2026-10-01, action: created, note: research only; map, do not clone}
+  - id: CAP-research-sandbox-workers
+    name: Research - Sandboxed Worker Reference Architecture
+    type: research-concept
+    description: Task-scoped filesystem, credentials, network, quotas and audit per worker; reference only, reconcile with existing runners.
+    primary_parent: CAP-research-catalogue
+    status: RESEARCH
+    status_reason: reference architecture; existing sandbox runners own the mechanism until mapped
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-sentinel
+    name: Continuous Verification (Sentinel Concept)
+    type: capability
+    description: Persistent alive/version/hash/permission/drift/exposure/backup verification over deployed assets.
+    primary_parent: CAP-shared-infrastructure
+    status: RESEARCH
+    status_reason: genuinely new as a named continuous layer; map against inspection and health before structuring
+    required: false
+    relationships: {related_to: [CAP-ide-inspection, CAP-organism-health]}
+    history:
+      - {date: 2026-10-01, action: created, note: research; map first}
+  - id: CAP-ideal-state-artifacts
+    name: Ideal State Artifacts
+    type: capability
+    description: Intent, current state, ideal state, delta, acceptance and evidence requirements per requirement; hierarchical, not monolithic.
+    primary_parent: CAP-shared-infrastructure
+    status: RESEARCH
+    status_reason: concept maps onto requirement acceptance criteria; extend, do not duplicate
+    required: false
+    relationships: {related_to: [CAP-programme-registry]}
+    history:
+      - {date: 2026-10-01, action: created, note: research; extend existing}
+  - id: CAP-genesis-skills-schema
+    name: Genesis Skill Schema
+    type: capability
+    description: Outcome-and-constraint skill records with ideal state, permissions, tests and provenance.
+    primary_parent: CAP-genesis
+    status: RESEARCH
+    status_reason: overlap with skill-system and capability registrations must resolve first
+    required: false
+    relationships: {related_to: [CAP-genesis-skill-system, CAP-capability-graph]}
+    history:
+      - {date: 2026-10-01, action: created, note: research; overlap flagged}
+  - id: CAP-multiscale-science
+    name: Multiscale Science Graph
+    type: capability
+    description: Element to environment levels linked without scientific conflation.
+    primary_parent: CAP-knowledge-data
+    status: RESEARCH
+    status_reason: concept only
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+  - id: CAP-biological-sciences
+    name: Biological Sciences Branch
+    type: subsystem
+    description: Genomics through synthetic biology with CRISPR as one editing technology, not the whole field; ethics and safety governed.
+    primary_parent: CAP-knowledge-data
+    status: RESEARCH
+    status_reason: concept only; broad future branch
+    required: false
+    history:
+      - {date: 2026-10-01, action: created, note: research only}
+
 # === GENERATED REQUIREMENT ENTRIES (do not hand-edit below) ===
 
   - id: REQ-p19-skill-discovery
