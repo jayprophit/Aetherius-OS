@@ -137,8 +137,14 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // Release-packaging COMPLETE leaves zero executable units; null, not a guess.
-    expect(result.selected_task).toBeNull();
+    // The selector surfaces the one real machine-solvable gap rather than
+    // inventing work or reporting an empty queue: the structured action-intake
+    // endpoint Aetherius's bridge-action executor already posts to. Both of its
+    // dependencies are COMPLETE, so it is genuinely executable, and it is not
+    // owner-gated.
+    expect(result.selected_task).toBe("REQ-bridge-action-intake");
+    expect(result.dependencies_satisfied).toBe(true);
+    expect(result.owner_gate).toBe(false);
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

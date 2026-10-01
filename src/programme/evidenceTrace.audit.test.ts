@@ -90,7 +90,7 @@ describe("audit: real requirement registry evidence traceability", () => {
   });
 
   it("audits the whole registry including the traceability requirement itself", () => {
-    expect(traces.length).toBe(109);
+    expect(traces.length).toBe(110);
   });
 
   it("records progress on the machine-readable evidence fields", () => {
@@ -217,19 +217,21 @@ describe("audit: real requirement registry evidence traceability", () => {
   });
 
   crossRepoIt("records that owner names a project, not the repository holding the code", () => {
-    // 10 requirements are owned by a project other than aetherius-os yet
+    // 11 requirements are owned by a project other than aetherius-os yet
     // resolve at least one citation inside the Aetherius-OS monorepo. This is
     // why resolution searches both roots; it is a recorded fact, not a
     // fallback. The identity rule is a genuine two-repo requirement: its C++
     // suite lives in Genesis and its TypeScript suite here. The IDE task loop
     // is similar: owned by ide, proven partly by the vertical-slice record
-    // kept here.
+    // kept here. The action-intake requirement resolves its gap record here
+    // while being owned by agent-bridge.
     const crossOwner = traces
       .filter((t) => t.owner !== "aetherius-os")
       .filter((t) => t.resolved.some((c) => c.resolvedIn === "Aetherius-OS"))
       .map((t) => `${t.id}[${t.owner}]`)
       .sort();
     expect(crossOwner).toEqual([
+      "REQ-bridge-action-intake[agent-bridge]",
       "REQ-context-layers[mat]",
       "REQ-genesis-identity-rule[genesis]",
       "REQ-ide-genesis-task-loop[ide]",

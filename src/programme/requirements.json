@@ -270,7 +270,14 @@
       "source": {"class": "TEST_EVIDENCE", "ref": "Aetherius-OS P19/3", "location": "Aetherius-OS/src/workflows"},
       "owner": "aetherius-os", "phase": "P19", "status": "PROVEN",
       "priority": 4, "depends_on": ["REQ-p16-control"], "blockers": [],
-      "evidence": ["19 executor tests", "170/170 full suite", "tsc clean"],
+      "evidence": [
+        "19 executor tests",
+        "170/170 full suite",
+        "tsc clean",
+        "audit 2026-10-01, IMPLEMENTED + TESTED but NOT INTEGRATED: the bridge-action half posts to /v1/actions (src/workflows/bridgeAction.ts:55-68) and that route does not exist on Agent Bridge - rg 'v1/actions' over the Agent-Bridge repository returns nothing, and its own self-documented schema list (service.py:709-723) has only /v1/sessions/*, /v1/capabilities and /v1/models",
+        "the gap was invisible because bridgeAction.test.ts tests HttpBridgeTransport against a stub HTTP server the test itself defines (test:349-356), so the request/response shape is proven while the endpoint it targets never is; against the real service the same call returns 404, which the transport normalizes to FAILED - a legitimate-looking result for an illegitimate configuration (MOCKED != VERIFIED, TEST RUNS != TARGET CODE PATH RUNS)",
+        "the real intake capability is registered separately as REQ-bridge-action-intake; this requirement's own code and tests are not downgraded, because they are genuinely complete at the unit level"
+      ],
       "provenance": "P19/3 session record",
       "implementation_refs": ["src/workflows/executors.ts","src/workflows/modelInvoke.ts","src/workflows/bridgeAction.ts"],
       "test_refs": ["src/workflows/modelInvoke.test.ts","src/workflows/bridgeAction.test.ts"],
@@ -1534,6 +1541,26 @@
       "implementation_refs": ["workspace/app/src/genesisBridge.ts", "workspace/app/src/components/GenesisTaskBar.tsx", "workspace/integration/bridge_client.py", "workspace/integration/bridge_service.py"],
       "test_refs": ["workspace/app/src/genesisBridge.test.ts", "workspace/app/src/components/GenesisTaskBar.test.tsx", "workspace/integration/tests/test_bridge_vertical_slice.py"],
       "owner_gate": false, "work_state": "COMPLETE"
+    },
+    {
+      "id": "REQ-bridge-action-intake",
+      "title": "Structured action intake on Agent Bridge (POST /v1/actions)",
+      "description": "Agent Bridge accepts free-text tasks but no typed action request, while Aetherius already has a tested BridgeActionRequest executor pointing at a route that does not exist. Without this, the Genesis action-proposal seam cannot reach execution: Genesis proposes, P25 decides, and there is no path from the decision to a real bounded action.",
+      "source": {"class": "RUNNING_CODE", "ref": "contract search across all four core repositories, 2026-10-01", "location": "docs/bridge-actions-endpoint-gap.md"},
+      "owner": "agent-bridge", "phase": "P19", "status": "ARCHITECTED",
+      "priority": 1, "depends_on": ["REQ-p19-executors", "REQ-bridge-gate-compat"], "blockers": [],
+      "evidence": [
+        "measured, not assumed: Agent-Bridge inbound POST surface is sessions, sessions/{id}/tasks, revise, final, cancel, approvals/{aid}, rollback, stop and taskcenter/tasks (service.py do_POST, :369); the task route takes free text only ({ text, idempotency_key, parent_task_id }, service.py:398-408), so structured actions are parsed out of model JSON inside the loop (bridge.py:115, protocol.validate_action) and never accepted as a typed external request",
+        "Agent Bridge already declares the typed contract it is missing: docs/contracts/GENESIS_AGENT_BRIDGE_v1.md:20-31 specifies request_id, session_id, identity, capability, input, authority and resource_budget, and its own line 30 admits the fields are CONTRACT-DECLARED rather than implemented (rg 'resource_budget' over Agent Bridge Python: zero hits)",
+        "the Genesis half of the path now exists and is tested: Genesis commit 6fd5342 adds the action-proposal header and implementation under include/genesis/agents (an evidence-bearing, non-authoritative, non-executing ActionProposal with authority_owner always p25, one resource per proposal, and a mutation proof that Genesis cannot authorize its own proposal); exact paths and the mutation list are in the gap record below - Genesis can propose and the chain still breaks here",
+        "what closing it must not be: a second, weaker execution path. The route must reuse protocol.validate_action against the closed ACTIONS vocabulary, the same approval gate that makes WAITING_APPROVAL a real resolvable pause, the policy engine so P25 still decides and policy_id is returned as evidence, the executor so the sandbox and resource grants apply, and the journal so actionId deduplication and the effect-truth fields (effect_achieved, denied_actions, blocked) are the ones the IDE already reads",
+        "record: docs/bridge-actions-endpoint-gap.md"
+      ],
+      "provenance": "found by attempting the Genesis proposal seam and searching for existing contracts before designing",
+      "reuse": "EXTEND",
+      "implementation_refs": [],
+      "test_refs": [],
+      "owner_gate": false, "work_state": "READY"
     }
   ]
 }

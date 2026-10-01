@@ -241,14 +241,20 @@ describe("real registries", () => {
   it("real registries validate clean", () => {
     expect(validateProgramme(loadReal())).toEqual([]);
   });
-  it("real registry reports no executable unit once release packaging closes", () => {
+  it("real registry surfaces the one machine-solvable gap, not an invented task", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // Release-packaging COMPLETE leaves zero executable units: the selector
-    // returns null with counts, never an invented task.
-    expect(r.selected_task).toBeNull();
-    expect(r.dependencies_satisfied).toBe(false);
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: none");
+    // Release-packaging COMPLETE had left zero executable units. Registering the
+    // measured action-intake gap gives the queue exactly one honest entry, and
+    // the selector must return it: a real, unblocked, non-gated gap rather than
+    // null (which would hide it) or an invented task.
+    expect(r.selected_task).toBe("REQ-bridge-action-intake");
+    expect(r.dependencies_satisfied).toBe(true);
+    expect(r.owner_gate).toBe(false);
+    expect(r.project).toBe("agent-bridge");
+    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: REQ-bridge-action-intake");
+    // and it is blocked on nothing it cannot itself resolve
+    expect(r.blockers).toEqual([]);
   });
 
 });
