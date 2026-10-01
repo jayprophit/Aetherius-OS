@@ -45,6 +45,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Repair versus Replace Engine `CAP-repair-replace` — created 2026-10-01
 - Workload-Specific Upgrade Planner `CAP-workload-planner` — created 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

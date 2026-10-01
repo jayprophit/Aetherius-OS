@@ -29,6 +29,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Ledger and Blockchain Systems `CAP-ledger-systems` — created 2026-10-01
 - Marketplace and Commerce `CAP-marketplace-commerce` — created 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

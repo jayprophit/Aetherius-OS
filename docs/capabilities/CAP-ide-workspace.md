@@ -45,6 +45,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Visual QA dimension suite `REQ-p29-visual-qa` — imported 2026-10-01
 - Runtime visual inspection surface `REQ-runtime-inspection` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

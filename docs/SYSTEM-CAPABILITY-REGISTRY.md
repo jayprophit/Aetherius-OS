@@ -434,6 +434,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Emergency and Minimum-Operation Modes `CAP-genesis-emergency-modes` — created 2026-10-01
 - … 232 more
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Capability Graph `CAP-capability-graph`
 - 🔬 Execution Targets `CAP-execution-targets`

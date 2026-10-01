@@ -32,6 +32,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Multimodal asset consistency dimensions `REQ-p29-multimodal-consistency` — imported 2026-10-01
 - Reference-grounded design rule `REQ-p29-ref-grounded-design` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

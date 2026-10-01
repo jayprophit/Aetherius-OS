@@ -11,6 +11,28 @@ import {
   type Registry,
 } from "./capabilityRegistry";
 
+/** Alias/name collisions listed for human review — candidates, never verdicts. */
+function duplicateCandidates(reg: Registry): Array<{ label: string; ids: string[] }> {
+  const index = new Map<string, string[]>();
+  const add = (label: string, id: string) => {
+    const key = label.trim().toLowerCase();
+    if (!key) return;
+    const list = index.get(key) ?? [];
+    list.push(id);
+    index.set(key, list);
+  };
+  for (const n of reg.nodes) {
+    add(n.name, n.id);
+    for (const a of n.aliases ?? []) add(a, n.id);
+  }
+  const out: Array<{ label: string; ids: string[] }> = [];
+  for (const [label, ids] of index) {
+    const uniq = [...new Set(ids)];
+    if (uniq.length > 1) out.push({ label, ids: uniq.sort() });
+  }
+  return out.sort((a, b) => a.label.localeCompare(b.label));
+}
+
 /**
  * Deterministic Markdown report generation for the System Capability
  * Registry. The .md file is derived output: it is regenerated from the YAML
@@ -221,6 +243,16 @@ export function generateReport(
     );
   }
   if (recent.length > 60) lines.push(`- … ${recent.length - 60} more`);
+  lines.push("");
+
+  // -- duplicate candidates ------------------------------------------------------------
+  lines.push("## Duplicate candidates (review, do not auto-merge)");
+  const dupes = duplicateCandidates(reg);
+  if (dupes.length === 0) lines.push("- none");
+  for (const d of dupes.slice(0, 40)) {
+    lines.push(`- "${d.label}" also names ${d.ids.join(", ")}`);
+  }
+  if (dupes.length > 40) lines.push(`- … ${dupes.length - 40} more`);
   lines.push("");
 
   // -- research catalogue -----------------------------------------------------------------

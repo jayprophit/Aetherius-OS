@@ -30,6 +30,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Shared Service Candidates `CAP-shared-services-candidates` — created 2026-10-01
 - Authorized scoped repository relay-cache `REQ-p30-repo-relay` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Shared Infrastructure and Services `CAP-shared-infrastructure`
 

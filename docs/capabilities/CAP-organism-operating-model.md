@@ -26,6 +26,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 ## Recently added / moved (30 days)
 - Organism Operating Model `CAP-organism-operating-model` — created 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

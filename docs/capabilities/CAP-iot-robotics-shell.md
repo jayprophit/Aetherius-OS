@@ -30,6 +30,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Shell Calibration Management `CAP-shell-calibration` — created 2026-10-01
 - Physical Shell Embodiment `CAP-shell-embodiment` — created 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

@@ -48,6 +48,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Terminology and Originality Policy `CAP-terminology-policy` — created 2026-10-01
 - Deep per-capability overlap audits `REQ-refmap-followup` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Terminology and Originality Policy `CAP-terminology-policy`
 

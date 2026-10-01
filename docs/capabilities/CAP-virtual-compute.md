@@ -31,6 +31,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Virtual Compute and Execution Targets `CAP-virtual-compute` — created 2026-10-01
 - Clean-room regrade flow `REQ-p20-clean-room` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Execution Targets `CAP-execution-targets`
 - 🔬 Virtual Compute and Execution Targets `CAP-virtual-compute`

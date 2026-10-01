@@ -54,6 +54,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - test_spawn_status_kill aggregate timing flake `REQ-spawn-flake` — imported 2026-10-01
 - Webhook and external event trigger sources `REQ-webhook-triggers` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - 🔬 test_spawn_status_kill aggregate timing flake `REQ-spawn-flake`
 

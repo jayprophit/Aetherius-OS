@@ -26,6 +26,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 ## Recently added / moved (30 days)
 - Family and Youth Safety Candidate `CAP-family-safety` — created 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

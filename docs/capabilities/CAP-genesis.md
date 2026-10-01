@@ -100,6 +100,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Selective escalation decisions (P22 proposes, P25 disposes) `REQ-p22-selective-escalation` — imported 2026-10-01
 - World-model evaluation lab `REQ-p22-world-model-lab` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Memory promotion boundary decision `REQ-memory-integrity-boundary`
 

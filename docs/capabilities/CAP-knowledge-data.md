@@ -45,6 +45,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Research claim registry `REQ-mat-claim-registry` — imported 2026-10-01
 - Regenerate MAT derived quality matrices `REQ-mat-derived-matrices` — imported 2026-10-01
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - none
 

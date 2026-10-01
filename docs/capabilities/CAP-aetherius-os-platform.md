@@ -101,6 +101,9 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Semantic discovery over the skill registry `REQ-p19-skill-discovery` — imported 2026-10-01
 - … 27 more
 
+## Duplicate candidates (review, do not auto-merge)
+- none
+
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Capability Graph `CAP-capability-graph`
 - 🔬 Establish provenance of native TODO header `REQ-native-header-provenance`
