@@ -276,7 +276,8 @@
         "tsc clean",
         "audit 2026-10-01, IMPLEMENTED + TESTED but NOT INTEGRATED: the bridge-action half posts to /v1/actions (src/workflows/bridgeAction.ts:55-68) and that route does not exist on Agent Bridge - rg 'v1/actions' over the Agent-Bridge repository returns nothing, and its own self-documented schema list (service.py:709-723) has only /v1/sessions/*, /v1/capabilities and /v1/models",
         "the gap was invisible because bridgeAction.test.ts tests HttpBridgeTransport against a stub HTTP server the test itself defines (test:349-356), so the request/response shape is proven while the endpoint it targets never is; against the real service the same call returns 404, which the transport normalizes to FAILED - a legitimate-looking result for an illegitimate configuration (MOCKED != VERIFIED, TEST RUNS != TARGET CODE PATH RUNS)",
-        "the real intake capability is registered separately as REQ-bridge-action-intake; this requirement's own code and tests are not downgraded, because they are genuinely complete at the unit level"
+        "the real intake capability is registered separately as REQ-bridge-action-intake; this requirement's own code and tests are not downgraded, because they are genuinely complete at the unit level",
+        "D4 fixed at the source (Bridge 79a6ccb): action ids embed the task id and dispatch compares the recorded action fingerprint, not just the verb; legacy entries without fingerprints always execute. Proven independent by mutation; 7 regression tests in the Agent Bridge uniqueness suite"
       ],
       "provenance": "P19/3 session record",
       "implementation_refs": ["src/workflows/executors.ts","src/workflows/modelInvoke.ts","src/workflows/bridgeAction.ts"],
@@ -1558,7 +1559,9 @@
         "single-use approvals survive the endpoint: an approved write leaves no standing grant, verified by probing the policy engine after execution",
         "response contract: POST waits boundedly (wait_ms, default 30s, max 300s) and returns a settled outcome - WAITING_APPROVAL with a resolvable approval_id, TIMED_OUT with poll instructions on expiry, never an invented terminal value; GET reports the same mapping, UNKNOWN_OUTCOME with live status for running tasks",
         "Agent Bridge full gates at commit: pytest 1319 passed / 1 skipped / 22 subtests; repo-declared unittest discover 1310 OK / 1 skipped",
-        "NOT claimed here: the Genesis-to-BridgeActionRequest adapter and the five end to end scenarios are downstream integration work and remain open; this requirement covers the endpoint only"
+        "NOT claimed here: the Genesis-to-BridgeActionRequest adapter and the five end to end scenarios are downstream integration work and remain open; this requirement covers the endpoint only",
+        "expanded IDE workflow (0f9b973) drives multi-task sessions through the intake: distinct action ids per invocation are required because replaying an id across different world states correctly returns the recorded result instead of executing (idempotency semantics now explicit and tagged in the harness)",
+        "payload slot-smuggling refused at intake (Bridge e5f44c2): slot keys must agree with the assigned resource or the request is 400; command-family actions record both label and command while the shell profile, policy and sandbox gate execution"
       ],
       "provenance": "found by attempting the Genesis proposal seam and searching for existing contracts before designing",
       "reuse": "EXTEND",
