@@ -1,7 +1,7 @@
 {
   "gateId": "G11",
   "commit": "see fingerprint",
-  "evaluatedAt": "2026-10-02T12:00:00.000Z",
+  "evaluatedAt": "2026-10-02T17:00:00.000Z",
   "artifacts": [
     {
       "repository": "Aetherius-OS",
@@ -17,6 +17,11 @@
       "repository": "Aetherius-OS",
       "path": "src/programme/validate.ts",
       "evidenceKey": "registry-validation"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/reference.test.ts",
+      "evidenceKey": "claim-dispositions"
     }
   ],
   "criteria": [
@@ -36,24 +41,31 @@
     },
     {
       "requirementId": "REQ-cert-regeneration",
-      "result": "NOT_TESTED",
-      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable session record"
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_phase1_acceptance.py",
+        "Agent-Bridge:tests/test_execution_contract.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-refmap-followup",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/programme/reference.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-mat-derived-matrices",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Materials-Atlas-Table-Codex---MAT:scripts/tests/advanced-domains.test.mjs"
+      ]
     },
     {
       "requirementId": "REQ-codex-review",
       "result": "NOT_TESTED",
-      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable session record"
-    },
-    {
-      "requirementId": "REQ-refmap-followup",
-      "result": "NOT_TESTED",
-      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable survey artifact"
-    },
-    {
-      "requirementId": "REQ-mat-derived-matrices",
-      "result": "NOT_TESTED",
-      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable session record"
+      "justification": "no per-finding test pins the 5 codex findings; the record is retrievable but the claim has no proving suite"
     }
   ],
-  "note": "All five previously untraceable COMPLETE claims now have an explicit disposition. One was genuinely traceable once its owner was corrected; four were unsupported and are downgraded. The gate cannot close while four criteria are untested, which is the honest state."
+  "note": "Re-verified by execution under BUILD71 rather than by reading prose. Five of the six criteria now pass: the cert-gated delegation tests (3/3), the 8 reference-audit tests, and the MAT validator plus its 125-test node suite were all executed. Two stale historical figures corrected along the way: 31 capabilities is 30 on disk, and 62/62 node tests is now 125/125. The gate stays IN_PROGRESS because REQ-codex-review still has no per-finding test, which is the one genuinely unverified claim of the six."
 }
