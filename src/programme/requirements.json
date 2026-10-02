@@ -1214,7 +1214,7 @@
       },
       "owner": "aetherius-os",
       "phase": "P17",
-      "status": "PARTIAL",
+      "status": "PROVEN",
       "priority": 5,
       "depends_on": [
         "REQ-p16-control"
@@ -1223,22 +1223,25 @@
       "evidence": [
         "P17 exit gate",
         "6fc85f6 state foundation",
-        "src/state/backup.ts + backup.test.ts: 15 tests covering snapshot, tamper refusal and downgrade refusal"
+        "src/state/backup.ts + backup.test.ts: 15 tests; snapshot, manifest-tamper refusal, downgrade refusal",
+        "src/state/events.ts + events.test.ts: 14 tests; chain verify, reordering and deletion detection, and the forgery limit asserted"
       ],
       "provenance": "owner decision 2026-09-22",
       "owner_gate": false,
-      "work_state": "IN_PROGRESS",
+      "work_state": "COMPLETE",
       "implementation_refs": [
         "src/state/store.ts",
         "src/state/migrate.ts",
         "src/state/backup.ts",
+        "src/state/events.ts",
         "src/state/acceptanceState.ts"
       ],
       "test_refs": [
         "src/state/state.test.ts",
-        "src/state/backup.test.ts"
+        "src/state/backup.test.ts",
+        "src/state/events.test.ts"
       ],
-      "notes": "Backup/restore added under BUILD71. The store already refused to lose data -- atomic writes, integrity hashes, optimistic version checks, remove-renames-aside -- but could not take a restorable snapshot or put one back, and migrate.ts produced a migration backup envelope that no caller persisted. backup.ts now snapshots every record with a hash-listed manifest and restores through the store own save path, so it inherits the same atomicity. Three refusals are enforced and tested: a manifest whose entries were altered does not verify, a record whose payload changed after the backup is refused, and a record whose live version has moved past the backup is not rolled back unless the caller explicitly allows a downgrade -- which the plan reports separately so consenting to a restore is never mistaken for consenting to a rollback. Replaced records are renamed aside, so a restore is itself reversible. Still not complete: this covers the store; the remaining P17 gate element is permission/event linkage beyond the causedBy field the envelope already carries."
+      "notes": "Backup/restore and event linkage added under BUILD71, completing this requirement P17 gate: versioned schemas (types.ts), durable storage with atomic writes and optimistic concurrency (store.ts), migrations with history (migrate.ts), backup/restore (backup.ts) and attributable event linkage (events.ts). Two properties are stated rather than implied. First, the event chain detects corruption, reordering and deletion but NOT wholesale forgery by a same-user process, which can recompute every hash -- a test asserts that limit explicitly so it cannot be quietly forgotten. Second, an unattributed state change is refused outright: appendStateEvent rejects an event with no actor or source."
     },
     {
       "id": "REQ-p18-model-fabric",

@@ -6,11 +6,11 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - Aetherius Ecosystem ████░░░░░░░░░░░░░░░░ 19.8% (26 counted, 0 excluded)
 
 ## Programme summary (required only)
-- Aetherius Ecosystem █████████████░░░░░░░ 63% (10 counted, 0 excluded)
+- Aetherius Ecosystem █████████████░░░░░░░ 63.1% (10 counted, 0 excluded)
 
 ## Capability hierarchy (required-only rollup)
-⚠️ Aetherius Ecosystem — 63% (child-rollup(10,required-only)) `CAP-aetherius-ecosystem`
-  ⚠️ Aetherius OS Platform — 86.5% (child-rollup(70,required-only)) `CAP-aetherius-os-platform`
+⚠️ Aetherius Ecosystem — 63.1% (child-rollup(10,required-only)) `CAP-aetherius-ecosystem`
+  ⚠️ Aetherius OS Platform — 87.2% (child-rollup(70,required-only)) `CAP-aetherius-os-platform`
     🟢 Programme and Requirements Registry — 70% (child-rollup(3,required-only)) `CAP-programme-registry`
       🟢 Evidence Traceability Auditor — 100% (status-map) `CAP-evidence-traceability`
       🔬 Independent Codex diff review of policy work — 10% (status-map) `REQ-codex-review`
@@ -48,7 +48,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
     🟢 Provider-neutral invocation contract + Ollama adapter — 100% (status-map) `REQ-p18-invoke`
     🟢 Machine-readable programme + dependency registries — 100% (status-map) `REQ-p16-registry`
     🟢 Requirement ingestion, registry validation, deterministic selector — 100% (status-map) `REQ-p16-control`
-    ⚠️ Owned durable state and core service contracts — 50% (unmeasured-partial-estimate) `REQ-p17-owned-state`
+    🟢 Owned durable state and core service contracts — 100% (status-map) `REQ-p17-owned-state`
     🟢 Skills, workflows, routines runtime — 100% (status-map) `REQ-p19-workflows`
     🔬 Establish provenance of native TODO header — 10% (status-map) `REQ-native-header-provenance`
     🟢 Pre-execution expected touch-set estimation — 100% (status-map) `REQ-p20-expected-touch-set`
@@ -373,7 +373,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🔬 Memory promotion boundary decision `REQ-memory-integrity-boundary`
 - 🔬 Establish provenance of native TODO header `REQ-native-header-provenance`
 - 🔬 Project artifact library taxonomy `REQ-p17-artifact-library`
-- ⚠️ Owned durable state and core service contracts `REQ-p17-owned-state`
+- 🟢 Owned durable state and core service contracts `REQ-p17-owned-state`
 - 🔬 Application service primitive contracts `REQ-p17-service-primitives`
 - 🔬 Shared application payload schemas `REQ-p17-shared-schemas`
 - 🔬 Verification artefact continuity `REQ-p17-verification-continuity`

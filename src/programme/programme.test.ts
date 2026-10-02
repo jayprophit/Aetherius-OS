@@ -244,13 +244,26 @@ describe("real registries", () => {
   it("real registry reports no executable unit once the intake gap closes", () => {
     const real = loadReal();
     const r = selectNextTask(real);
-    // The action-intake endpoint is implemented, tested and COMPLETE, so the
-    // queue is empty again: the selector returns null with counts, never an
-    // invented task. The downstream adapter and scenarios are known work
-    // tracked outside the executable queue, not hidden gaps.
-    expect(r.selected_task).toBeNull();
-    expect(r.dependencies_satisfied).toBe(false);
-    expect(formatSelection(r)).toContain("NEXT_EXECUTABLE_TODO: none");
+    // The queue has exactly one executable unit again, and it is there
+    // because a dependency was genuinely satisfied rather than because the
+    // selector ran out of refusals. REQ-p17-owned-state gained backup/restore
+    // and event linkage and became COMPLETE; REQ-p17-artifact-library depends
+    // on exactly that requirement and is READY, unblocked and not owner-gated.
+    // Nothing was invented and nothing was waived.
+    expect(r.selected_task).toBe("REQ-p17-artifact-library");
+    expect(r.dependencies_satisfied).toBe(true);
+    // The no-invented-task property is now asserted where it can still fail:
+    // against a registry whose units are all blocked, the selector must still
+    // return null rather than reaching for something.
+    const blockedOnly = {
+      ...real,
+      requirements: real.requirements.map((req) =>
+        req.id === "REQ-p17-artifact-library" ? { ...req, work_state: "BLOCKED" as const, blockers: ["held"] } : { ...req, work_state: "COMPLETE" as const },
+      ),
+    };
+    const empty = selectNextTask(blockedOnly);
+    expect(empty.selected_task).toBeNull();
+    expect(formatSelection(empty)).toContain("NEXT_EXECUTABLE_TODO: none");
   });
 
 });

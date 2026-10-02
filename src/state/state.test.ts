@@ -137,10 +137,20 @@ describe("programme integration", () => {
     const state = loadProgrammeState(registryRoot);
     const requirements = loadSeedRequirements(new URL("../programme/requirements.json", import.meta.url));
     const result = selectFromState({ bundle: { ...state.bundle, requirements } });
-    // The structured action-intake endpoint is implemented, tested against the
-    // real service and mutation-proven, so its requirement is COMPLETE and the
-    // queue is empty again: null, not a guess, and not an invented task.
-    expect(result.selected_task).toBeNull();
+    // The queue is no longer empty, and that is the selector working rather
+    // than failing. REQ-p17-owned-state gained its missing backup/restore and
+    // event-linkage elements and is now COMPLETE, and REQ-p17-artifact-library
+    // declares a dependency on exactly that requirement, so it became
+    // executable. The selector picked the one thing its own rules allow: a
+    // dependency-satisfied, unblocked, non-owner-gated READY unit.
+    //
+    // The earlier assertion here was null, and it was correct at the time --
+    // asserting null was the point, because an empty selector result must
+    // never be padded with an invented task. That property is still asserted
+    // below against a registry with nothing executable in it.
+    expect(result.selected_task).toBe("REQ-p17-artifact-library");
+    expect(result.dependencies_satisfied).toBe(true);
+    expect(result.owner_gate).toBe(false);
   });
   it("rejects missing and malformed registry input", () => {
     expect(() => loadProgrammeState(new URL("./nope/", import.meta.url))).toThrowError(/missing/);

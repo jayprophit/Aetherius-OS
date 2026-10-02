@@ -29,7 +29,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🔬 Independent Codex diff review of policy work `REQ-codex-review`
 - 🔬 Establish provenance of native TODO header `REQ-native-header-provenance`
 - 🔬 Project artifact library taxonomy `REQ-p17-artifact-library`
-- ⚠️ Owned durable state and core service contracts `REQ-p17-owned-state`
+- 🟢 Owned durable state and core service contracts `REQ-p17-owned-state`
 - 🔬 Application service primitive contracts `REQ-p17-service-primitives`
 - 🔬 Shared application payload schemas `REQ-p17-shared-schemas`
 - 🔬 Verification artefact continuity `REQ-p17-verification-continuity`

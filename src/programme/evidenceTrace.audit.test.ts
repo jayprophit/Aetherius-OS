@@ -212,6 +212,8 @@ describe("audit: real requirement registry evidence traceability", () => {
     //
     // Downgrading four claims rather than citing them is the honest direction
     // to err: it understates what is complete instead of overstating it.
+    // 95 after REQ-p17-owned-state became COMPLETE once its missing
+    // backup/restore and event-linkage elements were implemented and tested.
     // Three of the four claims BUILD70 downgraded were re-verified here and
     // re-certified: REQ-cert-regeneration (3/3 cert-gated tests pass and the
     // certification artifact records verified=2/2), REQ-refmap-followup
@@ -222,7 +224,7 @@ describe("audit: real requirement registry evidence traceability", () => {
     // REQ-codex-review stays downgraded for a narrower and more accurate
     // reason than BUILD70 gave: its record is retrievable, but no test pins
     // any of the five findings, so it carries no machine refs at all.
-    expect(summary.complete).toBe(94);
+    expect(summary.complete).toBe(95);
     expect(summary.untraceableComplete).toBe(0);
   });
 
