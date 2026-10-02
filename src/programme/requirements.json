@@ -1008,21 +1008,26 @@
       },
       "owner": "agent-bridge",
       "phase": "P14",
-      "status": "ARCHITECTED",
+      "status": "PROVEN",
       "priority": 5,
       "depends_on": [],
-      "blockers": [
-        "no retrievable evidence artifact; original session record not preserved"
-      ],
+      "blockers": [],
       "evidence": [
-        "REG-CERT/1 session record is not present as a retrievable artifact in any core repository"
+        "3/3 cert-gated tests pass (re-run 2026-10-02, BUILD71)",
+        "REAL_DELEGATION_CERTIFICATION.json: summary.verified=2, total_tests=2",
+        "Agent-Bridge commit 0f7c2a6 (REG-CERT/1)"
       ],
       "provenance": "REG-CERT/1 session record",
       "owner_gate": false,
-      "work_state": "READY",
-      "implementation_refs": [],
-      "test_refs": [],
-      "notes": "Disposition under BUILD70 G11: the COMPLETE claim is UNSUPPORTED. The cited session record cannot be retrieved from any core repository, so per the evidence-integrity rule a citation to nonexistent output is not evidence. Work state downgraded to READY pending either a retrievable artifact or a fresh verification run."
+      "work_state": "COMPLETE",
+      "implementation_refs": [
+        "real_delegation_test.py"
+      ],
+      "test_refs": [
+        "tests/test_phase1_acceptance.py",
+        "tests/test_execution_contract.py"
+      ],
+      "notes": "CORRECTED under BUILD71. An earlier pass downgraded this to READY on the grounds that the REG-CERT/1 session record was not retrievable. That was wrong: the certification artifact exists at .bridge/delegation_cert/REAL_DELEGATION_CERTIFICATION.json with verified=2/2, and three tests are gated on its presence and all pass. The auditor missed them because it looked for a suite NAMED cert rather than tests gated on the cert. Limitation, stated rather than hidden: .bridge/ is gitignored, so this verifies here but does not travel to a fresh clone -- the gating tests skip when the artifact is absent."
     },
     {
       "id": "REQ-mat-derived-matrices",
@@ -1035,21 +1040,28 @@
       },
       "owner": "mat",
       "phase": "P6",
-      "status": "ARCHITECTED",
+      "status": "PROVEN",
       "priority": 5,
       "depends_on": [],
-      "blockers": [
-        "no retrievable evidence artifact; original session record not preserved"
-      ],
+      "blockers": [],
       "evidence": [
-        "MAT-HYDROGEN-REGEN session record is not present as a retrievable artifact in any core repository"
+        "npm run validate: VALIDATE all suites pass, exit 0 (re-run 2026-10-02, BUILD71)",
+        "npm test: 125 passed / 0 failed (re-run 2026-10-02, BUILD71)",
+        "MAT commit 6ef9675 regenerated 124 derived files under data/quality + docs/05-index"
       ],
       "provenance": "MAT-HYDROGEN-REGEN session record",
       "owner_gate": false,
-      "work_state": "READY",
-      "implementation_refs": [],
-      "test_refs": [],
-      "notes": "Disposition under BUILD70 G11: the COMPLETE claim is UNSUPPORTED. The cited session record cannot be retrieved from any core repository, so per the evidence-integrity rule a citation to nonexistent output is not evidence. Work state downgraded to READY pending either a retrievable artifact or a fresh verification run."
+      "work_state": "COMPLETE",
+      "implementation_refs": [
+        "scripts/build-advanced-completion.mjs",
+        "scripts/build-unified-gap-analysis.mjs",
+        "scripts/build-state-flow-audit.mjs"
+      ],
+      "test_refs": [
+        "scripts/tests/advanced-domains.test.mjs",
+        "scripts/tests/state-flow.test.mjs"
+      ],
+      "notes": "CORRECTED under BUILD71. Re-verified by execution rather than prose. Two corrections to the historical record: it claims 62 node tests and the suite now has 125; and the cited 62/62 was a repo-wide total that has since roughly doubled. Known coverage gap, recorded rather than papered over: no test imports the three build entry points, so the regeneration step itself is not directly covered -- only the libraries it calls are. Closing that gap requires an owner decision, because MAT AGENTS.md declares data/ read-only for audit tooling."
     },
     {
       "id": "REQ-p16-registry",
@@ -1131,17 +1143,18 @@
         "REQ-cert-regeneration"
       ],
       "blockers": [
-        "no retrievable evidence artifact; original session record not preserved"
+        "no per-finding test pins the 5 codex findings; 186/186 figure is stale against the current 1393-test suite"
       ],
       "evidence": [
-        "CODEX-REVIEW/1 session record is not present as a retrievable artifact in any core repository"
+        "POLICY-HARDENING/1 commit d606b91 in Agent-Bridge addresses the 5 findings",
+        "depgraph.json records ide -> external:codex delegated-review evidence CODEX-REVIEW/1-0f7c2a6"
       ],
       "provenance": "CODEX-REVIEW/1 session record",
       "owner_gate": false,
       "work_state": "READY",
       "implementation_refs": [],
       "test_refs": [],
-      "notes": "Disposition under BUILD70 G11: the COMPLETE claim is UNSUPPORTED. The cited session record cannot be retrieved from any core repository, so per the evidence-integrity rule a citation to nonexistent output is not evidence. Work state downgraded to READY pending either a retrievable artifact or a fresh verification run."
+      "notes": "Disposition corrected under BUILD71. The earlier blocker text said the session record was not retrievable; that was wrong -- it is retrievable in Temp/. The claim is still unsupported as a COMPLETE claim, for a different and more specific reason: the five findings are prose-only, with no per-finding test. Commit d606b91 changed the policy layer and added two lines to tests/test_runtime_api.py; a commit message is not a test. The recorded 186/186 figure is also stale -- Agent-Bridge now has 1393 tests. Closing this needs either a dedicated suite per finding or a fresh scoped run. Machine refs are deliberately left empty: the auditor correctly refuses to let a requirement cite an implementation with no proving test, and that refusal is the accurate description of this claim."
     },
     {
       "id": "REQ-genesis-actuator",
@@ -1320,23 +1333,28 @@
       },
       "owner": "aetherius-os",
       "phase": "P16",
-      "status": "ARCHITECTED",
+      "status": "PROVEN",
       "priority": 3,
       "depends_on": [
         "REQ-p16-control"
       ],
-      "blockers": [
-        "no retrievable evidence artifact; original session record not preserved"
-      ],
+      "blockers": [],
       "evidence": [
-        "REFMAP/1 survey verdicts are not present as a retrievable artifact in any core repository"
+        "reference.test.ts: 8 audit tests pass (re-run 2026-10-02, BUILD71)",
+        "registry/reference-systems.json: 8 systems pinned, all MIT/STUDY_ONLY",
+        "registry/reference-capabilities.json: 30 capabilities audited",
+        "docs/reference-audit.md synthesis; 7 gap requirements carry REFMAP provenance"
       ],
       "provenance": "REFMAP/1 session record",
       "owner_gate": false,
-      "work_state": "READY",
-      "implementation_refs": [],
-      "test_refs": [],
-      "notes": "Disposition under BUILD70 G11: the COMPLETE claim is UNSUPPORTED. The cited session record cannot be retrieved from any core repository, so per the evidence-integrity rule a citation to nonexistent output is not evidence. Work state downgraded to READY pending either a retrievable artifact or a fresh verification run."
+      "work_state": "COMPLETE",
+      "implementation_refs": [
+        "src/programme/reference.ts"
+      ],
+      "test_refs": [
+        "src/programme/reference.test.ts"
+      ],
+      "notes": "CORRECTED under BUILD71. Re-verified against disk rather than prose. One figure in the historical record is wrong: it claims 31 capabilities, and there are 30 in registry/reference-capabilities.json. The suite only ever asserted internal self-consistency (rows == capabilities.length), so the off-by-one was never visible. 8 systems, the matrix, the synthesis and the 7 gap requirements all reconcile exactly; only the capability count was overstated."
     },
     {
       "id": "REQ-p22-reflex-fabric",

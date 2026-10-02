@@ -3,22 +3,22 @@
 Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
 
 ## Programme summary (all children)
-- Aetherius Ecosystem ████░░░░░░░░░░░░░░░░ 19.6% (26 counted, 0 excluded)
+- Aetherius Ecosystem ████░░░░░░░░░░░░░░░░ 19.8% (26 counted, 0 excluded)
 
 ## Programme summary (required only)
-- Aetherius Ecosystem █████████████░░░░░░░ 62.9% (10 counted, 0 excluded)
+- Aetherius Ecosystem █████████████░░░░░░░ 63% (10 counted, 0 excluded)
 
 ## Capability hierarchy (required-only rollup)
-⚠️ Aetherius Ecosystem — 62.9% (child-rollup(10,required-only)) `CAP-aetherius-ecosystem`
-  ⚠️ Aetherius OS Platform — 85.9% (child-rollup(70,required-only)) `CAP-aetherius-os-platform`
+⚠️ Aetherius Ecosystem — 63% (child-rollup(10,required-only)) `CAP-aetherius-ecosystem`
+  ⚠️ Aetherius OS Platform — 86.5% (child-rollup(70,required-only)) `CAP-aetherius-os-platform`
     🟢 Programme and Requirements Registry — 70% (child-rollup(3,required-only)) `CAP-programme-registry`
       🟢 Evidence Traceability Auditor — 100% (status-map) `CAP-evidence-traceability`
       🔬 Independent Codex diff review of policy work — 10% (status-map) `REQ-codex-review`
       🟢 Machine-checkable evidence traceability for the registry — 100% (status-map) `REQ-p16-evidence-traceability`
     🔬 Capability Graph — 100% (child-rollup(1,required-only)) `CAP-capability-graph`
       🟢 Unified capability graph view — 100% (status-map) `REQ-p16-capability-graph`
-    ⚠️ Deployment and Packaging — 10% (child-rollup(2,required-only)) `CAP-deployment-packaging`
-      🔬 Regenerate real delegation certification — 10% (status-map) `REQ-cert-regeneration`
+    ⚠️ Deployment and Packaging — 55% (child-rollup(2,required-only)) `CAP-deployment-packaging`
+      🟢 Regenerate real delegation certification — 100% (status-map) `REQ-cert-regeneration`
       🔬 Public release scope owner decision — 10% (status-map) `REQ-p31-release-scope`
     🔬 Aetherius App Runtime — 10% (status-map) `CAP-app-runtime`
     🔬 Universal Intent and Action Framework — 10% (status-map) `CAP-universal-intent`
@@ -201,8 +201,8 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
     🟢 Visual QA dimension suite — 100% (status-map) `REQ-p29-visual-qa`
     🟢 Work monitoring fabric — 100% (status-map) `REQ-p23-work-monitoring`
   ⚠️ Knowledge and Data — 50% (unmeasured-partial-estimate) `CAP-knowledge-data`
-    ⚠️ Materials Atlas Table Codex — 70% (child-rollup(3,required-only)) `CAP-mat`
-      🔬 Regenerate MAT derived quality matrices — 10% (status-map) `REQ-mat-derived-matrices`
+    ⚠️ Materials Atlas Table Codex — 100% (child-rollup(3,required-only)) `CAP-mat`
+      🟢 Regenerate MAT derived quality matrices — 100% (status-map) `REQ-mat-derived-matrices`
       🟢 Research claim registry — 100% (status-map) `REQ-mat-claim-registry`
       🟢 Epistemic status graph — 100% (status-map) `REQ-epistemic-graph`
     🔬 World Knowledge Fabric — 10% (status-map) `CAP-world-knowledge-fabric`
@@ -264,7 +264,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
     🔬 Upgrade and Tuning Failure Memory — 10% (status-map) `CAP-failure-memory`
     🔬 Hardware Evolution Planning — 10% (status-map) `CAP-evolution-planning`
     🔬 Hardware and Evolution Manager — 10% (status-map) `CAP-hardware-manager`
-  🔬 Research Catalogue — 10% (child-rollup(2,required-only)) `CAP-research-catalogue`
+  🔬 Research Catalogue — 55% (child-rollup(2,required-only)) `CAP-research-catalogue`
     🔬 Prior Art - Autonomic Computing — 10% (status-map) `CAP-priorart-autonomic`
     🔬 Prior Art - Organic Computing — 10% (status-map) `CAP-priorart-organic`
     🔬 Prior Art - LLM Agent Operating Systems — 10% (status-map) `CAP-priorart-agent-os`
@@ -295,7 +295,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
     🔬 Research - Autonomous Materials Exploration Loop — 10% (status-map) `CAP-research-materials-explorer`
     🔬 Research - LifeOS Concept Mapping — 10% (status-map) `CAP-research-miessler-lifeos`
     🔬 Research - Sandboxed Worker Reference Architecture — 10% (status-map) `CAP-research-sandbox-workers`
-    🔬 Deep per-capability overlap audits — 10% (status-map) `REQ-refmap-followup`
+    🟢 Deep per-capability overlap audits — 100% (status-map) `REQ-refmap-followup`
   🔬 Shared Infrastructure and Services — 100% (child-rollup(1,required-only)) `CAP-shared-infrastructure`
     🔬 Shared Service Candidates — 10% (status-map) `CAP-shared-services-candidates`
     🔬 Global Event Fabric — 10% (status-map) `CAP-event-fabric`
@@ -365,11 +365,11 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🔬 Shared Infrastructure and Services `CAP-shared-infrastructure`
 - 🔬 Terminology and Originality Policy `CAP-terminology-policy`
 - 🔬 Virtual Compute and Execution Targets `CAP-virtual-compute`
-- 🔬 Regenerate real delegation certification `REQ-cert-regeneration`
+- 🟢 Regenerate real delegation certification `REQ-cert-regeneration`
 - 🔬 Independent Codex diff review of policy work `REQ-codex-review`
 - ⚠️ Full desktop capability fabric via governed adapters `REQ-desktop-capability-fabric`
 - ⛔ Genesis P4 plan/action actuator repertoire `REQ-genesis-actuator`
-- 🔬 Regenerate MAT derived quality matrices `REQ-mat-derived-matrices`
+- 🟢 Regenerate MAT derived quality matrices `REQ-mat-derived-matrices`
 - 🔬 Memory promotion boundary decision `REQ-memory-integrity-boundary`
 - 🔬 Establish provenance of native TODO header `REQ-native-header-provenance`
 - 🔬 Project artifact library taxonomy `REQ-p17-artifact-library`
@@ -382,7 +382,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🟢 Chat and Work as interface depths over one system `REQ-p23-chat-work-depths`
 - 🔬 Platform reward-treasury fabric `REQ-p25-reward-treasury`
 - 🔬 Public release scope owner decision `REQ-p31-release-scope`
-- 🔬 Deep per-capability overlap audits `REQ-refmap-followup`
+- 🟢 Deep per-capability overlap audits `REQ-refmap-followup`
 - 🔬 Regulated-domain evidence schema `REQ-regulated-evidence`
 - 🔬 test_spawn_status_kill aggregate timing flake `REQ-spawn-flake`
 
@@ -459,9 +459,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🔬 Shared Infrastructure and Services `CAP-shared-infrastructure`
 - 🔬 Terminology and Originality Policy `CAP-terminology-policy`
 - 🔬 Virtual Compute and Execution Targets `CAP-virtual-compute`
-- 🔬 Regenerate real delegation certification `REQ-cert-regeneration`
 - 🔬 Independent Codex diff review of policy work `REQ-codex-review`
-- 🔬 Regenerate MAT derived quality matrices `REQ-mat-derived-matrices`
 - 🔬 Memory promotion boundary decision `REQ-memory-integrity-boundary`
 - 🔬 Establish provenance of native TODO header `REQ-native-header-provenance`
 - 🔬 OmniAgent prototype reference index (read-only) `REQ-omniagent-reference-index`
@@ -472,7 +470,6 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🔬 Clean-room regrade flow `REQ-p20-clean-room`
 - 🔬 Platform reward-treasury fabric `REQ-p25-reward-treasury`
 - 🔬 Public release scope owner decision `REQ-p31-release-scope`
-- 🔬 Deep per-capability overlap audits `REQ-refmap-followup`
 - 🔬 Regulated-domain evidence schema `REQ-regulated-evidence`
 - 🔬 test_spawn_status_kill aggregate timing flake `REQ-spawn-flake`
 

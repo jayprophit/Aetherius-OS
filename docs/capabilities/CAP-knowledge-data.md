@@ -22,7 +22,7 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 
 ## Requirements with no evidence
 - ⚠️ Knowledge and Data `CAP-knowledge-data`
-- 🔬 Regenerate MAT derived quality matrices `REQ-mat-derived-matrices`
+- 🟢 Regenerate MAT derived quality matrices `REQ-mat-derived-matrices`
 
 ## Recently added / moved (30 days)
 - Assumption Tracking `CAP-assumption-tracking` — created 2026-10-01
@@ -51,6 +51,6 @@ Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - none
 
 ## Research catalogue (status RESEARCH, required)
-- 🔬 Regenerate MAT derived quality matrices `REQ-mat-derived-matrices`
+- none
 
 _Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 21._

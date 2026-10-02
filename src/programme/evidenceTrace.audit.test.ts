@@ -102,15 +102,14 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    // 91 after the BUILD70 G11 traceability pass, which made
-    // REQ-p23-chat-work-depths citeable by correcting its owner from
-    // aetherius-os to ide (every sibling P23 interface requirement is owned by
-    // ide, and the proving implementation and suite both live in
-    // IDE-Workspace, so the old owner made the requirement unciteable from
-    // its own root).
-    expect(summary.requirementsWithMachineRefs).toBe(91);
+    // 94 after the BUILD71 G11 re-verification pass, which re-certified three
+    // claims by executing them rather than reading prose: the cert-gated
+    // delegation tests, the 8 reference-audit tests, and the MAT validator
+    // plus its node suite. The earlier BUILD70 pass had over-corrected and
+    // downgraded four claims whose evidence was in fact retrievable.
+    expect(summary.requirementsWithMachineRefs).toBe(94);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(91);
+    expect(withRefs).toHaveLength(94);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
     // most are single-suite citations
     expect(single.length).toBeGreaterThan(80);
@@ -128,7 +127,7 @@ describe("audit: real requirement registry evidence traceability", () => {
         throw new Error(`${t.id} cites a sibling-shaped test that is not its own`);
       }
     }
-    // Eight units legitimately cite more than one suite: the traceability
+    // Ten units legitimately cite more than one suite: the traceability
     // requirement (unit + real-registry audit), the relay requirement
     // (relay.test.ts for the cache, policy.test.ts for the allowlist it depends
     // on), the executor requirement (model-invoke plus bridge-action), the
@@ -137,13 +136,18 @@ describe("audit: real requirement registry evidence traceability", () => {
     // policy-deny suite plus the approval-channel and mutation suites added
     // with the Phase B vertical slice), the IDE task loop (client, component
     // and the real-HTTP vertical-slice suite), and the action intake (the
-    // real-service suite plus its mutation proof).
+    // real-service suite plus its mutation proof). Two more joined this list
+    // under BUILD71 when they were re-verified by execution: the delegation
+    // certification (phase-1 acceptance plus the replay-compatibility suite)
+    // and the MAT derived matrices (the advanced-domain and state-flow suites).
     const multi = withRefs.filter((t) => t.testRefs.length > 1);
     expect(multi.map((t) => t.id).sort()).toEqual([
       "REQ-bridge-action-intake",
       "REQ-bridge-gate-compat",
+      "REQ-cert-regeneration",
       "REQ-genesis-identity-rule",
       "REQ-ide-genesis-task-loop",
+      "REQ-mat-derived-matrices",
       "REQ-p16-evidence-traceability",
       "REQ-p19-executors",
       "REQ-p23-layout-system",
@@ -205,7 +209,17 @@ describe("audit: real requirement registry evidence traceability", () => {
     //
     // Downgrading four claims rather than citing them is the honest direction
     // to err: it understates what is complete instead of overstating it.
-    expect(summary.complete).toBe(91);
+    // Three of the four claims BUILD70 downgraded were re-verified here and
+    // re-certified: REQ-cert-regeneration (3/3 cert-gated tests pass and the
+    // certification artifact records verified=2/2), REQ-refmap-followup
+    // (8 systems, 30 capabilities, matrix, synthesis, 7 gap requirements all
+    // reconcile on disk) and REQ-mat-derived-matrices (validator exit 0 and
+    // 125/125 node tests). Two of those claims also had their headline figures
+    // corrected: 31 capabilities is 30 on disk, and 62/62 is now 125/125.
+    // REQ-codex-review stays downgraded for a narrower and more accurate
+    // reason than BUILD70 gave: its record is retrievable, but no test pins
+    // any of the five findings, so it carries no machine refs at all.
+    expect(summary.complete).toBe(94);
     expect(summary.untraceableComplete).toBe(0);
   });
 
