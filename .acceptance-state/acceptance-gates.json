@@ -3,12 +3,12 @@
   "kind": "acceptance",
   "schemaVersion": 1,
   "recordVersion": 17,
-  "createdAt": "2026-10-02T16:41:43.046Z",
-  "updatedAt": "2026-10-02T16:42:23.708Z",
+  "createdAt": "2026-10-02T18:08:40.397Z",
+  "updatedAt": "2026-10-02T18:09:18.858Z",
   "owner": "aetherius-os",
   "provenance": "BUILD70 acceptance-gate contract",
   "sensitivity": "SYSTEM",
-  "integrity": "ba27bdf07c36c792641f70272feadfff3e32e00e515187736045fde178f0e3dc",
+  "integrity": "7704f2fba8145fe9833328be5fedd6c13f84f569a5a76b582c79db1805f436ea",
   "payload": {
     "gates": [
       {
@@ -50,14 +50,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "fe3b0c1d8d08a3ef",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "b55ecf7882ef5a66",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
@@ -156,14 +156,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "96a22bcdeffe915e",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "c9b7dc82d283566b",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
@@ -262,14 +262,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "d02f66045bde8e46",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "e0ab0258646d319a",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
@@ -364,14 +364,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "13b87c51dfcfe223",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "209e205d4a57f224",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
@@ -474,14 +474,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "39100f5d3f9581c3",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "ada627073c25a57f",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
@@ -580,14 +580,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "2d849b4cab025390",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "5f88cf8c46ef9f74",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
@@ -611,7 +611,7 @@
             "previousRevision": 0,
             "newRevision": 1,
             "trigger": "EVALUATION_STARTED",
-            "reason": "collecting evidence recorded at 2026-10-02T13:00:00.000Z",
+            "reason": "collecting evidence recorded at 2026-10-02T18:30:00.000Z",
             "initiatedBy": "acceptance-collector",
             "evaluatedBy": null,
             "sourceBaselineRef": null,
@@ -621,8 +621,8 @@
             "affectedDependencyGates": [],
             "ownerApprovalRef": null,
             "externalBlockerRef": null,
-            "timestamp": "2026-10-02T13:00:00.000Z",
-            "transitionRecordHash": "80b652ac313cd200"
+            "timestamp": "2026-10-02T18:30:00.000Z",
+            "transitionRecordHash": "7acd5a802e705400"
           },
           {
             "transitionId": "G05-r2",
@@ -640,16 +640,18 @@
             "sourceBaselineRef": null,
             "evidenceFingerprintRef": null,
             "supportingEvidenceRefs": [
+              "Aetherius-OS/src/state/backup.ts",
+              "Aetherius-OS/src/state/events.ts",
               "Agent-Bridge/tests/test_recovery_privacy.py",
               "Agent-Bridge/tests/test_cross_process_state.py",
-              "Agent-Bridge/bridge.py"
+              "Agent-Bridge/tests/test_evidence_integrity.py"
             ],
             "invalidatedEvidenceRefs": [],
             "affectedDependencyGates": [],
             "ownerApprovalRef": null,
             "externalBlockerRef": null,
-            "timestamp": "2026-10-02T13:00:00.000Z",
-            "transitionRecordHash": "34c96b209b6a2000"
+            "timestamp": "2026-10-02T18:30:00.000Z",
+            "transitionRecordHash": "66a55d6154c0ca00"
           }
         ],
         "refusalCount": 0
@@ -727,14 +729,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "ed5fbe663df45173",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "4739dbbf163f02fd",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
@@ -852,14 +854,14 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "4c32c15+dirty",
+            "Aetherius-OS": "1ce1907+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "3164e80+dirty",
+            "Genesis": "cb10924+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "faf558eaf360eb08",
-            "Agent-Bridge": "04b66ad42ee17eca",
+            "Aetherius-OS": "33204c59735fdc3f",
+            "Agent-Bridge": "c1811ce0a04fe980",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
           },
