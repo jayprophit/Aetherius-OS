@@ -1,0 +1,43 @@
+{
+  "gateId": "G05",
+  "evaluatedAt": "2026-10-02T13:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_recovery_privacy.py",
+      "evidenceKey": "replay-evidence"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_cross_process_state.py",
+      "evidenceKey": "journal-state"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "bridge.py",
+      "evidenceKey": "fault-injection"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-cloud-persistent-exec",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/state/executionCheckpoint.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p30-repo-relay",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/state/repoRelay.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p17-verification-continuity",
+      "result": "NOT_TESTED",
+      "justification": "registry work_state is READY; recovery is proven at the Bridge layer but this requirement is not yet verified to acceptance"
+    }
+  ],
+  "note": "Restart, cancellation, session deletion, multi-process contention and forged-record recovery are all exercised against real code. The gate stays open because one mandatory criterion is unverified."
+}

@@ -1,0 +1,53 @@
+{
+  "gateId": "G10",
+  "evaluatedAt": "2026-10-02T13:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "IDE-Workspace",
+      "path": "workspace/integration/tests/test_expanded_workflow.py",
+      "evidenceKey": "interface-evidence"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_service_sdk.py",
+      "evidenceKey": "compatibility-tests"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_actions_intake.py",
+      "evidenceKey": "post-abstraction-regression"
+    },
+    {
+      "repository": "Genesis",
+      "path": "tests/action_proposal_tests.cpp",
+      "evidenceKey": "interface-evidence"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-bridge-gate-compat",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_commands_policy.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-mcp-adapter-boundary",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_mcp_adapter.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-p17-shared-schemas",
+      "result": "NOT_TESTED",
+      "justification": "registry work_state is READY; the schema requirement is not yet verified to acceptance"
+    },
+    {
+      "requirementId": "REQ-p17-service-primitives",
+      "result": "NOT_TESTED",
+      "justification": "registry work_state is READY; the service-primitives requirement is not yet verified to acceptance"
+    }
+  ],
+  "note": "Genesis proposal seam, IDE adapter and Bridge intake were all re-verified on this run after the Bridge evidence-integrity changes: 22/22 ctest, 80/80 vitest, 48/48 integration. The gate stays open because two criteria are unverified."
+}

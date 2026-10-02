@@ -2,30 +2,183 @@
   "id": "acceptance-gates",
   "kind": "acceptance",
   "schemaVersion": 1,
-  "recordVersion": 13,
-  "createdAt": "2026-10-02T11:15:42.561Z",
-  "updatedAt": "2026-10-02T11:17:41.996Z",
+  "recordVersion": 33,
+  "createdAt": "2026-10-02T11:41:39.265Z",
+  "updatedAt": "2026-10-02T11:44:57.466Z",
   "owner": "aetherius-os",
   "provenance": "BUILD70 acceptance-gate contract",
   "sensitivity": "SYSTEM",
-  "integrity": "f6b243b262524b78f1fc24e020b1448af052dc09315ea4e64a9954e88d95fb4b",
+  "integrity": "26a9ef07dd7d550f6a06c12de1786a3673ec75a83eee13dcc7eaa7da8f957a35",
   "payload": {
     "gates": [
       {
         "gateId": "G00",
-        "lifecycle": "NOT_EVALUATED",
+        "lifecycle": "IN_PROGRESS",
         "disposition": null,
-        "revision": 0,
-        "criteria": [],
-        "evidenceFingerprint": null,
-        "transitions": [],
+        "revision": 4,
+        "criteria": [
+          {
+            "requirementId": "REQ-p16-registry",
+            "result": "PASS",
+            "evidenceRefs": [
+              "src/programme/programme.test.ts"
+            ]
+          },
+          {
+            "requirementId": "REQ-p16-steward-automation",
+            "result": "PASS",
+            "evidenceRefs": [
+              "src/programme/select.test.ts"
+            ]
+          },
+          {
+            "requirementId": "REQ-p16-control",
+            "result": "PASS",
+            "evidenceRefs": [
+              "src/programme/programme.test.ts"
+            ]
+          },
+          {
+            "requirementId": "REQ-p17-owned-state",
+            "result": "NOT_TESTED",
+            "justification": "registry work_state is IN_PROGRESS; the owned-state layer is exercised but not complete"
+          }
+        ],
+        "evidenceFingerprint": {
+          "sourceCommits": {
+            "Aetherius-OS": "4012471+dirty",
+            "Agent-Bridge": "3dc6e5a",
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
+          },
+          "relevantSourceHashes": {
+            "Aetherius-OS": "e7b0be8852935ab7",
+            "Agent-Bridge": "04b66ad42ee17eca",
+            "Genesis": "13dbde06230ffd8a",
+            "IDE-Workspace": "ea5650fd234256d8"
+          },
+          "dependencyHashes": {},
+          "configurationHashes": {},
+          "schemaVersions": {},
+          "requirementRevision": "c2fe89358a571735",
+          "acceptanceCriteriaRevision": "7e4cec1588d6203e",
+          "testSuiteRevision": null,
+          "testEnvironmentRef": "win32-x64-node-v24.21.0",
+          "upstreamGateRevisions": {}
+        },
+        "transitions": [
+          {
+            "transitionId": "G00-r1",
+            "gateId": "G00",
+            "previousLifecycle": "NOT_EVALUATED",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 0,
+            "newRevision": 1,
+            "trigger": "EVALUATION_STARTED",
+            "reason": "collecting evidence recorded at 2026-10-02T13:00:00.000Z",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": null,
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "13e24dec7df75a00"
+          },
+          {
+            "transitionId": "G00-r2",
+            "gateId": "G00",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 1,
+            "newRevision": 2,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-owned-state",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Aetherius-OS/src/programme/requirements.json",
+              "Aetherius-OS/package.json",
+              "Aetherius-OS/src/state/store.ts"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "07cd9e803491f800"
+          },
+          {
+            "transitionId": "G00-r3",
+            "gateId": "G00",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 2,
+            "newRevision": 3,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-owned-state",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Aetherius-OS/src/programme/requirements.json",
+              "Aetherius-OS/package.json",
+              "Aetherius-OS/src/state/store.ts"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "649e97200c16b600"
+          },
+          {
+            "transitionId": "G00-r4",
+            "gateId": "G00",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-owned-state",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Aetherius-OS/src/programme/requirements.json",
+              "Aetherius-OS/package.json",
+              "Aetherius-OS/src/state/store.ts"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "47f1fb183b9e5800"
+          }
+        ],
         "refusalCount": 0
       },
       {
         "gateId": "G01",
         "lifecycle": "CLOSED",
         "disposition": "PASS",
-        "revision": 3,
+        "revision": 4,
         "criteria": [
           {
             "requirementId": "REQ-p16-registry",
@@ -51,13 +204,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "d8a06ea+dirty",
+            "Aetherius-OS": "4012471+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "6fd5342+dirty",
-            "IDE-Workspace": "0f9b973"
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "a9dea409b1dd2b7d",
+            "Aetherius-OS": "8b722abdd4d812b1",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -152,25 +305,202 @@
             "externalBlockerRef": null,
             "timestamp": "2026-10-02T12:00:00.000Z",
             "transitionRecordHash": "58f938210260cc00"
+          },
+          {
+            "transitionId": "G01-r4",
+            "gateId": "G01",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "CLOSED",
+            "previousDisposition": "PASS",
+            "newDisposition": "PASS",
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation completed: all-mandatory-criteria-pass",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Aetherius-OS/src/programme/validate.ts",
+              "Aetherius-OS/src/programme/programme.test.ts",
+              "Aetherius-OS/src/programme/evidenceTrace.audit.test.ts",
+              "Aetherius-OS/docs/SYSTEM-CAPABILITY-REGISTRY.md",
+              "Aetherius-OS/src/programme/capabilityRegistry.test.ts"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T12:00:00.000Z",
+            "transitionRecordHash": "19b49b909f00fe00"
           }
         ],
         "refusalCount": 0
       },
       {
         "gateId": "G02",
-        "lifecycle": "NOT_EVALUATED",
-        "disposition": null,
-        "revision": 0,
-        "criteria": [],
-        "evidenceFingerprint": null,
-        "transitions": [],
+        "lifecycle": "CLOSED",
+        "disposition": "PASS",
+        "revision": 4,
+        "criteria": [
+          {
+            "requirementId": "REQ-ide-genesis-task-loop",
+            "result": "PASS",
+            "evidenceRefs": [
+              "IDE-Workspace:workspace/app/src/genesisBridge.test.ts"
+            ]
+          },
+          {
+            "requirementId": "REQ-p23-work-monitoring",
+            "result": "PASS",
+            "evidenceRefs": [
+              "IDE-Workspace:workspace/app/src/inspection.test.ts"
+            ]
+          },
+          {
+            "requirementId": "REQ-p24-service-orchestrator",
+            "result": "PASS",
+            "evidenceRefs": [
+              "src/services/orchestrator.test.ts"
+            ]
+          }
+        ],
+        "evidenceFingerprint": {
+          "sourceCommits": {
+            "Aetherius-OS": "4012471+dirty",
+            "Agent-Bridge": "3dc6e5a",
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
+          },
+          "relevantSourceHashes": {
+            "Aetherius-OS": "a4db266bb2deb572",
+            "Agent-Bridge": "04b66ad42ee17eca",
+            "Genesis": "13dbde06230ffd8a",
+            "IDE-Workspace": "ea5650fd234256d8"
+          },
+          "dependencyHashes": {},
+          "configurationHashes": {},
+          "schemaVersions": {},
+          "requirementRevision": "c2fe89358a571735",
+          "acceptanceCriteriaRevision": "7e4cec1588d6203e",
+          "testSuiteRevision": null,
+          "testEnvironmentRef": "win32-x64-node-v24.21.0",
+          "upstreamGateRevisions": {}
+        },
+        "transitions": [
+          {
+            "transitionId": "G02-r1",
+            "gateId": "G02",
+            "previousLifecycle": "NOT_EVALUATED",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 0,
+            "newRevision": 1,
+            "trigger": "EVALUATION_STARTED",
+            "reason": "collecting evidence recorded at 2026-10-02T13:00:00.000Z",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": null,
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "e515feb021735400"
+          },
+          {
+            "transitionId": "G02-r2",
+            "gateId": "G02",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "CLOSED",
+            "previousDisposition": null,
+            "newDisposition": "PASS",
+            "previousRevision": 1,
+            "newRevision": 2,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation completed: all-mandatory-criteria-pass",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "IDE-Workspace/workspace/integration/tests/test_expanded_workflow.py",
+              "IDE-Workspace/workspace/integration/proposal_adapter.py",
+              "Agent-Bridge/tests/test_world_audit.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "c6698e6864fee400"
+          },
+          {
+            "transitionId": "G02-r3",
+            "gateId": "G02",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "CLOSED",
+            "previousDisposition": "PASS",
+            "newDisposition": "PASS",
+            "previousRevision": 2,
+            "newRevision": 3,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation completed: all-mandatory-criteria-pass",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "IDE-Workspace/workspace/integration/tests/test_expanded_workflow.py",
+              "IDE-Workspace/workspace/integration/proposal_adapter.py",
+              "Agent-Bridge/tests/test_world_audit.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "c82eeb98f7625c00"
+          },
+          {
+            "transitionId": "G02-r4",
+            "gateId": "G02",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "CLOSED",
+            "previousDisposition": "PASS",
+            "newDisposition": "PASS",
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation completed: all-mandatory-criteria-pass",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "IDE-Workspace/workspace/integration/tests/test_expanded_workflow.py",
+              "IDE-Workspace/workspace/integration/proposal_adapter.py",
+              "Agent-Bridge/tests/test_world_audit.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "842a0d4023230800"
+          }
+        ],
         "refusalCount": 0
       },
       {
         "gateId": "G03",
         "lifecycle": "IN_PROGRESS",
         "disposition": null,
-        "revision": 3,
+        "revision": 4,
         "criteria": [
           {
             "requirementId": "REQ-p21-test-impact",
@@ -194,13 +524,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "d8a06ea+dirty",
+            "Aetherius-OS": "4012471+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "6fd5342+dirty",
-            "IDE-Workspace": "0f9b973"
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "50fb18c121ec3456",
+            "Aetherius-OS": "cbefb52b7bac0408",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -293,6 +623,34 @@
             "externalBlockerRef": null,
             "timestamp": "2026-10-02T12:00:00.000Z",
             "transitionRecordHash": "bddb39c03c11d400"
+          },
+          {
+            "transitionId": "G03-r4",
+            "gateId": "G03",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-verification-continuity",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Agent-Bridge/tests/test_actions_intake_mutations.py",
+              "Agent-Bridge/tests/test_intake_adversarial.py",
+              "Agent-Bridge/tests/test_action_id_uniqueness.py",
+              "Agent-Bridge/tests/test_cross_process_state.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T12:00:00.000Z",
+            "transitionRecordHash": "7c62161ceaa15600"
           }
         ],
         "refusalCount": 0
@@ -301,7 +659,7 @@
         "gateId": "G04",
         "lifecycle": "CLOSED",
         "disposition": "BLOCKED_EXTERNAL",
-        "revision": 3,
+        "revision": 4,
         "criteria": [
           {
             "requirementId": "REQ-p25-supply-chain",
@@ -332,13 +690,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "d8a06ea+dirty",
+            "Aetherius-OS": "4012471+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "6fd5342+dirty",
-            "IDE-Workspace": "0f9b973"
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "ec6f8edb593dfa5c",
+            "Aetherius-OS": "b91c6ef99642afe0",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -437,18 +795,195 @@
             "externalBlockerRef": "no isolated execution backend available (Docker Desktop closed)",
             "timestamp": "2026-10-02T12:00:00.000Z",
             "transitionRecordHash": "689b37088e5a1c00"
+          },
+          {
+            "transitionId": "G04-r4",
+            "gateId": "G04",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "CLOSED",
+            "previousDisposition": "BLOCKED_EXTERNAL",
+            "newDisposition": "BLOCKED_EXTERNAL",
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation completed: external-dependency",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Agent-Bridge/tests/test_evidence_integrity.py",
+              "Agent-Bridge/tests/test_untrusted_input.py",
+              "Agent-Bridge/tests/test_cross_process_state.py",
+              "Agent-Bridge/tests/test_intake_adversarial.py",
+              "Agent-Bridge/tests/test_owner_full_control.py",
+              "Agent-Bridge/tests/test_external_approvals.py",
+              "Agent-Bridge/tests/test_actions_intake.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": "no isolated execution backend available (Docker Desktop closed)",
+            "timestamp": "2026-10-02T12:00:00.000Z",
+            "transitionRecordHash": "d7f72b91a34dca00"
           }
         ],
         "refusalCount": 0
       },
       {
         "gateId": "G05",
-        "lifecycle": "NOT_EVALUATED",
+        "lifecycle": "IN_PROGRESS",
         "disposition": null,
-        "revision": 0,
-        "criteria": [],
-        "evidenceFingerprint": null,
-        "transitions": [],
+        "revision": 4,
+        "criteria": [
+          {
+            "requirementId": "REQ-cloud-persistent-exec",
+            "result": "PASS",
+            "evidenceRefs": [
+              "src/state/executionCheckpoint.test.ts"
+            ]
+          },
+          {
+            "requirementId": "REQ-p30-repo-relay",
+            "result": "PASS",
+            "evidenceRefs": [
+              "src/state/repoRelay.test.ts"
+            ]
+          },
+          {
+            "requirementId": "REQ-p17-verification-continuity",
+            "result": "NOT_TESTED",
+            "justification": "registry work_state is READY; recovery is proven at the Bridge layer but this requirement is not yet verified to acceptance"
+          }
+        ],
+        "evidenceFingerprint": {
+          "sourceCommits": {
+            "Aetherius-OS": "4012471+dirty",
+            "Agent-Bridge": "3dc6e5a",
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
+          },
+          "relevantSourceHashes": {
+            "Aetherius-OS": "6d11ede2bf97ddc1",
+            "Agent-Bridge": "04b66ad42ee17eca",
+            "Genesis": "13dbde06230ffd8a",
+            "IDE-Workspace": "ea5650fd234256d8"
+          },
+          "dependencyHashes": {},
+          "configurationHashes": {},
+          "schemaVersions": {},
+          "requirementRevision": "c2fe89358a571735",
+          "acceptanceCriteriaRevision": "7e4cec1588d6203e",
+          "testSuiteRevision": null,
+          "testEnvironmentRef": "win32-x64-node-v24.21.0",
+          "upstreamGateRevisions": {}
+        },
+        "transitions": [
+          {
+            "transitionId": "G05-r1",
+            "gateId": "G05",
+            "previousLifecycle": "NOT_EVALUATED",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 0,
+            "newRevision": 1,
+            "trigger": "EVALUATION_STARTED",
+            "reason": "collecting evidence recorded at 2026-10-02T13:00:00.000Z",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": null,
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "80b652ac313cd200"
+          },
+          {
+            "transitionId": "G05-r2",
+            "gateId": "G05",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 1,
+            "newRevision": 2,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-verification-continuity",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Agent-Bridge/tests/test_recovery_privacy.py",
+              "Agent-Bridge/tests/test_cross_process_state.py",
+              "Agent-Bridge/bridge.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "34c96b209b6a2000"
+          },
+          {
+            "transitionId": "G05-r3",
+            "gateId": "G05",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 2,
+            "newRevision": 3,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-verification-continuity",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Agent-Bridge/tests/test_recovery_privacy.py",
+              "Agent-Bridge/tests/test_cross_process_state.py",
+              "Agent-Bridge/bridge.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "4780b36870dcb400"
+          },
+          {
+            "transitionId": "G05-r4",
+            "gateId": "G05",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-verification-continuity",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Agent-Bridge/tests/test_recovery_privacy.py",
+              "Agent-Bridge/tests/test_cross_process_state.py",
+              "Agent-Bridge/bridge.py"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "850e1521cec7d800"
+          }
+        ],
         "refusalCount": 0
       },
       {
@@ -493,19 +1028,173 @@
       },
       {
         "gateId": "G10",
-        "lifecycle": "NOT_EVALUATED",
+        "lifecycle": "IN_PROGRESS",
         "disposition": null,
-        "revision": 0,
-        "criteria": [],
-        "evidenceFingerprint": null,
-        "transitions": [],
+        "revision": 4,
+        "criteria": [
+          {
+            "requirementId": "REQ-bridge-gate-compat",
+            "result": "PASS",
+            "evidenceRefs": [
+              "Agent-Bridge:tests/test_commands_policy.py"
+            ]
+          },
+          {
+            "requirementId": "REQ-mcp-adapter-boundary",
+            "result": "PASS",
+            "evidenceRefs": [
+              "Agent-Bridge:tests/test_mcp_adapter.py"
+            ]
+          },
+          {
+            "requirementId": "REQ-p17-shared-schemas",
+            "result": "NOT_TESTED",
+            "justification": "registry work_state is READY; the schema requirement is not yet verified to acceptance"
+          },
+          {
+            "requirementId": "REQ-p17-service-primitives",
+            "result": "NOT_TESTED",
+            "justification": "registry work_state is READY; the service-primitives requirement is not yet verified to acceptance"
+          }
+        ],
+        "evidenceFingerprint": {
+          "sourceCommits": {
+            "Aetherius-OS": "4012471+dirty",
+            "Agent-Bridge": "3dc6e5a",
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
+          },
+          "relevantSourceHashes": {
+            "Aetherius-OS": "8995c17666f12c74",
+            "Agent-Bridge": "04b66ad42ee17eca",
+            "Genesis": "13dbde06230ffd8a",
+            "IDE-Workspace": "ea5650fd234256d8"
+          },
+          "dependencyHashes": {},
+          "configurationHashes": {},
+          "schemaVersions": {},
+          "requirementRevision": "c2fe89358a571735",
+          "acceptanceCriteriaRevision": "7e4cec1588d6203e",
+          "testSuiteRevision": null,
+          "testEnvironmentRef": "win32-x64-node-v24.21.0",
+          "upstreamGateRevisions": {}
+        },
+        "transitions": [
+          {
+            "transitionId": "G10-r1",
+            "gateId": "G10",
+            "previousLifecycle": "NOT_EVALUATED",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 0,
+            "newRevision": 1,
+            "trigger": "EVALUATION_STARTED",
+            "reason": "collecting evidence recorded at 2026-10-02T13:00:00.000Z",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": null,
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "0fe818d084b12e40"
+          },
+          {
+            "transitionId": "G10-r2",
+            "gateId": "G10",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 1,
+            "newRevision": 2,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-service-primitives, REQ-p17-shared-schemas",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "IDE-Workspace/workspace/integration/tests/test_expanded_workflow.py",
+              "Agent-Bridge/tests/test_service_sdk.py",
+              "Agent-Bridge/tests/test_actions_intake.py",
+              "Genesis/tests/action_proposal_tests.cpp"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "1fe03f906b69ec00"
+          },
+          {
+            "transitionId": "G10-r3",
+            "gateId": "G10",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 2,
+            "newRevision": 3,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-service-primitives, REQ-p17-shared-schemas",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "IDE-Workspace/workspace/integration/tests/test_expanded_workflow.py",
+              "Agent-Bridge/tests/test_service_sdk.py",
+              "Agent-Bridge/tests/test_actions_intake.py",
+              "Genesis/tests/action_proposal_tests.cpp"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "7c7565a786752e00"
+          },
+          {
+            "transitionId": "G10-r4",
+            "gateId": "G10",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-p17-service-primitives, REQ-p17-shared-schemas",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "IDE-Workspace/workspace/integration/tests/test_expanded_workflow.py",
+              "Agent-Bridge/tests/test_service_sdk.py",
+              "Agent-Bridge/tests/test_actions_intake.py",
+              "Genesis/tests/action_proposal_tests.cpp"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T13:00:00.000Z",
+            "transitionRecordHash": "cfb8ee10f5642200"
+          }
+        ],
         "refusalCount": 0
       },
       {
         "gateId": "G11",
         "lifecycle": "IN_PROGRESS",
         "disposition": null,
-        "revision": 3,
+        "revision": 4,
         "criteria": [
           {
             "requirementId": "REQ-mat-claim-registry",
@@ -544,13 +1233,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "d8a06ea+dirty",
+            "Aetherius-OS": "4012471+dirty",
             "Agent-Bridge": "3dc6e5a",
-            "Genesis": "6fd5342+dirty",
-            "IDE-Workspace": "0f9b973"
+            "Genesis": "3164e80+dirty",
+            "IDE-Workspace": "0f9b973+dirty"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "75a6127c042675f0",
+            "Aetherius-OS": "718fa71c97e4a6b3",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -641,6 +1330,33 @@
             "externalBlockerRef": null,
             "timestamp": "2026-10-02T12:00:00.000Z",
             "transitionRecordHash": "00c67cf5f8f63000"
+          },
+          {
+            "transitionId": "G11-r4",
+            "gateId": "G11",
+            "previousLifecycle": "IN_PROGRESS",
+            "newLifecycle": "IN_PROGRESS",
+            "previousDisposition": null,
+            "newDisposition": null,
+            "previousRevision": 3,
+            "newRevision": 4,
+            "trigger": "EVALUATION_COMPLETED",
+            "reason": "evaluation incomplete: REQ-cert-regeneration, REQ-codex-review, REQ-mat-derived-matrices, REQ-refmap-followup",
+            "initiatedBy": "acceptance-collector",
+            "evaluatedBy": "acceptance-collector",
+            "sourceBaselineRef": null,
+            "evidenceFingerprintRef": null,
+            "supportingEvidenceRefs": [
+              "Aetherius-OS/src/programme/evidenceTrace.audit.test.ts",
+              "Aetherius-OS/src/programme/requirements.json",
+              "Aetherius-OS/src/programme/validate.ts"
+            ],
+            "invalidatedEvidenceRefs": [],
+            "affectedDependencyGates": [],
+            "ownerApprovalRef": null,
+            "externalBlockerRef": null,
+            "timestamp": "2026-10-02T12:00:00.000Z",
+            "transitionRecordHash": "bfb7c430ac178400"
           }
         ],
         "refusalCount": 0

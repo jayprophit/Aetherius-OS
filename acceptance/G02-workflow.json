@@ -1,0 +1,45 @@
+{
+  "gateId": "G02",
+  "evaluatedAt": "2026-10-02T13:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "IDE-Workspace",
+      "path": "workspace/integration/tests/test_expanded_workflow.py",
+      "evidenceKey": "workflow-trace"
+    },
+    {
+      "repository": "IDE-Workspace",
+      "path": "workspace/integration/proposal_adapter.py",
+      "evidenceKey": "independent-verification"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_world_audit.py",
+      "evidenceKey": "world-state-readback"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-ide-genesis-task-loop",
+      "result": "PASS",
+      "evidenceRefs": [
+        "IDE-Workspace:workspace/app/src/genesisBridge.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p23-work-monitoring",
+      "result": "PASS",
+      "evidenceRefs": [
+        "IDE-Workspace:workspace/app/src/inspection.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p24-service-orchestrator",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/services/orchestrator.test.ts"
+      ]
+    }
+  ],
+  "note": "48 real-stack integration tests plus 4 subtests passed on this run, covering the expanded workflow including denial, tampering, delay, stale approval, service loss and repeatability."
+}

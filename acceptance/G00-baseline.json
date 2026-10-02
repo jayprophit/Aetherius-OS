@@ -1,0 +1,50 @@
+{
+  "gateId": "G00",
+  "evaluatedAt": "2026-10-02T13:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/requirements.json",
+      "evidenceKey": "git-state"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "package.json",
+      "evidenceKey": "baseline-commands"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/state/store.ts",
+      "evidenceKey": "build-environment"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-p16-registry",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/programme/programme.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p16-steward-automation",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/programme/select.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p16-control",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/programme/programme.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p17-owned-state",
+      "result": "NOT_TESTED",
+      "justification": "registry work_state is IN_PROGRESS; the owned-state layer is exercised but not complete"
+    }
+  ],
+  "note": "Git state and the exact baseline commands are recorded for all four repositories. REQ-p17-owned-state is still IN_PROGRESS in the registry, so this gate cannot close on the evidence available."
+}
