@@ -3,18 +3,18 @@
   "kind": "acceptance",
   "schemaVersion": 1,
   "recordVersion": 17,
-  "createdAt": "2026-10-02T15:53:02.475Z",
-  "updatedAt": "2026-10-02T15:54:00.507Z",
+  "createdAt": "2026-10-02T16:41:43.046Z",
+  "updatedAt": "2026-10-02T16:42:23.708Z",
   "owner": "aetherius-os",
   "provenance": "BUILD70 acceptance-gate contract",
   "sensitivity": "SYSTEM",
-  "integrity": "7c49a999276b6da09882de709f6b1be6692969d56134e503f9cd944c2d1a7043",
+  "integrity": "ba27bdf07c36c792641f70272feadfff3e32e00e515187736045fde178f0e3dc",
   "payload": {
     "gates": [
       {
         "gateId": "G00",
-        "lifecycle": "IN_PROGRESS",
-        "disposition": null,
+        "lifecycle": "CLOSED",
+        "disposition": "PASS",
         "revision": 2,
         "criteria": [
           {
@@ -40,19 +40,23 @@
           },
           {
             "requirementId": "REQ-p17-owned-state",
-            "result": "NOT_TESTED",
-            "justification": "registry work_state is IN_PROGRESS; the owned-state layer is exercised but not complete"
+            "result": "PASS",
+            "evidenceRefs": [
+              "src/state/state.test.ts",
+              "src/state/backup.test.ts",
+              "src/state/events.test.ts"
+            ]
           }
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "19a021b8954079fb",
+            "Aetherius-OS": "fe3b0c1d8d08a3ef",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -60,7 +64,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",
@@ -77,7 +81,7 @@
             "previousRevision": 0,
             "newRevision": 1,
             "trigger": "EVALUATION_STARTED",
-            "reason": "collecting evidence recorded at 2026-10-02T13:00:00.000Z",
+            "reason": "collecting evidence recorded at 2026-10-02T18:00:00.000Z",
             "initiatedBy": "acceptance-collector",
             "evaluatedBy": null,
             "sourceBaselineRef": null,
@@ -87,20 +91,20 @@
             "affectedDependencyGates": [],
             "ownerApprovalRef": null,
             "externalBlockerRef": null,
-            "timestamp": "2026-10-02T13:00:00.000Z",
-            "transitionRecordHash": "13e24dec7df75a00"
+            "timestamp": "2026-10-02T18:00:00.000Z",
+            "transitionRecordHash": "f63492209524ac00"
           },
           {
             "transitionId": "G00-r2",
             "gateId": "G00",
             "previousLifecycle": "IN_PROGRESS",
-            "newLifecycle": "IN_PROGRESS",
+            "newLifecycle": "CLOSED",
             "previousDisposition": null,
-            "newDisposition": null,
+            "newDisposition": "PASS",
             "previousRevision": 1,
             "newRevision": 2,
             "trigger": "EVALUATION_COMPLETED",
-            "reason": "evaluation incomplete: REQ-p17-owned-state",
+            "reason": "evaluation completed: all-mandatory-criteria-pass",
             "initiatedBy": "acceptance-collector",
             "evaluatedBy": "acceptance-collector",
             "sourceBaselineRef": null,
@@ -108,14 +112,16 @@
             "supportingEvidenceRefs": [
               "Aetherius-OS/src/programme/requirements.json",
               "Aetherius-OS/package.json",
-              "Aetherius-OS/src/state/store.ts"
+              "Aetherius-OS/src/state/store.ts",
+              "Aetherius-OS/src/state/backup.ts",
+              "Aetherius-OS/src/state/events.ts"
             ],
             "invalidatedEvidenceRefs": [],
             "affectedDependencyGates": [],
             "ownerApprovalRef": null,
             "externalBlockerRef": null,
-            "timestamp": "2026-10-02T13:00:00.000Z",
-            "transitionRecordHash": "07cd9e803491f800"
+            "timestamp": "2026-10-02T18:00:00.000Z",
+            "transitionRecordHash": "99d6acd780721e00"
           }
         ],
         "refusalCount": 0
@@ -150,13 +156,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "a20d85c2ea0ba92d",
+            "Aetherius-OS": "96a22bcdeffe915e",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -164,7 +170,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",
@@ -256,13 +262,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "c2528a0f91cd5eac",
+            "Aetherius-OS": "d02f66045bde8e46",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -270,7 +276,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",
@@ -358,13 +364,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "f06e9bab59511cef",
+            "Aetherius-OS": "13b87c51dfcfe223",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -372,7 +378,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",
@@ -468,13 +474,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "910e24a4cca2b90c",
+            "Aetherius-OS": "39100f5d3f9581c3",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -482,7 +488,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",
@@ -574,13 +580,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "6242284b9095b694",
+            "Aetherius-OS": "2d849b4cab025390",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -588,7 +594,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",
@@ -721,13 +727,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "a2f7f406df170127",
+            "Aetherius-OS": "ed5fbe663df45173",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -735,7 +741,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",
@@ -846,13 +852,13 @@
         ],
         "evidenceFingerprint": {
           "sourceCommits": {
-            "Aetherius-OS": "0cc5951+dirty",
+            "Aetherius-OS": "4c32c15+dirty",
             "Agent-Bridge": "3dc6e5a",
             "Genesis": "3164e80+dirty",
             "IDE-Workspace": "0f9b973"
           },
           "relevantSourceHashes": {
-            "Aetherius-OS": "a6ff6e8bb6832821",
+            "Aetherius-OS": "faf558eaf360eb08",
             "Agent-Bridge": "04b66ad42ee17eca",
             "Genesis": "13dbde06230ffd8a",
             "IDE-Workspace": "ea5650fd234256d8"
@@ -860,7 +866,7 @@
           "dependencyHashes": {},
           "configurationHashes": {},
           "schemaVersions": {},
-          "requirementRevision": "5b34fac02fcf7977",
+          "requirementRevision": "5705112297f9223c",
           "acceptanceCriteriaRevision": "7e4cec1588d6203e",
           "testSuiteRevision": null,
           "testEnvironmentRef": "win32-x64-node-v24.21.0",

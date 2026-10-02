@@ -1,7 +1,17 @@
 {
   "gateId": "G05",
-  "evaluatedAt": "2026-10-02T13:00:00.000Z",
+  "evaluatedAt": "2026-10-02T18:30:00.000Z",
   "artifacts": [
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/state/backup.ts",
+      "evidenceKey": "replay-evidence"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/state/events.ts",
+      "evidenceKey": "journal-state"
+    },
     {
       "repository": "Agent-Bridge",
       "path": "tests/test_recovery_privacy.py",
@@ -14,7 +24,7 @@
     },
     {
       "repository": "Agent-Bridge",
-      "path": "bridge.py",
+      "path": "tests/test_evidence_integrity.py",
       "evidenceKey": "fault-injection"
     }
   ],
@@ -39,5 +49,5 @@
       "justification": "registry work_state is READY; recovery is proven at the Bridge layer but this requirement is not yet verified to acceptance"
     }
   ],
-  "note": "Restart, cancellation, session deletion, multi-process contention and forged-record recovery are all exercised against real code. The gate stays open because one mandatory criterion is unverified."
+  "note": "Recovery evidence is now owned on both layers. Agent Bridge proves restart, cancellation, session deletion, multi-process contention and forged-record recovery against real code (92 security/recovery tests, 23/23 mutations caught). The Aetherius owned-state layer adds verifiable backup/restore and a hash-linked event log, so a restored or replayed state is checked rather than believed. The gate stays IN_PROGRESS: REQ-p17-verification-continuity is still READY and unverified."
 }

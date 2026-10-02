@@ -1,6 +1,6 @@
 {
   "gateId": "G00",
-  "evaluatedAt": "2026-10-02T13:00:00.000Z",
+  "evaluatedAt": "2026-10-02T18:00:00.000Z",
   "artifacts": [
     {
       "repository": "Aetherius-OS",
@@ -15,6 +15,16 @@
     {
       "repository": "Aetherius-OS",
       "path": "src/state/store.ts",
+      "evidenceKey": "build-environment"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/state/backup.ts",
+      "evidenceKey": "git-state"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/state/events.ts",
       "evidenceKey": "build-environment"
     }
   ],
@@ -42,9 +52,13 @@
     },
     {
       "requirementId": "REQ-p17-owned-state",
-      "result": "NOT_TESTED",
-      "justification": "registry work_state is IN_PROGRESS; the owned-state layer is exercised but not complete"
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/state/state.test.ts",
+        "src/state/backup.test.ts",
+        "src/state/events.test.ts"
+      ]
     }
   ],
-  "note": "Git state and the exact baseline commands are recorded for all four repositories. REQ-p17-owned-state is still IN_PROGRESS in the registry, so this gate cannot close on the evidence available."
+  "note": "Git state and the exact baseline commands are recorded for all four repositories. REQ-p17-owned-state is now COMPLETE: versioned schemas, durable storage with atomic writes and optimistic concurrency, migrations with history, backup/restore, and attributable event linkage are each implemented and tested. The event chain detects corruption, reordering and deletion but not wholesale forgery by a same-user process, and a test asserts that limit."
 }
