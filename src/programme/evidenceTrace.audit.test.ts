@@ -102,14 +102,16 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    // 94 after the BUILD71 G11 re-verification pass, which re-certified three
+    // 95 after the BUILD71 backup/restore work, which gave the owned-state
+    // requirement its missing backup/restore element and therefore a real
+    // suite. 94 after the BUILD71 G11 re-verification pass, which re-certified three
     // claims by executing them rather than reading prose: the cert-gated
     // delegation tests, the 8 reference-audit tests, and the MAT validator
     // plus its node suite. The earlier BUILD70 pass had over-corrected and
     // downgraded four claims whose evidence was in fact retrievable.
-    expect(summary.requirementsWithMachineRefs).toBe(94);
+    expect(summary.requirementsWithMachineRefs).toBe(95);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(94);
+    expect(withRefs).toHaveLength(95);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
     // most are single-suite citations
     expect(single.length).toBeGreaterThan(80);
@@ -127,7 +129,7 @@ describe("audit: real requirement registry evidence traceability", () => {
         throw new Error(`${t.id} cites a sibling-shaped test that is not its own`);
       }
     }
-    // Ten units legitimately cite more than one suite: the traceability
+    // Eleven units legitimately cite more than one suite: the traceability
     // requirement (unit + real-registry audit), the relay requirement
     // (relay.test.ts for the cache, policy.test.ts for the allowlist it depends
     // on), the executor requirement (model-invoke plus bridge-action), the
@@ -149,6 +151,7 @@ describe("audit: real requirement registry evidence traceability", () => {
       "REQ-ide-genesis-task-loop",
       "REQ-mat-derived-matrices",
       "REQ-p16-evidence-traceability",
+      "REQ-p17-owned-state",
       "REQ-p19-executors",
       "REQ-p23-layout-system",
       "REQ-p30-repo-relay",

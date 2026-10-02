@@ -315,7 +315,10 @@ describe("the programme report is honest about what it does not know", () => {
     expect(partial.machineComplete).toBe(false);
   });
 
-  it("only reports machine-complete when every mandatory gate currently passes", () => {
+  // Closing all 13 gates is 26 store saves, each fsynced on Windows. Real
+  // durability, so the honest fix is an honest timeout rather than a mocked
+  // store that would stop exercising the version check and integrity hash.
+  it("only reports machine-complete when every mandatory gate currently passes", { timeout: 30_000 }, () => {
     closeAllPassing();
     const report = deriveProgrammeReport({
       store, requirements, mandatoryGates: [...ACCEPTANCE_GATE_IDS],
@@ -325,7 +328,7 @@ describe("the programme report is honest about what it does not know", () => {
     expect(report.ownerPublicationAuthorized).toBe(false);
   });
 
-  it("authorization requires an explicit owner approval reference", () => {
+  it("authorization requires an explicit owner approval reference", { timeout: 30_000 }, () => {
     closeAllPassing();
     const without = deriveProgrammeReport({
       store, requirements, mandatoryGates: [...ACCEPTANCE_GATE_IDS],
@@ -338,7 +341,7 @@ describe("the programme report is honest about what it does not know", () => {
     expect(with_.ownerPublicationAuthorized).toBe(true);
   });
 
-  it("an unsupported COMPLETE claim blocks the programme", () => {
+  it("an unsupported COMPLETE claim blocks the programme", { timeout: 30_000 }, () => {
     closeAllPassing();
     const report = deriveProgrammeReport({
       store, requirements, mandatoryGates: [...ACCEPTANCE_GATE_IDS],
@@ -348,7 +351,7 @@ describe("the programme report is honest about what it does not know", () => {
     expect(report.blockingIssues.join(" ")).toMatch(/REQ-cert-regeneration/);
   });
 
-  it("a fingerprint that no longer matches overrides a stored PASS", () => {
+  it("a fingerprint that no longer matches overrides a stored PASS", { timeout: 30_000 }, () => {
     closeAllPassing(FP("old"));
     const current = new Map<AcceptanceGateId, EvidenceFingerprint>(
       ACCEPTANCE_GATE_IDS.map((g) => [g, FP("new")]),
@@ -362,7 +365,7 @@ describe("the programme report is honest about what it does not know", () => {
     expect(report.nextRequiredAction).toMatch(/re-evaluate/);
   });
 
-  it("renders a report with no aggregate number anywhere", () => {
+  it("renders a report with no aggregate number anywhere", { timeout: 30_000 }, () => {
     closeAllPassing();
     const text = formatProgrammeReport(deriveProgrammeReport({
       store, requirements, mandatoryGates: [...ACCEPTANCE_GATE_IDS],

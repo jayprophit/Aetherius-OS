@@ -21,11 +21,16 @@ export interface SaveOptions {
 
 export interface OwnedStore {
   readonly root: string;
+  /** Highest schema version this build understands. */
+  readonly currentVersion: number;
   exists(id: string): boolean;
+  /** Record ids in this store, optionally filtered by prefix. Sorted. */
+  listIds(prefix?: string): string[];
   load<T>(id: string): StateEnvelope<T>;
   save<T>(envelope: StateEnvelope<T>, options?: SaveOptions): StateEnvelope<T>;
   remove(id: string): void;
-  judgeSchema(version: number, currentVersion: number): SchemaJudgment;
+  /** currentVersion defaults to the store's own supported version. */
+  judgeSchema(version: number, currentVersion?: number): SchemaJudgment;
 }
 
 function fileFor(root: string, id: string): string {

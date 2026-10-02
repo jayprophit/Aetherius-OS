@@ -1222,11 +1222,23 @@
       "blockers": [],
       "evidence": [
         "P17 exit gate",
-        "6fc85f6 state foundation"
+        "6fc85f6 state foundation",
+        "src/state/backup.ts + backup.test.ts: 15 tests covering snapshot, tamper refusal and downgrade refusal"
       ],
       "provenance": "owner decision 2026-09-22",
       "owner_gate": false,
-      "work_state": "IN_PROGRESS"
+      "work_state": "IN_PROGRESS",
+      "implementation_refs": [
+        "src/state/store.ts",
+        "src/state/migrate.ts",
+        "src/state/backup.ts",
+        "src/state/acceptanceState.ts"
+      ],
+      "test_refs": [
+        "src/state/state.test.ts",
+        "src/state/backup.test.ts"
+      ],
+      "notes": "Backup/restore added under BUILD71. The store already refused to lose data -- atomic writes, integrity hashes, optimistic version checks, remove-renames-aside -- but could not take a restorable snapshot or put one back, and migrate.ts produced a migration backup envelope that no caller persisted. backup.ts now snapshots every record with a hash-listed manifest and restores through the store own save path, so it inherits the same atomicity. Three refusals are enforced and tested: a manifest whose entries were altered does not verify, a record whose payload changed after the backup is refused, and a record whose live version has moved past the backup is not rolled back unless the caller explicitly allows a downgrade -- which the plan reports separately so consenting to a restore is never mistaken for consenting to a rollback. Replaced records are renamed aside, so a restore is itself reversible. Still not complete: this covers the store; the remaining P17 gate element is permission/event linkage beyond the causedBy field the envelope already carries."
     },
     {
       "id": "REQ-p18-model-fabric",
