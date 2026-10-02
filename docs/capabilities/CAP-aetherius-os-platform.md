@@ -1,6 +1,6 @@
 # Aetherius OS Platform Capability Registry — generated report
 
-Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
+Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
 
 ## Programme summary (all children)
 
@@ -25,8 +25,8 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 - 🔬 Capability Graph `CAP-capability-graph`
 - ⚠️ Deployment and Packaging `CAP-deployment-packaging`
 - ⚠️ Model Fabric `CAP-model-fabric`
-- 🟢 Regenerate real delegation certification `REQ-cert-regeneration`
-- 🟢 Independent Codex diff review of policy work `REQ-codex-review`
+- 🔬 Regenerate real delegation certification `REQ-cert-regeneration`
+- 🔬 Independent Codex diff review of policy work `REQ-codex-review`
 - 🔬 Establish provenance of native TODO header `REQ-native-header-provenance`
 - 🔬 Project artifact library taxonomy `REQ-p17-artifact-library`
 - ⚠️ Owned durable state and core service contracts `REQ-p17-owned-state`
@@ -106,6 +106,8 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Capability Graph `CAP-capability-graph`
+- 🔬 Regenerate real delegation certification `REQ-cert-regeneration`
+- 🔬 Independent Codex diff review of policy work `REQ-codex-review`
 - 🔬 Establish provenance of native TODO header `REQ-native-header-provenance`
 - 🔬 OmniAgent prototype reference index (read-only) `REQ-omniagent-reference-index`
 - 🔬 Project artifact library taxonomy `REQ-p17-artifact-library`

@@ -1,6 +1,6 @@
 # Networking Capability Registry — generated report
 
-Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
+Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
 
 ## Programme summary (all children)
 

@@ -1,0 +1,80 @@
+{
+  "gateId": "G04",
+  "commit": "see fingerprint",
+  "evaluatedAt": "2026-10-02T12:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_evidence_integrity.py",
+      "evidenceKey": "attack-matrix"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_untrusted_input.py",
+      "evidenceKey": "attack-matrix"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_cross_process_state.py",
+      "evidenceKey": "attack-matrix"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_intake_adversarial.py",
+      "evidenceKey": "authority-decisions"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_owner_full_control.py",
+      "evidenceKey": "authority-decisions"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_external_approvals.py",
+      "evidenceKey": "actual-service-tests"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_actions_intake.py",
+      "evidenceKey": "actual-service-tests"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-p25-supply-chain",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_supply_chain_security.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-owner-full-control",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_owner_full_control.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-p21-sandbox-runners",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_sandbox_adversarial.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-p20-clean-room",
+      "result": "BLOCKED",
+      "blockerRef": "no isolated execution backend available to the loop"
+    }
+  ],
+  "blockers": [
+    {
+      "kind": "EXTERNAL",
+      "ref": "no isolated execution backend available (Docker Desktop closed)",
+      "requirementIds": [
+        "REQ-p20-clean-room"
+      ]
+    }
+  ],
+  "note": "The attack matrix is executed against the real service and mutation-proved. Clean-room isolation cannot be tested in this environment, so the gate is BLOCKED_EXTERNAL rather than PASS."
+}

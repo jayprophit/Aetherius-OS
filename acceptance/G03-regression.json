@@ -1,0 +1,49 @@
+{
+  "gateId": "G03",
+  "commit": "see fingerprint",
+  "evaluatedAt": "2026-10-02T12:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_actions_intake_mutations.py",
+      "evidenceKey": "negative-control"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_intake_adversarial.py",
+      "evidenceKey": "concurrency-results"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_action_id_uniqueness.py",
+      "evidenceKey": "regression-tests"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_cross_process_state.py",
+      "evidenceKey": "concurrency-results"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-p21-test-impact",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_test_impact.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-p20-expected-touch-set",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_impact.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-p17-verification-continuity",
+      "result": "NOT_TESTED",
+      "justification": "registry work_state is READY; not yet verified to BUILD70 acceptance"
+    }
+  ],
+  "note": "Mutation and negative-control evidence is real (23/23 caught). The gate cannot close while REQ-p17-verification-continuity is unverified, which is what this record shows."
+}

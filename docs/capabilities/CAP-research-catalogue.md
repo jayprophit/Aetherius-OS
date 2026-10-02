@@ -1,6 +1,6 @@
 # Research Catalogue Capability Registry — generated report
 
-Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
+Generated 2026-10-02 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live requirements registry. Do not hand-edit: change the source and regenerate.
 
 ## Programme summary (all children)
 
@@ -22,7 +22,7 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 
 ## Requirements with no evidence
 - 🔬 Terminology and Originality Policy `CAP-terminology-policy`
-- 🟢 Deep per-capability overlap audits `REQ-refmap-followup`
+- 🔬 Deep per-capability overlap audits `REQ-refmap-followup`
 
 ## Recently added / moved (30 days)
 - Terminology Collision - Digital Organism `CAP-collision-digital-organism` — created 2026-10-01
@@ -63,5 +63,6 @@ Generated 2026-10-01 from docs/SYSTEM-CAPABILITY-REGISTRY.yaml plus the live req
 
 ## Research catalogue (status RESEARCH, required)
 - 🔬 Terminology and Originality Policy `CAP-terminology-policy`
+- 🔬 Deep per-capability overlap audits `REQ-refmap-followup`
 
 _Query the registry programmatically via src/programme/capabilityRegistry.ts (search, dependents, dependencies, blockers, subtree). Node count: 32._

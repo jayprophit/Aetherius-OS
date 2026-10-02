@@ -1,0 +1,59 @@
+{
+  "gateId": "G11",
+  "commit": "see fingerprint",
+  "evaluatedAt": "2026-10-02T12:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/evidenceTrace.audit.test.ts",
+      "evidenceKey": "claim-dispositions"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/requirements.json",
+      "evidenceKey": "corrected-citations"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/validate.ts",
+      "evidenceKey": "registry-validation"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-mat-claim-registry",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/programme/evidenceTrace.audit.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-p23-chat-work-depths",
+      "result": "PASS",
+      "evidenceRefs": [
+        "IDE-Workspace:workspace/app/src/workspace/state.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-cert-regeneration",
+      "result": "NOT_TESTED",
+      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable session record"
+    },
+    {
+      "requirementId": "REQ-codex-review",
+      "result": "NOT_TESTED",
+      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable session record"
+    },
+    {
+      "requirementId": "REQ-refmap-followup",
+      "result": "NOT_TESTED",
+      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable survey artifact"
+    },
+    {
+      "requirementId": "REQ-mat-derived-matrices",
+      "result": "NOT_TESTED",
+      "justification": "unsupported COMPLETE claim downgraded to READY; no retrievable session record"
+    }
+  ],
+  "note": "All five previously untraceable COMPLETE claims now have an explicit disposition. One was genuinely traceable once its owner was corrected; four were unsupported and are downgraded. The gate cannot close while four criteria are untested, which is the honest state."
+}

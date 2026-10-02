@@ -102,11 +102,15 @@ describe("audit: real requirement registry evidence traceability", () => {
     // whose test conventions differ (Poietek tests/*.test.js against a
     // compiled .compiled-core artifact, MAT scripts/tests/*.test.mjs, so
     // citations there are owner-repo-relative with different extensions).
-    // 90 after REQ-bridge-action-intake, which cites the intake module and the
-    // two real-service suites that prove it (89 after the IDE task loop).
-    expect(summary.requirementsWithMachineRefs).toBe(90);
+    // 91 after the BUILD70 G11 traceability pass, which made
+    // REQ-p23-chat-work-depths citeable by correcting its owner from
+    // aetherius-os to ide (every sibling P23 interface requirement is owned by
+    // ide, and the proving implementation and suite both live in
+    // IDE-Workspace, so the old owner made the requirement unciteable from
+    // its own root).
+    expect(summary.requirementsWithMachineRefs).toBe(91);
     const withRefs = traces.filter((t) => t.implementationRefs.length > 0 || t.testRefs.length > 0);
-    expect(withRefs).toHaveLength(90);
+    expect(withRefs).toHaveLength(91);
     const single = withRefs.filter((t) => t.testRefs.length === 1);
     // most are single-suite citations
     expect(single.length).toBeGreaterThan(80);
@@ -185,18 +189,24 @@ describe("audit: real requirement registry evidence traceability", () => {
   });
 
   crossRepoIt("currently records how many COMPLETE claims have no resolvable test citation", () => {
-    expect(summary.complete).toBe(95);
-    // 70 at the start of remediation, then 61 / 32 / 30 / 25 / 18 / 17 / 15 /
-    // 5 after the OmniAgent provenance record (batches 1-11 plus the record). Most batches cited more than they newly traced,
-    // because the requirement already named a resolvable test in its prose
-    // (REQ-p29-visual-qa named tests/visual-qa.test.js before it was cited).
-    // Batch 5 dropped one more than it cited, because fixing the auditor's
-    // blindness to Python's test_*.py naming made an already-cited
-    // Agent-Bridge requirement traceable at the same time.
-    // Untraceable stayed at 5 when the Phase B IDE task loop was added: it
-    // cites a machine-checkable suite, so it raised the traced count, not the
-    // untraceable one.
-    expect(summary.untraceableComplete).toBe(5);
+    // 91 after the BUILD70 G11 traceability pass. It was 95. The pass closed
+    // the last five untraceable COMPLETE claims, and it did so in two different
+    // ways because they were two different problems:
+    //
+    // - REQ-p23-chat-work-depths was genuinely implemented and genuinely
+    //   proven; only its owner was wrong (aetherius-os while the code lives in
+    //   IDE-Workspace), which made it unciteable from its own root. Owner
+    //   corrected, real refs added: the claim is now traceable.
+    // - REQ-cert-regeneration, REQ-codex-review, REQ-refmap-followup and
+    //   REQ-mat-derived-matrices cited session records that no core repository
+    //   preserves. A citation to nonexistent output is not evidence, so their
+    //   COMPLETE claim is unsupported and their work_state was downgraded to
+    //   READY pending either a retrievable artifact or a fresh run.
+    //
+    // Downgrading four claims rather than citing them is the honest direction
+    // to err: it understates what is complete instead of overstating it.
+    expect(summary.complete).toBe(91);
+    expect(summary.untraceableComplete).toBe(0);
   });
 
   it("records that a citation may use either declared path convention", () => {

@@ -1,0 +1,56 @@
+{
+  "gateId": "G01",
+  "commit": "see fingerprint",
+  "evaluatedAt": "2026-10-02T12:00:00.000Z",
+  "artifacts": [
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/validate.ts",
+      "evidenceKey": "registry-validation"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/programme.test.ts",
+      "evidenceKey": "registry-validation"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/evidenceTrace.audit.test.ts",
+      "evidenceKey": "requirement-integrity"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "docs/SYSTEM-CAPABILITY-REGISTRY.md",
+      "evidenceKey": "report-synchronization"
+    },
+    {
+      "repository": "Aetherius-OS",
+      "path": "src/programme/capabilityRegistry.test.ts",
+      "evidenceKey": "report-synchronization"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-p16-registry",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/programme/programme.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-mat-claim-registry",
+      "result": "PASS",
+      "evidenceRefs": [
+        "src/programme/evidenceTrace.audit.test.ts"
+      ]
+    },
+    {
+      "requirementId": "REQ-omniagent-reference-index",
+      "result": "PASS",
+      "evidenceRefs": [
+        "docs/SYSTEM-CAPABILITY-REGISTRY.yaml"
+      ]
+    }
+  ],
+  "note": "npm run registry:validate passed (408 checks / 18 files); capability reports regenerated and verified in sync."
+}
