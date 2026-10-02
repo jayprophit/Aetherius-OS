@@ -1561,7 +1561,9 @@
         "Agent Bridge full gates at commit: pytest 1319 passed / 1 skipped / 22 subtests; repo-declared unittest discover 1310 OK / 1 skipped",
         "NOT claimed here: the Genesis-to-BridgeActionRequest adapter and the five end to end scenarios are downstream integration work and remain open; this requirement covers the endpoint only",
         "expanded IDE workflow (0f9b973) drives multi-task sessions through the intake: distinct action ids per invocation are required because replaying an id across different world states correctly returns the recorded result instead of executing (idempotency semantics now explicit and tagged in the harness)",
-        "payload slot-smuggling refused at intake (Bridge e5f44c2): slot keys must agree with the assigned resource or the request is 400; command-family actions record both label and command while the shell profile, policy and sandbox gate execution"
+        "payload slot-smuggling refused at intake (Bridge e5f44c2): slot keys must agree with the assigned resource or the request is 400; command-family actions record both label and command while the shell profile, policy and sandbox gate execution",
+        "cross-task aliasing fixed at the source (Bridge 79a6ccb, follow-up race closed in 17f63e1): task-scoped action ids plus fingerprint-verified idempotency, with per-action locks so racing identical requests serialize into one task; adversarial batch proves cross-session approval isolation, principal-as-attribution, and single execution under a 10-way race",
+        "Agent Bridge full gates at 17f63e1: pytest 1334 passed / 1 skipped / 25 subtests; repo-declared unittest discover 1325 OK / 1 skipped; intake mutations 10/10"
       ],
       "provenance": "found by attempting the Genesis proposal seam and searching for existing contracts before designing",
       "reuse": "EXTEND",
