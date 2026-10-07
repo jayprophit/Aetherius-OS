@@ -16,9 +16,16 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build84")
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build85\kernel_ternary")
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build85\kernel_binary")
+from pathlib import Path
+
+# Resolve sibling directories relative to this script's location
+_PROJECT = Path(__file__).resolve().parent.parent  # .../build86
+_BUILD84 = _PROJECT.parent / "research" / "build84"
+_BUILD85 = _PROJECT.parent / "research" / "build85"
+
+sys.path.insert(0, str(_BUILD84))
+sys.path.insert(0, str(_BUILD85 / "kernel_ternary"))
+sys.path.insert(0, str(_BUILD85 / "kernel_binary"))
 from codec import Harness, codebook_quantise, TRANSFORMS  # noqa: E402
 from kernel_ternary import pack_ternary, ter_linear  # noqa: E402
 

@@ -31,12 +31,16 @@ import numpy as np
 from pathlib import Path
 from collections import Counter
 
-# Add necessary paths
-import sys
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build86\hal")
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build85\kernel_ternary")
+from pathlib import Path
 
-from hal import discover  # noqa: E402
+# Resolve directories relative to this script's location
+_PROJECT = Path(__file__).resolve().parent.parent  # .../build86
+_HAL = _PROJECT / "research" / "build86" / "hal"
+_KERN85 = _PROJECT / "research" / "build85"
+
+import sys
+sys.path.insert(0, str(_HAL))
+sys.path.insert(0, str(_KERN85 / "kernel_ternary"))
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parent.parent  # .../build86

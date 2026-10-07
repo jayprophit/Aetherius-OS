@@ -6,13 +6,16 @@ Uses the same ComputeEnvelope construction as test_bridge.py.
 """
 from __future__ import annotations
 
-import sys
-import numpy as np
+from pathlib import Path
 
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build85\bridge")
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build85\kernel_binary")
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build85\kernel_ternary")
-sys.path.insert(0, r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build85\kernel_quantum")
+# Resolve build85 directories relative to this script's location
+_PROJECT = Path(__file__).resolve().parent.parent  # .../build86
+_BUILD85 = _PROJECT.parent / "research" / "build85"
+
+sys.path.insert(0, str(_BUILD85 / "bridge"))
+sys.path.insert(0, str(_BUILD85 / "kernel_binary"))
+sys.path.insert(0, str(_BUILD85 / "kernel_ternary"))
+sys.path.insert(0, str(_BUILD85 / "kernel_quantum"))
 
 from compute_bridge import Bridge, ComputeEnvelope
 from quantum_kernel import LocalStatevectorBackend, QuantumProgram
