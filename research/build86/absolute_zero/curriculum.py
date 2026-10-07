@@ -423,7 +423,7 @@ def main() -> None:
 
     # Step 5: Deterministic verifier
     verdict = verifier_deterministic(task)
-    print(f"Verifier: PASSED={ververed['passed']} ({verdict['details']})")
+    print(f"Verifier: PASSED={verdict['passed']} ({verdict['details']})")
 
     # Step 6: Record evidence
     record_evidence(task)
