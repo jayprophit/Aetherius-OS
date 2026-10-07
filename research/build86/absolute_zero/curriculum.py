@@ -203,15 +203,16 @@ def solver_attempt(task: dict) -> dict:
 
     if "BINARY" in domain or "numpy" in backend.lower():
         # Binary: actual matrix multiplication with verification
-        np.random.seed(seed)
-        A = np.random.randn(size, size).astype(np.float32)
-        B = np.random.randn(size, size).astype(np.float32)
+        rng = np.random.default_rng(seed)
+        A = rng.random((size, size)).astype(np.float32)
+        B = rng.random((size, size)).astype(np.float32)
 
         # Actual solve: compute A @ B
         result = A @ B
 
         # Verify against reference (recomputed independently)
-        ref = np.random.default_rng(seed + 1).randn(size, size).astype(np.float32)
+        ref_rng = np.random.default_rng(seed + 1)
+        ref = ref_rng.random((size, size)).astype(np.float32)
         ref_result = A @ ref  # Different random reference
 
         # Quality based on actual numerical accuracy
@@ -226,9 +227,8 @@ def solver_attempt(task: dict) -> dict:
         # Ternary: execute existing ternary kernel
         try:
             from kernel_ternary import ter_linear, pack_ternary
-            np.random.seed(seed)
             # Create balanced ternary data: values in {-1, 0, 1}
-            data = np.random.choice([-1, 0, 1], size=(size,)).astype(np.int8)
+            data = np.choice([-1, 0, 1], size=(size,)).astype(np.int8)
             # Execute ternary projection
             projected = ter_linear(data)
             packed = pack_ternary(projected)
@@ -259,23 +259,25 @@ def solver_attempt(task: dict) -> dict:
         n_layers = task.get("n_layers", 20)
 
         # Actual statevector evolution
-        np.random.seed(seed)
+        rng = np.random.default_rng(seed)
         # Initialize random statevector
         dim = 2 ** n_qubits
-        psi = np.random.randn(dim).astype(np.complex128)
+        psi = rng.standard_normal(dim).astype(np.complex128)
         psi = psi / np.linalg.norm(psi)  # normalize
 
         # Apply random unitary layers
         for _ in range(n_layers):
-            # Random unitary
-            U = np.random.randn(dim, dim) + 1j * np.random.randn(dim, dim)
+            # Random unitary via QR
+            U = rng.standard_normal((dim, dim)) + 1j * rng.standard_normal((dim, dim))
             # QR decomposition to make it unitary
             Q, _ = np.linalg.qr(U)
             psi = Q @ psi
             psi = psi / np.linalg.norm(psi)  # renormalize
 
-        # Compute observables
-        exp_val = np.vdot(psi, np.random.randn(dim, dim).astype(np.complex128) @ psi)
+        # Compute observables (use fixed random for reproducibility)
+        obs_rng = np.random.default_rng(seed + 1)
+        obs_mat = obs_rng.standard_normal((dim, dim)).astype(np.complex128)
+        exp_val = np.vdot(psi, obs_mat @ psi)
         # Quality based on statevector norm preservation
         norm = np.linalg.norm(psi)
         quality_norm = 10.0 if abs(norm - 1.0) < 1e-10 else 10.0 * abs(norm - 1.0)
