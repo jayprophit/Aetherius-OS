@@ -1,0 +1,69 @@
+{
+ "profile_id": "qpu-quantinuum-h2-r1",
+ "domain": "QUANTUM",
+ "device_family": "trapped-ion gate-model QPU",
+ "manufacturer_or_project": "Quantinuum",
+ "model": "H2 generation",
+ "architecture": "trapped-ion QCCD",
+ "execution_domain": null,
+ "source": "public Quantinuum H2 materials (NOT re-verified from this host)",
+ "source_date": null,
+ "source_class": "PROJECT_CLAIM",
+ "state": null,
+ "availability": null,
+ "evidence": null,
+ "parameters": {
+  "qubits": 56,
+  "connectivity": "all-to-all",
+  "native_gates": [
+   "arbitrary 1Q",
+   "arbitrary-angle 2Q ZZ"
+  ],
+  "mid_circuit_measurement": true
+ },
+ "topology": {
+  "coupling": "all-to-all (QCCD transport)"
+ },
+ "timing": {
+  "gate_times_us": "device-dependent; see snapshot"
+ },
+ "error_model": {
+  "two_qubit_infidelity": "order 1e-3, system-dependent",
+  "spam": "order 1e-3",
+  "memory_error_per_qubit": "see snapshot"
+ },
+ "memory_model": {
+  "coherence": "long vs gate time; see snapshot"
+ },
+ "precision": {
+  "gates": "arbitrary-angle native"
+ },
+ "instruction_or_gate_set": {
+  "native": [
+   "1Q arbitrary",
+   "ZZ arbitrary angle"
+  ]
+ },
+ "confidence": "low",
+ "limitations": [
+  "specs evolve per system upgrade",
+  "no QPU access from this host"
+ ],
+ "retrieved_at": "2026-10-06T22:20:58.348315+00:00",
+ "hash": null,
+ "architecture_family": null,
+ "signal_line_capacity": null,
+ "nominal_target_qubit_scale": null,
+ "interconnect_model": null,
+ "chiplet_architecture": null,
+ "control_interconnect_assumptions": null,
+ "cooling_requirements": null,
+ "planned_availability": null,
+ "profile_version": "1",
+ "calibration_snapshots": [
+  {
+   "snapshot_id": "none-captured",
+   "note": "no calibration data retrieved"
+  }
+ ]
+}

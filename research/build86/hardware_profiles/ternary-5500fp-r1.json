@@ -1,0 +1,68 @@
+{
+ "profile_id": "ternary-5500fp-r1",
+ "domain": "TERNARY",
+ "device_family": "balanced-ternary CPU",
+ "manufacturer_or_project": "ternary-computing.com project",
+ "model": "5500FP",
+ "architecture": "24-trit word FPGA",
+ "execution_domain": null,
+ "source": "BUILD86 prompt section 9, citing ternary-computing.com (NOT verified from this host)",
+ "source_date": null,
+ "source_class": "PROJECT_CLAIM",
+ "state": null,
+ "availability": null,
+ "evidence": null,
+ "parameters": {
+  "states": [
+   -1,
+   0,
+   1
+  ],
+  "word_trits": 24,
+  "tryte_trits": 6,
+  "short_trits": 12,
+  "registers": 81,
+  "address_bus_trits": 22,
+  "data_bus_trits": 24,
+  "reference_clock_mhz": 20.0,
+  "implementation": "FPGA"
+ },
+ "topology": {
+  "bus": "24-trit data / 22-trit address",
+  "registers": 81
+ },
+ "timing": {
+  "reference_clock_mhz": 20.0,
+  "cycle_ns": 50.0
+ },
+ "error_model": {
+  "deterministic": true
+ },
+ "memory_model": {
+  "addressable_trits": "22-trit address space"
+ },
+ "precision": {
+  "native": "balanced ternary integer"
+ },
+ "instruction_or_gate_set": {
+  "isa": "UNVERIFIED - needs primary source"
+ },
+ "confidence": "low",
+ "limitations": [
+  "values need primary-source verification",
+  "no local hardware",
+  "timing is reference only"
+ ],
+ "retrieved_at": "2026-10-06T22:20:58.348315+00:00",
+ "hash": null,
+ "architecture_family": null,
+ "signal_line_capacity": null,
+ "nominal_target_qubit_scale": null,
+ "interconnect_model": null,
+ "chiplet_architecture": null,
+ "control_interconnect_assumptions": null,
+ "cooling_requirements": null,
+ "planned_availability": null,
+ "profile_version": "1",
+ "calibration_snapshots": []
+}

@@ -1,0 +1,61 @@
+{
+ "profile_id": "accel-dtc-sim-r1",
+ "domain": "ACCELERATOR",
+ "device_family": "time-crystal simulator",
+ "manufacturer_or_project": "Aetherius BUILD85 experiment",
+ "model": "DTC-8spin",
+ "architecture": "driven spin chain (exact)",
+ "execution_domain": null,
+ "source": "Aetherius-OS/research/build85/accelerator/timecrystal_dtc.json (locally measured)",
+ "source_date": null,
+ "source_class": "MEASURED_LOCAL",
+ "state": null,
+ "availability": null,
+ "evidence": null,
+ "parameters": {
+  "spins": 8,
+  "periods": 60,
+  "flip_error_eps": 0.06,
+  "period2_score": 0.9998,
+  "late_amplitude": 0.9735,
+  "control_amplitude": 0.6089
+ },
+ "topology": {
+  "chain": "1-D ring, nearest-neighbour ZZ"
+ },
+ "timing": {
+  "periods_simulated": 60
+ },
+ "error_model": {
+  "exact_evolution": true
+ },
+ "memory_model": {
+  "statevector_2N": 256
+ },
+ "precision": {
+  "amplitudes": "complex128 exact"
+ },
+ "instruction_or_gate_set": {
+  "floquet": [
+   "imperfect X flip",
+   "disordered ZZ evolution"
+  ]
+ },
+ "confidence": "medium",
+ "limitations": [
+  "simulator only; not physical hardware",
+  "N=8 exact evolution"
+ ],
+ "retrieved_at": "2026-10-06T22:20:58.348315+00:00",
+ "hash": null,
+ "architecture_family": null,
+ "signal_line_capacity": null,
+ "nominal_target_qubit_scale": null,
+ "interconnect_model": null,
+ "chiplet_architecture": null,
+ "control_interconnect_assumptions": null,
+ "cooling_requirements": null,
+ "planned_availability": null,
+ "profile_version": "1",
+ "calibration_snapshots": []
+}

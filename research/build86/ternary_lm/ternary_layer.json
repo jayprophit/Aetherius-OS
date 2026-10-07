@@ -1,0 +1,11 @@
+{
+ "experiment_id": "B86-TERNARY-LAYER",
+ "execution_domain": "TERNARY_NATIVE vs TERNARY_RECONSTRUCTED",
+ "layer": "pythia-70m layers.0.attention.dense 512x512",
+ "ternary_recon_max_abs_err_vs_fp32": 0.5571191906929016,
+ "native_vs_recon_max_abs_err": 0.0,
+ "native_vs_recon_rel_err": 0.0,
+ "latency_ms_64tok_fp_recon": 34.043,
+ "latency_ms_64tok_native": 3527.528,
+ "status": "OK"
+}
