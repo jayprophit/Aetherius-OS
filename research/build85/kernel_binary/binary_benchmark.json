@@ -1,0 +1,74 @@
+{
+  "shapes": [
+    {
+      "shape": "mlp_up",
+      "R": 2048,
+      "K": 512,
+      "path_A_dequant_torch": {
+        "mean_s": 0.00011849199421703815,
+        "p50_s": 0.00011739996261894703,
+        "min_s": 0.00011560006532818079,
+        "n": 25
+      },
+      "path_B_bitwise_kernel": {
+        "mean_s": 0.0009853119915351272,
+        "p50_s": 0.0009765999857336283,
+        "min_s": 0.0006249999860301614,
+        "n": 25
+      },
+      "speedup_B_over_A": 0.12,
+      "packed_bytes": 131136,
+      "fp32_equiv_bytes": 4196352,
+      "byte_ratio": 32.0,
+      "max_abs_err_vs_fp_reference": null,
+      "kernel_vs_dequant_max_abs_diff": 0.0
+    },
+    {
+      "shape": "mlp_down",
+      "R": 512,
+      "K": 2048,
+      "path_A_dequant_torch": {
+        "mean_s": 0.00012661200482398273,
+        "p50_s": 0.0001167000737041235,
+        "min_s": 0.00011289992835372686,
+        "n": 25
+      },
+      "path_B_bitwise_kernel": {
+        "mean_s": 0.0009382319962605835,
+        "p50_s": 0.0009354999056085944,
+        "min_s": 0.0009231999283656478,
+        "n": 25
+      },
+      "speedup_B_over_A": 0.135,
+      "packed_bytes": 131328,
+      "fp32_equiv_bytes": 4202496,
+      "byte_ratio": 32.0,
+      "max_abs_err_vs_fp_reference": null,
+      "kernel_vs_dequant_max_abs_diff": 0.0
+    },
+    {
+      "shape": "attn_proj",
+      "R": 512,
+      "K": 512,
+      "path_A_dequant_torch": {
+        "mean_s": 5.263200029730797e-05,
+        "p50_s": 5.13000413775444e-05,
+        "min_s": 5.030003376305103e-05,
+        "n": 25
+      },
+      "path_B_bitwise_kernel": {
+        "mean_s": 0.0003231799928471446,
+        "p50_s": 0.00030990003142505884,
+        "min_s": 0.0002927999012172222,
+        "n": 25
+      },
+      "speedup_B_over_A": 0.163,
+      "packed_bytes": 32832,
+      "fp32_equiv_bytes": 1050624,
+      "byte_ratio": 32.0,
+      "max_abs_err_vs_fp_reference": null,
+      "kernel_vs_dequant_max_abs_diff": 0.0
+    }
+  ],
+  "process_rss_mb": 213.7
+}

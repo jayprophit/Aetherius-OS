@@ -1,0 +1,75 @@
+{
+  "experiment_id": "BUILD83-LASER-PREP",
+  "capability": "LASER_PREPARATION",
+  "artifacts": {
+    "dxf": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\research\\build83\\laser\\laser_plate.dxf",
+    "svg": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\research\\build83\\laser\\laser_plate.svg",
+    "gcode": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\research\\build83\\laser\\laser_plate.grbl"
+  },
+  "geometry": {
+    "outline_mm": 60.0,
+    "bore_diameter_mm": 20.0,
+    "circle_segments": 64,
+    "layers": [
+      "CUT_OUTLINE",
+      "CUT_BORE"
+    ]
+  },
+  "dxf": {
+    "bytes": 5080,
+    "layers": [
+      "CUT_OUTLINE",
+      "CUT_BORE"
+    ],
+    "entity_count": 68
+  },
+  "svg": {
+    "bytes": 2708
+  },
+  "grbl_generation": {
+    "layers": [
+      "CUT_OUTLINE",
+      "CUT_BORE"
+    ],
+    "burn_moves": 68
+  },
+  "validation": {
+    "units_mm": true,
+    "absolute": true,
+    "feed_mode": true,
+    "rapid_moves_G0": 2,
+    "burn_moves_G1": 68,
+    "laser_off_commands": 3,
+    "bounds_mm": {
+      "X": [
+        0.0,
+        60.0
+      ],
+      "Y": [
+        0.0,
+        60.0
+      ]
+    },
+    "expected_bounds_mm": {
+      "X": [
+        0.0,
+        60.0
+      ],
+      "Y": [
+        0.0,
+        60.0
+      ]
+    },
+    "bounds_error_mm": {
+      "X": 0.0,
+      "Y": 0.0
+    },
+    "unique_positions": 133,
+    "return_to_origin": true,
+    "ends_with_M2": true,
+    "power_values_are_placeholders": true
+  },
+  "lasergrbl_status": "INSTALLED v7.14.1 (C:\\Program Files (x86)\\LaserGRBL\\LaserGRBL.exe); GUI application, so validation is static analysis of the G-code it consumes rather than a live controller session",
+  "laser_fired": false,
+  "power_values": "SIMULATION PLACEHOLDERS ONLY - no real material power values invented"
+}

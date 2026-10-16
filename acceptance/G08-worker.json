@@ -1,0 +1,50 @@
+{
+  "gateId": "G08",
+  "evaluatedAt": "2026-10-03T17:54:24.000Z",
+  "artifacts": [
+    {
+      "repository": "Agent-Bridge",
+      "path": "worker_runtime.py",
+      "evidenceKey": "worker-lifecycle"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "worker_main.py",
+      "evidenceKey": "scoped-delegation"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_supervised_workers.py",
+      "evidenceKey": "crash-cleanup"
+    },
+    {
+      "repository": "Agent-Bridge",
+      "path": "tests/test_supervised_workers.py",
+      "evidenceKey": "worker-lifecycle"
+    }
+  ],
+  "criteria": [
+    {
+      "requirementId": "REQ-parallel-temp-workers",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_supervised_workers.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-p20-worker-profiles",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_supervised_workers.py"
+      ]
+    },
+    {
+      "requirementId": "REQ-p20-spine-branch",
+      "result": "PASS",
+      "evidenceRefs": [
+        "Agent-Bridge:tests/test_supervised_workers.py"
+      ]
+    }
+  ],
+  "note": "The missing supervisor-to-worker execution layer now exists and is proven with real processes: SupervisedTask spawns a genuine OS worker, holds it to a durable cross-process lease, observes heartbeats and checkpoints, verifies results by independent world readback, and recovers from real kills and timeouts with reconciliation recorded first. A crashed supervisor's task is re-attachable by a new supervisor through a durable binding. A model-query task kind delegates answering to the Ollama backend with supervisor-declared ground truth and match rules, and unreachable backends fail honestly. 12 lifecycle tests pass repeatedly under pytest and unittest; the full Bridge suite passes with them."
+}

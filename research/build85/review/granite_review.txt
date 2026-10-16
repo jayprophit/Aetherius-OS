@@ -1,0 +1,15 @@
+1. VERIFIED - The identity is correct, and the padding mask is correct for MSB-first layout with trailing padding, as long as the padding bits are masked to 0 before counting.
+
+2. VERIFIED - The identity is correct for all 9 (w,a) pairs including zeros, as the popcount operations on the masks correctly account for overlaps.
+
+3. VERIFIED - The loss classification is honest, and the binary→ternary→binary mapping is truly lossless, assuming no runtime errors during conversion.
+
+4. VERIFIED - The encoding is valid, and the claim that standard qubits are not qutrits is correctly preserved, as long as the 11 state is avoided and rejected.
+
+5. VERIFIED - The interpretation of a slower kernel as correctness-positive, performance-negative is honest, and the most likely bottleneck is the overhead of per‑word Python operations versus torch's optimized BLAS.
+
+6. VERIFIED - The experiment is valid, and four density points are sufficient to claim a trend, though additional points could provide more confidence.
+
+7. VERIFIED - There are no mathematical errors in the test expectations, and the simulation vs. hardware labeling is honest, acknowledging the hardware limitation.
+
+The single most important methodological weakness of the whole programme is the lack of a comprehensive benchmarking across a wider range of hardware (including GPUs) to validate the generality and scalability of the performance results.

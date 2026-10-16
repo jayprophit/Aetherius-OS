@@ -1,0 +1,54 @@
+{
+  "experiment_id": "BUILD83-CNC-SIM",
+  "capability": "CNC_SIMULATION",
+  "simulator": "headless 2.5D heightfield stock-removal sweep authored in this build",
+  "camotics_status": "INSTALLED_AND_LAUNCHES (v1.2.0) but GUI-bound: opens a render window and does not return in a non-interactive session, so it cannot act as an automated simulator without a display",
+  "gcode_file": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\research\\build83\\cnc\\pocket_cnc.nc",
+  "moves_parsed": 42,
+  "result": {
+    "grid": {
+      "cells_x": 500,
+      "cells_y": 400,
+      "cell_mm": 0.2
+    },
+    "stock_mm": [
+      100.0,
+      80.0,
+      20.0
+    ],
+    "stock_top_z_mm": 20.0,
+    "tool_diameter_mm": 6.0,
+    "cut_cells": 54008,
+    "removed_volume_mm3": 12961.92,
+    "analytic_swept_volume_mm3": 14400.0,
+    "volume_error_mm3": -1438.08,
+    "volume_error_pct": -9.987,
+    "max_depth_below_stock_top_mm": 6.0,
+    "expected_pocket_depth_mm": 6.0,
+    "depth_error_pct": 0.0,
+    "cut_bbox_mm": {
+      "X": [
+        20.1,
+        80.10000000000001
+      ],
+      "Y": [
+        20.1,
+        60.1
+      ]
+    },
+    "expected_cut_bbox_mm": {
+      "X": [
+        20.0,
+        80.0
+      ],
+      "Y": [
+        20.0,
+        60.0
+      ]
+    },
+    "rapids_below_current_surface": 0,
+    "collisions_detected": 0,
+    "preview_png": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\research\\build83\\cnc\\cnc_stock_after.png",
+    "physical_machine_actuated": false
+  }
+}

@@ -292,5 +292,5 @@ if __name__ == '__main__':
     # Extract qualities from each policy
     import statistics
     for name in ['always_binary', 'static_lookup', 'task_type_rule', 'fixed_priority', 'adaptive_router']:
-        kvals = [r['quality'] for r in results[name]]
+        kvals = [r.quality for r in results[name]]
         print(f"  {name}: mean={statistics.mean(kvals):.3f}, min={min(kvals):.3f}, max={max(kvals):.3f}")

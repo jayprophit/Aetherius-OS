@@ -1,0 +1,13 @@
+{
+  "raw_points": 2243,
+  "filtered_points": 1739,
+  "median_reprojection_error": 0.18469447742035344,
+  "mean_track_length": 3.89389210878288,
+  "max_track_length": 8,
+  "raw_span": [
+    1.4608248661868315,
+    1.093476950253761,
+    1.2632823999586646
+  ],
+  "ply": "C:\\Users\\jpowe\\AppData\\Local\\Temp\\opencode\\rc83\\ply\\recon_sparse.ply"
+}

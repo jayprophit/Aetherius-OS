@@ -1,0 +1,68 @@
+{
+  "experiment_id": "BUILD81-CAP-CLOUDCOMPARE",
+  "capability": "POINT_CLOUD_PROCESSING",
+  "application": "CloudCompare",
+  "version": "2.13.2 Kharkiv (preview_bin_x64, official 7z archive)",
+  "provenance": {
+    "url": "https://www.danielgm.net/cc/release/CloudCompare_v2.13.2_bin_x64.7z",
+    "expected_md5": "55F90E46BD9565907E50B49A2F5F9490",
+    "observed_md5": "55F90E46BD9565907E50B49A2F5F9490",
+    "checksum_verified": true,
+    "install_scope": "portable_archive_no_elevation",
+    "path": "%USERPROFILE%\\AetheriusTools\\cloudcompare\\CloudCompare_v2.13.2.preview_bin_x64\\CloudCompare.exe"
+  },
+  "arm64_package": {
+    "status": "REJECTED_PERMANENTLY",
+    "reason": "wrong architecture for x64 host"
+  },
+  "runtime_evidence": {
+    "launch_and_version": "PASS - CloudCompare 2.13.2 starts and registers 38 plugins (Core I/O, PDAL/PCL, LAS, E57, PoissonRecon, RANSAC, Delaunay...)",
+    "import_point_cloud": "PASS - cloud_ref.ply (52326 pts) and cloud_scan.ply (42525 pts) loaded",
+    "measure_dimensions": {
+      "status": "PASS",
+      "method": "CloudCompare -MESH_VOLUME on exact 60x40x40 reference bracket",
+      "cloud_compare_reported_volume_mm3": 96000.0,
+      "expected_volume_mm3": 96000.0,
+      "absolute_error_mm3": 0.0,
+      "reopened_bbox_mm": { "X": 60.0225, "Y": 40.0509, "Z": 40.0313 },
+      "note": "bbox measured from the CloudCompare-saved/reopened PLY; reflects ICP registration residual, not raw scan error"
+    },
+    "scale_transform": {
+      "status": "PASS",
+      "method": "CloudCompare -APPLY_TRANS with 4x4 uniform scale matrix",
+      "applied_scale": 2.0,
+      "bbox_before_mm": { "X": 60.0, "Y": 40.0, "Z": 40.0 },
+      "bbox_after_mm": { "X": 120.0, "Y": 80.0, "Z": 80.0 },
+      "exact": true
+    },
+    "point_to_point_comparison_C2C": {
+      "status": "PASS",
+      "command": "-O ref -O scan -ICP -C2C_DIST",
+      "mean_distance_mm": 0.154663,
+      "std_deviation_mm": 0.110719
+    },
+    "cloud_to_mesh_comparison_C2M": {
+      "status": "PASS",
+      "command": "-O scan -O ref_bracket.stl -ICP -C2M_DIST",
+      "mean_distance_mm": 0.0225805,
+      "std_deviation_mm": 0.115679
+    },
+    "save_output": "PASS - -C_EXPORT_FMT PLY then -SAVE_CLOUDS FILE",
+    "reopen_output": "PASS - reopened saved PLY successfully",
+    "export_formats_exercised": ["BIN (default, detected via CCB2- magic)", "PLY", "ASC"]
+  },
+  "cli_incompatibilities_found": {
+    "-GLOBAL_SHIFT": "must not be supplied as a standalone global flag; omitted (coords far below 1e4 threshold)",
+    "-SAVE_CLOUDS": "requires exactly one filename per loaded cloud; use -POP_CLOUDS to reduce the stack",
+    "-STAT_TEST": "is a goodness-of-fit hypothesis test needing distribution+mean+std, NOT a bbox reporter",
+    "-APPLY_TRANS": "takes a matrix FILE path, not an inline matrix string",
+    "-COORD_TO_SF": "requires an explicit X | Y | Z axis argument"
+  },
+  "status": "VERIFIED",
+  "gate_impact": {
+    "POINT_CLOUD_PROCESSING": "VERIFIED",
+    "REALITY_CAPTURE": "unblocked - measurement target now available for COLMAP reconstruction"
+  },
+  "produced_by": "BUILD81",
+  "notes": "No physical scanner actuation. Test fixtures are synthetic with known ground truth."
+}

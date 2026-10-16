@@ -1,0 +1,57 @@
+{
+  "tests": [
+    {
+      "name": "Q1-identity",
+      "pass": true,
+      "detail": "p1=1.0"
+    },
+    {
+      "name": "Q2-superposition",
+      "pass": true,
+      "detail": "f0=0.4910"
+    },
+    {
+      "name": "Q3-entanglement-only-00-11",
+      "pass": true,
+      "detail": "{'00': 1964, '11': 2036}"
+    },
+    {
+      "name": "Q3-entanglement-balance",
+      "pass": true,
+      "detail": "{'00': 1964, '11': 2036}"
+    },
+    {
+      "name": "Q4-reversible-AND",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Q5-parameterised",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "BV-algorithm",
+      "pass": true,
+      "detail": "top=1101 counts={'0101': 90, '1101': 110}"
+    },
+    {
+      "name": "hybrid-binary-quantum-binary",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hybrid-ternary-quantum-ternary",
+      "pass": true,
+      "detail": "reserved 11 rejected"
+    },
+    {
+      "name": "remote-refuses",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "shots": 4000,
+  "seed": 85,
+  "failures": []
+}

@@ -1,0 +1,15 @@
+
+************************************************************
+
+CalculiX Version 2.21, Copyright(C) 1998-2023 Guido Dhondt
+CalculiX comes with ABSOLUTELY NO WARRANTY. This is free
+software, and you are welcome to redistribute it under
+certain conditions, see gpl.htm
+
+************************************************************
+
+You are using an executable made on Sat Jul 29 17:18:34     2023
+ *ERROR in splitline: there should not
+        be more than 16 entries in a 
+        line; 
+1,2,3,4,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72

@@ -1,0 +1,173 @@
+{
+  "experiment_id": "BUILD83-RECON-COLMAP-SPARSE",
+  "reconstruction": "SPARSE (not dense, not certified metrology)",
+  "input_images": 18,
+  "image_resolution": "1000 x 1000",
+  "features_per_image_mean": 1406,
+  "verified_image_pairs": 153,
+  "registered_cameras": 18,
+  "raw_points": 1739,
+  "point_filter": "reprojection error <= 2.0 * median",
+  "median_reprojection_error": 0.18469447742035344,
+  "mean_track_length": 3.89389210878288,
+  "world_bbox_raw_sorted_desc": [
+    1.46082,
+    1.26328,
+    1.09348
+  ],
+  "pca_extents_before_scale": {
+    "p01_99": [
+      1.40596,
+      1.03599,
+      0.87642
+    ],
+    "p02_98": [
+      1.39634,
+      1.01724,
+      0.84437
+    ]
+  },
+  "ground_truth_mm": {
+    "X": 60.0,
+    "Y": 40.0,
+    "Z": 40.0
+  },
+  "scale_procedure": "least-squares fit of recovered sorted extents to sorted ground truth {60,40,40}; COLMAP scale is arbitrary",
+  "scale_estimates": {
+    "p01_99": {
+      "recovered_extent_mm_before_scale": [
+        1.40596,
+        1.03599,
+        0.87642
+      ],
+      "fitted_scale": 42.12916,
+      "recovered_mm_after_scale": [
+        59.2321,
+        43.6454,
+        36.9228
+      ],
+      "target_mm": [
+        60.0,
+        40.0,
+        40.0
+      ],
+      "abs_error_mm": [
+        0.7679,
+        3.6454,
+        3.0772
+      ],
+      "pct_error": [
+        1.28,
+        9.11,
+        7.69
+      ]
+    },
+    "p02_98": {
+      "recovered_extent_mm_before_scale": [
+        1.39634,
+        1.01724,
+        0.84437
+      ],
+      "fitted_scale": 42.79766,
+      "recovered_mm_after_scale": [
+        59.7603,
+        43.5354,
+        36.1372
+      ],
+      "target_mm": [
+        60.0,
+        40.0,
+        40.0
+      ],
+      "abs_error_mm": [
+        0.2397,
+        3.5354,
+        3.8628
+      ],
+      "pct_error": [
+        0.4,
+        8.84,
+        9.66
+      ]
+    },
+    "bbox": {
+      "recovered_extent_mm_before_scale": [
+        1.43092,
+        1.07114,
+        0.99412
+      ],
+      "fitted_scale": 40.27244,
+      "recovered_mm_after_scale": [
+        57.6266,
+        43.1375,
+        40.0356
+      ],
+      "target_mm": [
+        60.0,
+        40.0,
+        40.0
+      ],
+      "abs_error_mm": [
+        2.3734,
+        3.1375,
+        0.0356
+      ],
+      "pct_error": [
+        3.96,
+        7.84,
+        0.09
+      ]
+    },
+    "raw_world_bbox_sorted": {
+      "recovered_extent_mm_before_scale": [
+        1.46082,
+        1.26328,
+        1.09348
+      ],
+      "fitted_scale": 36.93367,
+      "recovered_mm_after_scale": [
+        53.9536,
+        46.6577,
+        40.3861
+      ],
+      "target_mm": [
+        60.0,
+        40.0,
+        40.0
+      ],
+      "abs_error_mm": [
+        6.0464,
+        6.6577,
+        0.3861
+      ],
+      "pct_error": [
+        10.08,
+        16.64,
+        0.97
+      ]
+    }
+  },
+  "authoritative": {
+    "method": "PCA axes, 1st-99th percentile extents",
+    "fitted_scale": 42.12916,
+    "recovered_mm_longest": 59.2321,
+    "recovered_mm_mid": 43.6454,
+    "recovered_mm_short": 36.9228,
+    "abs_error_mm": [
+      0.7679,
+      3.6454,
+      3.0772
+    ],
+    "pct_error": [
+      1.28,
+      9.11,
+      7.69
+    ]
+  },
+  "scaled_cloud": "C:\\Users\\jpowe\\AppData\\Local\\Temp\\opencode\\rc83\\ply\\recon_scaled.ply",
+  "scaled_cloud_span_mm": [
+    60.2834,
+    45.1263,
+    41.8814
+  ]
+}

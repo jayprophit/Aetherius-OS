@@ -1,0 +1,79 @@
+{
+  "experiment_id": "BUILD81-CAP-SLICER-CURA",
+  "capability": "3D_PRINT_SLICING",
+  "slicer": "UltiMaker Cura 5.13.0 / CuraEngine (headless)",
+  "object": "bracket with 16 mm through hole, CadQuery B-rep exported to STL",
+  "expected_bounding_box_mm": {
+    "X": 60.0,
+    "Y": 40.0,
+    "Z": 40.0
+  },
+  "units": "millimetre (G21 expected in header)",
+  "g21_present": true,
+  "gcode_bytes": 1922052,
+  "gcode_start": ";FLAVOR:Marlin",
+  "cura_metadata": {
+    "TIME": "TIME:6666",
+    "Filament used": "Filament used: 0m",
+    "Layer height": "Layer height: 0.2"
+  },
+  "layer_height_mm": 0.2,
+  "distinct_z_layers": 200,
+  "implied_layer_count": 200,
+  "motion_commands": 67507,
+  "rapid_moves_G0": 32234,
+  "extruding_moves": 23420,
+  "toolpath_bounds_mm": {
+    "X": {
+      "min": 102.2,
+      "max": 177.8,
+      "span": 75.6
+    },
+    "Y": {
+      "min": 102.2,
+      "max": 157.8,
+      "span": 55.6
+    },
+    "Z": {
+      "min": 0.2,
+      "max": 40.0,
+      "span": 39.8
+    }
+  },
+  "printed_part_bounds_mm": {
+    "X": {
+      "min": 102.2,
+      "max": 177.8,
+      "span": 75.6
+    },
+    "Y": {
+      "min": 102.2,
+      "max": 157.8,
+      "span": 55.6
+    },
+    "Z": {}
+  },
+  "printed_part_span_mm": {
+    "X": 60.3444,
+    "Y": 40.1046,
+    "Z": 39.8,
+    "method": "1st-99th percentile of extruding moves, which excludes the travel-inclusive first extrusion of each layer"
+  },
+  "build_volume_mm": {
+    "X": 220.0,
+    "Y": 220.0,
+    "Z": 250.0
+  },
+  "coordinates_inside_build_volume": true,
+  "dimensional_error_mm": {
+    "X": 15.6,
+    "Y": 15.6,
+    "Z": 0.2
+  },
+  "notes": [
+    "Z span includes nozzle travel above the part, so the Z error is expected to be positive and is not a dimensional defect.",
+    "X/Y spans are expected to exceed the part slightly because the extrusion line has width."
+  ],
+  "status": "VERIFIED",
+  "physical_printer_operation": "NONE - software slicing only"
+}

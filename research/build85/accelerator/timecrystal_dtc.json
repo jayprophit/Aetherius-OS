@@ -1,0 +1,26 @@
+{
+  "experiment_id": "B85-TC-DTC-8SPIN",
+  "execution_domain": "QUANTUM_SIMULATED",
+  "model": "N=8 driven spin chain, eps=0.06, 60 Floquet periods, exact evolution",
+  "interacting_J1.0": {
+    "late_window": [
+      30,
+      60
+    ],
+    "period2_score": 0.9998,
+    "alternation_fraction": 1.0,
+    "mean_abs_late": 0.9735
+  },
+  "control_J0.0": {
+    "late_window": [
+      30,
+      60
+    ],
+    "period2_score": 0.9849,
+    "alternation_fraction": 0.9655,
+    "mean_abs_late": 0.6089
+  },
+  "verdict": "DTC_SIGNATURE_PRESENT",
+  "status": "OK",
+  "notes": "simulator experiment for the accelerator lane; not physical hardware"
+}

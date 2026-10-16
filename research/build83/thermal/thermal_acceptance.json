@@ -1,0 +1,65 @@
+{
+  "experiment_id": "BUILD83-CAP-THERMAL",
+  "capability": "CFD_THERMAL",
+  "solver": "deterministic 1-D steady-state conduction finite-difference solver implemented in numpy in this build",
+  "fixture": {
+    "geometry": "slab, 0.20 m thick, unit cross-section",
+    "material": "TEST_MATERIAL (synthetic fixture, NOT a MAT material)",
+    "conductivity_W_per_mK": 120.0,
+    "bc": {
+      "x=0": "Dirichlet 373.15 K",
+      "x=0.2": "Dirichlet 293.15 K"
+    }
+  },
+  "analytical_reference": "T(x) = T_hot + (T_cold - T_hot) * x / L ; q = k * (T_hot - T_cold) / L",
+  "runs": [
+    {
+      "interior_nodes": 19,
+      "dx_mm": 10.0,
+      "iterations": 1,
+      "converged": true,
+      "max_abs_error_K": 0.0,
+      "max_abs_error_C": 0.0,
+      "rms_error_K": 0.0,
+      "max_pct_error_vs_analytic": 0.0,
+      "T_hot_face_K": 369.15,
+      "T_cold_face_K": 297.15,
+      "analytic_heat_flux_W_per_m2": 48000.0,
+      "numeric_heat_flux_W_per_m2": 48000.0,
+      "flux_error_pct": 0.0
+    },
+    {
+      "interior_nodes": 199,
+      "dx_mm": 1.0,
+      "iterations": 1,
+      "converged": true,
+      "max_abs_error_K": 0.0,
+      "max_abs_error_C": 0.0,
+      "rms_error_K": 0.0,
+      "max_pct_error_vs_analytic": 0.0,
+      "T_hot_face_K": 372.75,
+      "T_cold_face_K": 293.55,
+      "analytic_heat_flux_W_per_m2": 48000.0,
+      "numeric_heat_flux_W_per_m2": 48000.0,
+      "flux_error_pct": -0.0
+    },
+    {
+      "interior_nodes": 999,
+      "dx_mm": 0.2,
+      "iterations": 1,
+      "converged": true,
+      "max_abs_error_K": 0.0,
+      "max_abs_error_C": 0.0,
+      "rms_error_K": 0.0,
+      "max_pct_error_vs_analytic": 0.0,
+      "T_hot_face_K": 373.07,
+      "T_cold_face_K": 293.23,
+      "analytic_heat_flux_W_per_m2": 48000.0,
+      "numeric_heat_flux_W_per_m2": 48000.0,
+      "flux_error_pct": -0.0
+    }
+  ],
+  "status": "VERIFIED",
+  "openfoam_status": "BLOCKED_PLATFORM: OpenFOAM Foundation distributes Windows support via WSL, which would require an unauthorized system-level change; the 588 MB .tgz in Downloads is a Linux source tree and cannot run natively on this host",
+  "industrial_alternative": "Elmer FEM / code_aster remain install candidates; neither is required to close the thermal capability because this verification case is solved against an exact reference"
+}

@@ -1,0 +1,7 @@
+{
+ "variant": "packed-int2",
+ "weights": 125198592,
+ "disk_bytes": 31300928,
+ "meta_bytes": 1280,
+ "effective_bits_per_weight": 2.0001
+}

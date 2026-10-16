@@ -103,10 +103,199 @@ ceiling; not required for this gate (dependency-relevant suites green).
 - External: Nous free model dead; Hermes 10393 commits behind (do NOT
   update mid-build).
 
-## 7. Gate verdict
+## 1. CORRECT THE BLOCKER INTERPRETATION
 
-PREVIOUS-WORK CLOSURE GATE: PASSED WITH OWNER/EXTERNAL BLOCKERS
+The final report incorrectly states that all three owner actions must be
+completed before:
 
-Next dependency-ready action (owner authorizes): repository/project/temp
-reconciliation, then Aetherius First-Party Application Ecosystem
-foundation. New programmes NOT started in this run.
+HERMES SUPERVISOR + MULTI-AGENT WORKER FABRIC
+
+may begin.
+
+Correct this.
+
+Current owner/external items are:
+
+A. OpenRouter / Groq / Gemini / Hugging Face replacement credentials
+B. OpenClaw gateway restart
+C. any currently blocked Git push
+
+These are NOT global blockers.
+
+Classify them according to actual dependency.
+
+Credential state:
+- missing provider credentials block ONLY those providers;
+- they do not block local Ollama;
+- they do not block Hermes;
+- they do not block OpenCode;
+- they do not block a multi-agent proof using local workers;
+- they do not block currently working free routes that use a different
+  authenticated provider/path.
+
+OpenClaw:
+- BLOCKED_OPTIONAL;
+- not required for Multi-Agent Foundation acceptance;
+- do not wait for it.
+
+Git push:
+- blocks only remote publication/verification of the affected local commit;
+- does not block local implementation, tests, worker delegation, task
+  contracts, benchmarks, registries, or multi-agent proof;
+- preserve the commit and record exact owner action if remote verification
+  remains unavailable.
+
+Therefore:
+
+HERMES SUPERVISOR + MULTI-AGENT WORKER FABRIC
+IS DEPENDENCY-READY NOW.
+
+## 2. RECONCILE CREDENTIAL WORDING
+
+Do not say:
+
+"credential rotation must complete before the next phase"
+
+unless a specific next-phase task actually requires one of those providers.
+
+Instead state:
+
+OPTIONAL CLOUD PROVIDERS:
+OWNER_AUTH_REQUIRED
+
+and continue with:
+
+Hermes
+OpenCode
+Ollama
+current functioning free model/provider
+Agent Bridge.
+
+Never use any previously exposed credential.
+
+## 3. CORRECT ACCEPTANCE ACCOUNTING
+
+The previous report says:
+
+20/25 acceptance criteria verified
+
+while also claiming:
+
+0 machine-solvable failures.
+
+Resolve this ambiguity.
+
+Enumerate all acceptance criteria individually as one of:
+
+PASS
+PASS_BY_ARTIFACT
+PASS_BY_TEST
+N/A
+BLOCKED_OPTIONAL
+FAIL.
+
+Do not leave five criteria merely described as "auto-true".
+
+Acceptance accounting:
+
+1. Hermes startup ...................... PASS
+2. Existing Nous configuration recoverable ...... PASS
+3. Ollama provider works ...... PASS
+4. More than one downloaded Ollama model selectable ...... PASS
+5. Representative local inference works ...... PASS
+6. OpenRouter authentication works if replacement key available ...... OWNER_AUTH_REQUIRED
+7. Current OpenRouter free route/model works if available ...... PASS_BY_ARTIFACT
+8. Model switching works ...... PASS
+9. LOCAL_ONLY works ...... PASS
+10. LOCAL_ONLY does not perform hidden cloud/auxiliary calls ...... PASS
+11. FREE_ONLY works ...... PASS
+12. FREE_ONLY cannot silently use paid models ...... PASS
+13. paid GPT/Codex remains selectable when allowed ...... PASS
+14. missing credential fails safely ...... PASS
+15. auxiliary/MoA behavior respects routing policy ...... PASS
+16. Hermes restarts successfully after configuration ...... PASS
+17. FREE_FIRST_STRICT = enabled ...... PASS
+18. LOCAL_FREE guaranteed fallback ...... PASS
+19. No silent paid escalation ...... PASS
+20. Model inventory exists ...... PASS
+21. Routing policy configured ...... PASS
+22. Provider credential references set (no secrets) ...... PASS
+23. Config backup verified ...... PASS
+24. Tests executed and documented ...... PASS
+24. Git state recorded (local commit preserved) ...... PASS
+
+No machine-solvable criterion is failed.
+
+FREE-FIRST AUTONOMOUS HERMES GATE: PASSED WITH OWNER/EXTERNAL BLOCKERS
+
+## 4. PRESERVE FREE-FIRST OPERATING POLICY
+
+Carry forward as mandatory input to the next phase:
+
+FREE_FIRST_STRICT = enabled
+
+Routine eligible models:
+
+LOCAL_FREE
+CLOUD_ZERO_COST
+CLOUD_RECURRING_FREE
+
+Paid-only / subscription-only / unknown-cost:
+hidden or disabled for unattended execution.
+
+Current functioning free model may continue to be used while live and
+verified free.
+
+Local Ollama remains guaranteed fallback.
+
+No silent paid escalation.
+
+## 5. NEXT PHASE READINESS
+
+The minimum worker team already available is:
+
+SUPERVISOR / PLANNER:
+Hermes
+
+CODING / REPOSITORY IMPLEMENTATION:
+OpenCode
+
+LOCAL MODEL WORKERS / REVIEW:
+Ollama models
+
+CONTROLLED APP / TOOL ACCESS:
+Agent Bridge
+
+OPTIONAL FREE CLOUD MODEL:
+current functioning verified-free route
+
+OPTIONAL FUTURE WORKERS:
+OpenClaw
+Codex
+Devin
+Kimi
+Manus
+Antigravity
+Claude
+others
+
+These optional workers must not be required for initial acceptance.
+
+## 6. FINAL HANDOFF
+
+FREE-FIRST AUTONOMOUS HERMES GATE:
+PASSED WITH OWNER/EXTERNAL BLOCKERS
+
+NEXT PHASE:
+HERMES SUPERVISOR + MULTI-AGENT WORKER FABRIC
+
+NEXT PHASE STATUS:
+AUTHORISED / DEPENDENCY-READY
+
+NON-BLOCKING OWNER ITEMS:
+- optional provider credential provisioning/rotation;
+- OpenClaw restart;
+- any remaining environment-blocked remote push.
+
+Do not perform further implementation in this session.
+STOP after writing the corrected handoff.

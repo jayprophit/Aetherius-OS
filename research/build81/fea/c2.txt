@@ -1,0 +1,11 @@
+
+************************************************************
+
+CalculiX Version 2.22, Copyright(C) 1998-2024 Guido Dhondt
+CalculiX comes with ABSOLUTELY NO WARRANTY. This is free
+software, and you are welcome to redistribute it under
+certain conditions, see gpl.htm
+
+************************************************************
+
+You are using an executable made on Sun Aug  4 19:39:24     2024

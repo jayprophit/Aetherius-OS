@@ -1,0 +1,105 @@
+# Aetherius fork / upstream inventory (BUILD85-R4).
+# Rule: FORK WHAT WORKS. Every entry records provenance; nothing here is
+# rebranded as first-party. Statuses: ACCEPT / ACCEPT_WITH_PATCHES / EVALUATE /
+# REJECT / SUPERSEDED / REFERENCE_ONLY.
+forks:
+  - id: FORK-bitnet
+    name: Microsoft BitNet / bitnet.cpp
+    upstream: https://github.com/microsoft/BitNet
+    license: MIT
+    upstream_commit: not-pinned-evaluate-at-fork-time
+    purpose: TERNARY_AI_RUNTIME backend (1.58-bit ternary LLM inference kernels)
+    domain: TERNARY
+    candidate_status: EVALUATE
+    security_review: not-yet-performed
+    integration_type: ADAPTER
+    aetherius_owner: CAP-research-compute-fabric
+    tests: upstream-has-tests
+    decision: EVALUATE
+    decision_note: not vendored this build; our bitwise kernels stay the research reference until a BitNet adapter is measured against them
+  - id: FORK-llamacpp
+    name: llama.cpp
+    upstream: https://github.com/ggerganov/llama.cpp
+    license: MIT
+    upstream_commit: not-pinned-evaluate-at-fork-time
+    purpose: binary/quantized CPU-first model runtime backend
+    domain: BINARY
+    candidate_status: EVALUATE
+    security_review: not-yet-performed
+    integration_type: ADAPTER
+    aetherius_owner: CAP-research-compute-fabric
+    tests: upstream-has-tests
+    decision: EVALUATE
+    decision_note: candidate only; no fork taken this build
+  - id: FORK-onnxruntime
+    name: ONNX Runtime
+    upstream: https://github.com/microsoft/onnxruntime
+    license: MIT
+    upstream_commit: not-pinned-evaluate-at-fork-time
+    purpose: conventional model-runtime backend alternative
+    domain: BINARY
+    candidate_status: EVALUATE
+    security_review: not-yet-performed
+    integration_type: ADAPTER
+    aetherius_owner: CAP-research-compute-fabric
+    tests: upstream-has-tests
+    decision: EVALUATE
+    decision_note: candidate only
+  - id: FORK-qiskit
+    name: Qiskit
+    upstream: https://github.com/Qiskit/qiskit
+    license: Apache-2.0
+    upstream_commit: not-pinned-evaluate-at-fork-time
+    purpose: quantum SDK / simulator backend candidate
+    domain: QUANTUM
+    candidate_status: REJECT
+    security_review: not-applicable
+    integration_type: REFERENCE_ONLY
+    aetherius_owner: CAP-execution-kernel-quantum
+    tests: upstream-has-tests
+    decision: REJECT
+    decision_note: rejected for this build as oversized relative to need; our dependency-free statevector kernel already passes Q1-Q5+BV. Revisit only if a Qiskit-only backend (aer noise model, provider plugin) becomes required.
+  - id: FORK-cirq
+    name: Cirq
+    upstream: https://github.com/quantumlib/Cirq
+    license: Apache-2.0
+    upstream_commit: not-pinned-evaluate-at-fork-time
+    purpose: quantum SDK alternative
+    domain: QUANTUM
+    candidate_status: SUPERSEDED
+    security_review: not-applicable
+    integration_type: REFERENCE_ONLY
+    aetherius_owner: CAP-execution-kernel-quantum
+    tests: upstream-has-tests
+    decision: SUPERSEDED
+    decision_note: superseded by the same reasoning as Qiskit for this build
+  - id: FORK-qemu
+    name: QEMU
+    upstream: https://github.com/qemu/qemu
+    license: GPL-2.0-only
+    upstream_commit: not-pinned-evaluate-at-fork-time
+    purpose: VM-guest execution path for hosted/VM Aetherius modes
+    domain: BINARY
+    candidate_status: EVALUATE
+    security_review: not-yet-performed
+    integration_type: VM_BACKEND
+    aetherius_owner: CAP-virtual-compute
+    tests: upstream-has-tests
+    decision: EVALUATE
+    decision_note: licence boundary noted (GPL-2.0-only): use as separate VM backend process, never statically merged into core
+  - id: FORK-sel4
+    name: seL4
+    upstream: https://github.com/seL4/seL4
+    license: BSD-2-Clause
+    upstream_commit: not-pinned-evaluate-at-fork-time
+    purpose: microkernel foundation research reference
+    domain: BINARY
+    candidate_status: REFERENCE_ONLY
+    security_review: not-applicable
+    integration_type: REFERENCE_ONLY
+    aetherius_owner: CAP-virtual-compute
+    tests: upstream-has-tests
+    decision: REFERENCE_ONLY
+    decision_note: no foundation decision taken this build; existing Aetherius kernel work not replaced
+licence_boundary_note: GPL-2.0-only components (QEMU) stay behind a process/VM boundary and are never merged into Aetherius core binaries.
+telemetry_default: zero-telemetry expected of all integrations; no fork in this file has been granted a telemetry exception.

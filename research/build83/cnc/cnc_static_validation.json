@@ -1,0 +1,117 @@
+{
+  "experiment_id": "BUILD83-CNC-CAMOTICS",
+  "capability": "CNC_CAM + CNC_SIMULATION",
+  "gcode_file": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\research\\build83\\cnc\\pocket_cnc.nc",
+  "toolpath_generator": "deterministic raster-pocket CAM routine authored in this build; FreeCAD Path headless scripting was NOT used",
+  "defects_caught_and_fixed": [
+    "first attempt pocketed below the stock bottom (Z origin treated as part top)",
+    "first attempt reached only -4 mm of a -6 mm pocket (off-by-one pass count)",
+    "zig-zag row direction logic was incorrect"
+  ],
+  "generated": {
+    "stock_mm": [
+      100.0,
+      80.0,
+      20.0
+    ],
+    "stock_z_range": [
+      0.0,
+      20.0
+    ],
+    "pocket_profile_mm": [
+      60.0,
+      40.0
+    ],
+    "pocket_depth_mm": 6.0,
+    "pocket_floor_z_mm": 14.0,
+    "tool": {
+      "type": "flat_end_mill",
+      "diameter_mm": 6.0,
+      "radius_mm": 3.0,
+      "flutes": 3
+    },
+    "stepdown_mm": 2.0,
+    "passes": 3,
+    "path_step_mm": 3.6,
+    "rows_per_pass": 11,
+    "feed_cut_mm_per_min": 400.0,
+    "feed_plunge_mm_per_min": 150.0,
+    "safe_z_mm": 25.0,
+    "spindle_rpm": 12000,
+    "tool_centre_path_x": [
+      23.0,
+      77.0
+    ],
+    "tool_centre_path_y": [
+      23.0,
+      57.0
+    ]
+  },
+  "static_validation": {
+    "absolute_positioning": true,
+    "units": "G21 millimetre present",
+    "rapid_moves_G0": 6,
+    "cutting_moves_G1": 36,
+    "plunge_moves": 3,
+    "rapid_out_of_bounds_lines": [],
+    "cut_out_of_bounds_lines": [],
+    "all_moves_inside_stock": true,
+    "bounds_mm": {
+      "X": [
+        0.0,
+        77.0
+      ],
+      "Y": [
+        0.0,
+        57.0
+      ],
+      "Z": [
+        14.0,
+        25.0
+      ]
+    },
+    "stock_bounds_mm": {
+      "X": [
+        0.0,
+        100.0
+      ],
+      "Y": [
+        0.0,
+        80.0
+      ],
+      "Z": [
+        0.0,
+        20.0
+      ]
+    },
+    "min_z_mm": 14.0,
+    "cut_bounds_mm": {
+      "X": [
+        23.0,
+        77.0
+      ],
+      "Y": [
+        23.0,
+        57.0
+      ],
+      "Z": [
+        14.0,
+        18.0
+      ]
+    },
+    "max_z_mm": 25.0,
+    "expected_floor_z_mm": 14.0,
+    "depth_matches_pocket": true,
+    "safe_z_respected": true,
+    "safe_z_mm": 25.0,
+    "feed_values_seen_mm_per_min": [
+      150.0,
+      400.0
+    ],
+    "cut_feed_ok": true,
+    "plunge_feed_ok": true,
+    "tool_diameter_mm": 6.0,
+    "toolpath_width_minus_tool_mm": 0.0,
+    "toolpath_height_minus_tool_mm": 0.0
+  }
+}

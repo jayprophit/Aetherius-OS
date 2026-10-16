@@ -1,0 +1,9 @@
+{
+  "generated_at": 1791352415.5101945,
+  "weak_capability": "weak-accelerator-capability",
+  "profile_used": "qpu-ibm-heron-r1",
+  "task_id": "AZ-QUANTUM-1791352415",
+  "quality": 10.0,
+  "verified": true,
+  "difficulty_adjustment": "decrease"
+}

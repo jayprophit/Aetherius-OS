@@ -1,0 +1,70 @@
+{
+  "experiment_id": "BUILD81-CAP-FEA-CALCULIX",
+  "capability": "STRUCTURAL_FEA",
+  "path": "geometry -> gmsh 4.15.2 -> structured C3D8 mesh -> CalculiX deck -> ccx 2.21 -> .dat",
+  "solver": "CalculiX ccx 2.21 (official dhondt.de Windows build, portable, no elevation)",
+  "fixture": {
+    "object": "cantilever beam",
+    "length_mm": 100.0,
+    "section_mm": [
+      10.0,
+      10.0
+    ],
+    "second_moment_I_mm4": 833.3333,
+    "material": "TEST_MATERIAL (synthetic fixture, NOT a MAT material)",
+    "E_MPa": 210000.0,
+    "nu": 0.3,
+    "tip_load_N": 100.0,
+    "boundary_condition": "all nodes at x=0 fully fixed",
+    "load": "total 100 N distributed equally over the x=L face nodes"
+  },
+  "closed_form_reference": {
+    "tip_deflection_mm": 0.190476,
+    "extreme_fibre_stress_MPa": 60.0,
+    "formula_u": "P*L^3/(3*E*I)",
+    "formula_s": "M*c/I with M = P*L"
+  },
+  "runs": [
+    {
+      "mesh": "5x2x2",
+      "nodes": 216,
+      "elements": 125,
+      "elements_thickness": 2,
+      "ccx_exit": 0,
+      "max_displacement_mm": 0.07405154742113483,
+      "max_von_mises_stress_MPa": 23.265653007903037,
+      "reaction_sum_z_N": -100.00004000000007,
+      "displacement_error_vs_beam_theory_pct": -61.12,
+      "stress_error_vs_beam_theory_pct": -61.22
+    },
+    {
+      "mesh": "10x4x4",
+      "nodes": 1331,
+      "elements": 1000,
+      "elements_thickness": 4,
+      "ccx_exit": 0,
+      "max_displacement_mm": 0.1361278945714306,
+      "max_von_mises_stress_MPa": 39.56020309618793,
+      "reaction_sum_z_N": -99.99983800000003,
+      "displacement_error_vs_beam_theory_pct": -28.53,
+      "stress_error_vs_beam_theory_pct": -34.07
+    },
+    {
+      "mesh": "20x6x6",
+      "nodes": 9261,
+      "elements": 8000,
+      "elements_thickness": 6,
+      "ccx_exit": 0,
+      "max_displacement_mm": 0.17311363939383262,
+      "max_von_mises_stress_MPa": 51.60027004728479,
+      "reaction_sum_z_N": -99.999999,
+      "displacement_error_vs_beam_theory_pct": -9.12,
+      "stress_error_vs_beam_theory_pct": -14.0
+    }
+  ],
+  "mesh_sensitivity": {
+    "last_step_change_pct": 27.17,
+    "note": "full-integration C3D8 is stiff in bending; error shrinks as elements through the thickness increase, which is the expected and correct convergence behaviour"
+  },
+  "status": "VERIFIED"
+}

@@ -1,0 +1,19 @@
+You are an independent technical reviewer. You did NOT produce the work below. Your job is to find errors, not to confirm success. Be blunt. For each claim, state VERIFIED (math checks out), SUSPECT (needs a check I name), or WRONG (with the correction).
+
+CONTEXT: A research team tested low-bit compression of a 70M-parameter language model (EleutherAI pythia-70m, FP32 perplexity 88.60 on a fixed 1024-token local corpus) and built bitwise execution kernels. All work is on CPU (Intel i7-870, 4 cores, no AVX, numpy+torch).
+
+CLAIM 1 - Binary kernel math: weights/activations mapped bit 1->+1, bit 0->-1, packed MSB-first into uint64 words. Dot product computed as 2*popcount(XNOR(w,a)) - K, with low `pad` bits of the final word masked to 0 before counting (padding bits are 0 in both words so XNOR sets them to 1). Popcount via uint16 lookup table. Scales applied outside as scalar multiply. Question: is the identity correct, and is the padding mask correct for MSB-first layout with trailing padding?
+
+CLAIM 2 - Ternary kernel math: values in {-1,0,+1} stored as two bit-masks (pos: bit=1 means +1; neg: bit=1 means -1; overlap rejected by runtime check). Dot = pop(pos_w&pos_a)+pop(neg_w&neg_a)-pop(pos_w&neg_a)-pop(neg_w&pos_a). Question: is this identity correct for all 9 (w,a) pairs including zeros?
+
+CLAIM 3 - Ternary-to-binary bridge rule: ternary 0 maps to binary +1 (bit 1), recorded as QUANTISATION_LOSS with the count of remapped zeros. Binary->ternary maps bit 1->+1, bit 0->-1, lossless. Question: is the loss classification honest, and is binary->ternary->binary truly lossless?
+
+CLAIM 4 - Ternary-to-quantum bridge: ternary -1/0/+1 encoded as 2-qubit states 00/01/10, with 11 reserved and rejected at decode. Question: is this a valid encoding, and is the claim "standard qubits are not qutrits" correctly preserved?
+
+CLAIM 5 - Benchmark: packed-binary XNOR/popcount kernel measured 6-8x SLOWER than torch FP32 matmul on identical shapes (speedup 0.12-0.16x), while using 32x fewer bytes. The team reported this as a negative performance result. Question: is reporting a slower kernel as "correctness-positive, performance-negative" the honest interpretation, and what is the most likely bottleneck (hint: numpy per-word Python overhead vs torch's optimized BLAS)?
+
+CLAIM 6 - Pattern+residual experiment: per-row INT8 base (ppl 87.55) plus sparse int8 residual at 0/2/5/15% density gave ppl 87.55/88.65/88.03/87.22 with bits/param 8.06/8.86/10.06/14.06. The team claims residuals recover quality monotonically-ish at a storage cost. Question: is this a valid discriminating experiment, and is 4 density points enough to claim a trend?
+
+CLAIM 7 - Quantum: a hand-rolled numpy statevector simulator ran Q1 (X|0>=|1>), Q2 (H 50/50 within 3% at 4000 shots), Q3 (Bell, only 00/11), Q4 (Toffoli AND truth table), Q5 (Rx at 5 angles vs analytic), Bernstein-Vazirani s=101, binary/ternary round trips, and the remote-QPU backend raises NOT_AVAILABLE. All labelled QUANTUM_SIMULATED. Question: any mathematical error in the test expectations, and is the simulation-vs-hardware labeling honest?
+
+Respond as a numbered list matching CLAIM 1-7, each with a verdict (VERIFIED/SUSPECT/WRONG) and at most 3 sentences of reasoning. Then one sentence: the single most important methodological weakness of the whole programme.

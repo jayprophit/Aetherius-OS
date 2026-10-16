@@ -1,0 +1,3 @@
+Loading weights:   0%|          | 0/76 [00:00<?, ?it/s]Loading weights: 100%|##########| 76/76 [00:00<00:00, 5584.27it/s]
+C:\Users\jpowe\Desktop\Projects\Aetherius-OS\research\build84\codec.py:233: RuntimeWarning: overflow encountered in exp
+  return float(np.exp(loss)), loss, dt
