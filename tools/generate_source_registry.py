@@ -66,6 +66,33 @@ SCOPE: list[tuple[str, Path, tuple[str, ...]]] = [
     ("downloads", HOME / "Downloads", ()),
 ]
 
+# Material recovered from the owner's own ChatGPT account. It is not on
+# disk under Documents, so the registry records it explicitly rather than
+# discovering it by walking a folder.
+RECOVERED: list[tuple[str, str, str]] = [
+    (
+        "research/chatgpt-genesis-project/MASTER-HANDOFF-Poietek-Audio-Ecosystem.md",
+        "handoff",
+        "The eighty-eight section master handoff for the Poietek and Aetherius "
+        "audio, DAW, instrument, effect and plugin ecosystem. Recovered verbatim "
+        "from the ChatGPT conversation 'Continue inheritance handoff'. It is the "
+        "owner's directive, not evidence of implementation.",
+    ),
+    (
+        "research/chatgpt-genesis-project.json",
+        "conversation_corpus",
+        "Seventy-five conversations from the owner's ChatGPT project named "
+        "Genesis: 5,952 owner messages over 14,487 turns. The opening and the "
+        "later asks of each conversation, which is the direction signal.",
+    ),
+    (
+        "research/codex-history/owner-directives.txt",
+        "conversation_corpus",
+        "Two hundred and thirty-seven distinct directive sentences recovered from "
+        "the Codex corpus, with the thread each came from.",
+    ),
+]
+
 # Directory names that never contain a source document.
 EXCLUDED_DIRS = {
     "node_modules", ".git", ".venv", "venv", "__pycache__", ".pytest_cache",
@@ -260,6 +287,21 @@ def main() -> int:
     for kind in sorted(by_kind):
         lines.append(f"  kind_{kind}: {by_kind[kind]}")
     lines.append("")
+    lines.append("# Material recovered from the owner's own accounts. It is not on")
+    lines.append("# disk under Documents, so it is recorded explicitly rather than")
+    lines.append("# discovered by walking a folder.")
+    lines.append("recovered:")
+    for path, kind, purpose in RECOVERED:
+        full = REPO / path
+        digest = "sha256:" + sha256_of(full) if full.exists() else "sha256:absent"
+        size = full.stat().st_size if full.exists() else 0
+        lines.append(f"  - path: {yaml_escape(path)}")
+        lines.append(f"    scope: recovered")
+        lines.append(f"    kind: {kind}")
+        lines.append(f"    purpose: {yaml_escape(purpose)}")
+        lines.append(f"    bytes: {size}")
+        lines.append(f"    digest: {digest}")
+
     lines.append("sources:")
     for e in entries:
         lines.append(f"  - path: {yaml_escape(e['path'])}")

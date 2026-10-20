@@ -43,6 +43,28 @@ totals:
   kind_process: 1
   kind_prompt_or_brief: 196
 
+# Material recovered from the owner's own accounts. It is not on
+# disk under Documents, so it is recorded explicitly rather than
+# discovered by walking a folder.
+recovered:
+  - path: "research/chatgpt-genesis-project/MASTER-HANDOFF-Poietek-Audio-Ecosystem.md"
+    scope: recovered
+    kind: handoff
+    purpose: "The eighty-eight section master handoff for the Poietek and Aetherius audio, DAW, instrument, effect and plugin ecosystem. Recovered verbatim from the ChatGPT conversation 'Continue inheritance handoff'. It is the owner's directive, not evidence of implementation."
+    bytes: 49093
+    digest: sha256:192527ad472847052f8f9a8a61346e2c4feae38f5bda7ef6d1d0805e1d44da1d
+  - path: "research/chatgpt-genesis-project.json"
+    scope: recovered
+    kind: conversation_corpus
+    purpose: "Seventy-five conversations from the owner's ChatGPT project named Genesis: 5,952 owner messages over 14,487 turns. The opening and the later asks of each conversation, which is the direction signal."
+    bytes: 58898
+    digest: sha256:66f31c8c85bbc1b366e344f952122e27291d75e7704c3adce3dbed82bb513dbf
+  - path: "research/codex-history/owner-directives.txt"
+    scope: recovered
+    kind: conversation_corpus
+    purpose: "Two hundred and thirty-seven distinct directive sentences recovered from the Codex corpus, with the thread each came from."
+    bytes: 29147
+    digest: sha256:a82af2152da2c3b05256b6b96e3e487df2a30a85634e2307cdb1b11efb34666e
 sources:
   - path: "Documents/master prompt/AETHERIUS ECOSYSTEM — MASTER CHATGPT HANDOFF2.txt"
     scope: documents-master-prompt

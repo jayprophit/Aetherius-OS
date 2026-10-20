@@ -206,29 +206,34 @@ todos:
   - id: TODO-AOS-003
     title: Make the HTTP bridge transport test deterministic
     project: aetherius-os
-    status: OPEN
+    status: DONE
     priority: 1
     source:
       kind: build-audit
       ref: "npm test, 2026-10-20"
     detail: >-
-      Two tests are timing-sensitive under CPU contention on this
-      four-core host. The bridge transport test times out at the default
-      5000ms limit, and the shared schema envelope test failed once in a
-      full-suite run. Both pass in isolation and in three consecutive
-      unopposed full-suite runs, so the faults are load sensitivity rather
-      than behaviour faults, but a suite that fails intermittently cannot
-      be used as a gate.
+      Three tests were timing-sensitive under CPU contention on this
+      four-core host: the bridge transport test, the shared schema envelope
+      test and the capability registry audit. Each passed when its own file
+      was run alone. The cause was the suite running one worker per test
+      file, which put a hundred workers on four cores.
     evidence: >-
-      src/workflows/bridgeAction.test.ts:339 "maps success, deny, approval
-      and malformed responses" -> Test timed out in 5000ms.
-      src/state/sharedSchemas.test.ts "carries every domain inside a P17
-      envelope without replacing storage" -> failed once in a full-suite
-      run. Three consecutive unopposed full-suite runs each reported 1771
-      of 1771 passing on 2026-10-20.
+      src/workflows/bridgeAction.test.ts:339 -> Test timed out in 5000ms.
+      src/state/sharedSchemas.test.ts -> failed in a full-suite run.
+      src/programme/capabilityRegistry.test.ts "has no structural integrity
+      errors" -> failed in a full-suite run. The suite reported "100
+      workers spawned" on a four-core machine.
+    resolution: >-
+      Resolved 2026-10-20. The Vitest pool is limited to eight forks and
+      the timeouts are raised only enough to cover the slowest real
+      operation, the registry audit that walks the whole programme. Two
+      consecutive full-suite runs after the change each reported 1800 of
+      1800 passing in 36 and 39 seconds. Raising a timeout would have
+      hidden the problem; stopping the machine being oversubscribed fixes
+      it.
     acceptance:
-      - "The test passes repeatedly without an elevated timeout"
-      - "The fix distinguishes a real hang from a slow cold start"
+      - "The suite passes repeatedly under full parallelism"
+      - "The cause is fixed at the root rather than by raising timeouts"
 
   # =========================================================================
   # PRIORITY 2 - the functional gaps carried forward from earlier documents
@@ -2959,3 +2964,170 @@ todos:
     acceptance:
       - "The rules are visible where a change is proposed, not only in a document"
       - "A change that would violate one is refused rather than made and explained"
+
+  - id: TODO-POI-010
+    title: Build the DAW product capability registry
+    project: poietek
+    status: OPEN
+    priority: 2
+    source:
+      kind: conversation-history
+      ref: "MASTER-HANDOFF-Poietek-Audio-Ecosystem.md section 2"
+    detail: >-
+      The master's first research output. Research the current versions and
+      families of the major DAWs and music-production environments, from the
+      seed list and beyond it, and record for each: vendor, product, version,
+      family, platform, price model, target user, the full capability set
+      from recording through scripting and API, the distinguishing features,
+      the Poietek equivalent, the source, and when it was last checked.
+    evidence: >-
+      "Create: DAW_PRODUCT_CAPABILITY_REGISTRY. Research the CURRENT
+      versions/families of major DAWs and related music-production
+      environments. ... Do not stop at this seed list. Discover other
+      important current products."
+    acceptance:
+      - "Every product in the seed list is recorded, and the list was extended past the seed"
+      - "Each record carries its Poietek equivalent and its last-checked date"
+
+  - id: TODO-POI-011
+    title: Build the audio and MIDI engine registries
+    project: poietek
+    status: OPEN
+    priority: 2
+    source:
+      kind: conversation-history
+      ref: "MASTER-HANDOFF-Poietek-Audio-Ecosystem.md sections 5, 8, 9"
+    detail: >-
+      Three registries. The audio engine registry, covering the real-time
+      graph, lock-free processing, latency compensation, offline rendering,
+      recording and crash recovery. The audio backend registry, covering
+      WASAPI, ASIO, PipeWire, JACK, ALSA, Core Audio, AAudio and the Web
+      Audio API. The MIDI engine registry, covering MIDI 1.0, MIDI 2.0 and
+      UMP, with the libraries behind each. Universal-Bridge owns hardware
+      interoperability; Poietek consumes its interfaces rather than
+      duplicating them.
+    evidence: >-
+      "Create: AUDIO_BACKEND_REGISTRY" and "Carry forward the existing
+      Universal-Bridge MIDI requirements ... Do NOT duplicate Universal-Bridge.
+      Universal-Bridge owns broad hardware/software interoperability. Poietek
+      consumes the interfaces."
+    acceptance:
+      - "Each registry has the field set the master names for it"
+      - "Every entry records its licence and its implementation"
+
+  - id: TODO-POI-012
+    title: Build the plugin format and plugin host registries
+    project: poietek
+    status: OPEN
+    priority: 2
+    source:
+      kind: conversation-history
+      ref: "MASTER-HANDOFF-Poietek-Audio-Ecosystem.md sections 10, 11, 12, 13"
+    detail: >-
+      The plugin format registry covering CLAP, VST3, Audio Units, AUv3, LV2,
+      LADSPA, DSSI, AAX and the legacy VST2, with the full field set the
+      master names. The plugin host registry, covering scanning, format
+      identification, validation, quarantine, crash isolation, sandboxing,
+      bridging and per-plugin process separation. CLAP is to receive serious
+      evaluation as the open modern host and plugin interface. AAX is an
+      interoperability target, not something to reproduce, and it is an owner
+      gate if a developer agreement is needed.
+    evidence: >-
+      "CLAP should receive serious evaluation as an open modern host/plugin
+      interface." and "Treat AAX primarily as interoperability. Do not
+      reproduce proprietary Avid technology." and "A faulty third-party
+      plugin should ideally not destroy the entire project session."
+    acceptance:
+      - "Each format is recorded with its SDK licence, its host requirements and its risk"
+      - "CLAP has a written evaluation against the alternatives"
+
+  - id: TODO-POI-013
+    title: Apply the licence audit to every audio candidate before adoption
+    project: poietek
+    status: OPEN
+    priority: 1
+    source:
+      kind: conversation-history
+      ref: "MASTER-HANDOFF-Poietek-Audio-Ecosystem.md sections 6, 7, 74, 75"
+    detail: >-
+      The licence audit is mandatory before anything is adopted. LMMS is
+      GPL-2.0, Tracktion Engine is GPL or commercial and depends on
+      separately licensed JUCE, JUCE is AGPLv3 or commercial, Carla is
+      GPL-2.0-or-later, and CLAP provides an open host and plugin ABI.
+      Nothing GPL or AGPL may be pasted into a repository intended for
+      incompatible licensing. Where such code is useful but cannot be
+      integrated, the classification is REFERENCE_ONLY,
+      ARCHITECTURAL_REFERENCE, ALGORITHM_RESEARCH, CLEAN_ROOM_REFERENCE,
+      SEPARATE_PROCESS, or REJECTED_LICENSE.
+    evidence: >-
+      "DO NOT assume either can become the proprietary first-party Poietek
+      foundation without licensing implications." and "No LICENCE CONTAMINATION
+      - Do not paste GPL/AGPL source into a repository intended for
+      incompatible licensing."
+    acceptance:
+      - "Every candidate carries a licence classification and a recorded reason"
+      - "No GPL or AGPL source exists in a first-party repository"
+
+  - id: TODO-POI-014
+    title: Produce the forty named research outputs
+    project: poietek
+    status: OPEN
+    priority: 2
+    source:
+      kind: conversation-history
+      ref: "MASTER-HANDOFF-Poietek-Audio-Ecosystem.md section 81"
+    detail: >-
+      The master names forty required research outputs, from
+      01_DAW_PRODUCT_REGISTRY through 40_FOLLOW_ON_TODOS, covering the
+      capability matrix, the workflow taxonomy, the engine registries, the
+      plugin registries, the effect and synthesis taxonomies, the format and
+      interchange registries, the hardware map, the dataset, benchmark and
+      licence registers, the fork and dependency shortlists, the first-party
+      repository plans, the architecture and integration maps, the rights
+      and provenance registers, the requirement registry and the
+      implementation priority. The master also states the pipeline the
+      research must follow on a resource-constrained machine: discover,
+      metadata, licence, size, duplicate, value, shortlist, selective fetch,
+      selective build.
+    evidence: >-
+      "Create under: OPENCODE_DATA_ROOT\Poietek-Audio-Research\ At minimum:
+      01_DAW_PRODUCT_REGISTRY ... 40_FOLLOW_ON_TODOS" and "Pipeline:
+      DISCOVER -> METADATA -> LICENCE -> SIZE -> DUPLICATE -> VALUE -> SHORTLIST
+      -> SELECTIVE FETCH -> SELECTIVE BUILD. Use bounded concurrency."
+    acceptance:
+      - "Each of the forty outputs exists, or its absence is recorded with a reason"
+      - "The selective-fetch pipeline is followed rather than cloning everything"
+
+  - id: TODO-POI-015
+    title: Apply the repository rule to the first-party audio repositories
+    project: poietek
+    status: OPEN
+    priority: 3
+    source:
+      kind: conversation-history
+      ref: "MASTER-HANDOFF-Poietek-Audio-Ecosystem.md sections 1, 15, 70, 71, 72"
+    detail: >-
+      Every substantial independently maintainable first-party component
+      normally receives its own repository, with a meaningful independent
+      lifecycle, and the default visibility for a new first-party repository
+      is PRIVATE unless the owner explicitly approves a public release.
+      Neither one giant Poietek monorepo nor a repository per preset is
+      correct. The master names candidates: poietek-core, poietek-audio-engine,
+      poietek-midi-engine, poietek-mixer, poietek-routing, poietek-timeline,
+      poietek-piano-roll, poietek-clip-launcher, poietek-sampler,
+      poietek-drum-machine, poietek-synth-core, poietek-plugin-host,
+      poietek-plugin-sdk, poietek-plugin-lab, poietek-score,
+      poietek-mastering, poietek-podcast, poietek-live, plus one
+      repository per substantial effect and instrument. They are candidates
+      for a boundary review, not repositories to be created empty.
+    evidence: >-
+      "Every substantial independently maintainable first-party ... should
+      normally receive its OWN repository. Do NOT create one giant Poietek
+      monorepo containing every product." and "Default for new first-party
+      repositories: VISIBILITY = PRIVATE unless Jonathan explicitly approves
+      public release. Public release remains an OWNER GATE." and "Do not
+      create all empty repos before architectural review. Create/register them
+      as CANDIDATES first."
+    acceptance:
+      - "Each candidate has a recorded boundary review before any repository is created"
+      - "No new public repository is created without the owner's explicit approval"

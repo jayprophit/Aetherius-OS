@@ -1,0 +1,143 @@
+{
+ "qvm": [],
+ "veyra": [
+  {
+   "id": "680f4cc3-2e7c-8006-9951-7e456d04e152",
+   "t": "BitNet Quantization Overview"
+  },
+  {
+   "id": "6a057007-a7a0-83eb-9afb-4626ce88d92d",
+   "t": "Veyra Repository Analysis"
+  }
+ ],
+ "quantum_ai": [
+  {
+   "id": "67999ea8-7e40-8006-a83c-04541a9a502f",
+   "t": "Building Quantum AI System"
+  },
+  {
+   "id": "67a0889f-63d8-8006-bff0-3d55c6a3c5ec",
+   "t": "Quantum AI Systems Integration"
+  }
+ ],
+ "aetherial": [],
+ "nanos": [
+  {
+   "id": "67a0889f-63d8-8006-bff0-3d55c6a3c5ec",
+   "t": "Quantum AI Systems Integration"
+  }
+ ],
+ "gaia": [],
+ "genesis_v1": [],
+ "genesis_v2": [],
+ "genesis_v3": [],
+ "genesis_v4": [],
+ "mvp_desktop": [
+  {
+   "id": "697fb3ce-e360-8395-a5ae-10244404149c",
+   "t": "Windows 11 MVP Overview"
+  },
+  {
+   "id": "697fb41e-43e0-838d-9425-7b148dd84ca8",
+   "t": "macOS as MVP"
+  },
+  {
+   "id": "697fb465-68b8-8394-bfd7-2a34941f4d50",
+   "t": "Linux MVP Overview"
+  }
+ ],
+ "bare_metal": [
+  {
+   "id": "697fb4b3-21dc-838b-bf58-8d3b8fd4e853",
+   "t": "Bare Metal Kernel MVP"
+  }
+ ],
+ "touch_first": [
+  {
+   "id": "6945988f-5198-8332-a59d-af2e0583b155",
+   "t": "Build touch-first OS"
+  }
+ ],
+ "bitnet": [
+  {
+   "id": "680f4cc3-2e7c-8006-9951-7e456d04e152",
+   "t": "BitNet Quantization Overview"
+  }
+ ],
+ "smart_mesh": [
+  {
+   "id": "67dd647a-2f64-8006-8121-a518e315943a",
+   "t": "Nested Smart Mesh Network"
+  }
+ ],
+ "jey": [
+  {
+   "id": "6ab37f3b-3648-83eb-b399-17196b7ea665",
+   "t": "Analyse Jev Routing Architecture"
+  }
+ ],
+ "genesis": [
+  {
+   "id": "6a96e1c0-7004-83ed-95ab-f2bef50e8b81",
+   "t": "Genesis"
+  },
+  {
+   "id": "69ec948b-47a8-83eb-ad10-1f7db773d9be",
+   "t": "Financial AI System Build"
+  },
+  {
+   "id": "6aa987eb-66e8-83eb-a6dc-77e614f6de14",
+   "t": "Continue inheritance handoff"
+  },
+  {
+   "id": "6aa84f2b-c9c0-83ed-9d45-81a782f1e941",
+   "t": "Repo Recommendations "
+  },
+  {
+   "id": "6aa1a651-d428-83ed-9f2a-c8b5543cf537",
+   "t": "Genesis implementation"
+  },
+  {
+   "id": "6a9ef29d-8c78-83eb-a2e4-7a333ca8bb4e",
+   "t": "Generate Folder Structure"
+  },
+  {
+   "id": "6a9dd930-daa4-83eb-a4f1-64a15133dd3e",
+   "t": "Aircrete Genesis Habitat Analysis"
+  },
+  {
+   "id": "67999ea8-7e40-8006-a83c-04541a9a502f",
+   "t": "Building Quantum AI System"
+  },
+  {
+   "id": "6a99bb28-5210-83ed-9f69-6fcc8b9f4cf9",
+   "t": "Genesis Data Access"
+  }
+ ],
+ "aetherius": [
+  {
+   "id": "6aa987eb-66e8-83eb-a6dc-77e614f6de14",
+   "t": "Continue inheritance handoff"
+  },
+  {
+   "id": "69429510-4bc0-8327-9b2d-dd86dd1551b0",
+   "t": "Aetherius OS integration steps"
+  },
+  {
+   "id": "69428bd5-7f44-832e-a78c-375b32bc5a69",
+   "t": "Aetherius OS integration plan"
+  },
+  {
+   "id": "69428b50-7a20-8328-9f36-56862941cc60",
+   "t": "Aetherius OS Integration Guide"
+  },
+  {
+   "id": "693a1f2b-3c80-8331-9113-4543d1d4df08",
+   "t": "Aetherius os - build 0.1"
+  },
+  {
+   "id": "693dae19-5234-832d-8368-8cec0f67f1a4",
+   "t": "Aetherius os - build inherited 0.2"
+  }
+ ]
+}

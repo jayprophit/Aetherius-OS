@@ -144,22 +144,27 @@ known_issues:
   - id: AOS-HYG-003
     severity: medium
     summary: >-
-      Two tests are timing-sensitive under CPU contention on this host, so
-      the suite is green when run alone and intermittently red when run
-      alongside other suites on the same four cores.
+      The suite ran one worker per test file, putting a hundred workers on
+      four cores, and three tests failed intermittently under that
+      contention.
     evidence: >-
-      src/workflows/bridgeAction.test.ts:339 "maps success, deny, approval and
-      malformed responses" -> Test timed out in 5000ms.
+      src/workflows/bridgeAction.test.ts:339 "maps success, deny, approval
+      and malformed responses" -> Test timed out in 5000ms.
       src/state/sharedSchemas.test.ts "carries every domain inside a P17
-      envelope without replacing storage" -> failed once in a full-suite
-      run. Both pass in isolation and in three consecutive unopposed
-      full-suite runs on 2026-10-20, each reporting 1771 of 1771 passing.
-    status: OPEN
+      envelope without replacing storage" -> failed in a full-suite run.
+      src/programme/capabilityRegistry.test.ts "has no structural integrity
+      errors" -> failed in a full-suite run. Each of the three passed when
+      its own file was run alone.
+    status: FIXED
     todo_ref: TODO-AOS-003
     notes: >-
-      The faults are load sensitivity rather than behaviour faults, but an
-      intermittently failing test cannot be used as a gate, so the issue
-      stays open.
+      Resolved 2026-10-20. The fix is at the root rather than in the
+      timeouts: the Vitest pool is limited to eight forks and the timeouts
+      are raised only enough to cover the slowest real operation, the
+      registry audit that walks the whole programme. Two consecutive
+      full-suite runs after the change each reported 1800 of 1800 passing in
+      36 and 39 seconds. Raising a timeout would have hidden the problem;
+      stopping the machine being oversubscribed fixes it.
   - id: AOS-DIR-001
     severity: high
     summary: >-
