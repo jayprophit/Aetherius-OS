@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { loadBuildRegistry, projectRootOf } from "../src/programme/buildManifest";
 import { describe, expect, it } from "vitest";
 
 /**
@@ -19,7 +20,23 @@ import { describe, expect, it } from "vitest";
  * the reference-index doc is only trustworthy while it holds.
  */
 
-const GENESIS = join("..", "Genesis");
+/**
+ * Where Genesis and the IDE live.
+ *
+ * Both are resolved from the build manifest registry rather than written
+ * out here. Genesis is the kernel of Aetherius OS and the IDE is one of
+ * its apps, so neither is a sibling directory any more, and a path in
+ * code would go stale silently.
+ */
+const PROJECTS_ROOT = resolve(join(__dirname, "..", ".."));
+const BUILD_REGISTRY = loadBuildRegistry(
+  readFileSync(join(PROJECTS_ROOT, "Aetherius-OS", "docs", "BUILD-MANIFEST-REGISTRY.yaml"), "utf8"),
+);
+function projectRoot(id: string, fallback: string): string {
+  return projectRootOf(BUILD_REGISTRY, PROJECTS_ROOT, id) ?? fallback;
+}
+const GENESIS = projectRoot("genesis", join("..", "Genesis"));
+const IDE_ROOT = projectRoot("ide-workspace", join("..", "IDE-Workspace"));
 const VENDOR_DIR = join("references", "omniagent-runtime-&-workspace");
 const INDEX = "docs/omniagent-reference-index.md";
 
@@ -33,7 +50,7 @@ const INDEX = "docs/omniagent-reference-index.md";
  * are repository-local and always run.
  */
 const GENESIS_PRESENT = existsSync(GENESIS);
-const IDE_PRESENT = existsSync(join("..", "IDE-Workspace", "workspace", "app", "src"));
+const IDE_PRESENT = existsSync(join(IDE_ROOT, "workspace", "app", "src"));
 const needsGenesis = GENESIS_PRESENT ? it : it.skip;
 const needsIde = IDE_PRESENT ? it : it.skip;
 
@@ -103,7 +120,7 @@ describe("omniagent reference: the material really is unlicensed and third-party
 });
 
 describe("omniagent reference: refused capabilities were not adopted", () => {
-  const ideSrc = join("..", "IDE-Workspace", "workspace", "app", "src");
+  const ideSrc = join(IDE_ROOT, "workspace", "app", "src");
 
   needsIde("tracked IDE code contains no Gemini server key usage", () => {
     const hits: string[] = [];

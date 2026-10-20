@@ -1,4 +1,5 @@
 import { parse as parseYaml } from "yaml";
+import { join } from "node:path";
 
 /**
  * Build Manifest Registry: how every project in the workspace is built,
@@ -531,6 +532,68 @@ export function validateBuildRegistry(
 /** Look up one registry entry. */
 export function entryFor(registry: BuildRegistry, id: string): BuildRegistryEntry | null {
   return registry.projects.find((p) => p.id === id) ?? null;
+}
+
+/**
+ * The directory a project occupies, resolved from the registry.
+ *
+ * The workspace is structured so that every project sits inside the
+ * project that owns it: Genesis is at Aetherius-OS/kernel/Genesis, the
+ * IDE is at Aetherius-OS/apps/IDE-Workspace, and the bridge is inside
+ * Poietek. A path written out in code goes stale the moment the
+ * workspace is reorganised, and it goes stale silently: the code keeps
+ * compiling and simply stops finding the tree.
+ *
+ * So the location of every project is read from the registry, which is
+ * the authority on where each project lives, and the registry's manifest
+ * path gives the directory directly.
+ */
+export function projectRootOf(
+  registry: BuildRegistry,
+  projectsRoot: string,
+  id: string,
+): string | null {
+  const entry = entryFor(registry, id);
+  if (!entry) return null;
+  const manifest = entry.manifest.replace(/^"|"$/g, "");
+  const dir = manifest.split("/").slice(0, -1).join("/");
+  if (!dir) return null;
+  return join(projectsRoot, dir);
+}
+
+/**
+ * Every label a project might be called by, mapped to where it is.
+ *
+ * The registries name their cross-repositories by folder name: "Genesis",
+ * "IDE-Workspace", "Poietek". Those folders are not all at the top level
+ * any more, and a validator that resolves them by name alone stops
+ * finding the tree.
+ *
+ * So each project is indexed under every name it is plausibly known by:
+ * its registry id, its display name, and its own folder name. The
+ * projects root's own name is only indexed for a project that sits
+ * directly in it, so that a nested project cannot claim the name of the
+ * root and shadow it.
+ */
+export function projectRootLabels(
+  registry: BuildRegistry,
+  projectsRoot: string,
+): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const p of registry.projects) {
+    const root = projectRootOf(registry, projectsRoot, p.id);
+    if (!root) continue;
+    const manifest = p.manifest.replace(/^"|"$/g, "");
+    const segments = manifest.split("/");
+    const labels = new Set<string>([p.id, p.name]);
+    if (segments.length >= 2) labels.add(segments[segments.length - 2]);
+    // Only a project directly in the projects root owns that root's name.
+    if (segments.length === 2) labels.add(segments[0]);
+    for (const label of labels) {
+      if (label) out.set(label, root);
+    }
+  }
+  return out;
 }
 
 /** Projects that depend on the given project, directly. */

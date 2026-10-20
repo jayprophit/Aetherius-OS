@@ -30,27 +30,22 @@ import { describe, expect, it } from "vitest";
  */
 
 const PROJECTS_ROOT = resolve(join(".."));
+/**
+ * The designated holding place.
+ *
+ * Temp is where files, data and folders wait when they need to be saved
+ * outside the project that owns them, until it is decided what they are
+ * and what happens next. It is not a junk drawer and it is not a project:
+ * it is the space between the two, and the guard below keeps it
+ * available rather than clearing it out.
+ */
 const TEMP_DIR = "Temp";
 
 /** The projects that legitimately live in the Projects folder. */
 const KNOWN_PROJECTS = [
   "Aetherius-OS",
   "Agent-Bridge",
-  "Agent-Bridge-cloudhybrid",
-  "Agent-Bridge-dashboard",
-  "Agent-Bridge-runtimesafety",
-  "Architecture of Shadows Book",
-  "Athena",
-  "Decentralized Messaging App",
-  "Food Wiki App",
-  "Genesis",
-  "Hermes-Config-Audit",
-  "IDE-Workspace",
-  "IDE-Workspace-dashboard",
-  "LedgerLands",
   "Materials-Atlas-Table-Codex---MAT",
-  "Poietek",
-  "Universal-Bridge",
 ] as const;
 
 /**

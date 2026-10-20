@@ -24,6 +24,7 @@ import {
   type Registry,
 } from "./capabilityRegistry";
 import { generateReport, scopeRegistry } from "./capabilityReport";
+import { loadBuildRegistry, projectRootLabels } from "./buildManifest";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "..", "..");
@@ -264,12 +265,35 @@ function loadRealRegistry() {
   return loadRegistry(yamlText, requirements);
 }
 
+/**
+ * Where each cross-repository actually is.
+ *
+ * The registry names its cross-repositories by folder name, and the
+ * workspace was reorganised so that Genesis is the kernel of Aetherius
+ * OS, the IDE is one of its apps and Poietek is another. A resolver
+ * that looked for a folder by name at the projects root would stop
+ * finding them, and would report every one of their paths as broken.
+ *
+ * The locations come from the build manifest registry, which is the
+ * authority on where each project lives.
+ */
 function realPathResolver() {
   const projectsRoot = resolve(repoRoot, "..");
+  const roots = projectRootLabels(
+    loadBuildRegistry(
+      readFileSync(join(docsDir, "BUILD-MANIFEST-REGISTRY.yaml"), "utf-8"),
+    ),
+    projectsRoot,
+  );
+  const rootOf = (repo: string): string | null =>
+    roots.get(repo) ??
+    (existsSync(join(projectsRoot, repo)) ? join(projectsRoot, repo) : null);
   return {
-    pathExists: (repo: string, p: string) =>
-      existsSync(join(projectsRoot, repo, ...p.split("/"))),
-    availableRoots: (repo: string) => existsSync(join(projectsRoot, repo)),
+    pathExists: (repo: string, p: string) => {
+      const root = rootOf(repo);
+      return root ? existsSync(join(root, ...p.split("/"))) : false;
+    },
+    availableRoots: (repo: string) => rootOf(repo) !== null,
   };
 }
 

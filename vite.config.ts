@@ -12,6 +12,41 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [react()],
       test: {
+        // This suite is Aetherius-OS's own suite, and it runs Aetherius-OS's
+        // own tests.
+        //
+        // The workspace was reorganised so that every project the owner holds
+        // sits inside the project that owns it. That put the IDE, LedgerLands,
+        // aetherial-platform, Niche_platform, Veyra and aetherium under this
+        // directory, and each of them carries its own test suite with its own
+        // configuration: a different environment, different module aliases,
+        // different workspace packages. Vitest's default include pattern
+        // matches them all, so this suite was picking up two hundred and
+        // fifty tests it has neither the configuration nor the business to
+        // run, and they failed for reasons that had nothing to do with
+        // Aetherius OS.
+        //
+        // Each absorbed project runs its own tests with its own runner, from
+        // its own directory. This suite runs the tests of this project, and
+        // the workspace registry gate checks that each absorbed project is
+        // registered and has a manifest that says how it is built and tested.
+        include: [
+          'src/**/*.{test,spec}.?(c|m)[jt]s?(x)',
+          'docs/**/*.{test,spec}.?(c|m)[jt]s?(x)',
+        ],
+        exclude: [
+          '**/node_modules/**',
+          '**/dist/**',
+          '**/build/**',
+          // The absorbed projects, each of which has its own suite.
+          'apps/**',
+          'ecosystem/**',
+          'predecessors/**',
+          'absorbed/**',
+          'books/**',
+          'tools/**',
+          'kernel/**',
+        ],
         // Cleans up the real temp directories this suite creates. Without it a
         // long-lived machine accumulates hundreds of them.
         globalSetup: ['./test.globalSetup.ts'],

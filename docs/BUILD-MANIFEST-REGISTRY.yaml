@@ -35,20 +35,22 @@ projects:
       capability, invention and evidence registries, and the workspace
       hygiene guard for the Projects folder.
     status: VERIFIED
-    depends_on: [genesis, agent-bridge, ide-workspace, mat, poietek, universal-bridge]
+    depends_on: [genesis, agent-bridge, mat]
     notes: >-
       Hosts the build manifest registry and the project todo list. Its own
       test suite is the gate for every registry in the ecosystem.
 
   - id: genesis
     name: Genesis
-    manifest: Genesis/build.yaml
+    manifest: Aetherius-OS/kernel/Genesis/build.yaml
     role: >-
-      The digital-organism runtime. C++20 static library with a family of
-      CTest-registered test and benchmark executables.
+      The AI agent: a living, systemic organism, and the kernel of
+      Aetherius OS. It is also an agent you can download and use on
+      its own, and it is part of the IDE.
     status: VERIFIED
-    depends_on: []
-
+    depends_on: [mat]
+    notes: >-
+      Genesis is the kernel of Aetherius OS and it is also a downloadable AI agent in its own right, and it is part of the IDE. It keeps its own repository and its own remote, because a project you can download on its own cannot be a subdirectory of another project's repository: the subdirectory would have no history of its own. It lives at Aetherius-OS/kernel/Genesis so that the ownership is visible on disk, and Aetherius OS's gitignore excludes it so that the kernel does not track it.
   - id: agent-bridge
     name: Agent-Bridge
     manifest: Agent-Bridge/build.yaml
@@ -56,53 +58,67 @@ projects:
       The local-first bridge runtime. Connects small AI models, tools and
       devices, and is where delegation, policy and the MCP adapter live.
     status: PARTIAL
-    depends_on: [genesis]
+    depends_on: [genesis, mat]
 
   - id: ide-workspace
     name: IDE-Workspace
-    manifest: IDE-Workspace/build.yaml
+    manifest: Aetherius-OS/apps/IDE-Workspace/build.yaml
     role: >-
-      The IDE supervisor surface and its Python bridge host. The primary
-      front end for Genesis and Agent Bridge.
+      The IDE: an app of Aetherius OS that may also be used by other
+      operating systems.
     status: VERIFIED
-    depends_on: [genesis, agent-bridge]
-
+    depends_on: [genesis, agent-bridge, mat]
+    notes: >-
+      The IDE is an app of Aetherius OS, and it is also meant to run on other operating systems. It therefore does not depend on Aetherius OS: it depends on Genesis, Agent-Bridge and MAT, which it can reach wherever they are installed. It keeps its own repository and its own remote so that it can be used without Aetherius OS at all.
   - id: mat
     name: Materials Atlas Table Codex
     manifest: Materials-Atlas-Table-Codex---MAT/build.yaml
     role: >-
-      The knowledge and publication toolchain. Supplies the scientific
-      record set, the validated book build and the studio.
-    status: VERIFIED
-    depends_on: [genesis]
-
+      The owner's own periodic table: a structured scientific knowledge system
+      for describing matter, materials, states and transformations beyond the
+      limits of a conventional periodic table. It is the substrate the rest of
+      the programme processes data with. It is not finished.
+    status: PARTIAL
+    depends_on: []
+    notes: >-
+      MAT is the owner's own periodic table and it is a substrate rather than
+      a consumer. Genesis, Aetherius OS, Agent-Bridge and the other agents
+      and subagents use it to process data, so every one of them depends on
+      it and it depends on none of them.
+      
+      It is not finished. It is still being worked on by the Codex desktop
+      app on a scheduled five-hour window, and the work is pending. The
+      status below is therefore PARTIAL even though the build validates,
+      because the build passing is not the same as the atlas being
+      complete. Nothing downstream should read MAT as a finished
+      reference.
   - id: poietek
     name: Poietek
-    manifest: Poietek/build.yaml
+    manifest: Aetherius-OS/apps/Poietek/build.yaml
     role: >-
       The creative production surface. Tauri desktop and web build over a
       native audio core.
     status: VERIFIED
-    depends_on: [universal-bridge]
+    depends_on: []
 
   - id: universal-bridge
     name: Universal-Bridge
-    manifest: Universal-Bridge/build.yaml
+    manifest: Aetherius-OS/apps/Poietek/absorbed/Universal-Bridge/build.yaml
     role: >-
       The hardware and session bridge. Connects DAW sessions to local
       devices through a capability-aware preflight path.
     status: VERIFIED
-    depends_on: []
+    depends_on: [poietek]
 
   - id: ledgerlands
     name: LedgerLands
-    manifest: LedgerLands/build.yaml
+    manifest: Aetherius-OS/apps/LedgerLands/build.yaml
     role: >-
       The property-trading strategy and GameFi application. An
       npm-workspaces monorepo with a Fastify server-authoritative API, a
       React gameplay UI, a deterministic game engine and a Prisma schema.
     status: VERIFIED
-    depends_on: [aetherius-os, agent-bridge]
+    depends_on: [aetherius-os]
     notes: >-
       Three related trees are present under the folder. The build manifest
       records which one is authoritative as an open task, not as a fact.
@@ -110,55 +126,45 @@ projects:
   # -- sibling variants ----------------------------------------------------
   - id: agent-bridge-cloudhybrid
     name: Agent-Bridge (cloud-hybrid runtime)
-    manifest: Agent-Bridge-cloudhybrid/build.yaml
+    manifest: Agent-Bridge/variants/cloudhybrid/build.yaml
     role: >-
       The local/cloud/hybrid runtime branch of Agent Bridge, plus its
       readiness audit.
     status: PARTIAL
     depends_on: [agent-bridge, genesis]
     notes: >-
-      Same v0.8.1 core as Agent-Bridge on a divergent branch. There is no
-      recorded merge strategy between the four Agent-Bridge trees.
-
+      A branch worktree of the same repository, on unit/cloud-hybrid-runtime. It
+      is a variant of one project, not a project of its own, and it lives inside
+      the Agent-Bridge folder.
   - id: agent-bridge-dashboard
     name: Agent-Bridge (supervisor UI / worker telemetry)
-    manifest: Agent-Bridge-dashboard/build.yaml
+    manifest: Agent-Bridge/variants/dashboard/build.yaml
     role: >-
       The supervisor UI and external worker telemetry branch of Agent
       Bridge.
     status: PARTIAL
     depends_on: [agent-bridge, ide-workspace]
     notes: >-
-      Carries the M2 visual QA scorecard. The UI is assessed at UI-F1
-      against a target of UI-F4.
-
+      A branch worktree of the same repository, on
+      unit/external-worker-telemetry. It is a variant of one project, not a
+      project of its own, and it lives inside the Agent-Bridge folder.
   - id: agent-bridge-runtimesafety
     name: Agent-Bridge (runtime safety)
-    manifest: Agent-Bridge-runtimesafety/build.yaml
+    manifest: Agent-Bridge/variants/runtimesafety/build.yaml
     role: >-
       The runtime safety fixes branch of Agent Bridge, plus the cloud/hybrid
       audit resolution.
     status: PARTIAL
     depends_on: [agent-bridge, genesis]
 
-  - id: ide-workspace-dashboard
-    name: IDE-Workspace (supervisor dashboard)
-    manifest: IDE-Workspace-dashboard/build.yaml
-    role: >-
-      The supervisor dashboard branch of IDE-Workspace, carrying the m3 read
-      model.
-    status: PARTIAL
-    depends_on: [ide-workspace, genesis, agent-bridge]
-
-  # -- configuration and research ------------------------------------------
   - id: hermes-config-audit
     name: Hermes-Config-Audit
-    manifest: Hermes-Config-Audit/build.yaml
+    manifest: Aetherius-OS/tools/Hermes-Config-Audit/build.yaml
     role: >-
       The audit record of the Hermes model, provider and tool
       configuration. Documentation, not code.
     status: VERIFIED
-    depends_on: [agent-bridge]
+    depends_on: [aetherius-os]
     notes: >-
       Holds credential NAMES only. No secret values were read, copied or
       logged anywhere in this tree.
@@ -166,39 +172,298 @@ projects:
   # -- reserved but empty --------------------------------------------------
   - id: athena
     name: Athena
-    manifest: Athena/build.yaml
+    manifest: Aetherius-OS/apps/Athena/build.yaml
     role: >-
       A reserved project folder. Empty, with no recorded scope.
     status: NOT_STARTED
-    depends_on: []
+    depends_on: [aetherius-os]
 
   - id: architecture-of-shadows-book
     name: Architecture of Shadows Book
-    manifest: "Architecture of Shadows Book/build.yaml"
+    manifest: "Aetherius-OS/books/Architecture of Shadows Book/build.yaml"
     role: >-
       A reserved book project folder. Empty, with no recorded scope.
     status: NOT_STARTED
-    depends_on: []
+    depends_on: [aetherius-os]
     notes: >-
       The MAT publication toolchain already provides the build, validation
       and studio surface a book project needs.
 
   - id: decentralized-messaging-app
     name: Decentralized Messaging App
-    manifest: "Decentralized Messaging App/build.yaml"
+    manifest: Aetherius-OS/apps/Decentralized Messaging App/build.yaml
     role: >-
       A reserved messaging project folder. Empty, with no recorded scope.
     status: NOT_STARTED
-    depends_on: []
+    depends_on: [aetherius-os]
     notes: >-
       The Agent-Bridge communication core provider already exists. A
       messaging application should build on it rather than recreate it.
 
   - id: food-wiki-app
     name: Food Wiki App
-    manifest: "Food Wiki App/build.yaml"
+    manifest: Aetherius-OS/apps/Food Wiki App/build.yaml
     role: >-
       A reserved Food Wiki / FaturaWiki project folder. Contains one empty
       design directory and nothing else.
     status: NOT_STARTED
+    depends_on: [aetherius-os]
+  - id: crossplatform
+    name: crossplatform
+    manifest: Aetherius-OS/ecosystem/crossplatform---multiplatform/build.yaml
+    role: >-
+      The cross-network, cross-platform, cross-device system, absorbed into
+      Aetherius OS as part of its ecosystem.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      Promoted from Temp/Repository-Reconciliation on 2026-10-20 and then
+      absorbed into Aetherius OS. It keeps its own repository and its own
+      remote; Aetherius-OS's gitignore excludes it.
+  - id: aetherial-platform
+    name: aetherial-platform
+    manifest: Aetherius-OS/ecosystem/aetherial-platform/build.yaml
+    role: >-
+      The unified platform carrying commerce, e-learning, social media and
+      finance, absorbed into Aetherius OS as part of its ecosystem.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      Promoted from Temp/Repository-Reconciliation on 2026-10-20 and then
+      absorbed into Aetherius OS. It keeps its own repository and its own
+      remote.
+  - id: niche-platform
+    name: niche-platform
+    manifest: Aetherius-OS/ecosystem/Niche_platform/build.yaml
+    role: >-
+      A platform in its own right, absorbed into Aetherius OS as part of its
+      ecosystem.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      Promoted from Temp/Repository-Reconciliation on 2026-10-20 and then
+      absorbed into Aetherius OS. It is the only absorbed project that arrived
+      with a test suite.
+  - id: web-platform
+    name: web-platform
+    manifest: Aetherius-OS/ecosystem/Web-platform/build.yaml
+    role: >-
+      The web platform carrying e-commerce, e-learning, social media, job
+      hunting, posts, articles and blockchain, absorbed into Aetherius OS.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      Promoted from Temp/Repository-Reconciliation on 2026-10-20 and then
+      absorbed into Aetherius OS.
+  - id: football-card-game
+    name: football-card-game
+    manifest: Aetherius-OS/apps/football-card-game/build.yaml
+    role: >-
+      A football card game in the style of chess, with an AI coaching dashboard,
+      absorbed into Aetherius OS as an app.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      Promoted from Temp/Repository-Reconciliation on 2026-10-20 and then
+      absorbed into Aetherius OS.
+  - id: self-building-ai
+    name: self-building-ai
+    manifest: Aetherius-OS/absorbed/self-building-ai/build.yaml
+    role: >-
+      An absorbed predecessor of Aetherius OS.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      Its self-building intent is realised by the Genesis organism, which is the
+      working implementation of the same idea.
+  - id: aetherial
+    name: aetherial
+    manifest: Aetherius-OS/predecessors/aetherial/build.yaml
+    role: >-
+      An absorbed predecessor of Aetherius OS: the multi-facet platform the
+      owner described as a Manus-style build.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      It is absorbed by the working Aetherius OS project. Its GitHub repository
+      is archived rather than deleted, because deleting a repository cannot be
+      undone; the deletion waits until the absorption is verified.
+  - id: quantum-os
+    name: quantum-os
+    manifest: Aetherius-OS/predecessors/Quantum-OS/build.yaml
+    role: >-
+      An absorbed predecessor of Aetherius OS.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      It holds icons and a README and no source. It is absorbed by the working
+      Aetherius OS project, and its GitHub repository is archived rather than
+      deleted.
+  - id: qva-merged
+    name: qva-merged
+    manifest: Aetherius-OS/predecessors/QVA-merged/build.yaml
+    role: >-
+      An absorbed predecessor of Aetherius OS: the merged quantum system, with a
+      quantum core, a blockchain, an AI layer, a backend and a frontend.
+    status: PARTIAL
+    depends_on: [aetherius-os]
+    notes: >-
+      It is absorbed by the working Aetherius OS project, and its GitHub
+      repository is archived rather than deleted.
+  - id: virtual-assistant
+    name: virtual-assistant
+    manifest: Aetherius-OS/kernel/Genesis/absorbed/VirtualAssistant/build.yaml
+    role: >-
+      The virtual assistant, absorbed into Genesis.
+    status: PARTIAL
+    depends_on: [genesis]
+    notes: >-
+      The owner's own conversations name it the QuantumVirtualAssistant: the
+      assistant that acts on the organism's behalf, with its agents, its avatar
+      and its device reach.
+  - id: veyra
+    name: Veyra
+    manifest: Aetherius-OS/predecessors/Veyra/build.yaml
+    role: >-
+      The Veyra AI engine, the AI capability that Genesis integrates. The engine
+      itself is already merged into Genesis under veyra-archive.
+    status: NOT_STARTED
+    depends_on: [aetherius-os]
+    notes: >-
+      Its AI engine has already been merged into Genesis, where it lives as
+      veyra-archive/veyra_ai_engine.py with its integration adapters. This
+      repository is the predecessor; the merged copy is the live one.
+  - id: aetherium
+    name: aetherium
+    manifest: Aetherius-OS/predecessors/aetherium/build.yaml
+    role: >-
+      The AI knowledge base for MCP and A2A, an agent capability
+      interoperability layer.
+    status: NOT_STARTED
+    depends_on: [aetherius-os]
+    notes: >-
+      The AI knowledge base for MCP and A2A. It is the
+      capability-interoperability layer that the predecessor generation of
+      Aetherius OS was built on.
+  - id: sovereign-financial-os
+    name: sovereign-financial-os
+    manifest: Aetherius-OS/apps/sovereign-financial-os/build.yaml
+    role: >-
+      The sovereign financial operating system: recovered design material for a
+      financial system the owner owns outright, with a security specification
+      and a recorded list of implementation gaps.
+    status: NOT_STARTED
     depends_on: []
+    notes: >-
+      Registered during the workspace reorganisation of 2026-10-20. It had no
+      folder in the workspace before, so it was invisible to the registry and to
+      the gate.
+  - id: aetherion-engine
+    name: aetherion-engine
+    manifest: Aetherius-OS/apps/aetherion-engine/build.yaml
+    role: >-
+      The aetherion engine: recovered design material for the engine behind the
+      Aetherius organism.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      Registered during the workspace reorganisation of 2026-10-20. It had no
+      folder in the workspace before, so it was invisible to the registry and to
+      the gate.
+  - id: holonav-os
+    name: holonav-os
+    manifest: Aetherius-OS/predecessors/holonav-os/build.yaml
+    role: >-
+      The holonav operating system: recovered design material for a predecessor
+      of Aetherius OS.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      Registered during the workspace reorganisation of 2026-10-20. It had no
+      folder in the workspace before, so it was invisible to the registry and to
+      the gate.
+  - id: quantum-ai-assistant
+    name: quantum-ai-assistant
+    manifest: Aetherius-OS/apps/quantum-ai-assistant/build.yaml
+    role: >-
+      The quantum AI assistant: recovered design material for the assistant the
+      owner wants on the organism.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      Registered during the workspace reorganisation of 2026-10-20. It had no
+      folder in the workspace before, so it was invisible to the registry and to
+      the gate.
+  - id: aetherius-health-library
+    name: aetherius-health-library
+    manifest: Aetherius-OS/apps/aetherius-health-library/build.yaml
+    role: >-
+      The health library: new and old discoveries to help with
+      development. It is part of Aetherius OS once it is finished, and
+      when it is finished it will have its own repository.
+    status: NOT_STARTED
+    depends_on: [aetherius-os]
+    notes: >-
+      The health library is part of Aetherius OS once it is finished. It is
+      not finished, and when it is it will have its own repository, holding
+      new and old discoveries to help with development.
+      
+      What it holds at present is material rather than software: a handbook
+      introduction, two frequency tables, and a note about healing-web
+      optical character recognition. The two frequency tables are the same
+      size and are the same file, which is worth
+      settling before either is treated as a distinct dataset.
+  - id: aetherius-os-worldclass-prototype
+    name: aetherius-os-worldclass-prototype
+    manifest: Aetherius-OS/predecessors/aetherius-os-worldclass-prototype/build.yaml
+    role: >-
+      The world-class Aetherius OS prototype: recovered design material for a
+      predecessor of Aetherius OS, with an adapter and a connectivity test.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      Registered during the workspace reorganisation of 2026-10-20. It had no
+      folder in the workspace before, so it was invisible to the registry and to
+      the gate.
+  - id: aetherius-os-prototype
+    name: aetherius-os
+    manifest: Aetherius-OS/predecessors/aetherius-os-prototype/build.yaml
+    role: >-
+      Recovered design material for an Aetherius OS prototype, with the AI
+      guidelines the owner wrote.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      Registered during the workspace reorganisation of 2026-10-20. It had no
+      folder in the workspace before, so it was invisible to the registry and to
+      the gate.
+  - id: ai-digital-twin
+    name: ai-digital-clone
+    manifest: Aetherius-OS/predecessors/ai-digital-clone/build.yaml
+    role: >-
+      The AI Digital Twin: the predecessor of the Genesis organism. It holds the
+      persistent memory system, the multi-agent collaboration system, the local
+      model client and the training pipeline, and it is where the owner first
+      put the agent-team and offline-model ideas. It stays where the recovery
+      put it, because it is 216,000 lines of predecessor source that has not yet
+      been reviewed line by line, and copying it would duplicate it without
+      making it safer.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      Registered during the workspace reorganisation of 2026-10-20. It had no
+      folder in the workspace before, so it was invisible to the registry and to
+      the gate.
+  - id: trading-bot
+    name: Multi-Cross-Platform-Trading-Bot
+    manifest: Aetherius-OS/apps/Multi-Cross-Platform-Trading-Bot/build.yaml
+    role: >-
+      Third-party trading bot, published under CC0-1.0, held in the workspace
+      as the reference implementation for the owner's own financial systems.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      It belongs to Sifdat, not to the owner. CC0-1.0 permits reuse without
+      restriction, and the convention in this workspace is still to write
+      first-party code fresh rather than paste third-party code into a
+      first-party repository, so that the provenance of every line is clear.

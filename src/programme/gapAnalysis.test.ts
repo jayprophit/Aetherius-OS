@@ -14,6 +14,7 @@ import {
   validateGapRegistry,
 } from "./gapAnalysis";
 import { generateGapReport } from "./gapReport";
+import { loadBuildRegistry, projectRootOf } from "./buildManifest";
 import {
   genesisReferencedPaths,
   loadGenesisRequirements,
@@ -41,7 +42,21 @@ import {
 
 const REPO_ROOT = resolve(join(__dirname, "..", ".."));
 const DOCS = join(REPO_ROOT, "docs");
-const GENESIS_ROOT = resolve(join(REPO_ROOT, "..", "Genesis"));
+/**
+ * Where Genesis lives.
+ *
+ * Genesis is the kernel of Aetherius OS, so it lives inside it, and the
+ * workspace was reorganised accordingly. The path is read from the build
+ * manifest registry rather than written out here, because the registry is
+ * the authority on where every project lives and a path written in code
+ * goes stale silently the moment the workspace is reorganised.
+ */
+const GENESIS_ROOT =
+  projectRootOf(
+    loadBuildRegistry(readFileSync(join(REPO_ROOT, "docs", "BUILD-MANIFEST-REGISTRY.yaml"), "utf8")),
+    resolve(join(REPO_ROOT, "..")),
+    "genesis",
+  ) ?? resolve(join(REPO_ROOT, "..", "Genesis"));
 
 const REGISTRY_PATH = join(DOCS, "GAP-ANALYSIS-REGISTRY.yaml");
 const REPORT_PATH = join(DOCS, "GAP-ANALYSIS-REGISTRY.md");

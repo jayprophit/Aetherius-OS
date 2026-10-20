@@ -1,340 +1,390 @@
-# =============================================================================
-# OWNER DIRECTIVE REGISTER
-# =============================================================================
-# The directives the owner has given across the recovered conversation
-# corpus, separated into the two kinds that need different handling.
-#
-#   STANDING RULES   - how work is to be done. They bind every task. A change
-#                      that violates one is wrong even if the outcome looks
-#                      right.
-#   OPEN ASKS        - things the owner asked for that are not yet done.
-#                      Each names the project that owns it and the todo that
-#                      carries it.
-#
-# Provenance: the recovered Codex conversation corpus, 237 distinct
-# directive sentences across 13 threads, filtered to remove UI plumbing and
-# pasted command output. The raw text is at
-# research/codex-history/owner-directives.txt and each entry below names the
-# thread it came from.
-#
-# These are the owner's own words. They are not the programme's decisions and
-# they are not evidence that anything was built. They are what was asked
-# for.
-# =============================================================================
-schema_version: "1.0.0"
-source_date: "2026-10-20"
-source: "research/codex-history/owner-directives.txt"
+schema_version: 1.0.0
+source_date: '2026-10-20'
+source: research/codex-history/owner-directives.txt
 corpus:
   threads_with_directives: 13
   distinct_directives: 237
-
 standing_rules:
-  - id: RULE-01
-    title: Inspect before editing, and report exactly what changed
-    text: >-
-      Before editing, identify the repository root and current architecture;
-      after editing, run relevant tests/lint/build if available, report
-      exactly what changed.
-    source_thread: 01a06def
-    projects: [aetherius-os, genesis, mat, poietek, universal-bridge]
-    satisfied_by:
-      - "Every build manifest records the exact command and its observed result"
-      - "Every build in this session was verified by running it"
-
-  - id: RULE-02
-    title: Never copy an old implementation into Genesis without checking its licence
-    text: >-
-      Never blindly copy an old implementation into Genesis. Check licensing
-      and provenance.
-    source_thread: 01a05e27
-    projects: [genesis, aetherius-os]
-    satisfied_by:
-      - "TODO-GEN-006: 47 files of unlicensed OmniAgent source untracked from Genesis"
-      - "TODO-SEC-001: the secret scan is a build gate"
-    notes: >-
-      This is why the REA work is a comparison against reference
-      implementations rather than a copy of one.
-
-  - id: RULE-03
-    title: A chat claim is a candidate input, never proof
-    text: >-
-      Deduplicate against canonical requirements, claims, sources,
-      experiments and scientific owners; original chat claims are candidate
-      inputs, never proof of implementation or established science.
-    source_thread: 01a0ed79
-    projects: [mat, genesis]
-    satisfied_by:
-      - "The evidence vocabulary: PROPOSED, FOUND, IMPLEMENTED, TESTED, INTEGRATED, DEPLOYED, INDEPENDENTLY_VERIFIED, NOT_LOCATED, BLOCKED"
-
-  - id: RULE-04
-    title: Say UNKNOWN rather than fabricate
-    text: >-
-      Explicitly use UNKNOWN / NOT APPLICABLE / INSUFFICIENT DATA instead
-      of fabricating.
-    source_thread: 01a0a0f2
-    projects: [mat]
-    satisfied_by:
-      - "MAT-TODO-008 and the MAT data semantics are already implemented and tested"
-
-  - id: RULE-05
-    title: Do not create a second registry or a nested repository
-    text: >-
-      Do not create another requirements registry or rebuild completed work.
-      Do not create a second repo or nested .git.
-    source_thread: 01a0ed79
-    projects: [aetherius-os, genesis, mat]
-    satisfied_by:
-      - "The build manifest registry indexes the existing project manifests; it does not replace them"
-      - "The REA adapter reuses the existing ingest, invention and evidence modules rather than adding a parallel store"
-
-  - id: RULE-06
-    title: Verify before deleting
-    text: >-
-      Before deleting anything, verify the data exists in the master repo and
-      is recoverable from git history/commit.
-    source_thread: 01a0a0f2
-    projects: [mat, aetherius-os]
-    satisfied_by:
-      - "The two gigabyte artefact untracking kept every file on disk and only removed the tracking"
-
-  - id: RULE-07
-    title: The local path is the working copy; GitHub is the source it commits back to
-    text: >-
-      The local desktop path is the working copy; the GitHub repo is the
-      version-controlled source it should commit/push back to.
-    source_thread: 01a07cc2
-    projects: [aetherius-os, genesis, agent-bridge, ide-workspace, poietek, mat, universal-bridge]
-    satisfied_by:
-      - "All seven repositories pushed and in sync on 2026-10-20"
-
-  - id: RULE-08
-    title: Keep the repositories public
-    text: >-
-      Keep the repository public for now because the user wants AI tools to
-      be able to read it.
-    source_thread: 01a044ea
-    projects: [aetherius-os, genesis, agent-bridge, ide-workspace, poietek, mat, universal-bridge]
-    satisfied_by:
-      - "The credential redaction before extraction, so the public repositories carry no secrets"
-
-  - id: RULE-09
-    title: Distinguish what is implemented from what is scaffolding
-    text: >-
-      Clearly distinguish implemented functionality from scaffolding/experimental
-      functionality and do not claim unsupported device/DAW integrations are
-      complete.
-    source_thread: 01a044ea
-    projects: [universal-bridge, genesis, aetherius-os]
-    satisfied_by:
-      - "The build manifest states a status per project with the evidence that produced it"
-      - "The gap analysis records IMPLEMENTED as distinct from VERIFIED"
-
-  - id: RULE-10
-    title: Do not scatter build artifacts across the desktop
-    text: >-
-      Temporary external files may use the designated temporary directory, but
-      do not scatter permanent build artifacts across the desktop.
-    source_thread: 01a0ed79
-    projects: [aetherius-os]
-    satisfied_by:
-      - "The workspace hygiene guard, and the two stray root documents moved to their owning projects"
-
-  - id: RULE-11
-    title: Track every section of the build as a percentage
-    text: >-
-      Make sure to track every section of the build using a percentage out of
-      100 percent.
-    source_thread: 01a05e27
-    projects: [genesis]
-    satisfied_by:
-      - "The Genesis completion report records a percentage per component"
-    notes: >-
-      The gap analysis deliberately reports readiness as a COVERAGE measure
-      and says so, rather than presenting a percentage that could be read
-      as a quality judgement.
-
-  - id: RULE-12
-    title: Do not mass-generate images yet
-    text: >-
-      Do not mass-generate AI images yet.
-    source_thread: 01a07cc2
-    projects: [mat]
-    satisfied_by:
-      - "MAT's image and panel work stays bounded until the data is ready"
-
+- id: RULE-01
+  title: Inspect before editing, and report exactly what changed
+  text: Before editing, identify the repository root and current architecture; after editing, run relevant
+    tests/lint/build if available, report exactly what changed.
+  source_thread: 01a06def
+  projects:
+  - aetherius-os
+  - genesis
+  - mat
+  - poietek
+  - universal-bridge
+  satisfied_by:
+  - Every build manifest records the exact command and its observed result
+  - Every build in this session was verified by running it
+- id: RULE-02
+  title: Never copy an old implementation into Genesis without checking its licence
+  text: Never blindly copy an old implementation into Genesis. Check licensing and provenance.
+  source_thread: 01a05e27
+  projects:
+  - genesis
+  - aetherius-os
+  satisfied_by:
+  - 'TODO-GEN-006: 47 files of unlicensed OmniAgent source untracked from Genesis'
+  - 'TODO-SEC-001: the secret scan is a build gate'
+  notes: This is why the REA work is a comparison against reference implementations rather than a copy
+    of one.
+- id: RULE-03
+  title: A chat claim is a candidate input, never proof
+  text: Deduplicate against canonical requirements, claims, sources, experiments and scientific owners;
+    original chat claims are candidate inputs, never proof of implementation or established science.
+  source_thread: 01a0ed79
+  projects:
+  - mat
+  - genesis
+  satisfied_by:
+  - 'The evidence vocabulary: PROPOSED, FOUND, IMPLEMENTED, TESTED, INTEGRATED, DEPLOYED, INDEPENDENTLY_VERIFIED,
+    NOT_LOCATED, BLOCKED'
+- id: RULE-04
+  title: Say UNKNOWN rather than fabricate
+  text: Explicitly use UNKNOWN / NOT APPLICABLE / INSUFFICIENT DATA instead of fabricating.
+  source_thread: 01a0a0f2
+  projects:
+  - mat
+  satisfied_by:
+  - MAT-TODO-008 and the MAT data semantics are already implemented and tested
+- id: RULE-05
+  title: Do not create a second registry or a nested repository
+  text: Do not create another requirements registry or rebuild completed work. Do not create a second
+    repo or nested .git.
+  source_thread: 01a0ed79
+  projects:
+  - aetherius-os
+  - genesis
+  - mat
+  satisfied_by:
+  - The build manifest registry indexes the existing project manifests; it does not replace them
+  - The REA adapter reuses the existing ingest, invention and evidence modules rather than adding a parallel
+    store
+- id: RULE-06
+  title: Verify before deleting
+  text: Before deleting anything, verify the data exists in the master repo and is recoverable from git
+    history/commit.
+  source_thread: 01a0a0f2
+  projects:
+  - mat
+  - aetherius-os
+  satisfied_by:
+  - The two gigabyte artefact untracking kept every file on disk and only removed the tracking
+- id: RULE-07
+  title: The local path is the working copy; GitHub is the source it commits back to
+  text: The local desktop path is the working copy; the GitHub repo is the version-controlled source it
+    should commit/push back to.
+  source_thread: 01a07cc2
+  projects:
+  - aetherius-os
+  - genesis
+  - agent-bridge
+  - ide-workspace
+  - poietek
+  - mat
+  - universal-bridge
+  satisfied_by:
+  - All seven repositories pushed and in sync on 2026-10-20
+- id: RULE-08
+  title: Keep the repositories public
+  text: Keep the repository public for now because the user wants AI tools to be able to read it.
+  source_thread: 01a044ea
+  projects:
+  - aetherius-os
+  - genesis
+  - agent-bridge
+  - ide-workspace
+  - poietek
+  - mat
+  - universal-bridge
+  satisfied_by:
+  - The credential redaction before extraction, so the public repositories carry no secrets
+- id: RULE-09
+  title: Distinguish what is implemented from what is scaffolding
+  text: Clearly distinguish implemented functionality from scaffolding/experimental functionality and
+    do not claim unsupported device/DAW integrations are complete.
+  source_thread: 01a044ea
+  projects:
+  - universal-bridge
+  - genesis
+  - aetherius-os
+  satisfied_by:
+  - The build manifest states a status per project with the evidence that produced it
+  - The gap analysis records IMPLEMENTED as distinct from VERIFIED
+- id: RULE-10
+  title: Do not scatter build artifacts across the desktop
+  text: Temporary external files may use the designated temporary directory, but do not scatter permanent
+    build artifacts across the desktop.
+  source_thread: 01a0ed79
+  projects:
+  - aetherius-os
+  satisfied_by:
+  - The workspace hygiene guard, and the two stray root documents moved to their owning projects
+- id: RULE-11
+  title: Track every section of the build as a percentage
+  text: Make sure to track every section of the build using a percentage out of 100 percent.
+  source_thread: 01a05e27
+  projects:
+  - genesis
+  satisfied_by:
+  - The Genesis completion report records a percentage per component
+  notes: The gap analysis deliberately reports readiness as a COVERAGE measure and says so, rather than
+    presenting a percentage that could be read as a quality judgement.
+- id: RULE-12
+  title: Do not mass-generate images yet
+  text: Do not mass-generate AI images yet.
+  source_thread: 01a07cc2
+  projects:
+  - mat
+  satisfied_by:
+  - MAT's image and panel work stays bounded until the data is ready
+- id: RULE-13
+  title: Every project sits inside the project that owns it
+  text: crossplatform, football-card-game, athena, aetherial-platform, the decentralized messaging app,
+    the Food Wiki, hermes-config-audit, aetherial, the IDE, LedgerLands, niche_platform, Poietek, quantum-os,
+    self-building-ai, universal-bridge, the virtual assistant and web-platform are all part of Aetherius
+    OS, and each one has been dissolved into the folder of the project that owns it.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - aetherius-os
+  satisfied_by:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml
+  - docs/PROGRAMME-CATALOGUE.yaml
+  - Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+- id: RULE-14
+  title: Genesis is the AI agent, a living systemic organism
+  text: Genesis is the AI agent. It is a living, systemic organism. It is part of Aetherius OS at the
+    kernel level, it is an agent you can download and use, and it is part of the IDE.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - genesis
+  - aetherius-os
+  - ide-workspace
+  satisfied_by:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml
+  - TODO-STR-001
+- id: RULE-15
+  title: Agent-Bridge is shared, downloadable, and heading into the ecosystem
+  text: Agent-Bridge is used by Genesis, Aetherius OS and the IDE, and it is available for users to download
+    and use with their own agents. Eventually it will be part of the Aetherius OS ecosystem, to help Genesis
+    run everything down to the kernel level, as Genesis is built at the kernel level with Aetherius.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - agent-bridge
+  - genesis
+  - aetherius-os
+  - ide-workspace
+  satisfied_by:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml
+  - TODO-STR-002
+- id: RULE-16
+  title: The IDE is an app of Aetherius OS that also runs elsewhere
+  text: The IDE is an app for Aetherius OS, and it may also be used by other operating systems.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - ide-workspace
+  - aetherius-os
+  satisfied_by:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml
+  - TODO-STR-003
+- id: RULE-17
+  title: MAT is the periodic table the programme processes data with
+  text: 'MAT is my own periodic table. Genesis, Aetherius OS, Agent-Bridge and the other AI agents and
+    subagents will use it to process data, based on data about materials, processes, principles and the
+    rest. It is not finished: it is still being worked on by the Codex desktop app, on a scheduled five-hour
+    window, and the work is pending.'
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - mat
+  - genesis
+  - aetherius-os
+  - agent-bridge
+  satisfied_by:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml
+  - TODO-STR-004
+- id: RULE-18
+  title: Temp is the holding place, and it is needed
+  text: Temp is a folder used just in case any files, data or folders need to be saved outside their project.
+    It is a temporary holding place until it is needed, or fully decided, or what happens next is decided.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - aetherius-os
+  satisfied_by:
+  - docs/workspace-hygiene.test.ts
+  - Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+- id: RULE-19
+  title: Old failed predecessors are absorbed, and their repositories removed
+  text: Old failed predecessors will be absorbed by the new fully working project, and the obsolete repositories
+    will be removed. They are archived rather than deleted, because deleting cannot be undone and the
+    absorption has not been verified for each one yet.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - aetherius-os
+  - genesis
+  satisfied_by:
+  - TODO-STR-005
+  - Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+- id: RULE-20
+  title: The material is enough to finish the projects
+  text: All the data provided, plus the repositories, plus access to the internet, plus all the chat conversations,
+    should be enough to finish multiple projects, old, current and new. The conversations explain the
+    apps, the plugins, the functions, the features and the mechanisms. Everything is to be added to the
+    todos list and recorded in the correct YAML files.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - aetherius-os
+  satisfied_by:
+  - docs/PROGRAMME-CATALOGUE.yaml
+  - docs/PROGRAMME-GAP-ANALYSIS.yaml
+  - docs/PROJECT-TODOS.yaml
+  - research/conversations/project-conversations.md
 open_asks:
-  - id: ASK-01
-    title: Read the ChatGPT project folder called Genesis and abstract what is useful
-    text: >-
-      Read the data from the ChatGPT project folder Genesis and then abstract
-      the data that's needed or useful. Read the chat conversations.
-    source_thread: 01a07cc2
-    projects: [genesis, aetherius-os]
-    todo_ref: TODO-SRC-004
-    status: OPEN
-    note: >-
-      A ChatGPT project named Genesis exists in the owner's ChatGPT account
-      and has not been read. It is the largest unexamined source in the
-      corpus.
-
-  - id: ASK-02
-    title: Build the same base foundation as the reference platforms, in C or C++
-    text: >-
-      Make sure to build the same base foundation like others at a C or C++
-      with additional layers to make a full deployable app, website, for cross
-      platform, desktop, mobile, tablet, webapp.
-    source_thread: 01a02943
-    projects: [aetherius-os]
-    todo_ref: TODO-KRN-001
-    status: IN_PROGRESS
-    note: >-
-      This directive independently corroborates the decision to write the
-      kernel in C. The C kernel is at native/kernel with a versioned syscall
-      ABI; the machine-level modules and the UEFI image are not yet written.
-
-  - id: ASK-03
-    title: Implement all of genesis.txt, genesis2.txt, genesis3.txt and genesis4.txt
-    text: >-
-      Make sure that all of the genesis.txt is implemented. Also make sure
-      that all of the genesis2.txt is implemented. And also add the data
-      from Genesis3.txt in. And also add the data from Genesis4.txt in.
-    source_thread: 01a05e27
-    projects: [genesis]
-    todo_ref: TODO-GAP-001
-    status: OPEN
-    note: >-
-      The four specification sources are 1.2 MB in total and define more
-      than 35 system areas. The gap analysis maps them to 31 agent-platform
-      capabilities, of which 27 are open.
-
-  - id: ASK-04
-    title: Read every .txt and .md for data that is useful for the build
-    text: >-
-      Read all .txt file and .md for any data that maybe useful for the
-      build. So you can abstract and use any file or data within them to
-      help with the build.
-    source_thread: 01a05e27
-    projects: [aetherius-os]
-    todo_ref: TODO-SRC-002
-    status: PARTLY_DONE
-    note: >-
-      The source registry now records 408 documents across five scopes with
-      a content digest and a coverage gate. What remains is the mapping
-      from each document to the work it produced.
-
-  - id: ASK-05
-    title: Read mixing desks and make Universal Bridge able to access the installed hardware
-    text: >-
-      I also want it to read mixing desks. Please make sure the universal
-      bridge can access them.
-    source_thread: 01a06e04
-    projects: [universal-bridge]
-    todo_ref: TODO-UB-004
-    status: OPEN
-
-  - id: ASK-06
-    title: Gap analysis of the install and the agents, and plug the holes
-    text: >-
-      Also do a gap analysis and plug all holes, so check my install apps
-      on the pc.
-    source_thread: 01a15461
-    projects: [aetherius-os, genesis]
-    todo_ref: TODO-GAP-001
-    status: PARTLY_DONE
-    note: >-
-      The application registry and the gap analysis are done. Plugging the
-      holes is the 27 open capabilities.
-
-  - id: ASK-07
-    title: A free-first agent setup with the choice of paid
-    text: >-
-      Take control of the desktop and do the best setup so I can use AI
-      agents for free with the choice of paid. I want free and freemium.
-    source_thread: 01a15461
-    projects: [hermes-config-audit]
-    todo_ref: TODO-HERM-003
-    status: OPEN
-
-  - id: ASK-08
-    title: One build folder, not several
-    text: >-
-      Shouldn't there only be one build folder? This is what I meant by merge
-      and de-duplicate.
-    source_thread: 01a05e27
-    projects: [aetherius-os, universal-bridge, genesis]
-    todo_ref: TODO-UB-002
-    status: PARTLY_DONE
-    note: >-
-      Eleven stale build trees were cleared from Universal-Bridge. The same
-      consolidation is not done for Genesis and Aetherius-OS.
-
-  - id: ASK-09
-    title: Compare against similar apps, programs, websites and modules
-    text: >-
-      Compare it with similar apps, dapps, software, programs, websites,
-      modules, others, etc.
-    source_thread: 01a02943
-    projects: [aetherius-os]
-    todo_ref: TODO-REPO-001
-    status: PARTLY_DONE
-    note: >-
-      The repository registry catalogues 344 forked reference
-      implementations and maps each to a capability axis. The comparison
-      itself, capability by capability, is not yet written.
-
-  - id: ASK-10
-    title: Add a sample record and a recall button, MPC style
-    text: >-
-      Add a sample record and recall button, like the MPC sample.
-    source_thread: 01a02943
-    projects: [poietek]
-    todo_ref: TODO-POI-003
-    status: OPEN
-
-  - id: ASK-11
-    title: Add other programming languages for additional layers
-    text: >-
-      Continue and make sure to also add any other programming languages
-      that may be needed for additional layers.
-    source_thread: 01a05e27
-    projects: [aetherius-os]
-    todo_ref: TODO-KRN-005
-    status: OPEN
-    note: >-
-      The syscall ABI is what makes this possible: a language binds to a
-      numbered call, not to a C++ class.
-
-  - id: ASK-12
-    title: Merge and de-duplicate, then re-organise
-    text: >-
-      Continue, merge, de-duplicate, re-organise.
-    source_thread: 01a05e27
-    projects: [aetherius-os, genesis, mat]
-    todo_ref: TODO-LEG-001
-    status: PARTLY_DONE
-    note: >-
-      The predecessor Aetherius task surface of 3,238 open items is
-      reconciled in TODO-LEG-001 and not yet done.
-
-  - id: ASK-13
-    title: Research from CERN and other science institutes
-    text: >-
-      Also take data and research from CERN and other science institutes and
-      governing bodies, so MAT can be used to prove or disprove theories,
-      principals, facts, others.
-    source_thread: 01a0ed79
-    projects: [mat]
-    todo_ref: TODO-MAT-011
-    status: OPEN
-
-  - id: ASK-14
-    title: Give the 5 star rating
-    text: >-
-      Please provide the five star rating.
-    source_thread: 01a07cc2
-    projects: [mat]
-    todo_ref: TODO-MAT-012
-    status: OPEN
-    note: >-
-      The rating must be regenerated from a current browser report. The
-      existing one came from a stale report with a false accessibility gate.
+- id: ASK-01
+  title: Read the ChatGPT project folder called Genesis and abstract what is useful
+  text: Read the data from the ChatGPT project folder Genesis and then abstract the data that's needed
+    or useful. Read the chat conversations.
+  source_thread: 01a07cc2
+  projects:
+  - genesis
+  - aetherius-os
+  todo_ref: TODO-SRC-004
+  status: OPEN
+  note: A ChatGPT project named Genesis exists in the owner's ChatGPT account and has not been read. It
+    is the largest unexamined source in the corpus.
+- id: ASK-02
+  title: Build the same base foundation as the reference platforms, in C or C++
+  text: Make sure to build the same base foundation like others at a C or C++ with additional layers to
+    make a full deployable app, website, for cross platform, desktop, mobile, tablet, webapp.
+  source_thread: 01a02943
+  projects:
+  - aetherius-os
+  todo_ref: TODO-KRN-001
+  status: IN_PROGRESS
+  note: This directive independently corroborates the decision to write the kernel in C. The C kernel
+    is at native/kernel with a versioned syscall ABI; the machine-level modules and the UEFI image are
+    not yet written.
+- id: ASK-03
+  title: Implement all of genesis.txt, genesis2.txt, genesis3.txt and genesis4.txt
+  text: Make sure that all of the genesis.txt is implemented. Also make sure that all of the genesis2.txt
+    is implemented. And also add the data from Genesis3.txt in. And also add the data from Genesis4.txt
+    in.
+  source_thread: 01a05e27
+  projects:
+  - genesis
+  todo_ref: TODO-GAP-001
+  status: OPEN
+  note: The four specification sources are 1.2 MB in total and define more than 35 system areas. The gap
+    analysis maps them to 31 agent-platform capabilities, of which 27 are open.
+- id: ASK-04
+  title: Read every .txt and .md for data that is useful for the build
+  text: Read all .txt file and .md for any data that maybe useful for the build. So you can abstract and
+    use any file or data within them to help with the build.
+  source_thread: 01a05e27
+  projects:
+  - aetherius-os
+  todo_ref: TODO-SRC-002
+  status: PARTLY_DONE
+  note: The source registry now records 408 documents across five scopes with a content digest and a coverage
+    gate. What remains is the mapping from each document to the work it produced.
+- id: ASK-05
+  title: Read mixing desks and make Universal Bridge able to access the installed hardware
+  text: I also want it to read mixing desks. Please make sure the universal bridge can access them.
+  source_thread: 01a06e04
+  projects:
+  - universal-bridge
+  todo_ref: TODO-UB-004
+  status: OPEN
+- id: ASK-06
+  title: Gap analysis of the install and the agents, and plug the holes
+  text: Also do a gap analysis and plug all holes, so check my install apps on the pc.
+  source_thread: 01a15461
+  projects:
+  - aetherius-os
+  - genesis
+  todo_ref: TODO-GAP-001
+  status: PARTLY_DONE
+  note: The application registry and the gap analysis are done. Plugging the holes is the 27 open capabilities.
+- id: ASK-07
+  title: A free-first agent setup with the choice of paid
+  text: Take control of the desktop and do the best setup so I can use AI agents for free with the choice
+    of paid. I want free and freemium.
+  source_thread: 01a15461
+  projects:
+  - hermes-config-audit
+  todo_ref: TODO-HERM-003
+  status: OPEN
+- id: ASK-08
+  title: One build folder, not several
+  text: Shouldn't there only be one build folder? This is what I meant by merge and de-duplicate.
+  source_thread: 01a05e27
+  projects:
+  - aetherius-os
+  - universal-bridge
+  - genesis
+  todo_ref: TODO-UB-002
+  status: PARTLY_DONE
+  note: Eleven stale build trees were cleared from Universal-Bridge. The same consolidation is not done
+    for Genesis and Aetherius-OS.
+- id: ASK-09
+  title: Compare against similar apps, programs, websites and modules
+  text: Compare it with similar apps, dapps, software, programs, websites, modules, others, etc.
+  source_thread: 01a02943
+  projects:
+  - aetherius-os
+  todo_ref: TODO-REPO-001
+  status: PARTLY_DONE
+  note: The repository registry catalogues 344 forked reference implementations and maps each to a capability
+    axis. The comparison itself, capability by capability, is not yet written.
+- id: ASK-10
+  title: Add a sample record and a recall button, MPC style
+  text: Add a sample record and recall button, like the MPC sample.
+  source_thread: 01a02943
+  projects:
+  - poietek
+  todo_ref: TODO-POI-003
+  status: OPEN
+- id: ASK-11
+  title: Add other programming languages for additional layers
+  text: Continue and make sure to also add any other programming languages that may be needed for additional
+    layers.
+  source_thread: 01a05e27
+  projects:
+  - aetherius-os
+  todo_ref: TODO-KRN-005
+  status: OPEN
+  note: 'The syscall ABI is what makes this possible: a language binds to a numbered call, not to a C++
+    class.'
+- id: ASK-12
+  title: Merge and de-duplicate, then re-organise
+  text: Continue, merge, de-duplicate, re-organise.
+  source_thread: 01a05e27
+  projects:
+  - aetherius-os
+  - genesis
+  - mat
+  todo_ref: TODO-LEG-001
+  status: PARTLY_DONE
+  note: The predecessor Aetherius task surface of 3,238 open items is reconciled in TODO-LEG-001 and not
+    yet done.
+- id: ASK-13
+  title: Research from CERN and other science institutes
+  text: Also take data and research from CERN and other science institutes and governing bodies, so MAT
+    can be used to prove or disprove theories, principals, facts, others.
+  source_thread: 01a0ed79
+  projects:
+  - mat
+  todo_ref: TODO-MAT-011
+  status: OPEN
+- id: ASK-14
+  title: Give the 5 star rating
+  text: Please provide the five star rating.
+  source_thread: 01a07cc2
+  projects:
+  - mat
+  todo_ref: TODO-MAT-012
+  status: OPEN
+  note: The rating must be regenerated from a current browser report. The existing one came from a stale
+    report with a false accessibility gate.

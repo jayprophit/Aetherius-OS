@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { auditEvidenceTrace, looksLikeTest, summariseEvidenceTrace } from "./evidenceTrace";
+import { loadBuildRegistry, projectRootLabels } from "./buildManifest";
 import type { OwnerRoots, PathResolver } from "./evidenceTrace";
 import type { Requirement } from "./types";
 
@@ -59,8 +60,26 @@ const ROOTS: OwnerRoots = Object.fromEntries(
  */
 const IN_SELF_REPO = existsSync(join(REPO_ROOT, ".git"));
 /** Map a logical root name to a directory on disk. */
+/**
+ * Where each root is.
+ *
+ * The roots are named by folder, and the workspace was reorganised so
+ * that Genesis is the kernel of Aetherius OS, the IDE is one of its apps
+ * and Poietek is another. The locations come from the build manifest
+ * registry, which is the authority on where each project lives, with the
+ * old sibling layout as the fallback for a clone that does not have the
+ * workspace around it.
+ */
+const PROJECT_ROOT_LABELS = projectRootLabels(
+  loadBuildRegistry(
+    readFileSync(join(REPO_ROOT, "docs", "BUILD-MANIFEST-REGISTRY.yaml"), "utf-8"),
+  ),
+  join(REPO_ROOT, ".."),
+);
 const rootDir = (root: string): string =>
-  root === "Aetherius-OS" ? REPO_ROOT : join(REPO_ROOT, "..", root);
+  root === "Aetherius-OS"
+    ? REPO_ROOT
+    : PROJECT_ROOT_LABELS.get(root) ?? join(REPO_ROOT, "..", root);
 const rootPresent = (root: string): boolean => existsSync(rootDir(root));
 const resolve: PathResolver = (root, path) => existsSync(join(rootDir(root), path));
 

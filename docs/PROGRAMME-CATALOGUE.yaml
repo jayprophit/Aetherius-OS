@@ -1,0 +1,1861 @@
+schema_version: 1
+source_date: 2026-10-20
+generated_by: tools/generate_programme_registers.py
+notes:
+  - "Every first-party project the owner holds, in every place they hold one."
+  - "The measured figures come from tools/assess_projects.py and are counts, not claims."
+  - "The capability counts come from a keyword search of each project's own source; a capability marked present was found in a named file and can be checked."
+  - Gaps for individual capabilities are in PROGRAMME-GAP-ANALYSIS.yaml.
+projects:
+  - id: PRJ-AETHERIUS-OS
+    name: Aetherius-OS
+    family:
+      - platform
+      - intelligence
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS"
+      - kind: github
+        path: jayprophit/Aetherius-OS
+        url: "https://github.com/jayprophit/Aetherius-OS"
+        fork: false
+        private: false
+        pushed_at: "2026-10-20T13:47:43Z"
+    state: SECRET_EXPOSED
+    measured:
+      own_lines: 1323334
+      own_source_files: 6094
+      test_files: 397
+      test_line_fraction: 0.063
+      primary_language: typescript
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - package.json
+        - build.yaml
+        - manage.py
+        - docker-compose.yml
+        - dockerfile
+        - requirements.txt
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - package.json
+        - build.yaml
+        - docker-compose.yml
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - build.yaml
+        - docker-compose.yml
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - CMakeLists.txt
+        - CMakeLists.txt
+        - Cargo.toml
+        - Cargo.toml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - docker-compose.yml
+        - Dockerfile
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - package.json
+        - build.yaml
+        - build.yaml
+        - package.json
+        - build.yaml
+        - build.yaml
+        - CMakeLists.txt
+        - requirements.txt
+        - build.yaml
+        - Makefile
+        - package.json
+        - package.json
+        - requirements.txt
+        - package.json
+        - requirements.txt
+        - pyproject.toml
+        - pyproject.toml
+        - docker-compose.yml
+        - Dockerfile
+        - package.json
+        - package.json
+        - Cargo.toml
+        - Cargo.toml
+        - Cargo.toml
+        - Makefile
+        - build.yaml
+        - package.json
+        - package.json
+        - requirements.txt
+        - requirements.txt
+        - build.yaml
+        - package.json
+        - requirements.txt
+        - Dockerfile
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - docker-compose.yml
+        - requirements.txt
+        - package.json
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - build.yaml
+        - docker-compose.yml
+        - Dockerfile
+        - requirements.txt
+        - build.yaml
+        - package.json
+        - turbo.json
+        - package.json
+        - package.json
+        - pubspec.yaml
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - docker-compose.yml
+        - Dockerfile
+        - Makefile
+        - pyproject.toml
+        - requirements.txt
+        - Dockerfile
+        - Dockerfile
+        - requirements.txt
+        - package.json
+        - package.json
+        - build.yaml
+      has_ci: true
+      has_docker: true
+      secret_literal_files:
+        - apps/LedgerLands/LedgerLands-Aetherius-App-Repo/LedgerLands/generated/prisma/internal/class.ts
+        - apps/Multi-Cross-Platform-Trading-Bot/production/AI-Voice-assistant/assistant.py
+        - apps/Multi-Cross-Platform-Trading-Bot/production/Facial_Authentication/backend/app.js
+        - ecosystem/aetherial-platform/tests/auth/validators/auth.validators.spec.ts
+        - predecessors/Veyra/tests/integration/tests/conftest.py
+    capabilities:
+      checked: 18
+      present: 18
+      missing: 0
+    gaps:
+      - PRJ-AETHERIUS-OS-GAP-003
+  - id: PRJ-GENESIS
+    name: Genesis
+    family:
+      - intelligence
+      - platform
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\kernel\\Genesis"
+      - kind: github
+        path: jayprophit/Genesis
+        url: "https://github.com/jayprophit/Genesis"
+        fork: false
+        private: false
+        pushed_at: "2026-10-20T13:03:25Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 18
+      present: 0
+      missing: 18
+    gaps:
+      - PRJ-GENESIS-GAP-001
+      - PRJ-GENESIS-CAP-INT-001
+      - PRJ-GENESIS-CAP-INT-002
+      - PRJ-GENESIS-CAP-INT-003
+      - PRJ-GENESIS-CAP-INT-004
+      - PRJ-GENESIS-CAP-INT-005
+      - PRJ-GENESIS-CAP-INT-006
+      - PRJ-GENESIS-CAP-INT-007
+      - PRJ-GENESIS-CAP-INT-008
+      - PRJ-GENESIS-CAP-INT-009
+      - PRJ-GENESIS-CAP-INT-010
+      - PRJ-GENESIS-CAP-PLT-001
+      - PRJ-GENESIS-CAP-PLT-002
+      - PRJ-GENESIS-CAP-PLT-003
+      - PRJ-GENESIS-CAP-PLT-004
+      - PRJ-GENESIS-CAP-PLT-005
+      - PRJ-GENESIS-CAP-PLT-006
+      - PRJ-GENESIS-CAP-PLT-007
+      - PRJ-GENESIS-CAP-PLT-008
+  - id: PRJ-AGENT-BRIDGE
+    name: Agent-Bridge
+    family:
+      - intelligence
+      - communication
+    role: first_party
+    locations:
+      - kind: workspace
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge"
+      - kind: github
+        path: jayprophit/Agent-Bridge
+        url: "https://github.com/jayprophit/Agent-Bridge"
+        fork: false
+        private: false
+        pushed_at: "2026-10-20T12:39:58Z"
+    state: SECRET_EXPOSED
+    measured:
+      own_lines: 503582
+      own_source_files: 2199
+      test_files: 727
+      test_line_fraction: 0.292
+      primary_language: python
+      licence: null
+      manifests:
+        - build.yaml
+        - pyproject.toml
+        - build.yaml
+        - pyproject.toml
+        - build.yaml
+        - pyproject.toml
+        - build.yaml
+        - pyproject.toml
+      has_ci: true
+      has_docker: false
+      secret_literal_files:
+        - variants/dashboard/tests/test_h07_h09.py
+    capabilities:
+      checked: 19
+      present: 19
+      missing: 0
+    gaps:
+      - PRJ-AGENT-BRIDGE-GAP-003
+      - PRJ-AGENT-BRIDGE-GAP-004
+  - id: PRJ-AGENT-BRIDGE-CLOUDHYBRID
+    name: Agent-Bridge-cloudhybrid
+    family:
+      - intelligence
+      - cloud_services
+    role: first_party
+    locations:
+      - kind: workspace
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge\\variants\\cloudhybrid"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 20
+      present: 0
+      missing: 20
+    gaps:
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-GAP-001
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-001
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-002
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-003
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-004
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-005
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-006
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-007
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-008
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-009
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-010
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-001
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-002
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-003
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-004
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-005
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-006
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-007
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-008
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-009
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-010
+  - id: PRJ-AGENT-BRIDGE-DASHBOARD
+    name: Agent-Bridge-dashboard
+    family:
+      - intelligence
+      - platform
+    role: first_party
+    locations:
+      - kind: workspace
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge\\variants\\dashboard"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 18
+      present: 0
+      missing: 18
+    gaps:
+      - PRJ-AGENT-BRIDGE-DASHBOARD-GAP-001
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-001
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-002
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-003
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-004
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-005
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-006
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-007
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-008
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-009
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-010
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-001
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-002
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-003
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-004
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-005
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-006
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-007
+      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-008
+  - id: PRJ-AGENT-BRIDGE-RUNTIMESAFETY
+    name: Agent-Bridge-runtimesafety
+    family:
+      - intelligence
+      - local_services
+    role: first_party
+    locations:
+      - kind: workspace
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge\\variants\\runtimesafety"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 18
+      present: 0
+      missing: 18
+    gaps:
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-GAP-001
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-001
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-002
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-003
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-004
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-005
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-006
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-007
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-008
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-009
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-010
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-001
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-002
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-003
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-004
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-005
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-006
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-007
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-008
+  - id: PRJ-IDE-WORKSPACE
+    name: IDE-Workspace
+    family:
+      - platform
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\IDE-Workspace"
+      - kind: github
+        path: jayprophit/IDE-Workspace
+        url: "https://github.com/jayprophit/IDE-Workspace"
+        fork: false
+        private: false
+        pushed_at: "2026-10-20T12:40:18Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 8
+      present: 0
+      missing: 8
+    gaps:
+      - PRJ-IDE-WORKSPACE-GAP-001
+      - PRJ-IDE-WORKSPACE-CAP-PLT-001
+      - PRJ-IDE-WORKSPACE-CAP-PLT-002
+      - PRJ-IDE-WORKSPACE-CAP-PLT-003
+      - PRJ-IDE-WORKSPACE-CAP-PLT-004
+      - PRJ-IDE-WORKSPACE-CAP-PLT-005
+      - PRJ-IDE-WORKSPACE-CAP-PLT-006
+      - PRJ-IDE-WORKSPACE-CAP-PLT-007
+      - PRJ-IDE-WORKSPACE-CAP-PLT-008
+  - id: PRJ-POIETEK
+    name: Poietek
+    family:
+      - creative
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Poietek"
+      - kind: github
+        path: jayprophit/Poietek
+        url: "https://github.com/jayprophit/Poietek"
+        fork: false
+        private: false
+        pushed_at: "2026-10-20T12:40:01Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 9
+      present: 0
+      missing: 9
+    gaps:
+      - PRJ-POIETEK-GAP-001
+      - PRJ-POIETEK-CAP-CRE-001
+      - PRJ-POIETEK-CAP-CRE-002
+      - PRJ-POIETEK-CAP-CRE-003
+      - PRJ-POIETEK-CAP-CRE-004
+      - PRJ-POIETEK-CAP-CRE-005
+      - PRJ-POIETEK-CAP-CRE-006
+      - PRJ-POIETEK-CAP-CRE-007
+      - PRJ-POIETEK-CAP-CRE-008
+      - PRJ-POIETEK-CAP-CRE-009
+  - id: PRJ-UNIVERSAL-BRIDGE
+    name: Universal-Bridge
+    family:
+      - creative
+      - platform
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Poietek\\absorbed\\Universal-Bridge"
+      - kind: github
+        path: jayprophit/Universal-Bridge
+        url: "https://github.com/jayprophit/Universal-Bridge"
+        fork: false
+        private: false
+        pushed_at: "2026-10-20T12:31:37Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 17
+      present: 0
+      missing: 17
+    gaps:
+      - PRJ-UNIVERSAL-BRIDGE-GAP-001
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-001
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-002
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-003
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-004
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-005
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-006
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-007
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-008
+      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-009
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-001
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-002
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-003
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-004
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-005
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-006
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-007
+      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-008
+  - id: PRJ-MAT
+    name: Materials-Atlas-Table-Codex---MAT
+    family:
+      - knowledge
+    role: first_party
+    locations:
+      - kind: workspace
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Materials-Atlas-Table-Codex---MAT"
+      - kind: github
+        path: jayprophit/Materials-Atlas-Table-Codex---MAT
+        url: "https://github.com/jayprophit/Materials-Atlas-Table-Codex---MAT"
+        fork: false
+        private: false
+        pushed_at: "2026-10-20T12:31:58Z"
+    state: PRESENT
+    measured:
+      own_lines: 26740
+      own_source_files: 286
+      test_files: 67
+      test_line_fraction: 0.235
+      primary_language: javascript
+      licence: null
+      manifests:
+        - build.yaml
+        - package.json
+        - package.json
+      has_ci: true
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 7
+      present: 7
+      missing: 0
+    gaps:
+      - PRJ-MAT-GAP-004
+  - id: PRJ-LEDGERLANDS
+    name: LedgerLands
+    family:
+      - finance
+      - blockchain
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\LedgerLands"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 17
+      present: 0
+      missing: 17
+    gaps:
+      - PRJ-LEDGERLANDS-GAP-001
+      - PRJ-LEDGERLANDS-CAP-FIN-001
+      - PRJ-LEDGERLANDS-CAP-FIN-002
+      - PRJ-LEDGERLANDS-CAP-FIN-003
+      - PRJ-LEDGERLANDS-CAP-FIN-004
+      - PRJ-LEDGERLANDS-CAP-FIN-005
+      - PRJ-LEDGERLANDS-CAP-FIN-006
+      - PRJ-LEDGERLANDS-CAP-FIN-007
+      - PRJ-LEDGERLANDS-CAP-FIN-008
+      - PRJ-LEDGERLANDS-CAP-FIN-009
+      - PRJ-LEDGERLANDS-CAP-BC-001
+      - PRJ-LEDGERLANDS-CAP-BC-002
+      - PRJ-LEDGERLANDS-CAP-BC-003
+      - PRJ-LEDGERLANDS-CAP-BC-004
+      - PRJ-LEDGERLANDS-CAP-BC-005
+      - PRJ-LEDGERLANDS-CAP-BC-006
+      - PRJ-LEDGERLANDS-CAP-BC-007
+      - PRJ-LEDGERLANDS-CAP-BC-008
+  - id: PRJ-ARCH-SHADOWS
+    name: Architecture of Shadows Book
+    family:
+      - knowledge
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\books\\Architecture of Shadows Book"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 7
+      present: 0
+      missing: 7
+    gaps:
+      - PRJ-ARCH-SHADOWS-GAP-001
+      - PRJ-ARCH-SHADOWS-CAP-KNW-001
+      - PRJ-ARCH-SHADOWS-CAP-KNW-002
+      - PRJ-ARCH-SHADOWS-CAP-KNW-003
+      - PRJ-ARCH-SHADOWS-CAP-KNW-004
+      - PRJ-ARCH-SHADOWS-CAP-KNW-005
+      - PRJ-ARCH-SHADOWS-CAP-KNW-006
+      - PRJ-ARCH-SHADOWS-CAP-KNW-007
+  - id: PRJ-ATHENA
+    name: Athena
+    family:
+      - intelligence
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Athena"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 10
+      present: 0
+      missing: 10
+    gaps:
+      - PRJ-ATHENA-GAP-001
+      - PRJ-ATHENA-CAP-INT-001
+      - PRJ-ATHENA-CAP-INT-002
+      - PRJ-ATHENA-CAP-INT-003
+      - PRJ-ATHENA-CAP-INT-004
+      - PRJ-ATHENA-CAP-INT-005
+      - PRJ-ATHENA-CAP-INT-006
+      - PRJ-ATHENA-CAP-INT-007
+      - PRJ-ATHENA-CAP-INT-008
+      - PRJ-ATHENA-CAP-INT-009
+      - PRJ-ATHENA-CAP-INT-010
+  - id: PRJ-DECENTRALIZED-MESSAGING
+    name: Decentralized Messaging App
+    family:
+      - communication
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Decentralized Messaging App"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 9
+      present: 0
+      missing: 9
+    gaps:
+      - PRJ-DECENTRALIZED-MESSAGING-GAP-001
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-101
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-102
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-103
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-104
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-105
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-106
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-107
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-108
+      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-109
+  - id: PRJ-FOOD-WIKI
+    name: Food Wiki App
+    family:
+      - knowledge
+      - apps
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Food Wiki App"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 15
+      present: 0
+      missing: 15
+    gaps:
+      - PRJ-FOOD-WIKI-GAP-001
+      - PRJ-FOOD-WIKI-CAP-KNW-001
+      - PRJ-FOOD-WIKI-CAP-KNW-002
+      - PRJ-FOOD-WIKI-CAP-KNW-003
+      - PRJ-FOOD-WIKI-CAP-KNW-004
+      - PRJ-FOOD-WIKI-CAP-KNW-005
+      - PRJ-FOOD-WIKI-CAP-KNW-006
+      - PRJ-FOOD-WIKI-CAP-KNW-007
+      - PRJ-FOOD-WIKI-CAP-APP-001
+      - PRJ-FOOD-WIKI-CAP-APP-002
+      - PRJ-FOOD-WIKI-CAP-APP-003
+      - PRJ-FOOD-WIKI-CAP-APP-004
+      - PRJ-FOOD-WIKI-CAP-APP-005
+      - PRJ-FOOD-WIKI-CAP-APP-006
+      - PRJ-FOOD-WIKI-CAP-APP-007
+      - PRJ-FOOD-WIKI-CAP-APP-008
+  - id: PRJ-HERMES-AUDIT
+    name: Hermes-Config-Audit
+    family:
+      - tools
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\tools\\Hermes-Config-Audit"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 4
+      present: 0
+      missing: 4
+    gaps:
+      - PRJ-HERMES-AUDIT-GAP-001
+      - PRJ-HERMES-AUDIT-CAP-TLS-001
+      - PRJ-HERMES-AUDIT-CAP-TLS-002
+      - PRJ-HERMES-AUDIT-CAP-TLS-003
+      - PRJ-HERMES-AUDIT-CAP-TLS-004
+  - id: PRJ-AETHERIAL
+    name: Aetherial
+    family:
+      - platform
+      - intelligence
+      - apps
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\Aetherial"
+      - kind: github
+        path: jayprophit/Aetherial
+        url: "https://github.com/jayprophit/Aetherial"
+        fork: false
+        private: false
+        pushed_at: "2026-09-11T07:53:22Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 26
+      present: 0
+      missing: 26
+    gaps:
+      - PRJ-AETHERIAL-GAP-001
+      - PRJ-AETHERIAL-CAP-PLT-001
+      - PRJ-AETHERIAL-CAP-PLT-002
+      - PRJ-AETHERIAL-CAP-PLT-003
+      - PRJ-AETHERIAL-CAP-PLT-004
+      - PRJ-AETHERIAL-CAP-PLT-005
+      - PRJ-AETHERIAL-CAP-PLT-006
+      - PRJ-AETHERIAL-CAP-PLT-007
+      - PRJ-AETHERIAL-CAP-PLT-008
+      - PRJ-AETHERIAL-CAP-INT-001
+      - PRJ-AETHERIAL-CAP-INT-002
+      - PRJ-AETHERIAL-CAP-INT-003
+      - PRJ-AETHERIAL-CAP-INT-004
+      - PRJ-AETHERIAL-CAP-INT-005
+      - PRJ-AETHERIAL-CAP-INT-006
+      - PRJ-AETHERIAL-CAP-INT-007
+      - PRJ-AETHERIAL-CAP-INT-008
+      - PRJ-AETHERIAL-CAP-INT-009
+      - PRJ-AETHERIAL-CAP-INT-010
+      - PRJ-AETHERIAL-CAP-APP-001
+      - PRJ-AETHERIAL-CAP-APP-002
+      - PRJ-AETHERIAL-CAP-APP-003
+      - PRJ-AETHERIAL-CAP-APP-004
+      - PRJ-AETHERIAL-CAP-APP-005
+      - PRJ-AETHERIAL-CAP-APP-006
+      - PRJ-AETHERIAL-CAP-APP-007
+      - PRJ-AETHERIAL-CAP-APP-008
+  - id: PRJ-AETHERIAL-PLATFORM
+    name: aetherial-platform
+    family:
+      - commerce
+      - elearning
+      - social_media
+      - finance
+      - apps
+      - databases
+      - cloud_services
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\ecosystem\\aetherial-platform"
+      - kind: github
+        path: jayprophit/aetherial-platform
+        url: "https://github.com/jayprophit/aetherial-platform"
+        fork: false
+        private: false
+        pushed_at: "2026-03-27T04:05:01Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 69
+      present: 0
+      missing: 69
+    gaps:
+      - PRJ-AETHERIAL-PLATFORM-GAP-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-002
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-003
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-004
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-005
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-006
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-007
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-008
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-009
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-010
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-011
+      - PRJ-AETHERIAL-PLATFORM-CAP-COM-012
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-002
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-003
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-004
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-005
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-006
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-007
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-008
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-009
+      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-010
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-002
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-003
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-004
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-005
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-006
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-007
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-008
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-009
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-010
+      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-011
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-002
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-003
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-004
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-005
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-006
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-007
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-008
+      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-009
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-002
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-003
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-004
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-005
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-006
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-007
+      - PRJ-AETHERIAL-PLATFORM-CAP-APP-008
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-002
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-003
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-004
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-005
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-006
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-007
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-008
+      - PRJ-AETHERIAL-PLATFORM-CAP-DB-009
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-001
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-002
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-003
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-004
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-005
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-006
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-007
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-008
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-009
+      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-010
+  - id: PRJ-WEB-PLATFORM
+    name: Web-platform
+    family:
+      - commerce
+      - elearning
+      - social_media
+      - blockchain
+      - apps
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\ecosystem\\Web-platform"
+      - kind: github
+        path: jayprophit/Web-platform-with-E-commerce-E-learning-social-media-job-hunting-post-articles-blockchain-ai
+        url: "https://github.com/jayprophit/Web-platform-with-E-commerce-E-learning-social-media-job-hunting-post-articles-blockchain-ai"
+        fork: false
+        private: false
+        pushed_at: "2025-01-31T05:08:03Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 49
+      present: 0
+      missing: 49
+    gaps:
+      - PRJ-WEB-PLATFORM-GAP-001
+      - PRJ-WEB-PLATFORM-CAP-COM-001
+      - PRJ-WEB-PLATFORM-CAP-COM-002
+      - PRJ-WEB-PLATFORM-CAP-COM-003
+      - PRJ-WEB-PLATFORM-CAP-COM-004
+      - PRJ-WEB-PLATFORM-CAP-COM-005
+      - PRJ-WEB-PLATFORM-CAP-COM-006
+      - PRJ-WEB-PLATFORM-CAP-COM-007
+      - PRJ-WEB-PLATFORM-CAP-COM-008
+      - PRJ-WEB-PLATFORM-CAP-COM-009
+      - PRJ-WEB-PLATFORM-CAP-COM-010
+      - PRJ-WEB-PLATFORM-CAP-COM-011
+      - PRJ-WEB-PLATFORM-CAP-COM-012
+      - PRJ-WEB-PLATFORM-CAP-EDU-001
+      - PRJ-WEB-PLATFORM-CAP-EDU-002
+      - PRJ-WEB-PLATFORM-CAP-EDU-003
+      - PRJ-WEB-PLATFORM-CAP-EDU-004
+      - PRJ-WEB-PLATFORM-CAP-EDU-005
+      - PRJ-WEB-PLATFORM-CAP-EDU-006
+      - PRJ-WEB-PLATFORM-CAP-EDU-007
+      - PRJ-WEB-PLATFORM-CAP-EDU-008
+      - PRJ-WEB-PLATFORM-CAP-EDU-009
+      - PRJ-WEB-PLATFORM-CAP-EDU-010
+      - PRJ-WEB-PLATFORM-CAP-SOC-001
+      - PRJ-WEB-PLATFORM-CAP-SOC-002
+      - PRJ-WEB-PLATFORM-CAP-SOC-003
+      - PRJ-WEB-PLATFORM-CAP-SOC-004
+      - PRJ-WEB-PLATFORM-CAP-SOC-005
+      - PRJ-WEB-PLATFORM-CAP-SOC-006
+      - PRJ-WEB-PLATFORM-CAP-SOC-007
+      - PRJ-WEB-PLATFORM-CAP-SOC-008
+      - PRJ-WEB-PLATFORM-CAP-SOC-009
+      - PRJ-WEB-PLATFORM-CAP-SOC-010
+      - PRJ-WEB-PLATFORM-CAP-SOC-011
+      - PRJ-WEB-PLATFORM-CAP-BC-001
+      - PRJ-WEB-PLATFORM-CAP-BC-002
+      - PRJ-WEB-PLATFORM-CAP-BC-003
+      - PRJ-WEB-PLATFORM-CAP-BC-004
+      - PRJ-WEB-PLATFORM-CAP-BC-005
+      - PRJ-WEB-PLATFORM-CAP-BC-006
+      - PRJ-WEB-PLATFORM-CAP-BC-007
+      - PRJ-WEB-PLATFORM-CAP-BC-008
+      - PRJ-WEB-PLATFORM-CAP-APP-001
+      - PRJ-WEB-PLATFORM-CAP-APP-002
+      - PRJ-WEB-PLATFORM-CAP-APP-003
+      - PRJ-WEB-PLATFORM-CAP-APP-004
+      - PRJ-WEB-PLATFORM-CAP-APP-005
+      - PRJ-WEB-PLATFORM-CAP-APP-006
+      - PRJ-WEB-PLATFORM-CAP-APP-007
+      - PRJ-WEB-PLATFORM-CAP-APP-008
+  - id: PRJ-NICHE-PLATFORM
+    name: Niche_platform
+    family:
+      - platform
+      - apps
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\ecosystem\\Niche_platform"
+      - kind: github
+        path: jayprophit/Niche_platform
+        url: "https://github.com/jayprophit/Niche_platform"
+        fork: false
+        private: false
+        pushed_at: "2026-09-19T10:52:38Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 16
+      present: 0
+      missing: 16
+    gaps:
+      - PRJ-NICHE-PLATFORM-GAP-001
+      - PRJ-NICHE-PLATFORM-CAP-PLT-001
+      - PRJ-NICHE-PLATFORM-CAP-PLT-002
+      - PRJ-NICHE-PLATFORM-CAP-PLT-003
+      - PRJ-NICHE-PLATFORM-CAP-PLT-004
+      - PRJ-NICHE-PLATFORM-CAP-PLT-005
+      - PRJ-NICHE-PLATFORM-CAP-PLT-006
+      - PRJ-NICHE-PLATFORM-CAP-PLT-007
+      - PRJ-NICHE-PLATFORM-CAP-PLT-008
+      - PRJ-NICHE-PLATFORM-CAP-APP-001
+      - PRJ-NICHE-PLATFORM-CAP-APP-002
+      - PRJ-NICHE-PLATFORM-CAP-APP-003
+      - PRJ-NICHE-PLATFORM-CAP-APP-004
+      - PRJ-NICHE-PLATFORM-CAP-APP-005
+      - PRJ-NICHE-PLATFORM-CAP-APP-006
+      - PRJ-NICHE-PLATFORM-CAP-APP-007
+      - PRJ-NICHE-PLATFORM-CAP-APP-008
+  - id: PRJ-FOOTBALL-CARD-GAME
+    name: football-card-game
+    family:
+      - apps
+      - tools
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\football-card-game"
+      - kind: github
+        path: jayprophit/football-card-game
+        url: "https://github.com/jayprophit/football-card-game"
+        fork: false
+        private: false
+        pushed_at: "2025-03-09T00:20:39Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 12
+      present: 0
+      missing: 12
+    gaps:
+      - PRJ-FOOTBALL-CARD-GAME-GAP-001
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-001
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-002
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-003
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-004
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-005
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-006
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-007
+      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-008
+      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-001
+      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-002
+      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-003
+      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-004
+  - id: PRJ-SELF-BUILDING-AI
+    name: self-building-ai
+    family:
+      - intelligence
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\absorbed\\self-building-ai"
+      - kind: github
+        path: jayprophit/self-building-ai
+        url: "https://github.com/jayprophit/self-building-ai"
+        fork: false
+        private: false
+        pushed_at: "2026-09-19T10:48:18Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 10
+      present: 0
+      missing: 10
+    gaps:
+      - PRJ-SELF-BUILDING-AI-GAP-001
+      - PRJ-SELF-BUILDING-AI-CAP-INT-001
+      - PRJ-SELF-BUILDING-AI-CAP-INT-002
+      - PRJ-SELF-BUILDING-AI-CAP-INT-003
+      - PRJ-SELF-BUILDING-AI-CAP-INT-004
+      - PRJ-SELF-BUILDING-AI-CAP-INT-005
+      - PRJ-SELF-BUILDING-AI-CAP-INT-006
+      - PRJ-SELF-BUILDING-AI-CAP-INT-007
+      - PRJ-SELF-BUILDING-AI-CAP-INT-008
+      - PRJ-SELF-BUILDING-AI-CAP-INT-009
+      - PRJ-SELF-BUILDING-AI-CAP-INT-010
+  - id: PRJ-QVA-MERGED
+    name: QVA-merged
+    family:
+      - intelligence
+      - blockchain
+      - databases
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\QVA-merged"
+      - kind: github
+        path: jayprophit/QVA-merged
+        url: "https://github.com/jayprophit/QVA-merged"
+        fork: false
+        private: false
+        pushed_at: "2025-05-13T13:02:54Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 27
+      present: 0
+      missing: 27
+    gaps:
+      - PRJ-QVA-MERGED-GAP-001
+      - PRJ-QVA-MERGED-CAP-INT-001
+      - PRJ-QVA-MERGED-CAP-INT-002
+      - PRJ-QVA-MERGED-CAP-INT-003
+      - PRJ-QVA-MERGED-CAP-INT-004
+      - PRJ-QVA-MERGED-CAP-INT-005
+      - PRJ-QVA-MERGED-CAP-INT-006
+      - PRJ-QVA-MERGED-CAP-INT-007
+      - PRJ-QVA-MERGED-CAP-INT-008
+      - PRJ-QVA-MERGED-CAP-INT-009
+      - PRJ-QVA-MERGED-CAP-INT-010
+      - PRJ-QVA-MERGED-CAP-BC-001
+      - PRJ-QVA-MERGED-CAP-BC-002
+      - PRJ-QVA-MERGED-CAP-BC-003
+      - PRJ-QVA-MERGED-CAP-BC-004
+      - PRJ-QVA-MERGED-CAP-BC-005
+      - PRJ-QVA-MERGED-CAP-BC-006
+      - PRJ-QVA-MERGED-CAP-BC-007
+      - PRJ-QVA-MERGED-CAP-BC-008
+      - PRJ-QVA-MERGED-CAP-DB-001
+      - PRJ-QVA-MERGED-CAP-DB-002
+      - PRJ-QVA-MERGED-CAP-DB-003
+      - PRJ-QVA-MERGED-CAP-DB-004
+      - PRJ-QVA-MERGED-CAP-DB-005
+      - PRJ-QVA-MERGED-CAP-DB-006
+      - PRJ-QVA-MERGED-CAP-DB-007
+      - PRJ-QVA-MERGED-CAP-DB-008
+      - PRJ-QVA-MERGED-CAP-DB-009
+  - id: PRJ-QUANTUM-OS
+    name: Quantum-OS
+    family:
+      - platform
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\Quantum-OS"
+      - kind: github
+        path: jayprophit/Quantum-OS
+        url: "https://github.com/jayprophit/Quantum-OS"
+        fork: false
+        private: false
+        pushed_at: "2025-11-07T14:38:25Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 8
+      present: 0
+      missing: 8
+    gaps:
+      - PRJ-QUANTUM-OS-GAP-001
+      - PRJ-QUANTUM-OS-CAP-PLT-001
+      - PRJ-QUANTUM-OS-CAP-PLT-002
+      - PRJ-QUANTUM-OS-CAP-PLT-003
+      - PRJ-QUANTUM-OS-CAP-PLT-004
+      - PRJ-QUANTUM-OS-CAP-PLT-005
+      - PRJ-QUANTUM-OS-CAP-PLT-006
+      - PRJ-QUANTUM-OS-CAP-PLT-007
+      - PRJ-QUANTUM-OS-CAP-PLT-008
+  - id: PRJ-VEYRA
+    name: Veyra
+    family:
+      - intelligence
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\Veyra"
+      - kind: github
+        path: jayprophit/Veyra
+        url: "https://github.com/jayprophit/Veyra"
+        fork: false
+        private: false
+        pushed_at: "2026-05-23T14:58:29Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 10
+      present: 0
+      missing: 10
+    gaps:
+      - PRJ-VEYRA-GAP-001
+      - PRJ-VEYRA-CAP-INT-001
+      - PRJ-VEYRA-CAP-INT-002
+      - PRJ-VEYRA-CAP-INT-003
+      - PRJ-VEYRA-CAP-INT-004
+      - PRJ-VEYRA-CAP-INT-005
+      - PRJ-VEYRA-CAP-INT-006
+      - PRJ-VEYRA-CAP-INT-007
+      - PRJ-VEYRA-CAP-INT-008
+      - PRJ-VEYRA-CAP-INT-009
+      - PRJ-VEYRA-CAP-INT-010
+  - id: PRJ-AETHERIUM
+    name: aetherium
+    family:
+      - knowledge
+      - intelligence
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\aetherium"
+      - kind: github
+        path: jayprophit/aetherium
+        url: "https://github.com/jayprophit/aetherium"
+        fork: false
+        private: false
+        pushed_at: "2026-02-20T20:16:52Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 17
+      present: 0
+      missing: 17
+    gaps:
+      - PRJ-AETHERIUM-GAP-001
+      - PRJ-AETHERIUM-CAP-KNW-001
+      - PRJ-AETHERIUM-CAP-KNW-002
+      - PRJ-AETHERIUM-CAP-KNW-003
+      - PRJ-AETHERIUM-CAP-KNW-004
+      - PRJ-AETHERIUM-CAP-KNW-005
+      - PRJ-AETHERIUM-CAP-KNW-006
+      - PRJ-AETHERIUM-CAP-KNW-007
+      - PRJ-AETHERIUM-CAP-INT-001
+      - PRJ-AETHERIUM-CAP-INT-002
+      - PRJ-AETHERIUM-CAP-INT-003
+      - PRJ-AETHERIUM-CAP-INT-004
+      - PRJ-AETHERIUM-CAP-INT-005
+      - PRJ-AETHERIUM-CAP-INT-006
+      - PRJ-AETHERIUM-CAP-INT-007
+      - PRJ-AETHERIUM-CAP-INT-008
+      - PRJ-AETHERIUM-CAP-INT-009
+      - PRJ-AETHERIUM-CAP-INT-010
+  - id: PRJ-CROSSPLATFORM
+    name: Crossplatform---multiplatform
+    family:
+      - tools
+      - platform
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\ecosystem\\crossplatform---multiplatform"
+      - kind: github
+        path: jayprophit/Crossplatform---multiplatform
+        url: "https://github.com/jayprophit/Crossplatform---multiplatform"
+        fork: false
+        private: false
+        pushed_at: "2024-12-19T21:42:22Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 12
+      present: 0
+      missing: 12
+    gaps:
+      - PRJ-CROSSPLATFORM-GAP-001
+      - PRJ-CROSSPLATFORM-CAP-TLS-001
+      - PRJ-CROSSPLATFORM-CAP-TLS-002
+      - PRJ-CROSSPLATFORM-CAP-TLS-003
+      - PRJ-CROSSPLATFORM-CAP-TLS-004
+      - PRJ-CROSSPLATFORM-CAP-PLT-001
+      - PRJ-CROSSPLATFORM-CAP-PLT-002
+      - PRJ-CROSSPLATFORM-CAP-PLT-003
+      - PRJ-CROSSPLATFORM-CAP-PLT-004
+      - PRJ-CROSSPLATFORM-CAP-PLT-005
+      - PRJ-CROSSPLATFORM-CAP-PLT-006
+      - PRJ-CROSSPLATFORM-CAP-PLT-007
+      - PRJ-CROSSPLATFORM-CAP-PLT-008
+  - id: PRJ-VIRTUAL-ASSISTANT
+    name: VirtualAssistant
+    family:
+      - intelligence
+      - communication
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\kernel\\Genesis\\absorbed\\VirtualAssistant"
+      - kind: github
+        path: jayprophit/VirtualAssistant
+        url: "https://github.com/jayprophit/VirtualAssistant"
+        fork: false
+        private: false
+        pushed_at: "2025-01-13T10:01:42Z"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 19
+      present: 0
+      missing: 19
+    gaps:
+      - PRJ-VIRTUAL-ASSISTANT-GAP-001
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-001
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-002
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-003
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-004
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-005
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-006
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-007
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-008
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-009
+      - PRJ-VIRTUAL-ASSISTANT-CAP-INT-010
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-101
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-102
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-103
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-104
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-105
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-106
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-107
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-108
+      - PRJ-VIRTUAL-ASSISTANT-CAP-COM-109
+  - id: PRJ-SOVEREIGN-FINANCIAL-OS
+    name: sovereign-financial-os
+    family:
+      - finance
+      - blockchain
+      - databases
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\sovereign-financial-os"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0.0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 26
+      present: 0
+      missing: 26
+    gaps:
+      - PRJ-SOVEREIGN-FINANCIAL-OS-GAP-001
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-001
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-002
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-003
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-004
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-005
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-006
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-007
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-008
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-009
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-001
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-002
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-003
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-004
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-005
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-006
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-007
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-008
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-001
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-002
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-003
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-004
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-005
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-006
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-007
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-008
+      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-009
+  - id: PRJ-AETHERION-ENGINE
+    name: aetherion-engine
+    family:
+      - intelligence
+      - local_services
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherion-engine"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0.0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 18
+      present: 0
+      missing: 18
+    gaps:
+      - PRJ-AETHERION-ENGINE-GAP-001
+      - PRJ-AETHERION-ENGINE-CAP-INT-001
+      - PRJ-AETHERION-ENGINE-CAP-INT-002
+      - PRJ-AETHERION-ENGINE-CAP-INT-003
+      - PRJ-AETHERION-ENGINE-CAP-INT-004
+      - PRJ-AETHERION-ENGINE-CAP-INT-005
+      - PRJ-AETHERION-ENGINE-CAP-INT-006
+      - PRJ-AETHERION-ENGINE-CAP-INT-007
+      - PRJ-AETHERION-ENGINE-CAP-INT-008
+      - PRJ-AETHERION-ENGINE-CAP-INT-009
+      - PRJ-AETHERION-ENGINE-CAP-INT-010
+      - PRJ-AETHERION-ENGINE-CAP-LOC-001
+      - PRJ-AETHERION-ENGINE-CAP-LOC-002
+      - PRJ-AETHERION-ENGINE-CAP-LOC-003
+      - PRJ-AETHERION-ENGINE-CAP-LOC-004
+      - PRJ-AETHERION-ENGINE-CAP-LOC-005
+      - PRJ-AETHERION-ENGINE-CAP-LOC-006
+      - PRJ-AETHERION-ENGINE-CAP-LOC-007
+      - PRJ-AETHERION-ENGINE-CAP-LOC-008
+  - id: PRJ-HOLONAV-OS
+    name: holonav-os
+    family:
+      - platform
+      - local_services
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\holonav-os"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0.0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 16
+      present: 0
+      missing: 16
+    gaps:
+      - PRJ-HOLONAV-OS-GAP-001
+      - PRJ-HOLONAV-OS-CAP-PLT-001
+      - PRJ-HOLONAV-OS-CAP-PLT-002
+      - PRJ-HOLONAV-OS-CAP-PLT-003
+      - PRJ-HOLONAV-OS-CAP-PLT-004
+      - PRJ-HOLONAV-OS-CAP-PLT-005
+      - PRJ-HOLONAV-OS-CAP-PLT-006
+      - PRJ-HOLONAV-OS-CAP-PLT-007
+      - PRJ-HOLONAV-OS-CAP-PLT-008
+      - PRJ-HOLONAV-OS-CAP-LOC-001
+      - PRJ-HOLONAV-OS-CAP-LOC-002
+      - PRJ-HOLONAV-OS-CAP-LOC-003
+      - PRJ-HOLONAV-OS-CAP-LOC-004
+      - PRJ-HOLONAV-OS-CAP-LOC-005
+      - PRJ-HOLONAV-OS-CAP-LOC-006
+      - PRJ-HOLONAV-OS-CAP-LOC-007
+      - PRJ-HOLONAV-OS-CAP-LOC-008
+  - id: PRJ-QUANTUM-AI-ASSISTANT
+    name: quantum-ai-assistant
+    family:
+      - intelligence
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\quantum-ai-assistant"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0.0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 10
+      present: 0
+      missing: 10
+    gaps:
+      - PRJ-QUANTUM-AI-ASSISTANT-GAP-001
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-001
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-002
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-003
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-004
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-005
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-006
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-007
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-008
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-009
+      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-010
+  - id: PRJ-HEALTH-LIBRARY
+    name: aetherius-health-library
+    family:
+      - knowledge
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-health-library"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0.0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 7
+      present: 0
+      missing: 7
+    gaps:
+      - PRJ-HEALTH-LIBRARY-GAP-001
+      - PRJ-HEALTH-LIBRARY-CAP-KNW-001
+      - PRJ-HEALTH-LIBRARY-CAP-KNW-002
+      - PRJ-HEALTH-LIBRARY-CAP-KNW-003
+      - PRJ-HEALTH-LIBRARY-CAP-KNW-004
+      - PRJ-HEALTH-LIBRARY-CAP-KNW-005
+      - PRJ-HEALTH-LIBRARY-CAP-KNW-006
+      - PRJ-HEALTH-LIBRARY-CAP-KNW-007
+  - id: PRJ-WORLDCASS-PROTO
+    name: aetherius-os-worldclass-prototype
+    family:
+      - platform
+      - intelligence
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\aetherius-os-worldclass-prototype"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 18
+      present: 0
+      missing: 18
+    gaps:
+      - PRJ-WORLDCASS-PROTO-GAP-001
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-001
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-002
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-003
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-004
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-005
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-006
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-007
+      - PRJ-WORLDCASS-PROTO-CAP-PLT-008
+      - PRJ-WORLDCASS-PROTO-CAP-INT-001
+      - PRJ-WORLDCASS-PROTO-CAP-INT-002
+      - PRJ-WORLDCASS-PROTO-CAP-INT-003
+      - PRJ-WORLDCASS-PROTO-CAP-INT-004
+      - PRJ-WORLDCASS-PROTO-CAP-INT-005
+      - PRJ-WORLDCASS-PROTO-CAP-INT-006
+      - PRJ-WORLDCASS-PROTO-CAP-INT-007
+      - PRJ-WORLDCASS-PROTO-CAP-INT-008
+      - PRJ-WORLDCASS-PROTO-CAP-INT-009
+      - PRJ-WORLDCASS-PROTO-CAP-INT-010
+  - id: PRJ-AETHERIUS-OS-PROTO
+    name: aetherius-os-prototype
+    family:
+      - platform
+    role: predecessor
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\predecessors\\aetherius-os-prototype"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 8
+      present: 0
+      missing: 8
+    gaps:
+      - PRJ-AETHERIUS-OS-PROTO-GAP-001
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-001
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-002
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-003
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-004
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-005
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-006
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-007
+      - PRJ-AETHERIUS-OS-PROTO-CAP-PLT-008
+  - id: PRJ-TRADING-BOT
+    name: Multi-Cross-Platform-Trading-Bot
+    family:
+      - finance
+    role: prior_art
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Multi-Cross-Platform-Trading-Bot"
+    state: EMPTY
+    measured:
+      own_lines: 0
+      own_source_files: 0
+      test_files: 0
+      test_line_fraction: 0
+      primary_language: null
+      licence: null
+      manifests: []
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 9
+      present: 0
+      missing: 9
+    gaps:
+      - PRJ-TRADING-BOT-GAP-001
+      - PRJ-TRADING-BOT-CAP-FIN-001
+      - PRJ-TRADING-BOT-CAP-FIN-002
+      - PRJ-TRADING-BOT-CAP-FIN-003
+      - PRJ-TRADING-BOT-CAP-FIN-004
+      - PRJ-TRADING-BOT-CAP-FIN-005
+      - PRJ-TRADING-BOT-CAP-FIN-006
+      - PRJ-TRADING-BOT-CAP-FIN-007
+      - PRJ-TRADING-BOT-CAP-FIN-008
+      - PRJ-TRADING-BOT-CAP-FIN-009
+  - id: PRJ-AI-DIGITAL-TWIN
+    name: ai-digital-clone
+    family:
+      - intelligence
+      - local_services
+    role: predecessor
+    locations:
+      - kind: recovered
+        path: "E:\\external drive\\AI Digital Twin\\ai-digital-clone"
+    state: THINLY_TESTED
+    measured:
+      own_lines: 215983
+      own_source_files: 453
+      test_files: 9
+      test_line_fraction: 0.004
+      primary_language: python
+      licence: null
+      manifests:
+        - pyproject.toml
+        - requirements.txt
+        - docker-compose.yml
+        - Dockerfile
+        - docker-compose.yml
+        - Dockerfile
+        - setup.py
+      has_ci: true
+      has_docker: true
+      secret_literal_files:
+        - scripts/setup_local_cloud.sh
+    capabilities:
+      checked: 18
+      present: 17
+      missing: 1
+    gaps:
+      - PRJ-AI-DIGITAL-TWIN-GAP-003
+      - PRJ-AI-DIGITAL-TWIN-GAP-004
+      - PRJ-AI-DIGITAL-TWIN-CAP-LOC-003

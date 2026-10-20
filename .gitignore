@@ -49,3 +49,61 @@ research/build85/pattern/storage/
 
 # The conversation digests are derived from the raw corpus.
 research/codex-history/digests/
+
+# The recovered conversation corpus.
+#
+# The owner's own conversations are not published in bulk. The digests
+# beside them are, because a digest is the rollup: what the corpus says,
+# counted and grouped, rather than the text itself. The same rule applies
+# here as to the Codex history: the raw material stays on disk, the
+# abstraction is what the build uses.
+research/conversation-corpus/index.json
+research/external-chats/
+research/chatgpt-all-conversations.json
+
+# The statements the owner made about each project, in bulk. The readable
+# rollup beside it is published, because it is what a person reads; the
+# index is the machine form of the same quotes.
+research/conversations/project-conversations.json
+
+# The README cache from the repository analysis. Six hundred READMEs from
+# other people's repositories are third-party text and are not published;
+# the analysis derived from them is.
+research/github-repos/.readme-cache/
+
+# The absorbed projects.
+#
+# Each of these keeps its own repository and its own GitHub remote, and
+# each is a project of its own with its own build manifest. The parent
+# project must not track them: a nested repository is not part of the
+# parent's history, and tracking it would put a second project's
+# contents into this one's commits.
+absorbed/self-building-ai/
+apps/Athena/
+apps/Decentralized Messaging App/
+apps/Food Wiki App/
+apps/IDE-Workspace/
+apps/LedgerLands/
+apps/Multi-Cross-Platform-Trading-Bot/
+apps/Poietek/
+apps/aetherion-engine/
+apps/aetherius-health-library/
+apps/football-card-game/
+apps/quantum-ai-assistant/
+apps/sovereign-financial-os/
+books/Architecture of Shadows Book/
+ecosystem/Niche_platform/
+ecosystem/Web-platform/
+ecosystem/aetherial-platform/
+ecosystem/crossplatform---multiplatform/
+kernel/Genesis/
+predecessors/QVA-merged/
+predecessors/Quantum-OS/
+predecessors/Veyra/
+predecessors/aetherial/
+predecessors/aetherium/
+predecessors/aetherius-os-prototype/
+predecessors/aetherius-os-worldclass-prototype/
+predecessors/ai-digital-clone/
+predecessors/holonav-os/
+tools/Hermes-Config-Audit/

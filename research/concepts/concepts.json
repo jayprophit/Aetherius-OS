@@ -1,0 +1,11654 @@
+[
+ {
+  "concept": "Read",
+  "mentions": 108,
+  "sources": 108,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "They",
+  "mentions": 67,
+  "sources": 67,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Maybe",
+  "mentions": 58,
+  "sources": 58,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Implement",
+  "mentions": 49,
+  "sources": 49,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Create",
+  "mentions": 46,
+  "sources": 46,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Build",
+  "mentions": 45,
+  "sources": 45,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Search",
+  "mentions": 38,
+  "sources": 38,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Design",
+  "mentions": 34,
+  "sources": 34,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Claude",
+  "mentions": 33,
+  "sources": 33,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Continue",
+  "mentions": 32,
+  "sources": 32,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "GitHub",
+  "mentions": 31,
+  "sources": 31,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Check",
+  "mentions": 28,
+  "sources": 28,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "First",
+  "mentions": 25,
+  "sources": 25,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Generate",
+  "mentions": 24,
+  "sources": 24,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DeepSeek",
+  "mentions": 20,
+  "sources": 20,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ChatGPT",
+  "mentions": 18,
+  "sources": 18,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Provide",
+  "mentions": 18,
+  "sources": 18,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "QuantumVirtualAssistant",
+  "mentions": 18,
+  "sources": 18,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "APIs",
+  "mentions": 16,
+  "sources": 16,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Start",
+  "mentions": 16,
+  "sources": 16,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Ensure",
+  "mentions": 15,
+  "sources": 15,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Manus",
+  "mentions": 14,
+  "sources": 14,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Using",
+  "mentions": 13,
+  "sources": 13,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Docker",
+  "mentions": 13,
+  "sources": 13,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "University",
+  "mentions": 13,
+  "sources": 13,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Avoid",
+  "mentions": 13,
+  "sources": 13,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Works",
+  "mentions": 13,
+  "sources": 13,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Quantum",
+  "mentions": 12,
+  "sources": 12,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "WordPress",
+  "mentions": 12,
+  "sources": 12,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Prompt",
+  "mentions": 12,
+  "sources": 12,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Without",
+  "mentions": 11,
+  "sources": 11,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Proof",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Take",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Below",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Write",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Alternatively",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Telegram",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Chat",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Monetization",
+  "mentions": 10,
+  "sources": 10,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Email",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Aetherius",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Complete",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "it can help the os",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SystemRequirements",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Requirement",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Bluetooth",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Pinterest",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "web app",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Data",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Files",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Object",
+  "mentions": 9,
+  "sources": 9,
+  "families": [
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Security",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Node",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Research",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "LLMs",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Azure",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Howard",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Windsurf",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Step",
+  "mentions": 8,
+  "sources": 8,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "React",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "from scratch not using api",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Hiskia100",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Exactly",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Multi",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Hugging Face",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Bitcoin",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Webpage",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Reasoning",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Analyze",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Need",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Use Cases",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Walter Russell",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "desktop app",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "WhatsApp",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Mention",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Testing",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Einstein",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Gemini",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Codex",
+  "mentions": 7,
+  "sources": 7,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Solidity",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Mechanisms",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "System",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Highlight",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Perhaps",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Model Context Protocol",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Explain",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Enhancements",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Latent Transformer",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Alright",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DevOps",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "TensorFlow",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Well",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Repeat Steps",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "make it cross platform",
+  "mentions": 6,
+  "sources": 6,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Instead",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Free",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Discord",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Environment",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Uses",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Give",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Highlighting",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Project",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Anthropic",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Users",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Work",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Wait",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Alibaba",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Internet",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Similarly",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Snapchat",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "MLOps",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Keep",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Including",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Flask",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "BITNET",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Learn",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SaaS",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Deepseek",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Structure",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Download",
+  "mentions": 5,
+  "sources": 5,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "GitHub Actions",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Shopify",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Short",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "MQTT",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Electron",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "VRAM",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Player",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Creating",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Enhance",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Expand",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "High",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Reinforced Self",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Architecture",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "MCP Server",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "commerce",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Studio",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Knowledge-Augmented Generation",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Large Language Model",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Cache-Augmented Generation",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Retrieval-Augmented Generation",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Include",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "GDPR",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Develop",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Use Case",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Game",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Google Cloud",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Ethereum",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Blockchain",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Unlimited",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Ideal",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Rife",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Terrence Howard",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Flutter",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "AIOps",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Objective",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Code",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "primarch system",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Location",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Core",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "AAAAC3NzaC1lZDI1NTE5AAAAIPmu3soOivGGdxlYE8vOMESXi0tuK8KrF7El7oWybfif",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tools",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Cirq",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Even",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Live",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Integrating",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Web3",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "connector for bluetooth speakers app",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Finally",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "with a holographic virtual assistant",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Synthetic Cognition",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Neural Reconstruction",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Agents",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Cursor",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SecuritySystem",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "elearning"
+  ]
+ },
+ {
+  "concept": "SPDX-License-Identifier",
+  "mentions": 4,
+  "sources": 4,
+  "families": []
+ },
+ {
+  "concept": "ReputationSystem",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "finance"
+  ]
+ },
+ {
+  "concept": "Social",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Integrate",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ready for app",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Allowing",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "add a points system",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Monetize",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "it and make it app",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Everything",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Describe",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "communication"
+  ]
+ },
+ {
+  "concept": "Abstract",
+  "mentions": 4,
+  "sources": 4,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Devcontainer",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Open",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Aetherial",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "multi facet platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Codespaces",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Unity",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Unreal Engine",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Steam",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Post",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "smart network",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "mesh network",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "neural network",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "virtual assistant",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Models",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Finish",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Power",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Safety",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Zero Data",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Zero",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Other",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Access",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "LiDAR",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Memory",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "LangChain",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Three",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Trading",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Binance",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Earth",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Common",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "with a database",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Byte Latent Transformer",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Key Features",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Copilot",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "GitHub Copilot",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Audio",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Deep",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "to make my own platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "mobile app",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "it has a reward system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ipad app",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "s cross platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "have a quantum ai agent",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "multi cross system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Ensuring",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "GPUs",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "README",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Suggest",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Use APIs",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "OpenCV",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Uniswap",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Incorporate",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Machine Learning",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Challenges",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DeFi",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Multiple",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases"
+  ]
+ },
+ {
+  "concept": "MAIA",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Virtual-Machine-Virtual",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Agents-Quantum-Computer",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Turn",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Connect",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Self",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Add Layers",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Incrementally",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "design the system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "you build the foundational system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "add a reinforcement learning engine",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PennyLane",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "IBM Qiskit",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Use PyTorch",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "build a virtual assistant",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Stable Baselines",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DevContainers",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "with an integrated virtual assistant",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "comprehensive prompt for a tool",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Huawei",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Swap",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Sonnet",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Grok",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "to build my operating system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "LiveKit",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Swift",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Kotlin",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Bokeh",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Privacy",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Signal",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Visual",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "China",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "data and make an app",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Adaptive",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Nanobrain",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Chinese",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Qwen",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PowerShell",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Selenium",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "FastAPI",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SQLite",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Django",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Codeium",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Quantum Virtual Assistant",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Organize",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Limited",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Error",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Yeah",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Use ChatGPT",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Whole Brain Emulation",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Coherence",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Qiskit",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Version",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Universal Ripple Tracker",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "of the universal ripple tracker",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "External Charging Needed",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Inventions",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Inventors",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Time",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Ripple",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "BF16",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "E4M3",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "FP32",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "E2M1",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "FP4 Quantization",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Binary",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Providing",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Layer",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "aetherius os",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Core Systems",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "blockchain",
+   "databases"
+  ]
+ },
+ {
+  "concept": "InterfaceSystem",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "databases"
+  ]
+ },
+ {
+  "concept": "core platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "commerce",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Interactive",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "in a unified platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "it had a system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Content",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "social media platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "on the social media platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "an e-commerce platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "e-learning platform",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "quantum virtual assistant",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "finance",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Copy",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Impact",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "to be used on app",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "with system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Full",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Projects",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Sheets",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Business",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Claude Code",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "OpenCode",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Good",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Meaning",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Genesis",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Windsurd Codium",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "that the final integrated system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Abstracting Multi-Source",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Identify",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Maintain",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "i need a system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "data for my aetherius os",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "comprehensive and evolving operating system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Groq",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "prompt should allow the system",
+  "mentions": 3,
+  "sources": 3,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Docker Compose",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "HTTP",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "BuddyBoss",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Terraform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Hardhat",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Elementor",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Express",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Next",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "game engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "NVIDIA",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "env and a database",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "this self-building ai system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Docker CLI",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Dockerfile",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "can be used on os",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "for running the virtual assistant",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "env files for api",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "this project is cross platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "build me a virtual assistant",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Implement Google Play",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "implement an ai-driven system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "implement a monetization system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "use a unified game engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Google Stadia",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Billing",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Game Development Overview",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "NPCs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "and epic games store",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "and the dao governance system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Epic Games Store",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Premium",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "adapt based on the player",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "storylines based on the player",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Nvidia GeForce Now",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Apple Pay",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Players",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "this will make each player",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "like unity or unreal engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "to build a virtual assistant",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "music website or music app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "be added to git hub",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "play music through device player",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Wikipedia",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Later",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Technology",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "you to build an app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "it my own unique platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Cloning",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Features",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Neural",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "cloud_services",
+   "communication",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "of sharesand an affiliate system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "swagger has a referral system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Order",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Please Add",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Core Components",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Phase",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DevContainersdocke",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "cloud_services",
+   "commerce",
+   "communication"
+  ]
+ },
+ {
+  "concept": "Exercises",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Add Create",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "and also have an app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "cross platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "this image into an app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Please Abstract",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "of a platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Cascading",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "tablet and mobile app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "synced operating system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Also What",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "and a quantum operating system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "tenary operating system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "have a binary operating system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Looking Glass Factory",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Absolute Zero",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Presearch",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Settings",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Brave",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Scalable",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Noetix Robotics",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases"
+  ]
+ },
+ {
+  "concept": "Meet Bumi",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases"
+  ]
+ },
+ {
+  "concept": "Prompts",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Hidden",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Adding",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Dashboard",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "to deploy on you platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Midjourney",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Augmented",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Hyena",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "UiPath",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Their",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Quantum Computing",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "is a high-level system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "diagram of an ai platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Following",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Quantum-Computing",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "integrating model context protocol",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "advance the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ai seo agent",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "CCPA",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ar in the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Neo4j",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "is a level checking system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Additionally",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "But MCP",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "WooCommerce",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ETFs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Interactive Brokers",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Trade Ideas",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "TradingView",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Automate",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Zapier",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ADER",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Programmable",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tool",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Uipath",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Vader",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "programmable argentic coding tool",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Nitrogen",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "in an ion engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "have a balanced reward system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "over reward where the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "enough for that the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "also making sure the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "learning platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "how would the rewards system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "and not bankrupt the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "trading platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "money and now the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "for my platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "i have a reward system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tables",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "blockchain search engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "token system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "apple store",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "both parts to the platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "i have a platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "it also has a marketplace",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "im building an operating system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "as inspirations for my os",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "it all into one platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Components",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "gui agent",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "TARS",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "Interstellar",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "using an mcp and database",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Tokenization",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Month Contract",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Monthly Rolling Goodybags",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "meaning like a mobile network",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Cost",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tencent",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "finance"
+  ]
+ },
+ {
+  "concept": "Constitutional",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Practice",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Scrolling",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Theory",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Crawl4AI",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "an optimum living biological system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Nikola Tesla",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Services",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Focus",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "voice agent",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "share screen with ai agent",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Customer Relationship Management",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Conclude",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "so its my own platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "and any other similar platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Travel",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "this to my own platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "with the e-commerce engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Engine Deep Dive",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Admin Panel Components",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Specific Business Modules",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Help",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tell",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Plus",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "add this multi cross system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "React Native",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "REST APIs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Chainlink",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "How They Work",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Flower",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Life",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "up the way the platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "have an e-learning platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Learning",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Unless",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Wrap",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Atlas",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "CPUs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Primarch System",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Dark Web",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Surface Web",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Marianas Web",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Deep Web",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Mediator Layer",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "The Fog",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "OAuth",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Faraday",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "System Design",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Backend",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Medium",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "add trading view dashboard",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SDKs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "define position sizing framework",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "platforms into one unique dashboard",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Prioritize",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Initialize",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Sleep",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Upload",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "the previous assistant",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "GAGUT",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Royal Rife",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PEMF",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "yhe engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Minecraft",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Show",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Aave",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Compound",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Sanskrit",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "to be launch on app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "already in the quantumvirtual assistant",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Thinking",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Extract",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Vulkan",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "QuantumVirtualAisstant",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ONNX Runtime",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SIMD",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "CodeOps",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "do kyc on my platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Slack",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Workflow",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "duplicate it into my platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PostgreSQL",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "m building a platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "for the gemini live api",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "as it will use api",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "the livekit agents framework",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "build low-level operating system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Notably",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "to build the complex system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "LiveKit Agents",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Web PWA",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "is a framework",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Ethereum Virtual Machine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "which handles app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Gemini Live API",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Google Gemini",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "While TypeScript",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Different",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Get Started",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Excel",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Virtual",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "im building my own os",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Look",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Explicitly",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "JSON-RPC",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Twitch",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Threema",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Viber",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Coursera",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Udemy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Searching",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "me all social media platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Spotify",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "TikTok",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "RoPE",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "JSon",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "AliBi",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "True",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Advanced",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Missing",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Muon",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "GeLU SwigLu",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "quantum os",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Owner",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Brain Emulation",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "of data from the platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "a duplicate of the platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Lightning",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Wallet",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ios app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Blackbox",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Chatbot",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Crypto",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Hybread",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "lightning network",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "BitNet",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Why This Matters",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Loop",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Cascade",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "monetization and upload onto app",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Singularity",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Prime Phase Metric",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "The Making",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Affiliate",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Geometric Musical Language",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Turing",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Anirban Bandyopadhyay",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "How This Relates",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Your Projects",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Time Crystal",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Book Link",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Artificial Brain",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Stable Diffusion",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Falcon",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Apache",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DALL",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Sessions",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Watch",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Kling",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases"
+  ]
+ },
+ {
+  "concept": "Minimax",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases"
+  ]
+ },
+ {
+  "concept": "Julia",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Kubernetes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Py2exe",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tensorflow",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Pytorch",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Pyglet",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PyWin32",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Plotly",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Pickle",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SymPy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SQLAlchemy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Pygame",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Pillow",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Turtle",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SciPy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Scrapy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Kivy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Mechanical Soup",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tkinter",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Beautiful Soup",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Visual Python",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PyQT",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Matpoltlib",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "SpaCy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Natural Language Toolkit",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Numpy",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PyBrain",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Theano",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "John",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Victor",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Stella",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "check system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Markdown",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "WiFi",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Number",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Applications",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Manipulation Device",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Universal Material Creation",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Quantum Matter Synthesizer",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "so that all the system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Split",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "QVA Improvement Plan",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Implementation",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Issue",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "create a unified configuration system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Increase",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Code Organization",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Centralize",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Configuration Management",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Reorganize",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Group",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Improvement",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Error Handling",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Dependency Management",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Establish",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "architecture with a efficient system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Robin",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "gui tool",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "ElevenLabs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Never",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Planck",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Seraphim Field",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "User Input Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Strategic",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Graceful",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "External",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Context",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Control Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Logic",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tool Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "LLM Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Memory Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Guardrail Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Fallback Nodes",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Sifdat",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "International",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Authentication",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Nicola",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Russell",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Brain",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Networking",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Future Directions",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "URLs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Technical Architecture",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Terrace Howard",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Real",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Text",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Overview",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "a program as system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Instantaneous",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "instantaneous synchronisation between physical system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Dogma",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "elearning"
+  ]
+ },
+ {
+  "concept": "Hidden Agendas",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "elearning"
+  ]
+ },
+ {
+  "concept": "Forced Aging Concept",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "elearning"
+  ]
+ },
+ {
+  "concept": "Designed",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "elearning"
+  ]
+ },
+ {
+  "concept": "FP16",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Weight",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tier",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Type",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "and database",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Machine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "DeepSeek Content Enhancement",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Saas",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Connectomics",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Home",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Graph",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Walter",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Offer",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PasS",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "cloud_services",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Enhanced",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "want to make a system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DataCollector",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "local_services"
+  ]
+ },
+ {
+  "concept": "DeFiSystem",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain"
+  ]
+ },
+ {
+  "concept": "SmartContractManager",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain"
+  ]
+ },
+ {
+  "concept": "StorageSystem",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "AssessmentEngine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "elearning",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Promise",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication"
+  ]
+ },
+ {
+  "concept": "PORT",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "commerce",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Core Platform Configuration",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "commerce",
+   "databases"
+  ]
+ },
+ {
+  "concept": "GameEconomy",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "StateManager",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "UIManager",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "MarketplaceSystem",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "finance"
+  ]
+ },
+ {
+  "concept": "EscrowService",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "finance"
+  ]
+ },
+ {
+  "concept": "MessagePattern",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases"
+  ]
+ },
+ {
+  "concept": "InteractionSystem",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "social_media"
+  ]
+ },
+ {
+  "concept": "PhysicsEngine",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "Analytics",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "StateSync",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Visualization",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "s missing from the platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Supporting CAD",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Enabling",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "a unified e-commerce platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Showing",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Displaying",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "pages in a unified platform",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Use Docker",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Devops",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "finance",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Minting",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "the search service",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Adobe",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Programs",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "plese rebuild my dashboard",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "provide me with a dashboard",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "World",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "MMORPG",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "design me a dashboard",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Process",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Clans",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Royal",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Mechanical",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "elearning",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Skip",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Differet",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Name",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "finance",
+   "local_services"
+  ]
+ },
+ {
+  "concept": "Recipe",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Influencer",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Coupon",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Sketch",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Item",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Fact",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Expense",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "extention and other search engine",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Swot",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Youtube",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Send",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Wide",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Resit",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Photostyle",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Pods",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Github",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Call",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Tipping",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Essay",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Voice",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Market",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "communication",
+   "databases",
+   "finance",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Contribution",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "blockchain",
+   "communication",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Flash",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication"
+  ]
+ },
+ {
+  "concept": "Nicolas",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "social_media"
+  ]
+ },
+ {
+  "concept": "THIS APPLIES",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "FOLDERS AND FILES",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "LEVEL",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "WITHIN THE QVA",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "COMPLETELY BUILT",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "DONT STOP UNTIL",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "WORLD CLASS PRODUCTION",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "London",
+  "mentions": 2,
+  "sources": 2,
+  "families": []
+ },
+ {
+  "concept": "Mercury",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Microsoft Corporation",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Building",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Want",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Hold",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication"
+  ]
+ },
+ {
+  "concept": "Follow",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "JjjecbwrioA",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "communication",
+   "databases"
+  ]
+ },
+ {
+  "concept": "Universal Bridge",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Agent Bridge",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "commerce",
+   "communication",
+   "databases",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Model",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Amend",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "databases",
+   "finance",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "MIDI",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Universal-Bridge",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Materials-Atlas-Table",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "cloud_services",
+   "commerce",
+   "communication",
+   "databases",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "all programming languages and system",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ },
+ {
+  "concept": "Chatgpt",
+  "mentions": 2,
+  "sources": 2,
+  "families": [
+   "apps",
+   "blockchain",
+   "communication",
+   "databases",
+   "elearning",
+   "local_services",
+   "social_media"
+  ]
+ }
+]
