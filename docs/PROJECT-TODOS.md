@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **239** (222 open, 17 done)
+- Tasks: **241** (224 open, 17 done)
 
 ## By project
 
@@ -15,7 +15,7 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 45 | 8 |
+| aetherius-os | 47 | 8 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 12 | 0 |
@@ -1674,6 +1674,46 @@ Acceptance:
 
 - [ ] The rules are visible where a change is proposed, not only in a document
 - [ ] A change that would violate one is refused rather than made and explained
+
+### ⬜ TODO-END-001 — Give the finished programme production and system architecture
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-direction — owner instruction, 2026-10-20
+
+Once every project is finished and built and ready for public release, the programme is to be given senior level, world class, industrial industry level production and system architecture. The bar is a system that would survive being operated by someone else: the deployment is reproducible, the failure modes are known and handled, the boundaries are documented, and the architecture is the one the code actually has rather than the one the documents claim.
+
+Evidence:
+
+```
+The owner's instruction of 2026-10-20: once all projects are fully finished and built ready for public release, provide senior level world class industrial industry level production and system architecture.
+```
+
+Acceptance:
+
+- [ ] Every project is finished, built and ready for public release
+- [ ] The architecture describes the system as it is, not as it was planned
+- [ ] The deployment is reproducible from the build manifests
+
+### ⬜ TODO-END-002 — Remove the obsolete material, and keep the reference data
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-direction — owner instruction, 2026-10-20
+
+Once the projects are ready for public release, the obsolete files, folders and data are removed, and the reference data is kept so that it can be used later if needed. The obsolescence register is what the removal needs first, because obsolete and reference are easy to confuse and the difference is costly. The register classifies the account's repositories and the material on the machine into what is live, what is reference and what is obsolete, and it keeps the distinction the owner has asked for: a predecessor absorbed by a working project is obsolete, and a fork that informed the design, or an empty repository the owner keeps for learning, is reference.
+
+Evidence:
+
+```
+The obsolescence register, which classifies seven hundred and eighty-six entries: the five absorbed predecessors and the generated build trees are obsolete, and the forks, the learning repositories and the owner's own material are reference.
+```
+
+Acceptance:
+
+- [ ] The obsolete material is removed and the reference data is kept
+- [ ] The register is regenerated and shows nothing left to remove
+- [ ] Every removal is recorded, so that what was removed and why is known
 
 ### ⬜ TODO-FRK-001 — Route the two forks the owner's catalogue does not cover
 

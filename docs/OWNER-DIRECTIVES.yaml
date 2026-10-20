@@ -241,6 +241,24 @@ standing_rules:
   - docs/PROGRAMME-GAP-ANALYSIS.yaml
   - docs/PROJECT-TODOS.yaml
   - research/conversations/project-conversations.md
+- id: RULE-21
+  title: 'The endgame: production architecture, and the removal of what is obsolete'
+  text: Once all projects are fully finished and built ready for public release, the programme is to be
+    given senior level, world class, industrial industry level production and system architecture. The
+    obsolete files, folders and data are removed, remembering to keep reference data so it can be used
+    later if needed.
+  source_thread: owner instruction, 2026-10-20
+  projects:
+  - aetherius-os
+  - genesis
+  - agent-bridge
+  - ide-workspace
+  - mat
+  - poietek
+  satisfied_by:
+  - docs/OBSOLESCENCE-REGISTRY.yaml
+  - docs/OBSOLESCENCE-REGISTRY.md
+  - TODO-GAP-001
 open_asks:
 - id: ASK-01
   title: Read the ChatGPT project folder called Genesis and abstract what is useful

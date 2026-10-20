@@ -1,0 +1,6993 @@
+schema_version: 1.0.0
+source_date: 2026-10-20
+generated_by: tools/build_obsolescence_register.py
+notes:
+  - "The endgame the owner has set: once the projects are finished and ready for public release, the obsolete files, folders and data are removed and the reference data is kept so it can be used later."
+  - "This register is what that instruction needs before it can be carried out, because obsolete and reference are easy to confuse and the difference is costly."
+  - "A predecessor absorbed by a working project is obsolete. A fork that informed the design is reference. An empty repository the owner keeps for learning is reference too, because the inheritance packet is explicit that it must not be deleted merely for being empty."
+  - "Nothing is removed on the strength of this register. It says what is what; the removal is a separate, deliberate act."
+totals:
+  entries: 786
+  by_state:
+    reference: 596
+    obsolete: 178
+    live: 12
+  obsolete_repositories: 178
+  obsolete_generated: 173
+  reference_repositories: 596
+entries:
+  - kind: repository
+    name: 7zip
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 4506
+    pushed_at: "2026-09-04T07:25:46Z"
+  - kind: repository
+    name: 9front
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 125434
+    pushed_at: "2026-09-13T04:55:29Z"
+  - kind: repository
+    name: A2A
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 34275
+    pushed_at: "2026-09-11T11:07:06Z"
+  - kind: repository
+    name: accelerate
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 6650
+    pushed_at: "2026-09-09T13:05:38Z"
+  - kind: repository
+    name: acoustic-representation-toolbox
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 81389
+    pushed_at: "2023-10-24T16:49:11Z"
+  - kind: repository
+    name: Ada
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:02:27Z"
+  - kind: repository
+    name: Aetherial
+    state: obsolete
+    reason: absorbed by Aetherius OS
+    fork: false
+    archived: false
+    licence: GPL-3.0
+    language: Python
+    size_kb: 3256
+    pushed_at: "2026-09-11T07:53:22Z"
+  - kind: repository
+    name: aetherial-platform
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: null
+    language: TypeScript
+    size_kb: 11201
+    pushed_at: "2026-03-27T04:05:01Z"
+  - kind: repository
+    name: aetherium
+    state: obsolete
+    reason: absorbed by Aetherius OS
+    fork: false
+    archived: false
+    licence: MIT
+    language: Python
+    size_kb: 7168
+    pushed_at: "2026-02-20T20:16:52Z"
+  - kind: repository
+    name: Aetherius-OS
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: null
+    language: TypeScript
+    size_kb: 6803
+    pushed_at: "2026-10-20T13:47:43Z"
+  - kind: repository
+    name: Agent-Bridge
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: null
+    language: Python
+    size_kb: 5021
+    pushed_at: "2026-10-20T12:39:58Z"
+  - kind: repository
+    name: agent-framework
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 143929
+    pushed_at: "2026-09-10T19:24:33Z"
+  - kind: repository
+    name: aiida-core
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 163481
+    pushed_at: "2026-09-12T09:39:20Z"
+  - kind: repository
+    name: Airflow
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:29:35Z"
+  - kind: repository
+    name: Airtable
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:15:14Z"
+  - kind: repository
+    name: AJAX
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:22:53Z"
+  - kind: repository
+    name: Algol
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:58:46Z"
+  - kind: repository
+    name: AliceVision
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 58760
+    pushed_at: "2026-09-08T12:14:08Z"
+  - kind: repository
+    name: alp-data
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 47659
+    pushed_at: "2026-09-11T07:14:08Z"
+  - kind: repository
+    name: analytics-examples
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-10T15:57:57Z"
+  - kind: repository
+    name: Andriod
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:05:38Z"
+  - kind: repository
+    name: Angular
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:11:16Z"
+  - kind: repository
+    name: Anible
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-31T17:44:25Z"
+  - kind: repository
+    name: animalsynth
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 6885
+    pushed_at: "2022-09-23T20:53:41Z"
+  - kind: repository
+    name: anoncreds-rs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 2754
+    pushed_at: "2026-01-07T14:36:37Z"
+  - kind: repository
+    name: ansible
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 266266
+    pushed_at: "2026-09-11T23:00:01Z"
+  - kind: repository
+    name: antigravity-sdk-python
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 1924
+    pushed_at: "2026-09-02T15:29:10Z"
+  - kind: repository
+    name: Apache-Flink
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:28:21Z"
+  - kind: repository
+    name: Apache-Hive
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:21:42Z"
+  - kind: repository
+    name: APL
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:59:58Z"
+  - kind: repository
+    name: appML
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:23:21Z"
+  - kind: repository
+    name: Arduino
+    state: reference
+    reason: "archived, but kept: it may be a learning repository"
+    fork: false
+    archived: true
+    licence: null
+    language: C++
+    size_kb: 145
+    pushed_at: "2024-11-26T18:34:44Z"
+  - kind: repository
+    name: ardupilot
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 661516
+    pushed_at: "2026-09-12T05:00:50Z"
+  - kind: repository
+    name: arrow
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 234539
+    pushed_at: "2026-09-12T11:18:53Z"
+  - kind: repository
+    name: Artificial-Intelligence---AI
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:07:07Z"
+  - kind: repository
+    name: ASM
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:10:17Z"
+  - kind: repository
+    name: ASP
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:10:17Z"
+  - kind: repository
+    name: Assembly-language
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T11:08:05Z"
+  - kind: repository
+    name: aubio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 11871
+    pushed_at: "2026-04-10T16:42:19Z"
+  - kind: repository
+    name: audio-embeddings
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 2280
+    pushed_at: "2021-06-30T09:57:54Z"
+  - kind: repository
+    name: audiocraft
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 25025
+    pushed_at: "2026-03-03T21:50:32Z"
+  - kind: repository
+    name: autogen
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: CC-BY-4.0
+    language: null
+    size_kb: 148692
+    pushed_at: "2026-04-15T11:59:09Z"
+  - kind: repository
+    name: automerge
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 133803
+    pushed_at: "2026-09-11T11:11:21Z"
+  - kind: repository
+    name: avex
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 46491
+    pushed_at: "2026-08-26T08:16:38Z"
+  - kind: repository
+    name: AWS
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:08:47Z"
+  - kind: repository
+    name: Azure
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:31:27Z"
+  - kind: repository
+    name: Bash
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:24:10Z"
+  - kind: repository
+    name: Basic
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:35:22Z"
+  - kind: repository
+    name: basic-pitch
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 289341
+    pushed_at: "2025-11-13T14:40:46Z"
+  - kind: repository
+    name: bazel
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 1021225
+    pushed_at: "2026-09-11T21:19:22Z"
+  - kind: repository
+    name: beans-next
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 34644
+    pushed_at: "2026-09-07T16:22:51Z"
+  - kind: repository
+    name: BEBE
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 24963
+    pushed_at: "2025-04-21T20:30:45Z"
+  - kind: repository
+    name: BEBE-datasets
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 3660
+    pushed_at: "2024-02-06T15:55:27Z"
+  - kind: repository
+    name: bioacoustic-ssl
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 17108
+    pushed_at: "2026-09-08T07:12:55Z"
+  - kind: repository
+    name: bioacoustics-model-zoo
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 24335
+    pushed_at: "2026-09-08T16:03:16Z"
+  - kind: repository
+    name: biodenoising
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 4988
+    pushed_at: "2025-12-03T10:48:10Z"
+  - kind: repository
+    name: biopython
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 74437
+    pushed_at: "2026-09-04T00:07:06Z"
+  - kind: repository
+    name: BirdNET-Analyzer
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 1236591
+    pushed_at: "2026-09-08T09:32:38Z"
+  - kind: repository
+    name: BitNet
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 8729
+    pushed_at: "2026-07-27T05:52:06Z"
+  - kind: repository
+    name: blender
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1388555
+    pushed_at: "2026-09-12T14:19:50Z"
+  - kind: repository
+    name: Blockchain
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-30T18:31:59Z"
+  - kind: repository
+    name: bootc
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 8797
+    pushed_at: "2026-09-13T01:02:25Z"
+  - kind: repository
+    name: Bootstrap
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:21:17Z"
+  - kind: repository
+    name: brainflow
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 171862
+    pushed_at: "2026-09-07T22:02:34Z"
+  - kind: repository
+    name: Brainfuck
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:04:42Z"
+  - kind: repository
+    name: brian2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 38346
+    pushed_at: "2026-09-03T11:22:57Z"
+  - kind: repository
+    name: browser-use
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 36407
+    pushed_at: "2026-09-10T04:20:25Z"
+  - kind: repository
+    name: buildkit
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 66664
+    pushed_at: "2026-09-11T00:24:28Z"
+  - kind: repository
+    name: bullet3
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 297038
+    pushed_at: "2025-10-22T02:13:14Z"
+  - kind: repository
+    name: Burp-Suite
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:41:38Z"
+  - kind: repository
+    name: C
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 9
+    pushed_at: "2024-12-24T12:27:25Z"
+  - kind: repository
+    name: C-minus-minus
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:09:05Z"
+  - kind: repository
+    name: C-plus-plus
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 2
+    pushed_at: "2024-11-12T09:59:43Z"
+  - kind: repository
+    name: C-sharp
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:00:31Z"
+  - kind: repository
+    name: c2pa-rs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 313634
+    pushed_at: "2026-09-12T01:05:27Z"
+  - kind: repository
+    name: Cairo
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:40:20Z"
+  - kind: repository
+    name: cantera
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 60148
+    pushed_at: "2026-09-12T14:25:07Z"
+  - kind: repository
+    name: Carbon
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:53:51Z"
+  - kind: repository
+    name: Carla
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 98302
+    pushed_at: "2026-06-22T14:46:58Z"
+  - kind: repository
+    name: cellpose
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 118203
+    pushed_at: "2026-06-14T13:21:03Z"
+  - kind: repository
+    name: ceph
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1002318
+    pushed_at: "2026-09-12T14:08:07Z"
+  - kind: repository
+    name: cesium
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 1013742
+    pushed_at: "2026-09-12T13:23:02Z"
+  - kind: repository
+    name: cFS
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 6422
+    pushed_at: "2026-09-12T05:49:13Z"
+  - kind: repository
+    name: CHATGPT
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:26:17Z"
+  - kind: repository
+    name: Chef
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:05:57Z"
+  - kind: repository
+    name: chisel
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 1519435
+    pushed_at: "2026-09-11T11:17:52Z"
+  - kind: repository
+    name: circom
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 5748
+    pushed_at: "2026-09-04T00:30:07Z"
+  - kind: repository
+    name: circt
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 71489
+    pushed_at: "2026-09-12T11:30:30Z"
+  - kind: repository
+    name: clap
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 5409
+    pushed_at: "2026-07-28T21:29:47Z"
+  - kind: repository
+    name: CLI
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:23:53Z"
+  - kind: repository
+    name: Clojure
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:46:10Z"
+  - kind: repository
+    name: cloud-ops-home-lab
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-12T16:03:35Z"
+  - kind: repository
+    name: CMake
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 202436
+    pushed_at: "2026-09-13T04:13:03Z"
+  - kind: repository
+    name: Cobol
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:59:24Z"
+  - kind: repository
+    name: cockroach
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 2672684
+    pushed_at: "2026-09-08T22:57:43Z"
+  - kind: repository
+    name: cocotb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 12537
+    pushed_at: "2026-09-12T09:46:21Z"
+  - kind: repository
+    name: code-server
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 55201
+    pushed_at: "2026-09-11T19:09:26Z"
+  - kind: repository
+    name: codespace-auth-temp
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: JavaScript
+    size_kb: 21
+    pushed_at: "2025-01-14T07:34:25Z"
+  - kind: repository
+    name: colmap
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 83175
+    pushed_at: "2026-09-12T11:55:15Z"
+  - kind: repository
+    name: ComfyUI
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 97853
+    pushed_at: "2026-09-13T09:28:23Z"
+  - kind: repository
+    name: Command-Line
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T09:46:41Z"
+  - kind: repository
+    name: Comp.-Sci.
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:12:33Z"
+  - kind: repository
+    name: compose
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 28898
+    pushed_at: "2026-09-11T17:21:34Z"
+  - kind: repository
+    name: conan
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 35861
+    pushed_at: "2026-09-11T16:21:30Z"
+  - kind: repository
+    name: connectedhomeip
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 1694530
+    pushed_at: "2026-09-12T04:47:51Z"
+  - kind: repository
+    name: containerd
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 141169
+    pushed_at: "2026-09-11T23:25:47Z"
+  - kind: repository
+    name: core
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 881502
+    pushed_at: "2026-09-12T17:58:53Z"
+  - kind: repository
+    name: coreboot
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 260963
+    pushed_at: "2026-09-12T21:01:14Z"
+  - kind: repository
+    name: cosign
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 26762
+    pushed_at: "2026-09-08T19:36:46Z"
+  - kind: repository
+    name: Coursiv
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 102
+    pushed_at: "2025-02-26T19:13:48Z"
+  - kind: repository
+    name: cr-sqlite
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 43215
+    pushed_at: "2026-08-10T10:55:49Z"
+  - kind: repository
+    name: crewAI
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 295960
+    pushed_at: "2026-09-11T19:46:20Z"
+  - kind: repository
+    name: CRISPResso2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 3752
+    pushed_at: "2026-09-10T20:32:59Z"
+  - kind: repository
+    name: crm
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 8403
+    pushed_at: "2026-09-11T07:06:17Z"
+  - kind: repository
+    name: Crossplatform---multiplatform
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-19T21:42:22Z"
+  - kind: repository
+    name: CryptoMonopoly
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 1
+    pushed_at: "2025-10-31T00:36:04Z"
+  - kind: repository
+    name: Crystal
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:55:06Z"
+  - kind: repository
+    name: cs50-Python
+    state: reference
+    reason: "archived, but kept: it may be a learning repository"
+    fork: false
+    archived: true
+    licence: null
+    language: Python
+    size_kb: 384
+    pushed_at: "2024-12-25T08:32:30Z"
+  - kind: repository
+    name: CS50x
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: Python
+    size_kb: 62
+    pushed_at: "2025-06-18T12:03:46Z"
+  - kind: repository
+    name: csound
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 135290
+    pushed_at: "2026-09-12T17:55:30Z"
+  - kind: repository
+    name: CSS
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:10:32Z"
+  - kind: repository
+    name: CuraEngine
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: AGPL-3.0
+    language: null
+    size_kb: 76707
+    pushed_at: "2026-09-11T14:24:54Z"
+  - kind: repository
+    name: cva6
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 166162
+    pushed_at: "2026-09-12T10:48:06Z"
+  - kind: repository
+    name: CX
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:35:09Z"
+  - kind: repository
+    name: Cyber-Security
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 3
+    pushed_at: "2025-06-18T12:18:19Z"
+  - kind: repository
+    name: Dagstar
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:30:13Z"
+  - kind: repository
+    name: dagster
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 1479035
+    pushed_at: "2026-09-11T19:05:31Z"
+  - kind: repository
+    name: Dart
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:22:02Z"
+  - kind: repository
+    name: dask
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 137884
+    pushed_at: "2026-08-24T18:46:39Z"
+  - kind: repository
+    name: Data-Analysis
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:11:13Z"
+  - kind: repository
+    name: Data-analysis-with-Python
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-30T18:35:09Z"
+  - kind: repository
+    name: Data-Lineage
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:37:47Z"
+  - kind: repository
+    name: Data-Modelling
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:33:39Z"
+  - kind: repository
+    name: Data-Science
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:08:07Z"
+  - kind: repository
+    name: DBMS
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:17:35Z"
+  - kind: repository
+    name: DBT
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:35:49Z"
+  - kind: repository
+    name: Deep-Learning
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-24T16:47:09Z"
+  - kind: repository
+    name: DeepLabCut
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-3.0
+    language: null
+    size_kb: 251831
+    pushed_at: "2026-09-11T14:19:48Z"
+  - kind: repository
+    name: demucs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 78750
+    pushed_at: "2026-08-31T20:20:01Z"
+  - kind: repository
+    name: Depth-Anything-V2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 46233
+    pushed_at: "2026-03-24T10:59:06Z"
+  - kind: repository
+    name: depthai-core
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 158634
+    pushed_at: "2026-09-11T23:31:26Z"
+  - kind: repository
+    name: detectron2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 6962
+    pushed_at: "2026-08-19T05:38:53Z"
+  - kind: repository
+    name: Devcontainer-setup
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: MIT
+    language: TypeScript
+    size_kb: 50
+    pushed_at: "2025-01-23T15:36:49Z"
+  - kind: repository
+    name: DevOps
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 19
+    pushed_at: "2025-01-01T07:28:30Z"
+  - kind: repository
+    name: devops-directive-docker-course
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: true
+    licence: null
+    language: Roff
+    size_kb: 1418
+    pushed_at: "2025-01-16T16:48:10Z"
+  - kind: repository
+    name: diffusers
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 108907
+    pushed_at: "2026-09-12T02:04:53Z"
+  - kind: repository
+    name: ditto
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: EPL-2.0
+    language: null
+    size_kb: 153880
+    pushed_at: "2026-09-11T09:38:43Z"
+  - kind: repository
+    name: DJANGO
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:24:45Z"
+  - kind: repository
+    name: Docker
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 182
+    pushed_at: "2025-01-16T16:06:33Z"
+  - kind: repository
+    name: dolfinx
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-3.0
+    language: null
+    size_kb: 70685
+    pushed_at: "2026-09-12T17:27:18Z"
+  - kind: repository
+    name: drake
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 425009
+    pushed_at: "2026-09-12T14:58:08Z"
+  - kind: repository
+    name: DSA
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:09:46Z"
+  - kind: repository
+    name: DuckDB
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-10T15:56:00Z"
+  - kind: repository
+    name: duckdb---community
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 510233
+    pushed_at: "2026-09-11T02:18:01Z"
+  - kind: repository
+    name: ECMAScript
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:26:37Z"
+  - kind: repository
+    name: edk2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 343801
+    pushed_at: "2026-09-11T21:41:57Z"
+  - kind: repository
+    name: electric
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 267957
+    pushed_at: "2026-09-09T11:28:16Z"
+  - kind: repository
+    name: Electron
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:55:21Z"
+  - kind: repository
+    name: Elixir
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:47:22Z"
+  - kind: repository
+    name: Elm
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:47:52Z"
+  - kind: repository
+    name: Emmet
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:28:48Z"
+  - kind: repository
+    name: Emojicode
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:08:23Z"
+  - kind: repository
+    name: emscripten
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 272463
+    pushed_at: "2026-09-12T15:12:51Z"
+  - kind: repository
+    name: EnergyPlus
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1212344
+    pushed_at: "2026-09-11T23:15:57Z"
+  - kind: repository
+    name: Erlang
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:33:35Z"
+  - kind: repository
+    name: esphome
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 104862
+    pushed_at: "2026-09-12T16:18:38Z"
+  - kind: repository
+    name: essentia
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: AGPL-3.0
+    language: null
+    size_kb: 314053
+    pushed_at: "2026-08-27T18:31:38Z"
+  - kind: repository
+    name: Ethereum
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:35:35Z"
+  - kind: repository
+    name: Excel
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 66
+    pushed_at: "2026-02-26T12:08:37Z"
+  - kind: repository
+    name: executorch
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 382740
+    pushed_at: "2026-09-12T20:43:48Z"
+  - kind: repository
+    name: Express-JS
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:26:14Z"
+  - kind: repository
+    name: F-Sharp
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:45:30Z"
+  - kind: repository
+    name: F5-TTS
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 2238
+    pushed_at: "2026-07-23T09:20:37Z"
+  - kind: repository
+    name: fastapi
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 55416
+    pushed_at: "2026-09-01T20:59:55Z"
+  - kind: repository
+    name: faster-whisper
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 40514
+    pushed_at: "2025-11-19T14:40:46Z"
+  - kind: repository
+    name: FAST_LIO
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 129787
+    pushed_at: "2025-01-15T10:23:34Z"
+  - kind: repository
+    name: FFmpeg
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 494721
+    pushed_at: "2026-09-11T05:12:14Z"
+  - kind: repository
+    name: Firebase
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:48:06Z"
+  - kind: repository
+    name: firecracker
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 42271
+    pushed_at: "2026-09-11T15:12:20Z"
+  - kind: repository
+    name: Flask
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-11-27T15:40:07Z"
+  - kind: repository
+    name: fluidsynth
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 12217
+    pushed_at: "2026-09-03T18:27:33Z"
+  - kind: repository
+    name: Flutter
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-19T20:09:56Z"
+  - kind: repository
+    name: football-card-game
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: null
+    language: TypeScript
+    size_kb: 559
+    pushed_at: "2025-03-09T00:20:39Z"
+  - kind: repository
+    name: Fortran
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:56:37Z"
+  - kind: repository
+    name: FreeCAD
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 2802441
+    pushed_at: "2026-09-12T17:35:46Z"
+  - kind: repository
+    name: FreeRTOS-Kernel
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 127854
+    pushed_at: "2026-08-26T17:09:47Z"
+  - kind: repository
+    name: Friang
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:01:50Z"
+  - kind: repository
+    name: G-code
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T11:08:27Z"
+  - kind: repository
+    name: gatk
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 493625
+    pushed_at: "2026-09-11T21:32:24Z"
+  - kind: repository
+    name: GCP
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:31:05Z"
+  - kind: repository
+    name: gdal
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 494863
+    pushed_at: "2026-09-11T00:41:26Z"
+  - kind: repository
+    name: Gen-AI
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:09:33Z"
+  - kind: repository
+    name: Genesis
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: NOASSERTION
+    language: C++
+    size_kb: 70291
+    pushed_at: "2026-10-20T13:03:25Z"
+  - kind: repository
+    name: genesis-world
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 136067
+    pushed_at: "2026-09-11T07:23:07Z"
+  - kind: repository
+    name: ggml
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 33931
+    pushed_at: "2026-09-12T10:52:04Z"
+  - kind: repository
+    name: Git
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:11:43Z"
+  - kind: repository
+    name: git-lfs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 21081
+    pushed_at: "2026-09-02T00:35:37Z"
+  - kind: repository
+    name: GitHub-Markdown-Syntax
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 7
+    pushed_at: "2024-12-26T02:55:04Z"
+  - kind: repository
+    name: gnuradio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 72242
+    pushed_at: "2026-08-27T23:02:01Z"
+  - kind: repository
+    name: GO
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:04:29Z"
+  - kind: repository
+    name: Godot
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:23:02Z"
+  - kind: repository
+    name: godot-official
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 1887937
+    pushed_at: "2026-09-12T14:06:19Z"
+  - kind: repository
+    name: gods-eye-view
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 84548
+    pushed_at: "2026-09-05T08:30:57Z"
+  - kind: repository
+    name: gqrx
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 9443
+    pushed_at: "2026-08-06T20:55:38Z"
+  - kind: repository
+    name: Gradle
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-11-26T20:35:36Z"
+  - kind: repository
+    name: grafana
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: AGPL-3.0
+    language: null
+    size_kb: 1963059
+    pushed_at: "2026-09-13T03:38:40Z"
+  - kind: repository
+    name: graphiti
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 15692
+    pushed_at: "2026-09-10T20:19:38Z"
+  - kind: repository
+    name: grpc
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 624732
+    pushed_at: "2026-09-13T00:50:58Z"
+  - kind: repository
+    name: gtsam
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 125743
+    pushed_at: "2026-09-12T14:33:26Z"
+  - kind: repository
+    name: gvisor
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 918777
+    pushed_at: "2026-09-12T08:22:15Z"
+  - kind: repository
+    name: gz-sim
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 247139
+    pushed_at: "2026-09-10T23:22:04Z"
+  - kind: repository
+    name: habitat-lab
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 284318
+    pushed_at: "2026-05-07T22:03:51Z"
+  - kind: repository
+    name: Hack
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:54:28Z"
+  - kind: repository
+    name: Hardware-Description-Languages-HDLs-
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T11:04:30Z"
+  - kind: repository
+    name: Haskell
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:33:06Z"
+  - kind: repository
+    name: hello-world-1
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: true
+    licence: null
+    language: null
+    size_kb: 2
+    pushed_at: "2018-03-15T11:33:21Z"
+  - kind: repository
+    name: helm
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 29416
+    pushed_at: "2026-09-11T23:11:50Z"
+  - kind: repository
+    name: Hibernate
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-11-26T20:34:44Z"
+  - kind: repository
+    name: hidapi
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 4537
+    pushed_at: "2026-09-09T10:50:39Z"
+  - kind: repository
+    name: Holy-C
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:09:34Z"
+  - kind: repository
+    name: HTML
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 2
+    pushed_at: "2025-07-11T18:13:58Z"
+  - kind: repository
+    name: Hydra
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:43:12Z"
+  - kind: repository
+    name: Hyperledger-Besu
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:34:13Z"
+  - kind: repository
+    name: ibex
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 40957
+    pushed_at: "2026-09-08T11:31:33Z"
+  - kind: repository
+    name: Iceberg---Data
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:35:27Z"
+  - kind: repository
+    name: IDE-Workspace
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: null
+    language: TypeScript
+    size_kb: 54060
+    pushed_at: "2026-10-20T12:40:18Z"
+  - kind: repository
+    name: IfcOpenShell
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-3.0
+    language: null
+    size_kb: 380482
+    pushed_at: "2026-09-12T13:01:51Z"
+  - kind: repository
+    name: Imba
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-29T20:58:54Z"
+  - kind: repository
+    name: in-toto
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 3326
+    pushed_at: "2026-08-27T21:33:28Z"
+  - kind: repository
+    name: influxdb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 212595
+    pushed_at: "2026-09-10T20:07:10Z"
+  - kind: repository
+    name: inspector
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 28942
+    pushed_at: "2026-09-11T06:44:45Z"
+  - kind: repository
+    name: Intelligence-AI
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 6
+    pushed_at: "2025-06-12T11:40:46Z"
+  - kind: repository
+    name: InterCal
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:04:10Z"
+  - kind: repository
+    name: IOS
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-19T20:07:27Z"
+  - kind: repository
+    name: iree
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 298919
+    pushed_at: "2026-09-12T14:09:50Z"
+  - kind: repository
+    name: IsaacLab
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 114008
+    pushed_at: "2026-09-12T08:12:25Z"
+  - kind: repository
+    name: jack2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 15957
+    pushed_at: "2026-01-07T21:37:45Z"
+  - kind: repository
+    name: Java
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T09:51:26Z"
+  - kind: repository
+    name: JavaScript
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T09:48:41Z"
+  - kind: repository
+    name: jayprophit
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 6
+    pushed_at: "2026-02-12T16:02:17Z"
+  - kind: repository
+    name: Jenkins
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:38:36Z"
+  - kind: repository
+    name: Jetpack-compos
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-19T21:38:51Z"
+  - kind: repository
+    name: jQuery
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:25:16Z"
+  - kind: repository
+    name: JUCE
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 289045
+    pushed_at: "2026-09-09T10:41:13Z"
+  - kind: repository
+    name: juicefs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 71902
+    pushed_at: "2026-09-10T07:42:30Z"
+  - kind: repository
+    name: Julia
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:43:43Z"
+  - kind: repository
+    name: k3s
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 591697
+    pushed_at: "2026-09-12T00:09:03Z"
+  - kind: repository
+    name: Kafka
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:22:12Z"
+  - kind: repository
+    name: kalibr
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 3575
+    pushed_at: "2024-03-30T19:42:29Z"
+  - kind: repository
+    name: Keras
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:46:04Z"
+  - kind: repository
+    name: keycloak
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 616414
+    pushed_at: "2026-09-12T02:55:37Z"
+  - kind: repository
+    name: kicad-source-mirror
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 4395020
+    pushed_at: "2026-09-12T17:48:09Z"
+  - kind: repository
+    name: kind
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 13967
+    pushed_at: "2026-09-04T13:08:26Z"
+  - kind: repository
+    name: kokkos
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 43577
+    pushed_at: "2026-09-12T12:31:54Z"
+  - kind: repository
+    name: Kotlin
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:03:02Z"
+  - kind: repository
+    name: Kubernetes
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:39:02Z"
+  - kind: repository
+    name: kubo
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 61057
+    pushed_at: "2026-09-09T21:58:27Z"
+  - kind: repository
+    name: Lakehouse---Data
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:34:56Z"
+  - kind: repository
+    name: lammps
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 901282
+    pushed_at: "2026-09-10T22:30:41Z"
+  - kind: repository
+    name: langgraph
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 526429
+    pushed_at: "2026-09-10T17:11:59Z"
+  - kind: repository
+    name: Laravel
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:53:09Z"
+  - kind: repository
+    name: Lau
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-30T18:33:47Z"
+  - kind: repository
+    name: LeetCode-SQL-repos
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-10T15:57:14Z"
+  - kind: repository
+    name: lerobot
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 242207
+    pushed_at: "2026-09-11T13:46:05Z"
+  - kind: repository
+    name: libarchive
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 32916
+    pushed_at: "2026-09-13T03:02:51Z"
+  - kind: repository
+    name: liblo
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 2012
+    pushed_at: "2026-06-19T18:08:03Z"
+  - kind: repository
+    name: liblsl
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 17273
+    pushed_at: "2026-07-10T18:58:30Z"
+  - kind: repository
+    name: libpd
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 8451
+    pushed_at: "2026-06-21T12:46:42Z"
+  - kind: repository
+    name: libremidi
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 14161
+    pushed_at: "2026-09-11T03:59:36Z"
+  - kind: repository
+    name: librosa
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: ISC
+    language: null
+    size_kb: 43596
+    pushed_at: "2026-08-22T13:06:58Z"
+  - kind: repository
+    name: libsamplerate
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-2-Clause
+    language: null
+    size_kb: 19542
+    pushed_at: "2026-08-13T02:47:19Z"
+  - kind: repository
+    name: libsigrok
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 11815
+    pushed_at: "2025-11-20T18:05:35Z"
+  - kind: repository
+    name: libsndfile
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 32764
+    pushed_at: "2026-09-01T09:08:12Z"
+  - kind: repository
+    name: libusb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 6167
+    pushed_at: "2026-08-28T16:06:44Z"
+  - kind: repository
+    name: lilv
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: ISC
+    language: null
+    size_kb: 8994
+    pushed_at: "2026-07-04T01:58:51Z"
+  - kind: repository
+    name: link
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 2728
+    pushed_at: "2026-05-19T09:39:22Z"
+  - kind: repository
+    name: Linux
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-10T14:29:52Z"
+  - kind: repository
+    name: Linux-command
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:07:51Z"
+  - kind: repository
+    name: liquid-dsp
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 26751
+    pushed_at: "2026-09-06T11:34:39Z"
+  - kind: repository
+    name: Lisp
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:44:06Z"
+  - kind: repository
+    name: litellm
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1478687
+    pushed_at: "2026-09-11T14:14:20Z"
+  - kind: repository
+    name: litex
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 21162
+    pushed_at: "2026-09-12T06:45:48Z"
+  - kind: repository
+    name: livekit
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 16487
+    pushed_at: "2026-09-10T00:34:07Z"
+  - kind: repository
+    name: llama.cpp
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 440151
+    pushed_at: "2026-09-11T06:27:16Z"
+  - kind: repository
+    name: llama_index
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 501248
+    pushed_at: "2026-09-11T18:09:01Z"
+  - kind: repository
+    name: llvm-project
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 4372360
+    pushed_at: "2026-09-12T20:38:21Z"
+  - kind: repository
+    name: Lolcode
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:07:53Z"
+  - kind: repository
+    name: Lua
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:22:42Z"
+  - kind: repository
+    name: lv2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: ISC
+    language: null
+    size_kb: 7167
+    pushed_at: "2026-04-10T02:21:38Z"
+  - kind: repository
+    name: Machine-Code
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 1
+    pushed_at: "2025-06-26T11:11:15Z"
+  - kind: repository
+    name: Machine-Learning
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:06:34Z"
+  - kind: repository
+    name: Malbolge
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:05:15Z"
+  - kind: repository
+    name: Materials-Atlas-Table-Codex---MAT
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: JavaScript
+    size_kb: 151126
+    pushed_at: "2026-10-20T12:31:58Z"
+  - kind: repository
+    name: MATLAB
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T09:57:41Z"
+  - kind: repository
+    name: matminer
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 44012
+    pushed_at: "2026-09-07T13:58:50Z"
+  - kind: repository
+    name: Matplotlib
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:48:55Z"
+  - kind: repository
+    name: Maven
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-11-26T20:36:00Z"
+  - kind: repository
+    name: mavlink
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 14982
+    pushed_at: "2026-09-10T09:38:38Z"
+  - kind: repository
+    name: mediapipe
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 608640
+    pushed_at: "2026-09-10T19:46:56Z"
+  - kind: repository
+    name: mem0
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 64764
+    pushed_at: "2026-09-11T10:43:07Z"
+  - kind: repository
+    name: meson
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 49709
+    pushed_at: "2026-09-13T07:33:58Z"
+  - kind: repository
+    name: Meta
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:03:20Z"
+  - kind: repository
+    name: Metasploit
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:43:38Z"
+  - kind: repository
+    name: mfem
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 217227
+    pushed_at: "2026-09-12T17:36:00Z"
+  - kind: repository
+    name: miniaudio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 324342
+    pushed_at: "2026-08-19T22:07:12Z"
+  - kind: repository
+    name: Miranda-language
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:44:46Z"
+  - kind: repository
+    name: mlc-llm
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 36989
+    pushed_at: "2026-08-17T20:50:06Z"
+  - kind: repository
+    name: mmpose
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 56136
+    pushed_at: "2025-08-04T07:30:50Z"
+  - kind: repository
+    name: mne-python
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 172915
+    pushed_at: "2026-09-10T17:49:10Z"
+  - kind: repository
+    name: moby
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 272823
+    pushed_at: "2026-09-12T20:44:14Z"
+  - kind: repository
+    name: monaco-editor
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 140414
+    pushed_at: "2026-09-10T02:53:45Z"
+  - kind: repository
+    name: MongoDB
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:14:01Z"
+  - kind: repository
+    name: Monitoring-and-Logging
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:39:37Z"
+  - kind: repository
+    name: moose
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 777272
+    pushed_at: "2026-09-12T08:17:46Z"
+  - kind: repository
+    name: MOTOKO
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:38:53Z"
+  - kind: repository
+    name: Move
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:34:31Z"
+  - kind: repository
+    name: moveit2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 94809
+    pushed_at: "2026-09-10T08:18:34Z"
+  - kind: repository
+    name: mujoco
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 142045
+    pushed_at: "2026-09-10T18:00:20Z"
+  - kind: repository
+    name: multiband-audio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 8584
+    pushed_at: "2026-05-26T13:56:43Z"
+  - kind: repository
+    name: MySQL
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:28:08Z"
+  - kind: repository
+    name: n8n
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 617966
+    pushed_at: "2026-09-13T08:53:30Z"
+  - kind: repository
+    name: napari
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 91077
+    pushed_at: "2026-09-07T18:02:22Z"
+  - kind: repository
+    name: Native-app-development
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-19T21:40:07Z"
+  - kind: repository
+    name: nats-server
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 56016
+    pushed_at: "2026-09-11T21:22:16Z"
+  - kind: repository
+    name: NatureLM-audio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 2738
+    pushed_at: "2026-04-16T07:39:04Z"
+  - kind: repository
+    name: navigation2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 118623
+    pushed_at: "2026-09-11T04:46:32Z"
+  - kind: repository
+    name: nengo
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 115996
+    pushed_at: "2026-08-02T14:25:10Z"
+  - kind: repository
+    name: neo4j
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 711174
+    pushed_at: "2026-09-10T17:24:46Z"
+  - kind: repository
+    name: nest-simulator
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 217855
+    pushed_at: "2026-09-11T13:25:31Z"
+  - kind: repository
+    name: Nexjs
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:51:12Z"
+  - kind: repository
+    name: Next
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:52:05Z"
+  - kind: repository
+    name: nextflow
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 75523
+    pushed_at: "2026-09-12T15:57:39Z"
+  - kind: repository
+    name: nextpnr
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: ISC
+    language: null
+    size_kb: 14795
+    pushed_at: "2026-09-10T08:38:07Z"
+  - kind: repository
+    name: NFTs
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-30T18:31:32Z"
+  - kind: repository
+    name: Nginx
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:24:31Z"
+  - kind: repository
+    name: Niche_platform
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: JavaScript
+    size_kb: 774
+    pushed_at: "2026-09-19T10:52:38Z"
+  - kind: repository
+    name: Nim
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:53:20Z"
+  - kind: repository
+    name: ninja
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 5552
+    pushed_at: "2026-09-08T11:27:40Z"
+  - kind: repository
+    name: Nmap
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:41:10Z"
+  - kind: repository
+    name: no-ai-slop
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 1086
+    pushed_at: "2026-09-02T04:19:00Z"
+  - kind: repository
+    name: Node-JS
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T09:47:14Z"
+  - kind: repository
+    name: NoSQL
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:18:50Z"
+  - kind: repository
+    name: NPM
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-11-26T20:35:10Z"
+  - kind: repository
+    name: nrn
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 175591
+    pushed_at: "2026-09-11T19:31:26Z"
+  - kind: repository
+    name: NUMPY
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:11:49Z"
+  - kind: repository
+    name: Objective-C
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T11:08:57Z"
+  - kind: repository
+    name: Ocaml
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:46:50Z"
+  - kind: repository
+    name: OCCT
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 217226
+    pushed_at: "2026-09-05T07:45:39Z"
+  - kind: repository
+    name: ollama
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 93460
+    pushed_at: "2026-09-11T06:09:40Z"
+  - kind: repository
+    name: onnxruntime
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 1567226
+    pushed_at: "2026-09-11T06:34:01Z"
+  - kind: repository
+    name: opa
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 3644999
+    pushed_at: "2026-09-12T06:05:19Z"
+  - kind: repository
+    name: open-webui
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 425074
+    pushed_at: "2026-09-10T23:05:38Z"
+  - kind: repository
+    name: Open3D
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 615632
+    pushed_at: "2026-09-11T05:14:54Z"
+  - kind: repository
+    name: openbabel
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 79469
+    pushed_at: "2026-08-18T20:30:41Z"
+  - kind: repository
+    name: openbao
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MPL-2.0
+    language: null
+    size_kb: 319041
+    pushed_at: "2026-09-11T18:25:56Z"
+  - kind: repository
+    name: opencv
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 566338
+    pushed_at: "2026-09-11T05:56:54Z"
+  - kind: repository
+    name: openfhe-development
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-2-Clause
+    language: null
+    size_kb: 13068
+    pushed_at: "2026-09-12T00:29:31Z"
+  - kind: repository
+    name: openfx
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 18261
+    pushed_at: "2026-07-24T21:33:16Z"
+  - kind: repository
+    name: OpenHands
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 422811
+    pushed_at: "2026-09-11T05:37:47Z"
+  - kind: repository
+    name: openmm
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 129307
+    pushed_at: "2026-09-11T19:31:55Z"
+  - kind: repository
+    name: openMVG
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MPL-2.0
+    language: null
+    size_kb: 30316
+    pushed_at: "2026-08-30T17:24:15Z"
+  - kind: repository
+    name: OpenROAD
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 1011001
+    pushed_at: "2026-09-12T20:01:49Z"
+  - kind: repository
+    name: openscad
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 83792
+    pushed_at: "2026-09-12T07:22:09Z"
+  - kind: repository
+    name: opensim-core
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 257117
+    pushed_at: "2026-09-11T11:28:47Z"
+  - kind: repository
+    name: opensoundscape
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 538119
+    pushed_at: "2026-09-09T09:56:20Z"
+  - kind: repository
+    name: opentelemetry-collector
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 73836
+    pushed_at: "2026-09-11T22:36:16Z"
+  - kind: repository
+    name: openthread
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 128989
+    pushed_at: "2026-09-12T00:50:52Z"
+  - kind: repository
+    name: OpenTimelineIO
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 25091
+    pushed_at: "2026-09-09T05:57:58Z"
+  - kind: repository
+    name: opentitan
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 220051
+    pushed_at: "2026-09-12T00:03:25Z"
+  - kind: repository
+    name: opentofu
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MPL-2.0
+    language: null
+    size_kb: 290044
+    pushed_at: "2026-09-10T08:05:47Z"
+  - kind: repository
+    name: OpenUSD
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 292693
+    pushed_at: "2026-09-08T19:20:29Z"
+  - kind: repository
+    name: OpenVoice
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 3944
+    pushed_at: "2025-04-19T16:00:00Z"
+  - kind: repository
+    name: OpenVoiceOS
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 427
+    pushed_at: "2026-09-11T03:15:12Z"
+  - kind: repository
+    name: openvsx
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: EPL-2.0
+    language: null
+    size_kb: 25697
+    pushed_at: "2026-09-10T19:34:26Z"
+  - kind: repository
+    name: OpenXR-SDK-Source
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 13605
+    pushed_at: "2026-09-02T21:22:02Z"
+  - kind: repository
+    name: open_vins
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 171850
+    pushed_at: "2025-11-30T08:23:17Z"
+  - kind: repository
+    name: operations-kpi-dashboard-powerbi
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 1
+    pushed_at: "2026-02-12T16:06:24Z"
+  - kind: repository
+    name: oras
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 7726
+    pushed_at: "2026-09-09T14:40:57Z"
+  - kind: repository
+    name: ORB_SLAM3
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 183277
+    pushed_at: "2024-07-24T08:41:52Z"
+  - kind: repository
+    name: Orekit
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 183917
+    pushed_at: "2026-09-10T16:42:10Z"
+  - kind: repository
+    name: Orolog
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:02:59Z"
+  - kind: repository
+    name: Pandas
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:46:57Z"
+  - kind: repository
+    name: Pascal
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T11:03:17Z"
+  - kind: repository
+    name: pcl
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 239853
+    pushed_at: "2026-09-11T09:08:02Z"
+  - kind: repository
+    name: PDAL
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 214239
+    pushed_at: "2026-09-11T20:08:03Z"
+  - kind: repository
+    name: pedalboard
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 29527
+    pushed_at: "2026-09-09T22:06:36Z"
+  - kind: repository
+    name: peft
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 33405
+    pushed_at: "2026-09-10T13:50:00Z"
+  - kind: repository
+    name: pennylane
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 214927
+    pushed_at: "2026-09-12T05:16:35Z"
+  - kind: repository
+    name: Perl
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:18:10Z"
+  - kind: repository
+    name: petsc
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 349086
+    pushed_at: "2026-09-11T18:51:16Z"
+  - kind: repository
+    name: pglite
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 31700
+    pushed_at: "2026-08-26T18:35:11Z"
+  - kind: repository
+    name: Pharo
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:55:43Z"
+  - kind: repository
+    name: phone-harness
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 213
+    pushed_at: "2026-09-10T19:04:52Z"
+  - kind: repository
+    name: PHP
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:03:41Z"
+  - kind: repository
+    name: Piet
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:07:28Z"
+  - kind: repository
+    name: pinocchio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-2-Clause
+    language: null
+    size_kb: 42964
+    pushed_at: "2026-09-07T14:31:45Z"
+  - kind: repository
+    name: pipewire
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 41199
+    pushed_at: "2026-09-12T12:40:21Z"
+  - kind: repository
+    name: PlasmaPy
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 39243
+    pushed_at: "2026-09-08T13:09:49Z"
+  - kind: repository
+    name: playwright
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 241573
+    pushed_at: "2026-09-11T23:00:20Z"
+  - kind: repository
+    name: plugin-GUI
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 239957
+    pushed_at: "2026-09-08T20:24:34Z"
+  - kind: repository
+    name: Pocket-base
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:48:38Z"
+  - kind: repository
+    name: Poietek
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: null
+    language: TypeScript
+    size_kb: 3786
+    pushed_at: "2026-10-20T12:40:01Z"
+  - kind: repository
+    name: POP-11
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:47:16Z"
+  - kind: repository
+    name: portaudio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 6245
+    pushed_at: "2026-09-04T00:43:37Z"
+  - kind: repository
+    name: POSTGRESQL
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:10:50Z"
+  - kind: repository
+    name: Power-Bi
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 1
+    pushed_at: "2026-02-24T11:50:56Z"
+  - kind: repository
+    name: Power-BI-community-tools
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-10T15:53:55Z"
+  - kind: repository
+    name: powershell
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:36:52Z"
+  - kind: repository
+    name: powershell-ops-scripts
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-12T16:04:26Z"
+  - kind: repository
+    name: PROJ
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 312951
+    pushed_at: "2026-09-08T11:09:55Z"
+  - kind: repository
+    name: prometheus
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 290383
+    pushed_at: "2026-09-11T14:00:07Z"
+  - kind: repository
+    name: Prompt-Engineering
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-29T21:02:59Z"
+  - kind: repository
+    name: protobuf
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 240611
+    pushed_at: "2026-09-13T06:35:39Z"
+  - kind: repository
+    name: PrusaSlicer
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: AGPL-3.0
+    language: null
+    size_kb: 480774
+    pushed_at: "2026-09-01T13:31:32Z"
+  - kind: repository
+    name: pulseview
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 5274
+    pushed_at: "2025-11-10T00:51:54Z"
+  - kind: repository
+    name: Puppeteer
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:25:55Z"
+  - kind: repository
+    name: pure-data
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 74828
+    pushed_at: "2026-09-03T16:06:14Z"
+  - kind: repository
+    name: PX4-Autopilot
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 577502
+    pushed_at: "2026-09-12T13:10:15Z"
+  - kind: repository
+    name: pydantic-ai
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 257807
+    pushed_at: "2026-09-11T02:24:07Z"
+  - kind: repository
+    name: pyinstaller
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 71956
+    pushed_at: "2026-09-12T21:55:19Z"
+  - kind: repository
+    name: pymatgen
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 981186
+    pushed_at: "2026-08-31T10:48:15Z"
+  - kind: repository
+    name: pymatgen-core
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 415965
+    pushed_at: "2026-09-11T08:46:34Z"
+  - kind: repository
+    name: pymeasure
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 11715
+    pushed_at: "2026-08-28T15:59:48Z"
+  - kind: repository
+    name: pyOCD
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 31089
+    pushed_at: "2026-09-10T13:25:01Z"
+  - kind: repository
+    name: pysam
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 21555
+    pushed_at: "2026-09-07T09:13:31Z"
+  - kind: repository
+    name: pyscf
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 90609
+    pushed_at: "2026-09-10T21:15:58Z"
+  - kind: repository
+    name: pyserial
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1744
+    pushed_at: "2026-05-19T21:16:00Z"
+  - kind: repository
+    name: python-etl-quality-checks
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 1
+    pushed_at: "2026-02-12T16:07:18Z"
+  - kind: repository
+    name: Python-Projects
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: Python
+    size_kb: 221
+    pushed_at: "2025-01-02T23:25:00Z"
+  - kind: repository
+    name: python-rtmidi
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 4882
+    pushed_at: "2026-01-23T04:36:50Z"
+  - kind: repository
+    name: python-sdk
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 17252
+    pushed_at: "2026-09-10T13:23:39Z"
+  - kind: repository
+    name: PyTorch
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:46:36Z"
+  - kind: repository
+    name: pyusb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 1135
+    pushed_at: "2026-02-12T15:10:52Z"
+  - kind: repository
+    name: pyvisa
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 2799
+    pushed_at: "2026-09-07T17:36:43Z"
+  - kind: repository
+    name: q-e
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 823215
+    pushed_at: "2026-07-09T12:03:44Z"
+  - kind: repository
+    name: qdrant
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 63452
+    pushed_at: "2026-09-10T23:55:32Z"
+  - kind: repository
+    name: qemu
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 704979
+    pushed_at: "2026-09-11T23:42:36Z"
+  - kind: repository
+    name: qiskit
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 177808
+    pushed_at: "2026-09-12T15:17:50Z"
+  - kind: repository
+    name: Quantum-Electrodynamics
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:13:23Z"
+  - kind: repository
+    name: Quantum-OS
+    state: obsolete
+    reason: absorbed by Aetherius OS
+    fork: false
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 729
+    pushed_at: "2025-11-07T14:38:25Z"
+  - kind: repository
+    name: QVA-merged
+    state: obsolete
+    reason: absorbed by Aetherius OS
+    fork: false
+    archived: false
+    licence: null
+    language: Python
+    size_kb: 38
+    pushed_at: "2025-05-13T13:02:54Z"
+  - kind: repository
+    name: R
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:43:17Z"
+  - kind: repository
+    name: Racket
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:57:58Z"
+  - kind: repository
+    name: Rasberry-PI
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:25:09Z"
+  - kind: repository
+    name: ray
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 797786
+    pushed_at: "2026-09-12T18:34:32Z"
+  - kind: repository
+    name: rclone
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 256543
+    pushed_at: "2026-09-11T04:16:22Z"
+  - kind: repository
+    name: RDD
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:25:52Z"
+  - kind: repository
+    name: rdkit
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 220551
+    pushed_at: "2026-09-10T13:18:01Z"
+  - kind: repository
+    name: React
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:13:16Z"
+  - kind: repository
+    name: React-native
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-19T21:43:51Z"
+  - kind: repository
+    name: Redis
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:26:55Z"
+  - kind: repository
+    name: redox
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 27890
+    pushed_at: "2026-09-12T13:17:35Z"
+  - kind: repository
+    name: Regex
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:13:38Z"
+  - kind: repository
+    name: renode
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 18086
+    pushed_at: "2026-09-11T16:25:11Z"
+  - kind: repository
+    name: restic
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-2-Clause
+    language: null
+    size_kb: 71663
+    pushed_at: "2026-09-01T01:43:58Z"
+  - kind: repository
+    name: retention-dashboard
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: MIT
+    language: TypeScript
+    size_kb: 12
+    pushed_at: "2025-01-23T15:48:59Z"
+  - kind: repository
+    name: Rholang
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:32:41Z"
+  - kind: repository
+    name: risc0
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 340088
+    pushed_at: "2026-08-28T05:30:55Z"
+  - kind: repository
+    name: riscv-gnu-toolchain
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 7073
+    pushed_at: "2026-08-27T08:56:43Z"
+  - kind: repository
+    name: riscv-isa-sim
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 9102
+    pushed_at: "2026-09-11T14:31:01Z"
+  - kind: repository
+    name: rnnoise
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 910
+    pushed_at: "2025-02-22T23:58:31Z"
+  - kind: repository
+    name: robot_localization
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 16688
+    pushed_at: "2026-07-16T11:41:06Z"
+  - kind: repository
+    name: rocket-chip
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 21719
+    pushed_at: "2026-06-02T17:57:09Z"
+  - kind: repository
+    name: ROP
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:20:35Z"
+  - kind: repository
+    name: ros2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 739
+    pushed_at: "2026-09-10T22:11:13Z"
+  - kind: repository
+    name: ros2_control
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 16867
+    pushed_at: "2026-09-10T06:21:26Z"
+  - kind: repository
+    name: rtabmap
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 83867
+    pushed_at: "2026-09-11T07:17:48Z"
+  - kind: repository
+    name: rtaudio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 2690
+    pushed_at: "2026-09-12T17:56:16Z"
+  - kind: repository
+    name: rtl-sdr
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 370
+    pushed_at: "2026-08-11T22:46:48Z"
+  - kind: repository
+    name: rtmidi
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1898
+    pushed_at: "2025-11-27T14:24:14Z"
+  - kind: repository
+    name: Ruby
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:02:25Z"
+  - kind: repository
+    name: Ruby-Rails
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:41:41Z"
+  - kind: repository
+    name: ruff
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 202623
+    pushed_at: "2026-09-13T05:04:21Z"
+  - kind: repository
+    name: runc
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 25412
+    pushed_at: "2026-09-10T06:51:08Z"
+  - kind: repository
+    name: Rust
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:31:06Z"
+  - kind: repository
+    name: rust-libp2p
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 22282
+    pushed_at: "2026-09-11T21:34:08Z"
+  - kind: repository
+    name: RWD---responsive-web-design
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:22:17Z"
+  - kind: repository
+    name: rxdb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 626866
+    pushed_at: "2026-09-12T18:28:32Z"
+  - kind: repository
+    name: Saas
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-12T12:49:51Z"
+  - kind: repository
+    name: sam2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 138255
+    pushed_at: "2026-05-30T02:29:40Z"
+  - kind: repository
+    name: samtools
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 16156
+    pushed_at: "2026-09-10T14:38:09Z"
+  - kind: repository
+    name: SASS
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:10:02Z"
+  - kind: repository
+    name: SatDump
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 265187
+    pushed_at: "2026-09-12T11:50:39Z"
+  - kind: repository
+    name: Scala
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:44:22Z"
+  - kind: repository
+    name: scanpy
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 74501
+    pushed_at: "2026-09-11T13:38:53Z"
+  - kind: repository
+    name: scikit-bio
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 30913
+    pushed_at: "2026-09-10T14:08:39Z"
+  - kind: repository
+    name: Scikit-Learn
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:45:26Z"
+  - kind: repository
+    name: Scipy
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:09:10Z"
+  - kind: repository
+    name: scipy-community
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 207450
+    pushed_at: "2026-09-10T16:40:36Z"
+  - kind: repository
+    name: Scratch
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-11-27T15:38:43Z"
+  - kind: repository
+    name: scylladb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 287071
+    pushed_at: "2026-09-12T02:31:43Z"
+  - kind: repository
+    name: Seaborn
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:49:21Z"
+  - kind: repository
+    name: SEAL
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 5650
+    pushed_at: "2026-08-28T02:43:18Z"
+  - kind: repository
+    name: seaweedfs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 233929
+    pushed_at: "2026-09-12T06:08:39Z"
+  - kind: repository
+    name: seL4
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 15670
+    pushed_at: "2026-09-12T16:07:52Z"
+  - kind: repository
+    name: self-building-ai
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: MIT
+    language: Python
+    size_kb: 193
+    pushed_at: "2026-09-19T10:48:18Z"
+  - kind: repository
+    name: servers
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 29654
+    pushed_at: "2026-09-03T01:42:26Z"
+  - kind: repository
+    name: sfizz
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-2-Clause
+    language: null
+    size_kb: 22647
+    pushed_at: "2025-03-17T20:18:36Z"
+  - kind: repository
+    name: ShakeSpeare
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:06:45Z"
+  - kind: repository
+    name: Shell
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:51:32Z"
+  - kind: repository
+    name: sherpa-onnx
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 16683
+    pushed_at: "2026-09-11T06:27:08Z"
+  - kind: repository
+    name: SigMF
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: CC-BY-SA-4.0
+    language: null
+    size_kb: 1985
+    pushed_at: "2026-01-13T00:35:02Z"
+  - kind: repository
+    name: Simplicity
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:31:37Z"
+  - kind: repository
+    name: Simula
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:01:02Z"
+  - kind: repository
+    name: SkillSpector
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 4013
+    pushed_at: "2026-09-12T19:53:55Z"
+  - kind: repository
+    name: sleap
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause-Clear
+    language: null
+    size_kb: 389264
+    pushed_at: "2026-09-11T00:07:05Z"
+  - kind: repository
+    name: smalltalk
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:49:49Z"
+  - kind: repository
+    name: smolagents
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 7421
+    pushed_at: "2026-08-25T18:36:00Z"
+  - kind: repository
+    name: snarkjs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 175402
+    pushed_at: "2026-09-02T21:25:17Z"
+  - kind: repository
+    name: snntorch
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 58854
+    pushed_at: "2026-09-08T16:39:44Z"
+  - kind: repository
+    name: Snowflake
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:34:13Z"
+  - kind: repository
+    name: SoapySDR
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSL-1.0
+    language: null
+    size_kb: 4709
+    pushed_at: "2026-01-02T21:28:01Z"
+  - kind: repository
+    name: sofa
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: LGPL-2.1
+    language: null
+    size_kb: 386465
+    pushed_at: "2026-09-11T09:09:08Z"
+  - kind: repository
+    name: Solana
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:34:50Z"
+  - kind: repository
+    name: Solidity
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T09:49:03Z"
+  - kind: repository
+    name: sound-event-detection
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 2363
+    pushed_at: "2026-08-16T05:26:06Z"
+  - kind: repository
+    name: sound-separation
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 33429
+    pushed_at: "2023-10-03T12:43:03Z"
+  - kind: repository
+    name: sp1
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 586515
+    pushed_at: "2026-09-12T16:16:15Z"
+  - kind: repository
+    name: Spark
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:19:41Z"
+  - kind: repository
+    name: Spell
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:47:08Z"
+  - kind: repository
+    name: Spell-kit
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:51:37Z"
+  - kind: repository
+    name: sperm-whale-clan-and-coda-detection
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 7596
+    pushed_at: "2023-04-12T00:33:22Z"
+  - kind: repository
+    name: spikeinterface
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 88182
+    pushed_at: "2026-09-11T14:15:23Z"
+  - kind: repository
+    name: Spreadsheets
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-30T18:33:01Z"
+  - kind: repository
+    name: Spring-Boot
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:52:37Z"
+  - kind: repository
+    name: SQL
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 100
+    pushed_at: "2026-02-17T18:07:24Z"
+  - kind: repository
+    name: SQL-engines-Postgres-SQLite-
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-10T15:54:32Z"
+  - kind: repository
+    name: sql-operations-analytics
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 1
+    pushed_at: "2026-02-12T16:06:49Z"
+  - kind: repository
+    name: sqlite
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 562300
+    pushed_at: "2026-09-12T11:18:14Z"
+  - kind: repository
+    name: stable-baselines3
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 5460
+    pushed_at: "2026-09-09T14:05:40Z"
+  - kind: repository
+    name: Statistics
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:27:10Z"
+  - kind: repository
+    name: SU2
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 964638
+    pushed_at: "2026-09-12T18:14:26Z"
+  - kind: repository
+    name: Supabase
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:49:48Z"
+  - kind: repository
+    name: supercollider
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-3.0
+    language: null
+    size_kb: 170312
+    pushed_at: "2026-09-11T21:53:14Z"
+  - kind: repository
+    name: surrealdb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 66780
+    pushed_at: "2026-09-07T09:08:38Z"
+  - kind: repository
+    name: Swift
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:03:57Z"
+  - kind: repository
+    name: Swift-UI
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-19T21:37:52Z"
+  - kind: repository
+    name: syncthing
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MPL-2.0
+    language: null
+    size_kb: 127746
+    pushed_at: "2026-09-12T09:11:35Z"
+  - kind: repository
+    name: systemd
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: GPL-2.0
+    language: null
+    size_kb: 727187
+    pushed_at: "2026-09-13T02:18:22Z"
+  - kind: repository
+    name: Tailwind
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:28:33Z"
+  - kind: repository
+    name: tauri
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 109362
+    pushed_at: "2026-09-10T15:19:42Z"
+  - kind: repository
+    name: temporal
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 161722
+    pushed_at: "2026-09-12T20:10:38Z"
+  - kind: repository
+    name: Tensor-Flow
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:23:29Z"
+  - kind: repository
+    name: Terroaform
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-31T17:46:30Z"
+  - kind: repository
+    name: tfhe-rs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 56611
+    pushed_at: "2026-09-11T20:48:22Z"
+  - kind: repository
+    name: THE-ARCHITECTURE-OF-SHADOWS
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: MIT
+    language: JavaScript
+    size_kb: 430
+    pushed_at: "2026-07-02T04:22:03Z"
+  - kind: repository
+    name: The-Odin-Project
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2026-02-10T15:56:45Z"
+  - kind: repository
+    name: Theano
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:50:27Z"
+  - kind: repository
+    name: theia
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: EPL-2.0
+    language: null
+    size_kb: 203007
+    pushed_at: "2026-09-11T18:10:33Z"
+  - kind: repository
+    name: tikv
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 139178
+    pushed_at: "2026-09-10T02:20:05Z"
+  - kind: repository
+    name: timescaledb
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 64388
+    pushed_at: "2026-09-12T00:40:56Z"
+  - kind: repository
+    name: tock
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 187222
+    pushed_at: "2026-09-13T05:10:42Z"
+  - kind: repository
+    name: Towery
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:55:48Z"
+  - kind: repository
+    name: tracktion_engine
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1569658
+    pushed_at: "2026-09-10T15:55:49Z"
+  - kind: repository
+    name: transformers
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 513021
+    pushed_at: "2026-09-11T06:42:00Z"
+  - kind: repository
+    name: Transistors
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:12:41Z"
+  - kind: repository
+    name: tree-sitter
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 23432
+    pushed_at: "2026-09-13T05:40:25Z"
+  - kind: repository
+    name: Truffle-Suite
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 1
+    pushed_at: "2024-11-12T09:50:46Z"
+  - kind: repository
+    name: tvb-root
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 641973
+    pushed_at: "2026-09-04T11:18:43Z"
+  - kind: repository
+    name: tvm
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 146106
+    pushed_at: "2026-09-12T18:17:05Z"
+  - kind: repository
+    name: TypeScript
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:02:05Z"
+  - kind: repository
+    name: typescript-sdk
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 18868
+    pushed_at: "2026-09-11T04:09:05Z"
+  - kind: repository
+    name: u-boot
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 344809
+    pushed_at: "2026-09-12T02:13:55Z"
+  - kind: repository
+    name: uhd
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 189595
+    pushed_at: "2026-09-08T09:39:03Z"
+  - kind: repository
+    name: ultralytics
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: AGPL-3.0
+    language: null
+    size_kb: 63765
+    pushed_at: "2026-09-12T19:48:54Z"
+  - kind: repository
+    name: Unity
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:21:45Z"
+  - kind: repository
+    name: Universal-Bridge
+    state: live
+    reason: a working project of the programme
+    fork: false
+    archived: false
+    licence: NOASSERTION
+    language: CMake
+    size_kb: 7176
+    pushed_at: "2026-10-20T12:31:37Z"
+  - kind: repository
+    name: unsupervised-speech-translation
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: null
+    language: null
+    size_kb: 176
+    pushed_at: "2021-03-05T21:52:33Z"
+  - kind: repository
+    name: uv
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 203156
+    pushed_at: "2026-09-12T23:05:43Z"
+  - kind: repository
+    name: V
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:52:17Z"
+  - kind: repository
+    name: valkey
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: BSD-3-Clause
+    language: null
+    size_kb: 240052
+    pushed_at: "2026-09-12T02:24:50Z"
+  - kind: repository
+    name: vcpkg
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 113017
+    pushed_at: "2026-09-11T22:56:10Z"
+  - kind: repository
+    name: verible
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 13436
+    pushed_at: "2026-09-12T12:15:33Z"
+  - kind: repository
+    name: verilator
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 81872
+    pushed_at: "2026-09-12T18:36:46Z"
+  - kind: repository
+    name: Veyra
+    state: obsolete
+    reason: "absorbed by Aetherius OS, and its AI engine merged into Genesis"
+    fork: false
+    archived: false
+    licence: MIT
+    language: Python
+    size_kb: 10439
+    pushed_at: "2026-05-23T14:58:29Z"
+  - kind: repository
+    name: VHDL
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T11:09:14Z"
+  - kind: repository
+    name: VibeVoice
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 217150
+    pushed_at: "2026-09-03T09:04:46Z"
+  - kind: repository
+    name: VibeVoice-community
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 57135
+    pushed_at: "2026-08-29T01:56:24Z"
+  - kind: repository
+    name: video-use
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 983
+    pushed_at: "2026-08-30T09:45:51Z"
+  - kind: repository
+    name: Virtual-Box
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T11:42:35Z"
+  - kind: repository
+    name: VirtualAssistant
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 3
+    pushed_at: "2025-01-13T10:01:42Z"
+  - kind: repository
+    name: vllm
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 279781
+    pushed_at: "2026-09-12T18:42:01Z"
+  - kind: repository
+    name: voxaboxen
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: AGPL-3.0
+    language: null
+    size_kb: 1113
+    pushed_at: "2026-06-26T09:10:45Z"
+  - kind: repository
+    name: vscode
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 1422728
+    pushed_at: "2026-09-12T13:57:52Z"
+  - kind: repository
+    name: vst3sdk
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 2746
+    pushed_at: "2026-08-11T14:32:40Z"
+  - kind: repository
+    name: Vue
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:24:58Z"
+  - kind: repository
+    name: Vyper
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:32:12Z"
+  - kind: repository
+    name: W3.CSS
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:13:53Z"
+  - kind: repository
+    name: warpx
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 90483
+    pushed_at: "2026-09-11T14:37:08Z"
+  - kind: repository
+    name: wasmtime
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 161589
+    pushed_at: "2026-09-11T19:23:15Z"
+  - kind: repository
+    name: Web-platform-with-E-commerce-E-learning-social-media-job-hunting-post-articles-blockchain-ai
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: null
+    language: TypeScript
+    size_kb: 175
+    pushed_at: "2025-01-31T05:08:03Z"
+  - kind: repository
+    name: Web.JS
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T09:49:31Z"
+  - kind: repository
+    name: Webflow
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: null
+    size_kb: 3
+    pushed_at: "2024-12-30T18:30:45Z"
+  - kind: repository
+    name: webots
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 4306566
+    pushed_at: "2026-09-12T05:44:44Z"
+  - kind: repository
+    name: whisper.cpp
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 44001
+    pushed_at: "2026-09-11T05:31:54Z"
+  - kind: repository
+    name: Wolfram-language
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:50:55Z"
+  - kind: repository
+    name: xls
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 85522
+    pushed_at: "2026-09-12T07:47:40Z"
+  - kind: repository
+    name: XML
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T12:12:07Z"
+  - kind: repository
+    name: XPath
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:25:36Z"
+  - kind: repository
+    name: xterm.js
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: MIT
+    language: null
+    size_kb: 36902
+    pushed_at: "2026-09-11T00:31:49Z"
+  - kind: repository
+    name: yjs
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 73734
+    pushed_at: "2026-09-07T15:45:45Z"
+  - kind: repository
+    name: yosys
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: ISC
+    language: null
+    size_kb: 40281
+    pushed_at: "2026-09-11T11:45:22Z"
+  - kind: repository
+    name: yugabyte-db
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 1083076
+    pushed_at: "2026-09-12T18:36:34Z"
+  - kind: repository
+    name: Yul
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:39:41Z"
+  - kind: repository
+    name: Zapier
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2024-11-12T10:14:26Z"
+  - kind: repository
+    name: zenoh
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: NOASSERTION
+    language: null
+    size_kb: 28183
+    pushed_at: "2026-09-11T14:10:40Z"
+  - kind: repository
+    name: zephyr
+    state: reference
+    reason: "a fork: third-party prior art, kept for reference"
+    fork: true
+    archived: false
+    licence: Apache-2.0
+    language: null
+    size_kb: 957949
+    pushed_at: "2026-09-12T11:53:38Z"
+  - kind: repository
+    name: Zig
+    state: reference
+    reason: "an empty repository, kept: it may be a learning repository"
+    fork: false
+    archived: false
+    licence: null
+    language: null
+    size_kb: 0
+    pushed_at: "2025-06-26T10:52:54Z"
+  - kind: repository
+    name: Multi-Cross-Platform-Trading-Bot
+    state: reference
+    reason: "a learning repository, kept"
+    fork: false
+    archived: false
+    licence: CC0-1.0
+    language: JavaScript
+    size_kb: 5089
+    pushed_at: "2024-10-29T11:44:59Z"
+  - kind: folder
+    name: Aetherius-OS
+    state: live
+    reason: a project of the programme
+    path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS"
+  - kind: folder
+    name: Agent-Bridge
+    state: live
+    reason: a project of the programme
+    path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge"
+  - kind: folder
+    name: Materials-Atlas-Table-Codex---MAT
+    state: live
+    reason: a project of the programme
+    path: "C:\\Users\\jpowe\\Desktop\\Projects\\Materials-Atlas-Table-Codex---MAT"
+  - kind: folder
+    name: Temp
+    state: reference
+    reason: the designated holding place for anything that needs to wait outside its project
+    path: "C:\\Users\\jpowe\\Desktop\\Projects\\Temp"
+  - kind: generated
+    name: Aetherius-OS/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 275604
+  - kind: generated
+    name: Aetherius-OS/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 147739380
+  - kind: generated
+    name: Aetherius-OS/apps/IDE-Workspace/.pytest_cache
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 532
+  - kind: generated
+    name: Aetherius-OS/apps/IDE-Workspace/workspace/.pytest_cache
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 5743
+  - kind: generated
+    name: Aetherius-OS/apps/IDE-Workspace/workspace/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 0
+  - kind: generated
+    name: Aetherius-OS/apps/IDE-Workspace/workspace/app/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 783625
+  - kind: generated
+    name: Aetherius-OS/apps/IDE-Workspace/workspace/app/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 134297671
+  - kind: generated
+    name: Aetherius-OS/apps/IDE-Workspace/workspace/integration/.pytest_cache
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 627
+  - kind: generated
+    name: Aetherius-OS/apps/IDE-Workspace/workspace/integration/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 39587
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 346294261
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/apps/api/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 76324
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/apps/api/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 99
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/apps/web/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 250716
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/apps/web/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 5155018
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/history/crypto-property-game-mvp/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 327680667
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/aetherius-sdk/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 2908
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/auth/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 37933
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/auth/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 173
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/blockchain/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 7377
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/blockchain/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 102
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/game-ai/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 106548
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/game-ai/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 241
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/game-engine/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 134081
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/game-engine/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 559
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/ledger/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 8144
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/ledger/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 103
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/marketplace/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 58356
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/marketplace/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 259
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/match-store/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 120383
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/match-store/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 25437733
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/matchmaking/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 59339
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/matchmaking/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 255
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/ranked/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 6824
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/ranked/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 180
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/shared-types/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 11397
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/tournaments/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 74078
+  - kind: generated
+    name: Aetherius-OS/apps/LedgerLands/packages/tournaments/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 314
+  - kind: generated
+    name: Aetherius-OS/apps/Poietek/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 552466
+  - kind: generated
+    name: Aetherius-OS/apps/Poietek/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 1733906
+  - kind: generated
+    name: Aetherius-OS/apps/Poietek/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 140761008
+  - kind: generated
+    name: Aetherius-OS/apps/Poietek/absorbed/Universal-Bridge/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 1579050622
+  - kind: generated
+    name: Aetherius-OS/apps/Poietek/native-core/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 132161
+  - kind: generated
+    name: Aetherius-OS/apps/Poietek/src-tauri/target
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 3866796102
+  - kind: generated
+    name: Aetherius-OS/ecosystem/Niche_platform/.next
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 3331
+  - kind: generated
+    name: Aetherius-OS/ecosystem/Niche_platform/coverage
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 37798
+  - kind: generated
+    name: Aetherius-OS/kernel/Genesis/.genesis-local
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 2669122080
+  - kind: generated
+    name: Aetherius-OS/kernel/Genesis/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 48188888
+  - kind: generated
+    name: Aetherius-OS/kernel/Genesis/build-host
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 18100642
+  - kind: generated
+    name: Aetherius-OS/kernel/Genesis/build-verify
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 1044874476
+  - kind: generated
+    name: Aetherius-OS/kernel/Genesis/integration-archive/genesis_runtime/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 0
+  - kind: generated
+    name: Aetherius-OS/kernel/Genesis/integration-archive/tests/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 0
+  - kind: generated
+    name: Aetherius-OS/native/target
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 1303132519
+  - kind: generated
+    name: Aetherius-OS/native/kernel/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 118067
+  - kind: generated
+    name: Aetherius-OS/predecessors/aetherium/aetherium/platform/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 131923
+  - kind: generated
+    name: Aetherius-OS/research/build81/fea/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 12118
+  - kind: generated
+    name: Aetherius-OS/research/build84/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 21547
+  - kind: generated
+    name: Aetherius-OS/research/build85/bridge/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 23093
+  - kind: generated
+    name: Aetherius-OS/research/build85/kernel_binary/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 7372
+  - kind: generated
+    name: Aetherius-OS/research/build85/kernel_quantum/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 8931
+  - kind: generated
+    name: Aetherius-OS/research/build85/kernel_ternary/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 4733
+  - kind: generated
+    name: Aetherius-OS/research/build86/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 727
+  - kind: generated
+    name: Aetherius-OS/research/build86/absolute_zero/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 18676
+  - kind: generated
+    name: Aetherius-OS/research/build86/hal/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 5102
+  - kind: generated
+    name: Aetherius-OS/research/build86/hardware_profiles/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 8088
+  - kind: generated
+    name: Aetherius-OS/research/lm-compression/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 7602
+  - kind: generated
+    name: Aetherius-OS/tools/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 84151
+  - kind: generated
+    name: Agent-Bridge/.pytest_cache
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 203057
+  - kind: generated
+    name: Agent-Bridge/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 3493550
+  - kind: generated
+    name: Agent-Bridge/.opencode/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 55055913
+  - kind: generated
+    name: Agent-Bridge/agent/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 50284
+  - kind: generated
+    name: Agent-Bridge/agents/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 39199
+  - kind: generated
+    name: Agent-Bridge/avatar/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 74140
+  - kind: generated
+    name: Agent-Bridge/benchmarks/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 149333
+  - kind: generated
+    name: Agent-Bridge/comms/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 70463
+  - kind: generated
+    name: Agent-Bridge/compat/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 36347
+  - kind: generated
+    name: Agent-Bridge/compute/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 508144
+  - kind: generated
+    name: Agent-Bridge/data_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 125108
+  - kind: generated
+    name: Agent-Bridge/delegation_test_fixtures/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 2833
+  - kind: generated
+    name: Agent-Bridge/device/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 166194
+  - kind: generated
+    name: Agent-Bridge/ides/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 54688
+  - kind: generated
+    name: Agent-Bridge/knowledge_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 208687
+  - kind: generated
+    name: Agent-Bridge/local/acceptance/v0.8.0-owner-acceptance/task-c/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 7391
+  - kind: generated
+    name: Agent-Bridge/local/acceptance/v0.8.0-owner-acceptance/task-fail/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 1810
+  - kind: generated
+    name: Agent-Bridge/local/acceptance/v0.8.1-owner-acceptance/calcproj/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 3200
+  - kind: generated
+    name: Agent-Bridge/migration/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 53218
+  - kind: generated
+    name: Agent-Bridge/models/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 280175
+  - kind: generated
+    name: Agent-Bridge/models/providers/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 87041
+  - kind: generated
+    name: Agent-Bridge/multimodal/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 94437
+  - kind: generated
+    name: Agent-Bridge/nodes/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 312425
+  - kind: generated
+    name: Agent-Bridge/reference_agent_shell/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 106164
+  - kind: generated
+    name: Agent-Bridge/resources/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 87612
+  - kind: generated
+    name: Agent-Bridge/runtimes/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 17758
+  - kind: generated
+    name: Agent-Bridge/scripts/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 171957
+  - kind: generated
+    name: Agent-Bridge/security/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 132854
+  - kind: generated
+    name: Agent-Bridge/tests/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 7526985
+  - kind: generated
+    name: Agent-Bridge/tools/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 278770
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/.pytest_cache
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 19256
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/.venv
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 547116
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 895137
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/agent/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 54660
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/agents/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 20564
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/avatar/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 39248
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/comms/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 70421
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/compute/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 435969
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/data_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 63898
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/device/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 86761
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/ides/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 28862
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/knowledge_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 133225
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/migration/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 52634
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/models/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 159204
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/multimodal/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 50095
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/nodes/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 278308
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/resources/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 46281
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/runtimes/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 9370
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/security/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 68917
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/tests/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 1403825
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/tools/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 278449
+  - kind: generated
+    name: Agent-Bridge/variants/cloudhybrid/voice/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 32106
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/.pytest_cache
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 254146
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/.venv
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 10400301
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 5298533
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/.opencode/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 55056597
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/agent/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 109527
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/agents/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 62482
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/avatar/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 115281
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/benchmarks/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 258538
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/comms/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 109988
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/compat/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 56111
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/compute/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 2200424
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/data_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 198045
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/device/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 258496
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/ides/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 86495
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/knowledge_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 393878
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/migration/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 174546
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/models/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 355423
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/models/providers/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 87151
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/multimodal/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 145634
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/nodes/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 553093
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/reference_agent_shell/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 164079
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/resources/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 135826
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/runtimes/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 27370
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/scripts/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 99713
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/security/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 213322
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/tests/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 13707519
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/tools/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 547109
+  - kind: generated
+    name: Agent-Bridge/variants/dashboard/voice/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 94194
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/.pytest_cache
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 23035
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 747372
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/agent/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 50354
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/agents/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 18791
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/compute/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 275199
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/data_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 27355
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/device/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 79563
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/ides/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 21144
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/knowledge_fabric/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 75464
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/models/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 71192
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/nodes/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 134569
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/tests/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 452108
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/tools/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 21501
+  - kind: generated
+    name: Agent-Bridge/variants/runtimesafety/voice/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 28689
+  - kind: generated
+    name: Agent-Bridge/voice/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 60717
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 426822514
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 2038198
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/.mat-local/pdf-audit-libs/bin
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 108404
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/.mat-local/pdf-audit-libs/fitz/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 1161
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/.mat-local/pdf-audit-libs/pymupdf/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 5100603
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/.mat-local/plots-env/Lib/site-packages
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 135052686
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/book/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 18314
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/scripts/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 53605
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/scripts/tests/__pycache__
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 60056
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/studio/node_modules
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 112562351
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/studio/public/dist
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 11215053
+  - kind: generated
+    name: Materials-Atlas-Table-Codex---MAT/studio/public/book/build
+    state: obsolete
+    reason: "generated output, rebuilt by the build"
+    bytes: 18314

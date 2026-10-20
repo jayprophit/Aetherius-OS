@@ -4239,3 +4239,47 @@ todos:
   resolution: Resolved 2026-10-20. The admission gate closes the gap. Sixty-nine checks in tests/admission_tests.cpp
     prove it, and the whole Genesis suite passes.
   blocks: []
+- id: TODO-END-001
+  title: Give the finished programme production and system architecture
+  project: aetherius-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-direction
+    ref: owner instruction, 2026-10-20
+  detail: 'Once every project is finished and built and ready for public release, the programme is to
+    be given senior level, world class, industrial industry level production and system architecture.
+    The bar is a system that would survive being operated by someone else: the deployment is reproducible,
+    the failure modes are known and handled, the boundaries are documented, and the architecture is the
+    one the code actually has rather than the one the documents claim.'
+  evidence: 'The owner''s instruction of 2026-10-20: once all projects are fully finished and built ready
+    for public release, provide senior level world class industrial industry level production and system
+    architecture.'
+  acceptance:
+  - Every project is finished, built and ready for public release
+  - The architecture describes the system as it is, not as it was planned
+  - The deployment is reproducible from the build manifests
+  blocks: []
+- id: TODO-END-002
+  title: Remove the obsolete material, and keep the reference data
+  project: aetherius-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-direction
+    ref: owner instruction, 2026-10-20
+  detail: 'Once the projects are ready for public release, the obsolete files, folders and data are removed,
+    and the reference data is kept so that it can be used later if needed. The obsolescence register is
+    what the removal needs first, because obsolete and reference are easy to confuse and the difference
+    is costly. The register classifies the account''s repositories and the material on the machine into
+    what is live, what is reference and what is obsolete, and it keeps the distinction the owner has asked
+    for: a predecessor absorbed by a working project is obsolete, and a fork that informed the design,
+    or an empty repository the owner keeps for learning, is reference.'
+  evidence: 'The obsolescence register, which classifies seven hundred and eighty-six entries: the five
+    absorbed predecessors and the generated build trees are obsolete, and the forks, the learning repositories
+    and the owner''s own material are reference.'
+  acceptance:
+  - The obsolete material is removed and the reference data is kept
+  - The register is regenerated and shows nothing left to remove
+  - Every removal is recorded, so that what was removed and why is known
+  blocks: []
