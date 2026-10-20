@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **238** (222 open, 16 done)
+- Tasks: **239** (222 open, 17 done)
 
 ## By project
 
@@ -29,7 +29,7 @@
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
 | football-card-game | 2 | 0 |
-| genesis | 8 | 3 |
+| genesis | 8 | 4 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
 | ide-workspace | 11 | 2 |
@@ -752,13 +752,37 @@ The gap analysis assessed 31 agent-platform capabilities against the Genesis reg
 Evidence:
 
 ```
-Five of the eight are now closed. Capability-scoped authority was closed by the authority engine; delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery by the durable task registry. The three still open are the free-first admission and zero-spend guard, task decomposition and planning, and tool execution with sandboxing.
+Six of the eight are now closed. Capability-scoped authority was closed by the authority engine; delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery by the durable task registry; and the free-first admission and zero-spend guard by the admission gate. The two still open are task decomposition and planning, and tool execution with sandboxing.
 ```
 
 Acceptance:
 
 - [ ] Each priority-one gap moves to IMPLEMENTED or VERIFIED with a test that proves it
 - [ ] The gap registry is regenerated and the report shows the change
+
+### ✅ TODO-GAP-004 — Close the free-first admission and zero-spend guard gap
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** gap-analysis — Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml
+
+The admission gate decides what may be called and what may be spent. An endpoint whose cost is not known is refused, because a guard that admits what it does not understand is not a guard. A free or local endpoint is admitted without question, and it is the preferred answer for everything. A metered endpoint spends its free allowance before any money is involved. Money is refused unless it is budgeted: spending is off by default, and a caller that turns it on must state how many paid uses are permitted, which the gate enforces as a ceiling rather than an intention.
+
+Evidence:
+
+```
+Genesis includes/genesis/agents/admission.hpp and src/agents/admission.cpp, with tests/admission_tests.cpp proving it in sixty-nine checks that run in the build gate. The requirement registry carries REQ-ADMISSION-FREE-001, and the gap analysis records GAP-MODEL-002 as VERIFIED. The whole Genesis suite passes, twenty-six of twenty-six.
+```
+
+Resolution:
+
+Resolved 2026-10-20. The admission gate closes the gap. Sixty-nine checks in tests/admission_tests.cpp prove it, and the whole Genesis suite passes.
+
+Acceptance:
+
+- [ ] GAP-MODEL-002 is VERIFIED and cites the admission gate
+- [ ] The admission gate's tests run in the Genesis build gate
+- [ ] The spend is zero while only free endpoints are used
 
 ### ✅ TODO-GEN-001 — Discard the stale CMake cache in the Genesis build tree
 

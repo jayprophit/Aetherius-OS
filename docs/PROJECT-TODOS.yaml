@@ -1819,10 +1819,10 @@ todos:
     found 27 open, 8 of them priority one: capability-scoped authority, delegation with narrowing scope,
     hive communication, crash recovery and resume, the free-first admission guard, task decomposition,
     durable task state, and tool execution with sandboxing.'
-  evidence: Five of the eight are now closed. Capability-scoped authority was closed by the authority
-    engine; delegation with narrowing scope and hive communication by the hive; durable task state and
-    crash recovery by the durable task registry. The three still open are the free-first admission and
-    zero-spend guard, task decomposition and planning, and tool execution with sandboxing.
+  evidence: Six of the eight are now closed. Capability-scoped authority was closed by the authority engine;
+    delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery
+    by the durable task registry; and the free-first admission and zero-spend guard by the admission gate.
+    The two still open are task decomposition and planning, and tool execution with sandboxing.
   acceptance:
   - Each priority-one gap moves to IMPLEMENTED or VERIFIED with a test that proves it
   - The gap registry is regenerated and the report shows the change
@@ -4213,4 +4213,29 @@ todos:
   acceptance:
   - Every library file is read and classified
   - The content is routed to the project it belongs to
+  blocks: []
+- id: TODO-GAP-004
+  title: Close the free-first admission and zero-spend guard gap
+  project: genesis
+  status: DONE
+  priority: 1
+  source:
+    kind: gap-analysis
+    ref: Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml
+  detail: 'The admission gate decides what may be called and what may be spent. An endpoint whose cost
+    is not known is refused, because a guard that admits what it does not understand is not a guard. A
+    free or local endpoint is admitted without question, and it is the preferred answer for everything.
+    A metered endpoint spends its free allowance before any money is involved. Money is refused unless
+    it is budgeted: spending is off by default, and a caller that turns it on must state how many paid
+    uses are permitted, which the gate enforces as a ceiling rather than an intention.'
+  evidence: Genesis includes/genesis/agents/admission.hpp and src/agents/admission.cpp, with tests/admission_tests.cpp
+    proving it in sixty-nine checks that run in the build gate. The requirement registry carries REQ-ADMISSION-FREE-001,
+    and the gap analysis records GAP-MODEL-002 as VERIFIED. The whole Genesis suite passes, twenty-six
+    of twenty-six.
+  acceptance:
+  - GAP-MODEL-002 is VERIFIED and cites the admission gate
+  - The admission gate's tests run in the Genesis build gate
+  - The spend is zero while only free endpoints are used
+  resolution: Resolved 2026-10-20. The admission gate closes the gap. Sixty-nine checks in tests/admission_tests.cpp
+    prove it, and the whole Genesis suite passes.
   blocks: []

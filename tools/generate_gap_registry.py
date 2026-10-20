@@ -139,13 +139,11 @@ CAPABILITIES: list[dict] = [
          requirements=['REQ-MODEL-001', 'REQ-MODAL-001', 'REQ-ADAPT-001'], acceptance=["AT-12", "AT-13"],
          gap_register=["B05", "B06"], platforms=["claude", "chatgpt", "gemini", "qwen", "kimi"]),
     dict(id="GAP-MODEL-002", axis="model_integration", name="Free-first admission and zero-spend guard",
-         status="MISSING", priority=1,
+         status="VERIFIED", priority=1,
          gap="Nothing refuses a paid or unknown endpoint. The policy is described in the "
              "handoff and enforced nowhere in the kernel or the runtime.",
-         present="The requirement registry records the provider and policy requirements, and "
-                 "the policy engine exists in Aetherius-OS, but Genesis has no admission "
-                 "gate of its own.",
-         requirements=['REQ-POL-001', 'REQ-PLATFORM-SERVICES-001'], acceptance=["AT-07", "AT-18"],
+         present="The admission gate decides what may be called and what may be spent. An endpoint whose cost is not known is refused, because a guard that admits what it does not understand is not a guard. A free or local endpoint is admitted without question, and it is the preferred answer for everything. A metered endpoint spends its free allowance before any money is involved. Money is refused unless it is budgeted: spending is off by default, and a caller that turns it on must state how many paid uses are permitted, which the gate enforces as a ceiling rather than an intention. The spend is zero until a paid endpoint is admitted and the budget allows it",
+         requirements=['REQ-POL-001', 'REQ-PLATFORM-SERVICES-001', 'REQ-ADMISSION-FREE-001'], acceptance=["AT-07", "AT-18"],
          gap_register=["B03", "B04"], platforms=["hermes", "opencode"]),
     dict(id="GAP-MODEL-003", axis="model_integration", name="Local and offline model support",
          status="PARTIAL", priority=3,
