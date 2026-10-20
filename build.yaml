@@ -160,6 +160,22 @@ known_issues:
       The faults are load sensitivity rather than behaviour faults, but an
       intermittently failing test cannot be used as a gate, so the issue
       stays open.
+  - id: AOS-ARC-001
+    severity: high
+    summary: >-
+      The repository was carrying about two gigabytes of research
+      artefacts that had never been pushed, so no push could complete.
+    evidence: >-
+      "objects: 304 / total new bytes: 2,140,178,199" before the
+      rewrite, against "objects: 271 / total new bytes: 18,123,765"
+      after. The artefacts are a downloaded model's safetensors, its packed
+      int2 and int4 forms, and the numpy pattern and residual arrays from
+      the build84 and build85 research runs. They are untracked and
+      ignored, and the unpushed history was rewritten to drop them. They
+      still sit in the working tree, and nothing says where they should
+      live.
+    status: OPEN
+    todo_ref: TODO-ARC-001
   - id: AOS-APP-001
     severity: high
     summary: >-

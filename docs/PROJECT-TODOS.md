@@ -4,13 +4,13 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **119** (108 open, 11 done)
+- Tasks: **121** (110 open, 11 done)
 
 ## By project
 
 | Project | Open | Done |
 |---|---|---|
-| aetherius-os | 37 | 5 |
+| aetherius-os | 38 | 5 |
 | agent-bridge | 8 | 0 |
 | agent-bridge-cloudhybrid | 2 | 0 |
 | agent-bridge-dashboard | 6 | 0 |
@@ -19,7 +19,7 @@
 | athena | 2 | 0 |
 | decentralized-messaging-app | 2 | 0 |
 | food-wiki-app | 3 | 0 |
-| genesis | 4 | 3 |
+| genesis | 5 | 3 |
 | hermes-config-audit | 12 | 0 |
 | ide-workspace | 4 | 0 |
 | ide-workspace-dashboard | 3 | 0 |
@@ -525,6 +525,25 @@ Acceptance:
 
 - [ ] Every installed application and surfaced shortcut is recorded with its category
 - [ ] The tool folders are recorded with their contents
+
+### ⬜ TODO-ARC-001 — Decide where the two gigabytes of research artefacts should live
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-audit — git push origin master, 2026-10-20, HTTP 408
+
+The Aetherius-OS repository was carrying about two gigabytes of research artefacts that had never been pushed: a 125M-parameter model's safetensors, its packed int2 and int4 forms, and the numpy pattern and residual arrays from the build84 and build85 research runs. The result was that no push of this repository could complete; the transfer was a two-gigabyte pack that timed out. The artefacts are now untracked and ignored, and the unpushed history was rewritten to drop them, which brought the push down to seventeen megabytes. But they still sit in the working tree, and a machine that needs them has to fetch or regenerate them.
+
+Evidence:
+
+```
+"objects: 304 / total new bytes: 2,140,178,199" before the rewrite, and "objects: 271 / total new bytes: 18,123,765" after. The files remain on disk: 22 arrays under research/build84/storage and the model under research/lm-compression/gpt-neo-125M-fp32.
+```
+
+Acceptance:
+
+- [ ] A place is chosen for the artefacts that is not the git repository
+- [ ] A script can restore them from that place on a fresh machine
 
 ### ⬜ TODO-GAP-002 — Write the platform capability inventory the gap analysis compares against
 
@@ -1614,6 +1633,25 @@ Acceptance:
 - [ ] The offline core runs on the target Intel hardware with no GPU
 - [ ] Allergen warnings, medical flags and the no-diagnosis rule are enforced by the rules layer
 - [ ] Barcode scanning runs without invoking a model
+
+### ⬜ TODO-ARC-002 — Record the OmniAgent untracking in the Genesis provenance record
+
+- **Project:** genesis
+- **Status:** OPEN
+- **Source:** build-audit — docs/omniagent-reference.provenance.test.ts, 2026-10-20
+
+The unlicensed Google AI Studio source is no longer tracked, and the Aetherius-OS guard proves it. The Genesis repository's own provenance record does not yet say so, and the blobs remain in the unpushed-and-now-rewritten history of the repository as it stood before. The record should state that the tree is untracked, why, and what to do if it reappears.
+
+Evidence:
+
+```
+"unlicensed third-party source is tracked: references/omniagent- runtime-&-workspace/... (47 files)" was the guard's failure, and commit 58de72f untracked it. The guard now passes 11 of 11.
+```
+
+Acceptance:
+
+- [ ] The Genesis provenance record states that the tree is untracked and why
+- [ ] The origin of the 47 files is recorded for anyone who finds them again
 
 ### ⬜ TODO-HCA-001 — Rotate the four exposed provider credentials
 

@@ -2779,3 +2779,54 @@ todos:
       - "A scan runs as part of the build gate"
       - "The scan covers the tracked tree, not only the conversation corpus"
       - "A finding fails the build rather than printing a warning"
+
+  - id: TODO-ARC-001
+    title: Decide where the two gigabytes of research artefacts should live
+    project: aetherius-os
+    status: OPEN
+    priority: 2
+    source:
+      kind: build-audit
+      ref: "git push origin master, 2026-10-20, HTTP 408"
+    detail: >-
+      The Aetherius-OS repository was carrying about two gigabytes of
+      research artefacts that had never been pushed: a 125M-parameter
+      model's safetensors, its packed int2 and int4 forms, and the numpy
+      pattern and residual arrays from the build84 and build85 research
+      runs. The result was that no push of this repository could complete;
+      the transfer was a two-gigabyte pack that timed out. The artefacts
+      are now untracked and ignored, and the unpushed history was rewritten
+      to drop them, which brought the push down to seventeen megabytes.
+      But they still sit in the working tree, and a machine that needs
+      them has to fetch or regenerate them.
+    evidence: >-
+      "objects: 304 / total new bytes: 2,140,178,199" before the rewrite,
+      and "objects: 271 / total new bytes: 18,123,765" after. The files
+      remain on disk: 22 arrays under research/build84/storage and the
+      model under research/lm-compression/gpt-neo-125M-fp32.
+    acceptance:
+      - "A place is chosen for the artefacts that is not the git repository"
+      - "A script can restore them from that place on a fresh machine"
+
+  - id: TODO-ARC-002
+    title: Record the OmniAgent untracking in the Genesis provenance record
+    project: genesis
+    status: OPEN
+    priority: 3
+    source:
+      kind: build-audit
+      ref: "docs/omniagent-reference.provenance.test.ts, 2026-10-20"
+    detail: >-
+      The unlicensed Google AI Studio source is no longer tracked, and the
+      Aetherius-OS guard proves it. The Genesis repository's own
+      provenance record does not yet say so, and the blobs remain in the
+      unpushed-and-now-rewritten history of the repository as it stood
+      before. The record should state that the tree is untracked, why, and
+      what to do if it reappears.
+    evidence: >-
+      "unlicensed third-party source is tracked: references/omniagent-
+      runtime-&-workspace/... (47 files)" was the guard's failure, and
+      commit 58de72f untracked it. The guard now passes 11 of 11.
+    acceptance:
+      - "The Genesis provenance record states that the tree is untracked and why"
+      - "The origin of the 47 files is recorded for anyone who finds them again"
