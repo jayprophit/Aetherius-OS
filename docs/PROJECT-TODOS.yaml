@@ -4103,3 +4103,22 @@ todos:
   - No credential literal remains in the tree
   - The secret scanner gate rejects the pattern
   blocks: []
+- id: TODO-SRC-005
+  title: Read the last five ChatGPT conversations the API rate-limited
+  project: aetherius-os
+  status: OPEN
+  priority: 4
+  source:
+    kind: conversation-corpus
+    ref: tools/read_conversations_about.py, 2026-10-20
+  detail: The owner's ChatGPT account holds two hundred and twenty conversations. Two hundred and fifteen
+    were read through the API and are in research/chatgpt-all-conversations.json, carrying twenty-nine
+    thousand nine hundred and twenty-eight turns and eleven thousand nine hundred and sixty of the owner's
+    own messages across ten projects. Five kept answering with a rate-limit error however slowly they
+    were asked for. They are the only part of the account that has not been read.
+  evidence: The fetch was paced at one conversation every few seconds with a pause before each attempt,
+    and the last five still answered HTTP 429 on 2026-10-20.
+  acceptance:
+  - The remaining conversations are read and added to the corpus
+  - The conversation corpus digest is regenerated
+  blocks: []

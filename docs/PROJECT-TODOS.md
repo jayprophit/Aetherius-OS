@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **233** (219 open, 14 done)
+- Tasks: **234** (220 open, 14 done)
 
 ## By project
 
@@ -15,7 +15,7 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 42 | 6 |
+| aetherius-os | 43 | 6 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 12 | 0 |
@@ -4458,6 +4458,25 @@ Acceptance:
 - [ ] Each candidate is registered with licence and provenance
 - [ ] The independent audit checklist is run against each candidate
 - [ ] Duplicated components across the suites are identified
+
+### ⬜ TODO-SRC-005 — Read the last five ChatGPT conversations the API rate-limited
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** conversation-corpus — tools/read_conversations_about.py, 2026-10-20
+
+The owner's ChatGPT account holds two hundred and twenty conversations. Two hundred and fifteen were read through the API and are in research/chatgpt-all-conversations.json, carrying twenty-nine thousand nine hundred and twenty-eight turns and eleven thousand nine hundred and sixty of the owner's own messages across ten projects. Five kept answering with a rate-limit error however slowly they were asked for. They are the only part of the account that has not been read.
+
+Evidence:
+
+```
+The fetch was paced at one conversation every few seconds with a pause before each attempt, and the last five still answered HTTP 429 on 2026-10-20.
+```
+
+Acceptance:
+
+- [ ] The remaining conversations are read and added to the corpus
+- [ ] The conversation corpus digest is regenerated
 
 ### ⬜ TODO-DMA-002 — Recover the messaging application scope from the ChatGPT projects
 
