@@ -4,13 +4,13 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **121** (110 open, 11 done)
+- Tasks: **126** (115 open, 11 done)
 
 ## By project
 
 | Project | Open | Done |
 |---|---|---|
-| aetherius-os | 38 | 5 |
+| aetherius-os | 40 | 5 |
 | agent-bridge | 8 | 0 |
 | agent-bridge-cloudhybrid | 2 | 0 |
 | agent-bridge-dashboard | 6 | 0 |
@@ -24,9 +24,9 @@
 | ide-workspace | 4 | 0 |
 | ide-workspace-dashboard | 3 | 0 |
 | ledgerlands | 6 | 2 |
-| mat | 11 | 0 |
-| poietek | 2 | 0 |
-| universal-bridge | 2 | 1 |
+| mat | 12 | 0 |
+| poietek | 3 | 0 |
+| universal-bridge | 3 | 1 |
 
 ## P1 blocking
 
@@ -147,6 +147,26 @@ Acceptance:
 - [ ] A scan runs as part of the build gate
 - [ ] The scan covers the tracked tree, not only the conversation corpus
 - [ ] A finding fails the build rather than printing a warning
+
+### ⬜ TODO-SRC-004 — Read the ChatGPT project conversations and abstract what is useful
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** conversation-history — OWNER-DIRECTIVES.yaml ASK-01, thread 01a07cc2
+
+The owner asked for this explicitly and repeatedly: "READ THE DATA FROM CHATGPT PROJECT FOLDER GENESIS AND THEN ABSTRACT THE DATA THAT'S NEEDED OR USEFUL. READ THE chat conversations." A ChatGPT project named Genesis exists in the owner's account and holds five conversations: Test a theory, Project Data Integration, Analyse Jev Routing Architecture, Analyse agentic workflows, and Job request. None of them has been read. Eleven other ChatGPT projects exist alongside it, each with its own conversations.
+
+Evidence:
+
+```
+"Read the data from ChatGPT project folder Genesis and then abstract the data that's needed or useful." and "READ THE chat conversations." and "either automated, use mouse and keyboard or browser automation to abstract the DATA by analysing it FROM CHATGPT PROJECT FOLDER GENESIS AND THEN ABSTRACT THE DATA THAT'S NEEDED OR USEFUL"
+```
+
+Acceptance:
+
+- [ ] Every conversation in the Genesis ChatGPT project has been read
+- [ ] What each conversation contributed is recorded against the work it informed
+- [ ] Nothing is copied blindly: the register records provenance and the owner's own rule against blind copying applies
 
 ### ✅ TODO-WS-001 — Register the six unlisted project folders in the workspace hygiene guard
 
@@ -544,6 +564,25 @@ Acceptance:
 
 - [ ] A place is chosen for the artefacts that is not the git repository
 - [ ] A script can restore them from that place on a fresh machine
+
+### ⬜ TODO-DIR-001 — Check every change against the owner's standing directives
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** conversation-history — OWNER-DIRECTIVES.yaml, the twelve standing rules
+
+Twelve standing rules were recovered from the conversation corpus. They bind every task, and a change that violates one is wrong even when the outcome looks right. Four of them have already been violated in this programme's history: a second build tree was kept alongside the canonical one, unlicensed third-party source was committed, a workspace-cleanup commit swept unrelated files in, and a provisional rating was published from a stale report. A check that the rules are honoured, rather than remembered, is the durable fix.
+
+Evidence:
+
+```
+RULE-02, RULE-05, RULE-08, RULE-09 and RULE-11 in docs/OWNER-DIRECTIVES.yaml, each with the work in this programme that already answers to it.
+```
+
+Acceptance:
+
+- [ ] The rules are visible where a change is proposed, not only in a document
+- [ ] A change that would violate one is refused rather than made and explained
 
 ### ⬜ TODO-GAP-002 — Write the platform capability inventory the gap analysis compares against
 
@@ -1104,6 +1143,26 @@ Evidence:
 Acceptance:
 
 - [ ] npm run validate, npm run build:studio and the browser suite all have captured terminal results
+
+### ⬜ TODO-UB-004 — Make Universal Bridge read mixing desks and reach the installed hardware
+
+- **Project:** universal-bridge
+- **Status:** OPEN
+- **Source:** conversation-history — OWNER-DIRECTIVES.yaml ASK-05, thread 01a06e04
+
+The owner asked for the bridge to read mixing desks and to be able to access the hardware that is installed on the machine. The application registry records what is installed; the bridge has to be able to reach it. The constraint the owner set is explicit: use supported Windows APIs, and do not send undocumented USB or vendor commands, and do not destructively write to the MPC.
+
+Evidence:
+
+```
+"I also want it to read mixing desks." and "Please make sure the universal bridge can access them." and "Verify Universal Bridge can enumerate/access their MIDI/audio endpoints using supported Windows APIs; do not send undocumented USB/vendor commands or destructively write to the MPC."
+```
+
+Acceptance:
+
+- [ ] Mixing desks are enumerated through supported Windows APIs
+- [ ] The hardware present on this machine is identified and recorded
+- [ ] No undocumented USB or vendor command is sent
 
 ## P3 medium
 
@@ -2045,7 +2104,26 @@ Acceptance:
 - [ ] The browser suite completes reliably and writes reader-browser-results.json
 - [ ] The 44px minimum-height control target is verified
 
-### ⬜ TODO-MAT-011 — Rebuild the MAT acceptance rating only after the browser suite refreshes
+### ⬜ TODO-MAT-011 — Take MAT element data from CERN and the other science institutes
+
+- **Project:** mat
+- **Status:** OPEN
+- **Source:** conversation-history — OWNER-DIRECTIVES.yaml ASK-13, thread 01a0ed79
+
+The owner asked for MAT to take data and research from CERN and the other science institutes and governing bodies, so that MAT can be used to prove or disprove theories and facts. The source-quality rule applies: the value must be source-backed and recorded with its provenance, and UNKNOWN or INSUFFICIENT DATA is preferred to a fabricated number.
+
+Evidence:
+
+```
+"Also take data and research from CERN and other science institutes and governing bodies. So MAT can be used to prove or disprove theories, principals, facts, others, etc"
+```
+
+Acceptance:
+
+- [ ] The institute sources are recorded with their accessions and provenance
+- [ ] No value is added without a source
+
+### ⬜ TODO-MAT-012 — Rebuild the MAT acceptance rating only after the browser suite refreshes
 
 - **Project:** mat
 - **Status:** OPEN
@@ -2100,6 +2178,25 @@ git status --porcelain -> "?? references/"
 Acceptance:
 
 - [ ] The directory is either populated with a recorded purpose or removed
+
+### ⬜ TODO-POI-003 — Add the MPC-style sample record and recall button to Poietek
+
+- **Project:** poietek
+- **Status:** OPEN
+- **Source:** conversation-history — OWNER-DIRECTIVES.yaml ASK-10, thread 01a02943
+
+The owner asked for a sample record and a recall button, in the style of the MPC sample, which is the reference the Poietek work was compared against. The conversation is a specific, concrete ask against a named reference implementation.
+
+Evidence:
+
+```
+"Add a sample record and recall button." and "like the mpc samle, add a sample record and recall button, that allows"
+```
+
+Acceptance:
+
+- [ ] A sample record can be created and recalled in the Poietek workflow
+- [ ] The behaviour matches the reference the owner named
 
 ### ⬜ TODO-UB-002 — Rationalise the Universal-Bridge build tree
 
