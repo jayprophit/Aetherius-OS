@@ -99,17 +99,18 @@ status:
   state: VERIFIED
   last_verified: "2026-10-20"
   summary: >-
-    Typecheck, build and the full test suite are clean. 1,771 tests across
-    98 files, all passing, in 32 seconds. The five failures the audit
+    Typecheck, build and the full test suite are clean. 1,800 tests across
+    100 files, all passing, in 32 seconds. The five failures the audit
     started with are resolved: the stale project list and the two stray
     root documents, the unlicensed third-party source tracked in Genesis,
     and the HTTP bridge transport timing artefact.
   evidence:
     - "npm run typecheck -> exit 0, no diagnostics"
-    - "npm test -> 1771 passed / 0 failed / 1771 total, 32.20s, 98 files"
+    - "npm test -> 1800 passed / 0 failed / 1800 total, 32.40s, 100 files"
     - "docs/workspace-hygiene.test.ts -> 13 of 13 pass"
     - "docs/omniagent-reference.provenance.test.ts -> 11 of 11 pass"
-    - "src/programme/ -> 444 tests pass, including the build manifest registry gate and both report sync gates"
+    - "src/programme/ -> 470 tests pass, including the build manifest gate, the gap analysis gate, the source registry coverage gate and the report sync gates"
+    - "native/kernel host suite -> 126 checks, 0 failures"
 
 known_issues:
   - id: AOS-HYG-001
