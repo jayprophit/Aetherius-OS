@@ -17,3 +17,20 @@ native/target/
 native/**/*.img
 native/**/serial*.log
 __pycache__/
+
+# Generated project inventory output
+inventory_output.txt
+
+# The extracted conversation corpus.
+#
+# research/codex-history/raw/ holds the owner's personal conversation text.
+# It is regenerated from the local Codex store by
+# tools/extract_codex_history.py, so it is output, not source, and it is
+# not published to a public repository. The registry beside it - the
+# index, the thread metadata and the digest - is the part the build
+# actually uses, and that is committed.
+research/codex-history/raw/
+
+# The text-document inventory is a generated index over the owner's
+# documents. It is committed because it is the coverage record; the
+# documents it describes are not.

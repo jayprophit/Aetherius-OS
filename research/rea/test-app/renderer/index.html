@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Electron App — REA Integration</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Test Electron App</h1>
+    
+    <section id="features">
+      <h2>Features</h2>
+      <ul>
+        <li>Counter: click to increment</li>
+        <li>Display: shows current count</li>
+        <li>Reset: resets counter to 0</li>
+      </ul>
+    </section>
+    
+    <div class="controls">
+      <button id="increment">Increment</button>
+      <button id="reset">Reset</button>
+    </div>
+    
+    <div class="display">
+      <span id="counter">0</span>
+    </div>
+    
+    <section id="info">
+      <h2>Information</h2>
+      <p>This is a test application for REA (Reverse Engineer Anything) integration.</p>
+      <p>REA will investigate the structure, behaviour, and mechanisms of this app.</p>
+    </section>
+  </div>
+  
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

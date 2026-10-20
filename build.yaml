@@ -1,0 +1,238 @@
+# =============================================================================
+# BUILD MANIFEST — Aetherius-OS
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+#
+# Rules:
+#  - Commands are recorded exactly as they should be run, from the project
+#    root, in PowerShell unless stated otherwise.
+#  - status.state is the observed build state, not a quality judgement.
+#  - known_issues entries point at a todo in docs/PROJECT-TODOS.yaml.
+#  - Do not record a command as passing unless it was actually run here.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: aetherius-os
+  name: Aetherius-OS
+  kind: application
+  domain: aetherius-os
+  description: >-
+    The Aetherius IDE and programme registry. Hosts the requirement
+    registry, capability registry, invention registry, evidence traceability
+    audit and the workspace hygiene guard for the Projects folder.
+  repository: true
+  branch: master
+  languages: [typescript, python, markdown]
+
+toolchain:
+  build_system: npm/vite
+  package_manager: npm
+  requirements:
+    - name: node
+      version: ">=18"
+      required: true
+      purpose: Vite build, Vitest test runner, TypeScript compiler
+    - name: npm
+      version: ">=9"
+      required: true
+      purpose: dependency install and script running
+    - name: python
+      version: ">=3.11"
+      required: false
+      purpose: research scripts and hermes tooling
+
+commands:
+  - name: install
+    command: npm ci
+    working_directory: .
+    timeout_minutes: 10
+  - name: typecheck
+    command: npm run typecheck
+    working_directory: .
+    timeout_minutes: 10
+  - name: build
+    command: npm run build
+    working_directory: .
+    timeout_minutes: 10
+    requires: [typecheck]
+  - name: test
+    command: npm test
+    working_directory: .
+    timeout_minutes: 20
+  - name: verify
+    command: npm run typecheck && npm test && npm run build
+    working_directory: .
+    timeout_minutes: 40
+    requires: [typecheck, test]
+  - name: source-registry
+    command: python tools/generate_source_registry.py
+    working_directory: .
+    timeout_minutes: 5
+  - name: kernel-test
+    command: pwsh -NoProfile -File native/kernel/build.ps1
+    working_directory: native/kernel
+    timeout_minutes: 5
+  - name: dev
+    command: npm run dev
+    working_directory: .
+    timeout_minutes: 0
+  - name: registry-validate
+    command: npm run registry:validate
+    working_directory: .
+    timeout_minutes: 10
+
+dependencies:
+  projects: [genesis, agent-bridge, ide-workspace, mat, poietek, universal-bridge]
+  external:
+    - react
+    - vite
+    - vitest
+    - typescript
+    - yaml
+    - rxjs
+
+status:
+  state: VERIFIED
+  last_verified: "2026-10-20"
+  summary: >-
+    Typecheck, build and the full test suite are clean. 1,771 tests across
+    98 files, all passing, in 32 seconds. The five failures the audit
+    started with are resolved: the stale project list and the two stray
+    root documents, the unlicensed third-party source tracked in Genesis,
+    and the HTTP bridge transport timing artefact.
+  evidence:
+    - "npm run typecheck -> exit 0, no diagnostics"
+    - "npm test -> 1771 passed / 0 failed / 1771 total, 32.20s, 98 files"
+    - "docs/workspace-hygiene.test.ts -> 13 of 13 pass"
+    - "docs/omniagent-reference.provenance.test.ts -> 11 of 11 pass"
+    - "src/programme/ -> 444 tests pass, including the build manifest registry gate and both report sync gates"
+
+known_issues:
+  - id: AOS-HYG-001
+    severity: high
+    summary: >-
+      The canonical project list in docs/workspace-hygiene.test.ts is stale and
+      does not name six project folders that exist on disk, so the hygiene
+      guard reports them as strays and fails.
+    evidence: >-
+      expected [ 'Aetherius-OS', ...(11) ] to deeply equal
+      [ 'Aetherius-OS', ...(17) ]; missing entries are
+      Agent-Bridge-cloudhybrid, Agent-Bridge-dashboard,
+      Agent-Bridge-runtimesafety, Hermes-Config-Audit, IDE-Workspace-dashboard
+      and the REA research tree now folded into Aetherius-OS.
+    status: FIXED
+    todo_ref: TODO-WS-001
+  - id: AOS-HYG-002
+    severity: medium
+    summary: >-
+      Two documents sit at the Projects root instead of inside the project
+      that owns them, which the hygiene guard classifies as strays.
+    evidence: >-
+      HERMES_MODEL_PROVIDER_ENVIRONMENT_GATE_2026-10-07.md and
+      inventory_output.txt at C:\Users\jpowe\Desktop\Projects.
+    status: FIXED
+    todo_ref: TODO-WS-002
+    notes: >-
+      The gate document now lives in Hermes-Config-Audit, which owns the
+      Hermes configuration audit, and the BUILD86-R7B inventory now lives in
+      Aetherius-OS, which is the project it inventoried.
+  - id: AOS-HYG-003
+    severity: medium
+    summary: >-
+      Two tests are timing-sensitive under CPU contention on this host, so
+      the suite is green when run alone and intermittently red when run
+      alongside other suites on the same four cores.
+    evidence: >-
+      src/workflows/bridgeAction.test.ts:339 "maps success, deny, approval and
+      malformed responses" -> Test timed out in 5000ms.
+      src/state/sharedSchemas.test.ts "carries every domain inside a P17
+      envelope without replacing storage" -> failed once in a full-suite
+      run. Both pass in isolation and in three consecutive unopposed
+      full-suite runs on 2026-10-20, each reporting 1771 of 1771 passing.
+    status: OPEN
+    todo_ref: TODO-AOS-003
+    notes: >-
+      The faults are load sensitivity rather than behaviour faults, but an
+      intermittently failing test cannot be used as a gate, so the issue
+      stays open.
+  - id: AOS-SRC-001
+    severity: medium
+    summary: >-
+      The owner's hand-authored source material was spread across five
+      locations with no index, so nothing could be checked for completeness
+      and nothing could be traced to a source.
+    evidence: >-
+      "408 documents, 21489048 bytes" across documents-root, documents-
+      master-prompt, documents-master-prompt-project, documents-opencde and
+      downloads, recorded in docs/SOURCE-REGISTRY.yaml with a content
+      digest per document. The coverage gate walks the same scope on disk
+      and fails when a document is unregistered, missing or changed.
+    status: FIXED
+    todo_ref: TODO-SRC-001
+  - id: AOS-SRC-002
+    severity: medium
+    summary: >-
+      The source registry records that a document exists, but not what the
+      registry of requirements and capabilities derived from it. The link
+      between a source document and the work it produced is not yet
+      recorded, so the provenance chain stops at the document.
+    evidence: >-
+      The registry carries path, scope, kind, title, size, lines, modified
+      date and digest. It carries no mapping to the requirements, gaps or
+      todos it produced.
+    status: OPEN
+    todo_ref: TODO-SRC-002
+  - id: AOS-KRN-001
+    severity: high
+    summary: >-
+      The C kernel's pure logic is written and proven, but the machine-level
+      modules are not, so the UEFI kernel image does not build yet.
+    evidence: >-
+      native/kernel/build.ps1 -> "126 checks, 0 failures" for the host
+      suite. The UEFI image needs gnu-efi, which is not installed on this
+      host, and the modules gdt_install.c, idt_install.c, isr.c, entry.S and
+      main.c are not yet written.
+    status: OPEN
+    todo_ref: TODO-KRN-001
+    notes: >-
+      ADR-001 records the decision to write the kernel in C and why. The
+      Rust native layer is retained until the C kernel proves equivalent
+      under QEMU, so nothing is lost while the port is in flight.
+  - id: AOS-KRN-002
+    severity: medium
+    summary: >-
+      The C kernel host suite is not part of the Aetherius-OS verify
+      command, so a kernel change can land without its tests running.
+    evidence: >-
+      The suite runs in under a second and is invoked from
+      native/kernel/build.ps1, outside the project gate.
+    status: OPEN
+    todo_ref: TODO-KRN-006
+  - id: AOS-HYG-004
+    severity: medium
+    summary: >-
+      Four reserved project folders hold no content, so they are registered
+      as placeholders rather than projects. Each needs a recorded scope or
+      a decision to remove it.
+    evidence: >-
+      Athena, Architecture of Shadows Book, Decentralized Messaging App and
+      Food Wiki App each report zero or one item. Scope for three of them
+      has since been recovered from the owner's prior conversations, and
+      the manifests now say so.
+    status: OPEN
+    todo_ref: TODO-WS-003
+
+notes:
+  - >-
+    The workspace hygiene guard is a real guard, not a lint: it exists because
+    build output and generated reports have previously accumulated beside the
+    projects and been mistaken for project content.
+  - >-
+    The Aetherius capability registry (docs/SYSTEM-CAPABILITY-REGISTRY.yaml)
+    is a separate concern from this build manifest registry. The capability
+    registry tracks what the system can do; this registry tracks how the
+    workspace builds and what is unfinished.

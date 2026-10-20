@@ -1,0 +1,56 @@
+{
+  "name": "rea-integration",
+  "description": "Reverse Engineer Anything (REA) integration with Aetherius/Genesis ecosystem",
+  "version": "0.1.0",
+  "license": "MIT",
+  "status": "proposed",
+  "integration": "genesis-specialist",
+  "target": "reverse-engineering-capabilities",
+  "reasupportedTargets": [
+    "javascript",
+    "electron",
+    "desktop-binaries",
+    "protocols",
+    "compiled-programs"
+  ],
+  "proposedExperiment": {
+    "name": "REA Small Application Investigation",
+    "description": "Investigate a small source-owned JavaScript/Electron application using REA tools, derive feature specification, build independently implemented equivalent, and verify functionality",
+    "acceptanceCriteria": [
+      "REA tool connection is confirmed on the active agent",
+      "Analysis produces retained evidence with source references",
+      "Genesis identifies observable behaviour and unresolved questions",
+      "An original implementation is generated in an isolated workspace",
+      "Automated behaviour tests pass against a defined specification",
+      "Resource usage, execution time and tool failures are recorded",
+      "Findings are registered without duplicating existing Aetherius capabilities"
+    ],
+    "startingApplication": "test-electron-app",
+    "analysisDepth": "targeted",
+    "tokenBudget": "limited",
+    "timeBudgetMinutes": 30
+  },
+  "capabilityRegistry": {
+    "id": "rea-integration",
+    "name": "REA Integration Capability",
+    "category": "analysis-and-reconstruction",
+    "description": "Provides reverse-engineering analysis capabilities for investigating existing software, identifying mechanisms, and informing independently authored implementations",
+    "supportedTargets": ["javascript", "electron", "desktop-binaries", "protocols"],
+    "integrationPoints": [
+      "genesis-capability-graph",
+      "aetherius-invention-registry",
+      "evidence-traceability"
+    ]
+  },
+  "researchStatus": "proposed",
+  "nextSteps": [
+    "Install REA and verify OpenCode client compatibility",
+    "Run diagnostics: npx -y rea-agents@latest doctor --json",
+    "Select small test application (source-owned, JavaScript/Electron)",
+    "Run REA analysis on test application",
+    "Document findings using invention registry",
+    "Generate independently implemented equivalent",
+    "Verify functionality with automated tests",
+    "Assess resource usage and integration overhead"
+  ]
+}

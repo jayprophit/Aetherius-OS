@@ -1,0 +1,27 @@
+{
+  "name": "test-electron-app",
+  "productName": "Test Electron App",
+  "version": "1.0.0",
+  "manifestVersion": 3,
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "start": "electron-vite preview",
+    "dev": "electron-vite",
+    "build": "electron-vite build",
+    "build:electron": "electron-vite build"
+  },
+  "keywords": ["electron", "test", "rea-integration"],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:test-user/test-electron-app.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^31.0.0",
+    "vite": "^5.2.0",
+    "@vitejs/plugin-react": "^4.2.1"
+  },
+  "devDependencies": {
+    "electron-vite": "^1.0.0"
+  }
+}

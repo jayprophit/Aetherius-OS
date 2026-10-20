@@ -10,6 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "registry:validate": "vitest run src/programme src/state",
+    "build:manifest": "vitest run src/programme/buildManifest.test.ts src/programme/workspaceRegistry.test.ts",
+    "build:manifest:report": "vitest run src/programme/buildReport.test.ts src/programme/todoReport.test.ts",
     "capability:report": "vitest run src/programme/capabilityRegistry.test.ts -t regenerates"
   },
   "dependencies": {

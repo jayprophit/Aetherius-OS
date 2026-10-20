@@ -1,0 +1,204 @@
+# =============================================================================
+# BUILD MANIFEST REGISTRY — index of every project in the workspace
+# =============================================================================
+# This file is the index. Each project owns the authoritative detail in its
+# own build.yaml at its root; this file says which project owns which
+# manifest, what the project is for, and how the projects depend on each
+# other.
+#
+# Rules:
+#  - Every project folder under the Projects root must appear here exactly
+#    once. A new project folder is a finding until it is registered here
+#    and given a build.yaml.
+#  - A project that cannot be built must say so. status.state is the
+#    observed build state, not a quality judgement.
+#  - depends_on is a real dependency, not a wish. A project that depends on
+#    another cannot be finished before it.
+#  - The Markdown report is generated from this file plus the per-project
+#    manifests. Never hand-edit it to change meaning.
+#
+# Related:
+#  docs/PROJECT-TODOS.yaml  - the work that is still outstanding
+#  src/programme/buildManifest.ts - the parser and validator
+# =============================================================================
+schema_version: "1.0.0"
+source_date: "2026-10-20"
+projects_root: ".."
+
+projects:
+  # -- core ecosystem ------------------------------------------------------
+  - id: aetherius-os
+    name: Aetherius-OS
+    manifest: Aetherius-OS/build.yaml
+    role: >-
+      The Aetherius IDE and programme registry. Owns the requirement,
+      capability, invention and evidence registries, and the workspace
+      hygiene guard for the Projects folder.
+    status: VERIFIED
+    depends_on: [genesis, agent-bridge, ide-workspace, mat, poietek, universal-bridge]
+    notes: >-
+      Hosts the build manifest registry and the project todo list. Its own
+      test suite is the gate for every registry in the ecosystem.
+
+  - id: genesis
+    name: Genesis
+    manifest: Genesis/build.yaml
+    role: >-
+      The digital-organism runtime. C++20 static library with a family of
+      CTest-registered test and benchmark executables.
+    status: VERIFIED
+    depends_on: []
+
+  - id: agent-bridge
+    name: Agent-Bridge
+    manifest: Agent-Bridge/build.yaml
+    role: >-
+      The local-first bridge runtime. Connects small AI models, tools and
+      devices, and is where delegation, policy and the MCP adapter live.
+    status: PARTIAL
+    depends_on: [genesis]
+
+  - id: ide-workspace
+    name: IDE-Workspace
+    manifest: IDE-Workspace/build.yaml
+    role: >-
+      The IDE supervisor surface and its Python bridge host. The primary
+      front end for Genesis and Agent Bridge.
+    status: VERIFIED
+    depends_on: [genesis, agent-bridge]
+
+  - id: mat
+    name: Materials Atlas Table Codex
+    manifest: Materials-Atlas-Table-Codex---MAT/build.yaml
+    role: >-
+      The knowledge and publication toolchain. Supplies the scientific
+      record set, the validated book build and the studio.
+    status: VERIFIED
+    depends_on: [genesis]
+
+  - id: poietek
+    name: Poietek
+    manifest: Poietek/build.yaml
+    role: >-
+      The creative production surface. Tauri desktop and web build over a
+      native audio core.
+    status: VERIFIED
+    depends_on: [universal-bridge]
+
+  - id: universal-bridge
+    name: Universal-Bridge
+    manifest: Universal-Bridge/build.yaml
+    role: >-
+      The hardware and session bridge. Connects DAW sessions to local
+      devices through a capability-aware preflight path.
+    status: VERIFIED
+    depends_on: []
+
+  - id: ledgerlands
+    name: LedgerLands
+    manifest: LedgerLands/build.yaml
+    role: >-
+      The property-trading strategy and GameFi application. An
+      npm-workspaces monorepo with a Fastify server-authoritative API, a
+      React gameplay UI, a deterministic game engine and a Prisma schema.
+    status: VERIFIED
+    depends_on: [aetherius-os, agent-bridge]
+    notes: >-
+      Three related trees are present under the folder. The build manifest
+      records which one is authoritative as an open task, not as a fact.
+
+  # -- sibling variants ----------------------------------------------------
+  - id: agent-bridge-cloudhybrid
+    name: Agent-Bridge (cloud-hybrid runtime)
+    manifest: Agent-Bridge-cloudhybrid/build.yaml
+    role: >-
+      The local/cloud/hybrid runtime branch of Agent Bridge, plus its
+      readiness audit.
+    status: PARTIAL
+    depends_on: [agent-bridge, genesis]
+    notes: >-
+      Same v0.8.1 core as Agent-Bridge on a divergent branch. There is no
+      recorded merge strategy between the four Agent-Bridge trees.
+
+  - id: agent-bridge-dashboard
+    name: Agent-Bridge (supervisor UI / worker telemetry)
+    manifest: Agent-Bridge-dashboard/build.yaml
+    role: >-
+      The supervisor UI and external worker telemetry branch of Agent
+      Bridge.
+    status: PARTIAL
+    depends_on: [agent-bridge, ide-workspace]
+    notes: >-
+      Carries the M2 visual QA scorecard. The UI is assessed at UI-F1
+      against a target of UI-F4.
+
+  - id: agent-bridge-runtimesafety
+    name: Agent-Bridge (runtime safety)
+    manifest: Agent-Bridge-runtimesafety/build.yaml
+    role: >-
+      The runtime safety fixes branch of Agent Bridge, plus the cloud/hybrid
+      audit resolution.
+    status: PARTIAL
+    depends_on: [agent-bridge, genesis]
+
+  - id: ide-workspace-dashboard
+    name: IDE-Workspace (supervisor dashboard)
+    manifest: IDE-Workspace-dashboard/build.yaml
+    role: >-
+      The supervisor dashboard branch of IDE-Workspace, carrying the m3 read
+      model.
+    status: PARTIAL
+    depends_on: [ide-workspace, genesis, agent-bridge]
+
+  # -- configuration and research ------------------------------------------
+  - id: hermes-config-audit
+    name: Hermes-Config-Audit
+    manifest: Hermes-Config-Audit/build.yaml
+    role: >-
+      The audit record of the Hermes model, provider and tool
+      configuration. Documentation, not code.
+    status: VERIFIED
+    depends_on: [agent-bridge]
+    notes: >-
+      Holds credential NAMES only. No secret values were read, copied or
+      logged anywhere in this tree.
+
+  # -- reserved but empty --------------------------------------------------
+  - id: athena
+    name: Athena
+    manifest: Athena/build.yaml
+    role: >-
+      A reserved project folder. Empty, with no recorded scope.
+    status: NOT_STARTED
+    depends_on: []
+
+  - id: architecture-of-shadows-book
+    name: Architecture of Shadows Book
+    manifest: "Architecture of Shadows Book/build.yaml"
+    role: >-
+      A reserved book project folder. Empty, with no recorded scope.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      The MAT publication toolchain already provides the build, validation
+      and studio surface a book project needs.
+
+  - id: decentralized-messaging-app
+    name: Decentralized Messaging App
+    manifest: "Decentralized Messaging App/build.yaml"
+    role: >-
+      A reserved messaging project folder. Empty, with no recorded scope.
+    status: NOT_STARTED
+    depends_on: []
+    notes: >-
+      The Agent-Bridge communication core provider already exists. A
+      messaging application should build on it rather than recreate it.
+
+  - id: food-wiki-app
+    name: Food Wiki App
+    manifest: "Food Wiki App/build.yaml"
+    role: >-
+      A reserved Food Wiki / FaturaWiki project folder. Contains one empty
+      design directory and nothing else.
+    status: NOT_STARTED
+    depends_on: []
