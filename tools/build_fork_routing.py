@@ -42,6 +42,9 @@ REPORT = REPO / "docs" / "FORK-ROUTING-REGISTRY.md"
 # The programme project each category belongs to. A category is a place
 # in the programme, and the routing only means something when the place
 # is named.
+# The accounts the owner holds. A repository on any of them is his own.
+OWNER_ACCOUNTS = {"jayprophit", "sifdat"}
+
 CATEGORY_PROJECT = {
     "AETHERIUS_FIRST_PARTY_AUDIO_MEDIA": "poietek",
     "AETHERIUS_FIRST_PARTY_CREATIVE_CAD": "poietek",
@@ -230,13 +233,18 @@ def main() -> int:
         lowered = r["name"].lower()
         size_kb = r.get("size_kb") or 0
         if r["fork"]:
-            state = "unrouted_fork"
+            # A fork is somebody else's code. It is reference material,
+            # and it is not the owner's to publish or to place.
+            state = "third_party_fork"
         elif lowered in programme:
             state = "first_party_programme"
         elif size_kb < 50 or lowered in LEARNING:
-            state = "owner_learning_repository"
+            # The owner's own data, kept. An empty repository may be a
+            # learning repository, and the inheritance packet is explicit
+            # that it must not be deleted merely for being empty.
+            state = "first_party_learning"
         else:
-            state = "owner_application"
+            state = "first_party_application"
         uncovered.append({
             "repository": r["name"],
             "fork": r["fork"],
@@ -269,8 +277,8 @@ def main() -> int:
             "thing they were about has changed.",
             "The uncovered repositories are classified, not counted as findings. "
             "The catalogue routes third-party forks, so what it does not cover is "
-            "mostly the owner's own work: the programme's own projects, the "
-            "owner's learning repositories, and the owner's own applications.",
+            "mostly the owner's own work. Everything that is not a publicly "
+            "known brand or a fork is the owner's own data.",
         ],
         "totals": {
             "catalogue_rows": len(rows),
@@ -307,14 +315,14 @@ def main() -> int:
               "The catalogue routes third-party forks, so most of what it does not "
               "cover is the owner's own work.", ""]
     for state, title in (
-        ("unrouted_fork", "Forks with no routing. These are the findings."),
-        ("owner_application", "The owner's own applications that are not yet placed "
-                              "in the programme."),
+        ("third_party_fork", "Forks with no routing. These are the findings."),
+        ("first_party_application", "The owner's own applications that are not yet "
+                                    "placed in the programme."),
         ("first_party_programme", "The programme's own projects, registered in the "
                                   "build manifest registry."),
-        ("owner_learning_repository", "The owner's learning repositories, which the "
-                                      "inheritance packet says must not be deleted "
-                                      "merely for being empty."),
+        ("first_party_learning", "The owner's learning repositories, which the "
+                                "inheritance packet says must not be deleted "
+                                "merely for being empty."),
     ):
         group = [r for r in uncovered if r["state"] == state]
         lines += [f"### {title} ({len(group)})", ""]

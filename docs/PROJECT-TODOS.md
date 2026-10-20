@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **241** (224 open, 17 done)
+- Tasks: **242** (225 open, 17 done)
 
 ## By project
 
@@ -42,7 +42,7 @@
 | qva-merged | 3 | 0 |
 | self-building-ai | 2 | 0 |
 | sovereign-financial-os | 2 | 0 |
-| trading-bot | 3 | 0 |
+| trading-bot | 4 | 0 |
 | universal-bridge | 5 | 1 |
 | veyra | 3 | 0 |
 | virtual-assistant | 2 | 0 |
@@ -4389,6 +4389,25 @@ Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
+### ⬜ TODO-PUB-001 — Make the Sifdat trading bot repository public
+
+- **Project:** trading-bot
+- **Status:** OPEN
+- **Source:** owner-direction — owner instruction, 2026-10-20
+
+The trading bot lives on the Sifdat account, which the owner holds, and it is private. Every other first-party repository is public, so that an external agent can read it without special access, and this one is the exception. Changing a repository's visibility needs administrative rights on the account that holds it, and the token this session authenticates with can read the repository but not administer it, so the change is the owner's to make.
+
+Evidence:
+
+```
+The API answers a read of the repository and refuses a PATCH of its visibility with HTTP 404, which is what a missing administrative right looks like. The repository is Sifdat/Multi-Cross-Platform-Trading-Bot, published under CC0-1.0.
+```
+
+Acceptance:
+
+- [ ] The repository is public
+- [ ] Every first-party repository is public
 
 ### ⬜ TODO-TRADING-BOT-010 — Build the missing Multi-Cross-Platform-Trading-Bot capabilities
 

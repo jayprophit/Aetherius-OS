@@ -4283,3 +4283,23 @@ todos:
   - The register is regenerated and shows nothing left to remove
   - Every removal is recorded, so that what was removed and why is known
   blocks: []
+- id: TODO-PUB-001
+  title: Make the Sifdat trading bot repository public
+  project: trading-bot
+  status: OPEN
+  priority: 3
+  source:
+    kind: owner-direction
+    ref: owner instruction, 2026-10-20
+  detail: The trading bot lives on the Sifdat account, which the owner holds, and it is private. Every
+    other first-party repository is public, so that an external agent can read it without special access,
+    and this one is the exception. Changing a repository's visibility needs administrative rights on the
+    account that holds it, and the token this session authenticates with can read the repository but not
+    administer it, so the change is the owner's to make.
+  evidence: The API answers a read of the repository and refuses a PATCH of its visibility with HTTP 404,
+    which is what a missing administrative right looks like. The repository is Sifdat/Multi-Cross-Platform-Trading-Bot,
+    published under CC0-1.0.
+  acceptance:
+  - The repository is public
+  - Every first-party repository is public
+  blocks: []

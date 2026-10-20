@@ -27,8 +27,9 @@
   "readme_bytes": 64,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "9front",
@@ -60,8 +61,9 @@
   "readme_bytes": 0,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "A2A",
@@ -99,8 +101,9 @@
   "readme_bytes": 8586,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "accelerate",
@@ -136,8 +139,9 @@
   "readme_bytes": 15187,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "acoustic-representation-toolbox",
@@ -167,8 +171,9 @@
   "readme_bytes": 1965,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Ada",
@@ -198,8 +203,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Aetherial",
@@ -230,7 +236,8 @@
   "stale": false,
   "owner_role": "legacy_predecessor",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "aetherial-platform",
@@ -274,7 +281,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "aetherium",
@@ -311,7 +319,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Aetherius-OS",
@@ -357,7 +366,8 @@
   "stale": false,
   "owner_role": "platform",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Agent-Bridge",
@@ -396,7 +406,8 @@
   "stale": false,
   "owner_role": "execution",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "agent-framework",
@@ -434,8 +445,9 @@
   "readme_bytes": 13336,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "aiida-core",
@@ -465,8 +477,9 @@
   "readme_bytes": 6473,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Airflow",
@@ -499,7 +512,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Airtable",
@@ -529,8 +543,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "AJAX",
@@ -560,8 +575,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Algol",
@@ -591,8 +607,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "AliceVision",
@@ -622,8 +639,9 @@
   "readme_bytes": 6276,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "alp-data",
@@ -657,8 +675,9 @@
   "readme_bytes": 7499,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "analytics-examples",
@@ -689,7 +708,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Andriod",
@@ -719,8 +739,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Angular",
@@ -750,8 +771,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Anible",
@@ -781,8 +803,9 @@
   "readme_bytes": 17,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "animalsynth",
@@ -812,8 +835,9 @@
   "readme_bytes": 0,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "anoncreds-rs",
@@ -847,8 +871,9 @@
   "readme_bytes": 4360,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ansible",
@@ -880,8 +905,9 @@
   "readme_bytes": 6154,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "antigravity-sdk-python",
@@ -915,8 +941,9 @@
   "readme_bytes": 11049,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Apache-Flink",
@@ -946,8 +973,9 @@
   "readme_bytes": 28,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Apache-Hive",
@@ -977,8 +1005,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "APL",
@@ -1010,8 +1039,9 @@
   "readme_bytes": 29,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "appML",
@@ -1041,8 +1071,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Arduino",
@@ -1073,7 +1104,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ardupilot",
@@ -1107,8 +1139,9 @@
   "readme_bytes": 9449,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "arrow",
@@ -1146,8 +1179,9 @@
   "readme_bytes": 5855,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Artificial-Intelligence---AI",
@@ -1177,8 +1211,9 @@
   "readme_bytes": 30,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ASM",
@@ -1208,8 +1243,9 @@
   "readme_bytes": 19,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ASP",
@@ -1239,8 +1275,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Assembly-language",
@@ -1270,8 +1307,9 @@
   "readme_bytes": 19,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "aubio",
@@ -1307,8 +1345,9 @@
   "readme_bytes": 4353,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "audio-embeddings",
@@ -1344,8 +1383,9 @@
   "readme_bytes": 2399,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "audiocraft",
@@ -1382,8 +1422,9 @@
   "readme_bytes": 4834,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "autogen",
@@ -1425,8 +1466,9 @@
   "readme_bytes": 20790,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "automerge",
@@ -1466,8 +1508,9 @@
   "readme_bytes": 8670,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "avex",
@@ -1503,8 +1546,9 @@
   "readme_bytes": 9433,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "AWS",
@@ -1534,8 +1578,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Azure",
@@ -1566,7 +1611,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Bash",
@@ -1596,8 +1642,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Basic",
@@ -1627,8 +1674,9 @@
   "readme_bytes": 59,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "basic-pitch",
@@ -1658,8 +1706,9 @@
   "readme_bytes": 10297,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "bazel",
@@ -1689,8 +1738,9 @@
   "readme_bytes": 2380,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "beans-next",
@@ -1728,8 +1778,9 @@
   "readme_bytes": 17182,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "BEBE",
@@ -1763,8 +1814,9 @@
   "readme_bytes": 5449,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "BEBE-datasets",
@@ -1796,8 +1848,9 @@
   "readme_bytes": 568,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "bioacoustic-ssl",
@@ -1831,8 +1884,9 @@
   "readme_bytes": 16732,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "bioacoustics-model-zoo",
@@ -1866,8 +1920,9 @@
   "readme_bytes": 20899,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "biodenoising",
@@ -1901,8 +1956,9 @@
   "readme_bytes": 13798,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "biopython",
@@ -1936,8 +1992,9 @@
   "readme_bytes": 11977,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "BirdNET-Analyzer",
@@ -1973,8 +2030,9 @@
   "readme_bytes": 6667,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "BitNet",
@@ -2008,8 +2066,9 @@
   "readme_bytes": 20666,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "blender",
@@ -2041,8 +2100,9 @@
   "readme_bytes": 1555,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Blockchain",
@@ -2074,8 +2134,9 @@
   "readme_bytes": 24,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "bootc",
@@ -2111,8 +2172,9 @@
   "readme_bytes": 3946,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Bootstrap",
@@ -2142,8 +2204,9 @@
   "readme_bytes": 11,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "brainflow",
@@ -2175,8 +2238,9 @@
   "readme_bytes": 5552,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Brainfuck",
@@ -2206,8 +2270,9 @@
   "readme_bytes": 22,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "brian2",
@@ -2239,8 +2304,9 @@
   "readme_bytes": 5077,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "browser-use",
@@ -2276,8 +2342,9 @@
   "readme_bytes": 14482,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "buildkit",
@@ -2315,8 +2382,9 @@
   "readme_bytes": 41079,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "bullet3",
@@ -2350,8 +2418,9 @@
   "readme_bytes": 6245,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Burp-Suite",
@@ -2381,8 +2450,9 @@
   "readme_bytes": 24,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "C",
@@ -2412,8 +2482,9 @@
   "readme_bytes": 1198,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "C-minus-minus",
@@ -2443,8 +2514,9 @@
   "readme_bytes": 30,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "C-plus-plus",
@@ -2474,8 +2546,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "C-sharp",
@@ -2505,8 +2578,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "c2pa-rs",
@@ -2536,8 +2610,9 @@
   "readme_bytes": 9704,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Cairo",
@@ -2567,8 +2642,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cantera",
@@ -2598,8 +2674,9 @@
   "readme_bytes": 5622,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Carbon",
@@ -2629,8 +2706,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Carla",
@@ -2663,8 +2741,9 @@
   "readme_bytes": 1363,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cellpose",
@@ -2694,8 +2773,9 @@
   "readme_bytes": 20756,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ceph",
@@ -2731,8 +2811,9 @@
   "readme_bytes": 11588,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cesium",
@@ -2764,8 +2845,9 @@
   "readme_bytes": 3788,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cFS",
@@ -2799,8 +2881,9 @@
   "readme_bytes": 14894,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CHATGPT",
@@ -2830,8 +2913,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Chef",
@@ -2861,8 +2945,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "chisel",
@@ -2894,8 +2979,9 @@
   "readme_bytes": 20273,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "circom",
@@ -2931,8 +3017,9 @@
   "readme_bytes": 4935,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "circt",
@@ -2966,8 +3053,9 @@
   "readme_bytes": 7335,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "clap",
@@ -3004,8 +3092,9 @@
   "readme_bytes": 8624,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CLI",
@@ -3035,8 +3124,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Clojure",
@@ -3066,8 +3156,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cloud-ops-home-lab",
@@ -3098,7 +3189,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CMake",
@@ -3128,8 +3220,9 @@
   "readme_bytes": 4323,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Cobol",
@@ -3159,8 +3252,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cockroach",
@@ -3196,8 +3290,9 @@
   "readme_bytes": 7431,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cocotb",
@@ -3227,8 +3322,9 @@
   "readme_bytes": 1179,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "code-server",
@@ -3266,8 +3362,9 @@
   "readme_bytes": 3353,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "codespace-auth-temp",
@@ -3297,8 +3394,9 @@
   "readme_bytes": 167,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "colmap",
@@ -3328,8 +3426,9 @@
   "readme_bytes": 6716,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ComfyUI",
@@ -3366,8 +3465,9 @@
   "readme_bytes": 28909,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Command-Line",
@@ -3397,8 +3497,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Comp.-Sci.",
@@ -3428,8 +3529,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "compose",
@@ -3463,8 +3565,9 @@
   "readme_bytes": 3532,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "conan",
@@ -3494,8 +3597,9 @@
   "readme_bytes": 6208,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "connectedhomeip",
@@ -3527,8 +3631,9 @@
   "readme_bytes": 17313,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "containerd",
@@ -3564,8 +3669,9 @@
   "readme_bytes": 11569,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "core",
@@ -3595,8 +3701,9 @@
   "readme_bytes": 1964,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "coreboot",
@@ -3626,8 +3733,9 @@
   "readme_bytes": 7596,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cosign",
@@ -3665,8 +3773,9 @@
   "readme_bytes": 34462,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Coursiv",
@@ -3696,8 +3805,9 @@
   "readme_bytes": 55,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cr-sqlite",
@@ -3735,8 +3845,9 @@
   "readme_bytes": 15788,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "crewAI",
@@ -3778,8 +3889,9 @@
   "readme_bytes": 32755,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CRISPResso2",
@@ -3809,8 +3921,9 @@
   "readme_bytes": 3329,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "crm",
@@ -3846,8 +3959,9 @@
   "readme_bytes": 19189,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Crossplatform---multiplatform",
@@ -3878,7 +3992,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CryptoMonopoly",
@@ -3910,8 +4025,9 @@
   "readme_bytes": 45,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Crystal",
@@ -3941,8 +4057,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cs50-Python",
@@ -3973,7 +4090,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CS50x",
@@ -4003,8 +4121,9 @@
   "readme_bytes": 1339,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "csound",
@@ -4036,8 +4155,9 @@
   "readme_bytes": 3447,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CSS",
@@ -4067,8 +4187,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CuraEngine",
@@ -4098,8 +4219,9 @@
   "readme_bytes": 3441,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "cva6",
@@ -4129,8 +4251,9 @@
   "readme_bytes": 6861,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "CX",
@@ -4160,8 +4283,9 @@
   "readme_bytes": 4,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Cyber-Security",
@@ -4191,8 +4315,9 @@
   "readme_bytes": 724,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Dagstar",
@@ -4222,8 +4347,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "dagster",
@@ -4255,8 +4381,9 @@
   "readme_bytes": 6831,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Dart",
@@ -4286,8 +4413,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "dask",
@@ -4319,8 +4447,9 @@
   "readme_bytes": 1291,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Data-Analysis",
@@ -4350,8 +4479,9 @@
   "readme_bytes": 15,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Data-analysis-with-Python",
@@ -4381,8 +4511,9 @@
   "readme_bytes": 54,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Data-Lineage",
@@ -4412,8 +4543,9 @@
   "readme_bytes": 79,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Data-Modelling",
@@ -4443,8 +4575,9 @@
   "readme_bytes": 32,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Data-Science",
@@ -4474,8 +4607,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "DBMS",
@@ -4505,8 +4639,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "DBT",
@@ -4537,7 +4672,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Deep-Learning",
@@ -4567,8 +4703,9 @@
   "readme_bytes": 15,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "DeepLabCut",
@@ -4600,8 +4737,9 @@
   "readme_bytes": 30204,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "demucs",
@@ -4635,8 +4773,9 @@
   "readme_bytes": 19056,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Depth-Anything-V2",
@@ -4670,8 +4809,9 @@
   "readme_bytes": 9904,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "depthai-core",
@@ -4705,8 +4845,9 @@
   "readme_bytes": 33748,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "detectron2",
@@ -4736,8 +4877,9 @@
   "readme_bytes": 2527,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Devcontainer-setup",
@@ -4773,8 +4915,9 @@
   "readme_bytes": 9752,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "DevOps",
@@ -4808,8 +4951,9 @@
   "readme_bytes": 118,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "devops-directive-docker-course",
@@ -4845,8 +4989,9 @@
   "readme_bytes": 3670,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "diffusers",
@@ -4883,8 +5028,9 @@
   "readme_bytes": 14610,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ditto",
@@ -4914,8 +5060,9 @@
   "readme_bytes": 5745,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "DJANGO",
@@ -4947,8 +5094,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Docker",
@@ -4982,8 +5130,9 @@
   "readme_bytes": 2581,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "dolfinx",
@@ -5019,8 +5168,9 @@
   "readme_bytes": 7256,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "drake",
@@ -5050,8 +5200,9 @@
   "readme_bytes": 142,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "DSA",
@@ -5081,8 +5232,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "DuckDB",
@@ -5113,7 +5265,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "duckdb---community",
@@ -5143,8 +5296,9 @@
   "readme_bytes": 3480,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ECMAScript",
@@ -5174,8 +5328,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "edk2",
@@ -5205,8 +5360,9 @@
   "readme_bytes": 29131,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "electric",
@@ -5246,8 +5402,9 @@
   "readme_bytes": 7343,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Electron",
@@ -5283,8 +5440,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Elixir",
@@ -5314,8 +5472,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Elm",
@@ -5345,8 +5504,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Emmet",
@@ -5376,8 +5536,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Emojicode",
@@ -5407,8 +5568,9 @@
   "readme_bytes": 22,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "emscripten",
@@ -5444,8 +5606,9 @@
   "readme_bytes": 3898,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "EnergyPlus",
@@ -5475,8 +5638,9 @@
   "readme_bytes": 5988,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Erlang",
@@ -5506,8 +5670,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "esphome",
@@ -5537,8 +5702,9 @@
   "readme_bytes": 933,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "essentia",
@@ -5570,8 +5736,9 @@
   "readme_bytes": 4251,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Ethereum",
@@ -5603,8 +5770,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Excel",
@@ -5635,7 +5803,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "executorch",
@@ -5671,8 +5840,9 @@
   "readme_bytes": 14026,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Express-JS",
@@ -5702,8 +5872,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "F-Sharp",
@@ -5733,8 +5904,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "F5-TTS",
@@ -5770,8 +5942,9 @@
   "readme_bytes": 10449,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "fastapi",
@@ -5801,8 +5974,9 @@
   "readme_bytes": 22780,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "faster-whisper",
@@ -5838,8 +6012,9 @@
   "readme_bytes": 15246,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "FAST_LIO",
@@ -5873,8 +6048,9 @@
   "readme_bytes": 13713,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "FFmpeg",
@@ -5906,8 +6082,9 @@
   "readme_bytes": 1798,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Firebase",
@@ -5937,8 +6114,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "firecracker",
@@ -5974,8 +6152,9 @@
   "readme_bytes": 9107,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Flask",
@@ -6007,8 +6186,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "fluidsynth",
@@ -6040,8 +6220,9 @@
   "readme_bytes": 7514,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Flutter",
@@ -6071,8 +6252,9 @@
   "readme_bytes": 0,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "football-card-game",
@@ -6103,7 +6285,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Fortran",
@@ -6133,8 +6316,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "FreeCAD",
@@ -6164,8 +6348,9 @@
   "readme_bytes": 5105,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "FreeRTOS-Kernel",
@@ -6197,8 +6382,9 @@
   "readme_bytes": 7545,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Friang",
@@ -6229,7 +6415,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "G-code",
@@ -6259,8 +6446,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gatk",
@@ -6296,8 +6484,9 @@
   "readme_bytes": 43022,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "GCP",
@@ -6327,8 +6516,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gdal",
@@ -6362,8 +6552,9 @@
   "readme_bytes": 4141,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Gen-AI",
@@ -6393,8 +6584,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Genesis",
@@ -6429,7 +6621,8 @@
   "stale": false,
   "owner_role": "intelligence",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "genesis-world",
@@ -6459,8 +6652,9 @@
   "readme_bytes": 23419,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ggml",
@@ -6494,8 +6688,9 @@
   "readme_bytes": 1852,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Git",
@@ -6530,7 +6725,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "git-lfs",
@@ -6566,8 +6762,9 @@
   "readme_bytes": 10702,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "GitHub-Markdown-Syntax",
@@ -6598,7 +6795,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gnuradio",
@@ -6628,8 +6826,9 @@
   "readme_bytes": 4636,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "GO",
@@ -6659,8 +6858,9 @@
   "readme_bytes": 4,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Godot",
@@ -6690,8 +6890,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "godot-official",
@@ -6721,8 +6922,9 @@
   "readme_bytes": 3722,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gods-eye-view",
@@ -6758,8 +6960,9 @@
   "readme_bytes": 35826,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gqrx",
@@ -6791,8 +6994,9 @@
   "readme_bytes": 7889,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Gradle",
@@ -6822,8 +7026,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "grafana",
@@ -6859,8 +7064,9 @@
   "readme_bytes": 3114,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "graphiti",
@@ -6896,8 +7102,9 @@
   "readme_bytes": 28280,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "grpc",
@@ -6931,8 +7138,9 @@
   "readme_bytes": 4621,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gtsam",
@@ -6966,8 +7174,9 @@
   "readme_bytes": 9211,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gvisor",
@@ -7003,8 +7212,9 @@
   "readme_bytes": 6953,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "gz-sim",
@@ -7034,8 +7244,9 @@
   "readme_bytes": 7684,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "habitat-lab",
@@ -7065,8 +7276,9 @@
   "readme_bytes": 13988,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Hack",
@@ -7096,8 +7308,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Hardware-Description-Languages-HDLs-",
@@ -7127,8 +7340,9 @@
   "readme_bytes": 38,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Haskell",
@@ -7158,8 +7372,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "hello-world-1",
@@ -7189,8 +7404,9 @@
   "readme_bytes": 102,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "helm",
@@ -7222,8 +7438,9 @@
   "readme_bytes": 4410,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Hibernate",
@@ -7253,8 +7470,9 @@
   "readme_bytes": 11,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "hidapi",
@@ -7284,8 +7502,9 @@
   "readme_bytes": 7052,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Holy-C",
@@ -7315,8 +7534,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "HTML",
@@ -7346,8 +7566,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Hydra",
@@ -7377,8 +7598,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Hyperledger-Besu",
@@ -7408,8 +7630,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ibex",
@@ -7443,8 +7666,9 @@
   "readme_bytes": 6718,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Iceberg---Data",
@@ -7474,8 +7698,9 @@
   "readme_bytes": 32,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "IDE-Workspace",
@@ -7506,7 +7731,8 @@
   "stale": false,
   "owner_role": "interface",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "IfcOpenShell",
@@ -7536,8 +7762,9 @@
   "readme_bytes": 11580,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Imba",
@@ -7567,8 +7794,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "in-toto",
@@ -7598,8 +7826,9 @@
   "readme_bytes": 10295,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "influxdb",
@@ -7637,8 +7866,9 @@
   "readme_bytes": 4696,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "inspector",
@@ -7679,8 +7909,9 @@
   "readme_bytes": 8114,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Intelligence-AI",
@@ -7710,8 +7941,9 @@
   "readme_bytes": 80,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "InterCal",
@@ -7741,8 +7973,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "IOS",
@@ -7772,8 +8005,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "iree",
@@ -7809,8 +8043,9 @@
   "readme_bytes": 7040,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "IsaacLab",
@@ -7846,8 +8081,9 @@
   "readme_bytes": 11055,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "jack2",
@@ -7877,8 +8113,9 @@
   "readme_bytes": 2172,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Java",
@@ -7908,8 +8145,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "JavaScript",
@@ -7939,8 +8177,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "jayprophit",
@@ -7971,7 +8210,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Jenkins",
@@ -8001,8 +8241,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Jetpack-compos",
@@ -8032,8 +8273,9 @@
   "readme_bytes": 32,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "jQuery",
@@ -8063,8 +8305,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "JUCE",
@@ -8097,8 +8340,9 @@
   "readme_bytes": 5614,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "juicefs",
@@ -8134,8 +8378,9 @@
   "readme_bytes": 14781,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Julia",
@@ -8165,8 +8410,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "k3s",
@@ -8200,8 +8446,9 @@
   "readme_bytes": 10804,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Kafka",
@@ -8237,8 +8484,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "kalibr",
@@ -8268,8 +8516,9 @@
   "readme_bytes": 7152,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Keras",
@@ -8299,8 +8548,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "keycloak",
@@ -8334,8 +8584,9 @@
   "readme_bytes": 4414,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "kicad-source-mirror",
@@ -8365,8 +8616,9 @@
   "readme_bytes": 3543,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "kind",
@@ -8400,8 +8652,9 @@
   "readme_bytes": 6861,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "kokkos",
@@ -8435,8 +8688,9 @@
   "readme_bytes": 4841,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Kotlin",
@@ -8466,8 +8720,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Kubernetes",
@@ -8497,8 +8752,9 @@
   "readme_bytes": 24,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "kubo",
@@ -8534,8 +8790,9 @@
   "readme_bytes": 13491,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Lakehouse---Data",
@@ -8565,8 +8822,9 @@
   "readme_bytes": 36,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "lammps",
@@ -8596,8 +8854,9 @@
   "readme_bytes": 2841,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "langgraph",
@@ -8633,8 +8892,9 @@
   "readme_bytes": 6395,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Laravel",
@@ -8664,8 +8924,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Lau",
@@ -8695,8 +8956,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "LeetCode-SQL-repos",
@@ -8727,7 +8989,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "lerobot",
@@ -8757,8 +9020,9 @@
   "readme_bytes": 13143,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "libarchive",
@@ -8788,8 +9052,9 @@
   "readme_bytes": 11351,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "liblo",
@@ -8823,8 +9088,9 @@
   "readme_bytes": 3505,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "liblsl",
@@ -8854,8 +9120,9 @@
   "readme_bytes": 5408,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "libpd",
@@ -8887,8 +9154,9 @@
   "readme_bytes": 24799,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "libremidi",
@@ -8922,8 +9190,9 @@
   "readme_bytes": 11282,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "librosa",
@@ -8955,8 +9224,9 @@
   "readme_bytes": 3905,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "libsamplerate",
@@ -8988,8 +9258,9 @@
   "readme_bytes": 2494,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "libsigrok",
@@ -9023,8 +9294,9 @@
   "readme_bytes": 5111,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "libsndfile",
@@ -9056,8 +9328,9 @@
   "readme_bytes": 12743,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "libusb",
@@ -9087,8 +9360,9 @@
   "readme_bytes": 895,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "lilv",
@@ -9121,8 +9395,9 @@
   "readme_bytes": 305,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "link",
@@ -9156,8 +9431,9 @@
   "readme_bytes": 7569,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Linux",
@@ -9190,7 +9466,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Linux-command",
@@ -9220,8 +9497,9 @@
   "readme_bytes": 15,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "liquid-dsp",
@@ -9255,8 +9533,9 @@
   "readme_bytes": 20089,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Lisp",
@@ -9286,8 +9565,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "litellm",
@@ -9323,8 +9603,9 @@
   "readme_bytes": 35510,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "litex",
@@ -9354,8 +9635,9 @@
   "readme_bytes": 14737,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "livekit",
@@ -9399,8 +9681,9 @@
   "readme_bytes": 13427,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "llama.cpp",
@@ -9436,8 +9719,9 @@
   "readme_bytes": 7351,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "llama_index",
@@ -9473,8 +9757,9 @@
   "readme_bytes": 11489,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "llvm-project",
@@ -9506,8 +9791,9 @@
   "readme_bytes": 2255,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Lolcode",
@@ -9537,8 +9823,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Lua",
@@ -9568,8 +9855,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "lv2",
@@ -9602,8 +9890,9 @@
   "readme_bytes": 1739,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Machine-Code",
@@ -9633,8 +9922,9 @@
   "readme_bytes": 44,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Machine-Learning",
@@ -9664,8 +9954,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Malbolge",
@@ -9695,8 +9986,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Materials-Atlas-Table-Codex---MAT",
@@ -9733,7 +10025,8 @@
   "stale": false,
   "owner_role": "knowledge",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "MATLAB",
@@ -9763,8 +10056,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "matminer",
@@ -9794,8 +10088,9 @@
   "readme_bytes": 2381,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Matplotlib",
@@ -9825,8 +10120,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Maven",
@@ -9856,8 +10152,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mavlink",
@@ -9887,8 +10184,9 @@
   "readme_bytes": 3564,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mediapipe",
@@ -9918,8 +10216,9 @@
   "readme_bytes": 8814,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mem0",
@@ -9957,8 +10256,9 @@
   "readme_bytes": 11914,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "meson",
@@ -9988,8 +10288,9 @@
   "readme_bytes": 3409,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Meta",
@@ -10019,8 +10320,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Metasploit",
@@ -10050,8 +10352,9 @@
   "readme_bytes": 24,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mfem",
@@ -10081,8 +10384,9 @@
   "readme_bytes": 4167,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "miniaudio",
@@ -10114,8 +10418,9 @@
   "readme_bytes": 6253,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Miranda-language",
@@ -10147,8 +10452,9 @@
   "readme_bytes": 36,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mlc-llm",
@@ -10186,8 +10492,9 @@
   "readme_bytes": 5204,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mmpose",
@@ -10217,8 +10524,9 @@
   "readme_bytes": 27213,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mne-python",
@@ -10248,8 +10556,9 @@
   "readme_bytes": 4511,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "moby",
@@ -10283,8 +10592,9 @@
   "readme_bytes": 5487,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "monaco-editor",
@@ -10324,8 +10634,9 @@
   "readme_bytes": 7730,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "MongoDB",
@@ -10355,8 +10666,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Monitoring-and-Logging",
@@ -10386,8 +10698,9 @@
   "readme_bytes": 48,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "moose",
@@ -10419,8 +10732,9 @@
   "readme_bytes": 1775,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "MOTOKO",
@@ -10450,8 +10764,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Move",
@@ -10481,8 +10796,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "moveit2",
@@ -10512,8 +10828,9 @@
   "readme_bytes": 40656,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "mujoco",
@@ -10545,8 +10862,9 @@
   "readme_bytes": 9724,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "multiband-audio",
@@ -10576,8 +10894,9 @@
   "readme_bytes": 9595,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "MySQL",
@@ -10607,8 +10926,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "n8n",
@@ -10648,8 +10968,9 @@
   "readme_bytes": 4023,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "napari",
@@ -10681,8 +11002,9 @@
   "readme_bytes": 9073,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Native-app-development",
@@ -10712,8 +11034,9 @@
   "readme_bytes": 48,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "nats-server",
@@ -10747,8 +11070,9 @@
   "readme_bytes": 4576,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "NatureLM-audio",
@@ -10784,8 +11108,9 @@
   "readme_bytes": 6101,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "navigation2",
@@ -10815,8 +11140,9 @@
   "readme_bytes": 49007,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "nengo",
@@ -10846,8 +11172,9 @@
   "readme_bytes": 3404,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "neo4j",
@@ -10877,8 +11204,9 @@
   "readme_bytes": 4552,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "nest-simulator",
@@ -10910,8 +11238,9 @@
   "readme_bytes": 6464,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Nexjs",
@@ -10941,8 +11270,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Next",
@@ -10974,8 +11304,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "nextflow",
@@ -11005,8 +11336,9 @@
   "readme_bytes": 4676,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "nextpnr",
@@ -11040,8 +11372,9 @@
   "readme_bytes": 14174,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "NFTs",
@@ -11071,8 +11404,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Nginx",
@@ -11102,8 +11436,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Niche_platform",
@@ -11136,7 +11471,8 @@
   "stale": false,
   "owner_role": "legacy_predecessor",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Nim",
@@ -11166,8 +11502,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ninja",
@@ -11197,8 +11534,9 @@
   "readme_bytes": 2785,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Nmap",
@@ -11228,8 +11566,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "no-ai-slop",
@@ -11259,8 +11598,9 @@
   "readme_bytes": 3248,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Node-JS",
@@ -11290,8 +11630,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "NoSQL",
@@ -11321,8 +11662,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "NPM",
@@ -11352,8 +11694,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "nrn",
@@ -11385,8 +11728,9 @@
   "readme_bytes": 3651,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "NUMPY",
@@ -11418,8 +11762,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Objective-C",
@@ -11449,8 +11794,9 @@
   "readme_bytes": 13,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Ocaml",
@@ -11480,8 +11826,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OCCT",
@@ -11511,8 +11858,9 @@
   "readme_bytes": 4748,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ollama",
@@ -11548,8 +11896,9 @@
   "readme_bytes": 19225,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "onnxruntime",
@@ -11579,8 +11928,9 @@
   "readme_bytes": 3087,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "opa",
@@ -11623,8 +11973,9 @@
   "readme_bytes": 9132,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "open-webui",
@@ -11668,8 +12019,9 @@
   "readme_bytes": 17761,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Open3D",
@@ -11699,8 +12051,9 @@
   "readme_bytes": 6673,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openbabel",
@@ -11730,8 +12083,9 @@
   "readme_bytes": 1604,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openbao",
@@ -11765,8 +12119,9 @@
   "readme_bytes": 7136,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "opencv",
@@ -11796,8 +12151,9 @@
   "readme_bytes": 1705,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openfhe-development",
@@ -11827,8 +12183,9 @@
   "readme_bytes": 11631,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openfx",
@@ -11862,8 +12219,9 @@
   "readme_bytes": 5439,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OpenHands",
@@ -11901,8 +12259,9 @@
   "readme_bytes": 10126,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openmm",
@@ -11932,8 +12291,9 @@
   "readme_bytes": 2233,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openMVG",
@@ -11963,8 +12323,9 @@
   "readme_bytes": 6519,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OpenROAD",
@@ -11994,8 +12355,9 @@
   "readme_bytes": 14375,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openscad",
@@ -12027,8 +12389,9 @@
   "readme_bytes": 13836,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "opensim-core",
@@ -12060,8 +12423,9 @@
   "readme_bytes": 9063,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "opensoundscape",
@@ -12091,8 +12455,9 @@
   "readme_bytes": 8092,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "opentelemetry-collector",
@@ -12132,8 +12497,9 @@
   "readme_bytes": 24354,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openthread",
@@ -12167,8 +12533,9 @@
   "readme_bytes": 7401,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OpenTimelineIO",
@@ -12198,8 +12565,9 @@
   "readme_bytes": 9211,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "opentitan",
@@ -12229,8 +12597,9 @@
   "readme_bytes": 1570,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "opentofu",
@@ -12260,8 +12629,9 @@
   "readme_bytes": 4419,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OpenUSD",
@@ -12293,8 +12663,9 @@
   "readme_bytes": 9323,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OpenVoice",
@@ -12326,8 +12697,9 @@
   "readme_bytes": 3120,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OpenVoiceOS",
@@ -12357,8 +12729,9 @@
   "readme_bytes": 4456,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "openvsx",
@@ -12394,8 +12767,9 @@
   "readme_bytes": 14550,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "OpenXR-SDK-Source",
@@ -12425,8 +12799,9 @@
   "readme_bytes": 2187,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "open_vins",
@@ -12456,8 +12831,9 @@
   "readme_bytes": 13100,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "operations-kpi-dashboard-powerbi",
@@ -12488,7 +12864,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "oras",
@@ -12522,8 +12899,9 @@
   "readme_bytes": 1144,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ORB_SLAM3",
@@ -12553,8 +12931,9 @@
   "readme_bytes": 13231,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Orekit",
@@ -12584,8 +12963,9 @@
   "readme_bytes": 13401,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Orolog",
@@ -12615,8 +12995,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Pandas",
@@ -12649,7 +13030,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Pascal",
@@ -12679,8 +13061,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pcl",
@@ -12710,8 +13093,9 @@
   "readme_bytes": 7061,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "PDAL",
@@ -12741,8 +13125,9 @@
   "readme_bytes": 1337,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pedalboard",
@@ -12772,8 +13157,9 @@
   "readme_bytes": 16009,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "peft",
@@ -12809,8 +13195,9 @@
   "readme_bytes": 12244,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pennylane",
@@ -12842,8 +13229,9 @@
   "readme_bytes": 8667,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Perl",
@@ -12873,8 +13261,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "petsc",
@@ -12904,8 +13293,9 @@
   "readme_bytes": 540,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pglite",
@@ -12941,8 +13331,9 @@
   "readme_bytes": 7651,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Pharo",
@@ -12972,8 +13363,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "phone-harness",
@@ -13011,8 +13403,9 @@
   "readme_bytes": 3106,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "PHP",
@@ -13042,8 +13435,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Piet",
@@ -13073,8 +13467,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pinocchio",
@@ -13104,8 +13499,9 @@
   "readme_bytes": 25920,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pipewire",
@@ -13141,8 +13537,9 @@
   "readme_bytes": 7082,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "PlasmaPy",
@@ -13172,8 +13569,9 @@
   "readme_bytes": 8687,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "playwright",
@@ -13219,8 +13617,9 @@
   "readme_bytes": 11280,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "plugin-GUI",
@@ -13250,8 +13649,9 @@
   "readme_bytes": 5671,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Pocket-base",
@@ -13281,8 +13681,9 @@
   "readme_bytes": 26,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Poietek",
@@ -13321,7 +13722,8 @@
   "stale": false,
   "owner_role": "creative",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "POP-11",
@@ -13351,8 +13753,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "portaudio",
@@ -13385,8 +13788,9 @@
   "readme_bytes": 3085,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "POSTGRESQL",
@@ -13416,8 +13820,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Power-Bi",
@@ -13448,7 +13853,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Power-BI-community-tools",
@@ -13479,7 +13885,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "powershell",
@@ -13509,8 +13916,9 @@
   "readme_bytes": 0,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": true
+  "first_party": true,
+  "empty": true,
+  "owner": "jayprophit"
  },
  {
   "name": "powershell-ops-scripts",
@@ -13545,7 +13953,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "PROJ",
@@ -13575,8 +13984,9 @@
   "readme_bytes": 3664,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "prometheus",
@@ -13612,8 +14022,9 @@
   "readme_bytes": 9689,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Prompt-Engineering",
@@ -13643,8 +14054,9 @@
   "readme_bytes": 40,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "protobuf",
@@ -13678,8 +14090,9 @@
   "readme_bytes": 6164,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "PrusaSlicer",
@@ -13709,8 +14122,9 @@
   "readme_bytes": 4050,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pulseview",
@@ -13744,8 +14158,9 @@
   "readme_bytes": 3074,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Puppeteer",
@@ -13781,8 +14196,9 @@
   "readme_bytes": 11,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pure-data",
@@ -13812,8 +14228,9 @@
   "readme_bytes": 2418,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "PX4-Autopilot",
@@ -13849,8 +14266,9 @@
   "readme_bytes": 7438,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pydantic-ai",
@@ -13890,8 +14308,9 @@
   "readme_bytes": 20943,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pyinstaller",
@@ -13921,8 +14340,9 @@
   "readme_bytes": 5384,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pymatgen",
@@ -13954,8 +14374,9 @@
   "readme_bytes": 10035,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pymatgen-core",
@@ -13987,8 +14408,9 @@
   "readme_bytes": 10267,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pymeasure",
@@ -14022,8 +14444,9 @@
   "readme_bytes": 2849,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pyOCD",
@@ -14057,8 +14480,9 @@
   "readme_bytes": 8233,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pysam",
@@ -14088,8 +14512,9 @@
   "readme_bytes": 1937,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pyscf",
@@ -14121,8 +14546,9 @@
   "readme_bytes": 3609,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pyserial",
@@ -14152,8 +14578,9 @@
   "readme_bytes": 1635,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "python-etl-quality-checks",
@@ -14184,7 +14611,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Python-Projects",
@@ -14214,8 +14642,9 @@
   "readme_bytes": 162,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "python-rtmidi",
@@ -14248,8 +14677,9 @@
   "readme_bytes": 2802,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "python-sdk",
@@ -14283,8 +14713,9 @@
   "readme_bytes": 5724,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "PyTorch",
@@ -14316,8 +14747,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pyusb",
@@ -14347,8 +14779,9 @@
   "readme_bytes": 3886,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "pyvisa",
@@ -14378,8 +14811,9 @@
   "readme_bytes": 4525,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "q-e",
@@ -14411,8 +14845,9 @@
   "readme_bytes": 4367,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "qdrant",
@@ -14452,8 +14887,9 @@
   "readme_bytes": 11560,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "qemu",
@@ -14489,8 +14925,9 @@
   "readme_bytes": 5579,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "qiskit",
@@ -14522,8 +14959,9 @@
   "readme_bytes": 11546,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Quantum-Electrodynamics",
@@ -14555,8 +14993,9 @@
   "readme_bytes": 50,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Quantum-OS",
@@ -14590,7 +15029,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "QVA-merged",
@@ -14621,7 +15061,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "R",
@@ -14651,8 +15092,9 @@
   "readme_bytes": 3,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Racket",
@@ -14682,8 +15124,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Rasberry-PI",
@@ -14713,8 +15156,9 @@
   "readme_bytes": 13,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ray",
@@ -14748,8 +15192,9 @@
   "readme_bytes": 6506,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rclone",
@@ -14783,8 +15228,9 @@
   "readme_bytes": 11653,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "RDD",
@@ -14814,8 +15260,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rdkit",
@@ -14845,8 +15292,9 @@
   "readme_bytes": 3801,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "React",
@@ -14882,8 +15330,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "React-native",
@@ -14919,8 +15368,9 @@
   "readme_bytes": 28,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Redis",
@@ -14950,8 +15400,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "redox",
@@ -14983,8 +15434,9 @@
   "readme_bytes": 4999,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Regex",
@@ -15014,8 +15466,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "renode",
@@ -15045,8 +15498,9 @@
   "readme_bytes": 11230,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "restic",
@@ -15076,8 +15530,9 @@
   "readme_bytes": 5700,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "retention-dashboard",
@@ -15107,8 +15562,9 @@
   "readme_bytes": 870,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Rholang",
@@ -15138,8 +15594,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "risc0",
@@ -15169,8 +15626,9 @@
   "readme_bytes": 14386,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "riscv-gnu-toolchain",
@@ -15202,8 +15660,9 @@
   "readme_bytes": 22707,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "riscv-isa-sim",
@@ -15233,8 +15692,9 @@
   "readme_bytes": 9013,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rnnoise",
@@ -15267,8 +15727,9 @@
   "readme_bytes": 6119,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "robot_localization",
@@ -15300,8 +15761,9 @@
   "readme_bytes": 238,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rocket-chip",
@@ -15337,8 +15799,9 @@
   "readme_bytes": 12226,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ROP",
@@ -15368,8 +15831,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ros2",
@@ -15399,8 +15863,9 @@
   "readme_bytes": 2297,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ros2_control",
@@ -15430,8 +15895,9 @@
   "readme_bytes": 6667,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rtabmap",
@@ -15461,8 +15927,9 @@
   "readme_bytes": 5255,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rtaudio",
@@ -15499,8 +15966,9 @@
   "readme_bytes": 3799,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rtl-sdr",
@@ -15530,8 +15998,9 @@
   "readme_bytes": 212,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rtmidi",
@@ -15569,8 +16038,9 @@
   "readme_bytes": 2883,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Ruby",
@@ -15600,8 +16070,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Ruby-Rails",
@@ -15631,8 +16102,9 @@
   "readme_bytes": 24,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ruff",
@@ -15665,8 +16137,9 @@
   "readme_bytes": 19637,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "runc",
@@ -15700,8 +16173,9 @@
   "readme_bytes": 14953,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Rust",
@@ -15731,8 +16205,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rust-libp2p",
@@ -15769,8 +16244,9 @@
   "readme_bytes": 6324,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "RWD---responsive-web-design",
@@ -15800,8 +16276,9 @@
   "readme_bytes": 29,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "rxdb",
@@ -15839,8 +16316,9 @@
   "readme_bytes": 13401,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Saas",
@@ -15870,8 +16348,9 @@
   "readme_bytes": 6,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sam2",
@@ -15907,8 +16386,9 @@
   "readme_bytes": 16249,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "samtools",
@@ -15938,8 +16418,9 @@
   "readme_bytes": 4055,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SASS",
@@ -15969,8 +16450,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SatDump",
@@ -16000,8 +16482,9 @@
   "readme_bytes": 19164,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Scala",
@@ -16031,8 +16514,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "scanpy",
@@ -16064,8 +16548,9 @@
   "readme_bytes": 4687,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "scikit-bio",
@@ -16095,8 +16580,9 @@
   "readme_bytes": 6476,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Scikit-Learn",
@@ -16126,8 +16612,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Scipy",
@@ -16159,8 +16646,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "scipy-community",
@@ -16192,8 +16680,9 @@
   "readme_bytes": 3913,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Scratch",
@@ -16223,8 +16712,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "scylladb",
@@ -16258,8 +16748,9 @@
   "readme_bytes": 5288,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Seaborn",
@@ -16289,8 +16780,9 @@
   "readme_bytes": 9,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SEAL",
@@ -16320,8 +16812,9 @@
   "readme_bytes": 49744,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "seaweedfs",
@@ -16359,8 +16852,9 @@
   "readme_bytes": 32985,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "seL4",
@@ -16392,8 +16886,9 @@
   "readme_bytes": 4710,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "self-building-ai",
@@ -16424,7 +16919,8 @@
   "stale": false,
   "owner_role": "legacy_predecessor",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "servers",
@@ -16470,8 +16966,9 @@
   "readme_bytes": 8707,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sfizz",
@@ -16509,8 +17006,9 @@
   "readme_bytes": 6920,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ShakeSpeare",
@@ -16540,8 +17038,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Shell",
@@ -16575,8 +17074,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sherpa-onnx",
@@ -16606,8 +17106,9 @@
   "readme_bytes": 53127,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SigMF",
@@ -16637,8 +17138,9 @@
   "readme_bytes": 7501,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Simplicity",
@@ -16668,8 +17170,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Simula",
@@ -16699,8 +17202,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SkillSpector",
@@ -16744,8 +17248,9 @@
   "readme_bytes": 41896,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sleap",
@@ -16775,8 +17280,9 @@
   "readme_bytes": 9202,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "smalltalk",
@@ -16806,8 +17312,9 @@
   "readme_bytes": 11,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "smolagents",
@@ -16847,8 +17354,9 @@
   "readme_bytes": 14137,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "snarkjs",
@@ -16882,8 +17390,9 @@
   "readme_bytes": 28246,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "snntorch",
@@ -16916,8 +17425,9 @@
   "readme_bytes": 14300,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Snowflake",
@@ -16947,8 +17457,9 @@
   "readme_bytes": 22,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SoapySDR",
@@ -16978,8 +17489,9 @@
   "readme_bytes": 442,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sofa",
@@ -17009,8 +17521,9 @@
   "readme_bytes": 4028,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Solana",
@@ -17042,8 +17555,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Solidity",
@@ -17073,8 +17587,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sound-event-detection",
@@ -17108,8 +17623,9 @@
   "readme_bytes": 15938,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sound-separation",
@@ -17139,8 +17655,9 @@
   "readme_bytes": 1520,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sp1",
@@ -17170,8 +17687,9 @@
   "readme_bytes": 3403,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Spark",
@@ -17201,8 +17719,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Spell",
@@ -17232,8 +17751,9 @@
   "readme_bytes": 14,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Spell-kit",
@@ -17263,8 +17783,9 @@
   "readme_bytes": 22,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sperm-whale-clan-and-coda-detection",
@@ -17294,8 +17815,9 @@
   "readme_bytes": 3248,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "spikeinterface",
@@ -17325,8 +17847,9 @@
   "readme_bytes": 7309,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Spreadsheets",
@@ -17356,8 +17879,9 @@
   "readme_bytes": 28,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Spring-Boot",
@@ -17387,8 +17911,9 @@
   "readme_bytes": 26,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SQL",
@@ -17418,8 +17943,9 @@
   "readme_bytes": 563,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SQL-engines-Postgres-SQLite-",
@@ -17450,7 +17976,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sql-operations-analytics",
@@ -17481,7 +18008,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "sqlite",
@@ -17515,8 +18043,9 @@
   "readme_bytes": 21165,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "stable-baselines3",
@@ -17548,8 +18077,9 @@
   "readme_bytes": 16229,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Statistics",
@@ -17579,8 +18109,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "SU2",
@@ -17610,8 +18141,9 @@
   "readme_bytes": 4921,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Supabase",
@@ -17641,8 +18173,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "supercollider",
@@ -17679,8 +18212,9 @@
   "readme_bytes": 5328,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "surrealdb",
@@ -17718,8 +18252,9 @@
   "readme_bytes": 28317,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Swift",
@@ -17749,8 +18284,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Swift-UI",
@@ -17780,8 +18316,9 @@
   "readme_bytes": 20,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "syncthing",
@@ -17811,8 +18348,9 @@
   "readme_bytes": 3999,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "systemd",
@@ -17844,8 +18382,9 @@
   "readme_bytes": 3666,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Tailwind",
@@ -17875,8 +18414,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tauri",
@@ -17912,8 +18452,9 @@
   "readme_bytes": 6055,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "temporal",
@@ -17949,8 +18490,9 @@
   "readme_bytes": 3888,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Tensor-Flow",
@@ -17980,8 +18522,9 @@
   "readme_bytes": 13,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Terroaform",
@@ -18011,8 +18554,9 @@
   "readme_bytes": 23,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tfhe-rs",
@@ -18042,8 +18586,9 @@
   "readme_bytes": 11645,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "THE-ARCHITECTURE-OF-SHADOWS",
@@ -18074,7 +18619,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "The-Odin-Project",
@@ -18105,7 +18651,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Theano",
@@ -18135,8 +18682,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "theia",
@@ -18170,8 +18718,9 @@
   "readme_bytes": 7333,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tikv",
@@ -18207,8 +18756,9 @@
   "readme_bytes": 10045,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "timescaledb",
@@ -18242,8 +18792,9 @@
   "readme_bytes": 19720,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tock",
@@ -18273,8 +18824,9 @@
   "readme_bytes": 8841,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Towery",
@@ -18304,8 +18856,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tracktion_engine",
@@ -18338,8 +18891,9 @@
   "readme_bytes": 6183,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "transformers",
@@ -18376,8 +18930,9 @@
   "readme_bytes": 17182,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Transistors",
@@ -18407,8 +18962,9 @@
   "readme_bytes": 82,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tree-sitter",
@@ -18440,8 +18996,9 @@
   "readme_bytes": 1153,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Truffle-Suite",
@@ -18471,8 +19028,9 @@
   "readme_bytes": 16,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tvb-root",
@@ -18506,8 +19064,9 @@
   "readme_bytes": 7261,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "tvm",
@@ -18539,8 +19098,9 @@
   "readme_bytes": 3494,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "TypeScript",
@@ -18570,8 +19130,9 @@
   "readme_bytes": 12,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "typescript-sdk",
@@ -18607,8 +19168,9 @@
   "readme_bytes": 8305,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "u-boot",
@@ -18642,8 +19204,9 @@
   "readme_bytes": 74823,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "uhd",
@@ -18673,8 +19236,9 @@
   "readme_bytes": 2779,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "ultralytics",
@@ -18708,8 +19272,9 @@
   "readme_bytes": 38434,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Unity",
@@ -18739,8 +19304,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Universal-Bridge",
@@ -18781,7 +19347,8 @@
   "stale": false,
   "owner_role": "interoperability",
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "unsupervised-speech-translation",
@@ -18811,8 +19378,9 @@
   "readme_bytes": 4687,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "uv",
@@ -18842,8 +19410,9 @@
   "readme_bytes": 9859,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "V",
@@ -18873,8 +19442,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "valkey",
@@ -18908,8 +19478,9 @@
   "readme_bytes": 14168,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "vcpkg",
@@ -18941,8 +19512,9 @@
   "readme_bytes": 7001,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "verible",
@@ -18975,8 +19547,9 @@
   "readme_bytes": 11148,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "verilator",
@@ -19006,8 +19579,9 @@
   "readme_bytes": 7455,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Veyra",
@@ -19049,7 +19623,8 @@
   "stale": false,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "VHDL",
@@ -19079,8 +19654,9 @@
   "readme_bytes": 6,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "VibeVoice",
@@ -19114,8 +19690,9 @@
   "readme_bytes": 13031,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "VibeVoice-community",
@@ -19151,8 +19728,9 @@
   "readme_bytes": 11867,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "video-use",
@@ -19188,8 +19766,9 @@
   "readme_bytes": 5645,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Virtual-Box",
@@ -19219,8 +19798,9 @@
   "readme_bytes": 26,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "VirtualAssistant",
@@ -19253,7 +19833,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "vllm",
@@ -19293,8 +19874,9 @@
   "readme_bytes": 5708,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "voxaboxen",
@@ -19324,8 +19906,9 @@
   "readme_bytes": 6829,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "vscode",
@@ -19359,8 +19942,9 @@
   "readme_bytes": 6728,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "vst3sdk",
@@ -19396,8 +19980,9 @@
   "readme_bytes": 13093,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Vue",
@@ -19433,8 +20018,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Vyper",
@@ -19464,8 +20050,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "W3.CSS",
@@ -19495,8 +20082,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "warpx",
@@ -19526,8 +20114,9 @@
   "readme_bytes": 5610,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "wasmtime",
@@ -19561,8 +20150,9 @@
   "readme_bytes": 7674,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Web-platform-with-E-commerce-E-learning-social-media-job-hunting-post-articles-blockchain-ai",
@@ -19595,7 +20185,8 @@
   "stale": true,
   "owner_role": null,
   "first_party": true,
-  "empty": false
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Web.JS",
@@ -19625,8 +20216,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Webflow",
@@ -19656,8 +20248,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "webots",
@@ -19689,8 +20282,9 @@
   "readme_bytes": 6309,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "whisper.cpp",
@@ -19724,8 +20318,9 @@
   "readme_bytes": 39240,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Wolfram-language",
@@ -19755,8 +20350,9 @@
   "readme_bytes": 18,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "xls",
@@ -19786,8 +20382,9 @@
   "readme_bytes": 19421,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "XML",
@@ -19817,8 +20414,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "XPath",
@@ -19848,8 +20446,9 @@
   "readme_bytes": 7,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "xterm.js",
@@ -19883,8 +20482,9 @@
   "readme_bytes": 25518,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "yjs",
@@ -19920,8 +20520,9 @@
   "readme_bytes": 63145,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "yosys",
@@ -19953,8 +20554,9 @@
   "readme_bytes": 9851,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "yugabyte-db",
@@ -19988,8 +20590,9 @@
   "readme_bytes": 18363,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Yul",
@@ -20019,8 +20622,9 @@
   "readme_bytes": 5,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Zapier",
@@ -20050,8 +20654,9 @@
   "readme_bytes": 8,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "zenoh",
@@ -20083,8 +20688,9 @@
   "readme_bytes": 6224,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "zephyr",
@@ -20120,8 +20726,9 @@
   "readme_bytes": 4560,
   "stale": false,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Zig",
@@ -20151,8 +20758,9 @@
   "readme_bytes": 10,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "jayprophit"
  },
  {
   "name": "Multi-Cross-Platform-Trading-Bot",
@@ -20182,7 +20790,8 @@
   "readme_bytes": 0,
   "stale": true,
   "owner_role": null,
-  "first_party": false,
-  "empty": false
+  "first_party": true,
+  "empty": false,
+  "owner": "Sifdat"
  }
 ]

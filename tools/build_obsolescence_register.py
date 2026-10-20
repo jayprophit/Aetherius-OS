@@ -66,6 +66,15 @@ LIVE_PROJECTS = {
     "ai-digital-twin": "ai-digital-clone",
 }
 
+# The same projects under the names they carry on the account.
+LIVE_PROJECTS.update({
+    "multi-cross-platform-trading-bot": "Multi-Cross-Platform-Trading-Bot",
+    "materials-atlas-table-codex---mat": "Materials-Atlas-Table-Codex---MAT",
+    "agent-bridge-dashboard": "Agent-Bridge-dashboard",
+    "agent-bridge-cloudhybrid": "Agent-Bridge-cloudhybrid",
+    "agent-bridge-runtimesafety": "Agent-Bridge-runtimesafety",
+})
+
 # The predecessors, absorbed by a working project. Their material is kept
 # as reference; their repositories are archived rather than deleted.
 OBSOLETE_PREDECESSORS = {
@@ -77,6 +86,9 @@ OBSOLETE_PREDECESSORS = {
 }
 
 # The folders on disk that are generated and never source.
+# The accounts the owner holds. A repository on any of them is his own.
+OWNER_ACCOUNTS = {"jayprophit", "sifdat"}
+
 GENERATED_DIRS = {
     "build", "build-verify", "build-host", "build-verify-*", "dist", "out",
     "target", "coverage", ".next", ".cache", "__pycache__", ".pytest_cache",
@@ -106,15 +118,17 @@ def git(path: Path, *args) -> str:
 
 
 def classify_repository(name: str, fork: bool, size_kb: int, licence: str | None,
-                        archived: bool) -> tuple[str, str]:
+                        archived: bool, owner: str = "jayprophit") -> tuple[str, str]:
     """What a repository on the account is."""
     lowered = name.lower()
     if lowered in OBSOLETE_PREDECESSORS:
         return "obsolete", OBSOLETE_PREDECESSORS[lowered]
     if lowered in LIVE_PROJECTS:
-        return "live", "a working project of the programme"
+        return "first_party_live", "a working project of the programme"
     if fork:
-        return "reference", "a fork: third-party prior art, kept for reference"
+        # A fork is somebody else's code: third-party reference material,
+        # kept for reference, with its licence respected.
+        return "third_party", "a fork: third-party reference material, kept"
     if archived:
         # An archived repository that is empty, or that is a learning
         # repository, is still reference. The inheritance packet is
@@ -122,13 +136,16 @@ def classify_repository(name: str, fork: bool, size_kb: int, licence: str | None
         # and must not be deleted merely for being empty, and archiving
         # does not change what it is.
         if size_kb < 50 or any(marker in lowered for marker in LEARNING_MARKERS):
-            return "reference", "archived, but kept: it may be a learning repository"
+            return "first_party_learning", ("archived, but the owner's own data and "
+                                           "kept: it may be a learning repository")
         return "obsolete", "archived, and not a working project"
     if any(marker in lowered for marker in LEARNING_MARKERS):
-        return "reference", "a learning repository, kept"
+        return "first_party_learning", "a learning repository, the owner's own data"
     if size_kb < 50:
-        return "reference", "an empty repository, kept: it may be a learning repository"
-    return "unreviewed", "the owner's own repository, not yet placed in the programme"
+        return "first_party_learning", ("an empty repository, the owner's own data and "
+                                       "kept: it may be a learning repository")
+    return "first_party_application", ("the owner's own application, not yet placed in "
+                                       "the programme")
 
 
 def main() -> int:
@@ -144,7 +161,7 @@ def main() -> int:
         for r in account:
             state, why = classify_repository(
                 r["name"], r["fork"], r.get("size_kb") or 0, r.get("spdx"),
-                r.get("archived", False))
+                r.get("archived", False), r.get("owner", "jayprophit"))
             entries.append({
                 "kind": "repository",
                 "name": r["name"],
@@ -221,11 +238,12 @@ def main() -> int:
             "This register is what that instruction needs before it can be "
             "carried out, because obsolete and reference are easy to confuse "
             "and the difference is costly.",
-            "A predecessor absorbed by a working project is obsolete. A fork "
-            "that informed the design is reference. An empty repository the "
-            "owner keeps for learning is reference too, because the inheritance "
-            "packet is explicit that it must not be deleted merely for being "
-            "empty.",
+            "The owner's own rule is the one this register carries: all data "
+            "apart from publicly known brands and forks is the owner's own "
+            "data. So a fork is third-party reference material, kept with its "
+            "licence respected, and everything else is the owner's own: a "
+            "working project, a learning repository, an application that has "
+            "not been placed, or a predecessor that has been absorbed.",
             "Nothing is removed on the strength of this register. It says what "
             "is what; the removal is a separate, deliberate act.",
         ],
@@ -303,17 +321,23 @@ def main() -> int:
     for e in by_reason["obsolete"]:
         if e["kind"] == "repository":
             lines.append(f"| {e['name']} | {e['reason']} |")
+    lines += ["", "## The third-party reference material", "",
+              "Publicly known brands and forks: somebody else's code, kept with "
+              "its licence respected, and not the owner's to publish.", "",
+              "| Repository | Why |", "|---|---|"]
+    for e in by_reason.get("third_party", []):
+        if e["kind"] == "repository":
+            lines.append(f"| {e['name']} | {e['reason']} |")
     lines += ["", "## The generated output", "",
               "Rebuilt by the build, and never source.", "",
               "| Path | Size |", "|---|---|"]
     for e in sorted(by_reason["obsolete"], key=lambda x: -(x.get("bytes") or 0)):
         if e["kind"] == "generated":
             lines.append(f"| `{e['name']}` | {(e.get('bytes') or 0)/1024/1024:.1f} MB |")
-    lines += ["", "## The unreviewed", "",
-              "The owner's own repositories that are not yet placed in the "
-              "programme. They are not assumed to be live.", "",
+    lines += ["", "## The owner's own applications not yet placed", "",
+              "The owner's own data, waiting to be placed in the programme.", "",
               "| Repository | Size | Last push |", "|---|---|---|"]
-    for e in by_reason.get("unreviewed", []):
+    for e in by_reason.get("first_party_application", []):
         lines.append(f"| {e['name']} | {(e.get('size_kb') or 0)//1024} MB | "
                      f"{(e.get('pushed_at') or '')[:10]} |")
     REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")
