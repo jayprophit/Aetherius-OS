@@ -198,14 +198,19 @@ CAPABILITIES: list[dict] = [
          requirements=['REQ-DEV-001', 'REQ-COG-PREDICT-001', 'REQ-ORGAN-001'], acceptance=["AT-01", "AT-15"],
          gap_register=["D03"], platforms=["claude_code", "chatgpt", "opencode", "manus"]),
     dict(id="GAP-PLAN-002", axis="planning", name="Durable task state, checkpoints and resume",
-         status="MISSING", priority=1,
-         gap="A run exists only as an in-memory record. There is no durable task registry, "
-             "no checkpoint, no lease and no resume, so a job cannot survive a restart or a "
-             "crash.",
-         present="RunRecord and RunRequest exist in the platform header and the runtime "
-                 "returns a prepared record; the ledger and provenance modules record what "
-                 "happened, but nothing can pick the work back up.",
-         requirements=['REQ-PROV-001', 'REQ-LIFE-RECORD-001', 'REQ-RUN-001'], acceptance=["AT-05", "AT-06", "AT-16"],
+         status="VERIFIED", priority=1,
+         gap="A durable task registry, with a checkpoint, a lease and a resume, so a job "
+             "can survive a restart or a crash.",
+         present="The durable task registry records work that outlives the process. Every "
+                 "task carries an idempotency key, so submitting the same work twice "
+                 "returns the same task and the work is done once. A worker holds a "
+                 "bounded lease, so a second worker cannot take a task that is still live, "
+                 "and a worker that dies does not hold it for ever. A checkpoint records "
+                 "the progress, opaque to the registry, which stores it and hands it back "
+                 "without pretending to understand it. The record carries a checksum, so a "
+                 "tampered one is refused rather than mistaken for an empty registry, "
+                 "which would silently forget every task that was owed.",
+         requirements=['REQ-PROV-001', 'REQ-LIFE-RECORD-001', 'REQ-RUN-001', 'REQ-TASK-DURABLE-001'], acceptance=["AT-05", "AT-06", "AT-16"],
          gap_register=["C02", "C03", "C06"], platforms=["claude_code", "opencode", "manus", "chatgpt"]),
 
     # -- memory and context -------------------------------------------------
@@ -402,13 +407,18 @@ CAPABILITIES: list[dict] = [
 
     # -- lifecycle and recovery ----------------------------------------------
     dict(id="GAP-LIFE-001", axis="lifecycle_recovery", name="Crash recovery and checkpoint resume",
-         status="MISSING", priority=1,
-         gap="A crash loses the run. There is no checkpoint, no idempotency key and no "
-             "recovery, so a remote worker that dies leaves work half done with no way to "
-             "resume it.",
-         present="The ledger and provenance modules can record what happened, and the "
-                 "platform records a prepared run, but neither can restore a run.",
-         requirements=['REQ-PROV-001', 'REQ-LIFE-RECORD-PERSIST-001', 'REQ-RUN-001'], acceptance=["AT-06", "AT-16"],
+         status="VERIFIED", priority=1,
+         gap="A crash that loses the work, with no checkpoint, no idempotency key and no "
+             "recovery.",
+         present="A crash does not lose the work. A task whose worker dies has its lease "
+                 "expire, and an expired lease is recoverable, so the task is picked up "
+                 "again. Resuming it keeps the checkpoint, so the work continues from where "
+                 "it stopped rather than from the beginning, and the attempt count says "
+                 "how many times it has been tried. The idempotency key means the resumed "
+                 "task is not submitted as new work. The tests cover the whole crash, from "
+                 "the checkpoint to the completion, with the registry written and read back "
+                 "in between.",
+         requirements=['REQ-PROV-001', 'REQ-LIFE-RECORD-PERSIST-001', 'REQ-RUN-001', 'REQ-TASK-DURABLE-001'], acceptance=["AT-06", "AT-16"],
          gap_register=["C03", "C02"], platforms=["claude_code", "opencode", "manus", "chatgpt"]),
     dict(id="GAP-LIFE-002", axis="lifecycle_recovery", name="Continuous background operation",
          status="PARTIAL", priority=2,

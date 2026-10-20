@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **234** (219 open, 15 done)
+- Tasks: **234** (218 open, 16 done)
 
 ## By project
 
@@ -15,7 +15,7 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 42 | 7 |
+| aetherius-os | 41 | 8 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 12 | 0 |
@@ -277,6 +277,29 @@ Acceptance:
 - [ ] GAP-HIVE-001 is VERIFIED and cites the hive
 - [ ] GAP-HIVE-002 is VERIFIED and cites the hive
 - [ ] The hive's tests run in the Genesis build gate
+
+### ✅ TODO-GAP-003 — Close the durable task state and crash recovery gaps
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** gap-analysis — Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml
+
+The durable task registry is the work that survives a restart. An idempotency key makes a submission idempotent, so a retry after a network failure cannot do the work twice. A bounded lease gives one worker the task, so a second worker cannot take it while it is live and a worker that dies does not hold it for ever. A checkpoint records the progress, opaque to the registry, which stores it and hands it back without pretending to understand it. A task whose lease has expired is recoverable, and resuming it keeps the checkpoint, so the work continues from where it stopped rather than from the beginning.
+
+Evidence:
+
+```
+Genesis includes/genesis/agents/tasks.hpp and src/agents/tasks.cpp, with tests/task_tests.cpp proving it in a hundred and thirty-four checks that run in the build gate, including the whole crash end to end. The requirement registry carries REQ-TASK-DURABLE-001, and the gap analysis records GAP-PLAN-002 and GAP-LIFE-001 as VERIFIED and cites the registry. The whole Genesis suite passes, twenty-five of twenty-five.
+```
+
+Resolution:
+
+Resolved 2026-10-20. The durable task registry closes both task gaps. A hundred and thirty-four checks in tests/task_tests.cpp prove it, and the whole Genesis suite passes.
+
+Acceptance:
+
+- [ ] Every gap maps to a capability node or is recorded as genuinely outside the registry
+- [ ] A test proves the two registries do not contradict each other
 
 ### ⬜ TODO-KRN-001 — Write the machine-level modules of the C kernel
 
@@ -690,7 +713,7 @@ The gap analysis assessed 31 agent-platform capabilities against the Genesis reg
 Evidence:
 
 ```
-Two of the eight are now closed. Capability-scoped authority was closed by the authority engine, and delegation with narrowing scope and hive communication by the hive. The remaining six are crash recovery and checkpoint resume, the free-first admission and zero-spend guard, task decomposition and planning, durable task state and resume, and tool execution with sandboxing.
+Five of the eight are now closed. Capability-scoped authority was closed by the authority engine; delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery by the durable task registry. The three still open are the free-first admission and zero-spend guard, task decomposition and planning, and tool execution with sandboxing.
 ```
 
 Acceptance:
@@ -2860,25 +2883,6 @@ Evidence:
 Acceptance:
 
 - [ ] A tool call can be replayed from its recorded identity and outcome
-
-### ⬜ TODO-GAP-003 — Register the gap analysis in the Aetherius capability registry
-
-- **Project:** aetherius-os
-- **Status:** OPEN
-- **Source:** gap-analysis — Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml
-
-The gap analysis is a separate registry from the system capability registry. The two have to be reconciled so that a capability is not simultaneously claimed by one and denied by the other, and so that the roll-up numbers in the programme report are not two different answers to the same question.
-
-Evidence:
-
-```
-The capability registry and the gap registry both describe Genesis, from different angles: capability by capability, and requirement by requirement.
-```
-
-Acceptance:
-
-- [ ] Every gap maps to a capability node or is recorded as genuinely outside the registry
-- [ ] A test proves the two registries do not contradict each other
 
 ### ⬜ TODO-KRN-004 — Retire the Rust native layer once the C kernel is proven
 

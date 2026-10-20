@@ -113,11 +113,14 @@ gaps:
       - REQ-AGENT-PLATFORM-PERSIST-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/hive_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-02
       - AT-09
@@ -129,7 +132,7 @@ gaps:
       - hermes
       - copilot
       - manus
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-AGENT-PLATFORM-PERSIST-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-AGENT-PLATFORM-PERSIST-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-TOOL-002
     name: "Tool discovery and capability advertisement"
@@ -143,11 +146,14 @@ gaps:
       - REQ-AGENT-PLATFORM-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/hive_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-01
       - AT-11
@@ -158,7 +164,7 @@ gaps:
       - opencode
       - copilot
       - gemini
-    evidence: "Genesis requirement registry status: REQ-CAP-001=SCAFFOLDED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-CAP-001=SCAFFOLDED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-TOOL-003
     name: "Computer and browser control"
@@ -219,15 +225,17 @@ gaps:
   - id: GAP-PLAN-002
     name: "Durable task state, checkpoints and resume"
     axis: planning
-    status: MISSING
-    gap: "A run exists only as an in-memory record. There is no durable task registry, no checkpoint, no lease and no resume, so a job cannot survive a restart or a crash."
-    present: "RunRecord and RunRequest exist in the platform header and the runtime returns a prepared record; the ledger and provenance modules record what happened, but nothing can pick the work back up."
+    status: VERIFIED
+    gap: "A durable task registry, with a checkpoint, a lease and a resume, so a job can survive a restart or a crash."
+    present: "The durable task registry records work that outlives the process. Every task carries an idempotency key, so submitting the same work twice returns the same task and the work is done once. A worker holds a bounded lease, so a second worker cannot take a task that is still live, and a worker that dies does not hold it for ever. A checkpoint records the progress, opaque to the registry, which stores it and hands it back without pretending to understand it. The record carries a checksum, so a tampered one is refused rather than mistaken for an empty registry, which would silently forget every task that was owed."
     priority: 1
     requirement_refs:
       - REQ-PROV-001
       - REQ-LIFE-RECORD-001
       - REQ-RUN-001
+      - REQ-TASK-DURABLE-001
     implementation_refs:
+      - src/agents/tasks.cpp
       - src/identity/life_record.cpp
       - src/provenance/ledger.cpp
       - src/runtime/runtime.cpp
@@ -235,6 +243,7 @@ gaps:
       - tests/genesis_tests.cpp
       - tests/life_record_tests.cpp
       - tests/runtime_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-05
       - AT-06
@@ -248,7 +257,7 @@ gaps:
       - opencode
       - manus
       - chatgpt
-    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-LIFE-RECORD-001=BENCHMARKED, REQ-RUN-001=BENCHMARKED. Source present on disk: src/identity/life_record.cpp, src/provenance/ledger.cpp, src/runtime/runtime.cpp. Tests present on disk: tests/genesis_tests.cpp, tests/life_record_tests.cpp, tests/runtime_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-LIFE-RECORD-001=BENCHMARKED, REQ-RUN-001=BENCHMARKED, REQ-TASK-DURABLE-001=UNIT_TESTED. Source present on disk: src/agents/tasks.cpp, src/identity/life_record.cpp, src/provenance/ledger.cpp, src/runtime/runtime.cpp. Tests present on disk: tests/genesis_tests.cpp, tests/life_record_tests.cpp, tests/runtime_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-MEM-001
     name: "Working memory and context management"
@@ -347,13 +356,16 @@ gaps:
       - REQ-CAP-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - src/agents/authority.cpp
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/authority_tests.cpp
       - tests/hive_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-03
       - AT-17
@@ -365,7 +377,7 @@ gaps:
       - opencode
       - claude_code
       - chatgpt
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=UNIT_TESTED, REQ-CAP-001=SCAFFOLDED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/hive_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=UNIT_TESTED, REQ-CAP-001=SCAFFOLDED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/hive_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-HIVE-002
     name: "Hive communication and messaging"
@@ -381,15 +393,18 @@ gaps:
       - REQ-AGENT-PLATFORM-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - src/agents/authority.cpp
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
       - src/provenance/ledger.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/authority_tests.cpp
       - tests/genesis_tests.cpp
       - tests/hive_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-04
       - AT-11
@@ -401,7 +416,7 @@ gaps:
       - opencode
       - claude_code
       - manus
-    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-PROTO-001=SCAFFOLDED, REQ-POL-001=UNIT_TESTED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp, src/provenance/ledger.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/genesis_tests.cpp, tests/hive_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-PROTO-001=SCAFFOLDED, REQ-POL-001=UNIT_TESTED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp, src/provenance/ledger.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/genesis_tests.cpp, tests/hive_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-HIVE-003
     name: "Dynamic team formation and roles"
@@ -415,11 +430,14 @@ gaps:
       - REQ-SPECIALIST-COGNITION-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/hive_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-02
       - AT-15
@@ -429,7 +447,7 @@ gaps:
       - hermes
       - manus
       - opencode
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-SPECIALIST-COGNITION-001=SPECIFIED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-SPECIALIST-COGNITION-001=SPECIFIED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-HIVE-004
     name: "Solo versus hive benchmarking"
@@ -602,14 +620,17 @@ gaps:
       - REQ-AGENT-PLATFORM-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - registry/requirements.tsv
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
       - src/provenance/ledger.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/genesis_tests.cpp
       - tests/hive_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-19
     gap_register_refs:
@@ -620,7 +641,7 @@ gaps:
       - opencode
       - hermes
       - copilot
-    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-EVAL-001=UNIT_TESTED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, registry/requirements.tsv, src/agents/hive.cpp, src/agents/platform.cpp, src/provenance/ledger.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/genesis_tests.cpp, tests/hive_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-EVAL-001=UNIT_TESTED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, registry/requirements.tsv, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp, src/provenance/ledger.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/genesis_tests.cpp, tests/hive_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-OBS-002
     name: "Honest status reporting"
@@ -686,13 +707,16 @@ gaps:
       - REQ-POL-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - src/agents/authority.cpp
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/authority_tests.cpp
       - tests/hive_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-03
     gap_register_refs:
@@ -701,7 +725,7 @@ gaps:
       - claude_code
       - opencode
       - hermes
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/hive_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/hive_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-BROW-001
     name: "First-party browser and computer control"
@@ -757,21 +781,24 @@ gaps:
   - id: GAP-LIFE-001
     name: "Crash recovery and checkpoint resume"
     axis: lifecycle_recovery
-    status: MISSING
-    gap: "A crash loses the run. There is no checkpoint, no idempotency key and no recovery, so a remote worker that dies leaves work half done with no way to resume it."
-    present: "The ledger and provenance modules can record what happened, and the platform records a prepared run, but neither can restore a run."
+    status: VERIFIED
+    gap: "A crash that loses the work, with no checkpoint, no idempotency key and no recovery."
+    present: "A crash does not lose the work. A task whose worker dies has its lease expire, and an expired lease is recoverable, so the task is picked up again. Resuming it keeps the checkpoint, so the work continues from where it stopped rather than from the beginning, and the attempt count says how many times it has been tried. The idempotency key means the resumed task is not submitted as new work. The tests cover the whole crash, from the checkpoint to the completion, with the registry written and read back in between."
     priority: 1
     requirement_refs:
       - REQ-PROV-001
       - REQ-LIFE-RECORD-PERSIST-001
       - REQ-RUN-001
+      - REQ-TASK-DURABLE-001
     implementation_refs:
+      - src/agents/tasks.cpp
       - src/provenance/ledger.cpp
       - src/runtime/runtime.cpp
     test_refs:
       - tests/genesis_tests.cpp
       - tests/life_record_tests.cpp
       - tests/runtime_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-06
       - AT-16
@@ -783,7 +810,7 @@ gaps:
       - opencode
       - manus
       - chatgpt
-    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-LIFE-RECORD-PERSIST-001=BENCHMARKED, REQ-RUN-001=BENCHMARKED. Source present on disk: src/provenance/ledger.cpp, src/runtime/runtime.cpp. Tests present on disk: tests/genesis_tests.cpp, tests/life_record_tests.cpp, tests/runtime_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-LIFE-RECORD-PERSIST-001=BENCHMARKED, REQ-RUN-001=BENCHMARKED, REQ-TASK-DURABLE-001=UNIT_TESTED. Source present on disk: src/agents/tasks.cpp, src/provenance/ledger.cpp, src/runtime/runtime.cpp. Tests present on disk: tests/genesis_tests.cpp, tests/life_record_tests.cpp, tests/runtime_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-LIFE-002
     name: "Continuous background operation"
@@ -851,13 +878,16 @@ gaps:
       - REQ-AGENT-PLATFORM-001
     implementation_refs:
       - include/genesis/agents/hive.hpp
+      - include/genesis/agents/tasks.hpp
       - src/agents/hive.cpp
       - src/agents/platform.cpp
+      - src/agents/tasks.cpp
       - src/cognition/continuity.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/hive_tests.cpp
       - tests/memory_cognition_tests.cpp
+      - tests/task_tests.cpp
     acceptance_refs:
       - AT-11
     gap_register_refs:
@@ -867,7 +897,7 @@ gaps:
       - claude
       - manus
       - hermes
-    evidence: "Genesis requirement registry status: REQ-SELF-CONTINUITY-001=BENCHMARKED, REQ-UI-SHELL-001=SPECIFIED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp, src/cognition/continuity.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp, tests/memory_cognition_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-SELF-CONTINUITY-001=BENCHMARKED, REQ-UI-SHELL-001=SPECIFIED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, include/genesis/agents/tasks.hpp, src/agents/hive.cpp, src/agents/platform.cpp, src/agents/tasks.cpp, src/cognition/continuity.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp, tests/memory_cognition_tests.cpp, tests/task_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-UI-002
     name: "Avatar-first and multi-surface presence"
