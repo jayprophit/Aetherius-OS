@@ -34,3 +34,15 @@ research/codex-history/raw/
 # The text-document inventory is a generated index over the owner's
 # documents. It is committed because it is the coverage record; the
 # documents it describes are not.
+
+# Research artefacts: downloaded model weights and generated numeric
+# outputs. These are data the build produces or fetches, not source.
+# They stay on disk for the research scripts, which read them locally,
+# and they are kept out of the repository so a push is a push and not a
+# two-gigabyte transfer.
+research/lm-compression/gpt-neo-125M-fp32/
+research/lm-compression/packed-int2.bin
+research/lm-compression/packed-int4.bin
+research/build81/fea/fea_m3.dat
+research/build84/storage/
+research/build85/pattern/storage/
