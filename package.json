@@ -12,7 +12,9 @@
     "registry:validate": "vitest run src/programme src/state",
     "build:manifest": "vitest run src/programme/buildManifest.test.ts src/programme/workspaceRegistry.test.ts",
     "build:manifest:report": "vitest run src/programme/buildReport.test.ts src/programme/todoReport.test.ts",
-    "capability:report": "vitest run src/programme/capabilityRegistry.test.ts -t regenerates"
+    "capability:report": "vitest run src/programme/capabilityRegistry.test.ts -t regenerates",
+    "secret-scan": "python tools/scan_for_secrets.py",
+    "verify": "npm run secret-scan && npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
