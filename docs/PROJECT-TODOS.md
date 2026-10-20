@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **234** (218 open, 16 done)
+- Tasks: **238** (222 open, 16 done)
 
 ## By project
 
@@ -15,7 +15,7 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 41 | 8 |
+| aetherius-os | 45 | 8 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 12 | 0 |
@@ -358,6 +358,45 @@ Acceptance:
 
 - [ ] The C kernel produces every marker the Rust kernel produces
 - [ ] The marker comparison is automated, not read by eye
+
+### ⬜ TODO-OM-001 — Work through the owner's material, source by source
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — Aetherius-OS/docs/OWNER-MATERIAL-SOURCES.yaml
+
+The owner has provided thirty-two sources: the master handoffs, the fork catalogue, the prompt documents, the ChatGPT library files, and the reference trees. They are now inventoried and the decisions and capability asks are extracted, but the material has not been worked through source by source into the requirement and todo registers. The master inheritance packet is the continuity layer and it names the rules the programme runs on: the status vocabulary, the source precedence law, the integration modes, and the closure rule that a research-only capability is not completion.
+
+Evidence:
+
+```
+The owner material register, docs/OWNER-MATERIAL-SOURCES.yaml, and the extraction in research/owner-material/. Thirty-two sources are declared and present, and the ingestion recorded three hundred and eighty decisions and eighty-five capability asks from the documents that could be read.
+```
+
+Acceptance:
+
+- [ ] Each source's decisions are in the directives or the requirement registry
+- [ ] Each capability ask is a todo or a requirement
+- [ ] The ChatGPT library files are read, which closes the open question about them
+
+### ⬜ TODO-OM-002 — Read the ChatGPT library files, which the API could not reach
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — Aetherius-OS/docs/OWNER-MATERIAL-SOURCES.yaml
+
+The owner's ChatGPT library held seven hundred and sixty-eight files that the library API refused to serve, and one of them was the named master inheritance file. The owner has now supplied the library files directly, so they can be read. This closes the open question about the library.
+
+Evidence:
+
+```
+The owner material register records the library as an inventoried source of 768 files, and the inheritance packet it contains is already read and extracted.
+```
+
+Acceptance:
+
+- [ ] Every library file is read and classified
+- [ ] The content is routed to the project it belongs to
 
 ### ⬜ TODO-SEC-001 — Add the secret scan to the build gate
 
@@ -1611,6 +1650,44 @@ Acceptance:
 
 - [ ] The rules are visible where a change is proposed, not only in a document
 - [ ] A change that would violate one is refused rather than made and explained
+
+### ⬜ TODO-FRK-001 — Route the two forks the owner's catalogue does not cover
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — Aetherius-OS/docs/OWNER-MATERIAL-SOURCES.yaml
+
+The owner's fork use case migration catalogue routes three hundred and fifty repositories. Two on the account are not in it: buildkit, the container build system, and u-boot, the bootloader. Both are Aetherius OS core material, and both are large enough that a routing decision matters.
+
+Evidence:
+
+```
+The fork routing register, which joins the catalogue to the live account, classifies two repositories as unrouted forks: buildkit and u-boot. The catalogue's own category for Aetherius OS core is the place they belong.
+```
+
+Acceptance:
+
+- [ ] Each fork has a category, a destination and an integration mode
+- [ ] The fork routing register is regenerated and shows no unrouted fork
+
+### ⬜ TODO-FRK-002 — Place the four first-party applications that have no home yet
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — Aetherius-OS/docs/OWNER-MATERIAL-SOURCES.yaml
+
+Four of the owner's own repositories are not part of any project in the workspace and are not learning repositories: Coursiv, Devcontainer-setup, THE-ARCHITECTURE-OF-SHADOWS, and the long-named web platform repository. The Architecture of Shadows book is already in the books section of Aetherius OS, so the repository is probably the book's source rather than a separate application.
+
+Evidence:
+
+```
+The fork routing register classifies four repositories as owner applications that are not yet placed: Coursiv, Devcontainer-setup, THE-ARCHITECTURE-OF-SHADOWS and the long-named web platform repository.
+```
+
+Acceptance:
+
+- [ ] Each repository is placed in a project, or recorded as a learning repository
+- [ ] The programme catalogue records where each one lives
 
 ### ⬜ TODO-KRN-005 — Generate language bindings from the syscall ABI
 
