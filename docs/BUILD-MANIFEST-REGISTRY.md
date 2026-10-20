@@ -60,6 +60,7 @@ finished before it.
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
+| 🟡 medium | The unlicensed OmniAgent source is untracked and the Aetherius-OS guard proves it, but this repository's own … | OPEN | TODO-ARC-002 |
 | 🟡 medium | The V0 directive gap analysis records a large set of unimplemented stages, and the organism is still missing … | OPEN | TODO-GEN-003 |
 | ⚪ low | Local commits to main are blocked by an environment deny-rule, so the verified work exists only on this machi… | ACCEPTED | TODO-GEN-004 |
 
