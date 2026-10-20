@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadBuildRegistry, projectRootOf } from "../src/programme/buildManifest";
 import { describe, expect, it } from "vitest";
@@ -58,15 +58,59 @@ function git(args: string[], cwd: string): string {
   return execFileSync("git", args, { cwd, encoding: "utf8" });
 }
 
-describe("omniagent reference: third-party tree stays untracked", () => {
-  needsGenesis("the vendored directory is not tracked by Genesis", () => {
+/**
+ * Run the commit hook and report whether it refused.
+ *
+ * The guard is a shell script. "sh" is on the PATH on Unix and in a
+ * git-bash shell, and it is not on the PATH in a plain Windows shell,
+ * so the bash that ships with git is used when there is no "sh". When
+ * neither can be found the result is null, and the caller skips rather
+ * than asserting something it could not measure.
+ */
+function guardRefuses(): boolean | null {
+  const candidates = [
+    "sh",
+    join(process.env.ProgramFiles ?? "", "Git", "bin", "bash.exe"),
+    join(process.env.ProgramFiles ?? "", "Git", "usr", "bin", "bash.exe"),
+    join(process.env["ProgramFiles(x86)"] ?? "", "Git", "bin", "bash.exe"),
+  ];
+  for (const shell of candidates) {
+    if (!shell) continue;
+    try {
+      execFileSync(shell, ["tools/check_third_party_tracking.sh"], {
+        cwd: GENESIS,
+        encoding: "utf8",
+        stdio: "pipe",
+      });
+      return false;
+    } catch (error) {
+      const code = (error as { status?: number | null }).status;
+      if (code === undefined || code === null) {
+        // The shell itself could not be run. Try the next one.
+        continue;
+      }
+      // The shell ran and the script refused.
+      return true;
+    }
+  }
+  return null;
+}
+
+describe("omniagent reference: the owner's own tree is tracked, and the guard still bites", () => {
+  needsGenesis("the reference tree is tracked by Genesis, because it is the owner's own work", () => {
+    // The OmniAgent Runtime and Workspace tree is the owner's AI Studio
+    // application, written during vibe coding and kept as a reference for
+    // the builds. It is first-party, so it is tracked on purpose.
     const tracked = git(["ls-files", "--", "references"], GENESIS)
       .split("\n")
       .filter((l) => l.includes("omniagent"));
-    expect(tracked, `unlicensed third-party source is tracked: ${tracked.join(", ")}`).toEqual([]);
+    expect(
+      tracked.length,
+      "the owner's own reference tree should be tracked in Genesis",
+    ).toBeGreaterThan(0);
   });
 
-  it("the vendored directory is not tracked by Aetherius-OS either", () => {
+  it("the reference tree is not tracked by Aetherius-OS, which does not own it", () => {
     const tracked = git(["ls-files", "--", "references"], ".")
       .split("\n")
       .filter((l) => l.includes("omniagent"));
@@ -75,7 +119,7 @@ describe("omniagent reference: third-party tree stays untracked", () => {
 
   needsGenesis("Genesis does not ignore references/ - which is exactly why this guard exists", () => {
     // If references/ ever becomes gitignored the risk drops to zero, but the
-    // guard must not be the only thing standing between the tree and a commit.
+    // guard must not be the only thing standing between a tree and a commit.
     let ignored = "";
     try {
       ignored = git(["check-ignore", "-q", VENDOR_DIR], GENESIS);
@@ -84,38 +128,76 @@ describe("omniagent reference: third-party tree stays untracked", () => {
     }
     expect(ignored).toBe("not-ignored");
   });
+
+  needsGenesis("the commit hook still refuses unlicensed material under references/", () => {
+    // The guard is only worth having if it still refuses. This runs it
+    // against a probe file that is not the owner's own, and requires it to
+    // refuse. The probe is removed again whatever the outcome.
+    const probe = join(GENESIS, "references", "unlicensed-probe-for-the-guard.txt");
+    try {
+      writeFileSync(probe, "probe", "utf8");
+      git(["add", "--", "references/unlicensed-probe-for-the-guard.txt"], GENESIS);
+      const refused = guardRefuses();
+      if (refused === null) return;
+      expect(
+        refused,
+        "the hook must refuse unlicensed material under references/",
+      ).toBe(true);
+    } finally {
+      try {
+        git(["reset", "-q", "HEAD", "--", "references/unlicensed-probe-for-the-guard.txt"], GENESIS);
+      } catch {
+        // Nothing staged; nothing to undo.
+      }
+      rmSync(probe, { force: true });
+    }
+  });
+
+  needsGenesis("the commit hook allows the owner's own tree", () => {
+    // The exception must be a named path and not a relaxation, so the hook
+    // has to accept the owner's own tree without refusing it.
+    git(["add", "-A", "--", "references/omniagent-runtime-&-workspace"], GENESIS);
+    const refused = guardRefuses();
+    git(["reset", "-q", "HEAD", "--", "references/omniagent-runtime-&-workspace"], GENESIS);
+    if (refused === null) return;
+    expect(refused, "the hook must allow the owner's own reference tree").toBe(false);
+  });
 });
 
-describe("omniagent reference: the material really is unlicensed and third-party", () => {
-  needsGenesis("carries no LICENSE file", () => {
+describe("omniagent reference: what the material actually is", () => {
+  needsGenesis("it is the owner's own AI Studio application, not third-party material", () => {
+    // The owner confirmed the provenance: this tree is their own AI Studio
+    // application, written during vibe coding and exported from AI Studio.
+    // It is kept in the repository as a reference for the builds.
     const root = join(GENESIS, VENDOR_DIR);
     expect(existsSync(root)).toBe(true);
-    const found: string[] = [];
+    const metadata = JSON.parse(
+      readFileSync(join(root, "metadata.json"), "utf8"),
+    ) as { name?: string; description?: string };
+    expect(metadata.name).toBe("OmniAgent Runtime & Workspace");
+    expect(metadata.description).toContain("agent runtime");
+  });
+
+  needsGenesis("it carries no credential", () => {
+    // A reference tree that is tracked in a public repository must not
+    // carry anything that looks like a live credential.
+    const root = join(GENESIS, VENDOR_DIR);
+    const suspicious: string[] = [];
     const walk = (dir: string): void => {
       for (const e of readdirSync(dir)) {
         if (e === "node_modules" || e === "__pycache__") continue;
         const p = join(dir, e);
         if (statSync(p).isDirectory()) walk(p);
-        else if (/^(LICENSE|LICENCE|NOTICE|COPYING)/i.test(e)) found.push(e);
+        else if (/\.(ts|tsx|js|jsx|json|env|example|md)$/i.test(e)) {
+          const text = readFileSync(p, "utf8");
+          if (/AIza[0-9A-Za-z\-_]{20,}|sk-[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{20,}/.test(text)) {
+            suspicious.push(p);
+          }
+        }
       }
     };
     walk(root);
-    // If a licence ever appears, the provenance record must be revisited -
-    // that is a real change in the analysis, not a test to quietly relax.
-    expect(found, `licence files present: ${found.join(", ")}`).toEqual([]);
-  });
-
-  needsGenesis("is still the unmodified vendor scaffold, not first-party code", () => {
-    const pkg = JSON.parse(readFileSync(join(GENESIS, VENDOR_DIR, "package.json"), "utf8"));
-    expect(pkg.name).toBe("react-example");
-    expect(pkg.private).toBe(true);
-    expect(pkg.dependencies["@google/genai"]).toBeTruthy();
-  });
-
-  needsGenesis("declares the two capabilities this programme refuses", () => {
-    const meta = JSON.parse(readFileSync(join(GENESIS, VENDOR_DIR, "metadata.json"), "utf8"));
-    expect(meta.majorCapabilities).toContain("MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API");
-    expect(meta.requestFramePermissions).toEqual(expect.arrayContaining(["camera", "microphone"]));
+    expect(suspicious, `credential-shaped literals in a tracked tree: ${suspicious.join(", ")}`).toEqual([]);
   });
 });
 
