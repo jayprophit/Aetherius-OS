@@ -22,7 +22,30 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-GENESIS = REPO.parent / "Genesis"
+# Where Genesis lives. The workspace was reorganised so that Genesis is
+# the kernel of Aetherius OS, and the location comes from the build
+# manifest registry rather than from a path written out here: a stale
+# path finds nothing, and nothing found looks like an absence of
+# evidence rather than an error.
+def _find_genesis() -> Path:
+    registry = REPO / "docs" / "BUILD-MANIFEST-REGISTRY.yaml"
+    if registry.exists():
+        try:
+            import yaml as _yaml
+            body = _yaml.safe_load(registry.read_text(encoding="utf-8"))
+            for entry in (body or {}).get("projects", []):
+                if entry.get("id") == "genesis":
+                    manifest = str(entry.get("manifest", "")).strip().strip(chr(34))
+                    if manifest:
+                        candidate = REPO.parent / manifest
+                        if candidate.exists():
+                            return candidate.parent
+        except Exception:
+            pass
+    return REPO.parent / "Genesis"
+
+
+GENESIS = _find_genesis()
 REGISTRY = GENESIS / "registry"
 
 
@@ -215,22 +238,30 @@ CAPABILITIES: list[dict] = [
 
     # -- multi agent --------------------------------------------------------
     dict(id="GAP-HIVE-001", axis="multi_agent", name="Delegation with narrowing scope",
-         status="MISSING", priority=1,
-         gap="Genesis proposes and Agent Bridge executes, but there is no delegation "
-             "primitive that issues a scoped grant to a child agent, checks that the child "
-             "cannot widen it, and proves it.",
-         present="The action proposal module records what Genesis intends to do and the "
-                 "platform module models agents, but nothing binds a child to a narrowed "
-                 "scope.",
+         status="VERIFIED", priority=1,
+         gap="A delegation primitive that issues a scoped grant to a child agent, checks "
+             "that the child cannot widen it, and proves it.",
+         present="The hive issues a child a scope that is within its parent's, through the "
+                 "authority engine, so the rule that a delegated grant may only narrow is "
+                 "the rule that already governs grants rather than a second one. A child "
+                 "cannot hold a capability, an action, a network or filesystem permission, "
+                 "or a lifetime that its parent lacks, and a chain of delegations can only "
+                 "subtract: the second level of a chain cannot reach the first level's "
+                 "wider scope. The tests prove each of those.",
          requirements=['REQ-AGENT-PLATFORM-001', 'REQ-POL-001', 'REQ-CAP-001'], acceptance=["AT-03", "AT-17"],
          gap_register=["D04", "F04"], platforms=["hermes", "opencode", "claude_code", "chatgpt"]),
     dict(id="GAP-HIVE-002", axis="multi_agent", name="Hive communication and messaging",
-         status="MISSING", priority=1,
-         gap="No agent can address another agent. There is no message type, no transport "
-             "and no record of who said what to whom.",
-         present="The platform models a communication endpoint field on the agent, and the "
-                 "provenance ledger can record an event, but there is no message contract.",
-         requirements=['REQ-PROV-001', 'REQ-PROTO-001', 'REQ-POL-001'], acceptance=["AT-04", "AT-11"],
+         status="VERIFIED", priority=1,
+         gap="A message type, a transport, and a record of who said what to whom.",
+         present="The hive carries a typed message between agents, with a sender, a "
+                 "recipient, the capability the message exercises and the action within "
+                 "it. A message is authorised before it is sent: the sender must hold a "
+                 "live grant permitting the action, and a message from an agent that "
+                 "holds nothing, or that exercises an action its grant does not permit, "
+                 "is refused and is neither delivered nor recorded. Messages are delivered "
+                 "in order, a broadcast reaches every agent but the sender, and the hive "
+                 "keeps the record of what was said.",
+         requirements=['REQ-PROV-001', 'REQ-PROTO-001', 'REQ-POL-001', 'REQ-AGENT-PLATFORM-001'], acceptance=["AT-04", "AT-11"],
          gap_register=["E01", "D06"], platforms=["hermes", "opencode", "claude_code", "manus"]),
     dict(id="GAP-HIVE-003", axis="multi_agent", name="Dynamic team formation and roles",
          status="PARTIAL", priority=2,
@@ -449,7 +480,13 @@ def main() -> int:
     lines.append("# " + "=" * 76)
     lines.append('schema_version: "1.0.0"')
     lines.append('source_date: "2026-10-20"')
-    lines.append('genesis_requirement_registry: "Genesis/registry/requirements.tsv"')
+    # The path is written from where Genesis actually is, so it cannot
+    # become a path that leads nowhere.
+    try:
+        relative = GENESIS.relative_to(REPO.parent).as_posix()
+    except ValueError:
+        relative = GENESIS.as_posix()
+    lines.append(f'genesis_requirement_registry: "{relative}/registry/requirements.tsv"')
     lines.append('platform_inventory: "Aetherius-OS/research/platform-capability-inventory.md"')
     lines.append("gaps:")
 

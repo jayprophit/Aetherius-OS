@@ -19,7 +19,7 @@
 # ============================================================================
 schema_version: "1.0.0"
 source_date: "2026-10-20"
-genesis_requirement_registry: "Genesis/registry/requirements.tsv"
+genesis_requirement_registry: "Aetherius-OS/kernel/Genesis/registry/requirements.tsv"
 platform_inventory: "Aetherius-OS/research/platform-capability-inventory.md"
 gaps:
   - id: GAP-MODEL-001
@@ -62,6 +62,10 @@ gaps:
     requirement_refs:
       - REQ-POL-001
       - REQ-PLATFORM-SERVICES-001
+    implementation_refs:
+      - src/agents/authority.cpp
+    test_refs:
+      - tests/authority_tests.cpp
     acceptance_refs:
       - AT-07
       - AT-18
@@ -71,7 +75,7 @@ gaps:
     platform_refs:
       - hermes
       - opencode
-    evidence: "Genesis requirement registry status: REQ-POL-001=SPECIFIED, REQ-PLATFORM-SERVICES-001=SPECIFIED."
+    evidence: "Genesis requirement registry status: REQ-POL-001=UNIT_TESTED, REQ-PLATFORM-SERVICES-001=SPECIFIED. Source present on disk: src/agents/authority.cpp. Tests present on disk: tests/authority_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-MODEL-003
     name: "Local and offline model support"
@@ -108,9 +112,12 @@ gaps:
       - REQ-AGENT-PLATFORM-001
       - REQ-AGENT-PLATFORM-PERSIST-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
+      - src/agents/hive.cpp
       - src/agents/platform.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
+      - tests/hive_tests.cpp
     acceptance_refs:
       - AT-02
       - AT-09
@@ -122,7 +129,7 @@ gaps:
       - hermes
       - copilot
       - manus
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-AGENT-PLATFORM-PERSIST-001=UNIT_TESTED. Source present on disk: src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-AGENT-PLATFORM-PERSIST-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-TOOL-002
     name: "Tool discovery and capability advertisement"
@@ -135,9 +142,12 @@ gaps:
       - REQ-CAP-001
       - REQ-AGENT-PLATFORM-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
+      - src/agents/hive.cpp
       - src/agents/platform.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
+      - tests/hive_tests.cpp
     acceptance_refs:
       - AT-01
       - AT-11
@@ -148,7 +158,7 @@ gaps:
       - opencode
       - copilot
       - gemini
-    evidence: "Genesis requirement registry status: REQ-CAP-001=SCAFFOLDED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-CAP-001=SCAFFOLDED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-TOOL-003
     name: "Computer and browser control"
@@ -327,18 +337,23 @@ gaps:
   - id: GAP-HIVE-001
     name: "Delegation with narrowing scope"
     axis: multi_agent
-    status: MISSING
-    gap: "Genesis proposes and Agent Bridge executes, but there is no delegation primitive that issues a scoped grant to a child agent, checks that the child cannot widen it, and proves it."
-    present: "The action proposal module records what Genesis intends to do and the platform module models agents, but nothing binds a child to a narrowed scope."
+    status: VERIFIED
+    gap: "A delegation primitive that issues a scoped grant to a child agent, checks that the child cannot widen it, and proves it."
+    present: "The hive issues a child a scope that is within its parent's, through the authority engine, so the rule that a delegated grant may only narrow is the rule that already governs grants rather than a second one. A child cannot hold a capability, an action, a network or filesystem permission, or a lifetime that its parent lacks, and a chain of delegations can only subtract: the second level of a chain cannot reach the first level's wider scope. The tests prove each of those."
     priority: 1
     requirement_refs:
       - REQ-AGENT-PLATFORM-001
       - REQ-POL-001
       - REQ-CAP-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
+      - src/agents/authority.cpp
+      - src/agents/hive.cpp
       - src/agents/platform.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
+      - tests/authority_tests.cpp
+      - tests/hive_tests.cpp
     acceptance_refs:
       - AT-03
       - AT-17
@@ -350,23 +365,31 @@ gaps:
       - opencode
       - claude_code
       - chatgpt
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=SPECIFIED, REQ-CAP-001=SCAFFOLDED. Source present on disk: src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=UNIT_TESTED, REQ-CAP-001=SCAFFOLDED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/hive_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-HIVE-002
     name: "Hive communication and messaging"
     axis: multi_agent
-    status: MISSING
-    gap: "No agent can address another agent. There is no message type, no transport and no record of who said what to whom."
-    present: "The platform models a communication endpoint field on the agent, and the provenance ledger can record an event, but there is no message contract."
+    status: VERIFIED
+    gap: "A message type, a transport, and a record of who said what to whom."
+    present: "The hive carries a typed message between agents, with a sender, a recipient, the capability the message exercises and the action within it. A message is authorised before it is sent: the sender must hold a live grant permitting the action, and a message from an agent that holds nothing, or that exercises an action its grant does not permit, is refused and is neither delivered nor recorded. Messages are delivered in order, a broadcast reaches every agent but the sender, and the hive keeps the record of what was said."
     priority: 1
     requirement_refs:
       - REQ-PROV-001
       - REQ-PROTO-001
       - REQ-POL-001
+      - REQ-AGENT-PLATFORM-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
+      - src/agents/authority.cpp
+      - src/agents/hive.cpp
+      - src/agents/platform.cpp
       - src/provenance/ledger.cpp
     test_refs:
+      - tests/agent_platform_tests.cpp
+      - tests/authority_tests.cpp
       - tests/genesis_tests.cpp
+      - tests/hive_tests.cpp
     acceptance_refs:
       - AT-04
       - AT-11
@@ -378,7 +401,7 @@ gaps:
       - opencode
       - claude_code
       - manus
-    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-PROTO-001=SCAFFOLDED, REQ-POL-001=SPECIFIED. Source present on disk: src/provenance/ledger.cpp. Tests present on disk: tests/genesis_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-PROTO-001=SCAFFOLDED, REQ-POL-001=UNIT_TESTED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp, src/provenance/ledger.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/genesis_tests.cpp, tests/hive_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-HIVE-003
     name: "Dynamic team formation and roles"
@@ -391,9 +414,12 @@ gaps:
       - REQ-AGENT-PLATFORM-001
       - REQ-SPECIALIST-COGNITION-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
+      - src/agents/hive.cpp
       - src/agents/platform.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
+      - tests/hive_tests.cpp
     acceptance_refs:
       - AT-02
       - AT-15
@@ -403,7 +429,7 @@ gaps:
       - hermes
       - manus
       - opencode
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-SPECIALIST-COGNITION-001=SPECIFIED. Source present on disk: src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-SPECIALIST-COGNITION-001=SPECIFIED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-HIVE-004
     name: "Solo versus hive benchmarking"
@@ -492,8 +518,10 @@ gaps:
       - REQ-KEY-PREFLIGHT-001
       - REQ-CAP-001
     implementation_refs:
+      - src/agents/authority.cpp
       - src/security/key_custody.cpp
     test_refs:
+      - tests/authority_tests.cpp
       - tests/key_custody_tests.cpp
     acceptance_refs:
       - AT-09
@@ -506,7 +534,7 @@ gaps:
       - opencode
       - hermes
       - copilot
-    evidence: "Genesis requirement registry status: REQ-POL-001=SPECIFIED, REQ-KEY-PREFLIGHT-001=UNIT_TESTED, REQ-CAP-001=SCAFFOLDED. Source present on disk: src/security/key_custody.cpp. Tests present on disk: tests/key_custody_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-POL-001=UNIT_TESTED, REQ-KEY-PREFLIGHT-001=UNIT_TESTED, REQ-CAP-001=SCAFFOLDED. Source present on disk: src/agents/authority.cpp, src/security/key_custody.cpp. Tests present on disk: tests/authority_tests.cpp, tests/key_custody_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-AUTH-002
     name: "Secret isolation"
@@ -546,8 +574,10 @@ gaps:
       - REQ-POL-001
       - REQ-KEY-PREFLIGHT-001
     implementation_refs:
+      - src/agents/authority.cpp
       - src/security/key_custody.cpp
     test_refs:
+      - tests/authority_tests.cpp
       - tests/key_custody_tests.cpp
     acceptance_refs:
       - AT-17
@@ -557,7 +587,7 @@ gaps:
       - claude_code
       - opencode
       - hermes
-    evidence: "Genesis requirement registry status: REQ-POL-001=SPECIFIED, REQ-KEY-PREFLIGHT-001=UNIT_TESTED. Source present on disk: src/security/key_custody.cpp. Tests present on disk: tests/key_custody_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-POL-001=UNIT_TESTED, REQ-KEY-PREFLIGHT-001=UNIT_TESTED. Source present on disk: src/agents/authority.cpp, src/security/key_custody.cpp. Tests present on disk: tests/authority_tests.cpp, tests/key_custody_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-OBS-001
     name: "Tool call attribution and replay"
@@ -571,12 +601,15 @@ gaps:
       - REQ-EVAL-001
       - REQ-AGENT-PLATFORM-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
       - registry/requirements.tsv
+      - src/agents/hive.cpp
       - src/agents/platform.cpp
       - src/provenance/ledger.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
       - tests/genesis_tests.cpp
+      - tests/hive_tests.cpp
     acceptance_refs:
       - AT-19
     gap_register_refs:
@@ -587,7 +620,7 @@ gaps:
       - opencode
       - hermes
       - copilot
-    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-EVAL-001=UNIT_TESTED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: registry/requirements.tsv, src/agents/platform.cpp, src/provenance/ledger.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/genesis_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-PROV-001=BENCHMARKED, REQ-EVAL-001=UNIT_TESTED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, registry/requirements.tsv, src/agents/hive.cpp, src/agents/platform.cpp, src/provenance/ledger.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/genesis_tests.cpp, tests/hive_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-OBS-002
     name: "Honest status reporting"
@@ -652,9 +685,14 @@ gaps:
       - REQ-AGENT-PLATFORM-001
       - REQ-POL-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
+      - src/agents/authority.cpp
+      - src/agents/hive.cpp
       - src/agents/platform.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
+      - tests/authority_tests.cpp
+      - tests/hive_tests.cpp
     acceptance_refs:
       - AT-03
     gap_register_refs:
@@ -663,7 +701,7 @@ gaps:
       - claude_code
       - opencode
       - hermes
-    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=SPECIFIED. Source present on disk: src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-AGENT-PLATFORM-001=UNIT_TESTED, REQ-POL-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/authority.cpp, src/agents/hive.cpp, src/agents/platform.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/authority_tests.cpp, tests/hive_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-BROW-001
     name: "First-party browser and computer control"
@@ -812,10 +850,13 @@ gaps:
       - REQ-UI-SHELL-001
       - REQ-AGENT-PLATFORM-001
     implementation_refs:
+      - include/genesis/agents/hive.hpp
+      - src/agents/hive.cpp
       - src/agents/platform.cpp
       - src/cognition/continuity.cpp
     test_refs:
       - tests/agent_platform_tests.cpp
+      - tests/hive_tests.cpp
       - tests/memory_cognition_tests.cpp
     acceptance_refs:
       - AT-11
@@ -826,7 +867,7 @@ gaps:
       - claude
       - manus
       - hermes
-    evidence: "Genesis requirement registry status: REQ-SELF-CONTINUITY-001=BENCHMARKED, REQ-UI-SHELL-001=SPECIFIED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: src/agents/platform.cpp, src/cognition/continuity.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/memory_cognition_tests.cpp."
+    evidence: "Genesis requirement registry status: REQ-SELF-CONTINUITY-001=BENCHMARKED, REQ-UI-SHELL-001=SPECIFIED, REQ-AGENT-PLATFORM-001=UNIT_TESTED. Source present on disk: include/genesis/agents/hive.hpp, src/agents/hive.cpp, src/agents/platform.cpp, src/cognition/continuity.cpp. Tests present on disk: tests/agent_platform_tests.cpp, tests/hive_tests.cpp, tests/memory_cognition_tests.cpp."
     provenance: "gap analysis 2026-10-20, against Genesis registries and the master handoff"
   - id: GAP-UI-002
     name: "Avatar-first and multi-surface presence"

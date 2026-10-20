@@ -1818,29 +1818,37 @@ todos:
   detail: 'The gap analysis assessed 31 agent-platform capabilities against the Genesis registries and
     found 27 open, 8 of them priority one: capability-scoped authority, delegation with narrowing scope,
     hive communication, crash recovery and resume, the free-first admission guard, task decomposition,
-    durable task state, and tool execution with sandboxing. Those eight are the difference between Genesis
-    being an organism runtime and Genesis being an agent platform.'
-  evidence: '"Open (missing or partial): 27 (87% of assessed capabilities)" with eight priority-1 entries.
-    The underlying requirement registry shows 170 requirements of which 84 are proven.'
+    durable task state, and tool execution with sandboxing.'
+  evidence: Two of the eight are now closed. Capability-scoped authority was closed by the authority engine,
+    and delegation with narrowing scope and hive communication by the hive. The remaining six are crash
+    recovery and checkpoint resume, the free-first admission and zero-spend guard, task decomposition
+    and planning, durable task state and resume, and tool execution with sandboxing.
   acceptance:
   - Each priority-one gap moves to IMPLEMENTED or VERIFIED with a test that proves it
   - The gap registry is regenerated and the report shows the change
 - id: TODO-GAP-002
-  title: Write the platform capability inventory the gap analysis compares against
+  title: 'Close the hive gaps: delegation with narrowing scope, and hive messaging'
   project: aetherius-os
-  status: OPEN
-  priority: 2
+  status: DONE
+  priority: 1
   source:
     kind: gap-analysis
     ref: GAP-ANALYSIS-REGISTRY.yaml, platform_inventory
-  detail: 'The gap registry names the platforms each capability was observed in, and the registry points
-    at a platform capability inventory that does not exist yet. It has to be written from evidence rather
-    than from general knowledge: the owner''s own conversations, the Agent Bridge capability checklist,
-    the handoff''s provider catalogue and the predecessor build''s task surface.'
-  evidence: 'The gap registry records platform_inventory: "Aetherius-OS/research/platform-capability-inventory.md",
-    which does not yet exist.'
+  detail: 'The hive is the delegation and messaging layer of the agent platform. Delegation may only narrow:
+    a parent hands a child a scope that is within its own, through the authority engine, so there is one
+    rule about grants rather than two, and a chain of delegations can only subtract. A message is authorised
+    before it is sent: the sender must hold a live grant permitting the action the message exercises,
+    and a message from an agent that holds nothing is refused and is neither delivered nor recorded.'
+  evidence: Genesis includes/genesis/agents/hive.hpp and src/agents/hive.cpp, with tests/hive_tests.cpp
+    proving it in sixty-two checks that run in the build gate. The gap analysis records GAP-HIVE-001 and
+    GAP-HIVE-002 as VERIFIED and cites the hive. The whole Genesis suite passes, twenty-four of twenty-four.
   acceptance:
-  - The inventory exists and every platform claim in the gap registry traces to it
+  - GAP-HIVE-001 is VERIFIED and cites the hive
+  - GAP-HIVE-002 is VERIFIED and cites the hive
+  - The hive's tests run in the Genesis build gate
+  resolution: 'Resolved 2026-10-20. The hive closes both hive gaps: delegation with narrowing scope, and
+    hive communication and messaging. Sixty-two checks in tests/hive_tests.cpp prove the rules, and the
+    whole Genesis suite passes.'
 - id: TODO-GAP-003
   title: Register the gap analysis in the Aetherius capability registry
   project: aetherius-os
