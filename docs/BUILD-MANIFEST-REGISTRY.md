@@ -110,6 +110,9 @@ finished before it.
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
 | 🟡 medium | Two tests are timing-sensitive under CPU contention on this host, so the suite is green when run alone and in… | OPEN | TODO-AOS-003 |
+| 🟠 high | The installed application set is recorded but nothing decides what Aetherius has to be able to do with any of… | OPEN | TODO-APP-002 |
+| 🔴 critical | The secret scan that found twelve live-looking OpenRouter keys in the conversation corpus is a one-off script… | OPEN | TODO-SEC-001 |
+| 🟡 medium | Two hundred and fifteen of the three hundred and forty-four forked repositories name no capability axis, so t… | OPEN | TODO-REPO-002 |
 | 🟡 medium | The source registry records that a document exists, but not what the registry of requirements and capabilitie… | OPEN | TODO-SRC-002 |
 | 🟠 high | The C kernel's pure logic is written and proven, but the machine-level modules are not, so the UEFI kernel im… | OPEN | TODO-KRN-001 |
 | 🟡 medium | The C kernel host suite is not part of the Aetherius-OS verify command, so a kernel change can land without i… | OPEN | TODO-KRN-006 |

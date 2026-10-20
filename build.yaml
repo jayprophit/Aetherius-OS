@@ -159,6 +159,42 @@ known_issues:
       The faults are load sensitivity rather than behaviour faults, but an
       intermittently failing test cannot be used as a gate, so the issue
       stays open.
+  - id: AOS-APP-001
+    severity: high
+    summary: >-
+      The installed application set is recorded but nothing decides what
+      Aetherius has to be able to do with any of it, so the computer-control
+      capability has no target.
+    evidence: >-
+      docs/APPLICATION-REGISTRY.yaml records 159 shortcuts and 738
+      installed applications across 12 categories. The gap analysis
+      records the current state: GAP-BROW-001 and GAP-TOOL-003 are both
+      MISSING.
+    status: OPEN
+    todo_ref: TODO-APP-002
+  - id: AOS-SEC-001
+    severity: critical
+    summary: >-
+      The secret scan that found twelve live-looking OpenRouter keys in
+      the conversation corpus is a one-off script, not a build gate, and
+      the repositories are public.
+    evidence: >-
+      "12 hit(s)" for openrouter_key in research/codex-history before the
+      extractor was taught to redact. The extractor now redacts at the
+      point of extraction and the corpus is clean, but nothing runs the
+      scan over the tracked tree.
+    status: OPEN
+    todo_ref: TODO-SEC-001
+  - id: AOS-REPO-001
+    severity: medium
+    summary: >-
+      Two hundred and fifteen of the three hundred and forty-four forked
+      repositories name no capability axis, so they are reference material
+      nobody has decided what to do with.
+    evidence: >-
+      "unclassified: 215" in docs/REPO-REGISTRY.yaml.
+    status: OPEN
+    todo_ref: TODO-REPO-002
   - id: AOS-SRC-001
     severity: medium
     summary: >-
