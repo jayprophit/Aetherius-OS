@@ -1,0 +1,49 @@
+#!/bin/sh
+# Aetherius-OS pre-commit hook.
+#
+# Two rules, both about what may enter the repository:
+#
+#  1. The secret scan must pass. The repositories in this workspace are
+#     public, and the conversation material this programme works from is
+#     exactly the kind of place credentials end up: the Codex corpus alone
+#     held twelve live-looking OpenRouter keys before the extractor was
+#     taught to redact. A credential that reaches a commit is published.
+#
+#  2. The generated conversation corpus must not be committed. The raw
+#     conversation text is regenerated from the local Codex store, so it is
+#     output rather than source, and it is not published. The registry
+#     beside it - the index, the thread metadata and the digest - is the
+#     part the build uses, and that is committed.
+#
+# Install with:  git config core.hooksPath .githooks
+
+set -e
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+# Rule 1: the secret scan.
+if command -v python >/dev/null 2>&1; then
+    if ! python tools/scan_for_secrets.py; then
+        echo ""
+        echo "REFUSED: the secret scan found something. The commit was not made."
+        echo ""
+        exit 1
+    fi
+fi
+
+# Rule 2: the raw conversation corpus.
+newly_added=$(git diff --cached --name-only --diff-filter=A -- research/codex-history/raw/ 2>/dev/null || true)
+if [ -n "$newly_added" ]; then
+    count=$(printf '%s\n' "$newly_added" | grep -c . || true)
+    echo ""
+    echo "REFUSED: $count file(s) under research/codex-history/raw/ are staged."
+    echo ""
+    echo "That is the raw conversation text. It is generated from the local"
+    echo "Codex store and it is not published. The index, the thread metadata"
+    echo "and the digest beside it are committed; the raw text is not."
+    echo ""
+    exit 1
+fi
+
+exit 0

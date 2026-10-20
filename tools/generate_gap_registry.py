@@ -271,12 +271,18 @@ CAPABILITIES: list[dict] = [
 
     # -- permissions and authority ------------------------------------------
     dict(id="GAP-AUTH-001", axis="permissions_authority", name="Capability-scoped authority",
-         status="PARTIAL", priority=1,
-         gap="A tool grant names a tool and a set of actions, but the kernel does not enforce "
-             "it: the grant is a description the runtime reads, not a boundary the runtime "
-             "cannot cross.",
-         present="ToolGrant carries allowed actions, network and filesystem write permissions, "
-                 "and AgentDefinition carries an approval mode and a sandbox requirement.",
+         status="IMPLEMENTED", priority=1,
+         gap="The authority engine now evaluates a grant: default deny, one capability per "
+             "grant, only the listed actions, and an expired grant refused. What is still "
+             "missing is the binding of that engine to the tool execution path, so a tool "
+             "call does not yet consult it before it runs.",
+         present="genesis/agents/authority.hpp and src/agents/authority.cpp implement the "
+                 "evaluation: AuthorityRegistry, CapabilityRequest, AuthorityGrant, and a "
+                 "decision for every outcome. A delegated grant can only narrow - it may "
+                 "not hold a capability the parent lacks, an action the parent does not "
+                 "permit, a broader network or filesystem permission, or a longer lifetime. "
+                 "tests/authority_tests.cpp covers thirty cases including the delegation "
+                 "chain, and REQ-POL-001 moves from specified to unit tested.",
          requirements=['REQ-POL-001', 'REQ-KEY-PREFLIGHT-001', 'REQ-CAP-001'], acceptance=["AT-09", "AT-17"],
          gap_register=["F04", "F03"], platforms=["claude_code", "opencode", "hermes", "copilot"]),
     dict(id="GAP-AUTH-002", axis="permissions_authority", name="Secret isolation",

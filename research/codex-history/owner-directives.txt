@@ -1,0 +1,480 @@
+OWNER DIRECTIVES recovered from the Codex conversation corpus
+========================================================================
+237 distinct directive sentences across the recovered threads.
+Filtered: UI plumbing, pasted command output, and the agent's own prose.
+========================================================================
+
+[01a02943] POIETEK_DESKTOP_CODEX_HANDOFF.md: C:/Users/jpowe/Desktop/SDS/Studio-Daw-Station-SDS-build/POIETEK_DESKTOP_CODEX_HANDOFF.md
+
+[01a02943] README.md: C:/Users/jpowe/Desktop/SDS/Studio-Daw-Station-SDS-build/README.md
+
+[01a02943] Studio-Daw-Station-SDS-build: C:/Users/jpowe/Desktop/SDS/Studio-Daw-Station-SDS-build
+
+[01a02943] please read the note,  amend, implement, fix, have full access to do autonomous automation at any level.
+
+[01a02943] i give full permission at administration level
+
+[01a02943] merge, de-deplicate, remov obsolete folders and files and anything else needed.
+
+[01a02943] also add full world class mass adptd style system architecture
+
+[01a02943] continue and finish the build.
+
+[01a02943] compare it with similar apps, dapps, software, programs, websites, modules, others, etc.
+
+[01a02943] closed or opend sources to finish my program.
+
+[01a02943] make sure to build the same base foundation like others at a c or c++ with dditional alayers to make a full deploayble app, website, for cross platform, desktop, mobile, tablet, webapp/ website
+
+[01a02943] take a deep analysis of this website and abstract the parts that will benefit the apphttps://killaviccheatcodes.app/
+
+[01a02943] add a sample record and recall button.
+
+[01a02943] taking a deep dive into propellerhead reason and all their products, setup, effects, how it works.
+
+[01a044ea] Follow its cursor to read older turns when necessary.
+
+[01a044ea] \nPS C:\\Users\\jpowe\\Desktop\\universal-Bridge> cmake --build build --config Release        \nCMake Error: \n  Generator \n \n    Visual Studio 17 2022 \n \n  could not find any instance of Visual Studio.
+
+[01a044ea] \n \n \n \nPS C:\\Users\\jpowe\\Desktop\\universal-Bridge>  \nPS C:\\Users\\jpowe\\Desktop\\universal-Bridge> ctest --test-dir build -C Release --output-on-failure \nTest project C:/Users/jpowe/Desktop/universal-Bridge/build \nNo tests were found!!!
+
+[01a044ea] \nPS C:\\Users\\jpowe\\Desktop\\universal-Bridge>  \nPS C:\\Users\\jpowe\\Desktop\\universal-Bridge> cmake --build build --config Debug \nCMake Error: \n  Generator \n \n    Visual Studio 17 2022 \n \n  could not find any instance of Visual Studio.
+
+[01a044ea] please do all fixes, amendments, changes.
+
+[01a044ea] Do not silently remove existing requirements.
+
+[01a044ea] Build and test locally, fix failures, commit changes on develop/v0.5-production-foundation, and push updates to the GitHub repository.
+
+[01a044ea] Keep the repository public for now because the user wants AI tools to be able to read it.
+
+[01a044ea] Clearly distinguish implemented functionality from scaffolding/experimental functionality and do not claim unsupported device/DAW integrations are complete.
+
+[01a044ea] finish the build on my local drive.
+
+[01a044ea] also continue with the github repository.
+
+[01a044ea] fi nish the build, test, run and repush the code to the repository.
+
+[01a044ea] check the cpu if you need access to the sql server management studio, visual studio community, or any other program needed on my cpu to help with the build.
+
+[01a044ea] also fix any problems that maybe be in the background topping any processes needed to run code, push, pull, internal parts, api, other, etc.
+
+[01a044ea] this is a full fix and build, to world class industry standards
+
+[01a044ea] We’ll go **from Gate 0**, in order, and I’ll use your exact Windows folder…": C:\Users\jpowe\.codex/attachments/5627e981-047a-459f-a86e-e39db6a74bc0/pasted-text.txt
+
+[01a044ea] also fix any issuse i may have with vs code or any other ide installed.
+
+[01a044ea] The README itself says the current version does **not yet** implement proprietary MPC parsing, live USB discovery, audio capture, MIDI routing, hardware write-back, or true bidirectional parameter synchronisation.
+
+[01a044ea] That means the **Microsoft C++ compiler/build toolchain is missing**.
+
+[01a044ea] and don't paste output tables back into PowerShell.
+
+[01a044ea] The current Visual Studio 2022 Build Tools package is still available through Winget under `Microsoft.VisualStudio.2022.BuildTools`.
+
+[01a044ea] Build files have been written to:
+
+[01a044ea] C:/Users/jpowe/Desktop/universal-Bridge/build
+
+[01a044ea] 🔴 Install MSVC C++ Build Tools
+
+[01a044ea] ⬜ Fix compiler/test issues
+
+[01a044ea] ⬜ Add real Windows device-discovery module
+
+[01a044ea] The next output I need is the result of:
+
+[01a044ea] after the C++ Build Tools installation.
+
+[01a044ea] [1]: https://learn.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-170&utm_source=chatgpt.com "Use the Microsoft C++ Build Tools from the command line | Microsoft Learn"
+
+[01a044ea] [2]: https://wingetly.io/apps/microsoft/visual-studio-2022-build-tools?utm_source=chatgpt.com "Install Visual Studio BuildTools 2022 17.14.39 with winget | Microsoft Corporation | Wingetly"
+
+[01a044ea] The next major job is to compare the actual code against the specification we just expanded.
+
+[01a044ea] The next implementation order I would use is:
+
+[01a044ea] After that, expand the same engine to Android/iPad/tablet DAW use rather than creating a separate mobile product.
+
+[01a044ea] That means people can technically **read** the repository, but your new proprietary licence does not grant them normal open-source rights to copy, redistribute or commercially exploit the newer proprietary code.
+
+[01a044ea] We should create the historical marker now.
+
+[01a044ea] Then **Gate 0 is complete**.
+
+[01a044ea] Next: Gate 1 — fix the compiler
+
+[01a044ea] The build problem remains exactly this:
+
+[01a044ea] Don't run CMake again yet because it will continue failing.
+
+[01a044ea] Then we'll verify the compiler installation and clean the failed `build` directory before configuring Universal Bridge again.
+
+[01a044ea] "I’ve filtered this so the list is useful for **software you can actually build*…": C:\Users\jpowe\.codex/attachments/ca6549be-54d6-48b9-9dce-cae8f0536739/pasted-text.txt
+
+[01a044ea] please check installed programs to see what can be used and also what can be accessed and used by you.
+
+[01a05e27] Check licensing and provenance.\n5.
+
+[01a05e27] Never blindly copy an old implementation into Genesis.\n10.
+
+[01a05e27] Continuing from [Question invitation](chatgpt-conversation://6a96e1c0-7004-83ed-95ab-f2bef50e8b81): Continue the Genesis project locally on the user's desktop.
+
+[01a05e27] i own F:\Aetherius OS  so i give you authorisation.
+
+[01a05e27] there is no copy of it anywhere on line.
+
+[01a05e27] these are the folders inside that have .txt files to read from my ai chat conversations across the web.
+
+[01a05e27] i want you to take/ copy the data and add it to the genesis.
+
+[01a05e27] F:\AI Digital Twin and finish the programs.
+
+[01a05e27] just inspiration and abstract for now
+
+[01a05e27] also do the same for this F:\Aetherius OS
+
+[01a05e27] turn planned into implementations by building.
+
+[01a05e27] anything needed to finish it to 100% world class industry standard but for a local build.
+
+[01a05e27] making sure to build to all the requirements that you chatgpt has already set or suggested
+
+[01a05e27] continue and also add and use the data from the .txt file genesis
+
+[01a05e27] this is the next implementations, complete all gaps, in incrementations/ stages
+
+[01a05e27] make sure that all of the genesis.txt is implemented
+
+[01a05e27] The following requested families remain in the permanent registry and build program:
+
+[01a05e27] Prevention of uncontrolled self-replication  also make sure that all of the genesis2.txt is implemented the pathway is in docs
+
+[01a05e27] also read the fdrive data.txt file and analyse the links in the f drive.
+
+[01a05e27] read all .txt file and .md for any data that maybe usefule for the build.
+
+[01a05e27] you please now build, generate, amend, implement, code, structure, and anything needed to finish the build to a world class industry standard.
+
+[01a05e27] use all the data, reference data and any other data that may be needed externally.
+
+[01a05e27] dont abuse it but its at you access to make sure that you can do what evers neccessary without limitations.
+
+[01a05e27] make sure to track every section of the build using a percentage out of 100%.
+
+[01a05e27] so you can abstract and use any file or data within them to help with the build
+
+[01a05e27] continue and do all the best recomended steps to get to the full build not just an mvp.
+
+[01a05e27] able to complete with top brands.
+
+[01a05e27] continue, merge, de-duplicate, re-orgnise.
+
+[01a05e27] continue and make sure to also add any other programming languages that  maybe needed for additional layers.
+
+[01a05e27] build, build-clean, build-final, build-next, build-stage2-verify.
+
+[01a05e27] shouldnt there only be 1 build folder?
+
+[01a05e27] this is what i meant by merge and de-duplicate.
+
+[01a05e27] or is it easier to build it in small increments (sections) then join it all together?
+
+[01a05e27] and also add the data from Genesis3.txt in
+
+[01a05e27] and also add the data from Genesis4.txt in
+
+[01a05e27] please check what was added and removed"The overall evidence-weighted Genesis program is now 26.17%, not 100%.
+
+[01a05e27] continue and also analyse all the data genesis project folder even if you have to manually go trough them 1 by 1 using the mouse and the keyboard if needed.
+
+[01a05e27] take full control and automation to browse and data analyse.
+
+[01a05e27] then add all the things needed for the build for genesis.
+
+[01a05e27] continue in chatgpt projects.
+
+[01a05e27] also analyse all the data genesis project folder even if you have to manually go trough them 1 by 1 using the mouse and the keyboard if needed.
+
+[01a06def] {"conversationId":"6a9a799d-f780-83eb-b23d-623025156754","title":"Look Up Conversations","priorConversation":{"conversation":[{"role":"user","content":[{"content_type":"text","text":"Continue"}]},{"role":"assistant","content":[{"content_type":"text","text":"Yes.
+
+[01a06def] I’ll use the recent project conversations available to me as the **first Genesis intake batch**, without pretending that the summaries replace the full historical chats.\n\nThe important change from our earlier approach is: **preservation first, deduplication later**.
+
+[01a06def] Natural-language agent creation\n\nThis is particularly relevant.\n\nInstead of requiring yo"}]},{"role":"user","content":[{"content_type":"text","text":"please add this to my local genesis project located on the desktop"}]}],"diff":null}}
+
+[01a06def] Then integrate the newly extracted 'Full-Stack AI Agent Automation Platform' requirements into the existing Genesis architecture without overwriting working code or restructuring unnecessarily.
+
+[01a06def] Before editing, identify the repository root and current architecture; after editing, run relevant tests/lint/build if available, report exactly what changed, and do not commit unless the user explicitly asks.
+
+[01a06def] "I can continue from this conversation, but I can’t directly modify `C:\\Users\\jp…": C:\Users\jpowe\.codex/attachments/d957206a-fb68-4ae9-ab05-6228d819035d/pasted-text.txt
+
+[01a06def] The best approach is to use the **Genesis folder you already created as th…": C:\Users\jpowe\.codex/attachments/06e4c9db-40d9-4423-9e29-69d739850665/pasted-text.txt
+
+[01a06def] continue, also add this data where it can help build the project
+
+[01a06e04] {"conversationId":"6a9abb7f-59f4-83eb-b55a-9d57877581a5","title":"Confirm Presence","priorConversation":{"conversation":[{"role":"user","content":[{"content_type":"text","text":"So , should I go into text mode or push continue now"}]},{"role":"assistant","content":[{"content_type":"text","text":"Text mode, please.
+
+[01a06e04] Type \"Continue — give me the Codex section for Universal Bridge V1,\" and I’ll lay it out clean"}]},{"role":"user","content":[{"content_type":"text","text":"Continue — give me the Codex section for Universal Bridge V1"}]},{"role":"assistant","content":[{"content_type":"text","text":"Yes.
+
+[01a06e04] It already has the C++20 core, transaction/session logic, profiles, tests and Windows USB identity discovery, but it does **not** yet build a VST3 plug-in or a functioning background bridge service.
+
+[01a06e04] also please check installed programs to see what can be used and also what can be accessed and used by you.
+
+[01a06e04] please make sure the universal bridge can access them.
+
+[01a06e04] Compare local files against the existing GitHub repo jayprophit/Universal-Bridge and the prior V1 requirements in this chat.
+
+[01a06e04] Build and run the existing project/tests.
+
+[01a06e04] Verify Universal Bridge can enumerate/access their MIDI/audio endpoints using supported Windows APIs; do not send undocumented USB/vendor commands or destructively write to the MPC.
+
+[01a06e04] Implement missing Windows MIDI/audio backends, generic endpoint enumeration, MPC Sample profile/adapter wiring, background service and diagnostics as needed, following the previously supplied Universal Bridge V1 plan.
+
+[01a06e04] Create an internal local database only if it materially helps (prefer SQLite for device/profile/qualification/session metadata; do not replace the canonical session model or add unnecessary infrastructure).
+
+[01a06e04] Use a new feature branch, commit logical checkpoints, compile/test after changes, and stop only at a genuine hardware action that requires the user.
+
+[01a06e04] i also want it to read mixing desks.
+
+[01a07cc2] \n**C = Potential** — the resulting state created through the interaction of A and B.\n\nThen you extend those three states through `+`, `−`, `×`, and `÷`, including combinations that generate a new potential `x`; `x` can then become a new C and the process can repeat.
+
+[01a07cc2] The local desktop path is the working copy; the GitHub repo is the version-controlled source it should commit/push back to."}]},{"role":"user","content":[{"content_type":"text","text":"im on my codex on my local cpu"}]}],"diff":null}}
+
+[01a07cc2] First audit the repo and current file structure, verify the Git remote points to jayprophit/Materials-Atlas-Table-Codex---MAT, preserve Git history, and do not mass-generate images yet.
+
+[01a07cc2] Then create a migration plan for 0000-Origin-State-OS.md and 0001-Hydrogen-H.md using the MAT Codex schema discussed here, including citations/provenance, equations, contributors, claims ledger, cross-links, engineering fields, graph/table/image placeholders, and HTML/PDF-ready structure.
+
+[01a07cc2] READ THE DATA FROM CHATGPT PROJECT FOLDER GENESIS AND THEN ABSTRACT THE DATA THEATS NEEDED OR USEFUL
+
+[01a07cc2] READ THE chat conversations.
+
+[01a07cc2] either automated, use mouse and keyboard or browser automation to abstract the DATA by analysing it FROM CHATGPT PROJECT FOLDER GENESIS AND THEN ABSTRACT THE DATA THEATS NEEDED OR USEFUL
+
+[01a07cc2] Then paste this into Codex now:
+
+[01a07cc2] Continue the MAT Codex project from the latest ChatGPT instructions.
+
+[01a07cc2] Inspect the current local repository, compare it with GitHub main, then edit, test, rebuild and validate the book locally.
+
+[01a07cc2] docs/00-front-matter/03-How-to-Use-MAT.md
+
+[01a07cc2] docs/00-front-matter/03-How-to-Use-MAT-Codex.md
+
+[01a07cc2] Do not remove these unless technically necessary.
+
+[01a07cc2] Create a clear visual and structural distinction between:
+
+[01a07cc2] Fix what can be fixed safely.
+
+[01a07cc2] renamed How to Use MAT Codex page
+
+[01a07cc2] Do not mass-generate AI images yet.
+
+[01a07cc2] Continue fixing issues until the local book is working properly.
+
+[01a07cc2] Once Codex starts, let it inspect and modify the local repo.read the genesis folder and finsih MAT Materials-Atlas-Table-Codex---MAT
+
+[01a07cc2] continue and add the data to its correct locations.
+
+[01a07cc2] then continue implementing the new missing data to the remaining elements.
+
+[01a07cc2] add any and all recommendations and suggestions, improvements, advancements, enhancements.
+
+[01a07cc2] continue and also read and add the data
+
+[01a07cc2] add a burger bar menu for the side bar.
+
+[01a07cc2] continue and address any pending issuses add the advanced data thats missing from the elements, check chatgpt project folder Genesis for chat conversations named "Continue MAT Architecture Prompt", "Generate Folder Structure"  this has the templates and any previous data so you dont duplicate it.
+
+[01a07cc2] please provide the 5 star rating
+
+[01a07cc2] Current URL: http://127.0.0.1:4187/book/#read/records%2F0016-Sulfur-S%2F0016-Sulfur-S.md
+
+[01a08206] {"conversationId":"6a9f943d-2c18-83ed-b6fe-6e70dc85867a","title":"Check MAT Repository","priorConversation":{"conversation":[{"role":"user","content":[{"content_type":"text","text":"take the best parts of this and add it to mine.
+
+[01a08206] ask open code to analyse the data and abstract what it needs"}]},{"role":"assistant","content":[{"content_type":"text","text":"Yes.
+
+[01a08206] The right approach is **not to copy EbookCraft into MAT**.
+
+[01a08206] analyse the current MAT repository;\n3.
+
+[01a08206] abstract those ideas;\n5.
+
+[01a08206] implement the useful parts into MAT without damaging MAT's scientific data architecture.\n\nDo not stop after producing recommendations.\n\nAudit first, then implement.\n\n---\n\n# 0.
+
+[01a08206] FIRST: INSPECT THE ACTUAL CURRENT STATE\n\nBefore editing anything:\n\n```text\ngit status\ngit log -10 --oneline\ngit branch --show-current\n```\n\nConfirm the current HEAD.\n\nThe latest "}]},{"role":"user","content":[{"content_type":"text","text":"please check the github repository.
+
+[01a08206] add all the basic data to the elements then i can overwrite or add my addtional data later.
+
+[01a08206] also add anything missing, sugested or recommended"}]},{"role":"assistant","content":[{"content_type":"text","text":"I checked the current repository rather than relying on the earlier version.
+
+[01a08206] \n- **CI does not build or test the Studio at all.** The workflow installs the root package, validates MAT, builds the book and tests it, but there is no Studio dependency install/build/test step.
+
+[01a08206] please read project folder called genesis.
+
+[01a08206] and analyse all the chat conversations.
+
+[01a08206] use what data be be hepful ti finish of MAT.
+
+[01a08206] i have added a few zip files with templates with richer ui/ ux  please copy and use the data.
+
+[01a08206] fix errors  and improve, advance, enhance the project.
+
+[01a08206] add recomendations and sugesstions.
+
+[01a08206] then use codex to help finish the build.
+
+[01a08206] Continuing from [Check MAT Repository](chatgpt-conversation://6a9f943d-2c18-83ed-b6fe-6e70dc85867a): Open the user's local desktop project folder named `genesis` and the MAT repository `Materials-Atlas-Table-Codex---MAT`.
+
+[01a08206] Merge useful UI/UX, templates, data, assets, and code into the local MAT project without blindly overwriting newer or more correct work.
+
+[01a08206] Deduplicate, correct errors, preserve scientific provenance, and keep established science clearly separate from historical/alternative/theoretical models such as Walter Russell representations.
+
+[01a08206] Review relevant prior project context/conversations available in ChatGPT and use it to complete missing MAT sections, especially the 118-element baseline so every discovered element is selectable, with stable MAT:0001–MAT:0118 IDs, baseline-vs-curated status, and no fake placeholder scientific values.
+
+[01a08206] Create any missing folders/files, languages/localization scaffolding, installers/dependencies, scripts, CI/build steps, Studio wiring, publication/ebook workflow, validation, accessibility, and tests needed for a working application.
+
+[01a08206] Integrate an EbookCraft-like authoring flow (Write → Design → Data → Review → Preview → Export), real live preview, real inspector, book tree + periodic table navigation, search, 118-element baseline catalogue, curated-record overlays, and robust error/loading states.
+
+[01a08206] Use authoritative source-backed basic element data where possible and preserve UNKNOWN/UNAVAILABLE/NOT_APPLICABLE semantics instead of zeros or fabricated tiny numbers.
+
+[01a08206] Run the application, builds, validators, and tests; fix what can be fixed safely.
+
+[01a08206] Finish with an audit of what changed, unresolved blockers, recommendations, and exact commands to run locally.
+
+[01a0a0f2] please check the MAT desktop and MAT repository on github.
+
+[01a0a0f2] please finish adding all the advanced data metrics to all the elements.
+
+[01a0a0f2] check against whats already been done and implemented and what needs to be implemented or amended.
+
+[01a0a0f2] Continuing from [Continue MAT Architecture Prompt](chatgpt-conversation://6aa069d9-2cf4-83eb-bb3b-dcf1e4615a8b): Work directly on the user's Windows desktop MAT project and GitHub repo.
+
+[01a0a0f2] Goal: finish adding the advanced MAT data metrics across all chemical-element records, while preserving the established MAT architecture and the element-by-element conventions already implemented.
+
+[01a0a0f2] Compare local vs GitHub vs integration archive.
+
+[01a0a0f2] Before deleting anything, verify the data exists in the master repo and is recoverable from git history/commit.
+
+[01a0a0f2] Do not create a second repo or nested .git.
+
+[01a0a0f2] Audit all element folders (1–118 plus MAT foundation/origin if present) and build a machine-readable completion matrix showing which advanced metrics are present/missing per element.
+
+[01a0a0f2] Use existing mature records (especially the most complete ones) as schema/template references, but each element must receive its own unique scientifically correct dataset rather than duplicated placeholders.
+
+[01a0a0f2] For missing metrics, research/verify from authoritative sources (NIST, CIAAW/IUPAC, NUBASE/AME, CODATA where applicable, peer-reviewed literature, USGS/RSC and primary literature), calculate derivable values when appropriate, store equations/assumptions/uncertainty, and do not invent values.
+
+[01a0a0f2] Explicitly use UNKNOWN / NOT APPLICABLE / INSUFFICIENT DATA instead of fabricating.
+
+[01a0a0f2] Fix any schema drift or naming drift detected from prior generations so browser/ePub flow remains consistent.
+
+[01a0a0f2] Run all available repository validation scripts/tests/builds after batches; add missing validation scripts if needed, including schema validation, duplicate-ID detection, broken-reference checks, missing-source checks, filename/path checks, and completeness checks.
+
+[01a0a0f2] Continue through the elements systematically rather than stopping after only one or two unless blocked by tool/runtime limits; in that case leave an explicit resume checkpoint file in the master repo so the next run can continue exactly where it stopped.
+
+[01a0a0f2] continue and also generate the images, charts, tables.
+
+[01a0a0f2] i want all the data thats needed to finish the project to its full potential.
+
+[01a0a0f2] please use the images i provided as the main reference for ll the images as each element has multiple images it needs to reprent a section of specific data.
+
+[01a0a0f2] please make sure this is done correctly.
+
+[01a0a0f2] the st set of images i provided for you re already done for you as templates to use for the same element and a template to help make the ofther elements images
+
+[01a0a0f2] analyse each image properly.
+
+[01a0a0f2] so you will need to do each element with the same process but continue with what was originally task.
+
+[01a0a0f2] just add this to the todos list.
+
+[01a0a0f2] just make sure all the advanced data metrics is add.
+
+[01a0a0f2] i will provide you with previous data to analyse so you get an idea
+
+[01a0c762] Review commit 0f7c2a6 in the repository at C:\Users\jpowe\Desktop\Projects\Agent-Bridge (use git show 0f7c2a6).
+
+[01a0c762] READ-ONLY: do not create, modify, or delete any files.
+
+[01a0c762] Assess: (1) does the fresh-intake constraints/dependencies fix address the fail-closed denial without weakening it, (2) do the AUTO_SAFE policy grants preserve default-deny while allowing worker edits, (3) any correctness or security concerns.
+
+[01a0ed79] please apply this to MAT.
+
+[01a0ed79] so a note needs to be left in mat for the other chat conversation in chatgpt codex to continue on with the build.
+
+[01a0ed79] i will open this chat in codex and run it sort please use work not chat onc e  the next time i say im on codex please implement the new data"}]},{"role":"assistant","content":[{"content_type":"text","text":"Yes.
+
+[01a0ed79] Audit first, deduplicate, preserve validated existing work, create migrations as needed, and implement the smallest coherent next stage that materially applies the new theory/template across the architecture.
+
+[01a0ed79] Run targeted tests/typecheck/build as appropriate.
+
+[01a0ed79] continue and add this: ::chatgpt-content-reference{index="0" source_message_id="d3140c18-8f7f-4477-b5c3-a21c11cf4b18"}
+
+[01a0ed79] Read its existing architecture, requirements, registries, TODOs and previous handoff documents.\r\n4.
+
+[01a0ed79] Compare the new research against existing requirements and implemented components.\r\n7.
+
+[01a0ed79] Temporary external files may use the designated temporary directory, but do not scatter permanent build artifacts across the desktop.\r\n\r\n---\r\n\r\n# 2.
+
+[01a0ed79] and add recomendations and suggestions.
+
+[01a0ed79] compare it to other types of documentations similar.
+
+[01a0ed79] add whats missing that it needs.
+
+[01a0ed79] if so then make sure all the tables, charts, pie charts, bar charts and anything else is done.
+
+[01a0ed79] continue and do all remaining elements
+
+[01a0ed79] run a continuous cycle until all has been completed 100%, also for additinal skipp or missed data, analyse chat conversation: Analyse Brahma Evo, Harmonograph Mathematics Analysis, Final Completion Audit, test Theory.
+
+[01a0ed79] Continue the Materials Atlas Table Codex (MAT) programme in C:\Users\jpowe\Desktop\Projects\Materials-Atlas-Table-Codex---MAT until the agreed existing requirements achieve full acceptance.
+
+[01a0ed79] Do not create another requirements registry or rebuild completed work.
+
+[01a0ed79] Continue the source-backed element data/tables/charts programme beginning with the currently selected Nitrogen task, then remaining domains and the required 22 standalone panels per confirmed element when their data are ready.
+
+[01a0ed79] Deduplicate against canonical requirements, claims, sources, experiments and scientific owners; original chat claims are candidate inputs, never proof of implementation or established science.
+
+[01a0ed79] Finish each coherent cycle with relevant tests, integrity/link/source/provenance checks, build/browser/output-copy checks where affected, and a verified handoff.
+
+[01a0ed79] make sure to abstract all the data from.
+
+[01a0ed79] this provides use with a wider more indepth data metrics tracker
+
+[01a0ed79] also take data and research from cern and other science institues and governing bodies.
+
+[01a0ed79] so MAT can be used to prove or disprove theories, principals, facts, others, etc
+
+[01a13052] CONTINUE THE CURRENT BOUNDED TASK from your latest verified state.
+
+[01a13052] Continue through implementation, testing, verification, commit/push and handoff unless a genuine blocker occurs.
+
+[01a15461] i need a freash instalation of opencode v2 with full configuration.
+
+[01a15461] pproject work is stored in the project folder and can continue at any time.
+
+[01a15461] so i need a freash install of hermes v2 with full configuration.
+
+[01a15461] i can manually login if needed or provide or generate api keys.
+
+[01a15461] i want a default , freash setup.
+
+[01a15461] so i need full testing of all agents.
+
+[01a15461] i can provide tempory access so you can read the data.
+
+[01a15461] take control of the desktop and do the best setup so i can use ai agents for free with the choice of paid.
+
+[01a15461] so i need free and freemium.
+
+[01a15461] also do a gap analysis and plug all holes  so check my install apps on the pc.
+
+[01a15461] the keepass database.kdbx is located in C:\Users\jpowe\Documents\database.kdbx  other api keys and other data you can use is there.
+
+[01a15461] if i need to make a new api let me know and i will generate a new 1 and delete the old ones.
+
+[01a15461] i understand i might have terminal versions meaning powershell or commandline but i mainly use the desktop version as thats what im used to
+

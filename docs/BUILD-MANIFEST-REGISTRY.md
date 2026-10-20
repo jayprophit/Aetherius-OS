@@ -111,6 +111,7 @@ finished before it.
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
 | 🟡 medium | Two tests are timing-sensitive under CPU contention on this host, so the suite is green when run alone and in… | OPEN | TODO-AOS-003 |
+| 🟠 high | Twelve standing rules recovered from the owner's own conversations bind every change, and five of them have a… | OPEN | TODO-DIR-001 |
 | 🟠 high | The repository was carrying about two gigabytes of research artefacts that had never been pushed, so no push … | OPEN | TODO-ARC-001 |
 | 🟠 high | The installed application set is recorded but nothing decides what Aetherius has to be able to do with any of… | OPEN | TODO-APP-002 |
 | 🔴 critical | The secret scan that found twelve live-looking OpenRouter keys in the conversation corpus is a one-off script… | OPEN | TODO-SEC-001 |

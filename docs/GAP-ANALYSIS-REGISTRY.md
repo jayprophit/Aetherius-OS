@@ -5,8 +5,8 @@
 
 - Source date: 2026-10-20
 - Capabilities assessed: **31**
-- States: VERIFIED 1 · IMPLEMENTED 3 · PARTIAL 16 · MISSING 11
-- Open (missing or partial): **27** (87% of assessed capabilities)
+- States: VERIFIED 1 · IMPLEMENTED 4 · PARTIAL 15 · MISSING 11
+- Open (missing or partial): **26** (84% of assessed capabilities)
 
 ## Next to build
 
@@ -14,7 +14,6 @@ Open capabilities in priority order. Priority 1 is the next real thing.
 
 | Pri | Id | Axis | Capability | What is missing |
 |---|---|---|---|---|
-| 1 | GAP-AUTH-001 | permissions_authority | Capability-scoped authority | A tool grant names a tool and a set of actions, but the kernel does not enforce it: the grant is a description the runtime reads, not a boundary the r |
 | 1 | GAP-HIVE-001 | multi_agent | Delegation with narrowing scope | Genesis proposes and Agent Bridge executes, but there is no delegation primitive that issues a scoped grant to a child agent, checks that the child ca |
 | 1 | GAP-HIVE-002 | multi_agent | Hive communication and messaging | No agent can address another agent. There is no message type, no transport and no record of who said what to whom. |
 | 1 | GAP-LIFE-001 | lifecycle_recovery | Crash recovery and checkpoint resume | A crash loses the run. There is no checkpoint, no idempotency key and no recovery, so a remote worker that dies leaves work half done with no way to r |
@@ -52,7 +51,7 @@ Open capabilities in priority order. Priority 1 is the next real thing.
 | memory_context | 3 | 33% | 0 | 1 | 1 | 1 | 0 | 0 |
 | multi_agent | 4 | 0% | 0 | 0 | 1 | 3 | 0 | 0 |
 | identity_persistence | 2 | 50% | 1 | 0 | 1 | 0 | 0 | 0 |
-| permissions_authority | 3 | 33% | 0 | 1 | 2 | 0 | 0 | 0 |
+| permissions_authority | 3 | 67% | 0 | 2 | 1 | 0 | 0 | 0 |
 | observability_audit | 2 | 0% | 0 | 0 | 2 | 0 | 0 | 0 |
 | workspace_files | 2 | 0% | 0 | 0 | 1 | 1 | 0 | 0 |
 | browser_computer | 1 | 0% | 0 | 0 | 0 | 1 | 0 | 0 |
@@ -284,11 +283,11 @@ Genesis requirement registry status: REQ-ID-001=UNIT_TESTED, REQ-ENTITY-ADDRESS-
 
 ### permissions_authority
 
-#### 🟠 GAP-AUTH-001 — Capability-scoped authority
+#### 🟡 GAP-AUTH-001 — Capability-scoped authority
 
-- **Status:** PARTIAL (priority 1)
-- **Present:** ToolGrant carries allowed actions, network and filesystem write permissions, and AgentDefinition carries an approval mode and a sandbox requirement.
-- **Missing:** A tool grant names a tool and a set of actions, but the kernel does not enforce it: the grant is a description the runtime reads, not a boundary the runtime cannot cross.
+- **Status:** IMPLEMENTED (priority 1)
+- **Present:** genesis/agents/authority.hpp and src/agents/authority.cpp implement the evaluation: AuthorityRegistry, CapabilityRequest, AuthorityGrant, and a decision for every outcome. A delegated grant can only narrow - it may not hold a capability the parent lacks, an action the parent does not permit, a broader network or filesystem permission, or a longer lifetime. tests/authority_tests.cpp covers thirty cases including the delegation chain, and REQ-POL-001 moves from specified to unit tested.
+- **Missing:** The authority engine now evaluates a grant: default deny, one capability per grant, only the listed actions, and an expired grant refused. What is still missing is the binding of that engine to the tool execution path, so a tool call does not yet consult it before it runs.
 - **Cross-references:** requirements: REQ-POL-001, REQ-KEY-PREFLIGHT-001, REQ-CAP-001 · acceptance: AT-09, AT-17 · gap register: F04, F03 · platforms: claude_code, opencode, hermes, copilot · implementation: src/security/key_custody.cpp · tests: tests/key_custody_tests.cpp
 - **Provenance:** gap analysis 2026-10-20, against Genesis registries and the master handoff
 

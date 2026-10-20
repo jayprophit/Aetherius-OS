@@ -1281,7 +1281,7 @@ todos:
       - "The browser suite completes reliably and writes reader-browser-results.json"
       - "The 44px minimum-height control target is verified"
 
-  - id: TODO-MAT-011
+  - id: TODO-MAT-012
     title: Rebuild the MAT acceptance rating only after the browser suite refreshes
     project: mat
     status: OPEN
@@ -2830,3 +2830,132 @@ todos:
     acceptance:
       - "The Genesis provenance record states that the tree is untracked and why"
       - "The origin of the 47 files is recorded for anyone who finds them again"
+
+  # =========================================================================
+  # RECOVERED FROM THE OWNER'S CONVERSATION CORPUS
+  # =========================================================================
+  # Source: 237 distinct directive sentences recovered from the 13 threads in
+  # the Codex corpus, registered in docs/OWNER-DIRECTIVES.yaml. Each of
+  # these names the directive it comes from.
+  # =========================================================================
+  - id: TODO-SRC-004
+    title: Read the ChatGPT project conversations and abstract what is useful
+    project: aetherius-os
+    status: OPEN
+    priority: 1
+    source:
+      kind: conversation-history
+      ref: "OWNER-DIRECTIVES.yaml ASK-01, thread 01a07cc2"
+    detail: >-
+      The owner asked for this explicitly and repeatedly: "READ THE DATA FROM
+      CHATGPT PROJECT FOLDER GENESIS AND THEN ABSTRACT THE DATA THAT'S NEEDED
+      OR USEFUL. READ THE chat conversations." A ChatGPT project named
+      Genesis exists in the owner's account and holds five conversations:
+      Test a theory, Project Data Integration, Analyse Jev Routing
+      Architecture, Analyse agentic workflows, and Job request. None of them
+      has been read. Eleven other ChatGPT projects exist alongside it, each
+      with its own conversations.
+    evidence: >-
+      "Read the data from ChatGPT project folder Genesis and then abstract
+      the data that's needed or useful." and "READ THE chat conversations."
+      and "either automated, use mouse and keyboard or browser automation to
+      abstract the DATA by analysing it FROM CHATGPT PROJECT FOLDER GENESIS
+      AND THEN ABSTRACT THE DATA THAT'S NEEDED OR USEFUL"
+    acceptance:
+      - "Every conversation in the Genesis ChatGPT project has been read"
+      - "What each conversation contributed is recorded against the work it informed"
+      - "Nothing is copied blindly: the register records provenance and the owner's own rule against blind copying applies"
+
+  - id: TODO-UB-004
+    title: Make Universal Bridge read mixing desks and reach the installed hardware
+    project: universal-bridge
+    status: OPEN
+    priority: 2
+    source:
+      kind: conversation-history
+      ref: "OWNER-DIRECTIVES.yaml ASK-05, thread 01a06e04"
+    detail: >-
+      The owner asked for the bridge to read mixing desks and to be able to
+      access the hardware that is installed on the machine. The application
+      registry records what is installed; the bridge has to be able to reach
+      it. The constraint the owner set is explicit: use supported Windows
+      APIs, and do not send undocumented USB or vendor commands, and do not
+      destructively write to the MPC.
+    evidence: >-
+      "I also want it to read mixing desks." and "Please make sure the
+      universal bridge can access them." and "Verify Universal Bridge can
+      enumerate/access their MIDI/audio endpoints using supported Windows
+      APIs; do not send undocumented USB/vendor commands or destructively
+      write to the MPC."
+    acceptance:
+      - "Mixing desks are enumerated through supported Windows APIs"
+      - "The hardware present on this machine is identified and recorded"
+      - "No undocumented USB or vendor command is sent"
+
+  - id: TODO-POI-003
+    title: Add the MPC-style sample record and recall button to Poietek
+    project: poietek
+    status: OPEN
+    priority: 3
+    source:
+      kind: conversation-history
+      ref: "OWNER-DIRECTIVES.yaml ASK-10, thread 01a02943"
+    detail: >-
+      The owner asked for a sample record and a recall button, in the style
+      of the MPC sample, which is the reference the Poietek work was
+      compared against. The conversation is a specific, concrete ask against
+      a named reference implementation.
+    evidence: >-
+      "Add a sample record and recall button." and "like the mpc samle, add
+      a sample record and recall button, that allows"
+    acceptance:
+      - "A sample record can be created and recalled in the Poietek workflow"
+      - "The behaviour matches the reference the owner named"
+
+  - id: TODO-MAT-011
+    title: Take MAT element data from CERN and the other science institutes
+    project: mat
+    status: OPEN
+    priority: 3
+    source:
+      kind: conversation-history
+      ref: "OWNER-DIRECTIVES.yaml ASK-13, thread 01a0ed79"
+    detail: >-
+      The owner asked for MAT to take data and research from CERN and the
+      other science institutes and governing bodies, so that MAT can be used
+      to prove or disprove theories and facts. The source-quality rule
+      applies: the value must be source-backed and recorded with its
+      provenance, and UNKNOWN or INSUFFICIENT DATA is preferred to a
+      fabricated number.
+    evidence: >-
+      "Also take data and research from CERN and other science institutes
+      and governing bodies. So MAT can be used to prove or disprove theories,
+      principals, facts, others, etc"
+    acceptance:
+      - "The institute sources are recorded with their accessions and provenance"
+      - "No value is added without a source"
+
+  - id: TODO-DIR-001
+    title: Check every change against the owner's standing directives
+    project: aetherius-os
+    status: OPEN
+    priority: 2
+    source:
+      kind: conversation-history
+      ref: "OWNER-DIRECTIVES.yaml, the twelve standing rules"
+    detail: >-
+      Twelve standing rules were recovered from the conversation corpus. They
+      bind every task, and a change that violates one is wrong even when the
+      outcome looks right. Four of them have already been violated in this
+      programme's history: a second build tree was kept alongside the
+      canonical one, unlicensed third-party source was committed, a
+      workspace-cleanup commit swept unrelated files in, and a provisional
+      rating was published from a stale report. A check that the rules are
+      honoured, rather than remembered, is the durable fix.
+    evidence: >-
+      RULE-02, RULE-05, RULE-08, RULE-09 and RULE-11 in
+      docs/OWNER-DIRECTIVES.yaml, each with the work in this programme that
+      already answers to it.
+    acceptance:
+      - "The rules are visible where a change is proposed, not only in a document"
+      - "A change that would violate one is refused rather than made and explained"

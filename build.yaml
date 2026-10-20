@@ -160,6 +160,20 @@ known_issues:
       The faults are load sensitivity rather than behaviour faults, but an
       intermittently failing test cannot be used as a gate, so the issue
       stays open.
+  - id: AOS-DIR-001
+    severity: high
+    summary: >-
+      Twelve standing rules recovered from the owner's own conversations bind
+      every change, and five of them have already been violated somewhere in
+      this programme's history.
+    evidence: >-
+      docs/OWNER-DIRECTIVES.yaml records the twelve rules, each with the
+      work that already answers to it. The violations include a second
+      build tree kept alongside the canonical one, unlicensed third-party
+      source committed, a workspace-cleanup commit that swept unrelated
+      files in, and a provisional rating published from a stale report.
+    status: OPEN
+    todo_ref: TODO-DIR-001
   - id: AOS-ARC-001
     severity: high
     summary: >-

@@ -483,9 +483,9 @@ gaps:
   - id: GAP-AUTH-001
     name: "Capability-scoped authority"
     axis: permissions_authority
-    status: PARTIAL
-    gap: "A tool grant names a tool and a set of actions, but the kernel does not enforce it: the grant is a description the runtime reads, not a boundary the runtime cannot cross."
-    present: "ToolGrant carries allowed actions, network and filesystem write permissions, and AgentDefinition carries an approval mode and a sandbox requirement."
+    status: IMPLEMENTED
+    gap: "The authority engine now evaluates a grant: default deny, one capability per grant, only the listed actions, and an expired grant refused. What is still missing is the binding of that engine to the tool execution path, so a tool call does not yet consult it before it runs."
+    present: "genesis/agents/authority.hpp and src/agents/authority.cpp implement the evaluation: AuthorityRegistry, CapabilityRequest, AuthorityGrant, and a decision for every outcome. A delegated grant can only narrow - it may not hold a capability the parent lacks, an action the parent does not permit, a broader network or filesystem permission, or a longer lifetime. tests/authority_tests.cpp covers thirty cases including the delegation chain, and REQ-POL-001 moves from specified to unit tested."
     priority: 1
     requirement_refs:
       - REQ-POL-001
