@@ -174,7 +174,7 @@ def main() -> int:
     still_open = [d for d in with_directives if d["checkpoints"]]
 
     summary = {
-        "threads": len(digests),
+        "thread_count": len(digests),
         "threads_with_owner_messages": len(with_directives),
         "threads_with_checkpoints": len(still_open),
         "requirements_touched": len(all_reqs),
