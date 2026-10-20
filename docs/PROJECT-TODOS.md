@@ -4,50 +4,71 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **202** (188 open, 14 done)
+- Tasks: **233** (219 open, 14 done)
 
 ## By project
 
 | Project | Open | Done |
 |---|---|---|
-| aetherial | 2 | 0 |
-| aetherial-platform | 3 | 0 |
+| aetherial | 3 | 0 |
+| aetherial-platform | 4 | 0 |
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
-| aetherius-health-library | 2 | 0 |
-| aetherius-os | 40 | 6 |
+| aetherius-health-library | 4 | 0 |
+| aetherius-os | 42 | 6 |
+| aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 11 | 0 |
-| agent-bridge-cloudhybrid | 4 | 0 |
-| agent-bridge-dashboard | 8 | 0 |
-| agent-bridge-runtimesafety | 3 | 0 |
+| agent-bridge | 12 | 0 |
+| agent-bridge-cloudhybrid | 5 | 0 |
+| agent-bridge-dashboard | 10 | 0 |
+| agent-bridge-runtimesafety | 5 | 0 |
 | ai-digital-twin | 3 | 0 |
 | architecture-of-shadows-book | 4 | 0 |
 | athena | 4 | 0 |
 | crossplatform | 2 | 0 |
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
-| football-card-game | 1 | 0 |
-| genesis | 6 | 3 |
+| football-card-game | 2 | 0 |
+| genesis | 8 | 3 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
-| ide-workspace | 9 | 2 |
-| ledgerlands | 8 | 2 |
+| ide-workspace | 11 | 2 |
+| ledgerlands | 10 | 2 |
 | mat | 13 | 0 |
-| niche-platform | 2 | 0 |
-| poietek | 10 | 0 |
+| niche-platform | 3 | 0 |
+| poietek | 13 | 0 |
 | quantum-ai-assistant | 2 | 0 |
 | quantum-os | 2 | 0 |
-| qva-merged | 2 | 0 |
-| self-building-ai | 1 | 0 |
+| qva-merged | 3 | 0 |
+| self-building-ai | 2 | 0 |
 | sovereign-financial-os | 2 | 0 |
-| trading-bot | 2 | 0 |
-| universal-bridge | 4 | 1 |
-| veyra | 2 | 0 |
+| trading-bot | 3 | 0 |
+| universal-bridge | 5 | 1 |
+| veyra | 3 | 0 |
 | virtual-assistant | 2 | 0 |
-| web-platform | 3 | 0 |
+| web-platform | 4 | 0 |
 
 ## P1 blocking
+
+### ⬜ TODO-AETHERIAL-000 — Build the Aetherial project the manifest describes
+
+- **Project:** aetherial
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Aetherial is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
 
 ### ⬜ TODO-AETHERIAL-001 — Give Aetherial a test suite
 
@@ -68,6 +89,26 @@ Acceptance:
 - [ ] Tests exist and run
 - [ ] The build manifest runs them
 - [ ] A failure in the suite fails the gate
+
+### ⬜ TODO-AETHERIAL-PLATFORM-000 — Build the aetherial-platform project the manifest describes
+
+- **Project:** aetherial-platform
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+aetherial-platform is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
 
 ### ⬜ TODO-AETHERIAL-PLATFORM-002 — Rotate and remove the credentials in aetherial-platform
 
@@ -148,6 +189,26 @@ Acceptance:
 - [ ] Source exists in the project directory
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
+
+### ⬜ TODO-AETHERIUS-OS-002 — Rotate and remove the credentials in Aetherius-OS
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Literal credentials were found in the project's own source. They are compromised by being on disk in a recovered drive.
+
+Evidence:
+
+```
+Files: ['apps/LedgerLands/LedgerLands-Aetherius-App-Repo/LedgerLands/generated/prisma/internal/class.ts', 'apps/Multi-Cross-Platform-Trading-Bot/production/AI-Voice-assistant/assistant.py', 'apps/Multi-Cross-Platform-Trading-Bot/production/Facial_Authentication/backend/app.js', 'ecosystem/aetherial-platform/tests/auth/validators/auth.validators.spec.ts', 'predecessors/Veyra/tests/integration/tests/conftest.py'].
+```
+
+Acceptance:
+
+- [ ] Every credential is rotated at the provider
+- [ ] No credential literal remains in the tree
+- [ ] The secret scanner gate rejects the pattern
 
 ### ✅ TODO-AOS-003 — Make the HTTP bridge transport test deterministic
 
@@ -314,6 +375,26 @@ Acceptance:
 - [ ] The KNOWN_PROJECTS list matches the folders on disk
 - [ ] docs/workspace-hygiene.test.ts passes
 
+### ⬜ TODO-AETHERIUS-OS-PROTO-000 — Build the aetherius-os-prototype project the manifest describes
+
+- **Project:** aetherius-os-prototype
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+aetherius-os-prototype is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
 ### ⬜ TODO-WORLDCASS-PROTO-000 — Build the aetherius-os-worldclass-prototype project the manifest describes
 
 - **Project:** aetherius-os-worldclass-prototype
@@ -321,6 +402,66 @@ Acceptance:
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 aetherius-os-worldclass-prototype is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
+### ⬜ TODO-AGENT-BRIDGE-002 — Rotate and remove the credentials in Agent-Bridge
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Literal credentials were found in the project's own source. They are compromised by being on disk in a recovered drive.
+
+Evidence:
+
+```
+Files: ['variants/dashboard/tests/test_h07_h09.py'].
+```
+
+Acceptance:
+
+- [ ] Every credential is rotated at the provider
+- [ ] No credential literal remains in the tree
+- [ ] The secret scanner gate rejects the pattern
+
+### ⬜ TODO-AGENT-BRIDGE-CLOUDHYBRID-000 — Build the Agent-Bridge-cloudhybrid project the manifest describes
+
+- **Project:** agent-bridge-cloudhybrid
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Agent-Bridge-cloudhybrid is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
+### ⬜ TODO-AGENT-BRIDGE-DASHBOARD-000 — Build the Agent-Bridge-dashboard project the manifest describes
+
+- **Project:** agent-bridge-dashboard
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Agent-Bridge-dashboard is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
 
 Evidence:
 
@@ -353,6 +494,26 @@ Acceptance:
 - [ ] Every credential is rotated at the provider
 - [ ] No credential literal remains in the tree
 - [ ] The secret scanner gate rejects the pattern
+
+### ⬜ TODO-AGENT-BRIDGE-RUNTIMESAFETY-000 — Build the Agent-Bridge-runtimesafety project the manifest describes
+
+- **Project:** agent-bridge-runtimesafety
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Agent-Bridge-runtimesafety is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
 
 ### ⬜ TODO-AI-DIGITAL-TWIN-002 — Rotate and remove the credentials in ai-digital-clone
 
@@ -474,6 +635,26 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
+### ⬜ TODO-FOOTBALL-CARD-GAME-000 — Build the football-card-game project the manifest describes
+
+- **Project:** football-card-game
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+football-card-game is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
 ### ⬜ TODO-GAP-001 — Close the eight priority-one Genesis gaps
 
 - **Project:** genesis
@@ -564,6 +745,26 @@ Acceptance:
 - [ ] The files remain on disk and the guard can still inspect them
 - [ ] references/ is still not gitignored
 
+### ⬜ TODO-GENESIS-000 — Build the Genesis project the manifest describes
+
+- **Project:** genesis
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Genesis is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
 ### ⬜ TODO-STR-001 — Make Genesis downloadable and usable as an agent in its own right
 
 - **Project:** genesis
@@ -611,6 +812,46 @@ Acceptance:
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 holonav-os is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
+### ⬜ TODO-IDE-WORKSPACE-000 — Build the IDE-Workspace project the manifest describes
+
+- **Project:** ide-workspace
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+IDE-Workspace is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
+### ⬜ TODO-LEDGERLANDS-000 — Build the LedgerLands project the manifest describes
+
+- **Project:** ledgerlands
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+LedgerLands is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
 
 Evidence:
 
@@ -711,6 +952,26 @@ Acceptance:
 - [ ] The MAT build validates against the versioned schemas
 - [ ] The registry records MAT as finished when it is
 
+### ⬜ TODO-NICHE-PLATFORM-000 — Build the Niche_platform project the manifest describes
+
+- **Project:** niche-platform
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Niche_platform is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
 ### ⬜ TODO-POI-013 — Apply the licence audit to every audio candidate before adoption
 
 - **Project:** poietek
@@ -729,6 +990,26 @@ Acceptance:
 
 - [ ] Every candidate carries a licence classification and a recorded reason
 - [ ] No GPL or AGPL source exists in a first-party repository
+
+### ⬜ TODO-POIETEK-000 — Build the Poietek project the manifest describes
+
+- **Project:** poietek
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Poietek is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
 
 ### ⬜ TODO-QUANTUM-AI-ASSISTANT-000 — Build the quantum-ai-assistant project the manifest describes
 
@@ -757,6 +1038,46 @@ Acceptance:
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 Quantum-OS is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
+### ⬜ TODO-QVA-MERGED-000 — Build the QVA-merged project the manifest describes
+
+- **Project:** qva-merged
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+QVA-merged is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
+### ⬜ TODO-SELF-BUILDING-AI-000 — Build the self-building-ai project the manifest describes
+
+- **Project:** self-building-ai
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+self-building-ai is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
 
 Evidence:
 
@@ -810,6 +1131,26 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
+### ⬜ TODO-TRADING-BOT-002 — Rotate and remove the credentials in Multi-Cross-Platform-Trading-Bot
+
+- **Project:** trading-bot
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Literal credentials were found in the project's own source. They are compromised by being on disk in a recovered drive.
+
+Evidence:
+
+```
+Files: ['production/AI-Voice-assistant/assistant.py', 'production/Facial_Authentication/backend/app.js'].
+```
+
+Acceptance:
+
+- [ ] Every credential is rotated at the provider
+- [ ] No credential literal remains in the tree
+- [ ] The secret scanner gate rejects the pattern
+
 ### ✅ TODO-UB-001 — Discard the stale CMake caches in the Universal-Bridge build trees
 
 - **Project:** universal-bridge
@@ -833,6 +1174,26 @@ Acceptance:
 - [ ] cmake -S . -B build -G Ninja configures without a path-mismatch error
 - [ ] The full ctest suite passes, including the offline and Python gates
 
+### ⬜ TODO-UNIVERSAL-BRIDGE-000 — Build the Universal-Bridge project the manifest describes
+
+- **Project:** universal-bridge
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Universal-Bridge is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
 ### ⬜ TODO-VEYRA-000 — Build the Veyra project the manifest describes
 
 - **Project:** veyra
@@ -853,6 +1214,26 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
+### ⬜ TODO-VEYRA-002 — Rotate and remove the credentials in Veyra
+
+- **Project:** veyra
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Literal credentials were found in the project's own source. They are compromised by being on disk in a recovered drive.
+
+Evidence:
+
+```
+Files: ['tests/integration/tests/conftest.py'].
+```
+
+Acceptance:
+
+- [ ] Every credential is rotated at the provider
+- [ ] No credential literal remains in the tree
+- [ ] The secret scanner gate rejects the pattern
+
 ### ⬜ TODO-VIRTUAL-ASSISTANT-000 — Build the VirtualAssistant project the manifest describes
 
 - **Project:** virtual-assistant
@@ -860,6 +1241,26 @@ Acceptance:
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 VirtualAssistant is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
+
+Evidence:
+
+```
+Measured own source lines: 0.
+```
+
+Acceptance:
+
+- [ ] Source exists in the project directory
+- [ ] The project builds and its tests pass
+- [ ] The build manifest matches what is there
+
+### ⬜ TODO-WEB-PLATFORM-000 — Build the Web-platform project the manifest describes
+
+- **Project:** web-platform
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Web-platform is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
 
 Evidence:
 
@@ -913,6 +1314,25 @@ Acceptance:
 
 - [ ] A licence file is present
 - [ ] The build manifest records it
+
+### ⬜ TODO-STR-006 — Settle the health library's two identical frequency tables
+
+- **Project:** aetherius-health-library
+- **Status:** OPEN
+- **Source:** workspace-restructure — Aetherius-OS/Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+
+The health library holds two frequency tables, rife_frequency.txt and spooky2_frequency.txt. They are byte-identical: the same 452,116 bytes with the same SHA-256. So there is one dataset under two names, and one of the two names promises data that is not there. Either the spooky2 table was never filled in, or it was copied from the rife one. Either way, the library should hold what its names say it holds.
+
+Evidence:
+
+```
+SHA-256 of rife_frequency.txt and spooky2_frequency.txt are identical. Measured 2026-10-20.
+```
+
+Acceptance:
+
+- [ ] The two tables hold what their names say they hold
+- [ ] The health library has its own repository, which it is to have once it is finished
 
 ### ⬜ TODO-AOS-001 — Recover the P16 to P31 canonical phase names and requirements
 
@@ -1284,6 +1704,26 @@ Acceptance:
 
 - [ ] Every document in the master prompt corpus is checked against the registries
 - [ ] Anything genuinely new is registered with its source, and anything already implemented is confirmed rather than re-added
+
+### ⬜ TODO-STR-010 — Build the absorbed projects from the Aetherius OS gate
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** workspace-restructure — Aetherius-OS/Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+
+Every absorbed project has its own build manifest, and each one records how it is built and tested. But Aetherius OS's own gate does not run them: its test suite is scoped to its own source, and each absorbed project runs its own tests with its own runner. So the manifest of an absorbed project is a record of how it should be built, not evidence that it is. A single command that builds and tests every absorbed project is what turns the manifests into a gate.
+
+Evidence:
+
+```
+Aetherius-OS/vite.config.ts now scopes the suite to this project's own source and excludes the absorbed directories. Each absorbed project's build.yaml records its own commands. Measured 2026-10-20.
+```
+
+Acceptance:
+
+- [ ] One command builds and tests every absorbed project
+- [ ] A failure in an absorbed project fails the Aetherius OS gate
+- [ ] The registry records the result of that command
 
 ### ⬜ TODO-AB-003 — Reconcile the 4,066 UNKNOWN requirements
 
@@ -1917,6 +2357,26 @@ Acceptance:
 - [ ] One tree is named authoritative in the build manifest
 - [ ] The others are marked as derived or archived
 
+### ⬜ TODO-STR-008 — Reconcile LedgerLands' three copies of itself
+
+- **Project:** ledgerlands
+- **Status:** OPEN
+- **Source:** workspace-restructure — Aetherius-OS/Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+
+LedgerLands holds a git bundle, a source tree, a second copy named as an Aetherius app repository, and a crypto property game MVP with its own archive. It was never under version control at all before the restructure, so nothing records which of the copies is the current one. The bundle is the history and should be unpacked into a repository first.
+
+Evidence:
+
+```
+The folder holds LedgerLands.bundle, LedgerLands-source, LedgerLands-Aetherius-App-Repo, crypto-property-game-mvp and crypto-property-game-mvp.zip. Measured 2026-10-20.
+```
+
+Acceptance:
+
+- [ ] The bundle is unpacked into a repository with its history
+- [ ] One copy is the current source and the others are recorded as archives
+- [ ] The build manifest says which is which
+
 ### ⬜ TODO-MAT-004 — Fix the Studio publication data route
 
 - **Project:** mat
@@ -2106,6 +2566,26 @@ Acceptance:
 - [ ] A licence file is present
 - [ ] The build manifest records it
 
+### ⬜ TODO-STR-009 — Make Poietek's build compile the bridge it now contains
+
+- **Project:** poietek
+- **Status:** OPEN
+- **Source:** workspace-restructure — Aetherius-OS/Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+
+The universal bridge is inside Poietek now, as the owner directed. It is a C++ project with its own CMake build, and Poietek's build does not compile it, so the two are in the same folder but not in the same build. The bridge's own manifest records how it is built and tested; Poietek's should record that the bridge is part of it.
+
+Evidence:
+
+```
+Poietek/absorbed/Universal-Bridge/build.yaml records the CMake build. Poietek's own commands do not invoke it. Measured 2026-10-20.
+```
+
+Acceptance:
+
+- [ ] Poietek's build compiles the bridge
+- [ ] The bridge's tests run as part of Poietek's gate
+- [ ] The bridge's manifest names Poietek as its owner
+
 ### ⬜ TODO-QVA-MERGED-003 — Choose and record a licence for QVA-merged
 
 - **Project:** qva-merged
@@ -2279,6 +2759,26 @@ Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
+### ⬜ TODO-STR-007 — Give the health library its own repository once it is finished
+
+- **Project:** aetherius-health-library
+- **Status:** OPEN
+- **Source:** workspace-restructure — Aetherius-OS/Temp/WORKSPACE-RESTRUCTURE-2026-10-20.md
+
+The health library will be part of Aetherius OS once it is finished, and when it is finished it will have its own repository, holding new and old discoveries to help with development. It is recorded in the workspace now, and the repository is what comes next.
+
+Evidence:
+
+```
+The owner's instruction of 2026-10-20.
+```
+
+Acceptance:
+
+- [ ] The library is finished
+- [ ] It has its own repository on the owner's account
+- [ ] The registry records the repository
 
 ### ⬜ TODO-AOS-009 — Define the first-party versioned semantic message contract
 
@@ -2532,6 +3032,25 @@ Acceptance:
 
 - [ ] Each folder has a recorded scope or is removed from the registry
 
+### ⬜ TODO-AETHERIUS-OS-PROTO-010 — Build the missing aetherius-os-prototype capabilities
+
+- **Project:** aetherius-os-prototype
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+aetherius-os-prototype was checked against the capability set for its family and 8 of 8 were not found in its own source. The missing ones are: Runtime or kernel (PLT-001); Module system (PLT-002); Isolation between parts (PLT-003); User interface shell (PLT-004); Extension system (PLT-005); Configuration management (PLT-006); Observability (PLT-007); Distribution and packaging (PLT-008).
+
+Evidence:
+
+```
+The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
+```
+
+Acceptance:
+
+- [ ] Each missing capability is present in the source
+- [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
 ### ⬜ TODO-WORLDCASS-PROTO-010 — Build the missing aetherius-os-worldclass-prototype capabilities
 
 - **Project:** aetherius-os-worldclass-prototype
@@ -2661,6 +3180,25 @@ Acceptance:
 
 - [ ] The branch either lands as a runtime or is recorded as audit-only
 
+### ⬜ TODO-AGENT-BRIDGE-DASHBOARD-010 — Build the missing Agent-Bridge-dashboard capabilities
+
+- **Project:** agent-bridge-dashboard
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Agent-Bridge-dashboard was checked against the capability set for its family and 18 of 18 were not found in its own source. The missing ones are: Model routing across providers (INT-001); Tool execution (INT-002); Planning and decomposition (INT-003); Working memory and context (INT-004); Long term memory (INT-005); Multi agent coordination (INT-006); Authority and permissions (INT-007); Durable task state (INT-008); Evaluation and benchmarking (INT-009); Local and offline model (INT-010); Runtime or kernel (PLT-001); Module system (PLT-002); Isolation between parts (PLT-003); User interface shell (PLT-004); Extension system (PLT-005); Configuration management (PLT-006); Observability (PLT-007); Distribution and packaging (PLT-008).
+
+Evidence:
+
+```
+The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
+```
+
+Acceptance:
+
+- [ ] Each missing capability is present in the source
+- [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
 ### ⬜ TODO-ABRS-001 — Reconcile the runtime safety fixes back to the parent project
 
 - **Project:** agent-bridge-runtimesafety
@@ -2696,6 +3234,25 @@ HEAD commit subject is "docs: Cloud/Hybrid audit RESOLUTION - fixed vs remaining
 Acceptance:
 
 - [ ] The remaining states are visible from the parent project
+
+### ⬜ TODO-AGENT-BRIDGE-RUNTIMESAFETY-010 — Build the missing Agent-Bridge-runtimesafety capabilities
+
+- **Project:** agent-bridge-runtimesafety
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Agent-Bridge-runtimesafety was checked against the capability set for its family and 18 of 18 were not found in its own source. The missing ones are: Model routing across providers (INT-001); Tool execution (INT-002); Planning and decomposition (INT-003); Working memory and context (INT-004); Long term memory (INT-005); Multi agent coordination (INT-006); Authority and permissions (INT-007); Durable task state (INT-008); Evaluation and benchmarking (INT-009); Local and offline model (INT-010); Local runtime (LOC-001); Local model inference (LOC-002); Offline caching (LOC-003); Local data store (LOC-004); Device access (LOC-005); Resource scheduling (LOC-006); Local installation (LOC-007); Update mechanism (LOC-008).
+
+Evidence:
+
+```
+The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
+```
+
+Acceptance:
+
+- [ ] Each missing capability is present in the source
+- [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
 ### ⬜ TODO-AOSB-001 — Record the scope of the Architecture of Shadows book project
 
@@ -2979,6 +3536,25 @@ Acceptance:
 - [ ] The Genesis provenance record states that the tree is untracked and why
 - [ ] The origin of the 47 files is recorded for anyone who finds them again
 
+### ⬜ TODO-GENESIS-010 — Build the missing Genesis capabilities
+
+- **Project:** genesis
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Genesis was checked against the capability set for its family and 18 of 18 were not found in its own source. The missing ones are: Model routing across providers (INT-001); Tool execution (INT-002); Planning and decomposition (INT-003); Working memory and context (INT-004); Long term memory (INT-005); Multi agent coordination (INT-006); Authority and permissions (INT-007); Durable task state (INT-008); Evaluation and benchmarking (INT-009); Local and offline model (INT-010); Runtime or kernel (PLT-001); Module system (PLT-002); Isolation between parts (PLT-003); User interface shell (PLT-004); Extension system (PLT-005); Configuration management (PLT-006); Observability (PLT-007); Distribution and packaging (PLT-008).
+
+Evidence:
+
+```
+The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
+```
+
+Acceptance:
+
+- [ ] Each missing capability is present in the source
+- [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
 ### ⬜ TODO-HCA-001 — Rotate the four exposed provider credentials
 
 - **Project:** hermes-config-audit
@@ -3183,6 +3759,25 @@ Acceptance:
 
 - [ ] The suite passes reliably whether or not other suites are running
 - [ ] Any test that depends on wall-clock timing has a budget that reflects the host
+
+### ⬜ TODO-IDE-WORKSPACE-010 — Build the missing IDE-Workspace capabilities
+
+- **Project:** ide-workspace
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+IDE-Workspace was checked against the capability set for its family and 8 of 8 were not found in its own source. The missing ones are: Runtime or kernel (PLT-001); Module system (PLT-002); Isolation between parts (PLT-003); User interface shell (PLT-004); Extension system (PLT-005); Configuration management (PLT-006); Observability (PLT-007); Distribution and packaging (PLT-008).
+
+Evidence:
+
+```
+The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
+```
+
+Acceptance:
+
+- [ ] Each missing capability is present in the source
+- [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
 ### ⬜ TODO-IED-001 — Stop tracking a file inside node_modules
 
@@ -3529,6 +4124,25 @@ Acceptance:
 
 - [ ] Each candidate has a recorded boundary review before any repository is created
 - [ ] No new public repository is created without the owner's explicit approval
+
+### ⬜ TODO-POIETEK-010 — Build the missing Poietek capabilities
+
+- **Project:** poietek
+- **Status:** OPEN
+- **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+
+Poietek was checked against the capability set for its family and 9 of 9 were not found in its own source. The missing ones are: Audio engine (CRE-001); MIDI (CRE-002); Plugin host (CRE-003); Plugin SDK (CRE-004); Timeline and arrangement (CRE-005); Mixer and routing (CRE-006); Sampler and instruments (CRE-007); Export and rendering (CRE-008); Scoring and notation (CRE-009).
+
+Evidence:
+
+```
+The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
+```
+
+Acceptance:
+
+- [ ] Each missing capability is present in the source
+- [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
 ### ⬜ TODO-QUANTUM-AI-ASSISTANT-010 — Build the missing quantum-ai-assistant capabilities
 

@@ -99,44 +99,67 @@ def own_files(root: Path, limit_bytes: int = 3_000_000) -> list[Path]:
     return out
 
 
+# The words a source file is reduced to. A capability term is looked
+# for in this set rather than in the raw text.
+WORD = re.compile(r"[a-z0-9][a-z0-9+.#_-]*")
+
+
 def scan_capabilities(root: Path, families: list[str]) -> list[dict]:
-    """Look for each family capability in the project's own source."""
+    """Look for each family capability in the project's own source.
+
+    The source is read once and reduced to the set of words it contains.
+    A capability is present when its search terms appear in that set, in
+    more than one file, so that a term mentioned once is a mention and
+    two is an implementation being used.
+
+    Working on the word set rather than on the text makes the search
+    fast enough to run on every change, which matters because the
+    register is meant to be regenerated rather than hand-maintained.
+    """
     files = own_files(root)
-    texts: list[tuple[str, str]] = []
+    # word -> the files it appears in
+    where: dict[str, set[str]] = defaultdict(set)
     for p in files:
         try:
-            texts.append((str(p.relative_to(root)).replace("\\", "/"),
-                          p.read_text(encoding="utf-8", errors="replace")))
+            text = p.read_text(encoding="utf-8", errors="replace").lower()
         except OSError:
             continue
+        rel = str(p.relative_to(root)).replace("\\", "/")
+        for word in set(WORD.findall(text)):
+            where[word].add(rel)
+
+    def files_for(term: str) -> set[str]:
+        """The files a search term appears in, on word boundaries."""
+        parts = term.lower().split()
+        if len(parts) == 1:
+            return where.get(parts[0], set())
+        # A phrase: every word of it must appear in the same file.
+        hits: set[str] = set()
+        candidates = set.intersection(*(where.get(w, set()) for w in parts)) \
+            if all(w in where for w in parts) else set()
+        hits = candidates
+        return hits
 
     results = []
     for fam in families:
         for cap_id, label, terms in FAMILY_CAPABILITIES.get(fam, []):
-            hits: list[str] = []
+            hits: set[str] = set()
             count = 0
-            lowered = [re.compile(r"(?<![a-z0-9])" + re.escape(t.lower())
-                                  + r"(?![a-z0-9])") for t in terms]
-            for rel, text in texts:
-                low = text.lower()
-                matched = False
-                for rx in lowered:
-                    n = len(rx.findall(low))
-                    if n:
-                        count += n
-                        matched = True
-                if matched:
-                    hits.append(rel)
-            # A capability is present when it appears in the project's own
-            # source in more than one file. One file is a mention; two is
-            # an implementation being used.
+            for term in terms:
+                found = files_for(term)
+                if found:
+                    count += len(found)
+                    hits |= found
             results.append({
                 "family": fam,
                 "capability_id": cap_id,
                 "capability": label,
+                # A capability is present when it appears in the project's
+                # own source in more than one file. One file is a mention;
+                # two is an implementation being used.
                 "present": len(hits) >= 2,
                 "matches": count,
-                "evidence": hits[:3],
+                "evidence": sorted(hits)[:3],
                 "files": len(hits),
             })
     return results

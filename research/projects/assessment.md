@@ -10,11 +10,12 @@ own source, its tests, its build system and its licence.
 | ai-digital-clone | 215983 | 9 | 0% | python | none |
 | aetherial-platform | 200070 | 24 | 2% | shell | none |
 | Agent-Bridge | 145743 | 217 | 28% | python | none |
-| Aetherius-OS | 143498 | 114 | 18% | typescript | LICENSE |
+| Aetherius-OS | 138668 | 110 | 18% | typescript | LICENSE |
 | Agent-Bridge-dashboard | 134735 | 190 | 30% | python | none |
 | aetherium | 118572 | 15 | 3% | python | license.md |
 | Agent-Bridge-runtimesafety | 111778 | 160 | 30% | python | none |
 | Agent-Bridge-cloudhybrid | 111326 | 160 | 29% | python | none |
+| LedgerLands | 66068 | 43 | 14% | typescript | LICENSE.md |
 | Poietek | 65995 | 51 | 12% | typescript | none |
 | Genesis | 58008 | 38 | 14% | typescript | LICENSE |
 | IDE-Workspace | 35638 | 43 | 22% | python | none |
@@ -23,7 +24,6 @@ own source, its tests, its build system and its licence.
 | Materials-Atlas-Table-Codex---MAT | 26740 | 67 | 24% | javascript | none |
 | Web-platform | 9638 | 0 | 0% | typescript | none |
 | Universal-Bridge | 9601 | 4 | 12% | powershell | LICENSE |
-| LedgerLands | 4830 | 4 | 14% | python | LICENSE.md |
 | QVA-merged | 3061 | 0 | 0% | python | none |
 | Multi-Cross-Platform-Trading-Bot | 1755 | 1 | 0% | python | LICENSE |
 | self-building-ai | 969 | 0 | 0% | python | LICENSE |
@@ -55,6 +55,7 @@ own source, its tests, its build system and its licence.
 | IDE-Workspace | no licence file |
 | Poietek | no licence file |
 | Materials-Atlas-Table-Codex---MAT | no licence file |
+| LedgerLands | secret literal in generated/prisma/internal/class.ts |
 | Aetherial | 276820 lines and almost no tests |
 | aetherial-platform | secret literal in tests/auth/validators/auth.validators.spec.ts |
 | aetherial-platform | no licence file |

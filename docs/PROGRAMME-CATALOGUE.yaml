@@ -22,105 +22,25 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-10-20T13:47:43Z"
-    state: SECRET_EXPOSED
+    state: PRESENT
     measured:
-      own_lines: 1323334
-      own_source_files: 6094
-      test_files: 397
-      test_line_fraction: 0.063
+      own_lines: 138668
+      own_source_files: 655
+      test_files: 110
+      test_line_fraction: 0.182
       primary_language: typescript
       licence: LICENSE
       manifests:
         - build.yaml
         - package.json
         - build.yaml
-        - manage.py
-        - docker-compose.yml
-        - dockerfile
-        - requirements.txt
         - build.yaml
         - build.yaml
         - build.yaml
         - build.yaml
         - build.yaml
         - build.yaml
-        - package.json
         - build.yaml
-        - package.json
-        - package.json
-        - build.yaml
-        - docker-compose.yml
-        - package.json
-        - Dockerfile
-        - package.json
-        - Dockerfile
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - docker-compose.yml
-        - package.json
-        - Dockerfile
-        - package.json
-        - Dockerfile
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - docker-compose.yml
-        - package.json
-        - Dockerfile
-        - package.json
-        - Dockerfile
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - build.yaml
-        - docker-compose.yml
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - build.yaml
-        - package.json
-        - build.yaml
-        - CMakeLists.txt
-        - CMakeLists.txt
-        - Cargo.toml
-        - Cargo.toml
-        - build.yaml
-        - build.yaml
-        - build.yaml
-        - build.yaml
-        - docker-compose.yml
-        - Dockerfile
-        - package.json
-        - package.json
-        - docker-compose.yml
-        - package.json
-        - build.yaml
-        - build.yaml
-        - package.json
-        - build.yaml
-        - build.yaml
-        - CMakeLists.txt
-        - requirements.txt
-        - build.yaml
-        - Makefile
-        - package.json
         - package.json
         - requirements.txt
         - package.json
@@ -136,72 +56,19 @@ projects:
         - Cargo.toml
         - Makefile
         - build.yaml
-        - package.json
-        - package.json
-        - requirements.txt
-        - requirements.txt
-        - build.yaml
-        - package.json
-        - requirements.txt
-        - Dockerfile
-        - package.json
-        - package.json
-        - docker-compose.yml
-        - docker-compose.yml
-        - requirements.txt
-        - package.json
-        - package.json
-        - package.json
-        - docker-compose.yml
         - build.yaml
         - build.yaml
         - build.yaml
-        - build.yaml
-        - build.yaml
-        - build.yaml
-        - docker-compose.yml
-        - Dockerfile
-        - requirements.txt
-        - build.yaml
-        - package.json
-        - turbo.json
-        - package.json
-        - package.json
-        - pubspec.yaml
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - package.json
-        - Dockerfile
-        - package.json
-        - Dockerfile
-        - docker-compose.yml
-        - Dockerfile
-        - Makefile
-        - pyproject.toml
-        - requirements.txt
-        - Dockerfile
-        - Dockerfile
-        - requirements.txt
-        - package.json
         - package.json
         - build.yaml
-      has_ci: true
+      has_ci: false
       has_docker: true
-      secret_literal_files:
-        - apps/LedgerLands/LedgerLands-Aetherius-App-Repo/LedgerLands/generated/prisma/internal/class.ts
-        - apps/Multi-Cross-Platform-Trading-Bot/production/AI-Voice-assistant/assistant.py
-        - apps/Multi-Cross-Platform-Trading-Bot/production/Facial_Authentication/backend/app.js
-        - ecosystem/aetherial-platform/tests/auth/validators/auth.validators.spec.ts
-        - predecessors/Veyra/tests/integration/tests/conftest.py
+      secret_literal_files: []
     capabilities:
       checked: 18
       present: 18
       missing: 0
-    gaps:
-      - PRJ-AETHERIUS-OS-GAP-003
+    gaps: []
   - id: PRJ-GENESIS
     name: Genesis
     family:
@@ -217,42 +84,28 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-10-20T13:03:25Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
-      has_ci: false
+      own_lines: 58008
+      own_source_files: 377
+      test_files: 38
+      test_line_fraction: 0.136
+      primary_language: typescript
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - CMakeLists.txt
+        - requirements.txt
+        - Makefile
+        - package.json
+      has_ci: true
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 18
-      present: 0
-      missing: 18
-    gaps:
-      - PRJ-GENESIS-GAP-001
-      - PRJ-GENESIS-CAP-INT-001
-      - PRJ-GENESIS-CAP-INT-002
-      - PRJ-GENESIS-CAP-INT-003
-      - PRJ-GENESIS-CAP-INT-004
-      - PRJ-GENESIS-CAP-INT-005
-      - PRJ-GENESIS-CAP-INT-006
-      - PRJ-GENESIS-CAP-INT-007
-      - PRJ-GENESIS-CAP-INT-008
-      - PRJ-GENESIS-CAP-INT-009
-      - PRJ-GENESIS-CAP-INT-010
-      - PRJ-GENESIS-CAP-PLT-001
-      - PRJ-GENESIS-CAP-PLT-002
-      - PRJ-GENESIS-CAP-PLT-003
-      - PRJ-GENESIS-CAP-PLT-004
-      - PRJ-GENESIS-CAP-PLT-005
-      - PRJ-GENESIS-CAP-PLT-006
-      - PRJ-GENESIS-CAP-PLT-007
-      - PRJ-GENESIS-CAP-PLT-008
+      present: 18
+      missing: 0
+    gaps: []
   - id: PRJ-AGENT-BRIDGE
     name: Agent-Bridge
     family:
@@ -268,33 +121,25 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-10-20T12:39:58Z"
-    state: SECRET_EXPOSED
+    state: PRESENT
     measured:
-      own_lines: 503582
-      own_source_files: 2199
-      test_files: 727
-      test_line_fraction: 0.292
+      own_lines: 145743
+      own_source_files: 672
+      test_files: 217
+      test_line_fraction: 0.277
       primary_language: python
       licence: null
       manifests:
         - build.yaml
         - pyproject.toml
-        - build.yaml
-        - pyproject.toml
-        - build.yaml
-        - pyproject.toml
-        - build.yaml
-        - pyproject.toml
       has_ci: true
       has_docker: false
-      secret_literal_files:
-        - variants/dashboard/tests/test_h07_h09.py
+      secret_literal_files: []
     capabilities:
       checked: 19
       present: 19
       missing: 0
     gaps:
-      - PRJ-AGENT-BRIDGE-GAP-003
       - PRJ-AGENT-BRIDGE-GAP-004
   - id: PRJ-AGENT-BRIDGE-CLOUDHYBRID
     name: Agent-Bridge-cloudhybrid
@@ -305,44 +150,27 @@ projects:
     locations:
       - kind: workspace
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge\\variants\\cloudhybrid"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      own_lines: 111326
+      own_source_files: 487
+      test_files: 160
+      test_line_fraction: 0.294
+      primary_language: python
       licence: null
-      manifests: []
-      has_ci: false
+      manifests:
+        - build.yaml
+        - pyproject.toml
+      has_ci: true
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 20
-      present: 0
-      missing: 20
+      present: 19
+      missing: 1
     gaps:
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-GAP-001
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-001
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-002
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-003
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-004
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-005
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-006
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-007
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-008
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-009
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-INT-010
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-001
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-002
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-003
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-004
+      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-GAP-004
       - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-005
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-006
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-007
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-008
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-009
-      - PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-010
   - id: PRJ-AGENT-BRIDGE-DASHBOARD
     name: Agent-Bridge-dashboard
     family:
@@ -352,42 +180,28 @@ projects:
     locations:
       - kind: workspace
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge\\variants\\dashboard"
-    state: EMPTY
+    state: SECRET_EXPOSED
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      own_lines: 134735
+      own_source_files: 553
+      test_files: 190
+      test_line_fraction: 0.305
+      primary_language: python
       licence: null
-      manifests: []
-      has_ci: false
+      manifests:
+        - build.yaml
+        - pyproject.toml
+      has_ci: true
       has_docker: false
-      secret_literal_files: []
+      secret_literal_files:
+        - tests/test_h07_h09.py
     capabilities:
       checked: 18
-      present: 0
-      missing: 18
+      present: 18
+      missing: 0
     gaps:
-      - PRJ-AGENT-BRIDGE-DASHBOARD-GAP-001
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-001
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-002
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-003
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-004
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-005
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-006
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-007
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-008
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-009
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-INT-010
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-001
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-002
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-003
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-004
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-005
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-006
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-007
-      - PRJ-AGENT-BRIDGE-DASHBOARD-CAP-PLT-008
+      - PRJ-AGENT-BRIDGE-DASHBOARD-GAP-003
+      - PRJ-AGENT-BRIDGE-DASHBOARD-GAP-004
   - id: PRJ-AGENT-BRIDGE-RUNTIMESAFETY
     name: Agent-Bridge-runtimesafety
     family:
@@ -397,42 +211,26 @@ projects:
     locations:
       - kind: workspace
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge\\variants\\runtimesafety"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      own_lines: 111778
+      own_source_files: 487
+      test_files: 160
+      test_line_fraction: 0.295
+      primary_language: python
       licence: null
-      manifests: []
-      has_ci: false
+      manifests:
+        - build.yaml
+        - pyproject.toml
+      has_ci: true
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 18
-      present: 0
-      missing: 18
+      present: 18
+      missing: 0
     gaps:
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-GAP-001
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-001
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-002
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-003
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-004
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-005
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-006
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-007
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-008
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-009
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-INT-010
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-001
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-002
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-003
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-004
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-005
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-006
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-007
-      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-CAP-LOC-008
+      - PRJ-AGENT-BRIDGE-RUNTIMESAFETY-GAP-004
   - id: PRJ-IDE-WORKSPACE
     name: IDE-Workspace
     family:
@@ -447,32 +245,27 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-10-20T12:40:18Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      own_lines: 35638
+      own_source_files: 172
+      test_files: 43
+      test_line_fraction: 0.224
+      primary_language: python
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
+        - package.json
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 8
-      present: 0
-      missing: 8
+      present: 8
+      missing: 0
     gaps:
-      - PRJ-IDE-WORKSPACE-GAP-001
-      - PRJ-IDE-WORKSPACE-CAP-PLT-001
-      - PRJ-IDE-WORKSPACE-CAP-PLT-002
-      - PRJ-IDE-WORKSPACE-CAP-PLT-003
-      - PRJ-IDE-WORKSPACE-CAP-PLT-004
-      - PRJ-IDE-WORKSPACE-CAP-PLT-005
-      - PRJ-IDE-WORKSPACE-CAP-PLT-006
-      - PRJ-IDE-WORKSPACE-CAP-PLT-007
-      - PRJ-IDE-WORKSPACE-CAP-PLT-008
+      - PRJ-IDE-WORKSPACE-GAP-004
   - id: PRJ-POIETEK
     name: Poietek
     family:
@@ -487,33 +280,29 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-10-20T12:40:01Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      own_lines: 65995
+      own_source_files: 465
+      test_files: 51
+      test_line_fraction: 0.118
+      primary_language: typescript
       licence: null
-      manifests: []
-      has_ci: false
+      manifests:
+        - build.yaml
+        - package.json
+        - CMakeLists.txt
+        - Cargo.toml
+        - Cargo.toml
+      has_ci: true
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 9
-      present: 0
-      missing: 9
+      present: 9
+      missing: 0
     gaps:
-      - PRJ-POIETEK-GAP-001
-      - PRJ-POIETEK-CAP-CRE-001
-      - PRJ-POIETEK-CAP-CRE-002
-      - PRJ-POIETEK-CAP-CRE-003
-      - PRJ-POIETEK-CAP-CRE-004
-      - PRJ-POIETEK-CAP-CRE-005
-      - PRJ-POIETEK-CAP-CRE-006
-      - PRJ-POIETEK-CAP-CRE-007
-      - PRJ-POIETEK-CAP-CRE-008
-      - PRJ-POIETEK-CAP-CRE-009
+      - PRJ-POIETEK-GAP-004
   - id: PRJ-UNIVERSAL-BRIDGE
     name: Universal-Bridge
     family:
@@ -529,41 +318,26 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-10-20T12:31:37Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
-      has_ci: false
+      own_lines: 9601
+      own_source_files: 47
+      test_files: 4
+      test_line_fraction: 0.118
+      primary_language: powershell
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - CMakeLists.txt
+      has_ci: true
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 17
-      present: 0
-      missing: 17
+      present: 16
+      missing: 1
     gaps:
-      - PRJ-UNIVERSAL-BRIDGE-GAP-001
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-001
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-002
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-003
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-004
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-005
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-006
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-007
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-008
-      - PRJ-UNIVERSAL-BRIDGE-CAP-CRE-009
       - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-001
-      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-002
-      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-003
-      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-004
-      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-005
-      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-006
-      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-007
-      - PRJ-UNIVERSAL-BRIDGE-CAP-PLT-008
   - id: PRJ-MAT
     name: Materials-Atlas-Table-Codex---MAT
     family:
@@ -608,41 +382,67 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\LedgerLands"
-    state: EMPTY
+    state: SECRET_EXPOSED
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
-      has_ci: false
-      has_docker: false
-      secret_literal_files: []
+      own_lines: 66068
+      own_source_files: 170
+      test_files: 43
+      test_line_fraction: 0.137
+      primary_language: typescript
+      licence: LICENSE.md
+      manifests:
+        - build.yaml
+        - docker-compose.yml
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - package.json
+        - docker-compose.yml
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+      has_ci: true
+      has_docker: true
+      secret_literal_files:
+        - generated/prisma/internal/class.ts
     capabilities:
       checked: 17
-      present: 0
-      missing: 17
+      present: 15
+      missing: 2
     gaps:
-      - PRJ-LEDGERLANDS-GAP-001
-      - PRJ-LEDGERLANDS-CAP-FIN-001
+      - PRJ-LEDGERLANDS-GAP-003
       - PRJ-LEDGERLANDS-CAP-FIN-002
-      - PRJ-LEDGERLANDS-CAP-FIN-003
       - PRJ-LEDGERLANDS-CAP-FIN-004
-      - PRJ-LEDGERLANDS-CAP-FIN-005
-      - PRJ-LEDGERLANDS-CAP-FIN-006
-      - PRJ-LEDGERLANDS-CAP-FIN-007
-      - PRJ-LEDGERLANDS-CAP-FIN-008
-      - PRJ-LEDGERLANDS-CAP-FIN-009
-      - PRJ-LEDGERLANDS-CAP-BC-001
-      - PRJ-LEDGERLANDS-CAP-BC-002
-      - PRJ-LEDGERLANDS-CAP-BC-003
-      - PRJ-LEDGERLANDS-CAP-BC-004
-      - PRJ-LEDGERLANDS-CAP-BC-005
-      - PRJ-LEDGERLANDS-CAP-BC-006
-      - PRJ-LEDGERLANDS-CAP-BC-007
-      - PRJ-LEDGERLANDS-CAP-BC-008
   - id: PRJ-ARCH-SHADOWS
     name: Architecture of Shadows Book
     family:
@@ -656,10 +456,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -689,10 +490,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -725,10 +527,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -761,10 +564,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -802,10 +606,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -835,50 +640,29 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-09-11T07:53:22Z"
-    state: EMPTY
+    state: UNTESTED
     measured:
-      own_lines: 0
-      own_source_files: 0
+      own_lines: 276820
+      own_source_files: 1079
       test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
+      test_line_fraction: 0.0
+      primary_language: typescript
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - package.json
+        - package.json
+        - requirements.txt
+        - requirements.txt
       has_ci: false
-      has_docker: false
+      has_docker: true
       secret_literal_files: []
     capabilities:
       checked: 26
-      present: 0
-      missing: 26
+      present: 26
+      missing: 0
     gaps:
-      - PRJ-AETHERIAL-GAP-001
-      - PRJ-AETHERIAL-CAP-PLT-001
-      - PRJ-AETHERIAL-CAP-PLT-002
-      - PRJ-AETHERIAL-CAP-PLT-003
-      - PRJ-AETHERIAL-CAP-PLT-004
-      - PRJ-AETHERIAL-CAP-PLT-005
-      - PRJ-AETHERIAL-CAP-PLT-006
-      - PRJ-AETHERIAL-CAP-PLT-007
-      - PRJ-AETHERIAL-CAP-PLT-008
-      - PRJ-AETHERIAL-CAP-INT-001
-      - PRJ-AETHERIAL-CAP-INT-002
-      - PRJ-AETHERIAL-CAP-INT-003
-      - PRJ-AETHERIAL-CAP-INT-004
-      - PRJ-AETHERIAL-CAP-INT-005
-      - PRJ-AETHERIAL-CAP-INT-006
-      - PRJ-AETHERIAL-CAP-INT-007
-      - PRJ-AETHERIAL-CAP-INT-008
-      - PRJ-AETHERIAL-CAP-INT-009
-      - PRJ-AETHERIAL-CAP-INT-010
-      - PRJ-AETHERIAL-CAP-APP-001
-      - PRJ-AETHERIAL-CAP-APP-002
-      - PRJ-AETHERIAL-CAP-APP-003
-      - PRJ-AETHERIAL-CAP-APP-004
-      - PRJ-AETHERIAL-CAP-APP-005
-      - PRJ-AETHERIAL-CAP-APP-006
-      - PRJ-AETHERIAL-CAP-APP-007
-      - PRJ-AETHERIAL-CAP-APP-008
+      - PRJ-AETHERIAL-GAP-002
   - id: PRJ-AETHERIAL-PLATFORM
     name: aetherial-platform
     family:
@@ -899,93 +683,33 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-03-27T04:05:01Z"
-    state: EMPTY
+    state: SECRET_EXPOSED
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      own_lines: 200070
+      own_source_files: 797
+      test_files: 24
+      test_line_fraction: 0.022
+      primary_language: shell
       licence: null
-      manifests: []
-      has_ci: false
-      has_docker: false
-      secret_literal_files: []
+      manifests:
+        - build.yaml
+        - docker-compose.yml
+        - Dockerfile
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - package.json
+      has_ci: true
+      has_docker: true
+      secret_literal_files:
+        - tests/auth/validators/auth.validators.spec.ts
     capabilities:
       checked: 69
-      present: 0
-      missing: 69
+      present: 69
+      missing: 0
     gaps:
-      - PRJ-AETHERIAL-PLATFORM-GAP-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-002
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-003
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-004
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-005
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-006
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-007
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-008
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-009
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-010
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-011
-      - PRJ-AETHERIAL-PLATFORM-CAP-COM-012
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-002
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-003
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-004
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-005
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-006
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-007
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-008
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-009
-      - PRJ-AETHERIAL-PLATFORM-CAP-EDU-010
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-002
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-003
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-004
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-005
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-006
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-007
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-008
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-009
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-010
-      - PRJ-AETHERIAL-PLATFORM-CAP-SOC-011
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-002
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-003
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-004
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-005
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-006
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-007
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-008
-      - PRJ-AETHERIAL-PLATFORM-CAP-FIN-009
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-002
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-003
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-004
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-005
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-006
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-007
-      - PRJ-AETHERIAL-PLATFORM-CAP-APP-008
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-002
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-003
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-004
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-005
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-006
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-007
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-008
-      - PRJ-AETHERIAL-PLATFORM-CAP-DB-009
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-001
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-002
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-003
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-004
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-005
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-006
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-007
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-008
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-009
-      - PRJ-AETHERIAL-PLATFORM-CAP-CLD-010
+      - PRJ-AETHERIAL-PLATFORM-GAP-003
+      - PRJ-AETHERIAL-PLATFORM-GAP-004
   - id: PRJ-WEB-PLATFORM
     name: Web-platform
     family:
@@ -1004,73 +728,36 @@ projects:
         fork: false
         private: false
         pushed_at: "2025-01-31T05:08:03Z"
-    state: EMPTY
+    state: UNTESTED
     measured:
-      own_lines: 0
-      own_source_files: 0
+      own_lines: 9638
+      own_source_files: 52
       test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      test_line_fraction: 0.0
+      primary_language: typescript
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
-      has_docker: false
+      has_docker: true
       secret_literal_files: []
     capabilities:
       checked: 49
-      present: 0
-      missing: 49
+      present: 39
+      missing: 10
     gaps:
-      - PRJ-WEB-PLATFORM-GAP-001
-      - PRJ-WEB-PLATFORM-CAP-COM-001
-      - PRJ-WEB-PLATFORM-CAP-COM-002
+      - PRJ-WEB-PLATFORM-GAP-002
+      - PRJ-WEB-PLATFORM-GAP-004
       - PRJ-WEB-PLATFORM-CAP-COM-003
-      - PRJ-WEB-PLATFORM-CAP-COM-004
       - PRJ-WEB-PLATFORM-CAP-COM-005
       - PRJ-WEB-PLATFORM-CAP-COM-006
-      - PRJ-WEB-PLATFORM-CAP-COM-007
-      - PRJ-WEB-PLATFORM-CAP-COM-008
       - PRJ-WEB-PLATFORM-CAP-COM-009
       - PRJ-WEB-PLATFORM-CAP-COM-010
-      - PRJ-WEB-PLATFORM-CAP-COM-011
       - PRJ-WEB-PLATFORM-CAP-COM-012
-      - PRJ-WEB-PLATFORM-CAP-EDU-001
-      - PRJ-WEB-PLATFORM-CAP-EDU-002
-      - PRJ-WEB-PLATFORM-CAP-EDU-003
-      - PRJ-WEB-PLATFORM-CAP-EDU-004
-      - PRJ-WEB-PLATFORM-CAP-EDU-005
-      - PRJ-WEB-PLATFORM-CAP-EDU-006
-      - PRJ-WEB-PLATFORM-CAP-EDU-007
-      - PRJ-WEB-PLATFORM-CAP-EDU-008
-      - PRJ-WEB-PLATFORM-CAP-EDU-009
-      - PRJ-WEB-PLATFORM-CAP-EDU-010
-      - PRJ-WEB-PLATFORM-CAP-SOC-001
-      - PRJ-WEB-PLATFORM-CAP-SOC-002
-      - PRJ-WEB-PLATFORM-CAP-SOC-003
-      - PRJ-WEB-PLATFORM-CAP-SOC-004
-      - PRJ-WEB-PLATFORM-CAP-SOC-005
-      - PRJ-WEB-PLATFORM-CAP-SOC-006
-      - PRJ-WEB-PLATFORM-CAP-SOC-007
-      - PRJ-WEB-PLATFORM-CAP-SOC-008
-      - PRJ-WEB-PLATFORM-CAP-SOC-009
-      - PRJ-WEB-PLATFORM-CAP-SOC-010
-      - PRJ-WEB-PLATFORM-CAP-SOC-011
-      - PRJ-WEB-PLATFORM-CAP-BC-001
-      - PRJ-WEB-PLATFORM-CAP-BC-002
-      - PRJ-WEB-PLATFORM-CAP-BC-003
-      - PRJ-WEB-PLATFORM-CAP-BC-004
-      - PRJ-WEB-PLATFORM-CAP-BC-005
       - PRJ-WEB-PLATFORM-CAP-BC-006
-      - PRJ-WEB-PLATFORM-CAP-BC-007
-      - PRJ-WEB-PLATFORM-CAP-BC-008
       - PRJ-WEB-PLATFORM-CAP-APP-001
-      - PRJ-WEB-PLATFORM-CAP-APP-002
       - PRJ-WEB-PLATFORM-CAP-APP-003
-      - PRJ-WEB-PLATFORM-CAP-APP-004
-      - PRJ-WEB-PLATFORM-CAP-APP-005
-      - PRJ-WEB-PLATFORM-CAP-APP-006
       - PRJ-WEB-PLATFORM-CAP-APP-007
-      - PRJ-WEB-PLATFORM-CAP-APP-008
   - id: PRJ-NICHE-PLATFORM
     name: Niche_platform
     family:
@@ -1086,40 +773,27 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-09-19T10:52:38Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      own_lines: 27626
+      own_source_files: 153
+      test_files: 21
+      test_line_fraction: 0.036
+      primary_language: javascript
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
+        - package.json
       has_ci: false
-      has_docker: false
+      has_docker: true
       secret_literal_files: []
     capabilities:
       checked: 16
-      present: 0
-      missing: 16
+      present: 15
+      missing: 1
     gaps:
-      - PRJ-NICHE-PLATFORM-GAP-001
-      - PRJ-NICHE-PLATFORM-CAP-PLT-001
-      - PRJ-NICHE-PLATFORM-CAP-PLT-002
+      - PRJ-NICHE-PLATFORM-GAP-004
       - PRJ-NICHE-PLATFORM-CAP-PLT-003
-      - PRJ-NICHE-PLATFORM-CAP-PLT-004
-      - PRJ-NICHE-PLATFORM-CAP-PLT-005
-      - PRJ-NICHE-PLATFORM-CAP-PLT-006
-      - PRJ-NICHE-PLATFORM-CAP-PLT-007
-      - PRJ-NICHE-PLATFORM-CAP-PLT-008
-      - PRJ-NICHE-PLATFORM-CAP-APP-001
-      - PRJ-NICHE-PLATFORM-CAP-APP-002
-      - PRJ-NICHE-PLATFORM-CAP-APP-003
-      - PRJ-NICHE-PLATFORM-CAP-APP-004
-      - PRJ-NICHE-PLATFORM-CAP-APP-005
-      - PRJ-NICHE-PLATFORM-CAP-APP-006
-      - PRJ-NICHE-PLATFORM-CAP-APP-007
-      - PRJ-NICHE-PLATFORM-CAP-APP-008
   - id: PRJ-FOOTBALL-CARD-GAME
     name: football-card-game
     family:
@@ -1135,36 +809,25 @@ projects:
         fork: false
         private: false
         pushed_at: "2025-03-09T00:20:39Z"
-    state: EMPTY
+    state: THINLY_TESTED
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
+      own_lines: 28448
+      own_source_files: 95
+      test_files: 2
+      test_line_fraction: 0.011
+      primary_language: typescript
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - package.json
       has_ci: false
-      has_docker: false
+      has_docker: true
       secret_literal_files: []
     capabilities:
       checked: 12
-      present: 0
-      missing: 12
-    gaps:
-      - PRJ-FOOTBALL-CARD-GAME-GAP-001
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-001
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-002
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-003
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-004
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-005
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-006
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-007
-      - PRJ-FOOTBALL-CARD-GAME-CAP-APP-008
-      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-001
-      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-002
-      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-003
-      - PRJ-FOOTBALL-CARD-GAME-CAP-TLS-004
+      present: 12
+      missing: 0
+    gaps: []
   - id: PRJ-SELF-BUILDING-AI
     name: self-building-ai
     family:
@@ -1179,24 +842,28 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-09-19T10:48:18Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
+      own_lines: 969
+      own_source_files: 17
       test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
-      has_ci: false
-      has_docker: false
+      test_line_fraction: 0.0
+      primary_language: python
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - manage.py
+        - docker-compose.yml
+        - dockerfile
+        - requirements.txt
+      has_ci: true
+      has_docker: true
       secret_literal_files: []
     capabilities:
       checked: 10
       present: 0
       missing: 10
     gaps:
-      - PRJ-SELF-BUILDING-AI-GAP-001
       - PRJ-SELF-BUILDING-AI-CAP-INT-001
       - PRJ-SELF-BUILDING-AI-CAP-INT-002
       - PRJ-SELF-BUILDING-AI-CAP-INT-003
@@ -1223,24 +890,28 @@ projects:
         fork: false
         private: false
         pushed_at: "2025-05-13T13:02:54Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
+      own_lines: 3061
+      own_source_files: 21
       test_files: 0
-      test_line_fraction: 0
-      primary_language: null
+      test_line_fraction: 0.0
+      primary_language: python
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
+        - docker-compose.yml
+        - Dockerfile
+        - requirements.txt
       has_ci: false
-      has_docker: false
+      has_docker: true
       secret_literal_files: []
     capabilities:
       checked: 27
-      present: 0
-      missing: 27
+      present: 6
+      missing: 21
     gaps:
-      - PRJ-QVA-MERGED-GAP-001
+      - PRJ-QVA-MERGED-GAP-004
       - PRJ-QVA-MERGED-CAP-INT-001
       - PRJ-QVA-MERGED-CAP-INT-002
       - PRJ-QVA-MERGED-CAP-INT-003
@@ -1251,19 +922,13 @@ projects:
       - PRJ-QVA-MERGED-CAP-INT-008
       - PRJ-QVA-MERGED-CAP-INT-009
       - PRJ-QVA-MERGED-CAP-INT-010
-      - PRJ-QVA-MERGED-CAP-BC-001
-      - PRJ-QVA-MERGED-CAP-BC-002
       - PRJ-QVA-MERGED-CAP-BC-003
-      - PRJ-QVA-MERGED-CAP-BC-004
-      - PRJ-QVA-MERGED-CAP-BC-005
       - PRJ-QVA-MERGED-CAP-BC-006
       - PRJ-QVA-MERGED-CAP-BC-007
       - PRJ-QVA-MERGED-CAP-BC-008
       - PRJ-QVA-MERGED-CAP-DB-001
       - PRJ-QVA-MERGED-CAP-DB-002
-      - PRJ-QVA-MERGED-CAP-DB-003
       - PRJ-QVA-MERGED-CAP-DB-004
-      - PRJ-QVA-MERGED-CAP-DB-005
       - PRJ-QVA-MERGED-CAP-DB-006
       - PRJ-QVA-MERGED-CAP-DB-007
       - PRJ-QVA-MERGED-CAP-DB-008
@@ -1287,10 +952,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
-      licence: null
-      manifests: []
+      licence: LICENSE
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1322,34 +988,49 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-05-23T14:58:29Z"
-    state: EMPTY
+    state: SECRET_EXPOSED
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
-      has_ci: false
-      has_docker: false
-      secret_literal_files: []
+      own_lines: 282585
+      own_source_files: 1546
+      test_files: 45
+      test_line_fraction: 0.055
+      primary_language: shell
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - package.json
+        - turbo.json
+        - package.json
+        - package.json
+        - pubspec.yaml
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - package.json
+        - Dockerfile
+        - package.json
+        - Dockerfile
+        - docker-compose.yml
+        - Dockerfile
+        - Makefile
+        - pyproject.toml
+        - requirements.txt
+        - Dockerfile
+        - Dockerfile
+        - requirements.txt
+        - package.json
+      has_ci: true
+      has_docker: true
+      secret_literal_files:
+        - tests/integration/tests/conftest.py
     capabilities:
       checked: 10
-      present: 0
-      missing: 10
+      present: 10
+      missing: 0
     gaps:
-      - PRJ-VEYRA-GAP-001
-      - PRJ-VEYRA-CAP-INT-001
-      - PRJ-VEYRA-CAP-INT-002
-      - PRJ-VEYRA-CAP-INT-003
-      - PRJ-VEYRA-CAP-INT-004
-      - PRJ-VEYRA-CAP-INT-005
-      - PRJ-VEYRA-CAP-INT-006
-      - PRJ-VEYRA-CAP-INT-007
-      - PRJ-VEYRA-CAP-INT-008
-      - PRJ-VEYRA-CAP-INT-009
-      - PRJ-VEYRA-CAP-INT-010
+      - PRJ-VEYRA-GAP-003
   - id: PRJ-AETHERIUM
     name: aetherium
     family:
@@ -1365,41 +1046,36 @@ projects:
         fork: false
         private: false
         pushed_at: "2026-02-20T20:16:52Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
-      has_ci: false
-      has_docker: false
+      own_lines: 118572
+      own_source_files: 423
+      test_files: 15
+      test_line_fraction: 0.026
+      primary_language: python
+      licence: license.md
+      manifests:
+        - build.yaml
+        - package.json
+        - requirements.txt
+        - Dockerfile
+        - package.json
+        - package.json
+        - docker-compose.yml
+        - docker-compose.yml
+        - requirements.txt
+        - package.json
+        - package.json
+        - package.json
+        - docker-compose.yml
+      has_ci: true
+      has_docker: true
       secret_literal_files: []
     capabilities:
       checked: 17
-      present: 0
-      missing: 17
-    gaps:
-      - PRJ-AETHERIUM-GAP-001
-      - PRJ-AETHERIUM-CAP-KNW-001
-      - PRJ-AETHERIUM-CAP-KNW-002
-      - PRJ-AETHERIUM-CAP-KNW-003
-      - PRJ-AETHERIUM-CAP-KNW-004
-      - PRJ-AETHERIUM-CAP-KNW-005
-      - PRJ-AETHERIUM-CAP-KNW-006
-      - PRJ-AETHERIUM-CAP-KNW-007
-      - PRJ-AETHERIUM-CAP-INT-001
-      - PRJ-AETHERIUM-CAP-INT-002
-      - PRJ-AETHERIUM-CAP-INT-003
-      - PRJ-AETHERIUM-CAP-INT-004
-      - PRJ-AETHERIUM-CAP-INT-005
-      - PRJ-AETHERIUM-CAP-INT-006
-      - PRJ-AETHERIUM-CAP-INT-007
-      - PRJ-AETHERIUM-CAP-INT-008
-      - PRJ-AETHERIUM-CAP-INT-009
-      - PRJ-AETHERIUM-CAP-INT-010
+      present: 17
+      missing: 0
+    gaps: []
   - id: PRJ-CROSSPLATFORM
     name: Crossplatform---multiplatform
     family:
@@ -1420,10 +1096,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
-      licence: null
-      manifests: []
+      licence: LICENSE
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1465,10 +1142,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
-      licence: null
-      manifests: []
+      licence: LICENSE
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1515,7 +1193,8 @@ projects:
       test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1568,7 +1247,8 @@ projects:
       test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1613,7 +1293,8 @@ projects:
       test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1655,7 +1336,8 @@ projects:
       test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1691,7 +1373,8 @@ projects:
       test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1722,10 +1405,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1766,10 +1450,11 @@ projects:
       own_lines: 0
       own_source_files: 0
       test_files: 0
-      test_line_fraction: 0
+      test_line_fraction: 0.0
       primary_language: null
       licence: null
-      manifests: []
+      manifests:
+        - build.yaml
       has_ci: false
       has_docker: false
       secret_literal_files: []
@@ -1795,33 +1480,35 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Multi-Cross-Platform-Trading-Bot"
-    state: EMPTY
+    state: SECRET_EXPOSED
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0
-      primary_language: null
-      licence: null
-      manifests: []
+      own_lines: 1755
+      own_source_files: 26
+      test_files: 1
+      test_line_fraction: 0.005
+      primary_language: python
+      licence: LICENSE
+      manifests:
+        - build.yaml
+        - docker-compose.yml
+        - package.json
+        - package.json
+        - package.json
+        - package.json
       has_ci: false
-      has_docker: false
-      secret_literal_files: []
+      has_docker: true
+      secret_literal_files:
+        - production/AI-Voice-assistant/assistant.py
+        - production/Facial_Authentication/backend/app.js
     capabilities:
       checked: 9
-      present: 0
-      missing: 9
+      present: 6
+      missing: 3
     gaps:
-      - PRJ-TRADING-BOT-GAP-001
+      - PRJ-TRADING-BOT-GAP-003
       - PRJ-TRADING-BOT-CAP-FIN-001
-      - PRJ-TRADING-BOT-CAP-FIN-002
       - PRJ-TRADING-BOT-CAP-FIN-003
-      - PRJ-TRADING-BOT-CAP-FIN-004
-      - PRJ-TRADING-BOT-CAP-FIN-005
       - PRJ-TRADING-BOT-CAP-FIN-006
-      - PRJ-TRADING-BOT-CAP-FIN-007
-      - PRJ-TRADING-BOT-CAP-FIN-008
-      - PRJ-TRADING-BOT-CAP-FIN-009
   - id: PRJ-AI-DIGITAL-TWIN
     name: ai-digital-clone
     family:
@@ -1853,9 +1540,8 @@ projects:
         - scripts/setup_local_cloud.sh
     capabilities:
       checked: 18
-      present: 17
-      missing: 1
+      present: 18
+      missing: 0
     gaps:
       - PRJ-AI-DIGITAL-TWIN-GAP-003
       - PRJ-AI-DIGITAL-TWIN-GAP-004
-      - PRJ-AI-DIGITAL-TWIN-CAP-LOC-003

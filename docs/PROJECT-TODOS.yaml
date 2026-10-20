@@ -4039,7 +4039,7 @@ todos:
   blocks: []
 - id: TODO-AETHERIUS-OS-PROTO-000
   title: Build the aetherius-os-prototype project the manifest describes
-  project: aetherius-os-proto
+  project: aetherius-os-prototype
   status: OPEN
   priority: 1
   source:
@@ -4055,7 +4055,7 @@ todos:
   blocks: []
 - id: TODO-AETHERIUS-OS-PROTO-010
   title: Build the missing aetherius-os-prototype capabilities
-  project: aetherius-os-proto
+  project: aetherius-os-prototype
   status: OPEN
   priority: 3
   source:
@@ -4070,4 +4070,36 @@ todos:
   acceptance:
   - Each missing capability is present in the source
   - Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+  blocks: []
+- id: TODO-VEYRA-002
+  title: Rotate and remove the credentials in Veyra
+  project: veyra
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own source. They are compromised by being on
+    disk in a recovered drive.
+  evidence: 'Files: [''tests/integration/tests/conftest.py''].'
+  acceptance:
+  - Every credential is rotated at the provider
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
+  blocks: []
+- id: TODO-TRADING-BOT-002
+  title: Rotate and remove the credentials in Multi-Cross-Platform-Trading-Bot
+  project: trading-bot
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own source. They are compromised by being on
+    disk in a recovered drive.
+  evidence: 'Files: [''production/AI-Voice-assistant/assistant.py'', ''production/Facial_Authentication/backend/app.js''].'
+  acceptance:
+  - Every credential is rotated at the provider
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
   blocks: []
