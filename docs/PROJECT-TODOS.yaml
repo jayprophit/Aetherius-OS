@@ -1,5 +1,5 @@
 schema_version: 1.0.0
-source_date: '2026-10-20'
+source_date: '2026-10-21'
 todos:
 - id: TODO-GEN-001
   title: Discard the stale CMake cache in the Genesis build tree
@@ -523,17 +523,28 @@ todos:
 - id: TODO-IED-001
   title: Stop tracking a file inside node_modules
   project: ide-workspace
-  status: OPEN
+  status: DONE
   priority: 3
   source:
     kind: build-audit
     ref: git status, 2026-10-20
-  detail: A generated package lock inside the app's node_modules is tracked, so part of the dependency
-    tree is committed.
+  detail: 'The whole dependency tree was tracked, not one file. The ignore rules for node_modules and
+    dist were already in place, but the files had been added before the rules existed and Git keeps tracking
+    a file that is already tracked, so the rules never took effect on them. The tracked build output was
+    worse than merely redundant: the tracked dist/index.html referenced assets that the ignore rules kept
+    out of the repository, so a clone of the repository held a page that could not load.'
   evidence: git status --porcelain -> "M workspace/app/node_modules/.package-lock.json"
   acceptance:
   - No file under node_modules is tracked
-  - The ignore rules cover it
+  - No build output is tracked
+  - The ignore rules cover both
+  - The build and the suite still pass after the change
+  resolution: 'Resolved 2026-10-21. The ignore rules were already correct, but the files had been tracked
+    before the rules existed, and Git keeps tracking a file that is already tracked. So 4715 dependency
+    files and the build output were still in the repository, and the tracked dist/index.html pointed at
+    assets that were not in the repository. Untracking both left the files on disk, so the build and the
+    suite were unaffected, and the repository now carries 249 source files rather than 4964. The build
+    passes and the suite passes: 28 files, 466 tests.'
 - id: TODO-MAT-001
   title: Separate MAT source changes from generated output in the working tree
   project: mat
@@ -1530,40 +1541,6 @@ todos:
   evidence: 'HEAD commit subject is "docs: Cloud/Hybrid audit RESOLUTION - fixed vs remaining states".'
   acceptance:
   - The remaining states are visible from the parent project
-- id: TODO-IED-002
-  title: Clear the duplicated proof scripts from the dashboard tree
-  project: ide-workspace
-  status: DONE
-  priority: 3
-  source:
-    kind: build-audit
-    ref: IDE-Workspace-dashboard root listing, 2026-10-20
-  detail: The same loose proof scripts present in IDE-Workspace are duplicated in this tree.
-  evidence: 'Root listing matches IDE-Workspace''s root listing: fix_report.py, run_cpp_proof.py, run_flaky_test.py,
-    and the rest.'
-  acceptance:
-  - The duplicated scripts are removed or the duplication is deliberate and recorded
-  resolution: Resolved 2026-10-20. The supervisor dashboard was a branch of IDE-Workspace, not a separate
-    project, and it has been dissolved into IDE-Workspace. The duplicated proof scripts went with the
-    tree, and the work the dashboard carried that was not yet in master is now in master.
-- id: TODO-IED-003
-  title: Reconcile the dashboard tree with its parent project
-  project: ide-workspace
-  status: DONE
-  priority: 3
-  source:
-    kind: build-audit
-    ref: git status and branch survey, 2026-10-20
-  detail: This tree and IDE-Workspace have diverged with no recorded merge strategy, so dashboard changes
-    are not automatically reflected in the parent project. The m3 read model exists only here.
-  evidence: Branch unit/supervisor-dashboard-ui; the supervisor read model at workspace/app/src/supervisor-ui/components/m3-readmodel.ts
-    exists only in this tree.
-  acceptance:
-  - A merge strategy is recorded and the divergence is detectable
-  resolution: 'Resolved 2026-10-20. The dashboard tree and its parent project have been reconciled by
-    dissolving the tree: IDE-Workspace is one project on master, and the supervisor UI it carries is the
-    supervisor UI the master branch already held. The branch unit/supervisor-dashboard-ui remains in the
-    repository and on the remote, so nothing was lost.'
 - id: TODO-MAT-003
   title: Bring the MAT studio inside the root verify command
   project: mat
@@ -4407,4 +4384,200 @@ todos:
   - The tool is handed only the permissions its grant permits
   resolution: Resolved 2026-10-21. The tool executor closes the gap. Seventy-one checks in tests/tool_execution_tests.cpp
     prove it, and the whole Genesis suite passes.
+  blocks: []
+- id: TODO-IED-101
+  title: The Bridge's runtime route and its model route disagreed about how many models exist
+  project: agent-bridge
+  status: DONE
+  priority: 2
+  source:
+    kind: owner-inspection
+    ref: Agent-Bridge/ide_bridge.py and Agent-Bridge/runtime.py, 2026-10-21
+  detail: /v1/models reported the ten local models the machine actually had. /v1/runtime reported none,
+    because the runtime snapshot only ever carried the models a tracker had recorded, and no tracker was
+    recording any. One route said the machine had no models while the other said it had ten, and a consumer
+    of the runtime route was told something false.
+  evidence: 'build_runtime_snapshot built its result from RuntimeStateTracker.snapshot(), whose models
+    list is empty until record_models is called, while runtime.model_inventory() queries the model runtime
+    live. Observed live: /v1/runtime returned models: 0 and /v1/models returned 10, on the same machine,
+    at the same moment.'
+  acceptance:
+  - The runtime route and the model route report the same model list
+  - A recorded model still wins over the live inventory
+  - No model being selected is still reported separately from no model being available
+  - A model runtime that cannot be reached does not break the snapshot
+  resolution: Resolved 2026-10-21. The snapshot now falls back to the live inventory when the tracker
+    has recorded no models, and leaves active_model alone so that having no model selected is still reported
+    as a different fact from having no model available. Five tests in tests/test_ide_bridge.py cover the
+    agreement, the precedence, the distinction and the failure path.
+  blocks: []
+- id: TODO-IED-102
+  title: 'The IDE showed ''backend: disconnected'' with no reason, so a rate-limited Bridge looked like
+    a Bridge that was not running'
+  project: ide-workspace
+  status: DONE
+  priority: 2
+  source:
+    kind: owner-inspection
+    ref: Aetherius-OS/apps/IDE-Workspace/workspace/app/src/App.tsx, 2026-10-21
+  detail: 'The IDE captured the transport''s own error, including an HTTP status, and then threw it away:
+    the status line read ''backend: disconnected'' whatever the cause. A Bridge that was rate limited,
+    a Bridge at the wrong address and a Bridge that was not running all looked identical, and the three
+    have different fixes.'
+  evidence: 'fetchBridgeStatus set base.error from the thrown Error, and the rendered status line used
+    only bridge.connected. Observed live: the Bridge''s rate limit is 120 requests a minute per address,
+    one IDE tab polls three routes every five seconds, and with six tabs open the Bridge answered 429,
+    which the IDE displayed as a plain disconnection.'
+  acceptance:
+  - The status line carries the reason the backend is unreachable
+  - The reason is the transport's own text, not a paraphrase
+  - A connected backend is unaffected
+  resolution: 'Resolved 2026-10-21. The status line now reads ''backend: disconnected (HTTP 429)'' or
+    whatever the transport actually said. The connection state itself was not changed: the IDE still reports
+    what it can see, and now says why.'
+  blocks: []
+- id: TODO-IED-103
+  title: One IDE tab uses 30% of the Bridge's rate limit, and the limit is shared by everything on the
+    machine
+  project: ide-workspace
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-inspection
+    ref: Agent-Bridge/service.py and Aetherius-OS/apps/IDE-Workspace/workspace/app/src, 2026-10-21
+  detail: 'The Bridge allows 120 requests a minute per address, and everything on the machine shares 127.0.0.1.
+    One IDE tab polls three routes every five seconds, which is 36 requests a minute, so a third of the
+    budget goes to one tab. Four tabs exhaust it. This was reached in practice: with six tabs open the
+    Bridge began answering 429 and the IDE reported itself disconnected.'
+  evidence: Agent-Bridge rate_limit_per_min defaults to 120 and _rate_ok counts per client address over
+    a sixty second window. The IDE's BRIDGE_POLL_MS is 5000 and fetchBridgeStatus issues three requests
+    per cycle.
+  acceptance:
+  - One IDE tab uses well under a quarter of the request budget
+  - The IDE does not re-request the model inventory on every poll when nothing has changed
+  - Two or more IDE tabs can be open without either of them being throttled
+  blocks: []
+- id: TODO-IED-104
+  title: The Bridge logs a full traceback every time the browser abandons a request
+  project: agent-bridge
+  status: OPEN
+  priority: 3
+  source:
+    kind: owner-inspection
+    ref: Agent-Bridge/service.py, 2026-10-21
+  detail: A browser that navigates away mid-request makes the Bridge's write fail with ConnectionAbortedError,
+    and the Bridge prints the whole traceback for it. During ordinary use this produced thousands of lines,
+    which buries the real errors in the log and makes the log unreadable when something actually has gone
+    wrong.
+  evidence: The Bridge's output during one session of ordinary IDE polling was 3712 lines, the majority
+    of them ConnectionAbortedError tracebacks from abandoned requests.
+  acceptance:
+  - A request abandoned by the client is not logged as an error
+  - A genuine server-side failure is still logged in full
+  - The log holds one line per real event
+  blocks: []
+- id: TODO-IED-105
+  title: The broken 9-byte GPT4All installer on the external drive
+  project: temp
+  status: OPEN
+  priority: 3
+  source:
+    kind: owner-inspection
+    ref: E:\external drive\AI Digital Twin\installers\model-runners\GPT4All-v3.10.0-Win64.exe, 2026-10-21
+  detail: The file named GPT4All-v3.10.0-Win64.exe is 9 bytes long. It is not a truncated download, it
+    is a text file, and it cannot be installed. GPT4All is one of the local model runners the owner's
+    material refers to, so the file is a reference point that does not work.
+  evidence: The file is 9 bytes. Every other file in the same folder is a real installer, and Jan-v0.7.7-Win64.exe
+    beside it is 52,689,912 bytes.
+  acceptance:
+  - The file is either replaced with a working installer or removed
+  - The reference to GPT4All in the owner's material is corrected if the runner is not available
+  blocks: []
+- id: TODO-IED-002
+  title: Clear the duplicated proof scripts from the dashboard tree
+  project: ide-workspace
+  status: DONE
+  priority: 3
+  source:
+    kind: build-audit
+    ref: IDE-Workspace-dashboard root listing, 2026-10-20
+  detail: The same loose proof scripts present in IDE-Workspace are duplicated in this tree.
+  evidence: 'Root listing matches IDE-Workspace''s root listing: fix_report.py, run_cpp_proof.py, run_flaky_test.py,
+    and the rest.'
+  acceptance:
+  - The duplicated scripts are removed or the duplication is deliberate and recorded
+  resolution: Resolved 2026-10-20. The supervisor dashboard was a branch of IDE-Workspace, not a separate
+    project, and it has been dissolved into IDE-Workspace. The duplicated proof scripts went with the
+    tree, and the work the dashboard carried that was not yet in master is now in master.
+- id: TODO-IED-003
+  title: Reconcile the dashboard tree with its parent project
+  project: ide-workspace
+  status: DONE
+  priority: 3
+  source:
+    kind: build-audit
+    ref: git status and branch survey, 2026-10-20
+  detail: This tree and IDE-Workspace have diverged with no recorded merge strategy, so dashboard changes
+    are not automatically reflected in the parent project. The m3 read model exists only here.
+  evidence: Branch unit/supervisor-dashboard-ui; the supervisor read model at workspace/app/src/supervisor-ui/components/m3-readmodel.ts
+    exists only in this tree.
+  acceptance:
+  - A merge strategy is recorded and the divergence is detectable
+  resolution: 'Resolved 2026-10-20. The dashboard tree and its parent project have been reconciled by
+    dissolving the tree: IDE-Workspace is one project on master, and the supervisor UI it carries is the
+    supervisor UI the master branch already held. The branch unit/supervisor-dashboard-ui remains in the
+    repository and on the remote, so nothing was lost.'
+- id: TODO-IED-106
+  title: 'The IDE was not launchable: no working launcher, and a HOW TO RUN with every path wrong'
+  project: ide-workspace
+  status: DONE
+  priority: 1
+  source:
+    kind: owner-inspection
+    ref: Aetherius-OS/apps/IDE-Workspace and Aetherius-OS/HOW-TO-RUN-AETHERIUS-IDE.md, 2026-10-21
+  detail: The IDE built and served, and its own tests passed, but nobody could start it by following the
+    documentation. The HOW TO RUN pointed at C:\Users\jpowe\Desktop\IDE-Workspace\workspace\integration\BridgeService.py,
+    a path that no longer existed after the workspace was reorganised, named a launcher script that was
+    never created, and gave a health route of /health that the Bridge does not serve under that name.
+    It did not mention the local model runtime at all, so a person following it would get a Bridge reporting
+    UNAVAILABLE and an IDE showing no models, with nothing to explain why.
+  evidence: 'Every path in the document was checked against the filesystem: Desktop\IDE-Workspace and
+    Desktop\Start-Aetherius-IDE.ps1 do not exist, Agent-Bridge\BridgeService.py does not exist, and Agent-Bridge\service.py
+    does. The Bridge serves /v1/runtime, /v1/diagnostics, /v1/selfcheck and /v1/models, not a /v1/health.'
+  acceptance:
+  - One command starts the local model runtime, the Bridge and the IDE, and reports what is actually true
+  - The script works from a cold machine with every port free
+  - The HOW TO RUN names paths that exist, ports that answer, and the prerequisites that are genuinely
+    required
+  - The document says what to do when each step fails
+  resolution: 'Resolved 2026-10-21. scripts/start-ide-stack.ps1 starts the local model runtime, then Agent
+    Bridge with the IDE origin allowlisted and the IDE workspace as its root, then the IDE, waiting for
+    each and printing the true state. It was run cold with every port free and it brought the whole chain
+    up. The HOW TO RUN was rewritten against the verified reality, including the two things it had never
+    mentioned: the local model runtime must be up, and the Bridge must be given the IDE''s origin or it
+    sends no CORS header and the IDE silently reports disconnected.'
+  blocks: []
+- id: TODO-IED-107
+  title: The IDE reported itself as IDE_NAME_TBD
+  project: ide-workspace
+  status: DONE
+  priority: 2
+  source:
+    kind: owner-inspection
+    ref: Aetherius-OS/apps/IDE-Workspace/workspace/app/index.html, 2026-10-21
+  detail: The window title and the header of the interface both read IDE_NAME_TBD, and the package was
+    named ide-name-tbd-shell. A report in the repository noted the name was temporary and distinct from
+    Agent Bridge, Aetherius OS and Genesis, but no one replaced it. Anyone opening the IDE saw a placeholder
+    where the product's name should be.
+  evidence: index.html carried <title>IDE_NAME_TBD - Shell Slice 1</title>, App.tsx rendered <span>IDE_NAME_TBD</span>,
+    and package.json carried name ide-name-tbd-shell.
+  acceptance:
+  - The window title names the product
+  - The header names the product
+  - The package name names the product
+  - The name is still distinct from Agent Bridge, Aetherius OS and Genesis
+  resolution: 'Resolved 2026-10-21. The name is Aetherius IDE in the title, in the header and in the package.
+    It is distinct from the three neighbouring things: Aetherius OS is the ecosystem, Genesis is the organism,
+    Agent Bridge is the execution runtime, and the IDE is the interface to them. Verified live: the browser
+    reports the title as Aetherius IDE and the header as Aetherius IDE.'
   blocks: []
