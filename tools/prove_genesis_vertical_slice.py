@@ -127,7 +127,9 @@ def main() -> int:
         return 1
 
     # The workspace the task runs in.
-    scratch = IDE_WORKSPACE / "genesis-slice"
+    # A fresh directory for this run, for the same reason: writing a
+    # file that already exists needs an approval.
+    scratch = IDE_WORKSPACE / f"genesis-slice-{int(time.time())}"
     shutil.rmtree(scratch, ignore_errors=True)
     scratch.mkdir(parents=True, exist_ok=True)
 

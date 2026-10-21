@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-10-21T17:36:49.484038+00:00'
+generated_at: '2026-10-21T18:02:57.560445+00:00'
 generated_by: tools/prove_genesis_vertical_slice.py
 notes:
 - 'The chain, driven with a real task: the Bridge, the Genesis kernel, the event, the checkpoint, the
@@ -15,15 +15,15 @@ steps:
 - step: the organism has an identity
   ok: true
   identity: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
-  version: ''
+  version: v25
   state: ready
 - step: a session was created
   ok: true
-  session_id: s-3a6ac44ad6
+  session_id: s-3aa026fae6
   status: 201
 - step: a task was accepted
   ok: true
-  task_id: t-98633c988a
+  task_id: t-3e54f16285
   status: 202
 - step: the task ran to a conclusion
   ok: true
@@ -35,8 +35,8 @@ steps:
 - step: the organism's state is on disk
   ok: true
   manifest: C:\Users\jpowe\Desktop\Projects\Aetherius-OS\apps\IDE-Workspace\workspace\.genesis-kernel\genesis.boot
-  next_sequence: '6'
-  version: ''
+  next_sequence: '28'
+  version: v25
 - step: the interface observes the organism
   ok: true
   observed: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
@@ -47,7 +47,7 @@ steps:
   ok: true
   identity: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
   expected: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
-  version: ''
+  version: v27
 - step: the Bridge came back on another model
   ok: true
 - step: the organism is the same one after the model changed

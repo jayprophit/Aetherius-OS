@@ -1,0 +1,80 @@
+schema_version: 1
+generated_at: '2026-10-21T18:01:03.091228+00:00'
+generated_by: tools/prove_ide_owner_walkthrough.py
+notes:
+- The eight steps the progress review asked for, each checked against the running services.
+- The launcher was run from cold and then again with the stack already up, because the review asked for
+  it to be idempotent and safe when the stack is only partly running.
+- Every value here was read from the runtime. The interface's own title is read out of the served page,
+  so what is recorded is what a person sees.
+steps:
+- step: the launcher brings the stack up
+  ok: true
+  exit_code: 0
+  said:
+  - granite3.3:2b
+  - hhao/qwen2.5-coder-tools:3b
+  - qwen3.5:2b-q4_K_M
+  - 'the organism is attached: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634'
+  - version v23  state ready
+  - the IDE answers with HTTP 200
+  - Open the IDE at  http://127.0.0.1:5199
+  - 'The AI panel should read "backend: connected" and the ModelCenter should list the local models.'
+- step: the Bridge is healthy
+  ok: true
+  health: HEALTHY
+- step: the interface serves the product's name
+  ok: true
+  title: Aetherius IDE
+- step: the organism has an identity from the runtime
+  ok: true
+  identity: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
+  version: v23
+  state: ready
+  attached: true
+- step: the model runtime's models are listed
+  ok: true
+  count: 10
+  first:
+  - local-qwen3:1.7b-cpu
+  - moondream:latest
+  - granite4:3b
+  - ministral-3:3b
+  - nomic-embed-text:latest
+  - granite3.3:2b
+- step: the worker state is reported as it is
+  ok: true
+  workers: 0
+  note: no worker is commissioned yet, and the interface says so rather than showing one that is not there
+- step: a session was created
+  ok: true
+  session_id: s-59447917eb
+  status: 201
+- step: a task was submitted
+  ok: true
+  task_id: t-505344fdca
+  status: 202
+- step: the task ran and left a result
+  ok: true
+  task_state: COMPLETED
+  files:
+  - haiku.txt
+- step: the organism's version advanced with the work
+  ok: true
+  version: v25
+  identity: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
+- step: the launcher is idempotent
+  ok: true
+  exit_code: 0
+- step: the organism is the same one after the restart
+  ok: true
+  identity: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
+  expected: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
+- step: the stack is whole after the restart
+  ok: true
+  health: HEALTHY
+  identity: genesis.entity.v1.organism.f50890581d8d1250baa4845309b49cdd4a76acfa1d515ea7cb29821113b08634
+- step: the interface is served again
+  ok: true
+  title: Aetherius IDE
+all_steps_ok: true
