@@ -90,7 +90,7 @@ predecessors:
   - Genesis
   - Agent-Bridge
   - IDE-Workspace
-  state: IDENTIFIED
+  state: MAPPED
   head_refs:
   - branch: main
     sha: 3fa98dec3b0d722d0751351023569ffce2eddd6e
@@ -110,18 +110,33 @@ predecessors:
     external_assets_exported: false
     issues_prs_wiki_releases_captured: false
     independent_copies: 0
-    restore_drill_passed: false
+    restore_drill_passed: true
+    captured: true
+    restored_commits: 349
+    restored_files: 1243
+    fsck_clean: true
     unresolved_capture_gaps:
-    - The capture has not been run for this repository.
+    - The issues, pull requests, wiki and releases have not been captured.
+    - The LFS objects have not been verified, so a restore of the large files is not yet proven.
+    - The capture exists in one place. An independent copy has not been made, and a backup in one place
+      is a hope.
   security:
-    historical_secret_exposure: REVIEW_REQUIRED
-    owner_rotation_status: UNKNOWN
+    historical_secret_exposure: CONFIRMED
+    owner_rotation_status: PENDING
+    tree_clean: false
+    tree_findings: 1
+    history_clean: false
+    history_findings: 4
+    credentials_to_rotate: 1
   licence:
     classification: REVIEW_REQUIRED
   artifacts:
-    total: null
-    classified: 0
-    dispositions: {}
+    total: 14
+    classified: 14
+    dispositions:
+      ADAPT: 10
+      ARCHIVE_ONLY: 2
+      RESEARCH_REFERENCE: 2
   integration:
     tasks: []
     target_commit_shas: []
@@ -140,7 +155,7 @@ predecessors:
   confirmed_by: ''
   primary_target: Aetherius-OS
   secondary_targets: []
-  state: IDENTIFIED
+  state: CLASSIFIED
   head_refs:
   - branch: main
     sha: bbd40135d83f8a0d7244a0d31c57f2c8818c894a
@@ -158,18 +173,32 @@ predecessors:
     external_assets_exported: false
     issues_prs_wiki_releases_captured: false
     independent_copies: 0
-    restore_drill_passed: false
+    restore_drill_passed: true
+    captured: true
+    restored_commits: 46
+    restored_files: 1622
+    fsck_clean: true
     unresolved_capture_gaps:
-    - The capture has not been run for this repository.
+    - The issues, pull requests, wiki and releases have not been captured.
+    - The LFS objects have not been verified, so a restore of the large files is not yet proven.
+    - The capture exists in one place. An independent copy has not been made, and a backup in one place
+      is a hope.
   security:
-    historical_secret_exposure: UNKNOWN
-    owner_rotation_status: UNKNOWN
+    historical_secret_exposure: CONFIRMED
+    owner_rotation_status: PENDING
+    tree_clean: false
+    tree_findings: 1
+    history_clean: false
+    history_findings: 1
+    credentials_to_rotate: 2
   licence:
     classification: REVIEW_REQUIRED
   artifacts:
-    total: null
-    classified: 0
-    dispositions: {}
+    total: 2
+    classified: 2
+    dispositions:
+      ARCHIVE_ONLY: 1
+      LEGAL_REVIEW: 1
   integration:
     tasks: []
     target_commit_shas: []
@@ -191,7 +220,7 @@ predecessors:
   - Agent-Bridge
   - Genesis
   - IDE-Workspace
-  state: IDENTIFIED
+  state: CLASSIFIED
   head_refs:
   - branch: main
     sha: 21d758dd661a2bd70a7f85ffcd8a814ced257242
@@ -210,18 +239,33 @@ predecessors:
     external_assets_exported: false
     issues_prs_wiki_releases_captured: false
     independent_copies: 0
-    restore_drill_passed: false
+    restore_drill_passed: true
+    captured: true
+    restored_commits: 98
+    restored_files: 1539
+    fsck_clean: true
     unresolved_capture_gaps:
-    - The capture has not been run for this repository.
+    - The issues, pull requests, wiki and releases have not been captured.
+    - The LFS objects have not been verified, so a restore of the large files is not yet proven.
+    - The capture exists in one place. An independent copy has not been made, and a backup in one place
+      is a hope.
   security:
-    historical_secret_exposure: UNKNOWN
-    owner_rotation_status: UNKNOWN
+    historical_secret_exposure: NONE_FOUND
+    owner_rotation_status: NOT_REQUIRED
+    tree_clean: true
+    tree_findings: 0
+    history_clean: true
+    history_findings: 0
+    credentials_to_rotate: 0
   licence:
     classification: REVIEW_REQUIRED
   artifacts:
-    total: null
-    classified: 0
-    dispositions: {}
+    total: 5
+    classified: 5
+    dispositions:
+      ADAPT: 3
+      ARCHIVE_ONLY: 1
+      LEGAL_REVIEW: 1
   integration:
     tasks: []
     target_commit_shas: []

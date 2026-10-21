@@ -1,0 +1,622 @@
+schema_version: 1
+source_date: '2026-10-21'
+generated_by: tools/build_predecessor_capability_matrix.py
+notes:
+- The measurement is computed and the judgement is recorded. The measurement is how many files, lines,
+  tests and duplicates are really there. The judgement is which capability maps to which current component
+  and with what disposition, and it is a decision, written down with its reason rather than re-derived
+  by a heuristic on every run.
+- Every route module of a predecessor has to land in exactly one capability area. The tool says which
+  ones are unaccounted for, because a matrix that quietly leaves things out is worse than no matrix.
+- A disposition is not an integration. Nothing here has been integrated into a current project, and the
+  register's own deletion gates are still to be checked one by one.
+- LEGAL_REVIEW on a row means the material cannot be used until the licence question is answered, not
+  that it has been rejected.
+problems: []
+predecessors:
+- source_repo: jayprophit/aetherial-platform
+  relation: CONFIRMED_PREDECESSOR
+  measurement:
+    files: 1234
+    source_files: 791
+    source_lines: 198276
+    unique_source_files: 647
+    repeated_copies: 144
+    duplication_ratio: 0.182
+    test_files: 18
+    files_named_like_tests: 24
+    declared_licence: ''
+  capability_areas:
+  - capability: identity_and_access
+    evidence:
+      route_modules:
+        auth: 442
+        mfa: 153
+        webauthn: 60
+        did: 76
+        users: 563
+        settings: 334
+      route_lines: 1628
+      server_areas:
+        _core:
+          files: 36
+          lines: 4383
+        auth:
+          files: 16
+          lines: 3388
+        core:
+          files: 1
+          lines: 739
+        identity:
+          files: 1
+          lines: 894
+        middleware:
+          files: 5
+          lines: 413
+        security:
+          files: 1
+          lines: 419
+    current_target:
+    - agent-bridge
+    - aetherius-os
+    disposition: ADAPT
+    reason: 'The mechanism is real: 442 lines of auth routes, a 153-line MFA module, a WebAuthn module,
+      and 16 files and 3,388 lines under server/auth. The current Aetherius has the same need and a stricter
+      answer: the Agent Bridge''s default-deny policy engine owns who may do what, and it is session-bound,
+      which this is not. The mechanism is adapted, not adopted, because the current one is the better
+      one and this one has no session isolation to bring.'
+  - capability: social_graph_and_community
+    evidence:
+      route_modules:
+        friends: 343
+        groups: 592
+        social-graph: 57
+        posts: 642
+        comments: 489
+        forum: 58
+        messages: 401
+        chat: 23
+        notifications: 175
+        feedback: 26
+        creator: 43
+      route_lines: 2849
+      server_areas:
+        communication:
+          files: 1
+          lines: 476
+        social:
+          files: 2
+          lines: 1400
+    current_target:
+    - aetherius-community
+    - agent-bridge
+    disposition: ADAPT
+    reason: 'The largest coherent area of the predecessor: 11 route modules and 2,592 lines, with 1,400
+      lines under server/social. The primitives it needs are already mapped once in docs/APPLICATION-SHARED-PRIMITIVES.yaml,
+      and the shared-primitive map says messaging and permissions belong to the Agent Bridge, so this
+      area is a consumer of the shared mechanism and not a second copy of it. Moderation is the one primitive
+      the three new families do not share, and it belongs here.'
+  - capability: commerce_and_billing
+    evidence:
+      route_modules:
+        products: 604
+        cart: 359
+        orders: 372
+        payments: 335
+        subscription: 334
+        dropshipping: 355
+        economy: 59
+        marketplace: 71
+        business: 193
+        analytics: 38
+        seo: 373
+        points: 329
+        rewards: 404
+        quests: 29
+        gamification: 49
+        bug-bounty: 50
+      route_lines: 3954
+      server_areas:
+        commerce:
+          files: 1
+          lines: 683
+        legal:
+          files: 1
+          lines: 771
+        rewards:
+          files: 1
+          lines: 669
+    current_target:
+    - aetherius-commerce
+    - aetherius-os
+    disposition: ADAPT
+    reason: 16 route modules and 4,919 lines, with 683 lines under server/commerce and a 372-line orders
+      module and a 604-line products module. The shared primitive map places payments with Aetherius OS
+      and says one billing mechanism serves Commerce and Learning. No real financial transaction is performed
+      and no paid service is provisioned without the owner's approval.
+  - capability: learning
+    evidence:
+      route_modules:
+        courses: 609
+        personalized-learning: 46
+        knowledge-base: 35
+        federated-learning: 30
+        crowdsourcing-and-citizen-science: 70
+      route_lines: 790
+      server_areas:
+        elearning:
+          files: 1
+          lines: 652
+    current_target:
+    - aetherius-learning
+    - aetherius-os
+    disposition: ADAPT
+    reason: 609 lines in the courses module and 652 lines under server/elearning, with a personalised-learning
+      route and a knowledge-base route. The Figma handoff says Commerce and Learning share their data
+      model, so the enrolment and entitlement mechanisms are one set. The shared primitive map says the
+      same, and this area is a consumer of it.
+  - capability: ai_and_agent_services
+    evidence:
+      route_modules:
+        ai: 288
+        npcs: 33
+        recommender: 21
+        cv: 366
+        platform: 226
+      route_lines: 934
+      server_areas:
+        ai:
+          files: 5
+          lines: 2994
+        config:
+          files: 1
+          lines: 408
+        integration:
+          files: 1
+          lines: 523
+        lib:
+          files: 3
+          lines: 85
+        queues:
+          files: 1
+          lines: 21
+        services:
+          files: 10
+          lines: 3805
+        utils:
+          files: 5
+          lines: 1312
+        vm:
+          files: 1
+          lines: 177
+    current_target:
+    - agent-bridge
+    - genesis
+    - aetherius-os
+    disposition: ADAPT
+    reason: 'The AI area is 2,994 lines under server/ai and 288 lines of AI routes, with an NPC route
+      and a recommender route. The current mechanism is split on purpose: the Agent Bridge routes and
+      executes, the Genesis kernel is the identity, the memory and the causal runtime, and this predecessor''s
+      single AI area does not make that split. The split is the mechanism worth keeping and the code is
+      not.'
+  - capability: blockchain_and_web3
+    evidence:
+      route_modules:
+        blockchain: 94
+        blockchain-ui: 285
+        blockchain-ui-4d: 265
+      route_lines: 644
+      server_areas:
+        blockchain:
+          files: 10
+          lines: 4901
+        quantum:
+          files: 1
+          lines: 100
+    current_target:
+    - aetherius-os
+    disposition: ARCHIVE_ONLY
+    reason: 4,901 lines under server/blockchain and three route modules, of which two are named for a
+      user interface rather than a mechanism. There is no blockchain in the current Aetherius, the owner's
+      routing for the web3 area is a research reference and not a destination, and the economy and points
+      modules that surround it depend on a token model that the current programme does not have. Preserved
+      and indexed, not integrated.
+  - capability: iot_and_physical
+    evidence:
+      route_modules:
+        iot: 299
+        digital-twin: 59
+      route_lines: 358
+      server_areas: {}
+    current_target:
+    - aetherius-os
+    disposition: ARCHIVE_ONLY
+    reason: 299 lines in the IoT route and a 59-line digital-twin route. There is no current destination
+      for connected physical devices, and the predecessor's own note in the register says its CI stops
+      at the Node setup, so the mechanism is neither proven nor wanted here yet.
+  - capability: emerging_and_experimental
+    evidence:
+      route_modules:
+        bci: 34
+        cloud-gaming: 46
+        experimental: 14
+        federated-learning: 30
+        games: 20
+        generative-art-and-music: 35
+        live-streaming: 44
+        npcs: 33
+        pcg: 25
+        performance: 67
+        quantum-computing: 58
+        swarm-intelligence: 59
+      route_lines: 465
+      server_areas: {}
+    current_target:
+    - genesis
+    - aetherius-os
+    disposition: RESEARCH_REFERENCE
+    reason: 'Brain-computer interfaces, quantum computing, swarm intelligence, procedural generation,
+      live streaming and cloud gaming: twelve route modules of 780 lines between them. These are the areas
+      the owner routed to research and not to a destination, and the research register already carries
+      the upstream verification as outstanding. They are references. Nothing is integrated, and nothing
+      is claimed to be.'
+  - capability: moderation_and_governance
+    evidence:
+      route_modules:
+        content-moderation: 20
+        audit: 46
+        admin: 359
+        compliance: 0
+      route_lines: 425
+      server_areas:
+        compliance:
+          files: 1
+          lines: 15
+        governance:
+          files: 1
+          lines: 698
+    current_target:
+    - aetherius-community
+    - agent-bridge
+    disposition: ADAPT
+    reason: A 20-line content-moderation route, a 46-line audit route, a 359-line admin route, and 15
+      lines under server/compliance plus 698 under server/governance. The shared primitive map says moderation
+      is Community's alone and that the other three families do not share it, which is exactly where this
+      material lands. The audit and admin mechanisms overlap the Agent Bridge's session and decision records,
+      which are stronger, so the useful part here is the moderation policy and not the audit trail.
+  - capability: media_and_uploads
+    evidence:
+      route_modules:
+        upload: 31
+        cv: 366
+        creator: 43
+      route_lines: 440
+      server_areas: {}
+    current_target:
+    - aetherius-os
+    - ide-workspace
+    disposition: ADAPT
+    reason: A 31-line upload route and a 366-line computer-vision route. The content-management primitive
+      is Aetherius OS's, and the IDE's own workspace handling is the current consumer of it.
+  - capability: developer_and_platform_tooling
+    evidence:
+      route_modules:
+        developer: 47
+        performance: 67
+        experimental: 14
+      route_lines: 128
+      server_areas: {}
+    current_target:
+    - agent-bridge
+    - ide-workspace
+    disposition: ADAPT
+    reason: A 47-line developer route and a 67-line performance route. The current equivalents are the
+      Bridge's action and capability map and the IDE's own tooling, and they are better evidenced, so
+      this is adapted for reference rather than adopted as source.
+  - capability: search
+    evidence:
+      route_modules:
+        search: 222
+        search-advanced: 182
+      route_lines: 404
+      server_areas: {}
+    current_target:
+    - aetherius-os
+    disposition: ADAPT
+    reason: 222 lines in the search route and 182 in the advanced one. The search primitive is Aetherius
+      OS's, and the programme already has an embedding and search mechanism including the local embedding
+      model in the role pool. The predecessor's search is a reference for what the current one has to
+      cover, and the current one is the one that is used.
+  - capability: jobs_and_work
+    evidence:
+      route_modules:
+        jobs: 624
+      route_lines: 624
+      server_areas: {}
+    current_target:
+    - aetherius-os
+    disposition: ADAPT
+    reason: A 624-line jobs route, which is the largest single module in the predecessor. The owner's
+      routing places the business applications in Aetherius OS. It is not one of the three new first-party
+      families, so it lands with the programme rather than with Commerce, and it uses the shared accounts,
+      profiles and search primitives rather than copies of them.
+  - capability: health_and_biometrics
+    evidence:
+      route_modules:
+        health: 155
+      route_lines: 155
+      server_areas: {}
+    current_target:
+    - genesis
+    disposition: RESEARCH_REFERENCE
+    reason: A 155-line health route. The owner's routing places the health, bio, neuro and biometric material
+      with Genesis, which is where the organism's own state lives. The current mechanism is the Genesis
+      kernel's identity, memory and causal runtime, and this is a reference for a domain it does not yet
+      cover. Nothing is claimed to be integrated.
+  unaccounted_route_modules: []
+  notes:
+  - 'The route modules are the capability surface: 67 modules and 13,245 lines. Every one of them is in
+    exactly one row, and the tool says so if any is not.'
+  - The client is 81,216 lines over 369 files and the server is 45,000 lines over the areas above. The
+    route modules are named in the matrix because they are what a reader can check.
+- source_repo: jayprophit/Aetherial
+  relation: PROBABLE_PREDECESSOR
+  measurement:
+    files: 1622
+    source_files: 1079
+    source_lines: 275741
+    unique_source_files: 449
+    repeated_copies: 630
+    duplication_ratio: 0.584
+    test_files: 0
+    files_named_like_tests: 12
+    declared_licence: GPL
+  capability_areas:
+  - capability: the_flat_numbered_folders
+    evidence:
+      areas:
+        02 folder:
+          files: 10
+          lines: 1918
+        03 folder:
+          files: 179
+          lines: 35278
+        04 folder:
+          files: 349
+          lines: 82985
+        05 folder:
+          files: 102
+          lines: 30553
+        06 folder:
+          files: 67
+          lines: 6229
+        07 folder:
+          files: 81
+          lines: 14631
+        08 folder:
+          files: 111
+          lines: 25037
+        09 folder:
+          files: 129
+          lines: 28102
+        10 folder:
+          files: 135
+          lines: 30561
+        11 folder:
+          files: 181
+          lines: 62820
+        12 folder:
+          files: 38
+          lines: 13075
+        13 folder:
+          files: 148
+          lines: 60941
+        Other:
+          files: 85
+          lines: 34568
+    current_target:
+    - aetherius-os
+    disposition: ARCHIVE_ONLY
+    reason: 'Thirteen numbered folders, and the numbering is the only structure there is. The same file
+      names repeat across the folders with _1 and _2 suffixes: a2a_communication.py in 08, 09 and 10,
+      access_control.py in 08 and 09, ai-architecture.md in 07 and 08, advanced_search.py in 11 and 13,
+      AdaptiveNavigation.jsx in 03 and 12. The measurement says how much of it is repetition, and the
+      answer is that most of it is. There is no coherent mechanism to adapt, so the material is preserved
+      and indexed and nothing is integrated.'
+  - capability: the_absorbed_claim
+    evidence:
+      areas:
+        ABSORBED.md:
+          files: 1
+          lines: 6
+        build.yaml:
+          files: 1
+          lines: 79
+        README.md:
+          files: 1
+          lines: 2
+    current_target:
+    - aetherius-os
+    disposition: LEGAL_REVIEW
+    reason: The repository is archived with a notice saying it has been absorbed by Aetherius OS. That
+      is a claim and not proof, and the register says so. The licence is GPL-3.0, which cannot be integrated
+      into a proprietary product without rights clearance, and there are zero test files, so there is
+      nothing that would show the integration works if it were done. The claim is unverified and stays
+      unverified until it is checked.
+  unaccounted_route_modules: []
+  notes:
+  - The directories are the only structure, and the numbering is the only naming.
+  - The measurement's duplication ratio is the reason the disposition is ARCHIVE_ONLY rather than ADAPT.
+- source_repo: jayprophit/aetherium
+  relation: PROBABLE_PREDECESSOR
+  measurement:
+    files: 1539
+    source_files: 423
+    source_lines: 118149
+    unique_source_files: 422
+    repeated_copies: 1
+    duplication_ratio: 0.002
+    test_files: 13
+    files_named_like_tests: 14
+    declared_licence: MIT
+  capability_areas:
+  - capability: the_agent_and_service_source
+    evidence:
+      areas:
+        src/agents:
+          files: 1
+          lines: 711
+        src/ai:
+          files: 7
+          lines: 4128
+        src/automation:
+          files: 6
+          lines: 2762
+        src/services:
+          files: 10
+          lines: 4753
+        src/components:
+          files: 6
+          lines: 2531
+        src/governance:
+          files: 1
+          lines: 624
+        src/hooks:
+          files: 1
+          lines: 216
+        src/networking:
+          files: 1
+          lines: 384
+        src/blockchain:
+          files: 1
+          lines: 628
+        src/physics:
+          files: 1
+          lines: 163
+        src/utils:
+          files: 1
+          lines: 174
+        src/test:
+          files: 1
+          lines: 134
+    current_target:
+    - agent-bridge
+    - genesis
+    - aetherius-os
+    disposition: ADAPT
+    reason: '18,982 lines across twelve areas, and the areas are the current programme''s own: agents,
+      AI, automation, services, governance, hooks, networking. The current mechanisms are the Agent Bridge''s
+      execution fabric and the Genesis kernel''s causal runtime, and they are better evidenced, so this
+      is adapted for reference. The blockchain and physics areas have no current destination and are archived
+      with it.'
+  - capability: the_backend_services
+    evidence:
+      areas:
+        backend/ai_ml:
+          files: 4
+          lines: 2575
+        backend/database:
+          files: 1
+          lines: 210
+        backend/security:
+          files: 1
+          lines: 146
+        backend/tools:
+          files: 1
+          lines: 488
+    current_target:
+    - agent-bridge
+    - aetherius-os
+    disposition: ADAPT
+    reason: '3,883 lines over four areas. The security area is the one worth reading: the Agent Bridge''s
+      default-deny policy engine, the session binding and the evidence chain are the current answers,
+      and this is a reference for what it was trying to do. The database area maps onto the content-management
+      primitive.'
+  - capability: the_platform_and_operations_tree
+    evidence:
+      areas:
+        aetherium/platform:
+          files: 133
+          lines: 44878
+        aetherium/operations:
+          files: 25
+          lines: 1024
+        aetherium/ai-systems:
+          files: 326
+          lines: 33417
+        aetherium/development:
+          files: 60
+          lines: 10680
+        aetherium/docs:
+          files: 29
+          lines: 10765
+        aetherium/examples:
+          files: 36
+          lines: 1420
+        aetherium/resources:
+          files: 713
+          lines: 57398
+        scripts:
+          files: 21
+          lines: 6772
+        config:
+          files: 2
+          lines: 25
+        docs:
+          files: 13
+          lines: 2750
+    current_target:
+    - aetherius-os
+    disposition: ADAPT
+    reason: '176,877 lines and 6,790 lines of scripts, and the launcher scripts at the root are the visible
+      shape of it: AETHERIUM_PLATFORM_LAUNCHER.py, AUTONOMOUS_FULL_PRODUCTION_LAUNCHER.py, deploy_platform.py,
+      EXECUTE_REORGANIZATION.py, IMPLEMENT_MISSING_COMPONENTS_NOW.py. The current programme has a single
+      launcher for the IDE stack, and it is idempotent and partial-stack safe, which these are not. The
+      operations and platform areas are worth reading as a reference for what a platform launcher has
+      to do.'
+  - capability: the_obsolete_archive
+    evidence:
+      areas:
+        archive/obsolete_directories:
+          files: 46
+          lines: 18566
+        archive/obsolete_execution_scripts:
+          files: 23
+          lines: 3360
+        archive/obsolete_files:
+          files: 2
+          lines: 466
+        archive/removed_duplicates:
+          files: 12
+          lines: 4421
+    current_target:
+    - aetherius-os
+    disposition: ARCHIVE_ONLY
+    reason: '130,375 lines in a directory whose own subdirectory names say what they are: obsolete_directories,
+      obsolete_execution_scripts, obsolete_files, removed_duplicates. The repository archived its own
+      dead code and left it in the tree. Preserved for the history and not integrated, and it is the largest
+      single thing in the repository.'
+  - capability: the_absorbed_claim
+    evidence:
+      areas:
+        ABSORBED.md:
+          files: 1
+          lines: 6
+        build.yaml:
+          files: 1
+          lines: 55
+        README.md:
+          files: 1
+          lines: 140
+    current_target:
+    - aetherius-os
+    disposition: LEGAL_REVIEW
+    reason: An ABSORBED.md notice saying the work lives in the Aetherius OS workspace, and a build manifest
+      that says NOT_STARTED and zero source lines while the tree holds 176,877 lines in one directory.
+      The manifest and the tree contradict each other, so the inventory has to be reconciled before the
+      claim can be checked at all. The licence is MIT, which permits integration, so this is a reconciliation
+      and not a rights question.
+  unaccounted_route_modules: []
+  notes:
+  - The directories are the capability areas, and the archive directory is the largest single thing in
+    the repository.

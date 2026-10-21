@@ -214,8 +214,121 @@ def gates_for(entry: dict) -> dict:
     return holds
 
 
+CAPTURE_REGISTRY = REPO / "docs" / "PREDECESSOR-CAPTURE-REGISTRY.yaml"
+CAPABILITY_MATRIX = REPO / "docs" / "PREDECESSOR-CAPABILITY-MATRIX.yaml"
+EXPOSURE_REPORT = REPO / "docs" / "evidence" / "credential-exposure-report.yaml"
+
+
+def _load(path: Path) -> dict:
+    """A register, if it is there."""
+    if not path.is_file():
+        return {}
+    try:
+        return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+def capture_facts(source_repo: str) -> dict:
+    """What the capture actually did for this repository.
+
+    The register used to say "the capture has not been run for this
+    repository" for all three predecessors, after the capture had been
+    run for all three. The register is derived from the capture now,
+    so that it cannot say a thing that has stopped being true.
+    """
+    registry = _load(CAPTURE_REGISTRY)
+    for capture in registry.get("captures", []) or []:
+        if capture.get("source_repo") != source_repo:
+            continue
+        drill = capture.get("restore_drill") or {}
+        scan = capture.get("secret_scan") or {}
+        tree = scan.get("tree") or {}
+        history = scan.get("history") or {}
+        gaps = []
+        if not capture.get("github_context", {}).get("issues_prs_wiki_releases"):
+            gaps.append(
+                "The issues, pull requests, wiki and releases have not been "
+                "captured.")
+        if not capture.get("github_context", {}).get("lfs_verified"):
+            gaps.append(
+                "The LFS objects have not been verified, so a restore of the "
+                "large files is not yet proven.")
+        if not capture.get("independent_copies"):
+            gaps.append(
+                "The capture exists in one place. An independent copy has not "
+                "been made, and a backup in one place is a hope.")
+        return {
+            "captured": True,
+            "commits": (capture.get("git") or {}).get("counts", {}).get("commits"),
+            "branches": (capture.get("git") or {}).get("counts", {}).get("branches"),
+            "fsck_clean": ((capture.get("git") or {}).get("fsck") or {}).get("clean"),
+            "restore_drill_passed": bool(drill.get("ok")),
+            "restored_commits": drill.get("commits"),
+            "restored_files": drill.get("files"),
+            "tree_clean": bool(tree.get("clean")),
+            "tree_findings": tree.get("findings", 0),
+            "history_clean": bool(history.get("clean")),
+            "history_findings": history.get("findings", 0),
+            "unresolved_capture_gaps": gaps,
+        }
+    return {"captured": False}
+
+
+def exposure_facts(source_repo: str) -> dict:
+    """What the credential exposure report says about this repository."""
+    report = _load(EXPOSURE_REPORT)
+    mine = [f for f in (report.get("findings") or [])
+            if f.get("repository") == source_repo]
+    rotate = [f for f in mine if f.get("state") == "ROTATE_REQUIRED"]
+    fixtures = [f for f in mine if f.get("state") == "FIXTURE"]
+    if rotate:
+        return {
+            "historical_secret_exposure": "CONFIRMED",
+            "owner_rotation_status": "PENDING",
+            "rotate_required": len(rotate),
+            "fixtures": len(fixtures),
+        }
+    if mine:
+        return {
+            "historical_secret_exposure": "FIXTURES_ONLY",
+            "owner_rotation_status": "NOT_REQUIRED",
+            "rotate_required": 0,
+            "fixtures": len(fixtures),
+        }
+    return {
+        "historical_secret_exposure": "NONE_FOUND",
+        "owner_rotation_status": "NOT_REQUIRED",
+        "rotate_required": 0,
+        "fixtures": 0,
+    }
+
+
+def matrix_facts(source_repo: str) -> dict:
+    """The capability matrix's rows for this repository."""
+    matrix = _load(CAPABILITY_MATRIX)
+    for predecessor in matrix.get("predecessors", []) or []:
+        if predecessor.get("source_repo") != source_repo:
+            continue
+        rows = predecessor.get("capability_areas") or []
+        dispositions: dict[str, int] = {}
+        for row in rows:
+            key = row.get("disposition", "UNRESOLVED")
+            dispositions[key] = dispositions.get(key, 0) + 1
+        return {
+            "total": len(rows),
+            "classified": len(rows),
+            "dispositions": dispositions,
+            "mapped": bool(rows),
+        }
+    return {"total": 0, "classified": 0, "dispositions": {}, "mapped": False}
+
+
 def build_entry(spec: dict) -> dict:
     facts = live_facts(spec["source_repo"])
+    capture = capture_facts(spec["source_repo"])
+    exposure = exposure_facts(spec["source_repo"])
+    matrix = matrix_facts(spec["source_repo"])
     entry = {
         "schema": SCHEMA,
         "source_repo": spec["source_repo"],
@@ -224,7 +337,7 @@ def build_entry(spec: dict) -> dict:
         "confirmed_by": spec["confirmed_by"],
         "primary_target": spec["primary_target"],
         "secondary_targets": spec["secondary_targets"],
-        "state": spec["state"],
+        "state": _state_for(spec, capture, matrix),
         "head_refs": facts["head_refs"],
         "default_branch": facts["default_branch"],
         "archived": facts["archived"],
@@ -238,22 +351,31 @@ def build_entry(spec: dict) -> dict:
             "external_assets_exported": False,
             "issues_prs_wiki_releases_captured": False,
             "independent_copies": 0,
-            "restore_drill_passed": False,
-            "unresolved_capture_gaps": [
-                "The capture has not been run for this repository.",
-            ],
+            "restore_drill_passed": bool(capture.get("restore_drill_passed")),
+            "captured": bool(capture.get("captured")),
+            "restored_commits": capture.get("restored_commits"),
+            "restored_files": capture.get("restored_files"),
+            "fsck_clean": capture.get("fsck_clean"),
+            "unresolved_capture_gaps": capture.get(
+                "unresolved_capture_gaps",
+                ["The capture has not been run for this repository."]),
         },
         "security": {
-            "historical_secret_exposure": spec["security_historical_secret_exposure"],
-            "owner_rotation_status": spec["owner_rotation_status"],
+            "historical_secret_exposure": exposure["historical_secret_exposure"],
+            "owner_rotation_status": exposure["owner_rotation_status"],
+            "tree_clean": capture.get("tree_clean"),
+            "tree_findings": capture.get("tree_findings", 0),
+            "history_clean": capture.get("history_clean"),
+            "history_findings": capture.get("history_findings", 0),
+            "credentials_to_rotate": exposure["rotate_required"],
         },
         "licence": {
             "classification": spec["licence_classification"],
         },
         "artifacts": {
-            "total": None,
-            "classified": 0,
-            "dispositions": {},
+            "total": matrix["total"],
+            "classified": matrix["classified"],
+            "dispositions": matrix["dispositions"],
         },
         "integration": {
             "tasks": [],
@@ -270,6 +392,28 @@ def build_entry(spec: dict) -> dict:
         },
     }
     return entry
+
+
+def _state_for(spec: dict, capture: dict, matrix: dict) -> str:
+    """How far this predecessor has actually got.
+
+    The state is derived from what has been done, not typed in. It is
+    the FURTHEST state whose evidence holds, and it never claims a
+    state whose evidence does not exist.
+    """
+    if not capture.get("captured"):
+        return "IDENTIFIED"
+    if not capture.get("restore_drill_passed"):
+        return "SNAPSHOTTED"
+    if not matrix.get("mapped"):
+        return "INVENTORIED"
+    if spec["confirmed_by"] == "OWNER":
+        # The owner confirmed this one, so the mapping is a mapping of
+        # a confirmed predecessor's material.
+        return "MAPPED"
+    # The relation is still only probable, so the capability areas are
+    # classified and the mapping is provisional.
+    return "CLASSIFIED"
 
 
 def validate(entries: list[dict]) -> list[str]:
