@@ -331,6 +331,28 @@ standing_rules:
   - docs/OWNER-DIRECTIVES.yaml
   - docs/OBSOLESCENCE-REGISTRY.yaml
   - tools/scan_for_secrets.py
+- id: RULE-26
+  title: An absent thing is unchecked, not broken, and a gate says which it is
+  text: 'A thing that is not there cannot be wrong. When a check cannot be carried out because the thing
+    it needs is not present, the result is UNCHECKED and the check is reported as not run, not as a failure.
+    This applies to a manifest whose project lives in another repository, a requirement whose registry
+    is in another repository, a path whose repository is not cloned, and a document in the owner''s own
+    local material. The distinction has to be explicit in the result, because a gate that reports an absent
+    thing as broken accuses correct work of being wrong, and a gate that silently skips an absent thing
+    certifies nothing. Every set of checks that was skipped is named. The rule cuts both ways: a thing
+    that IS present and does not agree is a finding, always, and it is never softened.'
+  source_thread: The programme's own CI of 21 October 2026, which found the gates green on the owner's
+    machine and red in CI for reasons that had nothing to do with the code
+  projects:
+  - aetherius-os
+  - genesis
+  - agent-bridge
+  - ide-workspace
+  satisfied_by:
+  - src/programme/buildManifest.ts
+  - src/programme/sourceRegistry.ts
+  - src/programme/capabilityRegistry.ts
+  - docs/BUILD-MANIFEST-REGISTRY.md
 open_asks:
 - id: ASK-01
   title: Read the ChatGPT project folder called Genesis and abstract what is useful

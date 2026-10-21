@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **284** (240 open, 44 done)
+- Tasks: **285** (240 open, 45 done)
 
 ## By project
 
@@ -15,7 +15,7 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 54 | 15 |
+| aetherius-os | 54 | 16 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 18 | 4 |
@@ -371,6 +371,31 @@ Acceptance:
 
 - [ ] The finding is closed by something that runs, not by a description
 - [ ] The evidence is reproducible on this machine
+
+### ✅ TODO-CI-002 — The gates were green on the owner's machine and red in CI, for reasons that had nothing to do with the code
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** build-gate — the programme's own CI, 2026-10-21
+
+The first CI run found this. The build manifest registry, the gap analysis, the capability registry, the evidence audit and the source registry all read the working tree, and the working tree on the owner's machine holds thirty sibling repositories and the owner's own Documents and Downloads, none of which a clean checkout has. So every gate that compared a register to the disk was green at home and red in CI, and the red said the register was wrong when the register was right. That is the worst direction for a gate to fail in: it teaches a person that the gate is noise.
+
+Evidence:
+
+```
+The CI's first run reported thirty-one 'manifest not found' findings for projects that are present on the owner's machine and absent from the checkout, and the source registry reported all four hundred and eleven of the owner's documents as deleted. The gap analysis reported every requirement as dangling. The capability registry reported paths in Agent-Bridge as broken after looking for them in Aetherius-OS. The evidence audit's sibling check counted the repository's own name as a sibling, so it never skipped.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The distinction is now explicit everywhere it is needed: the build manifest registry reports an absent project as unchecked and the gate asserts that the set of unchecked projects is exactly the set of absent ones, so nothing is quietly skipped; it tells an absent project from a present one by the project's own folder rather than by the first segment of the path, because most paths start with this repository's own name; the build report is generated from the manifests this repository tracks and says how many of the registry's projects it covers; the gap analysis skips the cross-reference checks when the Genesis requirement registry is not here rather than reporting every requirement as dangling; the capability registry no longer looks for a file in one repository in another one; the evidence audit's sibling check no longer counts this repository's own name; and the source registry's coverage checks are local and skip where the owner's material is absent. RULE-26 states the discipline. The suite passes in both places: one thousand eight hundred and three tests on the owner's machine, one thousand seven hundred and eighty six with seventeen skipped on a clean clone, and the CI is green on both repositories.
+
+Acceptance:
+
+- [ ] The full suite passes on a clean clone with no siblings and no local material
+- [ ] The full suite passes on the owner's machine
+- [ ] An absent thing is reported as unchecked and named, never as broken
+- [ ] A thing that is present and does not agree is still a finding
 
 ### ✅ TODO-GAP-002 — Close the hive gaps: delegation with narrowing scope, and hive messaging
 
