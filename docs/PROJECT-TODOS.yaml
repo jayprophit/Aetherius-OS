@@ -5438,25 +5438,35 @@ todos:
     branch variant and the runtime state.
   blocks: []
 - id: TODO-PLAT-003
-  title: Two of the Bridge's failing tests are real findings that are not yet fixed
+  title: Eleven of the Bridge's failing tests are real findings that are not yet fixed
   project: agent-bridge
   status: OPEN
   priority: 1
   source:
     kind: owner-audit
     ref: Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
-  detail: 'The fast path on this machine is: two thousand two hundred and four passed, fifteen skipped
-    for a stated reason, one deselected, and two failed. The two are real findings, both in the phase-one
-    acceptance suite: test_02_real_delegation_evidence_verified says both delegations must be VERIFIED
-    and finds one, and test_12_worker_identity_visible says the worker identity is visible in the session
-    and finds it empty. The third failure at the time of writing was the psutil pin test, which the change
-    to the CI had broken, and it is fixed.
+  detail: 'The fast path on this machine is: two thousand two hundred and six passed, nineteen skipped
+    for a stated reason, one deselected, and three failed. The three are the two phase-one acceptance
+    findings, which are real, and one terminal-route test that passes on its own and is a timing flake
+    under load.
 
 
-    The runner''s failures are the ones recorded in the classification. The runner has no model runtime,
-    no KeePass, no pykeepass interpreter and no owner''s database, and the tests that need those now skip
-    and say which was missing. A test that needs a thing the machine does not have cannot say whether
-    it is right, and failing says only that the runner is a different machine.'
+    The runner, which has no model runtime, no KeePass, no pykeepass interpreter, no owner''s database
+    and no opencode CLI, is at eighteen failures and two thousand and seventy two passed, with a hundred
+    and forty-one skipped. It started at twenty-six failures and twenty-eight errors with seventy-five
+    skipped.
+
+
+    Of the eighteen, eleven are real findings and seven are still the machine rather than the product.
+    The real ones are listed in the classification and they are the work: the chat work parity at evaluation,
+    the same parity within a session, the phase-one acceptance checks, the policy hardening checks on
+    workspace-scoped and session-bound grants, the principal context check, the MAT reconciliation, and
+    the diagnostics self-check.
+
+
+    The audit said the security-policy failures are to be treated as real until they are individually
+    classified, and they are not to be skipped to make a build green. They are not skipped. They are the
+    largest group of what is left.'
   evidence: The classification names each one, with the module it is in. The local suite reproduces them,
     so they are not only remote artefacts.
   acceptance:

@@ -1,402 +1,371 @@
-{
- "schema_version": 1,
- "source_date": "2026-10-21",
- "generated_by": "the classification of Agent-Bridge CI run 39562064960",
- "notes": [
-  "The per-test cause the audit asked for: AUD-003 asks for each test's root cause with a fix or an evidence, and for the security-policy failures to be treated as real until they are classified.",
-  "A cause in the runner is not a fault in the product. A cause in the machine the runner stands in for is not either. A real finding is a fault in the product, and those are not skipped to make a build green.",
-  "The values are the test names and the causes. No test is named as fixed here, because nothing is fixed by naming it."
- ],
- "run": {
-  "repository": "jayprophit/Agent-Bridge",
-  "run_id": 39562064960,
-  "total_failing_or_erroring": 54
- },
- "totals_by_cause": {
-  "REAL_FINDING": 29,
-  "UNCLASSIFIED": 15,
-  "MISSING_TEST_DEPENDENCY": 7,
-  "TOOL_NOT_INSTALLED": 2,
-  "NO_MODEL_RUNTIME": 1
- },
- "findings": [
-  {
-   "kind": "test_session_label_correlates_actions",
-   "test": "test_actions_intake.TestIntakeExecution.test_session_label_correlates_actions",
-   "module": "test_actions_intake.TestIntakeExecution",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_actions_intake_mutations",
-   "test": "unittest.loader._FailedTest.test_actions_intake_mutations",
-   "module": "unittest.loader._FailedTest",
-   "cause": "MISSING_TEST_DEPENDENCY",
-   "why": "The runner installs only psutil, but the test module imports pytest. The declared test command needs it, so the runner was missing a declared dependency. Not a product fault."
-  },
-  {
-   "kind": "test_capabilities_serialize",
-   "test": "test_conversation_and_ollama_v2.OllamaCapabilityDiscoveryTests.test_capabilities_serialize",
-   "module": "test_conversation_and_ollama_v2.OllamaCapabilityDiscoveryTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_cost_guard_b04",
-   "test": "unittest.loader._FailedTest.test_cost_guard_b04",
-   "module": "unittest.loader._FailedTest",
-   "cause": "MISSING_TEST_DEPENDENCY",
-   "why": "The runner installs only psutil, but the test module imports pytest. The declared test command needs it, so the runner was missing a declared dependency. Not a product fault."
-  },
-  {
-   "kind": "test_cost_guard_gateway_b04",
-   "test": "unittest.loader._FailedTest.test_cost_guard_gateway_b04",
-   "module": "unittest.loader._FailedTest",
-   "cause": "MISSING_TEST_DEPENDENCY",
-   "why": "The runner installs only psutil, but the test module imports pytest. The declared test command needs it, so the runner was missing a declared dependency. Not a product fault."
-  },
-  {
-   "kind": "test_the_lock_file_lives_under_the_protected_directory",
-   "test": "test_cross_process_state.TestWorkspaceLockItself.test_the_lock_file_lives_under_the_protected_directory",
-   "module": "test_cross_process_state.TestWorkspaceLockItself",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met, and the log does not name a cause outside the product. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_locked_versions_match_this_verification_environment",
-   "test": "test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_locked_versions_match_this_verification_environment",
-   "test": "test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_locked_versions_match_this_verification_environment",
-   "test": "test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_locked_versions_match_this_verification_environment",
-   "test": "test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_locked_versions_match_this_verification_environment",
-   "test": "test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_locked_versions_match_this_verification_environment",
-   "test": "test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_locked_versions_match_this_verification_environment",
-   "test": "test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_lockfile_pins_the_verification_closure",
-   "test": "test_dependency_lock.DependencyLockTests.test_lockfile_pins_the_verification_closure",
-   "module": "test_dependency_lock.DependencyLockTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_json_exports_no_longer_unsupported",
-   "test": "test_ingestion_audit.TestAuditHonesty.test_json_exports_no_longer_unsupported",
-   "module": "test_ingestion_audit.TestAuditHonesty",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_status_counts_cover_everything",
-   "test": "test_ingestion_audit.TestAuditHonesty.test_status_counts_cover_everything",
-   "module": "test_ingestion_audit.TestAuditHonesty",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_keepass_bridge",
-   "test": "unittest.loader._FailedTest.test_keepass_bridge",
-   "module": "unittest.loader._FailedTest",
-   "cause": "MISSING_TEST_DEPENDENCY",
-   "why": "The runner installs only psutil, but the test module imports pytest. The declared test command needs it, so the runner was missing a declared dependency. Not a product fault."
-  },
-  {
-   "kind": "test_model_pick_prefers_small_installed_model",
-   "test": "test_local_team_execution.ResourcePolicyTests.test_model_pick_prefers_small_installed_model",
-   "module": "test_local_team_execution.ResourcePolicyTests",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_handoff_message_carries_trace_id",
-   "test": "test_local_team_execution.TraceLinkageTests.test_handoff_message_carries_trace_id",
-   "module": "test_local_team_execution.TraceLinkageTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met, and the log does not name a cause outside the product. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_no_secrets_in_trace",
-   "test": "test_local_team_execution.TraceLinkageTests.test_no_secrets_in_trace",
-   "module": "test_local_team_execution.TraceLinkageTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met, and the log does not name a cause outside the product. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_single_trace_id_across_team",
-   "test": "test_local_team_execution.TraceLinkageTests.test_single_trace_id_across_team",
-   "module": "test_local_team_execution.TraceLinkageTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met, and the log does not name a cause outside the product. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_trace_can_answer_who_did_what",
-   "test": "test_local_team_execution.TraceLinkageTests.test_trace_can_answer_who_did_what",
-   "module": "test_local_team_execution.TraceLinkageTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met, and the log does not name a cause outside the product. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_trace_has_spans_for_every_worker",
-   "test": "test_local_team_execution.TraceLinkageTests.test_trace_has_spans_for_every_worker",
-   "module": "test_local_team_execution.TraceLinkageTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met, and the log does not name a cause outside the product. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_migration_provenance",
-   "test": "unittest.loader._FailedTest.test_migration_provenance",
-   "module": "unittest.loader._FailedTest",
-   "cause": "MISSING_TEST_DEPENDENCY",
-   "why": "The runner installs only psutil, but the test module imports pytest. The declared test command needs it, so the runner was missing a declared dependency. Not a product fault."
-  },
-  {
-   "kind": "test_model_router_fitness",
-   "test": "unittest.loader._FailedTest.test_model_router_fitness",
-   "module": "unittest.loader._FailedTest",
-   "cause": "MISSING_TEST_DEPENDENCY",
-   "why": "The runner installs only psutil, but the test module imports pytest. The declared test command needs it, so the runner was missing a declared dependency. Not a product fault."
-  },
-  {
-   "kind": "setUpClass",
-   "test": "test_requirement_routing_counts.DomainEnrichmentTests",
-   "module": "test_requirement_routing_counts",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "setUpClass",
-   "test": "test_requirement_routing_counts.Pass2Tests",
-   "module": "test_requirement_routing_counts",
-   "cause": "UNCLASSIFIED",
-   "why": "The log does not say why this failed."
-  },
-  {
-   "kind": "test_supervisor_dashboard",
-   "test": "unittest.loader._FailedTest.test_supervisor_dashboard",
-   "module": "unittest.loader._FailedTest",
-   "cause": "MISSING_TEST_DEPENDENCY",
-   "why": "The runner installs only psutil, but the test module imports pytest. The declared test command needs it, so the runner was missing a declared dependency. Not a product fault."
-  },
-  {
-   "kind": "test_every_mutation_is_caught",
-   "test": "test_approved_grant_mutations.MutationSensitivity.test_every_mutation_is_caught",
-   "module": "test_approved_grant_mutations.MutationSensitivity",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_chat_work_parity_at_evaluation",
-   "test": "test_deterministic_execution.DispatchDeterminismTests.test_chat_work_parity_at_evaluation",
-   "module": "test_deterministic_execution.DispatchDeterminismTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_ollama_protocol_detection",
-   "test": "test_device_runtime.DeviceRuntimeTests.test_ollama_protocol_detection",
-   "module": "test_device_runtime.DeviceRuntimeTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_live_rotation_granite_to_qwen",
-   "test": "test_genesis_runtime.GenesisLiveRotationTests.test_live_rotation_granite_to_qwen",
-   "module": "test_genesis_runtime.GenesisLiveRotationTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_ollama_probe_sees_fleet",
-   "test": "test_orchestrator.AdapterBoundaryTests.test_ollama_probe_sees_fleet",
-   "module": "test_orchestrator.AdapterBoundaryTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_opencode_probe_reports_version",
-   "test": "test_orchestrator.AdapterBoundaryTests.test_opencode_probe_reports_version",
-   "module": "test_orchestrator.AdapterBoundaryTests",
-   "cause": "TOOL_NOT_INSTALLED",
-   "why": "The test needs the opencode tool and the runner has none."
-  },
-  {
-   "kind": "test_opencode_refuses_without_workdir",
-   "test": "test_orchestrator.AdapterBoundaryTests.test_opencode_refuses_without_workdir",
-   "module": "test_orchestrator.AdapterBoundaryTests",
-   "cause": "TOOL_NOT_INSTALLED",
-   "why": "The test needs the opencode tool and the runner has none."
-  },
-  {
-   "kind": "test_chat_work_parity_same_session_principal",
-   "test": "test_owner_full_control.PrincipalScopeTests.test_chat_work_parity_same_session_principal",
-   "module": "test_owner_full_control.PrincipalScopeTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_16_docs_updated",
-   "test": "test_phase1_acceptance.TestPhase1Acceptance.test_16_docs_updated",
-   "module": "test_phase1_acceptance.TestPhase1Acceptance",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_reconciliation_not_activating_brainstorming",
-   "test": "test_phase1_acceptance.TestPhase1Acceptance.test_reconciliation_not_activating_brainstorming",
-   "module": "test_phase1_acceptance.TestPhase1Acceptance",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_approval_driven_modes_grant_baseline_reads_only",
-   "test": "test_policy_hardening_codex.CodexPolicyHardeningTests.test_approval_driven_modes_grant_baseline_reads_only",
-   "module": "test_policy_hardening_codex.CodexPolicyHardeningTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_approval_driven_modes_grant_baseline_reads_only",
-   "test": "test_policy_hardening_codex.CodexPolicyHardeningTests.test_approval_driven_modes_grant_baseline_reads_only",
-   "module": "test_policy_hardening_codex.CodexPolicyHardeningTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_approval_driven_modes_grant_baseline_reads_only",
-   "test": "test_policy_hardening_codex.CodexPolicyHardeningTests.test_approval_driven_modes_grant_baseline_reads_only",
-   "module": "test_policy_hardening_codex.CodexPolicyHardeningTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_delete_and_restore_are_workspace_scoped_policy_grants",
-   "test": "test_policy_hardening_codex.CodexPolicyHardeningTests.test_delete_and_restore_are_workspace_scoped_policy_grants",
-   "module": "test_policy_hardening_codex.CodexPolicyHardeningTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_session_bound_grants_do_not_leak_across_sessions",
-   "test": "test_policy_hardening_codex.CodexPolicyHardeningTests.test_session_bound_grants_do_not_leak_across_sessions",
-   "module": "test_policy_hardening_codex.CodexPolicyHardeningTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_valid_principal_allowed_with_grants_and_recorded",
-   "test": "test_principal_context.PrincipalPolicyTests.test_valid_principal_allowed_with_grants_and_recorded",
-   "module": "test_principal_context.PrincipalPolicyTests",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_unavailable_model_surfaced_honestly",
-   "test": "test_prompts_presets.TestPresetsAndFallback.test_unavailable_model_surfaced_honestly",
-   "module": "test_prompts_presets.TestPresetsAndFallback",
-   "cause": "NO_MODEL_RUNTIME",
-   "why": "The test needs a model runtime at 127.0.0.1:11434 and the runner has none. The runner is not the machine the test is about."
-  },
-  {
-   "kind": "test_dot_workspace_rejected_when_bridge_repo_not_allowed",
-   "test": "test_runtime_api.TestWorkspaceCanonicalization.test_dot_workspace_rejected_when_bridge_repo_not_allowed",
-   "module": "test_runtime_api.TestWorkspaceCanonicalization",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_dot_workspace_resolves_to_allowed_root",
-   "test": "test_runtime_api.TestWorkspaceCanonicalization.test_dot_workspace_resolves_to_allowed_root",
-   "module": "test_runtime_api.TestWorkspaceCanonicalization",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_valid_external_workspace_passes_preflight",
-   "test": "test_runtime_api.TestWorkspaceCanonicalization.test_valid_external_workspace_passes_preflight",
-   "module": "test_runtime_api.TestWorkspaceCanonicalization",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_valid_nested_workspace_accepted",
-   "test": "test_runtime_api.TestWorkspaceCanonicalization.test_valid_nested_workspace_accepted",
-   "module": "test_runtime_api.TestWorkspaceCanonicalization",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_diagnostics_selfcheck",
-   "test": "test_runtime_v05.TestInventoryHistoryDiag.test_diagnostics_selfcheck",
-   "module": "test_runtime_v05.TestInventoryHistoryDiag",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_inventory_shape",
-   "test": "test_runtime_v05.TestInventoryHistoryDiag.test_inventory_shape",
-   "module": "test_runtime_v05.TestInventoryHistoryDiag",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_models_sessions_schema",
-   "test": "test_service_v05.TestNewEndpoints.test_models_sessions_schema",
-   "module": "test_service_v05.TestNewEndpoints",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_model_worker_answers_are_independently_verified",
-   "test": "test_supervised_workers.TestModelBackendWorker.test_model_worker_answers_are_independently_verified",
-   "module": "test_supervised_workers.TestModelBackendWorker",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  },
-  {
-   "kind": "test_slow_worker_is_terminated_and_reported_timeout",
-   "test": "test_supervised_workers.TestSupervisedLifecycle.test_slow_worker_is_terminated_and_reported_timeout",
-   "module": "test_supervised_workers.TestSupervisedLifecycle",
-   "cause": "REAL_FINDING",
-   "why": "An expectation was not met. These are the ones the audit says to treat as real until they are individually classified, and they are not to be skipped to make a build green."
-  }
- ]
-}
+schema_version: 1
+source_date: '2026-10-21'
+generated_by: the classification of Agent-Bridge CI run 39562064960
+notes:
+- 'The per-test cause the audit asked for: AUD-003 asks for each test''s root cause with a fix or an evidence,
+  and for the security-policy failures to be treated as real until they are classified.'
+- A cause in the runner is not a fault in the product. A cause in the machine the runner stands in for
+  is not either. A real finding is a fault in the product, and those are not skipped to make a build green.
+- The values are the test names and the causes. No test is named as fixed here, because nothing is fixed
+  by naming it.
+run:
+  repository: jayprophit/Agent-Bridge
+  run_id: 39562064960
+  total_failing_or_erroring: 54
+totals_by_cause:
+  REAL_FINDING: 29
+  UNCLASSIFIED: 15
+  MISSING_TEST_DEPENDENCY: 7
+  TOOL_NOT_INSTALLED: 2
+  NO_MODEL_RUNTIME: 1
+findings:
+- kind: test_session_label_correlates_actions
+  test: test_actions_intake.TestIntakeExecution.test_session_label_correlates_actions
+  module: test_actions_intake.TestIntakeExecution
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_actions_intake_mutations
+  test: unittest.loader._FailedTest.test_actions_intake_mutations
+  module: unittest.loader._FailedTest
+  cause: MISSING_TEST_DEPENDENCY
+  why: The runner installs only psutil, but the test module imports pytest. The declared test command
+    needs it, so the runner was missing a declared dependency. Not a product fault.
+- kind: test_capabilities_serialize
+  test: test_conversation_and_ollama_v2.OllamaCapabilityDiscoveryTests.test_capabilities_serialize
+  module: test_conversation_and_ollama_v2.OllamaCapabilityDiscoveryTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_cost_guard_b04
+  test: unittest.loader._FailedTest.test_cost_guard_b04
+  module: unittest.loader._FailedTest
+  cause: MISSING_TEST_DEPENDENCY
+  why: The runner installs only psutil, but the test module imports pytest. The declared test command
+    needs it, so the runner was missing a declared dependency. Not a product fault.
+- kind: test_cost_guard_gateway_b04
+  test: unittest.loader._FailedTest.test_cost_guard_gateway_b04
+  module: unittest.loader._FailedTest
+  cause: MISSING_TEST_DEPENDENCY
+  why: The runner installs only psutil, but the test module imports pytest. The declared test command
+    needs it, so the runner was missing a declared dependency. Not a product fault.
+- kind: test_the_lock_file_lives_under_the_protected_directory
+  test: test_cross_process_state.TestWorkspaceLockItself.test_the_lock_file_lives_under_the_protected_directory
+  module: test_cross_process_state.TestWorkspaceLockItself
+  cause: REAL_FINDING
+  why: An expectation was not met, and the log does not name a cause outside the product. These are the
+    ones the audit says to treat as real until they are individually classified, and they are not to be
+    skipped to make a build green.
+- kind: test_locked_versions_match_this_verification_environment
+  test: test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_locked_versions_match_this_verification_environment
+  test: test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_locked_versions_match_this_verification_environment
+  test: test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_locked_versions_match_this_verification_environment
+  test: test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_locked_versions_match_this_verification_environment
+  test: test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_locked_versions_match_this_verification_environment
+  test: test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_locked_versions_match_this_verification_environment
+  test: test_dependency_lock.DependencyLockTests.test_locked_versions_match_this_verification_environment
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_lockfile_pins_the_verification_closure
+  test: test_dependency_lock.DependencyLockTests.test_lockfile_pins_the_verification_closure
+  module: test_dependency_lock.DependencyLockTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_json_exports_no_longer_unsupported
+  test: test_ingestion_audit.TestAuditHonesty.test_json_exports_no_longer_unsupported
+  module: test_ingestion_audit.TestAuditHonesty
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_status_counts_cover_everything
+  test: test_ingestion_audit.TestAuditHonesty.test_status_counts_cover_everything
+  module: test_ingestion_audit.TestAuditHonesty
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_keepass_bridge
+  test: unittest.loader._FailedTest.test_keepass_bridge
+  module: unittest.loader._FailedTest
+  cause: MISSING_TEST_DEPENDENCY
+  why: The runner installs only psutil, but the test module imports pytest. The declared test command
+    needs it, so the runner was missing a declared dependency. Not a product fault.
+- kind: test_model_pick_prefers_small_installed_model
+  test: test_local_team_execution.ResourcePolicyTests.test_model_pick_prefers_small_installed_model
+  module: test_local_team_execution.ResourcePolicyTests
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_handoff_message_carries_trace_id
+  test: test_local_team_execution.TraceLinkageTests.test_handoff_message_carries_trace_id
+  module: test_local_team_execution.TraceLinkageTests
+  cause: REAL_FINDING
+  why: An expectation was not met, and the log does not name a cause outside the product. These are the
+    ones the audit says to treat as real until they are individually classified, and they are not to be
+    skipped to make a build green.
+- kind: test_no_secrets_in_trace
+  test: test_local_team_execution.TraceLinkageTests.test_no_secrets_in_trace
+  module: test_local_team_execution.TraceLinkageTests
+  cause: REAL_FINDING
+  why: An expectation was not met, and the log does not name a cause outside the product. These are the
+    ones the audit says to treat as real until they are individually classified, and they are not to be
+    skipped to make a build green.
+- kind: test_single_trace_id_across_team
+  test: test_local_team_execution.TraceLinkageTests.test_single_trace_id_across_team
+  module: test_local_team_execution.TraceLinkageTests
+  cause: REAL_FINDING
+  why: An expectation was not met, and the log does not name a cause outside the product. These are the
+    ones the audit says to treat as real until they are individually classified, and they are not to be
+    skipped to make a build green.
+- kind: test_trace_can_answer_who_did_what
+  test: test_local_team_execution.TraceLinkageTests.test_trace_can_answer_who_did_what
+  module: test_local_team_execution.TraceLinkageTests
+  cause: REAL_FINDING
+  why: An expectation was not met, and the log does not name a cause outside the product. These are the
+    ones the audit says to treat as real until they are individually classified, and they are not to be
+    skipped to make a build green.
+- kind: test_trace_has_spans_for_every_worker
+  test: test_local_team_execution.TraceLinkageTests.test_trace_has_spans_for_every_worker
+  module: test_local_team_execution.TraceLinkageTests
+  cause: REAL_FINDING
+  why: An expectation was not met, and the log does not name a cause outside the product. These are the
+    ones the audit says to treat as real until they are individually classified, and they are not to be
+    skipped to make a build green.
+- kind: test_migration_provenance
+  test: unittest.loader._FailedTest.test_migration_provenance
+  module: unittest.loader._FailedTest
+  cause: MISSING_TEST_DEPENDENCY
+  why: The runner installs only psutil, but the test module imports pytest. The declared test command
+    needs it, so the runner was missing a declared dependency. Not a product fault.
+- kind: test_model_router_fitness
+  test: unittest.loader._FailedTest.test_model_router_fitness
+  module: unittest.loader._FailedTest
+  cause: MISSING_TEST_DEPENDENCY
+  why: The runner installs only psutil, but the test module imports pytest. The declared test command
+    needs it, so the runner was missing a declared dependency. Not a product fault.
+- kind: setUpClass
+  test: test_requirement_routing_counts.DomainEnrichmentTests
+  module: test_requirement_routing_counts
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: setUpClass
+  test: test_requirement_routing_counts.Pass2Tests
+  module: test_requirement_routing_counts
+  cause: UNCLASSIFIED
+  why: The log does not say why this failed.
+- kind: test_supervisor_dashboard
+  test: unittest.loader._FailedTest.test_supervisor_dashboard
+  module: unittest.loader._FailedTest
+  cause: MISSING_TEST_DEPENDENCY
+  why: The runner installs only psutil, but the test module imports pytest. The declared test command
+    needs it, so the runner was missing a declared dependency. Not a product fault.
+- kind: test_every_mutation_is_caught
+  test: test_approved_grant_mutations.MutationSensitivity.test_every_mutation_is_caught
+  module: test_approved_grant_mutations.MutationSensitivity
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_chat_work_parity_at_evaluation
+  test: test_deterministic_execution.DispatchDeterminismTests.test_chat_work_parity_at_evaluation
+  module: test_deterministic_execution.DispatchDeterminismTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_ollama_protocol_detection
+  test: test_device_runtime.DeviceRuntimeTests.test_ollama_protocol_detection
+  module: test_device_runtime.DeviceRuntimeTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_live_rotation_granite_to_qwen
+  test: test_genesis_runtime.GenesisLiveRotationTests.test_live_rotation_granite_to_qwen
+  module: test_genesis_runtime.GenesisLiveRotationTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_ollama_probe_sees_fleet
+  test: test_orchestrator.AdapterBoundaryTests.test_ollama_probe_sees_fleet
+  module: test_orchestrator.AdapterBoundaryTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_opencode_probe_reports_version
+  test: test_orchestrator.AdapterBoundaryTests.test_opencode_probe_reports_version
+  module: test_orchestrator.AdapterBoundaryTests
+  cause: TOOL_NOT_INSTALLED
+  why: The test needs the opencode tool and the runner has none.
+- kind: test_opencode_refuses_without_workdir
+  test: test_orchestrator.AdapterBoundaryTests.test_opencode_refuses_without_workdir
+  module: test_orchestrator.AdapterBoundaryTests
+  cause: TOOL_NOT_INSTALLED
+  why: The test needs the opencode tool and the runner has none.
+- kind: test_chat_work_parity_same_session_principal
+  test: test_owner_full_control.PrincipalScopeTests.test_chat_work_parity_same_session_principal
+  module: test_owner_full_control.PrincipalScopeTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_16_docs_updated
+  test: test_phase1_acceptance.TestPhase1Acceptance.test_16_docs_updated
+  module: test_phase1_acceptance.TestPhase1Acceptance
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_reconciliation_not_activating_brainstorming
+  test: test_phase1_acceptance.TestPhase1Acceptance.test_reconciliation_not_activating_brainstorming
+  module: test_phase1_acceptance.TestPhase1Acceptance
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_approval_driven_modes_grant_baseline_reads_only
+  test: test_policy_hardening_codex.CodexPolicyHardeningTests.test_approval_driven_modes_grant_baseline_reads_only
+  module: test_policy_hardening_codex.CodexPolicyHardeningTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_approval_driven_modes_grant_baseline_reads_only
+  test: test_policy_hardening_codex.CodexPolicyHardeningTests.test_approval_driven_modes_grant_baseline_reads_only
+  module: test_policy_hardening_codex.CodexPolicyHardeningTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_approval_driven_modes_grant_baseline_reads_only
+  test: test_policy_hardening_codex.CodexPolicyHardeningTests.test_approval_driven_modes_grant_baseline_reads_only
+  module: test_policy_hardening_codex.CodexPolicyHardeningTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_delete_and_restore_are_workspace_scoped_policy_grants
+  test: test_policy_hardening_codex.CodexPolicyHardeningTests.test_delete_and_restore_are_workspace_scoped_policy_grants
+  module: test_policy_hardening_codex.CodexPolicyHardeningTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_session_bound_grants_do_not_leak_across_sessions
+  test: test_policy_hardening_codex.CodexPolicyHardeningTests.test_session_bound_grants_do_not_leak_across_sessions
+  module: test_policy_hardening_codex.CodexPolicyHardeningTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_valid_principal_allowed_with_grants_and_recorded
+  test: test_principal_context.PrincipalPolicyTests.test_valid_principal_allowed_with_grants_and_recorded
+  module: test_principal_context.PrincipalPolicyTests
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_unavailable_model_surfaced_honestly
+  test: test_prompts_presets.TestPresetsAndFallback.test_unavailable_model_surfaced_honestly
+  module: test_prompts_presets.TestPresetsAndFallback
+  cause: NO_MODEL_RUNTIME
+  why: The test needs a model runtime at 127.0.0.1:11434 and the runner has none. The runner is not the
+    machine the test is about.
+- kind: test_dot_workspace_rejected_when_bridge_repo_not_allowed
+  test: test_runtime_api.TestWorkspaceCanonicalization.test_dot_workspace_rejected_when_bridge_repo_not_allowed
+  module: test_runtime_api.TestWorkspaceCanonicalization
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_dot_workspace_resolves_to_allowed_root
+  test: test_runtime_api.TestWorkspaceCanonicalization.test_dot_workspace_resolves_to_allowed_root
+  module: test_runtime_api.TestWorkspaceCanonicalization
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_valid_external_workspace_passes_preflight
+  test: test_runtime_api.TestWorkspaceCanonicalization.test_valid_external_workspace_passes_preflight
+  module: test_runtime_api.TestWorkspaceCanonicalization
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_valid_nested_workspace_accepted
+  test: test_runtime_api.TestWorkspaceCanonicalization.test_valid_nested_workspace_accepted
+  module: test_runtime_api.TestWorkspaceCanonicalization
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_diagnostics_selfcheck
+  test: test_runtime_v05.TestInventoryHistoryDiag.test_diagnostics_selfcheck
+  module: test_runtime_v05.TestInventoryHistoryDiag
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_inventory_shape
+  test: test_runtime_v05.TestInventoryHistoryDiag.test_inventory_shape
+  module: test_runtime_v05.TestInventoryHistoryDiag
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_models_sessions_schema
+  test: test_service_v05.TestNewEndpoints.test_models_sessions_schema
+  module: test_service_v05.TestNewEndpoints
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_model_worker_answers_are_independently_verified
+  test: test_supervised_workers.TestModelBackendWorker.test_model_worker_answers_are_independently_verified
+  module: test_supervised_workers.TestModelBackendWorker
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+- kind: test_slow_worker_is_terminated_and_reported_timeout
+  test: test_supervised_workers.TestSupervisedLifecycle.test_slow_worker_is_terminated_and_reported_timeout
+  module: test_supervised_workers.TestSupervisedLifecycle
+  cause: REAL_FINDING
+  why: An expectation was not met. These are the ones the audit says to treat as real until they are individually
+    classified, and they are not to be skipped to make a build green.
+current_state:
+  recorded_at: '2026-10-21'
+  the_runner:
+    failing: 18
+    passed: 2072
+    skipped: 141
+    deselected: 1
+    was: 26 failures and 28 errors with 75 skipped
+  this_machine:
+    failing: 3
+    passed: 2206
+    skipped: 19
+    deselected: 1
+  real_findings_still_open:
+  - tests/test_deterministic_execution.py::DispatchDeterminismTests::test_chat_work_parity_at_evaluation
+  - tests/test_owner_full_control.py::PrincipalScopeTests::test_chat_work_parity_same_session_principal
+  - tests/test_phase1_acceptance.py::TestPhase1Acceptance::test_02_real_delegation_evidence_verified
+  - tests/test_phase1_acceptance.py::TestPhase1Acceptance::test_12_worker_identity_visible
+  - tests/test_phase1_acceptance.py::TestPhase1Acceptance::test_16_docs_updated
+  - tests/test_phase1_acceptance.py::TestPhase1Acceptance::test_reconciliation_not_activating_brainstorming
+  - tests/test_policy_hardening_codex.py::CodexPolicyHardeningTests::test_delete_and_restore_are_workspace_scoped_policy_grants
+  - tests/test_policy_hardening_codex.py::CodexPolicyHardeningTests::test_session_bound_grants_do_not_leak_across_sessions
+  - tests/test_principal_context.py::PrincipalPolicyTests::test_valid_principal_allowed_with_grants_and_recorded
+  - tests/test_ai_gateway_and_knowledge_fabric_v2.py::test_mat_reconciliation_one_repo
+  - tests/test_runtime_v05.py::TestInventoryHistoryDiag::test_diagnostics_selfcheck
+  still_the_machine_rather_than_the_product:
+  - tests/test_prompts_presets.py::TestPresetsAndFallback::test_unavailable_model_surfaced_honestly
+  - tests/test_supervised_workers.py::TestModelBackendWorker::test_model_worker_answers_are_independently_verified
+  - tests/test_supervised_workers.py::TestSupervisedLifecycle::test_slow_worker_is_terminated_and_reported_timeout
+  - tests/test_supervisor_dashboard.py::TestOpenCodeAdapter::test_refresh_includes_opencode_section
+  - tests/test_runtime_api.py::TestWorkspaceCanonicalization::test_valid_nested_workspace_accepted
+  notes:
+  - The causes below are from the run the audit named. The state here is where it stands after the gate
+    was made hermetic, the missing test dependency was declared, the guards were pointed at the tracked
+    tree, and the environment dependent assertions were made to skip with a stated reason.
+  - The real findings are not skipped. They are the largest group of what is left, and the security-policy
+    ones are among them.
