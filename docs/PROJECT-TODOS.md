@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **245** (227 open, 18 done)
+- Tasks: **246** (226 open, 20 done)
 
 ## By project
 
@@ -29,7 +29,7 @@
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
 | football-card-game | 2 | 0 |
-| genesis | 8 | 5 |
+| genesis | 7 | 7 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
 | ide-workspace | 11 | 2 |
@@ -741,10 +741,10 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
-### ⬜ TODO-GAP-001 — Close the eight priority-one Genesis gaps
+### ✅ TODO-GAP-001 — Close the eight priority-one Genesis gaps
 
 - **Project:** genesis
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** gap-analysis — Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.md, Next to build
 
 The gap analysis assessed 31 agent-platform capabilities against the Genesis registries and found 27 open, 8 of them priority one: capability-scoped authority, delegation with narrowing scope, hive communication, crash recovery and resume, the free-first admission guard, task decomposition, durable task state, and tool execution with sandboxing.
@@ -752,8 +752,12 @@ The gap analysis assessed 31 agent-platform capabilities against the Genesis reg
 Evidence:
 
 ```
-Seven of the eight are now closed. Capability-scoped authority was closed by the authority engine; delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery by the durable task registry; the free-first admission and zero-spend guard by the admission gate; and task decomposition and planning by the planner, which also gave the organism loop its plan stage. The one still open is tool execution with sandboxing.
+All eight are now closed. Capability-scoped authority was closed by the authority engine; delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery by the durable task registry; the free-first admission and zero-spend guard by the admission gate; task decomposition and planning by the planner, which also gave the organism loop its plan stage; and tool execution with sandboxing by the tool executor. Every one of them is proved by a test executable that runs in the build gate, and the whole Genesis suite passes.
 ```
+
+Resolution:
+
+Resolved 2026-10-21. All eight priority-one gaps are closed and each is proved by a test executable in the Genesis build gate.
 
 Acceptance:
 
@@ -807,6 +811,30 @@ Acceptance:
 - [ ] GAP-PLAN-001 is VERIFIED and cites the planner
 - [ ] The organism loop's plan stage is executed rather than marked missing
 - [ ] A failed step is re-planned with the reason rather than restarted
+
+### ✅ TODO-GAP-006 — Close the tool execution and sandboxing gap
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** gap-analysis — Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml
+
+There was a gate and nothing behind it. The tool executor runs a registered tool, and it does so behind four checks. The authority decides: the agent must hold a live grant for the tool, and the grant must permit the action. Approval decides: where the agent's approval mode requires it, a call without an approval is refused, and the executor approves nothing on the agent's behalf. The budget decides: the step count and the tool-call count are counted by the executor and cannot be exceeded by a tool. And the sandbox is the grant turned into a declaration: the tool is handed the network and filesystem permissions its grant permits and the remaining budget, and nothing else. A tool is a registered operation the caller supplies rather than arbitrary code the executor loads, so the boundary is the gate and the declaration rather than an operating-system jail. The runtime limit is cooperative, and a call that overruns it is recorded as a breach rather than counted as a success.
+
+Evidence:
+
+```
+Genesis includes/genesis/agents/tool_execution.hpp and src/agents/tool_execution.cpp, with tests/tool_execution_tests.cpp proving seventy-one checks that run in the build gate. The requirement registry carries REQ-TOOL-EXECUTE-001, and the gap analysis records GAP-TOOL-001 as VERIFIED. The whole Genesis suite passes, twenty-eight of twenty-eight.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The tool executor closes the gap. Seventy-one checks in tests/tool_execution_tests.cpp prove it, and the whole Genesis suite passes.
+
+Acceptance:
+
+- [ ] GAP-TOOL-001 is VERIFIED and cites the tool executor
+- [ ] A call without authority, approval or budget is refused and recorded
+- [ ] The tool is handed only the permissions its grant permits
 
 ### ✅ TODO-GEN-001 — Discard the stale CMake cache in the Genesis build tree
 

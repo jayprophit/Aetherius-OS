@@ -157,15 +157,12 @@ CAPABILITIES: list[dict] = [
 
     # -- tool execution ----------------------------------------------------
     dict(id="GAP-TOOL-001", axis="tool_execution", name="Tool execution and sandboxing",
-         status="PARTIAL", priority=1,
+         status="VERIFIED", priority=1,
          gap="Tools are declared with grants and a sandbox requirement, and workflows are "
              "described, but nothing executes a tool. The runtime prepares a run and stops "
              "at the approval gate.",
-         present="genesis/agents/platform.hpp defines ToolGrant with allowed actions and "
-                 "network and filesystem write permissions, ResourceLimits, and "
-                 "AgentRuntime::prepare which performs a static preflight and returns a "
-                 "pending-approval record.",
-         requirements=['REQ-AGENT-PLATFORM-001', 'REQ-AGENT-PLATFORM-PERSIST-001'], acceptance=["AT-02", "AT-09"],
+         present="The tool executor runs a tool. A call is authorised through the authority engine, so the agent must hold a live grant for the tool and the grant must permit the action; it is approved where the agent's approval mode requires it, and the executor approves nothing on the agent's behalf; and it is counted against the run's step and tool-call budgets, which a tool cannot exceed. The sandbox is the grant turned into a declaration: the tool is handed the network and filesystem permissions its grant permits and the remaining budget, and nothing else. A tool is a registered operation the caller supplies rather than arbitrary code the executor loads, so the boundary is the gate and the declaration rather than an operating-system jail. The runtime limit is cooperative, and a call that overruns it is recorded as a breach rather than counted as a success",
+         requirements=['REQ-AGENT-PLATFORM-001', 'REQ-AGENT-PLATFORM-PERSIST-001', 'REQ-TOOL-EXECUTE-001'], acceptance=["AT-02", "AT-09"],
          gap_register=["F05"], platforms=["claude_code", "opencode", "hermes", "copilot", "manus"]),
     dict(id="GAP-TOOL-002", axis="tool_execution", name="Tool discovery and capability advertisement",
          status="PARTIAL", priority=2,
