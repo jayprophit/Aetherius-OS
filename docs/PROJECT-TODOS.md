@@ -881,13 +881,15 @@ Acceptance:
 - [ ] The slow proof and the live-provider tests are a separate job
 - [ ] The real findings are still failures
 
-### ⬜ TODO-PLAT-003 — Twenty-nine of the Bridge's failing tests are real findings that are not yet fixed
+### ⬜ TODO-PLAT-003 — Two of the Bridge's failing tests are real findings that are not yet fixed
 
 - **Project:** agent-bridge
 - **Status:** OPEN
 - **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
 
-After the runner's own causes were removed and the environment-dependent assertions were made honest, the fast path has three failures left that are real findings: the phase-one acceptance test that says both delegations must be VERIFIED and finds one, the phase-one acceptance test that says the worker identity is visible in the session and finds it empty, and the chat work parity test at evaluation. The suite is otherwise green: twenty thousand two hundred and three passed, with the rest skipped for a stated reason. The full suite on this machine is green, and the runner's failures are the ones recorded in the classification.
+The fast path on this machine is: two thousand two hundred and four passed, fifteen skipped for a stated reason, one deselected, and two failed. The two are real findings, both in the phase-one acceptance suite: test_02_real_delegation_evidence_verified says both delegations must be VERIFIED and finds one, and test_12_worker_identity_visible says the worker identity is visible in the session and finds it empty. The third failure at the time of writing was the psutil pin test, which the change to the CI had broken, and it is fixed.
+
+The runner's failures are the ones recorded in the classification. The runner has no model runtime, no KeePass, no pykeepass interpreter and no owner's database, and the tests that need those now skip and say which was missing. A test that needs a thing the machine does not have cannot say whether it is right, and failing says only that the runner is a different machine.
 
 Evidence:
 
