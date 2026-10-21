@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **287** (241 open, 46 done)
+- Tasks: **288** (241 open, 47 done)
 
 ## By project
 
@@ -18,7 +18,7 @@
 | aetherius-os | 54 | 16 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 19 | 5 |
+| agent-bridge | 19 | 6 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -887,7 +887,7 @@ Acceptance:
 - **Status:** OPEN
 - **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
 
-After the runner's own causes were removed, twenty-nine failures remain and they are the product's. They are grouped: the policy hardening tests, where the approval-driven modes do not grant baseline reads only, and where session-bound grants leak across sessions; the principal context tests; the workspace canonicalisation tests, where the dot-workspace resolution does not behave as the contract says; the Ollama probe and model rotation tests, where the model set on this machine is not the one the tests assume; the trace linkage tests; the phase-one acceptance tests; and the mutation proof in its second module, which fails for a reason that is not yet classified. The audit is explicit that these are to be treated as real and are not to be skipped to make a build green.
+After the runner's own causes were removed and the environment-dependent assertions were made honest, the fast path has three failures left that are real findings: the phase-one acceptance test that says both delegations must be VERIFIED and finds one, the phase-one acceptance test that says the worker identity is visible in the session and finds it empty, and the chat work parity test at evaluation. The suite is otherwise green: twenty thousand two hundred and three passed, with the rest skipped for a stated reason. The full suite on this machine is green, and the runner's failures are the ones recorded in the classification.
 
 Evidence:
 
@@ -2716,6 +2716,30 @@ Acceptance:
 - [ ] The hygiene, dependency and guard tests read the tracked tree, like the secret scanner does
 - [ ] A build that is green on a clean checkout is green on the owner's machine
 - [ ] The failure of a test says what is wrong, not what is somewhere else on the disk
+
+### ✅ TODO-AB-015 — A session label was refused for a workspace it was bound to, because two spellings of one path were compared as strings
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md, the Windows short-path group
+
+A caller label is bound to a workspace so that a label reused for a different workspace is refused rather than silently rebound. The comparison was on the path strings, and on Windows the short form of a path names the same directory as the long form. A temporary directory is routinely handed to a caller in one spelling and recorded in the other, so the caller got a conflict for a path that never changed, and the message said the label was bound to a workspace it was bound to. The audit named this group as a Windows short path normalisation mismatch, and it was a real defect in the product rather than in the test.
+
+Evidence:
+
+```
+The remote run reported test_session_label_correlates_actions failing with HTTP 409: session label 'wf-9' already belongs to workspace C:\Users\runner... The two paths named the same directory. The same mismatch appeared in the lock file's own test, which compared a path derived from a short temporary directory against one resolved to the long form.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The comparison resolves both paths before it compares them, so the short form and the long form are the same directory. The check is not weakened: a genuinely different path is still refused. Three tests in tests/test_session_label_workspace.py cover it, and they were checked against the unfixed comparison, where the middle one fails with the very conflict this fixes.
+
+Acceptance:
+
+- [ ] Two spellings of one path are one path
+- [ ] A label bound to one spelling resolves under another
+- [ ] A label bound to a genuinely different workspace is still refused
 
 ### ⬜ TODO-AGENT-BRIDGE-003 — Choose and record a licence for Agent-Bridge
 
