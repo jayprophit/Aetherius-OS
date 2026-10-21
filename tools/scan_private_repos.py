@@ -18,6 +18,7 @@ The report names the file and the kind of credential, never the value.
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import time
@@ -65,6 +66,17 @@ def register_states() -> dict[str, str]:
     return states
 
 
+def safe_dirname(name: str) -> str:
+    """A directory name Windows will accept.
+
+    A repository name may end in a period, and Windows will not create a
+    directory whose name ends in one. The clone target is therefore
+    sanitised, while the repository keeps its own name in the report.
+    """
+    cleaned = re.sub(r"[ .]+$", "", name)
+    return cleaned or "repo"
+
+
 def main() -> int:
     WORK.mkdir(parents=True, exist_ok=True)
     repos = live_repos()
@@ -78,7 +90,7 @@ def main() -> int:
     results: list[dict] = []
     for index, repo in enumerate(targets, 1):
         name = repo["name"]
-        dest = WORK / name
+        dest = WORK / safe_dirname(name)
         if dest.exists():
             import shutil
             shutil.rmtree(dest, ignore_errors=True)

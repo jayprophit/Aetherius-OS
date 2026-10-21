@@ -99,7 +99,7 @@ def main() -> int:
         "approval": "AUTO_SAFE",
         "interactive": False,
     })
-    if status != 200 or not session.get("session_id"):
+    if not session.get("session_id"):
         emit("the session could not be created")
         emit(f"  status: {status}  {session}")
         OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -146,6 +146,24 @@ def main() -> int:
     emit(f"  worker: {state.get('worker') or '(none recorded)'}")
     emit("")
 
+    # Which model actually did the work. The Bridge records it in the
+    # session's own state, and the route only carries the status.
+    session_state = Path(workspace) / ".bridge" / "sessions" / session_id / "session.json"
+    if session_state.is_file():
+        try:
+            recorded = json.loads(session_state.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            recorded = {}
+        roles = recorded.get("models") or {}
+        emit("the model that did it:")
+        for role in ("planner", "coder", "reviewer", "general"):
+            if roles.get(role):
+                emit(f"  {role}: {roles[role]}")
+        emit(f"  steps taken: {recorded.get('step')}")
+        emit(f"  files touched: {recorded.get('files_touched')}")
+        emit(f"  errors: {recorded.get('errors')}")
+        emit("")
+
     _, final = request(f"{bridge}/v1/sessions/{session_id}/final")
     emit("final:")
     if isinstance(final, dict):
@@ -165,6 +183,39 @@ def main() -> int:
     emit(f"  refs: {len(refs)}")
     for ref in refs[:8]:
         emit(f"    - {str(ref)[:200]}")
+    emit("")
+
+    # What the task actually left behind. This is the part that cannot be
+    # faked: a file on disk, written by a model that decided to write it.
+    emit("produced:")
+    workspace_path = Path(workspace)
+    if workspace_path.is_dir():
+        produced = 0
+        for path in sorted(workspace_path.rglob("*")):
+            if not path.is_file():
+                continue
+            rel = path.relative_to(workspace_path).as_posix()
+            if rel.startswith(".bridge/"):
+                # The Bridge's own runtime state: contracts, checkpoints,
+                # locks, memory and history. It is recorded as the count of
+                # state files rather than listed, because it is the
+                # machinery and not the result.
+                continue
+            produced += 1
+            try:
+                body = path.read_text(encoding="utf-8", errors="replace")
+            except OSError:
+                body = ""
+            emit(f"  {rel} ({path.stat().st_size} bytes)")
+            for line in body.strip().splitlines()[:8]:
+                emit(f"      {line}")
+        emit(f"  result files: {produced}")
+        bridge_state = workspace_path / ".bridge"
+        if bridge_state.is_dir():
+            runtime_files = sum(1 for p in bridge_state.rglob("*") if p.is_file())
+            emit(f"  the Bridge recorded {runtime_files} runtime state file(s)")
+    else:
+        emit("  the workspace was not there to look at")
     emit("")
 
     emit("verdict:")

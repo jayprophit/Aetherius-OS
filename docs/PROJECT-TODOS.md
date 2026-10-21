@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **259** (230 open, 29 done)
+- Tasks: **264** (232 open, 32 done)
 
 ## By project
 
@@ -15,10 +15,10 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 52 | 9 |
+| aetherius-os | 52 | 10 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 13 | 2 |
+| agent-bridge | 15 | 4 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -398,6 +398,31 @@ Acceptance:
 - [ ] Every library file is read and classified
 - [ ] The content is routed to the project it belongs to
 
+### ✅ TODO-PUB-002 — Two hundred and twelve first-party repositories were private, and had never been scanned
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-instruction — owner instruction 2026-10-20: all repositories public so external agents can read the data
+
+The owner asked for every repository to be public so that external agents can read the programme's data without special access. Two hundred and twelve first-party repositories were still private, and most had never been scanned, because a private repository is not published by committing to it. Publishing them was therefore two steps rather than one: scan first, then publish. A credential that reaches a public commit cannot be un-published, only rotated.
+
+Evidence:
+
+```
+The fork routing register classified every repository on the account. The account held six hundred and nine repositories: three hundred and fifty two third-party forks, twenty-four first-party learning repositories, eighteen first-party programme repositories, four first-party applications and one repository the register does not cover. Two hundred and ten learning repositories and two applications were private. All two hundred and twelve were cloned and scanned with the programme's own scanner: two hundred and twelve clean, zero findings, zero that could not be scanned.
+```
+
+Resolution:
+
+Resolved 2026-10-21. All two hundred and twelve were published, and the account now holds six hundred and nine public repositories and none that are private. The scan report is at docs/evidence/private-repo-secret-scan.yaml, the scanner is tools/scan_private_repos.py, and the publication is tools/publish_first_party_repos.py. The publication tool refuses to publish anything the scan did not cover, and it never touches a third-party fork.
+
+Acceptance:
+
+- [ ] Every first-party repository on the account is public
+- [ ] No repository is published before it has been scanned
+- [ ] The third-party forks are not touched, because they are not the owner's data
+- [ ] The scan report names the file and the kind of credential, never the value
+
 ### ⬜ TODO-SEC-001 — Add the secret scan to the build gate
 
 - **Project:** aetherius-os
@@ -500,6 +525,57 @@ Acceptance:
 - [ ] Source exists in the project directory
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
+
+### ✅ TODO-AB-013 — The Bridge refused a model's action because the model put a real newline in a JSON string
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-inspection — Agent-Bridge protocol.py, from a live task, 2026-10-21
+
+A model asked to write a haiku produced a JSON action whose string value held a real newline instead of the two characters a backslash and an n. That is not valid JSON, so json.loads refused it with 'Invalid control character', and the action was rejected as though the model had said nothing at all. The task then spent three revisions retrying the same thing and failed. The refusal was right in the sense that the action could not be read, but the output was plainly a structured action and the model had said exactly what it meant. This is what a model does whenever it writes text, so the failure was not an edge case.
+
+Evidence:
+
+```
+The live session history recorded the model's exact output: a fenced json block whose content value held literal newlines. Feeding that exact string to parse_model_output reproduced the failure, and json.loads(blob, strict=False) read it correctly. The same task failed before the change and completed after it, in one step with no errors, and the file it was asked for was written.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The strict reading is tried first and the relaxed one only if it fails. The relaxed reading permits control characters inside strings and relaxes nothing else: the structure, the types and the action itself are read exactly as before, and the result still has to pass validate_action, which is where the safety lives. Six tests in tests/test_protocol_v01.py cover it, and they were checked against the unfixed parser, where they fail.
+
+Acceptance:
+
+- [ ] An action whose string value holds a real newline is read
+- [ ] The newline is preserved in the content the model meant
+- [ ] The ordinary escaped form is not disturbed
+- [ ] Broken JSON is still refused
+- [ ] An unknown action is still refused
+- [ ] A write without content is still refused
+
+### ✅ TODO-AB-014 — Nothing proved that a real task actually ran through the Bridge
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-inspection — Aetherius-OS/tools/prove_ide_task.py, 2026-10-21
+
+The programme had evidence that the IDE reaches the Bridge and that the Bridge sees the local models, and nothing that showed a task actually running. A connected backend is not a working one. The inheritance document asks for Genesis to be proven through the IDE and the Bridge, and nothing in the registers could say whether that had happened.
+
+Evidence:
+
+```
+tools/prove_ide_task.py drives the same path the interface drives: create a session, submit a task, watch it run, and read back the outcome, the model that did the work, the files it touched and the result on disk. Run live, a local model (hhao/qwen2.5-coder-tools:3b) wrote a haiku in one step with no errors, and the file it was asked for was written. The digest is at docs/evidence/ide-task-proof.yaml and every value in it is read from the running service.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The tool is tools/prove_ide_task.py, and the digest is docs/evidence/ide-task-proof.yaml. It is also what found the action-parser defect recorded as TODO-AB-013: the first live run failed, and the reason was worth fixing.
+
+Acceptance:
+
+- [ ] A real task runs through the Bridge with a local model and produces a result
+- [ ] The proof can be re-run and it reads the live state rather than asserting it
+- [ ] The result on disk is shown, because that is the part that cannot be faked
 
 ### ⬜ TODO-AGENT-BRIDGE-002 — Rotate and remove the credentials in Agent-Bridge
 
@@ -2176,6 +2252,26 @@ Acceptance:
 - [ ] The mutation proof does not have to be part of the default test command to be trusted
 - [ ] The proof reports which mutation it is on
 
+### ⬜ TODO-AB-011 — Six of the Bridge's failing tests fail because they scan the working tree instead of the tracked tree
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** build-gate — Agent-Bridge test suite, 2026-10-21
+
+The Bridge's hygiene, dependency-contract, bypass-guard and phase-1 acceptance tests walk the working tree rather than the files git is tracking. The repository excludes the branch variants, so the local variants directory holds a virtualenv, a personal absolute path and a fake test credential that are all outside the repository and none of which is the repository's business. The tests find them and fail, so a build that is green on a clean checkout is red on the owner's machine, for reasons that have nothing to do with the code. The programme's own secret scanner already holds the right principle and says so: it scans what is tracked, not what is on disk, because a developer's local environment is not the repository's problem and a committed key is.
+
+Evidence:
+
+```
+The suite was run in full: 1854 tests over 64.8 minutes, with 13 failures and 3 errors. Six of them pass in a clean checkout and fail in the working tree: test_no_hardcoded_secrets and test_no_personal_absolute_paths_in_source find variants/dashboard/tests/test_h07_h09.py and variants/dashboard/compute/worker_bridge_adapters.py, which git is not tracking, and the dependency-contract test finds variants/dashboard/.venv/Lib/site-packages. The remaining ten are pre-existing and environment-dependent: three depend on the local model set, four get an HTTP 400 from the model runtime, and three depend on a tool that is not installed. None of the sixteen was caused by the changes of this session, which were checked by running the same tests against the code from before them.
+```
+
+Acceptance:
+
+- [ ] The hygiene, dependency and guard tests read the tracked tree, like the secret scanner does
+- [ ] A build that is green on a clean checkout is green on the owner's machine
+- [ ] The failure of a test says what is wrong, not what is somewhere else on the disk
+
 ### ⬜ TODO-AGENT-BRIDGE-003 — Choose and record a licence for Agent-Bridge
 
 - **Project:** agent-bridge
@@ -3677,6 +3773,26 @@ pyproject.toml: "It copies the repository 23 times and runs 6 test files per cop
 Acceptance:
 
 - [ ] The full gate runs materially faster, or its cost is bounded and scheduled
+
+### ⬜ TODO-AB-012 — Ten of the Bridge's failing tests depend on the local model set or on a tool that is not installed
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** build-gate — Agent-Bridge test suite, 2026-10-21
+
+The Bridge's suite assumes a model set the machine does not have and a toolchain that is not installed. Three tests fail because the model the local runtime serves is not the one the test asks for, four fail because the model runtime answers HTTP 400 for the request, and three fail because a tool the probe looks for is not on the machine. A test that asserts about a particular model is a test about the machine, not only about the code, and it should say which model it needed and what it found.
+
+Evidence:
+
+```
+test_context_length_is_discovered, test_llama32_declares_tools and test_live_rotation_granite_to_qwen fail identically in a clean checkout. test_solo_baseline_runs, test_team_costs_more_than_solo and test_comparison_reports_both_modes error with OllamaRequestError: HTTP 400. test_opencode_probe_reports_version fails because the tool is not on the machine. The model runtime here serves granite3.3, granite4, qwen3, qwen3.5, ministral-3, nomic-embed-text, moondream, local-qwen3 and hhao/qwen2.5-coder-tools, and the tests assume a different set.
+```
+
+Acceptance:
+
+- [ ] A test that needs a particular model says which one, and what it found instead
+- [ ] A test that needs a tool says so when the tool is absent, rather than failing obscurely
+- [ ] The suite passes on the machine the owner actually has
 
 ### ✅ TODO-IED-104 — The Bridge logs a full traceback every time the browser abandons a request
 
