@@ -280,3 +280,15 @@ sources:
   note: The same audit as the document above, saved as a script that writes the report rather than as
     the report itself. It is declared so that the file is accounted for; the report is read from the clean
     document.
+- id: OM-REVIEW-PROGRESS-2026-10-21
+  kind: handoff
+  path: C:\Users\jpowe\Documents\update2.txt
+  title: The Aetherius progress review of 21 October 2026
+  date: '2026-10-21'
+  read: full
+  note: 'A review of the phase, and a directive for the next one. It confirms the Genesis integration
+    from the outside, and it corrects two things: the Genesis Linux CI was read from a run that predated
+    the repair, and the Agent Bridge''s gate is still red. It also sets the order: the owner gates first,
+    then the Bridge''s security and execution defects, then the Genesis execution path, then the wider
+    backlog. It says plainly that the displayed model and agent statuses are to stay disconnected until
+    the connections genuinely exist, and that no repository is deleted without a separate owner approval.'

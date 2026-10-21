@@ -1,0 +1,134 @@
+schema_version: 1
+source_date: '2026-10-21'
+notes:
+- Commerce, Learning and Community are integrated application domains within the one Aetherius ecosystem.
+  They are not three platforms, and they do not each get their own account system, their own billing system
+  or their own search index.
+- This map is the decision. A primitive is implemented once, in the project named here, and the three
+  families use it. A family that needs a primitive that is not on this list has to add it here first,
+  so that the cost is visible before the code is written.
+- 'The source is the Figma handoff of 17 October 2026, which states the rule: Commerce and Learning share
+  their data model and must not create overlapping authentication or billing systems.'
+primitives:
+- primitive: identity
+  description: Who somebody is, and how that is established.
+  owner: aetherius-os
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+  note: The Aetherius account and the Genesis identity are the two identities. A family's own account
+    is the Aetherius account; it is not a second one.
+- primitive: accounts
+  description: 'The account itself: its settings, its state, its lifecycle.'
+  owner: aetherius-os
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+  note: One account, used by all three.
+- primitive: profiles
+  description: The public face of an account.
+  owner: aetherius-os
+  reused_by:
+  - aetherius-commerce
+  - aetherius-community
+  state: PARTIAL
+- primitive: groups
+  description: A named collection of accounts, with its own membership and rules.
+  owner: aetherius-os
+  reused_by:
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+  note: Learning's classes and Community's groups are the same primitive with a different purpose, not
+    two primitives.
+- primitive: publishing
+  description: Composing content and putting it somewhere others can see it.
+  owner: aetherius-os
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+- primitive: messaging
+  description: Sending a message from one account to another, or to a group.
+  owner: agent-bridge
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+  note: The Agent Bridge's communications fabric, which is the branch that currently holds the unmerged
+    work. A family does not build its own.
+- primitive: permissions
+  description: Who may do what, to which resource, under which conditions.
+  owner: agent-bridge
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+  note: The default-deny policy engine and the authority engine. The three families are consumers of it
+    and never of a copy of it.
+- primitive: content_management
+  description: Storing, versioning and retrieving content.
+  owner: aetherius-os
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+- primitive: search
+  description: Finding things across the content a family holds.
+  owner: aetherius-os
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+  note: The embedding and search mechanisms the programme already has, including the local embedding model
+    in the role pool.
+- primitive: notifications
+  description: Telling an account that something happened.
+  owner: agent-bridge
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+- primitive: payments
+  description: Taking money, and the entitlements that follow from it.
+  owner: aetherius-os
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  state: NOT_STARTED
+  note: One billing mechanism for Commerce and Learning, with the entitlements shared. No real financial
+    transaction is performed and no paid service is provisioned without the owner's approval.
+- primitive: workflow
+  description: A sequence of steps with state, approvals and a record.
+  owner: agent-bridge
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+- primitive: collaboration
+  description: Working on the same thing at the same time.
+  owner: agent-bridge
+  reused_by:
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  state: PARTIAL
+not_implemented:
+- primitive: moderation
+  description: Deciding what a community may publish.
+  owner: aetherius-community
+  reused_by: []
+  state: NOT_STARTED
+  note: Community's own, and only Community's. It is listed here rather than assumed, because it is the
+    one primitive the three do not share.

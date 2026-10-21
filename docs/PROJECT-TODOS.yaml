@@ -5560,3 +5560,76 @@ todos:
   - The history is cleaned, through the planned owner-approved migration, and the cleanup is verified
   resolution: null
   blocks: []
+- id: TODO-GEN-014
+  title: Prove the Genesis execution path with a real task, and that the organism survives a restart and
+    a model change
+  project: genesis
+  status: DONE
+  priority: 1
+  source:
+    kind: owner-directive
+    ref: Aetherius_GitHub_Diagnostic_2026-10-21.md section 3
+  detail: The review asked for the chain to be shown with an actual bounded task rather than a mock event,
+    and for restart recovery and identity continuity across a model change to be proved rather than asserted.
+  evidence: 'tools/prove_genesis_vertical_slice.py drives the real stack: the Bridge with the kernel attached,
+    a session, a task a local model really runs, the organism''s state on disk, the observation the interface
+    reads, the Bridge stopped and started again, the model changed, and the kernel''s own restart and
+    rollback. Thirteen of thirteen steps succeeded, and the evidence is at docs/evidence/genesis-vertical-slice.yaml.'
+  acceptance:
+  - The chain runs with a real task and the result is on disk
+  - The organism is the same one after the Bridge restarts
+  - The organism is the same one after the model changes
+  - What is durable and what is scheduled is stated, so nothing is claimed that is not so
+  resolution: 'Resolved 2026-10-21. All thirteen steps succeeded. The evidence also says what is NOT claimed:
+    the kernel is a one-shot command over durable state, so the durability is the state on disk and the
+    scheduling is whoever invokes it. It is not a permanently running process, and nothing says it is.'
+  blocks: []
+- id: TODO-GEN-015
+  title: The Genesis repository content manifest was written with the platform's line endings
+  project: genesis
+  status: DONE
+  priority: 2
+  source:
+    kind: owner-audit
+    ref: Aetherius_GitHub_Diagnostic_2026-10-21.md, the Linux inventory group
+  detail: The manifest is a generated file, compared byte for byte against what the tool produces. The
+    tool wrote it with the platform's newline, so a Windows run produced CRLF while the commit held LF,
+    because git normalises line endings on the way in. The working tree and the commit therefore disagreed,
+    and the disagreement was invisible until the file was compared on a platform where the checkout and
+    the writer agreed with each other and not with the commit.
+  evidence: The working-tree manifest held 632 CRLF and the commit held 0. The tool now writes LF explicitly,
+    and a .gitattributes rule pins the file to LF in every checkout, so the tool, the commit and every
+    checkout say the same thing. Regenerating the manifest twice now leaves the working tree clean, which
+    it did not before.
+  acceptance:
+  - The tool writes the manifest with LF on every platform
+  - The checkout gives LF on every platform
+  - Regenerating the manifest leaves the working tree clean
+  - The manifest gate passes on both operating systems
+  resolution: Resolved 2026-10-21. The line endings are pinned in the writer and in .gitattributes, and
+    the manifest is regenerated. The gate passes on both operating systems and the round trip is idempotent.
+  blocks: []
+- id: TODO-AOS-020
+  title: Build a thin vertical slice for each of the three new application families
+  project: aetherius-commerce
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-directive
+    ref: Aetherius_GitHub_Diagnostic_2026-10-21.md section 8, and RULE-22 to RULE-24
+  detail: Commerce, Learning and Community are registered, and their shared primitives are mapped once
+    in docs/APPLICATION-SHARED-PRIMITIVES.yaml, so that the three cannot each grow their own account system,
+    their own billing system or their own search index. What is not built yet is a slice of any of them.
+    A slice is a slice of a shared mechanism, not a private copy of it.
+  evidence: The Figma handoff's screen family table and its V2 inputs table name the three applications
+    and their destinations. The rule that they share their data model, and must not create overlapping
+    authentication or billing systems, is in the handoff's own text. The map names the owner of every
+    primitive the three use, and moderation is the one primitive they do not share, and it is listed as
+    such rather than assumed.
+  acceptance:
+  - A slice of each family exists and runs
+  - Each slice uses the primitive owners the map names rather than a private copy
+  - No real financial transaction is performed
+  - No paid service is provisioned without the owner's approval
+  resolution: null
+  blocks: []

@@ -1,0 +1,64 @@
+# =============================================================================
+# BUILD MANIFEST - Aetherius OS Community
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: aetherius-community
+  name: Aetherius OS Community
+  kind: application
+  domain: community
+  description: >-
+    The Aetherius OS Community application: the feed, the groups, the chat and the events. An integrated application domain of the one Aetherius ecosystem, not a platform of its own.
+  repository: false
+  languages: []
+
+toolchain:
+  build_system: none
+  package_manager: none
+  requirements: []
+
+commands: []
+
+dependencies:
+  projects: [aetherius-os, agent-bridge, genesis]
+  external: []
+
+status:
+  state: NOT_STARTED
+  last_verified: "2026-10-21"
+  summary: >-
+    The application is registered and its scope is recorded, and nothing has been
+    built. It is an integrated domain of the one Aetherius ecosystem, and the
+    primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml
+    rather than built three times over.
+  evidence:
+    - "The Figma handoff of 17 October 2026 names the application and its destination."
+    - "The shared primitive map names the owner of every primitive this application uses."
+
+known_issues:
+  - id: AETHERIUS-COMMUNITY-001
+    severity: high
+    summary: >-
+      The application is registered but not built. Its thin vertical slice waits on the
+      shared primitives it consumes.
+    evidence: >-
+      docs/APPLICATION-SHARED-PRIMITIVES.yaml records the primitives this application
+      uses and the project that owns each one. A slice is a slice of a shared
+      mechanism, not a private copy of it.
+    status: OPEN
+    todo_ref: TODO-APP-002
+
+notes:
+  - >-
+    Named as a first-party application in the Figma handoff of 17 October 2026. The shared primitives are in docs/APPLICATION-SHARED-PRIMITIVES.yaml: the accounts, groups, messaging, permissions and moderation are the ones the rest of Aetherius uses, and the decentralised messaging project is the reference for the messaging primitive rather than a second implementation of it.
+  - >-
+    The Figma handoff's screen family table lists Community with the feed, groups, chat and events, and the account, message, post and moderation primitives.
+  - >-
+    A real financial transaction is not performed and a paid service is not provisioned
+    without the owner's approval.

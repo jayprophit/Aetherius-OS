@@ -3,10 +3,10 @@
 > Generated from `docs/BUILD-MANIFEST-REGISTRY.yaml` and each
 > project's own `build.yaml`. Do not hand-edit this file.
 
-- Projects: **37**
-- States: VERIFIED 7 · PARTIAL 16 · NOT_STARTED 14
+- Projects: **40**
+- States: VERIFIED 7 · PARTIAL 16 · NOT_STARTED 17
 - Source date: 2026-10-21
-- Project detail below: **1 of 37** — the projects whose
+- Project detail below: **1 of 40** — the projects whose
   manifests this repository tracks. The rest live in their own
   repositories and are reported there.
 
@@ -24,35 +24,38 @@ finished before it.
  6. aetherial-platform           ⚠️ PARTIAL  (needs: aetherius-os)
  7. aetherion-engine             ❌ NOT_STARTED
  8. aetherium                    ❌ NOT_STARTED  (needs: aetherius-os)
- 9. aetherius-health-library     ❌ NOT_STARTED  (needs: aetherius-os)
-10. aetherius-os-prototype       ❌ NOT_STARTED
-11. aetherius-os-worldclass-prototype ❌ NOT_STARTED
-12. agent-bridge-cloudhybrid     ⚠️ PARTIAL  (needs: agent-bridge, genesis)
-13. ide-workspace                🟢 VERIFIED  (needs: agent-bridge, genesis, mat)
-14. agent-bridge-dashboard       ⚠️ PARTIAL  (needs: agent-bridge, ide-workspace)
-15. agent-bridge-runtimesafety   ⚠️ PARTIAL  (needs: agent-bridge, genesis)
-16. ai-digital-twin              ❌ NOT_STARTED
-17. architecture-of-shadows-book ⚠️ PARTIAL
-18. athena                       ❌ NOT_STARTED  (needs: aetherius-os)
-19. crossplatform                ⚠️ PARTIAL  (needs: aetherius-os)
-20. decentralized-messaging-app  ❌ NOT_STARTED  (needs: aetherius-os)
-21. food-wiki-app                ❌ NOT_STARTED  (needs: aetherius-os)
-22. football-card-game           ⚠️ PARTIAL  (needs: aetherius-os)
-23. hermes-config-audit          🟢 VERIFIED  (needs: aetherius-os)
-24. holonav-os                   ❌ NOT_STARTED
-25. ledgerlands                  🟢 VERIFIED  (needs: aetherius-os)
-26. niche-platform               ⚠️ PARTIAL  (needs: aetherius-os)
-27. poietek                      🟢 VERIFIED
-28. quantum-ai-assistant         ❌ NOT_STARTED
-29. quantum-os                   ⚠️ PARTIAL  (needs: aetherius-os)
-30. qva-merged                   ⚠️ PARTIAL  (needs: aetherius-os)
-31. self-building-ai             ⚠️ PARTIAL  (needs: aetherius-os)
-32. sovereign-financial-os       ❌ NOT_STARTED
-33. trading-bot                  ❌ NOT_STARTED
-34. universal-bridge             🟢 VERIFIED  (needs: poietek)
-35. veyra                        ❌ NOT_STARTED  (needs: aetherius-os)
-36. virtual-assistant            ⚠️ PARTIAL  (needs: genesis)
-37. web-platform                 ⚠️ PARTIAL  (needs: aetherius-os)
+ 9. aetherius-commerce           ❌ NOT_STARTED  (needs: aetherius-os, agent-bridge, genesis)
+10. aetherius-community          ❌ NOT_STARTED  (needs: aetherius-os, agent-bridge, genesis)
+11. aetherius-health-library     ❌ NOT_STARTED  (needs: aetherius-os)
+12. aetherius-learning           ❌ NOT_STARTED  (needs: aetherius-os, agent-bridge, genesis)
+13. aetherius-os-prototype       ❌ NOT_STARTED
+14. aetherius-os-worldclass-prototype ❌ NOT_STARTED
+15. agent-bridge-cloudhybrid     ⚠️ PARTIAL  (needs: agent-bridge, genesis)
+16. ide-workspace                🟢 VERIFIED  (needs: agent-bridge, genesis, mat)
+17. agent-bridge-dashboard       ⚠️ PARTIAL  (needs: agent-bridge, ide-workspace)
+18. agent-bridge-runtimesafety   ⚠️ PARTIAL  (needs: agent-bridge, genesis)
+19. ai-digital-twin              ❌ NOT_STARTED
+20. architecture-of-shadows-book ⚠️ PARTIAL
+21. athena                       ❌ NOT_STARTED  (needs: aetherius-os)
+22. crossplatform                ⚠️ PARTIAL  (needs: aetherius-os)
+23. decentralized-messaging-app  ❌ NOT_STARTED  (needs: aetherius-os)
+24. food-wiki-app                ❌ NOT_STARTED  (needs: aetherius-os)
+25. football-card-game           ⚠️ PARTIAL  (needs: aetherius-os)
+26. hermes-config-audit          🟢 VERIFIED  (needs: aetherius-os)
+27. holonav-os                   ❌ NOT_STARTED
+28. ledgerlands                  🟢 VERIFIED  (needs: aetherius-os)
+29. niche-platform               ⚠️ PARTIAL  (needs: aetherius-os)
+30. poietek                      🟢 VERIFIED
+31. quantum-ai-assistant         ❌ NOT_STARTED
+32. quantum-os                   ⚠️ PARTIAL  (needs: aetherius-os)
+33. qva-merged                   ⚠️ PARTIAL  (needs: aetherius-os)
+34. self-building-ai             ⚠️ PARTIAL  (needs: aetherius-os)
+35. sovereign-financial-os       ❌ NOT_STARTED
+36. trading-bot                  ❌ NOT_STARTED
+37. universal-bridge             🟢 VERIFIED  (needs: poietek)
+38. veyra                        ❌ NOT_STARTED  (needs: aetherius-os)
+39. virtual-assistant            ⚠️ PARTIAL  (needs: genesis)
+40. web-platform                 ⚠️ PARTIAL  (needs: aetherius-os)
 ```
 
 ## Projects
@@ -67,7 +70,10 @@ finished before it.
 | aetherial-platform | ⚠️ PARTIAL | - | - | - | aetherius-os |
 | aetherion-engine | ❌ NOT_STARTED | - | - | - | - |
 | aetherium | ❌ NOT_STARTED | - | - | - | aetherius-os |
+| Aetherius OS Commerce | ❌ NOT_STARTED | - | - | - | aetherius-os, agent-bridge, genesis |
+| Aetherius OS Community | ❌ NOT_STARTED | - | - | - | aetherius-os, agent-bridge, genesis |
 | aetherius-health-library | ❌ NOT_STARTED | - | - | - | aetherius-os |
+| Aetherius OS Learning | ❌ NOT_STARTED | - | - | - | aetherius-os, agent-bridge, genesis |
 | aetherius-os | ❌ NOT_STARTED | - | - | - | - |
 | aetherius-os-worldclass-prototype | ❌ NOT_STARTED | - | - | - | - |
 | Agent-Bridge (cloud-hybrid runtime) | ⚠️ PARTIAL | - | - | - | agent-bridge, genesis |
@@ -135,8 +141,8 @@ Commands: `install` · `typecheck` · `build` · `test` · `verify` · `source-r
 | Project | Required by |
 |---|---|
 | Materials Atlas Table Codex | aetherius-os, agent-bridge, genesis, ide-workspace |
-| Genesis | aetherius-os, agent-bridge, agent-bridge-cloudhybrid, agent-bridge-runtimesafety, ide-workspace, virtual-assistant |
-| Agent-Bridge | aetherius-os, agent-bridge-cloudhybrid, agent-bridge-dashboard, agent-bridge-runtimesafety, ide-workspace |
-| Aetherius-OS | aetherial, aetherial-platform, aetherium, aetherius-health-library, athena, crossplatform, decentralized-messaging-app, food-wiki-app, football-card-game, hermes-config-audit, ledgerlands, niche-platform, quantum-os, qva-merged, self-building-ai, veyra, web-platform |
+| Genesis | aetherius-commerce, aetherius-community, aetherius-learning, aetherius-os, agent-bridge, agent-bridge-cloudhybrid, agent-bridge-runtimesafety, ide-workspace, virtual-assistant |
+| Agent-Bridge | aetherius-commerce, aetherius-community, aetherius-learning, aetherius-os, agent-bridge-cloudhybrid, agent-bridge-dashboard, agent-bridge-runtimesafety, ide-workspace |
+| Aetherius-OS | aetherial, aetherial-platform, aetherium, aetherius-commerce, aetherius-community, aetherius-health-library, aetherius-learning, athena, crossplatform, decentralized-messaging-app, food-wiki-app, football-card-game, hermes-config-audit, ledgerlands, niche-platform, quantum-os, qva-merged, self-building-ai, veyra, web-platform |
 | IDE-Workspace | agent-bridge-dashboard |
 | Poietek | universal-bridge |

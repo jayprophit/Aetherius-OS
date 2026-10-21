@@ -364,3 +364,51 @@ projects:
   notes: It belongs to Sifdat, not to the owner. CC0-1.0 permits reuse without restriction, and the convention
     in this workspace is still to write first-party code fresh rather than paste third-party code into
     a first-party repository, so that the provenance of every line is clear.
+- id: aetherius-commerce
+  name: Aetherius OS Commerce
+  manifest: Aetherius-OS/apps/aetherius-commerce/build.yaml
+  role: 'A future Aetherius OS application for selling and buying: the storefront, the merchant administration,
+    the checkout, and the payment providers where they are legally and commercially authorised.'
+  status: NOT_STARTED
+  depends_on:
+  - aetherius-os
+  - agent-bridge
+  - genesis
+  notes: 'Named as a first-party application in the Figma handoff of 17 October 2026, with the concepts
+    taken from the WooCommerce archive. The shared primitives are in docs/APPLICATION-SHARED-PRIMITIVES.yaml
+    and are not duplicated here: the account, permission, search, notification and payment mechanisms
+    are the ones the rest of Aetherius uses. The Figma handoff''s V2 inputs table gives the destination
+    as Aetherius OS Commerce and Marketplace, with WooCommerce 7.4.0 as the concept source and Coinbase
+    Commerce 1.2.1 as an optional payment provider. Both are third-party and are referenced, not copied.'
+- id: aetherius-learning
+  name: Aetherius OS Learning
+  manifest: Aetherius-OS/apps/aetherius-learning/build.yaml
+  role: 'A future Aetherius OS application for learning and teaching: the learner and educator views,
+    the courses and lessons, the assessment, and the groups.'
+  status: NOT_STARTED
+  depends_on:
+  - aetherius-os
+  - agent-bridge
+  - genesis
+  notes: Named as a first-party application in the Figma handoff of 17 October 2026, with the concepts
+    taken from the LearnDash LMS archive. The shared primitives are in docs/APPLICATION-SHARED-PRIMITIVES.yaml.
+    The handoff is explicit that Commerce and Learning share their data model, so the enrolment, entitlement
+    and payment mechanisms are one set and not two. The Figma handoff's V2 inputs table gives the destination
+    as Aetherius OS Learning, with the LearnDash LMS 4.5.0.3 as the concept source. It is third-party
+    and is referenced, not copied.
+- id: aetherius-community
+  name: Aetherius OS Community
+  manifest: Aetherius-OS/apps/aetherius-community/build.yaml
+  role: 'A future Aetherius OS application for people and teams: the feed, the groups, the chat and the
+    events.'
+  status: NOT_STARTED
+  depends_on:
+  - aetherius-os
+  - agent-bridge
+  - genesis
+  notes: 'Named as a first-party application in the Figma handoff of 17 October 2026. The shared primitives
+    are in docs/APPLICATION-SHARED-PRIMITIVES.yaml: the accounts, groups, messaging, permissions and moderation
+    are the ones the rest of Aetherius uses, and the decentralised messaging project is the reference
+    for the messaging primitive rather than a second implementation of it. The Figma handoff''s screen
+    family table lists Community with the feed, groups, chat and events, and the account, message, post
+    and moderation primitives.'

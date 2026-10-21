@@ -19,7 +19,7 @@ source_date: "2026-10-20"
 scopes:
   - name: documents-root
     root: "C:\\Users\\jpowe\\Documents"
-    documents: 144
+    documents: 145
   - name: documents-master-prompt
     root: "C:\\Users\\jpowe\\Documents\\master prompt"
     documents: 25
@@ -34,14 +34,14 @@ scopes:
     documents: 25
 
 totals:
-  documents: 411
-  bytes: 21563846
+  documents: 412
+  bytes: 21576550
   kind_build_record: 115
   kind_document: 57
   kind_handoff: 9
   kind_master_prompt: 32
   kind_process: 1
-  kind_prompt_or_brief: 197
+  kind_prompt_or_brief: 198
 
 # Material recovered from the owner's own accounts. It is not on
 # disk under Documents, so it is recorded explicitly rather than
@@ -3154,6 +3154,14 @@ sources:
     lines: 420
     modified: 2026-10-21
     digest: sha256:749a91056344a335b3e8eef5c2e2b5d1b5e7e996fffc48b33d92d18e9499c414
+  - path: "Documents/update2.txt"
+    scope: documents-root
+    kind: prompt_or_brief
+    title: "Aetherius progress review — 21 October 2026"
+    bytes: 12704
+    lines: 281
+    modified: 2026-10-21
+    digest: sha256:d2656ed7a64d5e0868cd93a0b0e83807689d62359817025b27075d3df1ce0bfa
   - path: "Downloads/AETHERIUS_FIGMA_AGENT_HANDOFF/AETHERIUS_FIGMA_AGENT_MASTER_PROMPT.md"
     scope: downloads
     kind: master_prompt

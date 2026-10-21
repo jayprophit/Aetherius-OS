@@ -1,6 +1,6 @@
 # The owner's material
 
-46 declared sources, 46 present.
+47 declared sources, 47 present.
 
 | Source | Kind | Files | Size | Projects named |
 |---|---|---|---|---|
@@ -50,6 +50,7 @@
 | OM-PLAN-PREDECESSOR-ABSORPTION | master_handoff | 1 | 17 KB | aetherial, aetherial-platform, aetherius-os, agent-bridge, genesis, hermes, ide-workspace, ledgerlands, poietek, universal-bridge, virtual-assistant |
 | OM-AUDIT-PORTFOLIO-2026-10-21 | handoff | 1 | 14 KB | aetherial, aetherial-platform, aetherius-os, agent-bridge, athena, genesis, hermes, ide-workspace, ledgerlands, poietek, universal-bridge |
 | OM-AUDIT-PORTFOLIO-WRAPPED | handoff | 1 | 41 KB | aetherial, aetherial-platform, aetherius-os, agent-bridge, athena, genesis, hermes, ide-workspace, ledgerlands, mat, poietek, universal-bridge, virtual-assistant |
+| OM-REVIEW-PROGRESS-2026-10-21 | handoff | 1 | 12 KB | aetherial, aetherial-platform, aetherius-os, agent-bridge, figma-agent, genesis, hermes, ide-workspace, poietek, universal-bridge |
 
 ## The decisions the material states
 
@@ -257,6 +258,15 @@
 ### OM-AUDIT-PORTFOLIO-WRAPPED — The portfolio audit, in a script wrapper
 
 - Critical CI failures detected
+
+### OM-REVIEW-PROGRESS-2026-10-21 — The Aetherius progress review of 21 October 2026
+
+- Do not loosen default-deny security merely to pass tests.
+- Do not skip a security test to make CI green.
+- Do not disable the manifest gate.
+- Do not delete repositories automatically.
+- Do not perform real financial transactions or provision paid services without owner approval.
+- Do not declare completion based on configuration, registration, session existence, or test names alone.
 
 
 ## The capabilities the material asks for

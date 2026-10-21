@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **289** (242 open, 47 done)
+- Tasks: **292** (243 open, 49 done)
 
 ## By project
 
@@ -14,6 +14,7 @@
 | aetherial-platform | 7 | 0 |
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
+| aetherius-commerce | 1 | 0 |
 | aetherius-health-library | 4 | 0 |
 | aetherius-os | 54 | 16 |
 | aetherius-os-prototype | 2 | 0 |
@@ -29,7 +30,7 @@
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
 | football-card-game | 2 | 0 |
-| genesis | 7 | 11 |
+| genesis | 7 | 13 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
 | ide-workspace | 10 | 8 |
@@ -1390,6 +1391,31 @@ Acceptance:
 - [ ] The finding is closed by something that runs, not by a description
 - [ ] The evidence is reproducible on this machine
 
+### ✅ TODO-GEN-014 — Prove the Genesis execution path with a real task, and that the organism survives a restart and a model change
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** owner-directive — Aetherius_GitHub_Diagnostic_2026-10-21.md section 3
+
+The review asked for the chain to be shown with an actual bounded task rather than a mock event, and for restart recovery and identity continuity across a model change to be proved rather than asserted.
+
+Evidence:
+
+```
+tools/prove_genesis_vertical_slice.py drives the real stack: the Bridge with the kernel attached, a session, a task a local model really runs, the organism's state on disk, the observation the interface reads, the Bridge stopped and started again, the model changed, and the kernel's own restart and rollback. Thirteen of thirteen steps succeeded, and the evidence is at docs/evidence/genesis-vertical-slice.yaml.
+```
+
+Resolution:
+
+Resolved 2026-10-21. All thirteen steps succeeded. The evidence also says what is NOT claimed: the kernel is a one-shot command over durable state, so the durability is the state on disk and the scheduling is whoever invokes it. It is not a permanently running process, and nothing says it is.
+
+Acceptance:
+
+- [ ] The chain runs with a real task and the result is on disk
+- [ ] The organism is the same one after the Bridge restarts
+- [ ] The organism is the same one after the model changes
+- [ ] What is durable and what is scheduled is stated, so nothing is claimed that is not so
+
 ### ⬜ TODO-GENESIS-000 — Build the Genesis project the manifest describes
 
 - **Project:** genesis
@@ -2050,6 +2076,27 @@ Acceptance:
 
 - [ ] A licence file is present
 - [ ] The build manifest records it
+
+### ⬜ TODO-AOS-020 — Build a thin vertical slice for each of the three new application families
+
+- **Project:** aetherius-commerce
+- **Status:** OPEN
+- **Source:** owner-directive — Aetherius_GitHub_Diagnostic_2026-10-21.md section 8, and RULE-22 to RULE-24
+
+Commerce, Learning and Community are registered, and their shared primitives are mapped once in docs/APPLICATION-SHARED-PRIMITIVES.yaml, so that the three cannot each grow their own account system, their own billing system or their own search index. What is not built yet is a slice of any of them. A slice is a slice of a shared mechanism, not a private copy of it.
+
+Evidence:
+
+```
+The Figma handoff's screen family table and its V2 inputs table name the three applications and their destinations. The rule that they share their data model, and must not create overlapping authentication or billing systems, is in the handoff's own text. The map names the owner of every primitive the three use, and moderation is the one primitive they do not share, and it is listed as such rather than assumed.
+```
+
+Acceptance:
+
+- [ ] A slice of each family exists and runs
+- [ ] Each slice uses the primitive owners the map names rather than a private copy
+- [ ] No real financial transaction is performed
+- [ ] No paid service is provisioned without the owner's approval
 
 ### ⬜ TODO-STR-006 — Settle the health library's two identical frequency tables
 
@@ -3211,6 +3258,31 @@ Acceptance:
 - [ ] The register's text matches what the code does
 - [ ] The gap that is closed is closed for a stated reason and with a citation
 - [ ] The work that closed it is visible rather than lost in the register
+
+### ✅ TODO-GEN-015 — The Genesis repository content manifest was written with the platform's line endings
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md, the Linux inventory group
+
+The manifest is a generated file, compared byte for byte against what the tool produces. The tool wrote it with the platform's newline, so a Windows run produced CRLF while the commit held LF, because git normalises line endings on the way in. The working tree and the commit therefore disagreed, and the disagreement was invisible until the file was compared on a platform where the checkout and the writer agreed with each other and not with the commit.
+
+Evidence:
+
+```
+The working-tree manifest held 632 CRLF and the commit held 0. The tool now writes LF explicitly, and a .gitattributes rule pins the file to LF in every checkout, so the tool, the commit and every checkout say the same thing. Regenerating the manifest twice now leaves the working tree clean, which it did not before.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The line endings are pinned in the writer and in .gitattributes, and the manifest is regenerated. The gate passes on both operating systems and the round trip is idempotent.
+
+Acceptance:
+
+- [ ] The tool writes the manifest with LF on every platform
+- [ ] The checkout gives LF on every platform
+- [ ] Regenerating the manifest leaves the working tree clean
+- [ ] The manifest gate passes on both operating systems
 
 ### ⬜ TODO-HERM-001 — Fix the Hermes model and provider routing mismatch
 
