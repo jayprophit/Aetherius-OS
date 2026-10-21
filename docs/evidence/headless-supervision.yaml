@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-10-21T21:10:41.174852+00:00'
+generated_at: '2026-10-21T23:06:07.525107+00:00'
 generated_by: tools/prove_headless_supervision.py
 notes:
 - 'Section 5 of the owner''s directive, demonstrated: the supervision and the message receipts work while
@@ -18,7 +18,7 @@ steps:
   ok: true
   the state it reported: AVAILABLE
   the evidence it gave: '[''opencode session list returned 0 sessions'']'
-  the binary: C:/Users/jpowe/AppData/Roaming/npm/opencode.cmd
+  the binary: C:\Users\jpowe\AppData\Roaming\npm\opencode.CMD
 - step: the Hermes sub-agent adapter answers honestly
   ok: true
   the state it reported: NO_FUNC
@@ -64,7 +64,7 @@ steps:
 - step: there is a durable receipt for every message
   ok: true
   the receipts on disk: 3
-  the database: C:\Users\jpowe\AppData\Local\Temp\headless_supervision_q1vs4v4k\messages.db
+  the database: C:\Users\jpowe\AppData\Local\Temp\headless_supervision_mh41xo_e\messages.db
   the states:
     LANE-PROVIDER-DOWN: PENDING
     LANE-ALPHA: DELIVERED
@@ -72,17 +72,17 @@ steps:
 - step: a receipt records the delivery with its evidence and its times
   ok: true
   the receipt for LANE-ALPHA:
-    message_id: msg_a4ec447f9bd04833
+    message_id: msg_6c82e6304f11485e
     intent: TASK_ASSIGN
     delivery_state: DELIVERED
     sender_agent: hermes
     receiver_agent: scripted
-    delivered_at: 1792617040.775295
+    delivered_at: 1792623967.14154
     acknowledged_at: null
 - step: the receipt for the failed lane says it was not delivered
   ok: true
   the receipt for LANE-PROVIDER-DOWN:
-    message_id: msg_35271c34c5b0444f
+    message_id: msg_8e30a071fc364bf0
     intent: TASK_ASSIGN
     delivery_state: PENDING
     delivered_at: null
@@ -92,7 +92,7 @@ steps:
   the actions:
   - delivered
   - submitted
-  the audit file: C:\Users\jpowe\AppData\Local\Temp\headless_supervision_q1vs4v4k\messages.audit.jsonl
+  the audit file: C:\Users\jpowe\AppData\Local\Temp\headless_supervision_mh41xo_e\messages.audit.jsonl
 - step: the dashboard was never started
   ok: true
   the times the dashboard's builder was called: 0
