@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **285** (240 open, 45 done)
+- Tasks: **287** (241 open, 46 done)
 
 ## By project
 
@@ -18,7 +18,7 @@
 | aetherius-os | 54 | 16 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 18 | 4 |
+| agent-bridge | 19 | 5 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -854,6 +854,52 @@ Acceptance:
 
 - [ ] The finding is closed by something that runs, not by a description
 - [ ] The evidence is reproducible on this machine
+
+### ✅ TODO-PLAT-002 — Agent Bridge's CI failures are now classified per test, and the gate is hermetic
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
+
+The audit asked for each failing test's root cause with a fix or an evidence, and for the security-policy failures to be treated as real until they are individually classified. The remote run reported 1,856 tests with 26 failures and 28 errors. Every one is now classified, and the classification is a file rather than a paragraph.
+
+Evidence:
+
+```
+The causes: seven test modules import pytest and the runner installed only psutil, so those modules could not be imported at all; the mutation proof copies the repository twenty-three times and the runner ran it in a job with no model runtime, where it could not have passed; two tests need the opencode tool; the rest are real findings, which are not skipped to make a build green. The report is at docs/evidence/agent-bridge-ci-failure-classification.yaml.
+```
+
+Resolution:
+
+Resolved 2026-10-21. pytest is declared as a test dependency rather than being an undeclared hard import. The gate runs the project's own documented fast path, which deselects the slow mutation proof, and the full suite is a separate job for a release. Three guards that walked the working tree now read the tracked tree, through one shared helper, so they stop reading a virtualenv, an excluded branch variant and the runtime state.
+
+Acceptance:
+
+- [ ] Every failing test is classified by its cause
+- [ ] The runner installs what the declared test command needs
+- [ ] The gate runs the project's own documented fast path
+- [ ] The slow proof and the live-provider tests are a separate job
+- [ ] The real findings are still failures
+
+### ⬜ TODO-PLAT-003 — Twenty-nine of the Bridge's failing tests are real findings that are not yet fixed
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
+
+After the runner's own causes were removed, twenty-nine failures remain and they are the product's. They are grouped: the policy hardening tests, where the approval-driven modes do not grant baseline reads only, and where session-bound grants leak across sessions; the principal context tests; the workspace canonicalisation tests, where the dot-workspace resolution does not behave as the contract says; the Ollama probe and model rotation tests, where the model set on this machine is not the one the tests assume; the trace linkage tests; the phase-one acceptance tests; and the mutation proof in its second module, which fails for a reason that is not yet classified. The audit is explicit that these are to be treated as real and are not to be skipped to make a build green.
+
+Evidence:
+
+```
+The classification names each one, with the module it is in. The local suite reproduces them, so they are not only remote artefacts.
+```
+
+Acceptance:
+
+- [ ] Each real finding is fixed, or its expectation is corrected and the reason recorded
+- [ ] The policy failures are fixed rather than skipped
+- [ ] The gate is green on a runner and on this machine
 
 ### ⬜ TODO-AGENT-BRIDGE-CLOUDHYBRID-000 — Build the Agent-Bridge-cloudhybrid project the manifest describes
 

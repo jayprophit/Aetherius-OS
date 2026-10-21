@@ -5408,3 +5408,56 @@ todos:
     tests on the owner''s machine, one thousand seven hundred and eighty six with seventeen skipped on
     a clean clone, and the CI is green on both repositories.'
   blocks: []
+- id: TODO-PLAT-002
+  title: Agent Bridge's CI failures are now classified per test, and the gate is hermetic
+  project: agent-bridge
+  status: DONE
+  priority: 1
+  source:
+    kind: owner-audit
+    ref: Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
+  detail: The audit asked for each failing test's root cause with a fix or an evidence, and for the security-policy
+    failures to be treated as real until they are individually classified. The remote run reported 1,856
+    tests with 26 failures and 28 errors. Every one is now classified, and the classification is a file
+    rather than a paragraph.
+  evidence: 'The causes: seven test modules import pytest and the runner installed only psutil, so those
+    modules could not be imported at all; the mutation proof copies the repository twenty-three times
+    and the runner ran it in a job with no model runtime, where it could not have passed; two tests need
+    the opencode tool; the rest are real findings, which are not skipped to make a build green. The report
+    is at docs/evidence/agent-bridge-ci-failure-classification.yaml.'
+  acceptance:
+  - Every failing test is classified by its cause
+  - The runner installs what the declared test command needs
+  - The gate runs the project's own documented fast path
+  - The slow proof and the live-provider tests are a separate job
+  - The real findings are still failures
+  resolution: Resolved 2026-10-21. pytest is declared as a test dependency rather than being an undeclared
+    hard import. The gate runs the project's own documented fast path, which deselects the slow mutation
+    proof, and the full suite is a separate job for a release. Three guards that walked the working tree
+    now read the tracked tree, through one shared helper, so they stop reading a virtualenv, an excluded
+    branch variant and the runtime state.
+  blocks: []
+- id: TODO-PLAT-003
+  title: Twenty-nine of the Bridge's failing tests are real findings that are not yet fixed
+  project: agent-bridge
+  status: OPEN
+  priority: 1
+  source:
+    kind: owner-audit
+    ref: Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
+  detail: 'After the runner''s own causes were removed, twenty-nine failures remain and they are the product''s.
+    They are grouped: the policy hardening tests, where the approval-driven modes do not grant baseline
+    reads only, and where session-bound grants leak across sessions; the principal context tests; the
+    workspace canonicalisation tests, where the dot-workspace resolution does not behave as the contract
+    says; the Ollama probe and model rotation tests, where the model set on this machine is not the one
+    the tests assume; the trace linkage tests; the phase-one acceptance tests; and the mutation proof
+    in its second module, which fails for a reason that is not yet classified. The audit is explicit that
+    these are to be treated as real and are not to be skipped to make a build green.'
+  evidence: The classification names each one, with the module it is in. The local suite reproduces them,
+    so they are not only remote artefacts.
+  acceptance:
+  - Each real finding is fixed, or its expectation is corrected and the reason recorded
+  - The policy failures are fixed rather than skipped
+  - The gate is green on a runner and on this machine
+  resolution: null
+  blocks: []
