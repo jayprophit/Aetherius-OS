@@ -10354,5 +10354,150 @@
     "inspection_status": "ZIP structure inspected; selected representative code where noted"
    }
   ]
+ },
+ {
+  "id": "OM-PLAN-PREDECESSOR-ABSORPTION",
+  "kind": "master_handoff",
+  "title": "The predecessor absorption and verified retirement programme",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_PREDECESSOR_ABSORPTION_MASTER_PLAN_2026-10-21.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherial",
+   "aetherial-platform",
+   "aetherius-os",
+   "agent-bridge",
+   "genesis",
+   "hermes",
+   "ide-workspace",
+   "ledgerlands",
+   "poietek",
+   "universal-bridge",
+   "virtual-assistant"
+  ],
+  "decisions": [],
+  "features": [],
+  "repositories": [
+   "jayprophit/Aetherial",
+   "jayprophit/Aetherius-OS",
+   "jayprophit/Genesis",
+   "jayprophit/VirtualAssistant",
+   "jayprophit/aetherial-platform",
+   "jayprophit/aetherium"
+  ],
+  "files": 1,
+  "bytes": 17765,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "AETHERIUS_PREDECESSOR_ABSORPTION_MASTER_PLAN_2026-10-21.md"
+  ],
+  "characters": 17699
+ },
+ {
+  "id": "OM-AUDIT-PORTFOLIO-2026-10-21",
+  "kind": "handoff",
+  "title": "The portfolio diagnostic and gap analysis",
+  "path": "C:\\Users\\jpowe\\Downloads\\Aetherius_GitHub_Diagnostic_2026-10-21.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherial",
+   "aetherial-platform",
+   "aetherius-os",
+   "agent-bridge",
+   "athena",
+   "genesis",
+   "hermes",
+   "ide-workspace",
+   "ledgerlands",
+   "poietek",
+   "universal-bridge"
+  ],
+  "decisions": [],
+  "features": [
+   "include policy grant/authority tests, missing Ollama service",
+   "build manifest self-reports **466 Vitest tests passing across 28 files**, clean typecheck/build; explicitly says Python Bridge integration",
+   "Add push/PR CI for front-end and Python integration",
+   "build + CodeQL | clean canonical CI, no source loss | | AUD-008 | P1 | Fix Poietek workflow",
+   "Add push/PR CI for active Aetherius OS + IDE branches | real remote code/build/integration",
+   "build and durable MatchStore | application"
+  ],
+  "repositories": [
+   "jayprophit/Agent-Bridge",
+   "jayprophit/Genesis",
+   "jayprophit/LedgerLands",
+   "jayprophit/Poietek",
+   "jayprophit/Universal-Bridge",
+   "jayprophit/aetherial-platform"
+  ],
+  "files": 1,
+  "bytes": 14594,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "Aetherius_GitHub_Diagnostic_2026-10-21.md"
+  ],
+  "characters": 14558
+ },
+ {
+  "id": "OM-AUDIT-PORTFOLIO-WRAPPED",
+  "kind": "handoff",
+  "title": "The portfolio audit, in a script wrapper",
+  "path": "C:\\Users\\jpowe\\Documents\\update.txt",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherial",
+   "aetherial-platform",
+   "aetherius-os",
+   "agent-bridge",
+   "athena",
+   "genesis",
+   "hermes",
+   "ide-workspace",
+   "ledgerlands",
+   "mat",
+   "poietek",
+   "universal-bridge",
+   "virtual-assistant"
+  ],
+  "decisions": [
+   "Critical CI failures detected"
+  ],
+  "features": [
+   "write-set reconciliation, independent QA, security and CI before selective integration",
+   "Add real PR/push UI + Bridge integration",
+   "build and CodeQL | default canonical branch compiles; CodeQL + CI green | | P1 | AUD-008 | Fix Poietek obsolete workflow",
+   "build and Poietek's stale workflow"
+  ],
+  "repositories": [
+   "jayprophit/Aetherial",
+   "jayprophit/Aetherius-OS",
+   "jayprophit/Agent-Bridge",
+   "jayprophit/Genesis",
+   "jayprophit/IDE-Workspace",
+   "jayprophit/LedgerLands",
+   "jayprophit/Poietek",
+   "jayprophit/THE-ARCHITECTURE-OF-SHADOWS",
+   "jayprophit/Universal-Bridge",
+   "jayprophit/VirtualAssistant",
+   "jayprophit/aetherial-platform",
+   "jayprophit/aetherium"
+  ],
+  "files": 1,
+  "bytes": 42439,
+  "kinds": {},
+  "extensions": {
+   ".txt": 1
+  },
+  "documents": [
+   "update.txt"
+  ],
+  "characters": 41861
  }
 ]

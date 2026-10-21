@@ -1,6 +1,6 @@
 # The owner's material
 
-43 declared sources, 43 present.
+46 declared sources, 46 present.
 
 | Source | Kind | Files | Size | Projects named |
 |---|---|---|---|---|
@@ -47,6 +47,9 @@
 | OM-FIGMA-V2-SCREEN-REGISTRY | catalogue | 1 | 5 KB | - |
 | OM-FIGMA-V2-IMAGE-REGISTRY | catalogue | 1 | 10 KB | - |
 | OM-FIGMA-V2-ZIP-MANIFEST | catalogue | 1 | 5 KB | - |
+| OM-PLAN-PREDECESSOR-ABSORPTION | master_handoff | 1 | 17 KB | aetherial, aetherial-platform, aetherius-os, agent-bridge, genesis, hermes, ide-workspace, ledgerlands, poietek, universal-bridge, virtual-assistant |
+| OM-AUDIT-PORTFOLIO-2026-10-21 | handoff | 1 | 14 KB | aetherial, aetherial-platform, aetherius-os, agent-bridge, athena, genesis, hermes, ide-workspace, ledgerlands, poietek, universal-bridge |
+| OM-AUDIT-PORTFOLIO-WRAPPED | handoff | 1 | 41 KB | aetherial, aetherial-platform, aetherius-os, agent-bridge, athena, genesis, hermes, ide-workspace, ledgerlands, mat, poietek, universal-bridge, virtual-assistant |
 
 ## The decisions the material states
 
@@ -251,6 +254,10 @@
 - Never reset or overwrite current local Agent-Bridge/Genesis work just to simplify auxiliary-agent setup.
 - Do not invent missing phase definitions.
 
+### OM-AUDIT-PORTFOLIO-WRAPPED — The portfolio audit, in a script wrapper
+
+- Critical CI failures detected
+
 
 ## The capabilities the material asks for
 
@@ -400,4 +407,20 @@
 ### OM-FIGMA-V2-QUICK-PASTE — The short paste prompt for continuing the design work
 
 - design tokens/components, accurate screen
+
+### OM-AUDIT-PORTFOLIO-2026-10-21 — The portfolio diagnostic and gap analysis
+
+- include policy grant/authority tests, missing Ollama service
+- build manifest self-reports **466 Vitest tests passing across 28 files**, clean typecheck/build; explicitly says Python Bridge integration
+- Add push/PR CI for front-end and Python integration
+- build + CodeQL | clean canonical CI, no source loss | | AUD-008 | P1 | Fix Poietek workflow
+- Add push/PR CI for active Aetherius OS + IDE branches | real remote code/build/integration
+- build and durable MatchStore | application
+
+### OM-AUDIT-PORTFOLIO-WRAPPED — The portfolio audit, in a script wrapper
+
+- write-set reconciliation, independent QA, security and CI before selective integration
+- Add real PR/push UI + Bridge integration
+- build and CodeQL | default canonical branch compiles; CodeQL + CI green | | P1 | AUD-008 | Fix Poietek obsolete workflow
+- build and Poietek's stale workflow
 
