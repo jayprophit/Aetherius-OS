@@ -140,8 +140,17 @@ export interface ObservedDocument {
 }
 
 export interface SourceRegistryValidationOptions {
-  /** The documents currently on disk, in the declared scope. */
-  observed: readonly ObservedDocument[];
+  /**
+   * The documents currently on disk, in the declared scope.
+   *
+   * It is optional because the scope is the OWNER'S local material:
+   * their Documents, their Downloads, their own project folders. A
+   * machine that does not have that material cannot observe it, and an
+   * empty observation set would say every registered document has been
+   * deleted, which is false. So when the observations are unknown, the
+   * checks that need them are skipped and the rest still run.
+   */
+  observed?: readonly ObservedDocument[];
   /**
    * Whether a digest difference is a finding. It always is, but a caller
    * that regenerates the registry in the same run can set this false to
@@ -213,37 +222,45 @@ export function validateSourceRegistry(
   }
 
   const onDisk = new Map<string, ObservedDocument>();
-  for (const doc of options.observed) onDisk.set(doc.path, doc);
+  for (const doc of options.observed ?? []) onDisk.set(doc.path, doc);
 
-  // Registered but gone.
-  for (const [path, entry] of registered) {
-    const observed = onDisk.get(path);
-    if (!observed || !observed.exists) {
-      issues.push({
-        code: "registry-missing-document",
-        path,
-        detail: "registered but not on disk",
-      });
-      continue;
+  /* The checks that compare the register to what is on disk. They need
+   * observations, and an observation set that is empty because the
+   * material is not here is not the same as an observation set that is
+   * empty because the material was deleted. When the observations are
+   * unknown, these are skipped rather than reported, and the register
+   * is not accused of describing a machine that does not exist. */
+  if (options.observed) {
+    // Registered but gone.
+    for (const [path, entry] of registered) {
+      const observed = onDisk.get(path);
+      if (!observed || !observed.exists) {
+        issues.push({
+          code: "registry-missing-document",
+          path,
+          detail: "registered but not on disk",
+        });
+        continue;
+      }
+      if (options.checkDigests !== false && observed.digest && observed.digest !== entry.digest) {
+        issues.push({
+          code: "registry-digest-mismatch",
+          path,
+          detail: `registry says ${entry.digest.slice(0, 19)}..., disk has ${observed.digest.slice(0, 19)}...`,
+        });
+      }
     }
-    if (options.checkDigests !== false && observed.digest && observed.digest !== entry.digest) {
-      issues.push({
-        code: "registry-digest-mismatch",
-        path,
-        detail: `registry says ${entry.digest.slice(0, 19)}..., disk has ${observed.digest.slice(0, 19)}...`,
-      });
-    }
-  }
 
-  // On disk but not registered.
-  for (const doc of options.observed) {
-    if (!doc.exists) continue;
-    if (!registered.has(doc.path)) {
-      issues.push({
-        code: "registry-unregistered-document",
-        path: doc.path,
-        detail: "on disk but not in the registry",
-      });
+    // On disk but not registered.
+    for (const doc of options.observed) {
+      if (!doc.exists) continue;
+      if (!registered.has(doc.path)) {
+        issues.push({
+          code: "registry-unregistered-document",
+          path: doc.path,
+          detail: "on disk but not in the registry",
+        });
+      }
     }
   }
 

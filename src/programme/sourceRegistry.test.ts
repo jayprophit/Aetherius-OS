@@ -131,7 +131,11 @@ describe("owner source registry", () => {
   });
 });
 
-describe("source registry coverage against the disk", () => {
+/* Coverage against the disk. The scope is the owner's local material,
+ * so these checks run where that material is and are skipped, explicitly,
+ * where it is not. A CI runner has none of the owner's documents, and
+ * reporting that they are missing would be a false accusation. */
+describe.skipIf(!SCOPE_PRESENT)("source registry coverage against the disk", () => {
   it("scans the declared scope", () => {
     if (result.error) {
       // Reported rather than failed: the scan is a helper, and its
@@ -177,7 +181,11 @@ describe("source registry coverage against the disk", () => {
 
   it("has no structural problem", () => {
     if (result.error) return;
-    const issues = validateSourceRegistry(registry, { observed: result.observed });
+    /* The observations are unknown where the material is not here, and
+     * the checks that need them are skipped rather than reported. */
+    const issues = validateSourceRegistry(registry, {
+      observed: SCOPE_PRESENT ? result.observed : undefined,
+    });
     expect(issues.map((i) => `${i.code} ${i.path}: ${i.detail}`)).toEqual([]);
   });
 });
