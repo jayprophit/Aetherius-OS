@@ -4478,7 +4478,7 @@ todos:
   blocks: []
 - id: TODO-IED-105
   title: The broken 9-byte GPT4All installer on the external drive
-  project: temp
+  project: ai-digital-twin
   status: OPEN
   priority: 3
   source:
@@ -4580,4 +4580,143 @@ todos:
     It is distinct from the three neighbouring things: Aetherius OS is the ecosystem, Genesis is the organism,
     Agent Bridge is the execution runtime, and the IDE is the interface to them. Verified live: the browser
     reports the title as Aetherius IDE and the header as Aetherius IDE.'
+  blocks: []
+- id: TODO-AOS-015
+  title: The four boundaries and the single brand are not recorded as a rule anywhere
+  project: aetherius-os
+  status: DONE
+  priority: 2
+  source:
+    kind: owner-material
+    ref: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/README_START_HERE.md, 2026-10-17
+  detail: The handoff of 17 October 2026 states the product boundaries and the single public brand plainly,
+    and the programme had no record of them. The risk was not that the boundaries were wrong. The IDE
+    was called IDE_NAME_TBD and might have been branded as the OS. The risk was that Agent Bridge, which
+    is an authorised capability surface, would be presented as a publicly branded OS app.
+  evidence: 'The handoff states: ''One public-facing brand: Aetherius. Keep Genesis for the AI identity.
+    Old names remain historical references only.'' and ''Agent Bridge: distinct authorised tools/capability
+    surface, not automatically a publicly branded OS app.'''
+  acceptance:
+  - The boundaries are recorded as a standing rule
+  - The IDE, Genesis, Aetherius OS and Agent Bridge are named as four distinct things
+  - The single public brand is stated
+  resolution: 'Resolved 2026-10-21. Recorded as RULE-22 in docs/OWNER-DIRECTIVES.yaml. The IDE''s own
+    name was settled at the same time: Aetherius IDE, which is what the handoff calls it.'
+  blocks: []
+- id: TODO-AOS-016
+  title: The design status labels are not the evidence vocabulary, and the registers only have the evidence
+    one
+  project: aetherius-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-material
+    ref: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/CURRENT_STATE_AND_NEXT_STEPS.md, 2026-10-17
+  detail: 'The handoff makes eight status labels mandatory for design and reference work: SOURCE_REFERENCE,
+    DESIGNED, INTERACTIVE_PROTOTYPE, LOCAL_UI_DEMO, IMPLEMENTED, TESTED, ROADMAP and BLOCKED. The programme''s
+    own vocabulary is PROPOSED, FOUND, IMPLEMENTED, TESTED, INTEGRATED, DEPLOYED, NOT_LOCATED and BLOCKED.
+    They overlap on three labels and differ on five, and the difference is exactly where a design artefact
+    is most easily mistaken for a working product. A design frame is not proof of a working product, and
+    a local demo is not a runtime. The registers currently have no vocabulary for the first, second or
+    fourth of those states, so a concept can be recorded as though it were built.'
+  evidence: The handoff states the labels as mandatory and separates SOURCE_REFERENCE, DESIGNED, INTERACTIVE_PROTOTYPE
+    and LOCAL_UI_DEMO from IMPLEMENTED and TESTED. The programme's vocabulary is recorded in docs/OWNER-DIRECTIVES.yaml
+    RULE and in the header of docs/GAP-ANALYSIS-REGISTRY.yaml.
+  acceptance:
+  - The registers can record a design artefact and a design-only state as themselves
+  - The eight design labels are available where design work is recorded
+  - The two vocabularies are mapped to each other, so a label means one thing across the programme
+  - A concept is never recorded as though it were built
+  blocks: []
+- id: TODO-AOS-017
+  title: Aetherius OS Commerce / Marketplace is a named first-party app the programme has no project for
+  project: aetherius-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-material
+    ref: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/COMMERCE_LEARNING_SPEC.md and DESIGN_ARCHITECTURE.md,
+      2026-10-17
+  detail: 'The handoff names Commerce and Marketplace as a future Aetherius OS application, carrying the
+    storefront, merchant administration, checkout and payment provider concepts, and names the archives
+    that informed it: WooCommerce 7.4.0 for the concepts and Coinbase Commerce 1.2.1 as an optional cryptocurrency
+    checkout provider. The programme''s project register has no Commerce project. The word commerce appears
+    in the registers only as part of a predecessor web platform that carried e-commerce, e-learning and
+    social media together, which is history and not the canonical destination.'
+  evidence: The handoff's screen family table lists 'Commerce/Marketplace | storefront/merchant admin
+    + checkout/provider | future OS selling/buying | identity, entitlements, files, notifications', and
+    its V2 inputs table gives the proper destination as 'Aetherius OS Commerce / Marketplace'.
+  acceptance:
+  - The project is in the build manifest registry with a build manifest and a location
+  - The workflow requirements from COMMERCE_LEARNING_SPEC.md are in the requirement register
+  - It shares one identity, entitlement and billing model with Learning rather than a second one
+  - It is presented as an OS app, not as IDE functionality
+  blocks: []
+- id: TODO-AOS-018
+  title: Aetherius OS Learning is a named first-party app the programme has no project for
+  project: aetherius-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-material
+    ref: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/COMMERCE_LEARNING_SPEC.md and DESIGN_ARCHITECTURE.md,
+      2026-10-17
+  detail: 'The handoff names Learning as a future Aetherius OS application with learner and educator views,
+    courses, lessons, quizzes, groups, assignments and assessment, and names the archive that informed
+    it: the LearnDash LMS 4.5.0.3. The programme''s project register has no Learning project. It also
+    states the constraint that matters most here: Commerce and Learning share their data model and must
+    not create overlapping authentication or billing systems.'
+  evidence: The handoff's screen family table lists 'Learning | learner/educator tabs + courses/lessons/assessment
+    | future OS education | identity, groups, activity, analytics', and the V2 inputs table gives the
+    destination as 'Aetherius OS Learning'.
+  acceptance:
+  - The project is in the build manifest registry with a build manifest and a location
+  - The workflow requirements from COMMERCE_LEARNING_SPEC.md are in the requirement register
+  - It shares one identity, entitlement and billing model with Commerce
+  - It is presented as an OS app, not as IDE functionality
+  blocks: []
+- id: TODO-AOS-019
+  title: Aetherius OS Community is a named first-party app the programme has no project for
+  project: aetherius-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: owner-material
+    ref: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/DESIGN_ARCHITECTURE.md, 2026-10-17
+  detail: The handoff names Community as a future Aetherius OS application carrying the feed, groups,
+    chat and events, and states that Commerce, Learning and Community must appear as future OS apps with
+    grounded interface flows rather than as bloat in the IDE. The programme's project register has no
+    Community project. There is a predecessor web platform that carried social media, and a decentralised
+    messaging project, but neither is the canonical destination.
+  evidence: The handoff's screen family table lists 'Community | feed/groups/chat/events | future OS people
+    + teams | accounts, messages, posts, moderation', and its definition of done requires that Commerce,
+    Payments, Learning and Community appear as future OS apps.
+  acceptance:
+  - The project is in the build manifest registry with a build manifest and a location
+  - The account, message, post and moderation requirements are in the requirement register
+  - It is presented as an OS app, not as IDE functionality
+  blocks: []
+- id: TODO-AB-010
+  title: The Bridge's mutation proof makes the whole suite look hung
+  project: agent-bridge
+  status: OPEN
+  priority: 2
+  source:
+    kind: owner-inspection
+    ref: Agent-Bridge/tests/test_actions_intake_mutations.py, 2026-10-21
+  detail: 'The Bridge''s test suite runs a mutation proof: for each mutation it copies the whole repository
+    into a temporary directory, changes one line, and runs the affected tests there, expecting them to
+    fail. Each of those runs is a separate pytest process over several test files, and the pytest subset
+    takes about seventy seconds on its own. The child''s output is captured rather than streamed, so the
+    suite''s own log does not grow while it works, and the parent process does no work of its own while
+    it waits. The result is a suite that looks frozen: flat processor time, no new output, no progress
+    line, for as long as the mutation proof runs.'
+  evidence: Observed twice on 2026-10-21. The suite was left running twice and was judged hung both times,
+    and had to be killed both times. The pytest subset run on its own passed 107 tests in 69.69 seconds.
+    The copy-and-mutate pattern is in tests/test_actions_intake_mutations.py, which copies the repository
+    with shutil.copytree and runs the suite in the copy.
+  acceptance:
+  - The suite says what it is doing while it is doing it
+  - A person watching the run can tell the difference between working and stuck
+  - The mutation proof does not have to be part of the default test command to be trusted
   blocks: []

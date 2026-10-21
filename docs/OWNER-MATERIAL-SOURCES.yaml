@@ -1,271 +1,253 @@
-# =============================================================================
-# OWNER MATERIAL SOURCES - every source the owner has provided
-# =============================================================================
-# The owner has provided the programme's design material in several
-# places: the master handoffs, the fork use case catalogue, the prompt
-# documents, the ChatGPT library files, and the reference source trees.
-#
-# They are listed here rather than discovered, because a source that is
-# not listed is a source nobody knows exists. Each entry says what the
-# source is and how it may be used.
-#
-# Reading rules:
-#  - A credential store is recorded and never opened.
-#  - Third-party source trees are inventoried and classified, and their
-#    text is not published.
-#  - The owner's own documents are read, and what they say is extracted
-#    into the registers.
-#
-# Related:
-#  docs/SOURCE-REGISTRY.yaml     - the register of source material
-#  docs/OWNER-DIRECTIVES.yaml    - the standing rules in the owner's words
-#  docs/PROJECT-TODOS.yaml       - the work that is outstanding
-# =============================================================================
-schema_version: "1.0.0"
-source_date: "2026-10-20"
-
+schema_version: 1.0.0
+source_date: '2026-10-21'
 sources:
-  # -- the master handoffs -------------------------------------------------
-  - id: OM-HANDOFF-INHERITANCE
-    kind: master_handoff
-    path: "C:\\Users\\jpowe\\Downloads\\Aetherius_Current_Chat_Master_Inheritance_2026-09-15.md"
-    title: The master chat inheritance packet
-    date: "2026-09-15"
-    read: full
-    note: >-
-      The continuity packet for the programme: the canonical product
-      architecture, the entity model, the execution law, the status
-      vocabulary, the source precedence law, the integration modes for
-      forks, and the closure rule for yellow and red markers. It was
-      unreadable through the ChatGPT library API until the owner supplied
-      the file.
-
-  - id: OM-HANDOFF-CLOUD-V2
-    kind: master_handoff
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_GENESIS_AI_CLOUD_MASTER_HANDOFF_V2.md"
-    title: The Genesis AI cloud master handoff, version two
-    read: full
-
-  - id: OM-HANDOFF-CLOUD-TXT
-    kind: master_handoff
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_GENESIS_AI_CLOUD_MASTER_HANDOFF.txt"
-    title: The Genesis AI cloud master handoff, plain text
-    read: full
-
-  - id: OM-HANDOFF-TEAM-WORKFORCE
-    kind: master_handoff
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_GENESIS_TEAM_WORKFORCE_ADDENDUM_2026-10-16.md"
-    title: The Genesis team workforce addendum
-    date: "2026-10-16"
-    read: full
-
-  - id: OM-HANDOFF-RUNTIME-IP
-    kind: architecture_blueprint
-    path: "C:\\Users\\jpowe\\Downloads\\Aetherius_Runtime_2_0_IP_Compliance_Architecture_Blueprint_2026-10-13.md"
-    title: The runtime 2.0 IP compliance architecture blueprint
-    date: "2026-10-13"
-    read: full
-
-  - id: OM-HANDOFF-RESEARCH-RECONCILIATION
-    kind: reconciliation
-    path: "C:\\Users\\jpowe\\Downloads\\Aetherius_Research_and_Learning_Reconciliation_2026-10-02.md"
-    title: The research and learning reconciliation
-    date: "2026-10-02"
-    read: full
-
-  - id: OM-HANDOFF-MIGRATION-ANALYSIS
-    kind: migration_analysis
-    path: "C:\\Users\\jpowe\\Downloads\\Aetherius_Fork_and_Predecessor_Migration_Analysis_2026-10-08.md"
-    title: The fork and predecessor migration analysis
-    date: "2026-10-08"
-    read: full
-
-  # -- the Figma agent ------------------------------------------------------
-  - id: OM-FIGMA-PROMPT-V1
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_MASTER_PROMPT.md"
-    title: The Figma agent master prompt
-    read: full
-
-  - id: OM-FIGMA-PROMPT-V2
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_MASTER_PROMPT_V2.md"
-    title: The Figma agent master prompt, version two
-    read: full
-
-  - id: OM-FIGMA-HANDOFF-V1
-    kind: handoff
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF"
-    title: The Figma agent handoff
-    read: inventory
-
-  - id: OM-FIGMA-HANDOFF-V2
-    kind: handoff
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17"
-    title: The Figma agent handoff, version two
-    date: "2026-10-17"
-    read: inventory
-
-  # -- the catalogues --------------------------------------------------------
-  - id: OM-CATALOGUE-FORK-USE-CASE
-    kind: catalogue
-    path: "C:\\Users\\jpowe\\Downloads\\Aetherius_Fork_Use_Case_Migration_Catalog_2026-10-08.csv"
-    title: The fork use case migration catalogue
-    date: "2026-10-08"
-    read: full
-    note: >-
-      One row per repository, with the category, the destination, the use
-      case, the integration mode, the analysis confidence and the
-      disposition. This is the routing table for the forks.
-
-  - id: OM-CATALOGUE-REPO-INVENTORY
-    kind: catalogue
-    path: "C:\\Users\\jpowe\\Downloads\\Aetherius_GitHub_Repository_Inventory_2026-10-02.csv"
-    title: The GitHub repository inventory
-    date: "2026-10-02"
-    read: full
-
-  # -- the reference trees --------------------------------------------------
-  - id: OM-REFERENCE-33
-    kind: reference_tree
-    path: "C:\\Users\\jpowe\\Downloads\\AETHERIUS_ORIGINAL_33_REFERENCES"
-    title: The original thirty-three references
-    read: inventory
-    note: >-
-      Third-party material. It is inventoried and classified, and its
-      text is not published.
-
-  - id: OM-REFERENCE-CLOUDCOMPARE
-    kind: reference_tree
-    path: "C:\\Users\\jpowe\\Downloads\\v2.13.2 source code"
-    title: CloudCompare, version 2.13.2
-    read: inventory
-    note: >-
-      Third-party source. It is prior art for comparing material
-      measurements, which is what MAT's substrate needs.
-
-  # -- the ChatGPT library --------------------------------------------------
-  - id: OM-CHATGPT-LIBRARY
-    kind: library_files
-    path: "C:\\Users\\jpowe\\Downloads\\chatgpt files"
-    title: The ChatGPT library files
-    read: inventory
-    note: >-
-      The files uploaded to the ChatGPT library. They were unreadable
-      through the library API, and the owner has now supplied them
-      directly.
-
-  # -- the prompt documents -------------------------------------------------
-  - id: OM-DOC-MASTER-PROMPT
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\master prompt"
-    title: The master prompt
-    read: inventory
-
-  - id: OM-DOC-OPENCDE-AGENT
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\openCDE-agent"
-    title: The openCDE agent
-    read: inventory
-
-  - id: OM-DOC-MASTER-IMPLEMENTATION
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\master implementation.txt"
-    title: The master implementation
-    read: full
-
-  - id: OM-DOC-MASTER-LOOP
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\master loop.txt"
-    title: The master loop
-    read: full
-
-  - id: OM-DOC-APP-ECOSYSTEM
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\aetherius first party application ecosystem.txt"
-    title: The Aetherius first-party application ecosystem
-    read: full
-
-  - id: OM-DOC-HYBRID-CLOUD
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\aetherius hybrid cloud.txt"
-    title: The Aetherius hybrid cloud
-    read: full
-
-  - id: OM-DOC-HERMES-SETUP
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\hermes setup.txt"
-    title: The Hermes setup
-    read: full
-
-  - id: OM-DOC-HERMES-SUPERVISOR
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\hermes supervisor.txt"
-    title: The Hermes supervisor
-    read: full
-
-  - id: OM-DOC-HERMES-OPENCODE
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\hermes - opencode.txt"
-    title: Hermes and OpenCode
-    read: full
-
-  - id: OM-DOC-MULTI-AGENT-SETUP
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\multi agent setup.txt"
-    title: The multi-agent setup
-    read: full
-
-  - id: OM-DOC-OPENHERM
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\openherm.txt"
-    title: OpenHerm
-    read: full
-
-  - id: OM-DOC-3D-AVATAR
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\3d avatar.txt"
-    title: The three-dimensional avatar
-    read: full
-
-  - id: OM-DOC-1
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\1.txt"
-    title: A first document
-    read: full
-
-  - id: OM-DOC-PROMPT
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Documents\\prompt.txt"
-    title: The prompt
-    read: full
-
-  - id: OM-DOC-MULTI-AGENT-PROMPT
-    kind: design_prompt
-    path: "C:\\Users\\jpowe\\Downloads\\OpenCode-Multi-Agent-Setup-Prompt.txt"
-    title: The OpenCode multi-agent setup prompt
-    read: full
-
-  # -- the harness ----------------------------------------------------------
-  - id: OM-HARNESS-OPENCODE
-    kind: tooling_backup
-    path: "C:\\Users\\jpowe\\Desktop\\opencode"
-    title: The OpenCode harness backups
-    date: "2026-10-17"
-    read: inventory
-    note: >-
-      The owner's own harness configuration and backups. It is not
-      programme material; it is the tooling the programme is worked on
-      with, and the free-tier diagnostic in it describes the local
-      model setup.
-
-  # -- the credential store -------------------------------------------------
-  - id: OM-CREDENTIAL-STORE
-    kind: credential_store
-    path: "C:\\Users\\jpowe\\Documents\\Database.kdbx"
-    title: The owner's credential store
-    read: never
-    note: >-
-      A password database. It is recorded so that it is accounted for,
-      and it is never opened, never read and never published. Nothing in
-      the programme is derived from it.
+- id: OM-HANDOFF-INHERITANCE
+  kind: master_handoff
+  path: C:\Users\jpowe\Downloads\Aetherius_Current_Chat_Master_Inheritance_2026-09-15.md
+  title: The master chat inheritance packet
+  date: '2026-09-15'
+  read: full
+  note: 'The continuity packet for the programme: the canonical product architecture, the entity model,
+    the execution law, the status vocabulary, the source precedence law, the integration modes for forks,
+    and the closure rule for yellow and red markers. It was unreadable through the ChatGPT library API
+    until the owner supplied the file.'
+- id: OM-HANDOFF-CLOUD-V2
+  kind: master_handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_GENESIS_AI_CLOUD_MASTER_HANDOFF_V2.md
+  title: The Genesis AI cloud master handoff, version two
+  read: full
+- id: OM-HANDOFF-CLOUD-TXT
+  kind: master_handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_GENESIS_AI_CLOUD_MASTER_HANDOFF.txt
+  title: The Genesis AI cloud master handoff, plain text
+  read: full
+- id: OM-HANDOFF-TEAM-WORKFORCE
+  kind: master_handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_GENESIS_TEAM_WORKFORCE_ADDENDUM_2026-10-16.md
+  title: The Genesis team workforce addendum
+  date: '2026-10-16'
+  read: full
+- id: OM-HANDOFF-RUNTIME-IP
+  kind: architecture_blueprint
+  path: C:\Users\jpowe\Downloads\Aetherius_Runtime_2_0_IP_Compliance_Architecture_Blueprint_2026-10-13.md
+  title: The runtime 2.0 IP compliance architecture blueprint
+  date: '2026-10-13'
+  read: full
+- id: OM-HANDOFF-RESEARCH-RECONCILIATION
+  kind: reconciliation
+  path: C:\Users\jpowe\Downloads\Aetherius_Research_and_Learning_Reconciliation_2026-10-02.md
+  title: The research and learning reconciliation
+  date: '2026-10-02'
+  read: full
+- id: OM-HANDOFF-MIGRATION-ANALYSIS
+  kind: migration_analysis
+  path: C:\Users\jpowe\Downloads\Aetherius_Fork_and_Predecessor_Migration_Analysis_2026-10-08.md
+  title: The fork and predecessor migration analysis
+  date: '2026-10-08'
+  read: full
+- id: OM-FIGMA-PROMPT-V1
+  kind: design_prompt
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_MASTER_PROMPT.md
+  title: The Figma agent master prompt
+  read: full
+- id: OM-FIGMA-PROMPT-V2
+  kind: design_prompt
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_MASTER_PROMPT_V2.md
+  title: The Figma agent master prompt, version two
+  read: full
+- id: OM-FIGMA-HANDOFF-V1
+  kind: handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF
+  title: The Figma agent handoff
+  read: inventory
+- id: OM-FIGMA-HANDOFF-V2
+  kind: handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17
+  title: The Figma agent handoff, version two
+  date: '2026-10-17'
+  read: inventory
+- id: OM-CATALOGUE-FORK-USE-CASE
+  kind: catalogue
+  path: C:\Users\jpowe\Downloads\Aetherius_Fork_Use_Case_Migration_Catalog_2026-10-08.csv
+  title: The fork use case migration catalogue
+  date: '2026-10-08'
+  read: full
+  note: One row per repository, with the category, the destination, the use case, the integration mode,
+    the analysis confidence and the disposition. This is the routing table for the forks.
+- id: OM-CATALOGUE-REPO-INVENTORY
+  kind: catalogue
+  path: C:\Users\jpowe\Downloads\Aetherius_GitHub_Repository_Inventory_2026-10-02.csv
+  title: The GitHub repository inventory
+  date: '2026-10-02'
+  read: full
+- id: OM-REFERENCE-33
+  kind: reference_tree
+  path: C:\Users\jpowe\Downloads\AETHERIUS_ORIGINAL_33_REFERENCES
+  title: The original thirty-three references
+  read: inventory
+  note: Third-party material. It is inventoried and classified, and its text is not published.
+- id: OM-REFERENCE-CLOUDCOMPARE
+  kind: reference_tree
+  path: C:\Users\jpowe\Downloads\v2.13.2 source code
+  title: CloudCompare, version 2.13.2
+  read: inventory
+  note: Third-party source. It is prior art for comparing material measurements, which is what MAT's substrate
+    needs.
+- id: OM-CHATGPT-LIBRARY
+  kind: library_files
+  path: C:\Users\jpowe\Downloads\chatgpt files
+  title: The ChatGPT library files
+  read: inventory
+  note: The files uploaded to the ChatGPT library. They were unreadable through the library API, and the
+    owner has now supplied them directly.
+- id: OM-DOC-MASTER-PROMPT
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\master prompt
+  title: The master prompt
+  read: inventory
+- id: OM-DOC-OPENCDE-AGENT
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\openCDE-agent
+  title: The openCDE agent
+  read: inventory
+- id: OM-DOC-MASTER-IMPLEMENTATION
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\master implementation.txt
+  title: The master implementation
+  read: full
+- id: OM-DOC-MASTER-LOOP
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\master loop.txt
+  title: The master loop
+  read: full
+- id: OM-DOC-APP-ECOSYSTEM
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\aetherius first party application ecosystem.txt
+  title: The Aetherius first-party application ecosystem
+  read: full
+- id: OM-DOC-HYBRID-CLOUD
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\aetherius hybrid cloud.txt
+  title: The Aetherius hybrid cloud
+  read: full
+- id: OM-DOC-HERMES-SETUP
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\hermes setup.txt
+  title: The Hermes setup
+  read: full
+- id: OM-DOC-HERMES-SUPERVISOR
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\hermes supervisor.txt
+  title: The Hermes supervisor
+  read: full
+- id: OM-DOC-HERMES-OPENCODE
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\hermes - opencode.txt
+  title: Hermes and OpenCode
+  read: full
+- id: OM-DOC-MULTI-AGENT-SETUP
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\multi agent setup.txt
+  title: The multi-agent setup
+  read: full
+- id: OM-DOC-OPENHERM
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\openherm.txt
+  title: OpenHerm
+  read: full
+- id: OM-DOC-3D-AVATAR
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\3d avatar.txt
+  title: The three-dimensional avatar
+  read: full
+- id: OM-DOC-1
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\1.txt
+  title: A first document
+  read: full
+- id: OM-DOC-PROMPT
+  kind: design_prompt
+  path: C:\Users\jpowe\Documents\prompt.txt
+  title: The prompt
+  read: full
+- id: OM-DOC-MULTI-AGENT-PROMPT
+  kind: design_prompt
+  path: C:\Users\jpowe\Downloads\OpenCode-Multi-Agent-Setup-Prompt.txt
+  title: The OpenCode multi-agent setup prompt
+  read: full
+- id: OM-HARNESS-OPENCODE
+  kind: tooling_backup
+  path: C:\Users\jpowe\Desktop\opencode
+  title: The OpenCode harness backups
+  date: '2026-10-17'
+  read: inventory
+  note: The owner's own harness configuration and backups. It is not programme material; it is the tooling
+    the programme is worked on with, and the free-tier diagnostic in it describes the local model setup.
+- id: OM-CREDENTIAL-STORE
+  kind: credential_store
+  path: C:\Users\jpowe\Documents\Database.kdbx
+  title: The owner's credential store
+  read: never
+  note: A password database. It is recorded so that it is accounted for, and it is never opened, never
+    read and never published. Nothing in the programme is derived from it.
+- id: OM-FIGMA-V2-README
+  kind: handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\README_START_HERE.md
+  title: 'The handoff''s own opening: what the package is, what is in it, and what it supersedes'
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-CURRENT-STATE
+  kind: handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\CURRENT_STATE_AND_NEXT_STEPS.md
+  title: The mandatory status labels, what exists and what does not, and the gated next steps
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-SOURCE-AUDIT
+  kind: reconciliation
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\SOURCE_AUDIT_V2.md
+  title: The source inventory, the verified code and file observations, and the version and permission
+    caveats
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-DESIGN-ARCHITECTURE
+  kind: architecture_blueprint
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\DESIGN_ARCHITECTURE.md
+  title: The product boundary diagram, the canonical screen families, and the shared services to deduplicate
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-NAVIGATION-AVATAR
+  kind: handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\NAVIGATION_AVATAR_CONTRACT.md
+  title: The menu tree, the interaction rules, and the avatar capability schema
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-COMMERCE-LEARNING
+  kind: architecture_blueprint
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\COMMERCE_LEARNING_SPEC.md
+  title: The complete workflow design requirements for the future Commerce and Learning OS apps
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-QUICK-PASTE
+  kind: design_prompt
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\QUICK_PASTE_PROMPT.md
+  title: The short paste prompt for continuing the design work
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-SCREEN-REGISTRY
+  kind: catalogue
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\existing_figma_screen_registry.csv
+  title: The twenty-two previously produced Figma concept frames and states, by node id
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-IMAGE-REGISTRY
+  kind: catalogue
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\reference_image_registry.csv
+  title: The thirty-three original reference images, by source and disposition
+  date: '2026-10-17'
+  read: full
+- id: OM-FIGMA-V2-ZIP-MANIFEST
+  kind: catalogue
+  path: C:\Users\jpowe\Downloads\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\source_zip_manifest.csv
+  title: The prototype source archives the handoff carries, by origin and permission
+  date: '2026-10-17'
+  read: full

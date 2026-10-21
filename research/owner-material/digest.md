@@ -1,6 +1,6 @@
 # The owner's material
 
-33 declared sources, 33 present.
+43 declared sources, 43 present.
 
 | Source | Kind | Files | Size | Projects named |
 |---|---|---|---|---|
@@ -37,6 +37,16 @@
 | OM-DOC-MULTI-AGENT-PROMPT | design_prompt | 1 | 8 KB | agent-bridge, genesis, hermes |
 | OM-HARNESS-OPENCODE | tooling_backup | 909 | 21262965 KB | - |
 | OM-CREDENTIAL-STORE | credential_store | 1 | 5 KB | - |
+| OM-FIGMA-V2-README | handoff | 1 | 5 KB | aetherius-os, agent-bridge, figma-agent, genesis |
+| OM-FIGMA-V2-CURRENT-STATE | handoff | 1 | 5 KB | aetherius-os, agent-bridge, figma-agent, genesis, hermes, ide-workspace |
+| OM-FIGMA-V2-SOURCE-AUDIT | reconciliation | 1 | 10 KB | aetherius-os, figma-agent, genesis |
+| OM-FIGMA-V2-DESIGN-ARCHITECTURE | architecture_blueprint | 1 | 5 KB | aetherius-os, agent-bridge, figma-agent, genesis |
+| OM-FIGMA-V2-NAVIGATION-AVATAR | handoff | 1 | 5 KB | aetherius-os, figma-agent, genesis |
+| OM-FIGMA-V2-COMMERCE-LEARNING | architecture_blueprint | 1 | 4 KB | aetherius-os, figma-agent, genesis |
+| OM-FIGMA-V2-QUICK-PASTE | design_prompt | 1 | 3 KB | figma-agent, genesis, hermes |
+| OM-FIGMA-V2-SCREEN-REGISTRY | catalogue | 1 | 5 KB | - |
+| OM-FIGMA-V2-IMAGE-REGISTRY | catalogue | 1 | 10 KB | - |
+| OM-FIGMA-V2-ZIP-MANIFEST | catalogue | 1 | 5 KB | - |
 
 ## The decisions the material states
 
@@ -369,4 +379,25 @@
 
 - BUILD-TODO and canonical integration
 - write permissions project scope integration
+
+### OM-FIGMA-V2-CURRENT-STATE — The mandatory status labels, what exists and what does not, and the gated next steps
+
+- build in isolated worktree/feature
+
+### OM-FIGMA-V2-DESIGN-ARCHITECTURE — The product boundary diagram, the canonical screen families, and the shared services to deduplicate
+
+- Design Architecture — Aetherius Unified OS + Genesis Supervisor ## Boundary diagram (conceptual) ```text AETHERIUS (single brand / design system
+
+### OM-FIGMA-V2-NAVIGATION-AVATAR — The menu tree, the interaction rules, and the avatar capability schema
+
+- Build & Code, Create, Research, Files, Community │ ├─ Commerce/Marketplace (future app
+- support, 2D fallback when 3D unavailable, screen
+
+### OM-FIGMA-V2-COMMERCE-LEARNING — The complete workflow design requirements for the future Commerce and Learning OS apps
+
+- design - Platform payment intent/session + payment provider plugin
+
+### OM-FIGMA-V2-QUICK-PASTE — The short paste prompt for continuing the design work
+
+- design tokens/components, accurate screen
 

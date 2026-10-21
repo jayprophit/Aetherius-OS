@@ -3,8 +3,8 @@
 > Generated from `docs/PROJECT-TODOS.yaml`. Do not hand-edit this
 > file; edit the YAML and regenerate.
 
-- Source date: 2026-10-20
-- Tasks: **246** (226 open, 20 done)
+- Source date: 2026-10-21
+- Tasks: **259** (233 open, 26 done)
 
 ## By project
 
@@ -15,14 +15,14 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 48 | 8 |
+| aetherius-os | 52 | 9 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 12 | 0 |
+| agent-bridge | 14 | 1 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
-| ai-digital-twin | 3 | 0 |
+| ai-digital-twin | 4 | 0 |
 | architecture-of-shadows-book | 4 | 0 |
 | athena | 4 | 0 |
 | crossplatform | 2 | 0 |
@@ -32,7 +32,7 @@
 | genesis | 7 | 7 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
-| ide-workspace | 11 | 2 |
+| ide-workspace | 11 | 6 |
 | ledgerlands | 10 | 2 |
 | mat | 13 | 0 |
 | niche-platform | 3 | 0 |
@@ -1007,6 +1007,31 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
+### ✅ TODO-IED-106 — The IDE was not launchable: no working launcher, and a HOW TO RUN with every path wrong
+
+- **Project:** ide-workspace
+- **Status:** DONE
+- **Source:** owner-inspection — Aetherius-OS/apps/IDE-Workspace and Aetherius-OS/HOW-TO-RUN-AETHERIUS-IDE.md, 2026-10-21
+
+The IDE built and served, and its own tests passed, but nobody could start it by following the documentation. The HOW TO RUN pointed at C:\Users\jpowe\Desktop\IDE-Workspace\workspace\integration\BridgeService.py, a path that no longer existed after the workspace was reorganised, named a launcher script that was never created, and gave a health route of /health that the Bridge does not serve under that name. It did not mention the local model runtime at all, so a person following it would get a Bridge reporting UNAVAILABLE and an IDE showing no models, with nothing to explain why.
+
+Evidence:
+
+```
+Every path in the document was checked against the filesystem: Desktop\IDE-Workspace and Desktop\Start-Aetherius-IDE.ps1 do not exist, Agent-Bridge\BridgeService.py does not exist, and Agent-Bridge\service.py does. The Bridge serves /v1/runtime, /v1/diagnostics, /v1/selfcheck and /v1/models, not a /v1/health.
+```
+
+Resolution:
+
+Resolved 2026-10-21. scripts/start-ide-stack.ps1 starts the local model runtime, then Agent Bridge with the IDE origin allowlisted and the IDE workspace as its root, then the IDE, waiting for each and printing the true state. It was run cold with every port free and it brought the whole chain up. The HOW TO RUN was rewritten against the verified reality, including the two things it had never mentioned: the local model runtime must be up, and the Bridge must be given the IDE's origin or it sends no CORS header and the IDE silently reports disconnected.
+
+Acceptance:
+
+- [ ] One command starts the local model runtime, the Bridge and the IDE, and reports what is actually true
+- [ ] The script works from a cold machine with every port free
+- [ ] The HOW TO RUN names paths that exist, ports that answer, and the prerequisites that are genuinely required
+- [ ] The document says what to do when each step fails
+
 ### ⬜ TODO-LEDGERLANDS-000 — Build the LedgerLands project the manifest describes
 
 - **Project:** ledgerlands
@@ -1686,6 +1711,93 @@ Acceptance:
 - [ ] Concurrent writers are always on separate worktrees
 - [ ] No local work has been reset to simplify an auxiliary setup
 
+### ✅ TODO-AOS-015 — The four boundaries and the single brand are not recorded as a rule anywhere
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-material — AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/README_START_HERE.md, 2026-10-17
+
+The handoff of 17 October 2026 states the product boundaries and the single public brand plainly, and the programme had no record of them. The risk was not that the boundaries were wrong. The IDE was called IDE_NAME_TBD and might have been branded as the OS. The risk was that Agent Bridge, which is an authorised capability surface, would be presented as a publicly branded OS app.
+
+Evidence:
+
+```
+The handoff states: 'One public-facing brand: Aetherius. Keep Genesis for the AI identity. Old names remain historical references only.' and 'Agent Bridge: distinct authorised tools/capability surface, not automatically a publicly branded OS app.'
+```
+
+Resolution:
+
+Resolved 2026-10-21. Recorded as RULE-22 in docs/OWNER-DIRECTIVES.yaml. The IDE's own name was settled at the same time: Aetherius IDE, which is what the handoff calls it.
+
+Acceptance:
+
+- [ ] The boundaries are recorded as a standing rule
+- [ ] The IDE, Genesis, Aetherius OS and Agent Bridge are named as four distinct things
+- [ ] The single public brand is stated
+
+### ⬜ TODO-AOS-016 — The design status labels are not the evidence vocabulary, and the registers only have the evidence one
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/CURRENT_STATE_AND_NEXT_STEPS.md, 2026-10-17
+
+The handoff makes eight status labels mandatory for design and reference work: SOURCE_REFERENCE, DESIGNED, INTERACTIVE_PROTOTYPE, LOCAL_UI_DEMO, IMPLEMENTED, TESTED, ROADMAP and BLOCKED. The programme's own vocabulary is PROPOSED, FOUND, IMPLEMENTED, TESTED, INTEGRATED, DEPLOYED, NOT_LOCATED and BLOCKED. They overlap on three labels and differ on five, and the difference is exactly where a design artefact is most easily mistaken for a working product. A design frame is not proof of a working product, and a local demo is not a runtime. The registers currently have no vocabulary for the first, second or fourth of those states, so a concept can be recorded as though it were built.
+
+Evidence:
+
+```
+The handoff states the labels as mandatory and separates SOURCE_REFERENCE, DESIGNED, INTERACTIVE_PROTOTYPE and LOCAL_UI_DEMO from IMPLEMENTED and TESTED. The programme's vocabulary is recorded in docs/OWNER-DIRECTIVES.yaml RULE and in the header of docs/GAP-ANALYSIS-REGISTRY.yaml.
+```
+
+Acceptance:
+
+- [ ] The registers can record a design artefact and a design-only state as themselves
+- [ ] The eight design labels are available where design work is recorded
+- [ ] The two vocabularies are mapped to each other, so a label means one thing across the programme
+- [ ] A concept is never recorded as though it were built
+
+### ⬜ TODO-AOS-017 — Aetherius OS Commerce / Marketplace is a named first-party app the programme has no project for
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/COMMERCE_LEARNING_SPEC.md and DESIGN_ARCHITECTURE.md, 2026-10-17
+
+The handoff names Commerce and Marketplace as a future Aetherius OS application, carrying the storefront, merchant administration, checkout and payment provider concepts, and names the archives that informed it: WooCommerce 7.4.0 for the concepts and Coinbase Commerce 1.2.1 as an optional cryptocurrency checkout provider. The programme's project register has no Commerce project. The word commerce appears in the registers only as part of a predecessor web platform that carried e-commerce, e-learning and social media together, which is history and not the canonical destination.
+
+Evidence:
+
+```
+The handoff's screen family table lists 'Commerce/Marketplace | storefront/merchant admin + checkout/provider | future OS selling/buying | identity, entitlements, files, notifications', and its V2 inputs table gives the proper destination as 'Aetherius OS Commerce / Marketplace'.
+```
+
+Acceptance:
+
+- [ ] The project is in the build manifest registry with a build manifest and a location
+- [ ] The workflow requirements from COMMERCE_LEARNING_SPEC.md are in the requirement register
+- [ ] It shares one identity, entitlement and billing model with Learning rather than a second one
+- [ ] It is presented as an OS app, not as IDE functionality
+
+### ⬜ TODO-AOS-018 — Aetherius OS Learning is a named first-party app the programme has no project for
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/COMMERCE_LEARNING_SPEC.md and DESIGN_ARCHITECTURE.md, 2026-10-17
+
+The handoff names Learning as a future Aetherius OS application with learner and educator views, courses, lessons, quizzes, groups, assignments and assessment, and names the archive that informed it: the LearnDash LMS 4.5.0.3. The programme's project register has no Learning project. It also states the constraint that matters most here: Commerce and Learning share their data model and must not create overlapping authentication or billing systems.
+
+Evidence:
+
+```
+The handoff's screen family table lists 'Learning | learner/educator tabs + courses/lessons/assessment | future OS education | identity, groups, activity, analytics', and the V2 inputs table gives the destination as 'Aetherius OS Learning'.
+```
+
+Acceptance:
+
+- [ ] The project is in the build manifest registry with a build manifest and a location
+- [ ] The workflow requirements from COMMERCE_LEARNING_SPEC.md are in the requirement register
+- [ ] It shares one identity, entitlement and billing model with Commerce
+- [ ] It is presented as an OS app, not as IDE functionality
+
 ### ✅ TODO-APP-001 — Build the workspace application registry
 
 - **Project:** aetherius-os
@@ -2043,6 +2155,26 @@ Acceptance:
 - [ ] A written strategy says which tree is canonical and how the others sync
 - [ ] A check exists that reports divergence between the trees
 
+### ⬜ TODO-AB-010 — The Bridge's mutation proof makes the whole suite look hung
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** owner-inspection — Agent-Bridge/tests/test_actions_intake_mutations.py, 2026-10-21
+
+The Bridge's test suite runs a mutation proof: for each mutation it copies the whole repository into a temporary directory, changes one line, and runs the affected tests there, expecting them to fail. Each of those runs is a separate pytest process over several test files, and the pytest subset takes about seventy seconds on its own. The child's output is captured rather than streamed, so the suite's own log does not grow while it works, and the parent process does no work of its own while it waits. The result is a suite that looks frozen: flat processor time, no new output, no progress line, for as long as the mutation proof runs.
+
+Evidence:
+
+```
+Observed twice on 2026-10-21. The suite was left running twice and was judged hung both times, and had to be killed both times. The pytest subset run on its own passed 107 tests in 69.69 seconds. The copy-and-mutate pattern is in tests/test_actions_intake_mutations.py, which copies the repository with shutil.copytree and runs the suite in the copy.
+```
+
+Acceptance:
+
+- [ ] The suite says what it is doing while it is doing it
+- [ ] A person watching the run can tell the difference between working and stuck
+- [ ] The mutation proof does not have to be part of the default test command to be trusted
+
 ### ⬜ TODO-AGENT-BRIDGE-003 — Choose and record a licence for Agent-Bridge
 
 - **Project:** agent-bridge
@@ -2080,6 +2212,31 @@ Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
+### ✅ TODO-IED-101 — The Bridge's runtime route and its model route disagreed about how many models exist
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-inspection — Agent-Bridge/ide_bridge.py and Agent-Bridge/runtime.py, 2026-10-21
+
+/v1/models reported the ten local models the machine actually had. /v1/runtime reported none, because the runtime snapshot only ever carried the models a tracker had recorded, and no tracker was recording any. One route said the machine had no models while the other said it had ten, and a consumer of the runtime route was told something false.
+
+Evidence:
+
+```
+build_runtime_snapshot built its result from RuntimeStateTracker.snapshot(), whose models list is empty until record_models is called, while runtime.model_inventory() queries the model runtime live. Observed live: /v1/runtime returned models: 0 and /v1/models returned 10, on the same machine, at the same moment.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The snapshot now falls back to the live inventory when the tracker has recorded no models, and leaves active_model alone so that having no model selected is still reported as a different fact from having no model available. Five tests in tests/test_ide_bridge.py cover the agreement, the precedence, the distinction and the failure path.
+
+Acceptance:
+
+- [ ] The runtime route and the model route report the same model list
+- [ ] A recorded model still wins over the live inventory
+- [ ] No model being selected is still reported separately from no model being available
+- [ ] A model runtime that cannot be reached does not break the snapshot
 
 ### ⬜ TODO-STR-002 — Bring Agent-Bridge into the Aetherius OS ecosystem
 
@@ -2522,6 +2679,75 @@ Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
+### ✅ TODO-IED-102 — The IDE showed 'backend: disconnected' with no reason, so a rate-limited Bridge looked like a Bridge that was not running
+
+- **Project:** ide-workspace
+- **Status:** DONE
+- **Source:** owner-inspection — Aetherius-OS/apps/IDE-Workspace/workspace/app/src/App.tsx, 2026-10-21
+
+The IDE captured the transport's own error, including an HTTP status, and then threw it away: the status line read 'backend: disconnected' whatever the cause. A Bridge that was rate limited, a Bridge at the wrong address and a Bridge that was not running all looked identical, and the three have different fixes.
+
+Evidence:
+
+```
+fetchBridgeStatus set base.error from the thrown Error, and the rendered status line used only bridge.connected. Observed live: the Bridge's rate limit is 120 requests a minute per address, one IDE tab polls three routes every five seconds, and with six tabs open the Bridge answered 429, which the IDE displayed as a plain disconnection.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The status line now reads 'backend: disconnected (HTTP 429)' or whatever the transport actually said. The connection state itself was not changed: the IDE still reports what it can see, and now says why.
+
+Acceptance:
+
+- [ ] The status line carries the reason the backend is unreachable
+- [ ] The reason is the transport's own text, not a paraphrase
+- [ ] A connected backend is unaffected
+
+### ⬜ TODO-IED-103 — One IDE tab uses 30% of the Bridge's rate limit, and the limit is shared by everything on the machine
+
+- **Project:** ide-workspace
+- **Status:** OPEN
+- **Source:** owner-inspection — Agent-Bridge/service.py and Aetherius-OS/apps/IDE-Workspace/workspace/app/src, 2026-10-21
+
+The Bridge allows 120 requests a minute per address, and everything on the machine shares 127.0.0.1. One IDE tab polls three routes every five seconds, which is 36 requests a minute, so a third of the budget goes to one tab. Four tabs exhaust it. This was reached in practice: with six tabs open the Bridge began answering 429 and the IDE reported itself disconnected.
+
+Evidence:
+
+```
+Agent-Bridge rate_limit_per_min defaults to 120 and _rate_ok counts per client address over a sixty second window. The IDE's BRIDGE_POLL_MS is 5000 and fetchBridgeStatus issues three requests per cycle.
+```
+
+Acceptance:
+
+- [ ] One IDE tab uses well under a quarter of the request budget
+- [ ] The IDE does not re-request the model inventory on every poll when nothing has changed
+- [ ] Two or more IDE tabs can be open without either of them being throttled
+
+### ✅ TODO-IED-107 — The IDE reported itself as IDE_NAME_TBD
+
+- **Project:** ide-workspace
+- **Status:** DONE
+- **Source:** owner-inspection — Aetherius-OS/apps/IDE-Workspace/workspace/app/index.html, 2026-10-21
+
+The window title and the header of the interface both read IDE_NAME_TBD, and the package was named ide-name-tbd-shell. A report in the repository noted the name was temporary and distinct from Agent Bridge, Aetherius OS and Genesis, but no one replaced it. Anyone opening the IDE saw a placeholder where the product's name should be.
+
+Evidence:
+
+```
+index.html carried <title>IDE_NAME_TBD - Shell Slice 1</title>, App.tsx rendered <span>IDE_NAME_TBD</span>, and package.json carried name ide-name-tbd-shell.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The name is Aetherius IDE in the title, in the header and in the package. It is distinct from the three neighbouring things: Aetherius OS is the ecosystem, Genesis is the organism, Agent Bridge is the execution runtime, and the IDE is the interface to them. Verified live: the browser reports the title as Aetherius IDE and the header as Aetherius IDE.
+
+Acceptance:
+
+- [ ] The window title names the product
+- [ ] The header names the product
+- [ ] The package name names the product
+- [ ] The name is still distinct from Agent Bridge, Aetherius OS and Genesis
 
 ### ⬜ TODO-STR-003 — Keep the IDE usable on operating systems other than Aetherius OS
 
@@ -3117,6 +3343,26 @@ Acceptance:
 
 - [ ] A tool call can be replayed from its recorded identity and outcome
 
+### ⬜ TODO-AOS-019 — Aetherius OS Community is a named first-party app the programme has no project for
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-material — AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/DESIGN_ARCHITECTURE.md, 2026-10-17
+
+The handoff names Community as a future Aetherius OS application carrying the feed, groups, chat and events, and states that Commerce, Learning and Community must appear as future OS apps with grounded interface flows rather than as bloat in the IDE. The programme's project register has no Community project. There is a predecessor web platform that carried social media, and a decentralised messaging project, but neither is the canonical destination.
+
+Evidence:
+
+```
+The handoff's screen family table lists 'Community | feed/groups/chat/events | future OS people + teams | accounts, messages, posts, moderation', and its definition of done requires that Commerce, Payments, Learning and Community appear as future OS apps.
+```
+
+Acceptance:
+
+- [ ] The project is in the build manifest registry with a build manifest and a location
+- [ ] The account, message, post and moderation requirements are in the requirement register
+- [ ] It is presented as an OS app, not as IDE functionality
+
 ### ⬜ TODO-KRN-004 — Retire the Rust native layer once the C kernel is proven
 
 - **Project:** aetherius-os
@@ -3387,6 +3633,26 @@ Acceptance:
 
 - [ ] The full gate runs materially faster, or its cost is bounded and scheduled
 
+### ⬜ TODO-IED-104 — The Bridge logs a full traceback every time the browser abandons a request
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** owner-inspection — Agent-Bridge/service.py, 2026-10-21
+
+A browser that navigates away mid-request makes the Bridge's write fail with ConnectionAbortedError, and the Bridge prints the whole traceback for it. During ordinary use this produced thousands of lines, which buries the real errors in the log and makes the log unreadable when something actually has gone wrong.
+
+Evidence:
+
+```
+The Bridge's output during one session of ordinary IDE polling was 3712 lines, the majority of them ConnectionAbortedError tracebacks from abandoned requests.
+```
+
+Acceptance:
+
+- [ ] A request abandoned by the client is not logged as an error
+- [ ] A genuine server-side failure is still logged in full
+- [ ] The log holds one line per real event
+
 ### ⬜ TODO-ABCH-001 — Record the cloud-hybrid dependency resolution
 
 - **Project:** agent-bridge-cloudhybrid
@@ -3496,6 +3762,25 @@ Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
+### ⬜ TODO-IED-105 — The broken 9-byte GPT4All installer on the external drive
+
+- **Project:** ai-digital-twin
+- **Status:** OPEN
+- **Source:** owner-inspection — E:\external drive\AI Digital Twin\installers\model-runners\GPT4All-v3.10.0-Win64.exe, 2026-10-21
+
+The file named GPT4All-v3.10.0-Win64.exe is 9 bytes long. It is not a truncated download, it is a text file, and it cannot be installed. GPT4All is one of the local model runners the owner's material refers to, so the file is a reference point that does not work.
+
+Evidence:
+
+```
+The file is 9 bytes. Every other file in the same folder is a real installer, and Jan-v0.7.7-Win64.exe beside it is 52,689,912 bytes.
+```
+
+Acceptance:
+
+- [ ] The file is either replaced with a working installer or removed
+- [ ] The reference to GPT4All in the owner's material is corrected if the runner is not available
 
 ### ⬜ TODO-AOSB-001 — Record the scope of the Architecture of Shadows book project
 
@@ -4022,13 +4307,13 @@ Acceptance:
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
-### ⬜ TODO-IED-001 — Stop tracking a file inside node_modules
+### ✅ TODO-IED-001 — Stop tracking a file inside node_modules
 
 - **Project:** ide-workspace
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** build-audit — git status, 2026-10-20
 
-A generated package lock inside the app's node_modules is tracked, so part of the dependency tree is committed.
+The whole dependency tree was tracked, not one file. The ignore rules for node_modules and dist were already in place, but the files had been added before the rules existed and Git keeps tracking a file that is already tracked, so the rules never took effect on them. The tracked build output was worse than merely redundant: the tracked dist/index.html referenced assets that the ignore rules kept out of the repository, so a clone of the repository held a page that could not load.
 
 Evidence:
 
@@ -4036,10 +4321,16 @@ Evidence:
 git status --porcelain -> "M workspace/app/node_modules/.package-lock.json"
 ```
 
+Resolution:
+
+Resolved 2026-10-21. The ignore rules were already correct, but the files had been tracked before the rules existed, and Git keeps tracking a file that is already tracked. So 4715 dependency files and the build output were still in the repository, and the tracked dist/index.html pointed at assets that were not in the repository. Untracking both left the files on disk, so the build and the suite were unaffected, and the repository now carries 249 source files rather than 4964. The build passes and the suite passes: 28 files, 466 tests.
+
 Acceptance:
 
 - [ ] No file under node_modules is tracked
-- [ ] The ignore rules cover it
+- [ ] No build output is tracked
+- [ ] The ignore rules cover both
+- [ ] The build and the suite still pass after the change
 
 ### ✅ TODO-IED-002 — Clear the duplicated proof scripts from the dashboard tree
 

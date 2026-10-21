@@ -1,5 +1,5 @@
 schema_version: 1.0.0
-source_date: '2026-10-20'
+source_date: '2026-10-21'
 source: research/codex-history/owner-directives.txt
 corpus:
   threads_with_directives: 13
@@ -259,6 +259,78 @@ standing_rules:
   - docs/OBSOLESCENCE-REGISTRY.yaml
   - docs/OBSOLESCENCE-REGISTRY.md
   - TODO-GAP-001
+- id: RULE-22
+  title: One public brand, and the boundaries between the four things
+  text: 'There is one public-facing brand: Aetherius. Genesis is kept for the AI identity. Old names remain
+    historical references only. The boundaries are fixed: Aetherius OS is the common operating environment
+    and the native app ecosystem; Genesis is the supervisor AI and the multi-agent execution service;
+    Aetherius IDE is the independently deployable Genesis supervisor and development interface; and Agent
+    Bridge is a distinct authorised tools and capability surface, not automatically a publicly branded
+    OS app.'
+  source_thread: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17, README_START_HERE.md, 2026-10-17
+  projects:
+  - aetherius-os
+  - genesis
+  - ide-workspace
+  - agent-bridge
+  satisfied_by:
+  - docs/OWNER-DIRECTIVES.yaml
+  - docs/PROJECT-TODOS.yaml
+  - TODO-AOS-015
+- id: RULE-23
+  title: Design work carries a status label, and it is not the same label as code
+  text: 'Design and reference work is labelled with one of eight labels, and the label is mandatory: SOURCE_REFERENCE,
+    a supplied image, code or older product that is not necessarily built into the design; DESIGNED, an
+    editable layout concept only; INTERACTIVE_PROTOTYPE, verified navigation transitions that are not
+    production functionality; LOCAL_UI_DEMO, a runnable front-end concept with mock data that is not a
+    Genesis runtime; IMPLEMENTED, actual source code in a named repository supported by code inspection;
+    TESTED, validation evidence with a date, an environment and a method; ROADMAP, a proposed capability
+    that is not completed; and BLOCKED, unable to execute because of a tool, plan, permission or access
+    constraint. A design frame is not proof of a working product, and a local demo is not a runtime.'
+  source_thread: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17, CURRENT_STATE_AND_NEXT_STEPS.md, 2026-10-17
+  projects:
+  - ide-workspace
+  - aetherius-os
+  satisfied_by:
+  - docs/OWNER-DIRECTIVES.yaml
+  - TODO-AOS-016
+- id: RULE-24
+  title: Commerce, Learning and Community are future first-party OS apps, not IDE features
+  text: Commerce and Marketplace, Learning, and Community are named as future Aetherius OS applications
+    with grounded interface flows, and they are explicitly not to become bloat in the IDE. Commerce carries
+    the storefront, merchant administration, checkout and payment provider concepts. Learning carries
+    the learner and educator views, courses, lessons, assessment, groups and assignments. Community carries
+    the feed, groups, chat and events. They share their data model and must not grow a second authentication
+    or billing system; users, groups, entitlements, payment status, receipts and notifications are one
+    set.
+  source_thread: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17, DESIGN_ARCHITECTURE.md and COMMERCE_LEARNING_SPEC.md,
+    2026-10-17
+  projects:
+  - aetherius-os
+  satisfied_by:
+  - docs/PROJECT-TODOS.yaml
+  - TODO-AOS-017
+  - TODO-AOS-018
+  - TODO-AOS-019
+- id: RULE-25
+  title: 'The design quality gates: no manufactured results, no silent deletion, no unapproved push'
+  text: The quality gates are binding. No overlapping design boards, no missing reference records, no
+    competing brand names, no copied third-party code, no manufactured runtime or test results, no silent
+    deletion, and no unapproved push to a repository. The canonical master is never deleted and the handoff
+    does not delete source art, previous work, frames, repositories or historical concepts. Where something
+    cannot be implemented, it is said plainly and labelled BLOCKED rather than presented as done. Third-party
+    plugin archives are not redistributed, and the owner supplies them directly under their own licences.
+  source_thread: AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17, README_START_HERE.md and CURRENT_STATE_AND_NEXT_STEPS.md,
+    2026-10-17
+  projects:
+  - aetherius-os
+  - ide-workspace
+  - genesis
+  - agent-bridge
+  satisfied_by:
+  - docs/OWNER-DIRECTIVES.yaml
+  - docs/OBSOLESCENCE-REGISTRY.yaml
+  - tools/scan_for_secrets.py
 open_asks:
 - id: ASK-01
   title: Read the ChatGPT project folder called Genesis and abstract what is useful

@@ -1,5 +1,5 @@
 schema_version: 1
-source_date: 2026-10-20
+source_date: 2026-10-21
 generated_by: tools/generate_programme_registers.py
 notes:
   - "Every first-party project the owner holds, in every place they hold one."

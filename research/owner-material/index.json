@@ -9245,5 +9245,1114 @@
   "note": "Recorded and not opened.",
   "files": 1,
   "bytes": 4679
+ },
+ {
+  "id": "OM-FIGMA-V2-README",
+  "kind": "handoff",
+  "title": "The handoff's own opening: what the package is, what is in it, and what it supersedes",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\README_START_HERE.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherius-os",
+   "agent-bridge",
+   "figma-agent",
+   "genesis"
+  ],
+  "decisions": [],
+  "features": [],
+  "repositories": [],
+  "files": 1,
+  "bytes": 4644,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "README_START_HERE.md"
+  ],
+  "characters": 4642
+ },
+ {
+  "id": "OM-FIGMA-V2-CURRENT-STATE",
+  "kind": "handoff",
+  "title": "The mandatory status labels, what exists and what does not, and the gated next steps",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\CURRENT_STATE_AND_NEXT_STEPS.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherius-os",
+   "agent-bridge",
+   "figma-agent",
+   "genesis",
+   "hermes",
+   "ide-workspace"
+  ],
+  "decisions": [],
+  "features": [
+   "build in isolated worktree/feature"
+  ],
+  "repositories": [
+   "jayprophit/Aetherius-OS",
+   "jayprophit/Genesis",
+   "jayprophit/IDE-Workspace"
+  ],
+  "files": 1,
+  "bytes": 5229,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "CURRENT_STATE_AND_NEXT_STEPS.md"
+  ],
+  "characters": 5225
+ },
+ {
+  "id": "OM-FIGMA-V2-SOURCE-AUDIT",
+  "kind": "reconciliation",
+  "title": "The source inventory, the verified code and file observations, and the version and permission caveats",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\SOURCE_AUDIT_V2.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherius-os",
+   "figma-agent",
+   "genesis"
+  ],
+  "decisions": [],
+  "features": [],
+  "repositories": [],
+  "files": 1,
+  "bytes": 9950,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "SOURCE_AUDIT_V2.md"
+  ],
+  "characters": 9941
+ },
+ {
+  "id": "OM-FIGMA-V2-DESIGN-ARCHITECTURE",
+  "kind": "architecture_blueprint",
+  "title": "The product boundary diagram, the canonical screen families, and the shared services to deduplicate",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\DESIGN_ARCHITECTURE.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherius-os",
+   "agent-bridge",
+   "figma-agent",
+   "genesis"
+  ],
+  "decisions": [],
+  "features": [
+   "Design Architecture — Aetherius Unified OS + Genesis Supervisor ## Boundary diagram (conceptual) ```text AETHERIUS (single brand / design system"
+  ],
+  "repositories": [],
+  "files": 1,
+  "bytes": 5598,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "DESIGN_ARCHITECTURE.md"
+  ],
+  "characters": 5095
+ },
+ {
+  "id": "OM-FIGMA-V2-NAVIGATION-AVATAR",
+  "kind": "handoff",
+  "title": "The menu tree, the interaction rules, and the avatar capability schema",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\NAVIGATION_AVATAR_CONTRACT.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherius-os",
+   "figma-agent",
+   "genesis"
+  ],
+  "decisions": [],
+  "features": [
+   "Build & Code, Create, Research, Files, Community │ ├─ Commerce/Marketplace (future app",
+   "support, 2D fallback when 3D unavailable, screen"
+  ],
+  "repositories": [],
+  "files": 1,
+  "bytes": 5251,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "NAVIGATION_AVATAR_CONTRACT.md"
+  ],
+  "characters": 5023
+ },
+ {
+  "id": "OM-FIGMA-V2-COMMERCE-LEARNING",
+  "kind": "architecture_blueprint",
+  "title": "The complete workflow design requirements for the future Commerce and Learning OS apps",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\COMMERCE_LEARNING_SPEC.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "aetherius-os",
+   "figma-agent",
+   "genesis"
+  ],
+  "decisions": [],
+  "features": [
+   "design - Platform payment intent/session + payment provider plugin"
+  ],
+  "repositories": [],
+  "files": 1,
+  "bytes": 4491,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "COMMERCE_LEARNING_SPEC.md"
+  ],
+  "characters": 4483
+ },
+ {
+  "id": "OM-FIGMA-V2-QUICK-PASTE",
+  "kind": "design_prompt",
+  "title": "The short paste prompt for continuing the design work",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\QUICK_PASTE_PROMPT.md",
+  "present": true,
+  "read": "full",
+  "projects": [
+   "figma-agent",
+   "genesis",
+   "hermes"
+  ],
+  "decisions": [],
+  "features": [
+   "design tokens/components, accurate screen"
+  ],
+  "repositories": [],
+  "files": 1,
+  "bytes": 2844,
+  "kinds": {},
+  "extensions": {
+   ".md": 1
+  },
+  "documents": [
+   "QUICK_PASTE_PROMPT.md"
+  ],
+  "characters": 2842
+ },
+ {
+  "id": "OM-FIGMA-V2-SCREEN-REGISTRY",
+  "kind": "catalogue",
+  "title": "The twenty-two previously produced Figma concept frames and states, by node id",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\existing_figma_screen_registry.csv",
+  "present": true,
+  "read": "full",
+  "projects": [],
+  "decisions": [],
+  "features": [],
+  "repositories": [],
+  "files": 1,
+  "bytes": 5018,
+  "kinds": {},
+  "extensions": {
+   ".csv": 1
+  },
+  "documents": [
+   "existing_figma_screen_registry.csv"
+  ],
+  "rows": 22,
+  "columns": [
+   "family",
+   "name",
+   "figma_node_id",
+   "figma_url",
+   "intent",
+   "status"
+  ],
+  "routing": [
+   {
+    "family": "BASE",
+    "name": "Original supervisor hero",
+    "figma_node_id": "11:3",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=11-3",
+    "intent": "Earlier approved visual direction; original hologram and work/agent/code split",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "CLASSIC",
+    "name": "Code Editor + Genesis Assistant",
+    "figma_node_id": "28:2",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=28-2",
+    "intent": "Classic 3-column IDE, code editor, terminal, visible holographic Genesis",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "CLASSIC",
+    "name": "Browser Automation & Live Preview",
+    "figma_node_id": "28:199",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=28-199",
+    "intent": "Isolated browser, website preview, task status and agent updates",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "CLASSIC",
+    "name": "Git Worktree & Agent Diff Review",
+    "figma_node_id": "28:378",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=28-378",
+    "intent": "Git file list, code diff, human approval and isolated changes",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "CLASSIC",
+    "name": "Local / Cloud Model Routing",
+    "figma_node_id": "28:561",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=28-561",
+    "intent": "Local/cloud models, provider configuration and fallback routing",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "CLASSIC",
+    "name": "Debugger, Tests and System Inspector",
+    "figma_node_id": "28:768",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=28-768",
+    "intent": "Runtime tools, test status, terminal, process log",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "CLASSIC",
+    "name": "Agent Manager + Team Channels",
+    "figma_node_id": "28:945",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=28-945",
+    "intent": "Agent roster, individual calls, team meetings and delegation",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "NEW GENERATION",
+    "name": "Codex + Antigravity Agent Command Centre",
+    "figma_node_id": "24:2",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=24-2",
+    "intent": "Project/thread sidebar, agent jobs and inspection pane, avatar and artifacts",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "NEW GENERATION",
+    "name": "Immersive Spatial Team Conference",
+    "figma_node_id": "24:187",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=24-187",
+    "intent": "Conference room, 12-agent structure, queue, calls, team messages",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "NEW GENERATION",
+    "name": "Individual Agent Digital Twin & Call",
+    "figma_node_id": "24:346",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=24-346",
+    "intent": "Selected worker, video/voice/text, avatar and private tasks",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "NEW GENERATION",
+    "name": "Unified Desktop + Antigravity IDE Workspace",
+    "figma_node_id": "27:2",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=27-2",
+    "intent": "Agent desktop task context blended with editor, terminal and Genesis avatar",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "NEW GENERATION",
+    "name": "Visual Orchestration + Planning Canvas",
+    "figma_node_id": "27:181",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=27-181",
+    "intent": "n8n-inspired workflow graph, planner, parallel agents, tests, approvals",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "NEW GENERATION",
+    "name": "Avatar & Model Studio",
+    "figma_node_id": "27:321",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=27-321",
+    "intent": "Avatar identity, 2D/3D controls, visemes/face rig conceptual panels",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "NEW GENERATION",
+    "name": "Adaptive Modes, Themes and Screen Layouts",
+    "figma_node_id": "27:459",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=27-459",
+    "intent": "Desktop/IDE/spatial preset layouts, multiple themes, device breakpoints",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Classic v3 Default",
+    "figma_node_id": "19:2",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-2",
+    "intent": "Original classic navigation screen/prototype start",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Hamburger Open",
+    "figma_node_id": "19:232",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-232",
+    "intent": "App-wide menu drawer",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Cascading Workspaces",
+    "figma_node_id": "19:462",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-462",
+    "intent": "Three-level Workspace > Projects cascade",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Classic IDE File > Open Recent",
+    "figma_node_id": "19:692",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-692",
+    "intent": "File menu and nested recent workspace submenu",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Workspace Environment Dropdown",
+    "figma_node_id": "19:922",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-922",
+    "intent": "Workspace and local/VM/cloud selector",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Agent + Model Dropdown",
+    "figma_node_id": "19:1152",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-1152",
+    "intent": "Active agent and model selection states",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Theme + Layout Dropdown",
+    "figma_node_id": "19:1382",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-1382",
+    "intent": "Theme and panel-layout choices",
+    "status": "Editable Figma concept; backend not implemented"
+   },
+   {
+    "family": "INTERACTION STATES",
+    "name": "Avatar Mode Dropdown",
+    "figma_node_id": "19:1612",
+    "figma_url": "https://www.figma.com/design/L9j5qkPGMsMrqLMLpNYEUl?node-id=19-1612",
+    "intent": "2D, 3D, voice-only, docked, floating and fullscreen modes",
+    "status": "Editable Figma concept; backend not implemented"
+   }
+  ]
+ },
+ {
+  "id": "OM-FIGMA-V2-IMAGE-REGISTRY",
+  "kind": "catalogue",
+  "title": "The thirty-three original reference images, by source and disposition",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\reference_image_registry.csv",
+  "present": true,
+  "read": "full",
+  "projects": [],
+  "decisions": [],
+  "features": [],
+  "repositories": [],
+  "files": 1,
+  "bytes": 10273,
+  "kinds": {},
+  "extensions": {
+   ".csv": 1
+  },
+  "documents": [
+   "reference_image_registry.csv"
+  ],
+  "rows": 33,
+  "columns": [
+   "id",
+   "original_filename",
+   "category",
+   "design_role",
+   "target_workspace",
+   "archive_file",
+   "sha256",
+   "width",
+   "height",
+   "status",
+   "implemented_in_live_figma"
+  ],
+  "routing": [
+   {
+    "id": "REF-001",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_10 PM (1).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-001.png",
+    "sha256": "31a98b5704ac81871a8fe802cb7b552c99b8b1bf220aef2116e9fb722a45c2a9",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-002",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_10 PM (2).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-002.png",
+    "sha256": "179382db5b5ac78af3db0f8f93d20c36c7ed97df72d7b1942d69471f69af538b",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-003",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_10 PM (3).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-003.png",
+    "sha256": "ebc8e3ec34f606dac80188122042500e5eb2a036a7ab1a702d47ed111006a271",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-004",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_11 PM (10).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-004.png",
+    "sha256": "a07bdc7f8859a019eaa30e43d408b33d6e7d1efaebfffa3a67615c9b4c87d2d1",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-005",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_11 PM (4).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-005.png",
+    "sha256": "a73f907db35db57417c8c76290c36e84b2bd939e27dd8ec346a14bdd46e22955",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-006",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_11 PM (5).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-006.png",
+    "sha256": "62dcbcf7fc63130f09b42b301fe8dd5fc23f577be60629c9d82d7651bf0f4e36",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-007",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_11 PM (6).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-007.png",
+    "sha256": "9a3d0f382710ee91afed280e346916a64b0a945fb7ca02afd379a28178497aec",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-008",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_11 PM (7).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-008.png",
+    "sha256": "0ffda13dd85e5ac159270d6cc6c60db9b1423d2c5451a069336d14888801399a",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-009",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_11 PM (8).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-009.png",
+    "sha256": "c189fdd06de416614ede7db40c52e4227418a2e1acd84940f41f5112c7fe97c4",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-010",
+    "original_filename": "ChatGPT Image Sep 12, 2026, 02_42_11 PM (9).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE patterns, agent/chat tasks, browser/preview, terminal and themes",
+    "target_workspace": "Classic IDE, right tool surface, agent work log",
+    "archive_file": "references/originals/REF-010.png",
+    "sha256": "351c6ce42e0d40edb8e64d1736de0c6d2d8a83c203de916643fc81ea5a818f43",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-011",
+    "original_filename": "Futuristic AI Assistant UI Showcase(5).png",
+    "category": "AVATAR_MODE_REFERENCE",
+    "design_role": "Avatar-centric chat, voice/video, developer layouts and themes",
+    "target_workspace": "Avatar-first mode / call & presentation variants",
+    "archive_file": "references/originals/REF-011.png",
+    "sha256": "345452c2d8af375eee4f855ad9e318eccaee9dd7e5c3a4aff3f1826671e76e95",
+    "width": "1312",
+    "height": "1199",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-012",
+    "original_filename": "NEXUS AI Futuristic Collaboration Dashboard(5).png",
+    "category": "EARLY_ECOSYSTEM",
+    "design_role": "Earlier Nexus platform concept",
+    "target_workspace": "Aetherius OS app ecology / historical inspirations",
+    "archive_file": "references/originals/REF-012.png",
+    "sha256": "38cf184b0b249972b45ea6afed235ce2188ab57a44b66322adc0cc29fcd86f19",
+    "width": "1536",
+    "height": "1024",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-013",
+    "original_filename": "NOVA AI Team Workspace Dashboard(6).png",
+    "category": "CONFERENCE_REFERENCE",
+    "design_role": "Conference table, team meeting, individual calls and messages",
+    "target_workspace": "Spatial team view / individual agent panels",
+    "archive_file": "references/originals/REF-013.png",
+    "sha256": "7414a19d7efba82be546e2ca8b2aef2f1a7e8d5b056d15d1d93619f28a2542df",
+    "width": "1536",
+    "height": "1024",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-014",
+    "original_filename": "Nexus AI Developer UI Gallery(4).png",
+    "category": "EARLY_ECOSYSTEM",
+    "design_role": "Earlier Nexus platform concept",
+    "target_workspace": "Aetherius OS app ecology / historical inspirations",
+    "archive_file": "references/originals/REF-014.png",
+    "sha256": "7a825f6381e79c12cc2790b3fac8e8b9994c7dbfe91cf1f16af0fbd8ae529464",
+    "width": "1536",
+    "height": "1024",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-015",
+    "original_filename": "Nova IDE Interface Showcase Collage(3).png",
+    "category": "CLASSIC_IDE",
+    "design_role": "Classic IDE layout variants, themes and avatar prominence",
+    "target_workspace": "Classic IDE layout gallery and settings",
+    "archive_file": "references/originals/REF-015.png",
+    "sha256": "ddaf96da901b54d6d89f8e7d2f651f212c4ac4258c6e3880c4adfdbd0d83eedf",
+    "width": "1536",
+    "height": "1024",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-016",
+    "original_filename": "OE AI Workforce Dashboard Montage(5).png",
+    "category": "EARLY_ECOSYSTEM",
+    "design_role": "Earlier OE Web3 all-in-one platform",
+    "target_workspace": "Aetherius OS future apps / not supervisor IDE main UI",
+    "archive_file": "references/originals/REF-016.png",
+    "sha256": "844d71a9936e17f853bf2037849f1d65761d8e3b6f5fb4cb309740cb849e08d1",
+    "width": "1672",
+    "height": "941",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-017",
+    "original_filename": "OE Futuristic Life Amplification Dashboard(3).png",
+    "category": "EARLY_ECOSYSTEM",
+    "design_role": "Earlier OE Web3 all-in-one platform",
+    "target_workspace": "Aetherius OS future apps / not supervisor IDE main UI",
+    "archive_file": "references/originals/REF-017.png",
+    "sha256": "de06647416d0d2da475a92f439d0b3c4e975e8ef2db13ae226051931c4caf4ad",
+    "width": "1536",
+    "height": "1024",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-018",
+    "original_filename": "OE Futuristic Platform Dashboard(5).png",
+    "category": "EARLY_ECOSYSTEM",
+    "design_role": "Earlier OE Web3 all-in-one platform",
+    "target_workspace": "Aetherius OS future apps / not supervisor IDE main UI",
+    "archive_file": "references/originals/REF-018.png",
+    "sha256": "d8686e4b47381fbbe1b9c9856375a9f173733aaf73c8d594586974a66c3ecc43",
+    "width": "1312",
+    "height": "1199",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-019",
+    "original_filename": "Universal AI Workspace Interface Showcase(6).png",
+    "category": "FUTURE_OS_APPS",
+    "design_role": "Unified creation workspace with photo, CAD, music, games",
+    "target_workspace": "Aetherius OS future apps / shared engines",
+    "archive_file": "references/originals/REF-019.png",
+    "sha256": "db16d9d04db1119622ceabad48ffc23c0c98ae53738372bf14ef63a3d3666d95",
+    "width": "1312",
+    "height": "1199",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-020",
+    "original_filename": "aetherius_avatar_reference.png",
+    "category": "AVATAR_HOLOGRAPHIC",
+    "design_role": "Signature blue holographic avatar",
+    "target_workspace": "Avatar Stage / portrait and floating agent",
+    "archive_file": "references/originals/REF-020.png",
+    "sha256": "fe6b93f320bc7bd1c0c0ab14af579102ca39ff1fc1c6378a6fdd722c961e9b59",
+    "width": "355",
+    "height": "323",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-021",
+    "original_filename": "figma.PNG",
+    "category": "SUPERSEDED_FIGMA_DRAFT",
+    "design_role": "Previous low-fidelity Figma drafts; retain for audit, not as primary visual direction",
+    "target_workspace": "Historical reference / superseded; inspect for features",
+    "archive_file": "references/originals/REF-021.png",
+    "sha256": "3dba61f350de6f8390b270e80376f15d8c938708c65d03aaa23e24856837944e",
+    "width": "1412",
+    "height": "812",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-022",
+    "original_filename": "figma1.PNG",
+    "category": "SUPERSEDED_FIGMA_DRAFT",
+    "design_role": "Previous low-fidelity Figma drafts; retain for audit, not as primary visual direction",
+    "target_workspace": "Historical reference / superseded; inspect for features",
+    "archive_file": "references/originals/REF-022.png",
+    "sha256": "a21d3861cbefc8eaf345178a874b28bbb6645395d3f1e451723048257c31030a",
+    "width": "1421",
+    "height": "835",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-023",
+    "original_filename": "figma2.PNG",
+    "category": "SUPERSEDED_FIGMA_DRAFT",
+    "design_role": "Previous low-fidelity Figma drafts; retain for audit, not as primary visual direction",
+    "target_workspace": "Historical reference / superseded; inspect for features",
+    "archive_file": "references/originals/REF-023.png",
+    "sha256": "d8f16f9442862989dc0bd5b62f7ac6c18540c46fe46db0780e8afd667f9eff1a",
+    "width": "1407",
+    "height": "808",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-024",
+    "original_filename": "figma3.PNG",
+    "category": "SUPERSEDED_FIGMA_DRAFT",
+    "design_role": "Previous low-fidelity Figma drafts; retain for audit, not as primary visual direction",
+    "target_workspace": "Historical reference / superseded; inspect for features",
+    "archive_file": "references/originals/REF-024.png",
+    "sha256": "9f204031406bd63bf0d5daa704d6c4b075da05679ff35c1c5c1464cc5a39ae47",
+    "width": "1414",
+    "height": "825",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-025",
+    "original_filename": "figma4.PNG",
+    "category": "SUPERSEDED_FIGMA_DRAFT",
+    "design_role": "Previous low-fidelity Figma drafts; retain for audit, not as primary visual direction",
+    "target_workspace": "Historical reference / superseded; inspect for features",
+    "archive_file": "references/originals/REF-025.png",
+    "sha256": "98d1a89d61ecbfff37d244774170ade3f7104c1d1f484eeb644f5d0b5bfd941f",
+    "width": "1406",
+    "height": "804",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-026",
+    "original_filename": "figma5.PNG",
+    "category": "SUPERSEDED_FIGMA_DRAFT",
+    "design_role": "Previous low-fidelity Figma drafts; retain for audit, not as primary visual direction",
+    "target_workspace": "Historical reference / superseded; inspect for features",
+    "archive_file": "references/originals/REF-026.png",
+    "sha256": "467d74aba562e892ac5a9437dbd9a6e74c2f4b01eba807507b9b55625b319f49",
+    "width": "1033",
+    "height": "454",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-027",
+    "original_filename": "preview (1).webp",
+    "category": "EARLY_IDE_PROTOTYPE",
+    "design_role": "Early workspace design reference",
+    "target_workspace": "Classic IDE / platform architecture history",
+    "archive_file": "references/originals/REF-027.webp",
+    "sha256": "bdac047582f63d4911d2f4d377ee8cac05faf3d3ca0d851e591f91448e439fea",
+    "width": "1456",
+    "height": "819",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-028",
+    "original_filename": "preview (2).webp",
+    "category": "EARLY_IDE_PROTOTYPE",
+    "design_role": "Early workspace design reference",
+    "target_workspace": "Classic IDE / platform architecture history",
+    "archive_file": "references/originals/REF-028.webp",
+    "sha256": "3323cf87a521c44a83005e6efdcae64d81e57c97d54b645ddbc846f1157462cc",
+    "width": "1456",
+    "height": "819",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-029",
+    "original_filename": "preview (3).webp",
+    "category": "EARLY_IDE_PROTOTYPE",
+    "design_role": "Early workspace design reference",
+    "target_workspace": "Classic IDE / platform architecture history",
+    "archive_file": "references/originals/REF-029.webp",
+    "sha256": "3bde8226f908cbb41f9b8e117da89122c9fe501edc95555fece3428e8d547f4b",
+    "width": "1456",
+    "height": "819",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-030",
+    "original_filename": "preview (4).webp",
+    "category": "AVATAR_BASE_FACE",
+    "design_role": "Neutral 3D face appearance study",
+    "target_workspace": "Avatar Studio / face and rig diagnostics",
+    "archive_file": "references/originals/REF-030.webp",
+    "sha256": "1a33044425d27e49e464af710376db7cf7ea5f275c53cd097c3477d618efd3f1",
+    "width": "640",
+    "height": "640",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-031",
+    "original_filename": "preview (5).webp",
+    "category": "AVATAR_MESH",
+    "design_role": "3D wireframe facial topology study",
+    "target_workspace": "Avatar Studio / model topology, blendshape rig",
+    "archive_file": "references/originals/REF-031.webp",
+    "sha256": "d0a2af7da24e7370581164e30f66a03394d8ced080bed1a4ddcf8dc7333dd8e0",
+    "width": "640",
+    "height": "640",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-032",
+    "original_filename": "preview (6).webp",
+    "category": "AVATAR_EXPRESSION_LIBRARY",
+    "design_role": "Expression poses: neutral, joy, laugh, fear, etc.",
+    "target_workspace": "Avatar Studio / expression selector and QA",
+    "archive_file": "references/originals/REF-032.webp",
+    "sha256": "6f162ff7d13a1132a6c6111ce58b1709e1829777c9ba38be7b52b5ddfc2e74f9",
+    "width": "1204",
+    "height": "994",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   },
+   {
+    "id": "REF-033",
+    "original_filename": "preview.webp",
+    "category": "EARLY_IDE_PROTOTYPE",
+    "design_role": "Early workspace design reference",
+    "target_workspace": "Classic IDE / platform architecture history",
+    "archive_file": "references/originals/REF-033.webp",
+    "sha256": "d3991c33f53b9845620a222805bcdc96cebf81ba9486462953cf462d2a692972",
+    "width": "1456",
+    "height": "819",
+    "status": "PRESERVED_ORIGINAL",
+    "implemented_in_live_figma": "UNVERIFIED"
+   }
+  ]
+ },
+ {
+  "id": "OM-FIGMA-V2-ZIP-MANIFEST",
+  "kind": "catalogue",
+  "title": "The prototype source archives the handoff carries, by origin and permission",
+  "path": "C:\\Users\\jpowe\\Downloads\\AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17\\source_zip_manifest.csv",
+  "present": true,
+  "read": "full",
+  "projects": [],
+  "decisions": [],
+  "features": [],
+  "repositories": [],
+  "files": 1,
+  "bytes": 4792,
+  "kinds": {},
+  "extensions": {
+   ".csv": 1
+  },
+  "documents": [
+   "source_zip_manifest.csv"
+  ],
+  "rows": 18,
+  "columns": [
+   "source_id",
+   "filename",
+   "category",
+   "source_role",
+   "distribution_in_package",
+   "size_bytes",
+   "sha256",
+   "licensing_or_status_note",
+   "inspection_status"
+  ],
+  "routing": [
+   {
+    "source_id": "SRC-001",
+    "filename": "aetherius-ide.zip",
+    "category": "GENESIS_SUPERVISOR",
+    "source_role": "User Aetherius IDE prototype",
+    "distribution_in_package": "Bundled",
+    "size_bytes": "543641",
+    "sha256": "ae350c71c3ab2d6161a2a169b827b01b95d1862dee3cff5efe471c900ba965de",
+    "licensing_or_status_note": "historical / implementation validation needed",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-002",
+    "filename": "aetherius-os.zip",
+    "category": "OS",
+    "source_role": "User OS concepts",
+    "distribution_in_package": "Bundled",
+    "size_bytes": "1936692",
+    "sha256": "aaa621f66d591380382e033b9cc295ec8c3d100fe83366a45ca26507d9b4d7eb",
+    "licensing_or_status_note": "historical / implementation validation needed",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-003",
+    "filename": "aetherius-os-worldclass-prototype (1).zip",
+    "category": "OS",
+    "source_role": "User OS prototype variant",
+    "distribution_in_package": "Bundled",
+    "size_bytes": "595748",
+    "sha256": "984bdebaf2690fcd6f70a9f4080e4344dd7b08f9710f73992b87bab97de67054",
+    "licensing_or_status_note": "historical / implementation validation needed",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-004",
+    "filename": "holonav-os.zip",
+    "category": "SPATIAL",
+    "source_role": "User spatial-nav inspiration",
+    "distribution_in_package": "Bundled",
+    "size_bytes": "81572",
+    "sha256": "748460f9d98e56ff2ca4caf33c82539a3980d02b0f2c6543f385dba6f84bc59d",
+    "licensing_or_status_note": "historical / implementation validation needed",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-005",
+    "filename": "quantum-ai-assistant.zip",
+    "category": "AVATAR",
+    "source_role": "User legacy assistant",
+    "distribution_in_package": "Bundled",
+    "size_bytes": "684301",
+    "sha256": "ce5f9b9ce0f81a6fc9529b115d9203743a7a4520b400f40c0468720e9bd10c9f",
+    "licensing_or_status_note": "historical / implementation validation needed",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-006",
+    "filename": "quantum-os.zip",
+    "category": "AVATAR_OS",
+    "source_role": "User historical OS design",
+    "distribution_in_package": "Bundled",
+    "size_bytes": "702518",
+    "sha256": "a0697f87f2eebb142aa0cd21251764e5d2fec1f9776efe322679e2c1e54d6f0d",
+    "licensing_or_status_note": "historical / implementation validation needed",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-007",
+    "filename": "aetherion-engine.zip",
+    "category": "CREATIVE",
+    "source_role": "User historical creative/research engine",
+    "distribution_in_package": "Bundled",
+    "size_bytes": "109472",
+    "sha256": "4bcaa7a4f0e9d0d5aa88030fd545d049e96c9bd3001bf3254390c2166c323173",
+    "licensing_or_status_note": "historical / implementation validation needed",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-008",
+    "filename": "aetherius-health-library.zip",
+    "category": "RESEARCH",
+    "source_role": "Research reference / unvalidated claims",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "335741",
+    "sha256": "a5efb35630127deb364553cc1ebf225b50d5f23f5c654178052b89e5659e3c83",
+    "licensing_or_status_note": "Avoid clinical assertions",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-009",
+    "filename": "buddyboss-platform-2.2.6.zip",
+    "category": "COMMUNITY",
+    "source_role": "Third-party WordPress platform",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "14443005",
+    "sha256": "b8226ab5009248f64c0c7ef2cb33fd57200dbd30105a845d71bc88fb33feeb7e",
+    "licensing_or_status_note": "Rights/license review required",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-010",
+    "filename": "buddyboss-platform-pro-2.2.6.zip",
+    "category": "COMMUNITY",
+    "source_role": "Third-party premium extension",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "5140305",
+    "sha256": "62ab40e4cf0c8fbc678cfc7850255dd4fbe11fbebebc37f58edb6d48b5eede8e",
+    "licensing_or_status_note": "Rights/license review required",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-011",
+    "filename": "buddyboss-theme-2.2.5.zip",
+    "category": "COMMUNITY",
+    "source_role": "Third-party theme",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "13663538",
+    "sha256": "cb9307c96f872e8410486a30332e2f496e7cda9615dc55621f16d812e1313e4c",
+    "licensing_or_status_note": "Rights/license review required",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-012",
+    "filename": "buddyboss-child-theme-.zip",
+    "category": "COMMUNITY",
+    "source_role": "Third-party theme variant",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "102596",
+    "sha256": "25574803f1c554cdd574a5fc0a7df0768f935a5eb19ffb1d12709fb24128b925",
+    "licensing_or_status_note": "Rights/license review required",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-013",
+    "filename": "learndash-hub-v1.1.4.zip",
+    "category": "LEARNING",
+    "source_role": "Third-party LMS administration/hub",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "1547452",
+    "sha256": "813e7ec589fd3e7958131d5e3207fad2f69d897c06c46a5416ee61dd31c16235",
+    "licensing_or_status_note": "Rights/license review required",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-014",
+    "filename": "sfwd-lms-v4.5.0.3.zip",
+    "category": "LEARNING",
+    "source_role": "Third-party full LearnDash LMS",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "12232955",
+    "sha256": "7995c7b39b638a7e9dddf9ddf282d210d5c2e7af658f492efa73c8746781b402",
+    "licensing_or_status_note": "Commercial licence / rights review",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-015",
+    "filename": "gamipress.7.5.9.zip",
+    "category": "ACHIEVEMENTS",
+    "source_role": "Third-party gamification",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "3031995",
+    "sha256": "576e315762ebdd254ac0c8390b1adc0d3335b4113a888e5860e1268d41826989",
+    "licensing_or_status_note": "Rights/license review required",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-016",
+    "filename": "elementor-pro-3.10.3 2.zip",
+    "category": "LAYOUT_EDITOR",
+    "source_role": "Third-party premium page builder",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "3559253",
+    "sha256": "551df5149e841746564f4e1f41909396272b04966c45f7a268a8084e8cf11752",
+    "licensing_or_status_note": "Rights/license review required",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-017",
+    "filename": "woocommerce.7.4.0.zip",
+    "category": "COMMERCE",
+    "source_role": "Third-party WooCommerce 7.4.0",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "10759037",
+    "sha256": "679220e10b86709d43449db548b718b7718e65d769616088d9aa6bae6a3ea937",
+    "licensing_or_status_note": "GPLv3 claimed in packaged readme",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   },
+   {
+    "source_id": "SRC-018",
+    "filename": "coinbase-commerce.1.2.1.zip",
+    "category": "PAYMENT_GATEWAY",
+    "source_role": "Third-party Coinbase Commerce gateway",
+    "distribution_in_package": "Not bundled",
+    "size_bytes": "41260",
+    "sha256": "2a869c8a7b52c63535df98acdd8a50fa5ae1b2b6109b8f29fb25cca47393f448",
+    "licensing_or_status_note": "GPLv2 or later claimed in packaged readme",
+    "inspection_status": "ZIP structure inspected; selected representative code where noted"
+   }
+  ]
  }
 ]
