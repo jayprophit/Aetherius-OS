@@ -238,7 +238,7 @@ describe("build registry validation", () => {
   it("accepts a registry whose manifests are all present and valid", () => {
     const issues = validateBuildRegistry(registry(), {
       readManifest: (p) => (p === "Alpha/build.yaml" ? YAML_OF("alpha") : YAML_OF("beta")),
-      projectExists: allPresent,
+      pathExists: allPresent,
     });
     expect(issues).toEqual([]);
   });
@@ -246,7 +246,7 @@ describe("build registry validation", () => {
   it("reports a missing manifest rather than failing silently", () => {
     const issues = validateBuildRegistry(registry(), {
       readManifest: noManifests,
-      projectExists: allPresent,
+      pathExists: allPresent,
     });
     expect(issues.map((i) => i.code)).toContain("registry-manifest-missing");
     expect(issues.filter((i) => i.id === "alpha").length).toBe(1);
@@ -254,22 +254,39 @@ describe("build registry validation", () => {
 
   it("does not accuse a project of a broken manifest when the project is absent", () => {
     // A clean clone of Aetherius-OS has no sibling projects. Reporting every
-    // cross-project manifest as broken would be a false accusation.
+    // cross-project manifest as broken would be a false accusation: the
+    // manifest is not wrong, it is simply not there to be read.
     const issues = validateBuildRegistry(registry(), {
       readManifest: noManifests,
-      projectExists: () => false,
+      pathExists: () => false,
+    });
+    const missing = issues.filter((i) => i.code === "registry-manifest-missing");
+    expect(missing).toHaveLength(0);
+    const unchecked = issues.filter((i) => i.code === "registry-manifest-unchecked");
+    expect(unchecked).toHaveLength(2);
+    for (const m of unchecked) {
+      expect(m.detail).toContain("not present");
+    }
+  });
+
+  it("reports a manifest that is gone from a project that is present", () => {
+    // The project is here and the manifest is not. That is a real
+    // finding, and it is different from the project being absent.
+    const issues = validateBuildRegistry(registry(), {
+      readManifest: noManifests,
+      pathExists: () => true,
     });
     const missing = issues.filter((i) => i.code === "registry-manifest-missing");
     expect(missing).toHaveLength(2);
     for (const m of missing) {
-      expect(m.detail).toContain("not present");
+      expect(m.detail).toContain("manifest not found");
     }
   });
 
   it("reports a manifest whose project id does not match the registry entry", () => {
     const issues = validateBuildRegistry(registry(), {
       readManifest: (p) => YAML_OF(p === "Alpha/build.yaml" ? "wrong-id" : "beta"),
-      projectExists: allPresent,
+      pathExists: allPresent,
     });
     expect(issues.map((i) => i.code)).toContain("registry-manifest-id-mismatch");
   });
@@ -278,7 +295,7 @@ describe("build registry validation", () => {
     const issues = validateBuildRegistry(registry(), {
       readManifest: (p) =>
         p === "Alpha/build.yaml" ? "schema_version: '9.9.9'\n" : YAML_OF("beta"),
-      projectExists: allPresent,
+      pathExists: allPresent,
     });
     expect(issues.map((i) => i.code)).toContain("registry-manifest-invalid");
   });
@@ -286,7 +303,7 @@ describe("build registry validation", () => {
   it("reports a manifest that is not valid YAML as unreadable, not as invalid", () => {
     const issues = validateBuildRegistry(registry(), {
       readManifest: (p) => (p === "Alpha/build.yaml" ? "a: [unclosed" : YAML_OF("beta")),
-      projectExists: allPresent,
+      pathExists: allPresent,
     });
     const unreadable = issues.filter((i) => i.code === "registry-manifest-unreadable");
     expect(unreadable).toHaveLength(1);
@@ -296,35 +313,35 @@ describe("build registry validation", () => {
   it("rejects duplicate project ids", () => {
     const r = registry();
     r.projects.push({ ...r.projects[0]! });
-    const issues = validateBuildRegistry(r, { readManifest: noManifests, projectExists: () => false });
+    const issues = validateBuildRegistry(r, { readManifest: noManifests, pathExists: () => false });
     expect(issues.map((i) => i.code)).toContain("registry-duplicate-id");
   });
 
   it("rejects a dependency on an unregistered project", () => {
     const r = registry();
     r.projects[1]!.depends_on = ["ghost"];
-    const issues = validateBuildRegistry(r, { readManifest: noManifests, projectExists: () => false });
+    const issues = validateBuildRegistry(r, { readManifest: noManifests, pathExists: () => false });
     expect(issues.map((i) => i.code)).toContain("registry-unknown-dependency");
   });
 
   it("rejects a dependency cycle", () => {
     const r = registry();
     r.projects[0]!.depends_on = ["beta"];
-    const issues = validateBuildRegistry(r, { readManifest: noManifests, projectExists: () => false });
+    const issues = validateBuildRegistry(r, { readManifest: noManifests, pathExists: () => false });
     expect(issues.map((i) => i.code)).toContain("registry-dependency-cycle");
   });
 
   it("rejects a project that depends on itself", () => {
     const r = registry();
     r.projects[0]!.depends_on = ["alpha"];
-    const issues = validateBuildRegistry(r, { readManifest: noManifests, projectExists: () => false });
+    const issues = validateBuildRegistry(r, { readManifest: noManifests, pathExists: () => false });
     expect(issues.map((i) => i.code)).toContain("registry-dependency-cycle");
   });
 
   it("rejects an unknown status on a registry entry", () => {
     const r = registry();
     (r.projects[0] as { status: string }).status = "MOSTLY_FINE";
-    const issues = validateBuildRegistry(r, { readManifest: noManifests, projectExists: () => false });
+    const issues = validateBuildRegistry(r, { readManifest: noManifests, pathExists: () => false });
     expect(issues.map((i) => i.code)).toContain("registry-status");
   });
 });

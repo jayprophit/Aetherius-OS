@@ -285,9 +285,16 @@ function realPathResolver() {
     ),
     projectsRoot,
   );
-  const rootOf = (repo: string): string | null =>
-    roots.get(repo) ??
-    (existsSync(join(projectsRoot, repo)) ? join(projectsRoot, repo) : null);
+  const rootOf = (repo: string): string | null => {
+    /* A root that is not on disk is not available. The registry says
+     * where a project lives, and most of the programme's projects live
+     * in their own repositories, so a clean clone of this one does not
+     * have them. The validator skips an unavailable root rather than
+     * failing it, which is right, but only if the root is reported as
+     * unavailable rather than as present-and-empty. */
+    const path = roots.get(repo) ?? join(projectsRoot, repo);
+    return existsSync(path) ? path : null;
+  };
   return {
     pathExists: (repo: string, p: string) => {
       const root = rootOf(repo);

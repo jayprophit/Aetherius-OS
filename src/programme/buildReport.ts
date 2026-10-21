@@ -91,6 +91,19 @@ export function generateBuildReport(input: ReportInput): string {
       .join(" · ")}`,
   );
   lines.push(`- Source date: ${registry.source_date}`);
+  /* The summary covers every project the registry knows about, because
+   * the registry is committed here. The per-project detail below only
+   * covers the projects whose manifests this repository tracks: the rest
+   * live in their own repositories and are reported there. Saying which
+   * is which is what stops a reader assuming the detail is complete. */
+  const detailed = Object.values(manifests).filter((m) => m !== null).length;
+  lines.push(
+    `- Project detail below: **${detailed} of ${summary.total}** — the projects whose`,
+  );
+  lines.push(
+    "  manifests this repository tracks. The rest live in their own",
+  );
+  lines.push("  repositories and are reported there.");
   lines.push("");
 
   lines.push("## Build order");

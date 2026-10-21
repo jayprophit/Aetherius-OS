@@ -407,6 +407,14 @@ export function validateRegistry(
         return;
       }
       const candidates = candidateRoots(repo, n.domain);
+      /* The path names the repository that holds the file. If that
+       * repository is not available, the path cannot be checked, and it
+       * must NOT be looked for somewhere else: a file in a repository
+       * that is not here is unchecked, not missing. Falling back to
+       * another root would report a file as broken when the truth is
+       * that the repository holding it is absent. */
+      const named = candidates.find((c) => c === repo);
+      if (named && !availableRoots(named)) return;
       const available = candidates.filter((c) => availableRoots(c));
       if (available.length === 0) return;
       if (!available.some((c) => pathExists(c, rest))) {

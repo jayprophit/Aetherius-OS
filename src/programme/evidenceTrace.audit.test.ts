@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { auditEvidenceTrace, looksLikeTest, summariseEvidenceTrace } from "./evidenceTrace";
@@ -91,8 +91,13 @@ const resolve: PathResolver = (root, path) => existsSync(join(rootDir(root), pat
  * and accusing dozens of requirements of broken references. Every
  * in-repository assertion still runs unconditionally.
  */
-const SIBLINGS_PRESENT = Object.values(ROOT_DIRS).some((dir) =>
-  existsSync(join(REPO_ROOT, "..", dir)),
+const SIBLINGS_PRESENT = Object.values(ROOT_DIRS).some(
+  (dir) =>
+    // This repository's own name is one of the roots, and a checkout
+    // always has it, so counting it would say the siblings are present
+    // on every machine. Only a directory that is NOT this repository
+    // counts, which is what a sibling is.
+    dir !== basename(REPO_ROOT) && existsSync(join(REPO_ROOT, "..", dir)),
 );
 const crossRepoIt = SIBLINGS_PRESENT ? it : it.skip;
 

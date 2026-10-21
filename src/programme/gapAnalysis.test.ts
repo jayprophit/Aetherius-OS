@@ -96,11 +96,29 @@ const PLATFORMS = [
 const registry = loadGapRegistry(readFileSync(REGISTRY_PATH, "utf8"));
 
 function references() {
-  const paths = GENESIS_PRESENT
-    ? genesisReferencedPaths(GENESIS_ROOT)
-    : { implementationPaths: [], testPaths: [] };
+  /* The Genesis requirement registry, the source paths and the test
+   * paths live in the Genesis repository, which is a repository of its
+   * own. A clean clone of Aetherius-OS does not have it.
+   *
+   * When it is absent, those reference sets are UNDEFINED rather than
+   * empty. An empty set would say that every requirement and every path
+   * in the register is dangling, which is not true: they are simply
+   * unknown here, and the validator skips a cross-reference whose known
+   * set it does not have. The other three sets are committed here, so
+   * they are always checked. */
+  if (!GENESIS_PRESENT) {
+    return {
+      requirements: undefined,
+      acceptanceTests: ACCEPTANCE_TESTS,
+      gapRegisterCategories: GAP_REGISTER_CATEGORIES,
+      platforms: PLATFORMS,
+      implementationPaths: undefined,
+      testPaths: undefined,
+    };
+  }
+  const paths = genesisReferencedPaths(GENESIS_ROOT);
   return {
-    requirements: GENESIS_PRESENT ? loadGenesisRequirements(GENESIS_ROOT).map((r) => r.id) : [],
+    requirements: loadGenesisRequirements(GENESIS_ROOT).map((r) => r.id),
     acceptanceTests: ACCEPTANCE_TESTS,
     gapRegisterCategories: GAP_REGISTER_CATEGORIES,
     platforms: PLATFORMS,

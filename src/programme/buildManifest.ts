@@ -223,6 +223,7 @@ export type RegistryProblem =
   | "registry-unknown-dependency"
   | "registry-dependency-cycle"
   | "registry-manifest-missing"
+  | "registry-manifest-unchecked"
   | "registry-manifest-unreadable"
   | "registry-manifest-id-mismatch"
   | "registry-manifest-invalid";
@@ -357,11 +358,10 @@ export interface RegistryValidationOptions {
   /** Reads a manifest by its registry-relative path, or null if absent. */
   readManifest: ManifestReader;
   /**
-   * Decides whether the project folder exists on disk. When a folder is
-   * absent, its manifest cannot be checked and the entry is reported as
-   * unavailable rather than broken.
+   * Decides whether a path exists on disk. Injected so this stays
+   * testable, and so the caller decides what a path means.
    */
-  projectExists?: (projectId: string) => boolean;
+  pathExists?: (path: string) => boolean;
 }
 
 export interface RegistryValidationIssue {
@@ -401,7 +401,6 @@ export function validateBuildRegistry(
     return issues;
   }
 
-  const projectExists = options.projectExists ?? (() => true);
   const seen = new Map<string, number>();
   for (const p of registry.projects) {
     seen.set(p.id, (seen.get(p.id) ?? 0) + 1);
@@ -476,14 +475,30 @@ export function validateBuildRegistry(
     }
   }
 
-  // Manifest checks, only where the owning project is actually present.
+  // Manifest checks. A manifest that cannot be read is one of two
+  // different things, and the difference matters:
+  //
+  //   - the project is not here. Most of the programme's projects live
+  //     in their own repositories, and a clean clone of this one does
+  //     not have them. The manifest is not wrong; it is not there to be
+  //     read. That is UNCHECKED.
+  //   - the project is here and the manifest is gone. That is a real
+  //     finding, and it is MISSING.
+  //
+  // The two are told apart by the project's own folder, not by the
+  // first segment of the path: most paths in the registry start with
+  // the repository's own name, so the first segment says nothing about
+  // whether the project is present.
+  const pathExists = options.pathExists ?? (() => true);
   for (const p of registry.projects) {
     if (!nonEmpty(p.manifest)) continue;
-    if (!projectExists(p.id)) {
+    const manifestPath = p.manifest;
+    const projectFolder = manifestPath.slice(0, manifestPath.lastIndexOf("/"));
+    if (!pathExists(projectFolder)) {
       issues.push({
-        code: "registry-manifest-missing",
+        code: "registry-manifest-unchecked",
         id: p.id,
-        detail: `project folder for ${p.id} is not present; manifest ${p.manifest} not checked`,
+        detail: `project folder for ${p.id} is not present; manifest ${manifestPath} not checked`,
       });
       continue;
     }
@@ -492,7 +507,7 @@ export function validateBuildRegistry(
       issues.push({
         code: "registry-manifest-missing",
         id: p.id,
-        detail: `manifest not found at ${p.manifest}`,
+        detail: `manifest not found at ${manifestPath}`,
       });
       continue;
     }

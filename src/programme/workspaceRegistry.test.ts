@@ -65,9 +65,25 @@ function folderOf(id: string): string | null {
 }
 
 /** True when the project's folder is present on disk. */
+/**
+ * True when a project folder is on disk.
+ *
+ * The folder is the manifest's path without its last segment, so a
+ * project that lives in its own repository is absent from a clean clone
+ * of this one and present in the owner's workspace. The first segment of
+ * the path would say nothing: most of the registry's paths start with
+ * this repository's own name.
+ */
 function projectPresent(id: string): boolean {
-  const folder = folderOf(id);
-  return folder !== null && existsSync(join(PROJECTS_ROOT, folder));
+  const entry = registry.projects.find((p) => p.id === id);
+  if (!entry) return false;
+  const folder = entry.manifest.slice(0, entry.manifest.lastIndexOf("/"));
+  return existsSync(join(PROJECTS_ROOT, folder));
+}
+
+/** True when a path exists under the projects root. */
+function pathPresent(path: string): boolean {
+  return existsSync(join(PROJECTS_ROOT, path));
 }
 
 /** True when at least one sibling project is present, i.e. not a bare clone. */
@@ -105,9 +121,42 @@ describe("build manifest registry: the real file", () => {
         const full = join(PROJECTS_ROOT, p);
         return existsSync(full) ? readFileSync(full, "utf8") : null;
       },
-      projectExists: projectPresent,
+      pathExists: pathPresent,
     });
-    expect(issues.map((i) => `${i.id}: ${i.code} ${i.detail}`)).toEqual([]);
+    /* An absent project is UNCHECKED, not broken. Most of the programme's
+     * projects live in their own repositories, and a clean clone of this
+     * one does not have them, so their manifests cannot be read and
+     * cannot be wrong. Calling that a structural problem would make a
+     * clean checkout look broken. */
+    const structural = issues.filter((i) => i.code !== "registry-manifest-unchecked");
+    expect(structural.map((i) => `${i.id}: ${i.code} ${i.detail}`)).toEqual([]);
+  });
+
+  it("checks every manifest it can and names the ones it cannot", () => {
+    /* The set of unchecked projects has to be exactly the projects that
+     * are absent, so that nothing is quietly skipped and a manifest that
+     * could have been read is not. */
+    const issues = validateBuildRegistry(registry, {
+      readManifest: (p) => {
+        const full = join(PROJECTS_ROOT, p);
+        return existsSync(full) ? readFileSync(full, "utf8") : null;
+      },
+      pathExists: pathPresent,
+    });
+    const unchecked = new Set(
+      issues.filter((i) => i.code === "registry-manifest-unchecked").map((i) => i.id),
+    );
+    const absent = registry.projects
+      .filter((p) => !projectPresent(p.id))
+      .map((p) => p.id);
+    expect([...unchecked].sort()).toEqual([...absent].sort());
+    /* A project that is present must have had its manifest read, so a
+     * path that points at nothing is still a finding. */
+    for (const p of registry.projects) {
+      if (projectPresent(p.id)) {
+        expect(unchecked.has(p.id)).toBe(false);
+      }
+    }
   });
 
   it("registers every project folder that exists on disk", () => {
