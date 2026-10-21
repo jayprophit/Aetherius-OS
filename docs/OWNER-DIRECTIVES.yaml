@@ -353,6 +353,29 @@ standing_rules:
   - src/programme/sourceRegistry.ts
   - src/programme/capabilityRegistry.ts
   - docs/BUILD-MANIFEST-REGISTRY.md
+- id: RULE-27
+  title: The repositories are public by the owner's standing instruction, and no further visibility change
+    happens without asking
+  text: 'The repositories are public so that external agents can read the programme''s data without special
+    access. That is the owner''s standing instruction, and it is recorded as a rule: keep the repository
+    public for now because the user wants AI tools to be able to read it. The change of two hundred and
+    twelve formerly private repositories to public on 21 October 2026 was made under that instruction,
+    and the owner has not withdrawn it.
+
+
+    The rule also has a limit. A scan that finds no credential in a tree does not establish that unpublished
+    business information, intellectual property, personal data, historical commits or attached artifacts
+    are safe to publish. So the visibility change that has been made stands, and no further bulk visibility
+    change is made automatically: each one is an owner decision, taken one repository at a time, with
+    the exposure audited rather than assumed.'
+  source_thread: the owner's standing instruction, and the progress review of 21 October 2026
+  projects:
+  - aetherius-os
+  - aetherial-platform
+  satisfied_by:
+  - docs/OWNER-DIRECTIVES.yaml
+  - docs/evidence/credential-exposure-report.yaml
+  - docs/PROJECT-TODOS.yaml
 open_asks:
 - id: ASK-01
   title: Read the ChatGPT project folder called Genesis and abstract what is useful

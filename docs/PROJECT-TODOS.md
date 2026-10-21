@@ -4,14 +4,14 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **288** (241 open, 47 done)
+- Tasks: **289** (242 open, 47 done)
 
 ## By project
 
 | Project | Open | Done |
 |---|---|---|
 | aetherial | 3 | 0 |
-| aetherial-platform | 6 | 0 |
+| aetherial-platform | 7 | 0 |
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
@@ -178,6 +178,31 @@ Acceptance:
 
 - [ ] The finding is closed by something that runs, not by a description
 - [ ] The evidence is reproducible on this machine
+
+### ⬜ TODO-SEC-005 — SECURITY INCIDENT: a live GitHub personal access token is published in a public repository's history
+
+- **Project:** aetherial-platform
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-006, and the progress review of 21 October 2026
+
+This is an active security incident, not a tidy-up. A GitHub personal access token of the right shape and the right length, forty characters with the prefix, a body of mixed letters and digits, is committed in client/public/docs/chat_05_claude_project_link.md in jayprophit/aetherial-platform. It was removed from the tip by the redaction commit of 20 October 2026, but the earlier version of the file is still reachable from main, so the token is still published in the account's history and is downloadable by anyone.
+
+Removing a credential from the latest commit does not revoke it. A token in a published history stays valid until the issuer revokes it, and only the owner can revoke it. The history scan names the file, the kind and the commit and never prints the value, and the report is at docs/evidence/credential-exposure-report.yaml.
+
+What is left to do is the owner's: revoke the token at GitHub, confirm the access is rejected, look at what the token could reach, and check whether it was used in a way that was not expected. Until that is done and verified, this stays open, and it stays open in the open list rather than being closed on the strength of a redaction.
+
+Evidence:
+
+```
+The history scan of 21 October 2026 found it and reported it: ROTATE_REQUIRED, in client/public/docs/chat_05_claude_project_link.md, at line 15, in the blob committed on 27 October 2025, which the redaction commit of 20 October 2026 did not remove from the history. The token's shape and length match a working credential rather than an example.
+```
+
+Acceptance:
+
+- [ ] The token is revoked at GitHub, by the owner, and the revocation is confirmed
+- [ ] Access with the token is rejected, and that rejection is recorded
+- [ ] The scope the token could reach is established and checked for unexpected use
+- [ ] The history is cleaned, through the planned owner-approved migration, and the cleanup is verified
 
 ### ⬜ TODO-AETHERION-ENGINE-000 — Build the aetherion-engine project the manifest describes
 
@@ -2548,6 +2573,8 @@ Acceptance:
 - **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-006
 
 The programme's scanner read the tracked tree, not the history, so a credential that was removed from the tip was invisible to it. The history scan was added, and it immediately found the exposures it had been missing.
+
+The scan found one live credential in aetherial-platform's history, and it is recorded as an active security incident under TODO-SEC-005 until the owner has revoked it and the revocation is confirmed. A redaction in the tip is not a revocation.
 
 Evidence:
 
@@ -5476,7 +5503,13 @@ Acceptance:
 - **Status:** OPEN
 - **Source:** owner-direction — owner instruction, 2026-10-20
 
-The trading bot lives on the Sifdat account, which the owner holds, and it is private. Every other first-party repository is public, so that an external agent can read it without special access, and this one is the exception. Changing a repository's visibility needs administrative rights on the account that holds it, and the token this session authenticates with can read the repository but not administer it, so the change is the owner's to make.
+The exact administration action, so that nothing has to be inferred.
+
+The account is Sifdat, a personal account rather than an organisation, created on 31 January 2023, and it holds no public repository that this session can see. The repository is Sifdat/Multi-Cross-Platform-Trading-Bot: private, not archived, not disabled, five megabytes, last pushed on 20 October 2026, default branch main. The session that works on the programme can read it and push to it, and its permissions are admin=False, push=True, maintain=False, pull=True. So the change needs administrative rights on the Sifdat account, which the session does not have, and the change is the owner's to make.
+
+Why it is wanted: the owner's standing rule is that the repositories are public so that external agents can read the data without special access, and this is the one first-party repository that is not.
+
+What it is NOT: it is not a step towards reviving Sifdat, the owner's former company, which is dissolved, and it is not a change to the account itself. The account stays a personal account. The action is one repository's visibility, and nothing else.
 
 Evidence:
 
