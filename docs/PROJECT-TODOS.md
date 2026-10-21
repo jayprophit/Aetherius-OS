@@ -4,22 +4,22 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **292** (243 open, 49 done)
+- Tasks: **296** (244 open, 52 done)
 
 ## By project
 
 | Project | Open | Done |
 |---|---|---|
-| aetherial | 3 | 0 |
+| aetherial | 4 | 0 |
 | aetherial-platform | 7 | 0 |
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-commerce | 1 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 54 | 16 |
+| aetherius-os | 54 | 17 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 19 | 6 |
+| agent-bridge | 19 | 8 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -90,6 +90,27 @@ Acceptance:
 - [ ] Tests exist and run
 - [ ] The build manifest runs them
 - [ ] A failure in the suite fails the gate
+
+### ⬜ TODO-SEC-006 — A bearer token is published in the current tip of the public repository Aetherial
+
+- **Project:** aetherial
+- **Status:** OPEN
+- **Source:** owner-audit — The predecessor capture of 21 October 2026, and the tree scan it now performs
+
+The public repository Aetherial holds a bearer token in its CURRENT TIP, not only in its history. It is in the file '04 folder/api-reference.md' at line 56, in an Authorization header example, in the commit 'Add files via upload' of the 28th of July 2025, and it is reachable from the default branch.
+
+Evidence:
+
+```
+The value is 39 characters and uses three character classes at once, with upper case, lower case, digits and punctuation: the shape of a generated random token. The example directly beneath it in the same document is the literal placeholder 'your-api-key', so the author's own style for a placeholder is plainly different, and this value is not one. The tree scan of the restored checkout finds it, and the history scan finds the same blob.
+```
+
+Acceptance:
+
+- [ ] The owner confirms whether the token is live
+- [ ] If it is live, the owner revokes it, because only the owner can
+- [ ] The repository's history is rewritten or the repository is replaced, once the owner has decided
+- [ ] The tree and the history are rescanned and both come back clean
 
 ### ⬜ TODO-AETHERIAL-PLATFORM-000 — Build the aetherial-platform project the manifest describes
 
@@ -2638,6 +2659,32 @@ Acceptance:
 - [ ] The finding is closed by something that runs, not by a description
 - [ ] The evidence is reproducible on this machine
 
+### ✅ TODO-SEC-007 — The predecessor capture reported an empty tree as clean, because it scanned a mirror
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-audit — The predecessor capture of 21 October 2026
+
+The capture tool scanned the TREE of a mirror clone. A mirror has no index and no worktree, so git ls-files in it returns nothing, the scan finds nothing, and 'the tree is clean' becomes an absence of evidence rather than evidence of absence. It reported aetherial-platform and Aetherial as clean in the tree, and both have findings.
+
+Evidence:
+
+```
+The scanner run against a mirror reports 'clean (0 files scanned, 0 allowlisted)'. The same scanner run against the restored checkout finds the credentials. The restore drill was cloning a mirror too, so the restored copy had no files in it at all, and a restoration that cannot be opened is a copy of the objects rather than a restoration of the project.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The tree is scanned against the restored checkout, the restore drill clones a working tree and counts the files, the counter understands both of the scanner's two forms, and the cleanup makes git's read-only object files writable before it removes them. The re-run reports 349 commits and 1,243 files for aetherial-platform, 46 commits and 1,622 files for Aetherial, and 98 commits and 1,539 files for aetherium, and it finds the two findings that were previously reported as clean.
+
+Acceptance:
+
+- [ ] The tree is scanned against a checkout, not against a mirror
+- [ ] The restore drill restores a working tree and counts the files
+- [ ] The finding counter understands both forms the scanner reports
+- [ ] The cleanup removes the read-only files git leaves behind
+- [ ] A re-run reports what is actually there
+
 ### ✅ TODO-SRC-001 — Build the machine-checked owner source registry
 
 - **Project:** aetherius-os
@@ -2881,6 +2928,54 @@ Acceptance:
 
 - [ ] The finding is closed by something that runs, not by a description
 - [ ] The evidence is reproducible on this machine
+
+### ✅ TODO-BRN-007 — The declared minimum model coverage is not installed, and a role with no model failed outright
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-audit — The real delegation certification of 21 October 2026
+
+The role map declares a primary coder and a fallback that are not installed on this machine, while a different coder is. A role whose model was missing therefore failed outright, on a machine that had a suitable model in the inventory, and the only way out was for the operator to hand-write a fallback chain for every role.
+
+Evidence:
+
+```
+The certification failed with 'model qwen2.5-coder:3b-instruct-q4_K_M not in provider inventory', while the provider's own inventory held ten models including hhao/qwen2.5-coder-tools:3b, which is the Bridge's own default model. The role map is now a preference order rather than a single name, and a role whose model is missing is served by the first of its declared candidates that the provider actually holds.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The order is a preference, not a permission: the provider's inventory is still the authority, nothing is used that the provider does not have, the substitution is recorded in the history, the review verdict and the result, and a role with nothing installed still fails. The certification passes 2 of 2 with the file really changed by the worker.
+
+Acceptance:
+
+- [ ] The inventory stays the authority: nothing is used that the provider does not have
+- [ ] The substitution is recorded in the run's evidence
+- [ ] A role with nothing installed still fails honestly
+
+### ✅ TODO-BRN-008 — A reasoning model answered in its thinking, and the Bridge had nothing to act on
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-audit — The real delegation certification of 21 October 2026
+
+A reasoning model that is left to think puts its answer in the thinking field and leaves the content empty. The Bridge then has nothing to act on, the run fails, and the error says 'empty chat response' and dumps the reasoning into the message without saying what happened.
+
+Evidence:
+
+```
+The canonical transport already had the flag for this, and its own docstring says a reasoning model 'must answer in content for tool use'. The Bridge simply never passed it. The runtime already knows which models can think, so the Bridge now asks those to answer directly, and only those: a model that cannot think is never sent the flag.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The flag is passed only when it means something, so a provider that does not do think control is called the way it was always called. The error now says that the model answered only in its thinking and used its whole output budget, rather than dumping the reasoning into the message. Eleven new tests cover the routing and the think control without needing a model runtime.
+
+Acceptance:
+
+- [ ] A model the runtime says can think is asked to answer
+- [ ] A model that cannot think is never sent the flag
+- [ ] The error names the cause when a model spends its whole output budget thinking
 
 ### ✅ TODO-IED-101 — The Bridge's runtime route and its model route disagreed about how many models exist
 

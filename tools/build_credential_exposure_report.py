@@ -45,6 +45,8 @@ LOCAL_REPOSITORIES = [
 
 CLONED_REPOSITORIES = [
     "jayprophit/aetherial-platform",
+    "jayprophit/Aetherial",
+    "jayprophit/aetherium",
 ]
 
 # A finding is a real exposure when the value is the right shape and
@@ -61,6 +63,71 @@ LENGTHS = {
     "aws-access-key": (16, 40),
 }
 
+# What each finding IS, and what follows from it.
+#
+# The judgement that a value is a fixture rather than a credential is
+# not a heuristic and is not re-derived on every run: it is a decision,
+# and it is recorded here with the reason it was made. A finding that
+# is not classified is a finding the owner has to look at, which is the
+# right state for something nobody has looked at yet.
+#
+# The key is "repository|path|kind", and the value is the state, the
+# reason, and the action that follows.
+CLASSIFICATIONS: dict[str, dict[str, object]] = {
+    "jayprophit/aetherial-platform|tests/auth/validators/auth.validators.spec.ts|jwt": {
+        "state": "FIXTURE",
+        "reason": (
+            "A JWT-shaped constant in a test file, named validJWT, used to prove the "
+            "validator accepts one. The header carries alg and typ and the payload "
+            "carries iat, name and sub, with no exp, no iss and no aud: the shape of a "
+            "hand-made fixture rather than of a token a real system issues. The file "
+            "is still in the tree, where anyone can see it."
+        ),
+        "action": (
+            "Nothing. The file is allowlisted with a stated reason, so the scanner stops "
+            "reporting it and keeps reporting anything else in it."
+        ),
+        "owner_action_required": False,
+    },
+    "jayprophit/aetherial-platform|client/public/docs/chat_05_claude_project_link.md|github-token": {
+        "state": "ROTATE_REQUIRED",
+        "reason": (
+            "A GitHub personal access token of the right shape and the right length: "
+            "the prefix, a body of mixed letters and digits, forty characters in all, "
+            "which is what one of these is. It was removed from the tip, and it is "
+            "still in the published history and still reachable from the default "
+            "branch."
+        ),
+        "action": (
+            "Revoke the token at GitHub, then re-issue a new one if the work still "
+            "needs it. Revoking is the part that matters: a token that was published "
+            "is published whether or not the file still says so."
+        ),
+        "owner_action_required": True,
+    },
+    "jayprophit/Aetherial|04 folder/api-reference.md|bearer-token": {
+        "state": "ROTATE_REQUIRED",
+        "reason": (
+            "A bearer token in the CURRENT TIP, not only in the history. It is in an "
+            "Authorization header example in the API reference, in the commit 'Add "
+            "files via upload' of the 28th of July 2025, and it is reachable from the "
+            "default branch. The value is 39 characters and uses three character "
+            "classes at once, with upper case, lower case, digits and punctuation: "
+            "the shape of a generated random token. The example directly beneath it in "
+            "the same document is the literal placeholder 'your-api-key', so the "
+            "author's own style for a placeholder is plainly different, and this value "
+            "is not one."
+        ),
+        "action": (
+            "Revoke the token at the provider, then re-issue a new one if the work "
+            "still needs it. Only the owner can do that. The tip can be cleaned after "
+            "the revocation, and the history rewritten or the repository replaced once "
+            "the owner has decided."
+        ),
+        "owner_action_required": True,
+    },
+}
+
 
 def sh(cmd: list[str], timeout: int = 1800) -> tuple[int, str]:
     try:
@@ -69,6 +136,39 @@ def sh(cmd: list[str], timeout: int = 1800) -> tuple[int, str]:
         return proc.returncode, proc.stdout
     except Exception as exc:  # noqa: BLE001
         return 1, f"{type(exc).__name__}: {exc}"
+
+
+def scan_tree(repo: Path) -> list[dict]:
+    """Every finding in the TREE of one repository.
+
+    The history scan alone is not the scope of the exposure. A
+    credential in the tip is worse than one in the history, because it
+    is what every visitor sees, and a scan that only looks at the
+    history will not find it. The tree is scanned too, and a finding
+    says which of the two it was found in.
+    """
+    code, out = sh([sys.executable, str(REPO / "tools" / "scan_for_secrets.py"),
+                    "--repo", str(repo)])
+    findings: list[dict] = []
+    for line in (out or "").splitlines():
+        stripped = line.strip()
+        # The tree scan reports the path and the line, and does not
+        # print the value.
+        if "  " in stripped and stripped.split("  ")[-1] in (
+                "jwt", "bearer-token", "github-token", "openrouter", "openai",
+                "anthropic", "huggingface", "google-api", "slack",
+                "aws-access-key"):
+            path, _, kind = stripped.rpartition("  ")
+            path = path.strip()
+            if not path:
+                continue
+            number = ""
+            if ":" in path and path.rsplit(":", 1)[-1].isdigit():
+                path, _, number = path.rpartition(":")
+            findings.append({"path": path, "kind": kind.strip(),
+                             "line": number, "blob": "", "commits": [],
+                             "where": "tree"})
+    return findings
 
 
 def scan(repo: Path) -> list[dict]:
@@ -86,7 +186,8 @@ def scan(repo: Path) -> list[dict]:
             for part in rest.split():
                 if part.startswith("blob"):
                     blob = part.split("=")[-1]
-            current = {"path": path, "kind": kind, "blob": blob, "commits": []}
+            current = {"path": path, "kind": kind, "blob": blob,
+                       "commits": [], "line": "", "where": "history"}
             findings.append(current)
         elif current is not None and line.startswith("      ") and len(line) > 6 \
                 and line[6:8] != "  " and "REDACTED" not in line \
@@ -105,22 +206,34 @@ def main() -> int:
 
     entries = []
     scanned: list[str] = []
+
+    def add(repository: str, finding: dict) -> None:
+        """One finding, with its classification if it has one."""
+        key = f"{repository}|{finding['path']}|{finding['kind']}"
+        judged = CLASSIFICATIONS.get(key, {})
+        entries.append({
+            "repository": repository,
+            "path": finding["path"],
+            "kind": finding["kind"],
+            "line": finding.get("line", ""),
+            "blob": finding["blob"],
+            "commits": finding["commits"][:3],
+            "found_in": finding.get("where", "history"),
+            "state": judged.get("state", "TO_REVIEW"),
+            "reason": judged.get("reason", ""),
+            "action": judged.get("action", ""),
+            "owner_action_required": bool(judged.get("owner_action_required",
+                                                     False)),
+        })
+
     for name, path in LOCAL_REPOSITORIES:
         if args.only and args.only not in name:
             continue
         if not path.is_dir():
             continue
         scanned.append(name)
-        for finding in scan(path):
-            entries.append({
-                "repository": name,
-                "path": finding["path"],
-                "kind": finding["kind"],
-                "blob": finding["blob"],
-                "commits": finding["commits"][:3],
-                "state": "TO_REVIEW",
-                "reason": "",
-            })
+        for finding in scan(path) + scan_tree(path):
+            add(name, finding)
 
     WORK.mkdir(parents=True, exist_ok=True)
     for name in CLONED_REPOSITORIES:
@@ -133,16 +246,8 @@ def main() -> int:
                 print(f"  {name}: could not be cloned: {out.strip()[:120]}")
                 continue
         scanned.append(name)
-        for finding in scan(dest):
-            entries.append({
-                "repository": name,
-                "path": finding["path"],
-                "kind": finding["kind"],
-                "blob": finding["blob"],
-                "commits": finding["commits"][:3],
-                "state": "TO_REVIEW",
-                "reason": "",
-            })
+        for finding in scan(dest) + scan_tree(dest):
+            add(name, finding)
 
     doc = {
         "schema_version": 1,
@@ -158,9 +263,29 @@ def main() -> int:
             "A credential in a published history cannot be un-published. "
             "Removing it from the tip does not remove it from the history, "
             "and only the provider can revoke it.",
+            "The TIP is scanned as well as the history. A credential in the "
+            "tip is worse than one in the history, because it is what every "
+            "visitor sees, and a scan that only looks at the history will "
+            "not find it. Each finding says which of the two it was found "
+            "in.",
+            "A finding is classified by what it is, and the classification "
+            "carries a reason. The judgement that a value is a fixture and "
+            "not a credential is a decision, not a heuristic, so it is "
+            "recorded rather than re-derived on every run. A finding that is "
+            "not classified is a finding the owner has to look at.",
         ],
         "repositories_scanned": scanned,
         "findings": entries,
+        "summary": {
+            "repositories_scanned": len(scanned),
+            "findings": len(entries),
+            "rotate_required": sum(1 for e in entries
+                                   if e["state"] == "ROTATE_REQUIRED"),
+            "fixtures": sum(1 for e in entries if e["state"] == "FIXTURE"),
+            "to_review": sum(1 for e in entries if e["state"] == "TO_REVIEW"),
+            "owner_action_required": sum(1 for e in entries
+                                         if e["owner_action_required"]),
+        },
     }
 
     Path(args.out).write_text(

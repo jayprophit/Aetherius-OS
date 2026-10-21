@@ -61,6 +61,20 @@ PATTERNS: list[tuple[str, re.Pattern[str]]] = [
 # hole.
 ALLOWLIST: dict[str, str] = {
     "tools/scan_for_secrets.py": "This is the scanner. It holds the patterns it looks for.",
+    # Found by the tree scan of the predecessor aetherial-platform on
+    # 21 October 2026. The file is a spec for a JWT VALIDATOR, and the
+    # two values are the fixtures that spec tests against: a JWT shape
+    # with an alg/typ header and iat/name/sub claims, and no exp, iss or
+    # aud. A token that a real system issues carries its expiry, its
+    # issuer and its audience. These carry none of them, they are
+    # declared as "validJWT" in a test file, and they are the subject of
+    # the test rather than a credential the test uses.
+    "tests/auth/validators/auth.validators.spec.ts": (
+        "A spec for a JWT validator, holding the two JWT fixtures it tests "
+        "against. The values have an alg/typ header and iat/name/sub claims "
+        "and no exp, iss or aud, which is the shape of a hand-made fixture "
+        "rather than of a token a real system issues."
+    ),
     "tools/extract_codex_history.py": "This is the redactor. It holds the patterns it looks for.",
     "tools/generate_source_registry.py": "Holds a credential-shaped pattern it matches against.",
     "tools/scan_source_documents.py": "Holds a credential-shaped pattern it matches against.",

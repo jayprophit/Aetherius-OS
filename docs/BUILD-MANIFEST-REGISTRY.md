@@ -6,7 +6,7 @@
 - Projects: **40**
 - States: VERIFIED 7 · PARTIAL 16 · NOT_STARTED 17
 - Source date: 2026-10-21
-- Project detail below: **1 of 40** — the projects whose
+- Project detail below: **4 of 40** — the projects whose
   manifests this repository tracks. The rest live in their own
   repositories and are reported there.
 
@@ -70,10 +70,10 @@ finished before it.
 | aetherial-platform | ⚠️ PARTIAL | - | - | - | aetherius-os |
 | aetherion-engine | ❌ NOT_STARTED | - | - | - | - |
 | aetherium | ❌ NOT_STARTED | - | - | - | aetherius-os |
-| Aetherius OS Commerce | ❌ NOT_STARTED | - | - | - | aetherius-os, agent-bridge, genesis |
-| Aetherius OS Community | ❌ NOT_STARTED | - | - | - | aetherius-os, agent-bridge, genesis |
+| Aetherius OS Commerce | ❌ NOT_STARTED | application | - | none | aetherius-os, agent-bridge, genesis |
+| Aetherius OS Community | ❌ NOT_STARTED | application | - | none | aetherius-os, agent-bridge, genesis |
 | aetherius-health-library | ❌ NOT_STARTED | - | - | - | aetherius-os |
-| Aetherius OS Learning | ❌ NOT_STARTED | - | - | - | aetherius-os, agent-bridge, genesis |
+| Aetherius OS Learning | ❌ NOT_STARTED | application | - | none | aetherius-os, agent-bridge, genesis |
 | aetherius-os | ❌ NOT_STARTED | - | - | - | - |
 | aetherius-os-worldclass-prototype | ❌ NOT_STARTED | - | - | - | - |
 | Agent-Bridge (cloud-hybrid runtime) | ⚠️ PARTIAL | - | - | - | agent-bridge, genesis |
@@ -119,6 +119,24 @@ finished before it.
 | 🟡 medium | The C kernel host suite is not part of the Aetherius-OS verify command, so a kernel change can land without i… | OPEN | TODO-KRN-006 |
 | 🟡 medium | Four reserved project folders hold no content, so they are registered as placeholders rather than projects. E… | OPEN | TODO-WS-003 |
 
+### Aetherius OS Commerce
+
+| Sev | Issue | Status | Todo |
+|---|---|---|---|
+| 🟠 high | The application is registered but not built. Its thin vertical slice waits on the shared primitives it consum… | OPEN | TODO-APP-002 |
+
+### Aetherius OS Community
+
+| Sev | Issue | Status | Todo |
+|---|---|---|---|
+| 🟠 high | The application is registered but not built. Its thin vertical slice waits on the shared primitives it consum… | OPEN | TODO-APP-002 |
+
+### Aetherius OS Learning
+
+| Sev | Issue | Status | Todo |
+|---|---|---|---|
+| 🟠 high | The application is registered but not built. Its thin vertical slice waits on the shared primitives it consum… | OPEN | TODO-APP-002 |
+
 ## Verified state per project
 
 ### Aetherius-OS
@@ -135,6 +153,33 @@ Evidence:
 - native/kernel host suite -> 126 checks, 0 failures
 
 Commands: `install` · `typecheck` · `build` · `test` · `verify` · `source-registry` · `kernel-test` · `dev` · `registry-validate`
+
+### Aetherius OS Commerce
+
+The application is registered and its scope is recorded, and nothing has been built. It is an integrated domain of the one Aetherius ecosystem, and the primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml rather than built three times over.
+
+Evidence:
+
+- The Figma handoff of 17 October 2026 names the application and its destination.
+- The shared primitive map names the owner of every primitive this application uses.
+
+### Aetherius OS Community
+
+The application is registered and its scope is recorded, and nothing has been built. It is an integrated domain of the one Aetherius ecosystem, and the primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml rather than built three times over.
+
+Evidence:
+
+- The Figma handoff of 17 October 2026 names the application and its destination.
+- The shared primitive map names the owner of every primitive this application uses.
+
+### Aetherius OS Learning
+
+The application is registered and its scope is recorded, and nothing has been built. It is an integrated domain of the one Aetherius ecosystem, and the primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml rather than built three times over.
+
+Evidence:
+
+- The Figma handoff of 17 October 2026 names the application and its destination.
+- The shared primitive map names the owner of every primitive this application uses.
 
 ## Dependents
 

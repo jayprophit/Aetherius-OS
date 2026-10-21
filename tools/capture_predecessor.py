@@ -28,7 +28,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
+import stat
 import subprocess
 import sys
 import time
@@ -141,14 +143,33 @@ def capture_github_context(name: str) -> dict:
     return context
 
 
+def remove_tree(path: Path) -> None:
+    """Remove a directory, including the read-only files git leaves.
+
+    Git's object files are read-only, so a plain rmtree with errors
+    ignored leaves them behind and the directory survives, and the next
+    clone refuses to write into it. The files are made writable first.
+    """
+    if not path.exists():
+        return
+
+    def _make_writable(func, target, _exc):
+        try:
+            os.chmod(target, stat.S_IWRITE)
+            func(target)
+        except OSError:
+            pass
+
+    shutil.rmtree(path, onerror=_make_writable)
+
+
 def capture_git(name: str, dest: Path) -> dict:
     """The mirror, the bundle, the digests, the fsck and the counts."""
     result: dict = {"mirror": None, "bundle": None, "git_mirror_sha256": None,
                     "git_bundle_sha256": None, "fsck": None, "counts": {},
                     "notes_captured": False, "submodules": [],
                     "lfs_pointer_objects": 0, "errors": []}
-    if dest.exists():
-        shutil.rmtree(dest, ignore_errors=True)
+    remove_tree(dest)
     dest.parent.mkdir(parents=True, exist_ok=True)
 
     # The clone URL rather than the owner/name shorthand, because git
@@ -227,13 +248,18 @@ def restore_drill(dest: Path, target: Path) -> dict:
     A backup that has never been restored is a hope. This clones from the
     mirror and counts what came back, so the restore test is a result
     rather than a claim.
+
+    It clones a WORKING TREE, not another mirror. A mirror has the
+    history but no files, and a restoration that cannot be opened and
+    read is not a restoration of the project: it is a copy of its
+    objects. So the drill checks that the files are there as well as
+    the commits. It found a tree that had no files in it at all.
     """
     drill: dict = {"target": str(target), "ok": False, "commits": 0,
-                   "branches": 0, "note": ""}
-    if target.exists():
-        shutil.rmtree(target, ignore_errors=True)
+                   "branches": 0, "files": 0, "note": ""}
+    remove_tree(target)
     target.parent.mkdir(parents=True, exist_ok=True)
-    code, out, err = sh(["git", "clone", "--mirror", str(dest), str(target)])
+    code, out, err = sh(["git", "clone", str(dest), str(target)])
     if code != 0:
         drill["note"] = f"the restoration clone failed: {err.strip()[:200]}"
         return drill
@@ -241,30 +267,77 @@ def restore_drill(dest: Path, target: Path) -> dict:
     drill["commits"] = int(out.strip() or 0)
     code, out, _ = sh(["git", "-C", str(target), "branch", "--list"])
     drill["branches"] = len([ln for ln in out.splitlines() if ln.strip()])
+    # The files are the point of a restoration. A mirror carries the
+    # objects and nothing else, and a project that cannot be opened is
+    # not restored.
+    code, out, _ = sh(["git", "-C", str(target), "ls-files"])
+    drill["files"] = len([ln for ln in out.splitlines() if ln.strip()])
     code, _, _ = sh(["git", "-C", str(target), "fsck", "--no-progress"])
-    drill["ok"] = drill["commits"] > 0 and code == 0
-    drill["note"] = ("the history was restored and the restored copy passes "
-                     "git fsck" if drill["ok"]
+    drill["ok"] = drill["commits"] > 0 and drill["files"] > 0 and code == 0
+    drill["note"] = ("the history and the files were restored, and the "
+                     "restored copy passes git fsck" if drill["ok"]
                      else "the restoration did not come back intact")
     return drill
 
 
 def secret_scan(repo: Path) -> dict:
-    """The tree and the history, with the findings counted."""
+    """The history, with the findings counted.
+
+    The TREE is scanned separately, against a checkout. A mirror clone
+    has no index and no worktree, so git ls-files in it returns nothing
+    and the scan finds nothing, and "the tree is clean" becomes an
+    absence of evidence rather than evidence of absence.
+    """
     scanner = Path(__file__).resolve().parent.parent / "tools" / "scan_for_secrets.py"
     out: dict = {"tree": {}, "history": {}}
-    for name, extra in (("tree", []), ("history", ["--history"])):
-        code, stdout, stderr = sh([sys.executable, str(scanner), "--repo",
-                                   str(repo)] + extra, timeout=3600)
-        text = stdout or stderr or ""
-        findings = [ln for ln in text.splitlines() if "FINDING" in ln]
-        out[name] = {
-            "exit_code": code,
-            "findings": len(findings),
-            "clean": code == 0,
-            "note": "; ".join(findings[:5])[:400],
-        }
+    code, stdout, stderr = sh([sys.executable, str(scanner), "--repo",
+                               str(repo), "--history"], timeout=3600)
+    text = stdout or stderr or ""
+    findings = [ln for ln in text.splitlines() if "FINDING" in ln]
+    out["history"] = {
+        "exit_code": code,
+        "findings": len(findings),
+        "clean": code == 0,
+        "note": "; ".join(findings[:5])[:400],
+    }
     return out
+
+
+def _count_findings(text: str) -> list[str]:
+    """The findings in a scan's output.
+
+    The history scan names them as HISTORY FINDING and the tree scan
+    reports a count and then lists them, so both forms are counted. A
+    counter that only understood one of them reported zero findings for a
+    tree that had one in it, and "the tree is clean" said more than the
+    scan had actually shown.
+    """
+    lines = [ln for ln in text.splitlines() if "FINDING" in ln]
+    for ln in text.splitlines():
+        stripped = ln.strip()
+        if stripped.startswith("secret scan:") and "finding(s)" in stripped:
+            count = stripped.split("finding(s)")[0].split(":")[-1].strip()
+            try:
+                if int(count) > 0:
+                    lines.append(stripped)
+            except ValueError:
+                pass
+    return lines
+
+
+def scan_tree(checkout: Path) -> dict:
+    """The tree of a checkout, with the findings counted."""
+    scanner = Path(__file__).resolve().parent.parent / "tools" / "scan_for_secrets.py"
+    code, stdout, stderr = sh([sys.executable, str(scanner), "--repo",
+                               str(checkout)], timeout=3600)
+    text = stdout or stderr or ""
+    findings = _count_findings(text)
+    return {
+        "exit_code": code,
+        "findings": len(findings),
+        "clean": code == 0,
+        "note": "; ".join(findings[:5])[:400],
+    }
 
 
 def main() -> int:
@@ -291,6 +364,12 @@ def main() -> int:
         if entry["git"].get("mirror"):
             entry["secret_scan"] = secret_scan(dest)
             entry["restore_drill"] = restore_drill(dest, WORK / f"{short}-restored")
+            # The tree scan runs against the restored checkout, which is a
+            # normal clone with an index and a worktree. A mirror has
+            # neither, so scanning one finds nothing at all.
+            restored = WORK / f"{short}-restored"
+            if restored.is_dir():
+                entry["secret_scan"]["tree"] = scan_tree(restored)
         entries.append(entry)
         print(f"  commits: {entry['git']['counts'].get('commits')}  "
               f"branches: {entry['git']['counts'].get('branches')}  "
