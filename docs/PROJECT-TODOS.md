@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **259** (233 open, 26 done)
+- Tasks: **259** (231 open, 28 done)
 
 ## By project
 
@@ -18,7 +18,7 @@
 | aetherius-os | 52 | 9 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 14 | 1 |
+| agent-bridge | 13 | 2 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -32,7 +32,7 @@
 | genesis | 7 | 7 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
-| ide-workspace | 11 | 6 |
+| ide-workspace | 10 | 7 |
 | ledgerlands | 10 | 2 |
 | mat | 13 | 0 |
 | niche-platform | 3 | 0 |
@@ -2161,12 +2161,12 @@ Acceptance:
 - **Status:** OPEN
 - **Source:** owner-inspection — Agent-Bridge/tests/test_actions_intake_mutations.py, 2026-10-21
 
-The Bridge's test suite runs a mutation proof: for each mutation it copies the whole repository into a temporary directory, changes one line, and runs the affected tests there, expecting them to fail. Each of those runs is a separate pytest process over several test files, and the pytest subset takes about seventy seconds on its own. The child's output is captured rather than streamed, so the suite's own log does not grow while it works, and the parent process does no work of its own while it waits. The result is a suite that looks frozen: flat processor time, no new output, no progress line, for as long as the mutation proof runs.
+The Bridge's test suite runs a mutation proof. For each of twenty-three mutations it copies the whole repository into a temporary directory, changes one line, and runs the affected tests there, expecting them to fail. Each of those runs is a separate pytest process, and the pytest subset takes about seventy seconds on its own, so the proof alone is roughly half an hour. The child's output is captured rather than streamed, so the suite's own log does not grow while it works, and the parent process does no work of its own while it waits. The result is a suite that looks frozen: flat processor time, no new output, no progress line, for as long as the proof runs.
 
 Evidence:
 
 ```
-Observed twice on 2026-10-21. The suite was left running twice and was judged hung both times, and had to be killed both times. The pytest subset run on its own passed 107 tests in 69.69 seconds. The copy-and-mutate pattern is in tests/test_actions_intake_mutations.py, which copies the repository with shutil.copytree and runs the suite in the copy.
+Observed three times on 2026-10-21. The suite was judged hung twice and had to be killed both times, and the third run was left to finish. The pytest subset run on its own passed 107 tests in 69.69 seconds, and the mutation list holds twenty-three entries, so the proof is expected to take about half an hour. The copy-and-mutate pattern is in tests/test_actions_intake_mutations.py, which copies the repository with shutil.copytree and runs the suite in the copy.
 ```
 
 Acceptance:
@@ -2174,6 +2174,7 @@ Acceptance:
 - [ ] The suite says what it is doing while it is doing it
 - [ ] A person watching the run can tell the difference between working and stuck
 - [ ] The mutation proof does not have to be part of the default test command to be trusted
+- [ ] The proof reports which mutation it is on
 
 ### ⬜ TODO-AGENT-BRIDGE-003 — Choose and record a licence for Agent-Bridge
 
@@ -2704,19 +2705,23 @@ Acceptance:
 - [ ] The reason is the transport's own text, not a paraphrase
 - [ ] A connected backend is unaffected
 
-### ⬜ TODO-IED-103 — One IDE tab uses 30% of the Bridge's rate limit, and the limit is shared by everything on the machine
+### ✅ TODO-IED-103 — One IDE tab uses 30% of the Bridge's rate limit, and the limit is shared by everything on the machine
 
 - **Project:** ide-workspace
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** owner-inspection — Agent-Bridge/service.py and Aetherius-OS/apps/IDE-Workspace/workspace/app/src, 2026-10-21
 
-The Bridge allows 120 requests a minute per address, and everything on the machine shares 127.0.0.1. One IDE tab polls three routes every five seconds, which is 36 requests a minute, so a third of the budget goes to one tab. Four tabs exhaust it. This was reached in practice: with six tabs open the Bridge began answering 429 and the IDE reported itself disconnected.
+The Bridge allows 120 requests a minute per address, and everything on the machine shares 127.0.0.1. The IDE polled three routes every five seconds, which is thirty-six requests a minute, so one tab used a third of the whole budget and four tabs exhausted it. This was reached in practice: with six tabs open the Bridge began answering 429 and the IDE reported itself disconnected. The poll was asking the same question three times, because the runtime route reports the health and the model inventory and the IDE was not reading them from there.
 
 Evidence:
 
 ```
 Agent-Bridge rate_limit_per_min defaults to 120 and _rate_ok counts per client address over a sixty second window. The IDE's BRIDGE_POLL_MS is 5000 and fetchBridgeStatus issues three requests per cycle.
 ```
+
+Resolution:
+
+Resolved 2026-10-21. The IDE now asks the Bridge once per poll instead of three times. The runtime route already reports the health and the model inventory, so the separate health and model requests were two more requests for information the first one carried. A Bridge that does not carry the models in its runtime snapshot is still supported: the second request is made only when the first one did not supply them. One tab now costs twelve requests a minute instead of thirty-six, which is a tenth of the Bridge's budget rather than a third, and several tabs can be open without any of them being throttled. Four tests in src/bridge.test.ts pin the request count, the fallback, and the rule that the reason for a failure survives to the interface.
 
 Acceptance:
 
@@ -3633,19 +3638,23 @@ Acceptance:
 
 - [ ] The full gate runs materially faster, or its cost is bounded and scheduled
 
-### ⬜ TODO-IED-104 — The Bridge logs a full traceback every time the browser abandons a request
+### ✅ TODO-IED-104 — The Bridge logs a full traceback every time the browser abandons a request
 
 - **Project:** agent-bridge
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** owner-inspection — Agent-Bridge/service.py, 2026-10-21
 
-A browser that navigates away mid-request makes the Bridge's write fail with ConnectionAbortedError, and the Bridge prints the whole traceback for it. During ordinary use this produced thousands of lines, which buries the real errors in the log and makes the log unreadable when something actually has gone wrong.
+A browser that navigates away mid-request makes the Bridge's write fail with ConnectionAbortedError, and the Bridge printed the whole traceback for it. During ordinary use this produced thousands of lines, which buries the real errors in the log and makes the log unreadable when something actually has gone wrong. The fix has to be narrow: a client that has gone away is not a server error, but a fault in the service is, and it must still be reported.
 
 Evidence:
 
 ```
 The Bridge's output during one session of ordinary IDE polling was 3712 lines, the majority of them ConnectionAbortedError tracebacks from abandoned requests.
 ```
+
+Resolution:
+
+Resolved 2026-10-21. The handler now catches the three ways a client can disappear, and closes the connection without complaint. A genuine fault still propagates and is still reported, which is the line that matters: a swallowed real error would be worse than the noise. Two tests in tests/test_service_abandoned_connections.py cover it, and they were checked against the unfixed service, where they fail with the traceback they are meant to prevent.
 
 Acceptance:
 
