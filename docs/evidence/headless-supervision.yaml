@@ -1,0 +1,105 @@
+schema_version: 1
+generated_at: '2026-10-21T21:10:41.174852+00:00'
+generated_by: tools/prove_headless_supervision.py
+notes:
+- 'Section 5 of the owner''s directive, demonstrated: the supervision and the message receipts work while
+  the UI/dashboard is offline, and a provider failure does not stall the other project lanes.'
+- The dashboard's server builder was replaced with one that raises if anything calls it, so the run proves
+  the dashboard was not started rather than asserting it.
+- The OpenCode CLI is really invoked and whatever it says is recorded. The worker side of the loop is
+  a deterministic stand-in, so the proof is a proof and not a demonstration of a model's luck.
+- The receipts are read back out of the SQLite file and the JSONL audit on disk after the run, not out
+  of the objects that wrote them.
+steps:
+- step: the dashboard server is poisoned, so it cannot be used
+  ok: true
+  what was done: the dashboard's own builder was replaced with one that raises if anything calls it
+- step: the OpenCode CLI is really invoked, and says what it says
+  ok: true
+  the state it reported: AVAILABLE
+  the evidence it gave: '[''opencode session list returned 0 sessions'']'
+  the binary: C:/Users/jpowe/AppData/Roaming/npm/opencode.cmd
+- step: the Hermes sub-agent adapter answers honestly
+  ok: true
+  the state it reported: NO_FUNC
+- step: a provider failure on one lane did not stall the others
+  ok: true
+  the provider failures:
+  - LANE-PROVIDER-DOWN
+  what stopped the queue: null
+  attempted: 3
+  verified: 2
+  failed: 1
+  the status: queue_drained
+  the tasks:
+  - task_id: LANE-PROVIDER-DOWN
+    status: FAILED_DELIVERY
+  - task_id: LANE-ALPHA
+    status: VERIFIED
+    steps:
+    - deliver
+    - deliver
+    - ack
+    - start
+    - write_set
+    - independent_qa
+  - task_id: LANE-BETA
+    status: VERIFIED
+    steps:
+    - deliver
+    - deliver
+    - ack
+    - start
+    - write_set
+    - independent_qa
+    - deliver
+    - ack
+    - start
+    - write_set
+    - independent_qa
+- step: every lane was attempted, and the run drained the queue
+  ok: true
+  the status: queue_drained
+  the lanes never attempted: []
+- step: there is a durable receipt for every message
+  ok: true
+  the receipts on disk: 3
+  the database: C:\Users\jpowe\AppData\Local\Temp\headless_supervision_q1vs4v4k\messages.db
+  the states:
+    LANE-PROVIDER-DOWN: PENDING
+    LANE-ALPHA: DELIVERED
+    LANE-BETA: DELIVERED
+- step: a receipt records the delivery with its evidence and its times
+  ok: true
+  the receipt for LANE-ALPHA:
+    message_id: msg_a4ec447f9bd04833
+    intent: TASK_ASSIGN
+    delivery_state: DELIVERED
+    sender_agent: hermes
+    receiver_agent: scripted
+    delivered_at: 1792617040.775295
+    acknowledged_at: null
+- step: the receipt for the failed lane says it was not delivered
+  ok: true
+  the receipt for LANE-PROVIDER-DOWN:
+    message_id: msg_35271c34c5b0444f
+    intent: TASK_ASSIGN
+    delivery_state: PENDING
+    delivered_at: null
+- step: every communication is on the audit trail
+  ok: true
+  the audit entries: 5
+  the actions:
+  - delivered
+  - submitted
+  the audit file: C:\Users\jpowe\AppData\Local\Temp\headless_supervision_q1vs4v4k\messages.audit.jsonl
+- step: the dashboard was never started
+  ok: true
+  the times the dashboard's builder was called: 0
+  the proof ran entirely in process: true
+- step: the fabric recovers its undelivered work after a restart
+  ok: true
+  the messages still pending: 3
+  note: the failed lane's message is still pending, and a later run would pick it up rather than lose
+    it
+all_steps_ok: true

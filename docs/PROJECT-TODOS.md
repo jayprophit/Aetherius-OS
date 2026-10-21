@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **305** (244 open, 61 done)
+- Tasks: **308** (244 open, 64 done)
 
 ## By project
 
@@ -19,7 +19,7 @@
 | aetherius-os | 54 | 18 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 19 | 13 |
+| agent-bridge | 19 | 16 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -975,6 +975,78 @@ Acceptance:
 - [ ] The tests ask the question the product answers
 - [ ] The decision is unchanged
 - [ ] The condition is reproducible and the fix is verified against it
+
+### ✅ TODO-BRN-014 — A provider failure on one lane stopped every other lane in the standing queue
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-directive — Aetherius_GitHub_Diagnostic_2026-10-21.md section 5
+
+The standing loop broke out of the queue at the first failed task, so one lane's provider going down stopped every other lane. The directive says provider failures must not stall project lanes.
+
+Evidence:
+
+```
+The loop now tells the caller what went wrong, and the queue distinguishes the two kinds of failure. A failure that means the work could not be handed over is the provider's failure: the lane is recorded, with the reason, and the queue carries on. A failure that means the work was handed over and the worker did not complete it is a real blocker, and the queue stops there and says which task stopped it. The run's status says which of the two happened, and 'queue_drained' means every ready task was ATTEMPTED rather than that every one verified.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The branch's own test said a delivery failure stopped the queue, and that test is updated to the owner's contract: the failure is still recorded as an intervention point, and the other lanes keep moving.
+
+Acceptance:
+
+- [ ] A provider failure on one lane does not stop the others
+- [ ] A work failure still stops the queue and names the task
+- [ ] The run says what happened, in counts and in reasons
+
+### ✅ TODO-BRN-015 — Take the validated supervision and message units onto the default branch, by selection
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-directive — Aetherius_GitHub_Diagnostic_2026-10-21.md section 5, and the branch split it names
+
+The audit named the branch unit/external-worker-telemetry, said it was 75 ahead and 25 behind main, and said to inspect the changes and select validated units rather than blind-merge them, and not to claim the default branch contains fully integrated autonomous communications.
+
+Evidence:
+
+```
+Nine units and their own tests were taken out of the branch by file: the message schema and its durable bus, the standing supervisor, the standing loop, the scope guard, the lifecycle evidence, the project lanes, the supervision machinery and the worker adapters. They have no local module dependencies, and the branch's own 127 tests pass on main with them. The branch's UI and documentation are left where they are.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The selection is nine units and eight test files, and the branch's 127 tests pass on main.
+
+Acceptance:
+
+- [ ] The units are selected, not merged
+- [ ] Their own tests pass on the default branch
+- [ ] No unrelated work came with them
+
+### ✅ TODO-BRN-016 — Demonstrate the Hermes/OpenCode supervision and the message receipts with the dashboard offline
+
+- **Project:** agent-bridge
+- **Status:** DONE
+- **Source:** owner-directive — Aetherius_GitHub_Diagnostic_2026-10-21.md section 5
+
+The directive asks for the supervision and the receipts to be demonstrated while the UI/dashboard is offline. A demonstration that says the dashboard was not needed is not a demonstration.
+
+Evidence:
+
+```
+tools/prove_headless_supervision.py drives the real units with the dashboard's server builder replaced by one that raises, so the run proves the dashboard was never started rather than asserting it. The receipts are read back out of the SQLite file and the JSONL audit on disk after the run, not out of the objects that wrote them. The OpenCode CLI is really invoked: it reported AVAILABLE, with the evidence that the session list returned 0 sessions. The Hermes sub-agent adapter reported NO_FUNC, which is its honest answer. Eleven of eleven steps succeeded.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The evidence is at docs/evidence/headless-supervision.yaml. What is NOT claimed is that a real model did the work: the worker side of the demonstration is a deterministic stand-in, so that it is a proof and not a demonstration of a model's luck.
+
+Acceptance:
+
+- [ ] The dashboard is provably not started
+- [ ] The receipts are read back off the disk
+- [ ] The OpenCode CLI is really invoked and whatever it says is recorded
 
 ### ⬜ TODO-PLAT-001 — Agent Bridge's CI is red and the failures are not classified
 
