@@ -1819,10 +1819,11 @@ todos:
     found 27 open, 8 of them priority one: capability-scoped authority, delegation with narrowing scope,
     hive communication, crash recovery and resume, the free-first admission guard, task decomposition,
     durable task state, and tool execution with sandboxing.'
-  evidence: Six of the eight are now closed. Capability-scoped authority was closed by the authority engine;
-    delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery
-    by the durable task registry; and the free-first admission and zero-spend guard by the admission gate.
-    The two still open are task decomposition and planning, and tool execution with sandboxing.
+  evidence: Seven of the eight are now closed. Capability-scoped authority was closed by the authority
+    engine; delegation with narrowing scope and hive communication by the hive; durable task state and
+    crash recovery by the durable task registry; the free-first admission and zero-spend guard by the
+    admission gate; and task decomposition and planning by the planner, which also gave the organism loop
+    its plan stage. The one still open is tool execution with sandboxing.
   acceptance:
   - Each priority-one gap moves to IMPLEMENTED or VERIFIED with a test that proves it
   - The gap registry is regenerated and the report shows the change
@@ -4302,4 +4303,76 @@ todos:
   acceptance:
   - The repository is public
   - Every first-party repository is public
+  blocks: []
+- id: TODO-SEC-002
+  title: Rotate the credentials that were committed to the trading bot
+  project: trading-bot
+  status: OPEN
+  priority: 1
+  source:
+    kind: secret-scan
+    ref: tools/scan_workspace_secrets.py, 2026-10-20
+  detail: 'The trading bot carried six live credentials in its history: an AWS account email and password,
+    an AWS access key id, a Google API key, a Groq key, an OpenAI project key, and a Coinbase API secret.
+    They are redacted from the working tree, but a credential in the history is a published credential,
+    and the company that used them, Sifdat, is dissolved, so the accounts may well still be live. Only
+    the owner can rotate them.'
+  evidence: 'A scan of every repository in the workspace found them: daily-logs/03-10-2024.md held the
+    AWS account and password, production/Facial_Authentication/backend/app.js the AWS access key id, production/AI-Voice-assistant/
+    assistant.py and crypto.py the Google, Groq and OpenAI keys, and production/API/.env the Coinbase
+    secret. All are redacted in the working tree and pushed on 2026-10-20.'
+  acceptance:
+  - Every credential is rotated at its provider
+  - The histories are rewritten, or the repositories stay private until they are
+  - A scan of the workspace finds no credential in a publishable location
+  blocks: []
+- id: TODO-SEC-003
+  title: Scan every repository in the workspace, not just Aetherius OS
+  project: aetherius-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: secret-scan
+    ref: tools/scan_workspace_secrets.py, 2026-10-20
+  detail: 'The secret scanner that guards Aetherius OS only guarded Aetherius OS, so the absorbed projects
+    had no guard at all, and two of them carried live credentials. The scanner now covers every repository
+    in the workspace, and it covers the working tree rather than only the tracked files, because an untracked
+    file is one add away from being published. It reports what it finds and changes nothing: a credential
+    has to be rotated at the provider as well as removed from the tree.'
+  evidence: 'The scan found the six credentials in the trading bot and the one in self-building-ai. It
+    also found a flaw in itself: the placeholder filter matched the label rather than the value, so a
+    line reading ''Password: Asdf@6773'' was treated as a placeholder, and the key patterns did not cover
+    the Groq prefix or an OpenAI key with a hyphen in it. Both were fixed, and the two keys the first
+    pass missed were redacted.'
+  acceptance:
+  - Every repository in the workspace is scanned
+  - The scan runs as part of the build gate
+  - A finding in a publishable location fails the gate
+  blocks: []
+- id: TODO-GAP-005
+  title: Close the task decomposition and planning gap
+  project: genesis
+  status: DONE
+  priority: 1
+  source:
+    kind: gap-analysis
+    ref: Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml
+  detail: 'The planner turns an objective into a plan whose steps carry their dependencies, so the steps
+    that may run now are computed rather than guessed. A plan that cannot be executed is refused: a dependency
+    on a step that does not exist, a dependency on itself and a dependency cycle are all refused, because
+    a plan that waits for ever is worse than no plan. When a step fails, the steps that depended on it
+    are held and the objective is decomposed again with the reason, so the work continues rather than
+    restarting. The organism loop borrows the planner and records the plan it produced, so its plan stage
+    is executed rather than marked missing.'
+  evidence: Genesis includes/genesis/agents/planner.hpp and src/agents/planner.cpp, with tests/planner_tests.cpp
+    proving fifty-six checks and tests/organism_loop_tests.cpp proving ninety-nine. The requirement registry
+    carries REQ-PLAN-DECOMPOSE-001, and the gap analysis records GAP-PLAN-001 as VERIFIED. The whole Genesis
+    suite passes, twenty-seven of twenty-seven.
+  acceptance:
+  - GAP-PLAN-001 is VERIFIED and cites the planner
+  - The organism loop's plan stage is executed rather than marked missing
+  - A failed step is re-planned with the reason rather than restarted
+  resolution: Resolved 2026-10-21. The planner closes the gap, and the organism loop now has its plan
+    stage. Fifty-six checks in tests/planner_tests.cpp and ninety-nine in tests/organism_loop_tests.cpp
+    prove it, and the whole Genesis suite passes.
   blocks: []

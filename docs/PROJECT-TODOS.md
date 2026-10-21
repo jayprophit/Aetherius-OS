@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-20
-- Tasks: **242** (225 open, 17 done)
+- Tasks: **245** (227 open, 18 done)
 
 ## By project
 
@@ -15,7 +15,7 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 47 | 8 |
+| aetherius-os | 48 | 8 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 12 | 0 |
@@ -29,7 +29,7 @@
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
 | football-card-game | 2 | 0 |
-| genesis | 8 | 4 |
+| genesis | 8 | 5 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
 | ide-workspace | 11 | 2 |
@@ -42,7 +42,7 @@
 | qva-merged | 3 | 0 |
 | self-building-ai | 2 | 0 |
 | sovereign-financial-os | 2 | 0 |
-| trading-bot | 4 | 0 |
+| trading-bot | 5 | 0 |
 | universal-bridge | 5 | 1 |
 | veyra | 3 | 0 |
 | virtual-assistant | 2 | 0 |
@@ -752,7 +752,7 @@ The gap analysis assessed 31 agent-platform capabilities against the Genesis reg
 Evidence:
 
 ```
-Six of the eight are now closed. Capability-scoped authority was closed by the authority engine; delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery by the durable task registry; and the free-first admission and zero-spend guard by the admission gate. The two still open are task decomposition and planning, and tool execution with sandboxing.
+Seven of the eight are now closed. Capability-scoped authority was closed by the authority engine; delegation with narrowing scope and hive communication by the hive; durable task state and crash recovery by the durable task registry; the free-first admission and zero-spend guard by the admission gate; and task decomposition and planning by the planner, which also gave the organism loop its plan stage. The one still open is tool execution with sandboxing.
 ```
 
 Acceptance:
@@ -783,6 +783,30 @@ Acceptance:
 - [ ] GAP-MODEL-002 is VERIFIED and cites the admission gate
 - [ ] The admission gate's tests run in the Genesis build gate
 - [ ] The spend is zero while only free endpoints are used
+
+### ✅ TODO-GAP-005 — Close the task decomposition and planning gap
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** gap-analysis — Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml
+
+The planner turns an objective into a plan whose steps carry their dependencies, so the steps that may run now are computed rather than guessed. A plan that cannot be executed is refused: a dependency on a step that does not exist, a dependency on itself and a dependency cycle are all refused, because a plan that waits for ever is worse than no plan. When a step fails, the steps that depended on it are held and the objective is decomposed again with the reason, so the work continues rather than restarting. The organism loop borrows the planner and records the plan it produced, so its plan stage is executed rather than marked missing.
+
+Evidence:
+
+```
+Genesis includes/genesis/agents/planner.hpp and src/agents/planner.cpp, with tests/planner_tests.cpp proving fifty-six checks and tests/organism_loop_tests.cpp proving ninety-nine. The requirement registry carries REQ-PLAN-DECOMPOSE-001, and the gap analysis records GAP-PLAN-001 as VERIFIED. The whole Genesis suite passes, twenty-seven of twenty-seven.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The planner closes the gap, and the organism loop now has its plan stage. Fifty-six checks in tests/planner_tests.cpp and ninety-nine in tests/organism_loop_tests.cpp prove it, and the whole Genesis suite passes.
+
+Acceptance:
+
+- [ ] GAP-PLAN-001 is VERIFIED and cites the planner
+- [ ] The organism loop's plan stage is executed rather than marked missing
+- [ ] A failed step is re-planned with the reason rather than restarted
 
 ### ✅ TODO-GEN-001 — Discard the stale CMake cache in the Genesis build tree
 
@@ -1220,6 +1244,26 @@ Acceptance:
 - [ ] Source exists in the project directory
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
+
+### ⬜ TODO-SEC-002 — Rotate the credentials that were committed to the trading bot
+
+- **Project:** trading-bot
+- **Status:** OPEN
+- **Source:** secret-scan — tools/scan_workspace_secrets.py, 2026-10-20
+
+The trading bot carried six live credentials in its history: an AWS account email and password, an AWS access key id, a Google API key, a Groq key, an OpenAI project key, and a Coinbase API secret. They are redacted from the working tree, but a credential in the history is a published credential, and the company that used them, Sifdat, is dissolved, so the accounts may well still be live. Only the owner can rotate them.
+
+Evidence:
+
+```
+A scan of every repository in the workspace found them: daily-logs/03-10-2024.md held the AWS account and password, production/Facial_Authentication/backend/app.js the AWS access key id, production/AI-Voice-assistant/ assistant.py and crypto.py the Google, Groq and OpenAI keys, and production/API/.env the Coinbase secret. All are redacted in the working tree and pushed on 2026-10-20.
+```
+
+Acceptance:
+
+- [ ] Every credential is rotated at its provider
+- [ ] The histories are rewritten, or the repositories stay private until they are
+- [ ] A scan of the workspace finds no credential in a publishable location
 
 ### ⬜ TODO-TRADING-BOT-000 — Build the Multi-Cross-Platform-Trading-Bot project the manifest describes
 
@@ -1832,6 +1876,26 @@ Acceptance:
 
 - [ ] Every local project records its upstream, its local commit and its divergence
 - [ ] A check reports a project that has drifted
+
+### ⬜ TODO-SEC-003 — Scan every repository in the workspace, not just Aetherius OS
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** secret-scan — tools/scan_workspace_secrets.py, 2026-10-20
+
+The secret scanner that guards Aetherius OS only guarded Aetherius OS, so the absorbed projects had no guard at all, and two of them carried live credentials. The scanner now covers every repository in the workspace, and it covers the working tree rather than only the tracked files, because an untracked file is one add away from being published. It reports what it finds and changes nothing: a credential has to be rotated at the provider as well as removed from the tree.
+
+Evidence:
+
+```
+The scan found the six credentials in the trading bot and the one in self-building-ai. It also found a flaw in itself: the placeholder filter matched the label rather than the value, so a line reading 'Password: Asdf@6773' was treated as a placeholder, and the key patterns did not cover the Groq prefix or an OpenAI key with a hyphen in it. Both were fixed, and the two keys the first pass missed were redacted.
+```
+
+Acceptance:
+
+- [ ] Every repository in the workspace is scanned
+- [ ] The scan runs as part of the build gate
+- [ ] A finding in a publishable location fails the gate
 
 ### ✅ TODO-SRC-001 — Build the machine-checked owner source registry
 

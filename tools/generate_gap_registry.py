@@ -186,14 +186,12 @@ CAPABILITIES: list[dict] = [
 
     # -- planning -----------------------------------------------------------
     dict(id="GAP-PLAN-001", axis="planning", name="Task decomposition and planning",
-         status="PARTIAL", priority=1,
+         status="VERIFIED", priority=1,
          gap="Workflows are flat ordered steps with one tool call each. There is no "
              "decomposition, no dependency graph, no re-planning when a step fails, and the "
              "organism loop is missing its plan stage entirely.",
-         present="WorkflowDefinition holds an ordered list of WorkflowStep with a tool, an "
-                 "action and an approval flag, and the organism loop implements the stages "
-                 "around plan.",
-         requirements=['REQ-DEV-001', 'REQ-COG-PREDICT-001', 'REQ-ORGAN-001'], acceptance=["AT-01", "AT-15"],
+         present="The planner turns an objective into a plan whose steps carry their dependencies, so the steps that may run now are computed rather than guessed. A plan that cannot be executed is refused: a dependency on a step that does not exist, a dependency on itself and a dependency cycle are all refused, because a plan that waits for ever is worse than no plan. When a step fails, the steps that depended on it are held and the objective is decomposed again with the reason, so the work continues rather than restarting. The organism loop borrows the planner and records the plan it produced, so its plan stage is executed rather than marked missing",
+         requirements=['REQ-DEV-001', 'REQ-COG-PREDICT-001', 'REQ-ORGAN-001', 'REQ-PLAN-DECOMPOSE-001'], acceptance=["AT-01", "AT-15"],
          gap_register=["D03"], platforms=["claude_code", "chatgpt", "opencode", "manus"]),
     dict(id="GAP-PLAN-002", axis="planning", name="Durable task state, checkpoints and resume",
          status="VERIFIED", priority=1,
