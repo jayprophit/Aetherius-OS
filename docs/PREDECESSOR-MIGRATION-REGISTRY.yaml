@@ -1,0 +1,235 @@
+schema_version: 1
+source_date: '2026-10-21'
+generated_by: tools/build_predecessor_register.py
+contract:
+  schema: aetherius.predecessor-migration.v1
+  states:
+  - UNASSESSED
+  - IDENTIFIED
+  - LINEAGE_VERIFIED
+  - SNAPSHOTTED
+  - INVENTORIED
+  - CLASSIFIED
+  - MAPPED
+  - MIGRATED
+  - REFERENCED
+  - RETAINED_HISTORICALLY
+  - INTEGRATION_VERIFIED
+  - RETENTION_VERIFIED
+  - ARCHIVED_GRACE_PERIOD
+  - OWNER_DELETE_APPROVED
+  - DELETED_AND_RECONCILED
+  relations:
+  - ACTIVE_CURRENT
+  - CONFIRMED_PREDECESSOR
+  - PROBABLE_PREDECESSOR
+  - RESEARCH_FORK
+  - THIRD_PARTY_REFERENCE
+  - MIRROR
+  - DUPLICATE
+  - EMPTY_SCAFFOLD
+  - INDEPENDENT_ACTIVE_PROJECT
+  - HISTORIC_ARCHIVE
+  - UNKNOWN
+  dispositions:
+  - ADOPT_NOW
+  - ADAPT
+  - MERGE_MECHANISM
+  - REIMPLEMENT_ORIGINALLY
+  - BENCHMARK_REFERENCE
+  - RESEARCH_REFERENCE
+  - ARCHIVE_ONLY
+  - DUPLICATE_SAME_CONTENT
+  - SUPERSEDED
+  - LEGAL_REVIEW
+  - SECURITY_QUARANTINE
+  - REJECT_WITH_REASON
+  - UNRESOLVED
+  deletion_gates:
+  - gate: owner_confirmed
+    requires: the owner has confirmed the predecessor and its destinations
+  - gate: captured
+    requires: the whole history and the non-git resources are captured, or the exceptions are identified
+      and accepted
+  - gate: restore_tested
+    requires: the backups are hash-verified, independently stored and restore-tested
+  - gate: mapped_or_archived
+    requires: the reusable material is mapped into the current projects or preserved in a searchable historical
+      archive with exact provenance
+  - gate: destination_green
+    requires: the destination's CI, functional and security tests pass for the adopted features
+  - gate: legal_and_secret_closed
+    requires: the legal and secret exposure reviews are closed and the affected credentials are revoked
+      or rotated
+  - gate: links_relocated
+    requires: the links, CI and dependencies that referenced the old repository are relocated or replaced,
+      and the external dependents are assessed
+  - gate: grace_elapsed
+    requires: a reversible archive or read-only grace period has elapsed
+  - gate: owner_approved
+    requires: the owner has approved the irreversible deletion by exact repository name or by a named
+      reviewed batch
+notes:
+- One entry per predecessor, in the contract the owner's predecessor absorption programme of 21 October
+  2026 specifies.
+- The deletion gate is checked, not described. A repository is not delete-eligible unless every one of
+  the owner's nine gates holds, and the tool says which gate does not.
+- The owner approves a deletion by exact repository name. The tool never deletes anything, and no entry
+  is ever marked approved by the tool.
+- PRESERVE, CLASSIFY, MAP, INTEGRATE, TEST, VERIFY, ARCHIVE, APPROVED DELETE. If it is not evidenced,
+  it is not complete.
+problems: []
+predecessors:
+- schema: aetherius.predecessor-migration.v1
+  source_repo: jayprophit/aetherial-platform
+  repository_id: 1084029910
+  relation: CONFIRMED_PREDECESSOR
+  confirmed_by: OWNER
+  primary_target: Aetherius-OS
+  secondary_targets:
+  - Genesis
+  - Agent-Bridge
+  - IDE-Workspace
+  state: IDENTIFIED
+  head_refs:
+  - branch: main
+    sha: 3fa98dec3b0d722d0751351023569ffce2eddd6e
+  - branch: master
+    sha: d6938fe23b60c8ea281b033f44e57f22f11551f5
+  default_branch: main
+  archived: false
+  visibility: public
+  declared_licence: ''
+  note: The owner confirmed this one on 21 October 2026. It carries accounts and permissions, social,
+    commerce, education, jobs, content, the marketplace, the dashboard and the unified data types, and
+    its CI stops at the Node setup because the workflow expects a root lockfile that is not there.
+  backup:
+    git_mirror_sha256: null
+    git_bundle_sha256: null
+    git_lfs_verified: false
+    external_assets_exported: false
+    issues_prs_wiki_releases_captured: false
+    independent_copies: 0
+    restore_drill_passed: false
+    unresolved_capture_gaps:
+    - The capture has not been run for this repository.
+  security:
+    historical_secret_exposure: REVIEW_REQUIRED
+    owner_rotation_status: UNKNOWN
+  licence:
+    classification: REVIEW_REQUIRED
+  artifacts:
+    total: null
+    classified: 0
+    dispositions: {}
+  integration:
+    tasks: []
+    target_commit_shas: []
+    tests: []
+    qa_accepted: false
+  retirement:
+    archive_grace_complete: false
+    delete_eligible: false
+    owner_approved: false
+    deletion_timestamp: null
+    links_relocated: false
+- schema: aetherius.predecessor-migration.v1
+  source_repo: jayprophit/Aetherial
+  repository_id: 1027510231
+  relation: PROBABLE_PREDECESSOR
+  confirmed_by: ''
+  primary_target: Aetherius-OS
+  secondary_targets: []
+  state: IDENTIFIED
+  head_refs:
+  - branch: main
+    sha: bbd40135d83f8a0d7244a0d31c57f2c8818c894a
+  default_branch: main
+  archived: true
+  visibility: public
+  declared_licence: GPL-3.0
+  note: Archived with an ABSORBED.md notice, which is a claim and not proof of incorporation. Its manifest
+    says about 276,820 source lines and zero test files, and its licence is GPLv3, so it cannot be integrated
+    into a proprietary product without rights clearance. The absorption claim is unverified.
+  backup:
+    git_mirror_sha256: null
+    git_bundle_sha256: null
+    git_lfs_verified: false
+    external_assets_exported: false
+    issues_prs_wiki_releases_captured: false
+    independent_copies: 0
+    restore_drill_passed: false
+    unresolved_capture_gaps:
+    - The capture has not been run for this repository.
+  security:
+    historical_secret_exposure: UNKNOWN
+    owner_rotation_status: UNKNOWN
+  licence:
+    classification: REVIEW_REQUIRED
+  artifacts:
+    total: null
+    classified: 0
+    dispositions: {}
+  integration:
+    tasks: []
+    target_commit_shas: []
+    tests: []
+    qa_accepted: false
+  retirement:
+    archive_grace_complete: false
+    delete_eligible: false
+    owner_approved: false
+    deletion_timestamp: null
+    links_relocated: false
+- schema: aetherius.predecessor-migration.v1
+  source_repo: jayprophit/aetherium
+  repository_id: 1011026268
+  relation: PROBABLE_PREDECESSOR
+  confirmed_by: ''
+  primary_target: Aetherius-OS
+  secondary_targets:
+  - Agent-Bridge
+  - Genesis
+  - IDE-Workspace
+  state: IDENTIFIED
+  head_refs:
+  - branch: main
+    sha: 21d758dd661a2bd70a7f85ffcd8a814ced257242
+  default_branch: main
+  archived: true
+  visibility: public
+  declared_licence: MIT
+  note: Archived with an ABSORBED.md notice, MIT licence, and source, configuration, scripts and knowledge
+    assets visible. Its manifest paradoxically says NOT_STARTED and zero source lines, which contradicts
+    the tree, so the inventory and the manifest have to be reconciled before the absorption claim is checked.
+    The claim is unverified.
+  backup:
+    git_mirror_sha256: null
+    git_bundle_sha256: null
+    git_lfs_verified: false
+    external_assets_exported: false
+    issues_prs_wiki_releases_captured: false
+    independent_copies: 0
+    restore_drill_passed: false
+    unresolved_capture_gaps:
+    - The capture has not been run for this repository.
+  security:
+    historical_secret_exposure: UNKNOWN
+    owner_rotation_status: UNKNOWN
+  licence:
+    classification: REVIEW_REQUIRED
+  artifacts:
+    total: null
+    classified: 0
+    dispositions: {}
+  integration:
+    tasks: []
+    target_commit_shas: []
+    tests: []
+    qa_accepted: false
+  retirement:
+    archive_grace_complete: false
+    delete_eligible: false
+    owner_approved: false
+    deletion_timestamp: null
+    links_relocated: false

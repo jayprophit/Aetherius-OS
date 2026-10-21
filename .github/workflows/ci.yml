@@ -1,0 +1,105 @@
+name: Aetherius OS
+
+# The programme's own gate, run independently.
+#
+# Until this existed, the repository had no product workflow at all. The
+# tests passed locally and the manifest said so, and nothing on the
+# account could confirm either. An agent reading the repository had no
+# way to tell a working programme from a plausible one.
+#
+# Every job here is a gate the owner can read: the secret scan, the
+# type check, the test suite, the build, and the register validation
+# that keeps the machine-readable registers honest.
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aetherius-os-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: typecheck, test and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: install
+        run: npm ci
+
+      - name: type check
+        run: npm run typecheck
+
+      - name: test
+        run: npm test
+
+      - name: build
+        run: npm run build
+
+  registers:
+    name: the registers agree with the disk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: install
+        run: npm ci
+
+      # The registers are generated from what is on the disk, so a
+      # register that has drifted from the disk is a register that is
+      # wrong. This job says so rather than letting the drift pass.
+      - name: validate the registers
+        run: npm run registry:validate
+
+  secret-scan:
+    name: no credential in the tracked tree
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # The scan reads what Git is tracking, not what is on the disk. It
+      # reports the file and the kind, never the value.
+      - name: scan the tracked tree
+        run: python tools/scan_for_secrets.py
+
+  secret-history:
+    name: no credential in the published history
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The history is what the account publishes. A credential that
+          # was removed from the tip is still in it.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # A finding here is a credential to rotate at the provider, not a
+      # line to delete. The scan names the file, the kind and the commit
+      # and never prints the value.
+      - name: scan the history
+        run: python tools/scan_for_secrets.py --history

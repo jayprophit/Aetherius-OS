@@ -68,6 +68,27 @@ ALLOWLIST: dict[str, str] = {
         "Holds deliberately fake credentials to prove the proposal validator rejects "
         "raw secrets. The values are not functional."
     ),
+    # These were found by the history scan on 21 October 2026. Each one holds
+    # a credential SHAPE and not a credential, and each has been checked.
+    "tests/test_h07_h09.py": (
+        "A test file for the secret detector itself. It holds a deliberately fake "
+        "Anthropic-shaped key to prove the detector fires, and the file has since "
+        "been deleted from the tree. The value is not functional."
+    ),
+    "knowledge_index.json": (
+        "An indexed document that quotes a code sample showing an OpenRouter "
+        "call. The key in the sample is seventeen characters, where a real one "
+        "is seventy-four, so it is a truncated example rather than a working "
+        "key. The file has since been deleted from the tree."
+    ),
+    "scripts/tests/chat-reconciliation.test.mjs": (
+        "A test that proves the reconciler notices a URL carrying credentials. "
+        "The URL is example.org and the userinfo is made up."
+    ),
+    "scripts/tests/scientific-catalogue-intake.test.mjs": (
+        "A test that proves the intake rejects URLs it should not follow. The "
+        "hosts are evil.example and the userinfo is made up."
+    ),
 }
 
 SKIP_DIRS = {".git", "node_modules", "dist", "build", "target", "coverage", "out"}
@@ -108,15 +129,108 @@ def scan_text(path: str, text: str) -> list[tuple[str, int]]:
     return found
 
 
+def history_blobs(repo: Path) -> list[tuple[str, str]]:
+    """Every blob ever committed, with the path it was committed at.
+
+    A credential that was removed from the latest commit is still in the
+    history, and the history is what the account publishes. Redaction in
+    the tip is not redaction.
+
+    The blob is identified by its content hash, and the path is the
+    first one it was seen at, so a file that was renamed does not appear
+    once per name.
+    """
+    out = subprocess.run(
+        ["git", "-C", str(repo), "rev-list", "--objects", "--all"],
+        capture_output=True, text=True, timeout=1800,
+    )
+    # A blob is identified by its content hash, so the same content
+    # committed at two paths is one scan. But two DIFFERENT blobs at the
+    # same path are two different pieces of content and both have to be
+    # scanned: the earlier version of a file is exactly where a
+    # credential that was later redacted still lives.
+    seen: dict[str, str] = {}
+    for line in (out.stdout or "").splitlines():
+        if not line:
+            continue
+        parts = line.split(" ", 1)
+        sha = parts[0]
+        path = parts[1] if len(parts) > 1 else ""
+        if not path:
+            continue
+        if any(f"/{d}/" in f"/{path}" for d in SKIP_DIRS):
+            continue
+        seen.setdefault(sha, path)
+    return list(seen.items())
+
+
+def blob_contents(repo: Path, shas: list[str]) -> dict[str, bytes]:
+    """The bytes of many blobs, read in one pass.
+
+    One `git cat-file` per blob is a process per blob, which is far too
+    slow to run in a build. The batch form reads them all in one.
+    """
+    if not shas:
+        return {}
+    request = "\n".join(shas) + "\n"
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(repo), "cat-file", "--batch"],
+            input=request.encode("utf-8"), capture_output=True, timeout=1800,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return {}
+    out = proc.stdout or b""
+    contents: dict[str, bytes] = {}
+    pos = 0
+    for sha in shas:
+        header_end = out.find(b"\n", pos)
+        if header_end < 0:
+            break
+        header = out[pos:header_end].decode("utf-8", "replace").split()
+        pos = header_end + 1
+        if len(header) < 3:
+            # "<sha> missing" or "<sha> ambiguous": the object is not here.
+            continue
+        try:
+            size = int(header[2])
+        except ValueError:
+            continue
+        contents[sha] = out[pos:pos + size]
+        pos += size + 1
+    return contents
+
+
+def commits_with_blob(repo: Path, sha: str) -> list[str]:
+    """The commits that carried a blob, so an owner can find it."""
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(repo), "log", "--all", "--format=%H %cs %s",
+             "--find-object=" + sha],
+            capture_output=True, text=True, timeout=600,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return []
+    return [ln for ln in (proc.stdout or "").splitlines() if ln.strip()]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--repo", default=str(REPO), help="repository to scan")
     ap.add_argument("--paths", nargs="*", default=None, help="scan these paths instead of the tracked tree")
+    ap.add_argument("--history", action="store_true",
+                    help="scan every blob ever committed, not only the ones in "
+                         "the current tree. A credential removed from the tip "
+                         "is still published in the history.")
+    ap.add_argument("--history-limit", type=int, default=20000,
+                    help="the most blobs to scan in a history scan")
     args = ap.parse_args()
 
     repo = Path(args.repo)
     if args.paths:
         candidates = list(args.paths)
+    elif args.history:
+        candidates = []
     else:
         candidates = [p for p in tracked_files(repo) if not any(f"/{d}/" in f"/{p}" for d in SKIP_DIRS)]
 
@@ -142,6 +256,30 @@ def main() -> int:
         text = raw.decode("utf-8", errors="replace")
         for kind, line in scan_text(rel, text):
             findings.append((rel, kind, line))
+
+    if args.history:
+        blobs = history_blobs(repo)[: args.history_limit]
+        print(f"history scan: {len(blobs)} blob(s) ever committed")
+        contents = blob_contents(repo, [sha for sha, _ in blobs])
+        for sha, path in blobs:
+            if allowlist_reason(path) is not None:
+                continue
+            raw = contents.get(sha)
+            if not raw or len(raw) > MAX_BYTES:
+                continue
+            if b"\x00" in raw[:4096]:
+                continue
+            text = raw.decode("utf-8", errors="replace")
+            hits = scan_text(path, text)
+            if not hits:
+                continue
+            for kind, line in hits:
+                print(f"  HISTORY FINDING {path} ({kind}) at line {line}, blob {sha[:12]}")
+                for commit in commits_with_blob(repo, sha)[:5]:
+                    print(f"      {commit[:120]}")
+                print("      The value is not printed. Rotate it at the provider:")
+                print("      a credential in a published history cannot be un-published.")
+                findings.append((path, kind, line))
 
     if skipped:
         print("Allowlisted files (each exclusion states its reason):")

@@ -1,0 +1,90 @@
+schema_version: 1
+source_date: '2026-10-21'
+generated_by: tools/capture_predecessor.py
+notes:
+- 'The capture the owner''s predecessor absorption programme requires before anything is migrated or deleted:
+  the whole history mirrored, a bundle, a SHA-256 of each, a git fsck, the GitHub-side context, a secret
+  scan of the tree and the history, and a test restoration.'
+- A backup that has never been restored is a hope, so the restore drill is a result and not a claim.
+- The tool writes the manifest. It never deletes anything.
+captures:
+- schema: aetherius.predecessor-capture.v1
+  source_repo: jayprophit/aetherial-platform
+  captured_at: '2026-10-21T09:34:16.768712+00:00'
+  metadata:
+    repository_id: 1084029910
+    source_url: https://github.com/jayprophit/aetherial-platform
+    clone_url: https://github.com/jayprophit/aetherial-platform.git
+    visibility: public
+    description: Comprehensive unified platform combining social networking, e-commerce, e-learning, AI,
+      crypto trading, and blockchain - built from scratch
+    default_branch: main
+    archived: false
+    owner: jayprophit
+    topics: []
+    created_at: '2025-10-27T05:48:07Z'
+    pushed_at: '2026-10-20T16:28:00Z'
+    declared_licence: ''
+    licence_file_present: false
+  git:
+    mirror: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\aetherial-platform.mirror
+    bundle: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\aetherial-platform.mirror.bundle
+    git_mirror_sha256: b2f2ccfde44f3627fa669aab6591a88e526b368fa52b51b10213f3454af54ca6
+    git_bundle_sha256: b2f2ccfde44f3627fa669aab6591a88e526b368fa52b51b10213f3454af54ca6
+    fsck:
+      exit_code: 0
+      clean: true
+      output: ''
+    counts:
+      branches: 4
+      tags: 0
+      commits: '352'
+    notes_captured: false
+    submodules: []
+    lfs_pointer_objects: 0
+    errors: []
+  github_context:
+    issues: []
+    pull_requests:
+    - number: 3
+      title: Bump the npm_and_yarn group across 1 directory with 2 updates
+      state: open
+      created_at: '2026-03-27T04:05:01Z'
+      author: dependabot[bot]
+      url: https://github.com/jayprophit/aetherial-platform/pull/3
+    - number: 2
+      title: Bump the npm_and_yarn group across 2 directories with 1 update
+      state: open
+      created_at: '2025-11-15T10:28:39Z'
+      author: dependabot[bot]
+      url: https://github.com/jayprophit/aetherial-platform/pull/2
+    - number: 1
+      title: Bump vite from 7.1.9 to 7.1.11 in the npm_and_yarn group across 1 directory
+      state: closed
+      created_at: '2025-10-27T17:06:02Z'
+      author: dependabot[bot]
+      url: https://github.com/jayprophit/aetherial-platform/pull/1
+    releases: []
+    wiki: a wiki is enabled
+    discussions: the discussions could not be listed
+    unexportable: []
+  secret_scan:
+    tree:
+      exit_code: 0
+      findings: 0
+      clean: true
+      note: ''
+    history:
+      exit_code: 1
+      findings: 4
+      clean: false
+      note: '  HISTORY FINDING tests/auth/validators/auth.validators.spec.ts (jwt) at line 50, blob 76daa9268ea4;   HISTORY
+        FINDING tests/auth/validators/auth.validators.spec.ts (jwt) at line 369, blob 76daa9268ea4;   HISTORY
+        FINDING client/public/docs/chat_05_claude_project_link.md (github-token) at line 15, blob 6ff6bcaf9722;   HISTORY
+        FINDING tests/auth/validators/auth.validators.spec.ts (jwt) at line 52, b'
+  restore_drill:
+    target: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\aetherial-platform-restored
+    ok: true
+    commits: 352
+    branches: 4
+    note: the history was restored and the restored copy passes git fsck

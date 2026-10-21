@@ -4,21 +4,21 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **264** (232 open, 32 done)
+- Tasks: **284** (240 open, 44 done)
 
 ## By project
 
 | Project | Open | Done |
 |---|---|---|
 | aetherial | 3 | 0 |
-| aetherial-platform | 4 | 0 |
+| aetherial-platform | 6 | 0 |
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 52 | 10 |
+| aetherius-os | 54 | 15 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 15 | 4 |
+| agent-bridge | 18 | 4 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -29,21 +29,21 @@
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
 | football-card-game | 2 | 0 |
-| genesis | 7 | 7 |
+| genesis | 7 | 11 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
-| ide-workspace | 10 | 7 |
-| ledgerlands | 10 | 2 |
+| ide-workspace | 10 | 8 |
+| ledgerlands | 11 | 2 |
 | mat | 13 | 0 |
 | niche-platform | 3 | 0 |
-| poietek | 13 | 0 |
+| poietek | 13 | 1 |
 | quantum-ai-assistant | 2 | 0 |
 | quantum-os | 2 | 0 |
 | qva-merged | 3 | 0 |
 | self-building-ai | 2 | 0 |
 | sovereign-financial-os | 2 | 0 |
 | trading-bot | 5 | 0 |
-| universal-bridge | 5 | 1 |
+| universal-bridge | 5 | 2 |
 | veyra | 3 | 0 |
 | virtual-assistant | 2 | 0 |
 | web-platform | 4 | 0 |
@@ -116,7 +116,7 @@ Acceptance:
 - **Status:** OPEN
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
-Literal credentials were found in the project's own source. They are compromised by being on disk in a recovered drive.
+Literal credentials were found in the project's own source. They are compromised by being on disk in a recovered drive. The history scan of 21 October 2026 found the credential the audit had flagged: the GitHub token was removed from the tip by the redaction commit of 20 October 2026, but the earlier version of the file is still reachable from main, so the token is still published in the account's history. It is a working credential of the right shape and the right length, so this is a revocation and not a deletion. The report is at docs/evidence/credential-exposure-report.yaml.
 
 Evidence:
 
@@ -129,6 +129,55 @@ Acceptance:
 - [ ] Every credential is rotated at the provider
 - [ ] No credential literal remains in the tree
 - [ ] The secret scanner gate rejects the pattern
+
+### ⬜ TODO-AETHERIAL-PLATFORM-004 — aetherial-platform is a confirmed predecessor, and its material is not extracted
+
+- **Project:** aetherial-platform
+- **Status:** OPEN
+- **Source:** owner-directive — AETHERIUS_PREDECESSOR_ABSORPTION_MASTER_PLAN_2026-10-21.md, section 1 and P0-2
+
+The owner confirmed this repository as a predecessor of Aetherius OS, with the cross-cutting functionality allowed to land in the correct shared subsystem. The plan is explicit that a name, a size or a fork-like appearance never establishes predecessor status, so the classification comes from the owner rather than from an inference. The repository holds about 200,070 lines across accounts and permissions, social, commerce, education, jobs, content, the marketplace, the dashboard and unified data types, and its CI stops at the Node setup because the workflow expects a root lockfile that is not there.
+
+Evidence:
+
+```
+The owner's plan of 21 October 2026 names the repository and its destination, and says the destination is Aetherius OS application and platform capabilities, with model and API features owned by Genesis or Agent Bridge becoming shared first-party capabilities under their legitimate owner. The plan also states that this is not proof that any extraction has happened, and none has.
+```
+
+Resolution:
+
+It follows the predecessor path in the register: capture, classify, map, integrate, test, verify, archive, and only then an approved deletion. The register entry says where it is in that sequence, and the deletion gate is closed until the capture and the integration are both proven.
+
+Acceptance:
+
+- [ ] The repository's whole history is captured and the capture is restore-tested
+- [ ] Every tracked file has a disposition, and the counting reconciles exactly
+- [ ] The capabilities that are adopted land in their correct owner with tests
+- [ ] The licence review is closed before anything is integrated
+- [ ] The CI runs, so the repository is not a build that cannot be built
+
+### ⬜ TODO-PRED-004 — The archived absorption claims have never been checked
+
+- **Project:** aetherial-platform
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md P0-3
+
+Two repositories are archived with an ABSORBED.md notice. The directive is clear that the notice is a claim and not proof of incorporation, and that one of them is GPLv3, so it cannot be integrated into a proprietary product without rights clearance.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+Both are recorded in the register as PREDECESSOR_CANDIDATE with the absorption claim UNVERIFIED, and the licence review is an open gate on deletion.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ⬜ TODO-AETHERION-ENGINE-000 — Build the aetherion-engine project the manifest describes
 
@@ -253,6 +302,75 @@ Acceptance:
 - [ ] Every application category has a stated control strategy
 - [ ] The strategy is recorded against the application registry
 - [ ] The first control surface is implemented and proven
+
+### ✅ TODO-BRN-001 — Freeze the authoritative branch matrix for every active project
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-001
+
+The audit asked for a matrix: repository, branch, SHA, upstream, ahead and behind, the production selection and the owner of the write set. Nine product repositories had more than one branch and no statement of which one was canonical.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+docs/BRANCH-MATRIX.yaml holds the matrix, and the decisions are checked against the live account so the register cannot go stale.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
+### ✅ TODO-BRN-002 — Aetherius OS's default branch was a separate outdated lineage
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-004
+
+The default branch was a December 2025 React and Vite shell with no common ancestor with the active branch, so an agent reading the repository saw an old shell rather than the programme. Three unrelated lineages sat in the repository and the oldest was the default.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The canonical branch is now the default and every other branch is preserved unchanged. No history was rewritten.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
+### ✅ TODO-CI-001 — Neither Aetherius OS nor the IDE had any product CI at all
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-009
+
+Neither repository had a workflows directory. The only runs on the account were Dependabot's dependency updates, which say nothing about whether the product works, and the IDE's own manifest said the Python Bridge integration was not exercised.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+Aetherius OS now has a workflow that type checks, tests, builds, validates the registers and scans both the tracked tree and the published history. The IDE has one that type checks, tests and builds, and a second that runs the Bridge integration tests.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ✅ TODO-GAP-002 — Close the hive gaps: delegation with narrowing scope, and hive messaging
 
@@ -397,6 +515,75 @@ Acceptance:
 
 - [ ] Every library file is read and classified
 - [ ] The content is routed to the project it belongs to
+
+### ⬜ TODO-PRED-001 — The predecessor migration register does not exist yet
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md P0-1
+
+The directive gives a state machine, a relation vocabulary, a disposition vocabulary and a registry contract, and the programme had none of it. The fork routing register classifies forks by how they are used; it does not track a predecessor's journey from identified to deleted and reconciled.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+docs/PREDECESSOR-MIGRATION-REGISTRY.yaml holds one entry per predecessor in the contract the directive specifies, and every field is either filled in with evidence or explicitly null with the reason it is null.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
+### ✅ TODO-PRED-002 — The current target branch identity has to be settled before any integration
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md P0-4
+
+The directive says plainly: never build on the wrong target. Three branch decisions have been made and recorded, and the remaining one, the Agent Bridge communications branch, is an integration rather than a branch decision.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The branch matrix records the decision for each repository and checks it against the live account.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
+### ⬜ TODO-PRED-003 — Nothing has been captured for a predecessor yet
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md P0-2
+
+The directive requires a full mirror and bundle, a SHA-256 of each, a git fsck, the LFS objects verified separately, the issues, pull requests, wiki and releases inventoried, a secret scan of the tree, the history and the artifacts, two independent verified copies, a test restoration, and an immutable evidence manifest. None of it had been done for any predecessor.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+tools/capture_predecessor.py does the capture and writes the evidence manifest, including a test restoration into a separate directory.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ✅ TODO-PUB-002 — Two hundred and twelve first-party repositories were private, and had never been scanned
 
@@ -596,6 +783,52 @@ Acceptance:
 - [ ] Every credential is rotated at the provider
 - [ ] No credential literal remains in the tree
 - [ ] The secret scanner gate rejects the pattern
+
+### ⬜ TODO-BRN-005 — Agent Bridge's communications work is on a branch seventy-five commits ahead
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-005
+
+The external-worker branch holds the agent message, message bus, bridge control, bridge lifecycle and bridge loop files, and none of them are on the default branch. The audit was explicit that the units are to be selected and integrated rather than merged blind.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The default branch is already the active one, so this is an integration and not a branch decision. The units are to be selected one at a time, each with its own receipt.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
+### ⬜ TODO-PLAT-001 — Agent Bridge's CI is red and the failures are not classified
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
+
+The remote run reported 1856 tests with 26 failures and 28 errors, grouped into policy grant expectations, a missing Ollama service, a Windows short-path mismatch, dependency lock and import failures, model inventory mismatches and supervised worker expectations. The audit was explicit that the security-policy failures are to be treated as real until classified, and that they are not to be skipped to make the build green.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The local suite was run in full: 1854 tests, and its 13 failures and 3 errors were each shown to be pre-existing by running the same tests against the code from before the changes. The remote failures are larger because the runner has no model runtime, so a hermetic fast gate that does not need a provider is what closes this.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ⬜ TODO-AGENT-BRIDGE-CLOUDHYBRID-000 — Build the Agent-Bridge-cloudhybrid project the manifest describes
 
@@ -983,6 +1216,78 @@ Acceptance:
 - [ ] The files remain on disk and the guard can still inspect them
 - [ ] references/ is still not gitignored
 
+### ✅ TODO-GEN-010 — The Genesis kernel was never in the chain: the organism was built, tested and never run
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** owner-instruction — Aetherius_Current_Chat_Master_Inheritance_2026-09-15.md, dependency order step 3: Genesis proven through IDE+Bridge
+
+There were two things called Genesis and the programme could not tell them apart. Genesis is the organism: a C++ kernel carrying identity, memory, state and the causal runtime. The Bridge's 'Genesis runtime' was a Python store of session and identity references over JSON, documented as 'Genesis owns session/identity/memory refs; Agent Bridge owns execution'. The C++ kernel was built, tested and never run by anything. The interface reached the Bridge, the Bridge reached the models, and nothing in between was Genesis. The kernel's runtime host existed, worked and had a self-test that boots an organism, records an event, checkpoints it, restarts and rolls back, and nothing called it.
+
+Evidence:
+
+```
+The Bridge's genesis_runtime.py documents the split in its own first line. A search of the Bridge for the kernel found nothing: no ctypes binding to the C++ library, no subprocess to the host, no shared library. The kernel's own runtime host was present in the build tree and ran: it booted an organism with a persistent identity, recorded events, checkpointed with registry and memory digests, and rolled back to an earlier version as a new version with an audit record.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The Bridge attaches the kernel's runtime host: Agent-Bridge/genesis_kernel.py is the client, the service boots the organism at startup, records a session and a task as the organism's events, and publishes the organism's identity, version and state in the runtime snapshot the interface reads. The interface's status row used to read a fixed string, 'genesis-prime - local preview (unverified)', which named something that was not there; it now shows the organism's own identity, or says the organism is not attached. Run live: a local model wrote a haiku through the Bridge and the organism's memory holds the boot and both events, its version advancing from v1 to v3. Twenty-three tests in tests/test_genesis_kernel.py and eleven in tests/test_genesis_seam.py cover it, the real-kernel ones skipped loudly when the kernel has not been built. The gap register records it as GAP-CHAIN-001, VERIFIED.
+
+Acceptance:
+
+- [ ] The organism is booted by the Bridge and its identity is the one the interface shows
+- [ ] A session and a task are recorded as the organism's events
+- [ ] The organism's state is durable and survives a restart
+- [ ] The organism's identity does not change when the model is replaced
+- [ ] A Bridge with no kernel attached still runs every task and says the organism is not attached
+
+### ✅ TODO-GEN-012 — The Genesis secret scanner had never scanned anything
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-002
+
+Its accumulator was called $matches, and $Matches is a PowerShell automatic variable that the -match operator overwrites with a hashtable. The scan died on the first match and reported nothing, so the scan could not be certified.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The scanner now scans the tracked tree, has an allowlist whose every entry states its reason, and completes: 610 files in nine seconds. It still fails when there is something to find, which was checked against a tree carrying a token and a password.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
+### ✅ TODO-GEN-013 — The committed repository content manifest was stale
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-002
+
+Two of the twenty-eight Linux gates failed because the committed inventory no longer matched the source. The tool that regenerates it was correct; the manifest had simply not been re-run after the source changed.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The manifest is regenerated: 631 canonical source files. The whole suite passes here, twenty-six of twenty-six.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
 ### ⬜ TODO-GENESIS-000 — Build the Genesis project the manifest describes
 
 - **Project:** genesis
@@ -1235,6 +1540,29 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
+### ✅ TODO-BRN-004 — Poietek's default branch was eighteen commits behind its own successor
+
+- **Project:** poietek
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-008
+
+The default branch's CI failed because the workflows still assumed a directory that no longer exists at that path. The successor branch carried the corrected workflows and its quality gate passes.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The default branch was moved forward to the successor. The default was a strict ancestor, so the move lost nothing and rewrote nothing.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
+
 ### ⬜ TODO-POI-013 — Apply the licence audit to every audio candidate before adoption
 
 - **Project:** poietek
@@ -1380,7 +1708,7 @@ Acceptance:
 - **Status:** OPEN
 - **Source:** secret-scan — tools/scan_workspace_secrets.py, 2026-10-20
 
-The trading bot carried six live credentials in its history: an AWS account email and password, an AWS access key id, a Google API key, a Groq key, an OpenAI project key, and a Coinbase API secret. They are redacted from the working tree, but a credential in the history is a published credential, and the company that used them, Sifdat, is dissolved, so the accounts may well still be live. Only the owner can rotate them.
+The trading bot carried six live credentials in its history: an AWS account email and password, an AWS access key id, a Google API key, a Groq key, an OpenAI project key, and a Coinbase API secret. They are redacted from the working tree, but a credential in the history is a published credential, and the company that used them, Sifdat, is dissolved, so the accounts may well still be live. Only the owner can rotate them. The history scan of 21 October 2026 found the credential the audit had flagged: the GitHub token was removed from the tip by the redaction commit of 20 October 2026, but the earlier version of the file is still reachable from main, so the token is still published in the account's history. It is a working credential of the right shape and the right length, so this is a revocation and not a deletion. The report is at docs/evidence/credential-exposure-report.yaml.
 
 Evidence:
 
@@ -1433,6 +1761,29 @@ Acceptance:
 - [ ] Every credential is rotated at the provider
 - [ ] No credential literal remains in the tree
 - [ ] The secret scanner gate rejects the pattern
+
+### ✅ TODO-BRN-003 — Universal Bridge's default branch had no source in it
+
+- **Project:** universal-bridge
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-007
+
+A merge had deleted the implementation, so the default branch had no src/ directory, the CMake configure failed and CodeQL was red. The development branch had restored it and its CI passes.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The development branch was merged into the default. Both histories are ancestors of the result, so nothing that existed before was lost.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ✅ TODO-UB-001 — Discard the stale CMake caches in the Universal-Bridge build trees
 
@@ -2099,7 +2450,7 @@ Acceptance:
 - **Status:** OPEN
 - **Source:** secret-scan — tools/scan_workspace_secrets.py, 2026-10-20
 
-The secret scanner that guards Aetherius OS only guarded Aetherius OS, so the absorbed projects had no guard at all, and two of them carried live credentials. The scanner now covers every repository in the workspace, and it covers the working tree rather than only the tracked files, because an untracked file is one add away from being published. It reports what it finds and changes nothing: a credential has to be rotated at the provider as well as removed from the tree.
+The secret scanner that guards Aetherius OS only guarded Aetherius OS, so the absorbed projects had no guard at all, and two of them carried live credentials. The scanner now covers every repository in the workspace, and it covers the working tree rather than only the tracked files, because an untracked file is one add away from being published. It reports what it finds and changes nothing: a credential has to be rotated at the provider as well as removed from the tree. The history scan added on 21 October 2026 found the gap this todo could not have seen: the scanner read the tracked tree, so a credential removed from the tip was invisible to it. It now reads the history as well, and it does so in twelve seconds rather than four minutes, because the blobs are read in one batched pass.
 
 Evidence:
 
@@ -2112,6 +2463,29 @@ Acceptance:
 - [ ] Every repository in the workspace is scanned
 - [ ] The scan runs as part of the build gate
 - [ ] A finding in a publishable location fails the gate
+
+### ✅ TODO-SEC-004 — The histories of the other public repositories have never been scanned
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-006
+
+The programme's scanner read the tracked tree, not the history, so a credential that was removed from the tip was invisible to it. The history scan was added, and it immediately found the exposures it had been missing.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The scanner now reads the history, and a history job runs in the CI. Every finding is classified with a stated reason, and the four fixtures are allowlisted with their reasons.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ✅ TODO-SRC-001 — Build the machine-checked owner source registry
 
@@ -2309,6 +2683,29 @@ Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
+### ⬜ TODO-BRN-006 — A file with a .json extension is not JSON
+
+- **Project:** agent-bridge
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-012
+
+The global capability closure matrix carries a .json extension but holds comments and Python-style assignments, so a consumer that parses it as JSON fails. The audit asked for the schema and the consumer expectations to be validated.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+The file's format has to be decided and the consumers checked against it.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ✅ TODO-IED-101 — The Bridge's runtime route and its model route disagreed about how many models exist
 
@@ -2663,6 +3060,30 @@ Acceptance:
 
 - [ ] Each recorded gap is either implemented and tested, or explicitly re-scoped with a reason
 
+### ✅ TODO-GEN-011 — The gap register said the authority engine was not bound to the tool execution path, which was no longer true
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** gap-analysis — Aetherius-OS/docs/GAP-ANALYSIS-REGISTRY.yaml, 2026-10-21
+
+GAP-AUTH-001 said the authority engine was not bound to the tool execution path, so a tool call did not consult it before it ran. That was true when the gap was written and stopped being true when the tool executor was built: the executor asks the authority engine for the grant and obeys the answer, and the hive narrows a delegated grant against the parent's. The register still said the gap was open. A register that keeps a stale gap is worse than no register, because it says the programme is less finished than it is, and it hides the work that closed it.
+
+Evidence:
+
+```
+src/agents/tool_execution.cpp says it in its own words: the authority decides, the executor does not restate the rule, it asks the authority engine and obeys the answer. A missing grant is refused before the tool runs. src/agents/hive.cpp registers grants and narrows delegated ones.
+```
+
+Resolution:
+
+Resolved 2026-10-21. GAP-AUTH-001 is now VERIFIED, with the tool executor and the hive cited as the bindings and tests/tool_execution_tests.cpp and tests/hive_tests.cpp as the proof. GAP-AUTH-003 was corrected rather than closed: the authority engine does evaluate a capability request against a grant and has two real callers inside Genesis, but nothing outside Genesis goes through it yet, so it stays PARTIAL with the text saying exactly that.
+
+Acceptance:
+
+- [ ] The register's text matches what the code does
+- [ ] The gap that is closed is closed for a stated reason and with a citation
+- [ ] The work that closed it is visible rather than lost in the register
+
 ### ⬜ TODO-HERM-001 — Fix the Hermes model and provider routing mismatch
 
 - **Project:** hermes-config-audit
@@ -2890,6 +3311,30 @@ Acceptance:
 - [ ] The package name names the product
 - [ ] The name is still distinct from Agent Bridge, Aetherius OS and Genesis
 
+### ✅ TODO-IED-108 — The IDE's bridge retry outlived the view, so a gone interface kept talking to the Bridge
+
+- **Project:** ide-workspace
+- **Status:** DONE
+- **Source:** owner-inspection — Aetherius-OS/apps/IDE-Workspace/workspace/app/src/App.tsx, 2026-10-21
+
+The status poll retries a few times when the Bridge cannot be reached, and the retry timer was never cleared when the view went away. A retry that fired after the interface was gone was a request the Bridge received for an interface that was no longer there, and it is exactly the kind of background traffic that makes a shared rate limit bite for no reason. It was found because it made the suite flaky: a pending retry from one test landed inside another test's measurement window, so a test that asserted 'a user action added no request' sometimes failed for a reason that had nothing to do with the action.
+
+Evidence:
+
+```
+The retry was scheduled with window.setTimeout and the effect's cleanup cleared only the interval. With the fix removed, twenty-five of the suite's twenty-six tests failed, because the runaway retry polluted the whole file's call counts. With the fix in place, the file passes five consecutive runs.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The retry timer is held and cleared on unmount, and the poll's interval can be pushed out of the way by a test harness through the same window override the Bridge's base address already uses. Twenty-six tests in src/App.test.tsx, and the new one was checked against the unfixed component, where it fails.
+
+Acceptance:
+
+- [ ] A retry does not fire after the view has gone
+- [ ] The suite's call-count assertions are deterministic rather than a matter of timing
+- [ ] The test that covers it fails when the fix is removed
+
 ### ⬜ TODO-STR-003 — Keep the IDE usable on operating systems other than Aetherius OS
 
 - **Project:** ide-workspace
@@ -2909,6 +3354,29 @@ Acceptance:
 - [ ] The IDE builds and its tests pass without Aetherius OS present
 - [ ] No module in the IDE imports from the Aetherius OS tree
 - [ ] The build manifest names the operating systems it is supported on
+
+### ⬜ TODO-LED-001 — LedgerLands' green runs are Dependabot's, not product CI
+
+- **Project:** ledgerlands
+- **Status:** OPEN
+- **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-013
+
+The recent green GitHub runs were dependency update workflows. A run on a Dependabot branch failed with missing module declarations and type errors, and the manifest's own summary contradicts its open issue list about a removed baseUrl.
+
+Evidence:
+
+```
+The audit of 21 October 2026, which is an independent read-only inspection of the GitHub account, and the programme's own working on this machine. The audit states that repository data and CI observations are not equivalent to runtime acceptance, so every claim here was checked against the running thing before it was recorded.
+```
+
+Resolution:
+
+Product CI has to run on the default branch, and the manifest's status has to agree with itself.
+
+Acceptance:
+
+- [ ] The finding is closed by something that runs, not by a description
+- [ ] The evidence is reproducible on this machine
 
 ### ⬜ TODO-LEDGERLANDS-010 — Build the missing LedgerLands capabilities
 

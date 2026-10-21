@@ -96,6 +96,26 @@ function Wait-ForModels([int]$seconds) {
     return 0
 }
 
+function Find-GenesisKernel {
+    # The Genesis runtime host, when the kernel has been built.
+    #
+    # Genesis is the organism, and it is a C++ kernel. The Bridge asks it
+    # to observe and to remember, and reports the identity it was given.
+    # When the kernel has not been built the Bridge runs without the
+    # organism and says so, which is honest and better than a Bridge that
+    # pretends the organism is there.
+    $genesis = Join-Path $AetheriusRoot 'kernel\Genesis'
+    $candidates = @(
+        (Join-Path $genesis 'build\genesis_runtime_host.exe'),
+        (Join-Path $genesis 'build\genesis_runtime_host'),
+        (Join-Path $genesis 'build-host\genesis_runtime_host.exe')
+    )
+    foreach ($c in $candidates) {
+        if (Test-Path $c) { return $c }
+    }
+    return $null
+}
+
 if ($Stop) {
     Say 'Stopping the stack.'
     foreach ($name in @('ollama', 'python', 'node')) {
@@ -163,6 +183,19 @@ if (Port-Listening $BridgePort) {
         '--cors-origin', "http://127.0.0.1:$IdePort",
         '--root', $IdeWorkspace
     )
+    # The Genesis kernel, when it has been built. Genesis is the
+    # organism: identity, memory and the runtime's own state. Without it
+    # the Bridge still runs every task, and says the organism is not
+    # attached.
+    $kernel = Find-GenesisKernel
+    if ($kernel) {
+        Say "  attaching the Genesis kernel at $kernel"
+        $arguments += @('--genesis-kernel', $kernel)
+        $arguments += @('--genesis-data-root', (Join-Path $IdeWorkspace '.genesis-kernel'))
+    } else {
+        Say '  ! the Genesis kernel has not been built, so the Bridge will'
+        Say '    run without the organism and say that it is not attached.'
+    }
     Start-Process -FilePath 'python' -ArgumentList $arguments -WorkingDirectory $BridgeRoot -WindowStyle Minimized -PassThru |
         ForEach-Object { $bridgeProcess = $_ }
     if (Wait-For $BridgePort 60 'Agent Bridge' $bridgeProcess) {
@@ -202,6 +235,14 @@ try {
         }
     } else {
         Say '    no models: the local model runtime has nothing, or it is down'
+    }
+    if ($runtime.genesis) {
+        if ($runtime.genesis.attached) {
+            Say "  the organism is attached: $($runtime.genesis.identity)"
+            Say "    version $($runtime.genesis.version)  state $($runtime.genesis.state)"
+        } else {
+            Say '  the organism is not attached: the Bridge says so'
+        }
     }
 } catch {
     Say "  the Bridge did not answer: $($_.Exception.Message)"

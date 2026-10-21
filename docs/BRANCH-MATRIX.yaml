@@ -1,0 +1,441 @@
+schema_version: 1
+source_date: '2026-10-21'
+generated_by: tools/build_branch_matrix.py
+account: jayprophit
+notes:
+- The facts are read from the live account. The decisions are stated in the tool and checked against the
+  live state, so a register that disagrees with the account fails the gate rather than lying.
+- A decision here is never a rewrite. The rule is PRESERVE, CLASSIFY, MAP, INTEGRATE, TEST, VERIFY, ARCHIVE,
+  APPROVED DELETE.
+- The branch facts come from the independent audit of 21 October 2026 and from this tool's own reading
+  of the account.
+problems: []
+repositories:
+- repository: jayprophit/Aetherius-OS
+  default_branch: master
+  canonical_branch: master
+  decision: PROMOTE_DEFAULT
+  decision_reason: The default branch was a December 2025 React/Vite lineage with no common ancestor with
+    the active one, so an agent reading the repository saw an old shell rather than the programme. The
+    canonical branch is the one that holds the build manifests, the registers, the tools and the kernel.
+  history_rewritten: false
+  preserved_branches:
+  - main
+  - recovered-main
+  - forensic/ide-contaminated-main-133c5d8
+  - recovery/aetherius-desktop-466d79d
+  archived: false
+  branches:
+  - branch: master
+    sha: 3d45c813bcfeb62956e645d55c7adbc1a875b4ed
+    date: '2026-10-21'
+    subject: Publish the account, and prove that a real task runs
+    is_default: true
+    protected: false
+  - branch: recovered-main
+    sha: 466d79d41d8950ace096639410c7c9751eae2d53
+    date: '2026-09-17'
+    subject: 'chore: establish Aetherius OS repository'
+    is_default: false
+    protected: false
+  - branch: recovery/aetherius-desktop-466d79d
+    sha: 466d79d41d8950ace096639410c7c9751eae2d53
+    date: '2026-09-17'
+    subject: 'chore: establish Aetherius OS repository'
+    is_default: false
+    protected: false
+  - branch: forensic/ide-contaminated-main-133c5d8
+    sha: 133c5d8d71dceaf4a6d239ec633b1bfb808683e2
+    date: '2025-12-11'
+    subject: 'feat: Enhance Aetherius OS components and data'
+    is_default: false
+    protected: false
+  - branch: main
+    sha: 133c5d8d71dceaf4a6d239ec633b1bfb808683e2
+    date: '2025-12-11'
+    subject: 'feat: Enhance Aetherius OS components and data'
+    is_default: false
+    protected: false
+- repository: jayprophit/Agent-Bridge
+  default_branch: main
+  canonical_branch: main
+  decision: NONE_ALREADY_CANONICAL
+  decision_reason: 'The default branch is the active one. The open work is not a branch problem but an
+    integration one: the external-worker branch holds the communications fabric and is seventy-five commits
+    ahead and twenty-five behind, so its units are selected and integrated rather than merged blind.'
+  history_rewritten: false
+  preserved_branches:
+  - unit/external-worker-telemetry
+  - unit/cloud-hybrid-runtime
+  - unit/runtime-safety-fixes
+  - unit/supervisor-dashboard
+  - canonical/main
+  - feature/v0.10.0
+  archived: false
+  branches:
+  - branch: main
+    sha: a37b6e8a21706e4a1b497a8462cc5b24052c4010
+    date: '2026-10-21'
+    subject: Read an action whose string value holds a real newline
+    is_default: true
+    protected: false
+  - branch: unit/cloud-hybrid-runtime
+    sha: 3fdf3694ce2c022e7b9d7389656c3966d55daefc
+    date: '2026-10-20'
+    subject: Record the work in progress
+    is_default: false
+    protected: false
+  - branch: unit/external-worker-telemetry
+    sha: 205d13a011a43cb87f9c76ab44255db13ebd784e
+    date: '2026-10-20'
+    subject: Record the work in progress
+    is_default: false
+    protected: false
+  - branch: unit/runtime-safety-fixes
+    sha: b726ec5040dd9a7108745b0fc767cb7a2ce7c451
+    date: '2026-10-20'
+    subject: Add the build manifest
+    is_default: false
+    protected: false
+  - branch: unit/supervisor-dashboard
+    sha: bf5350635272706a2006d059fa8ca1903d65cd07
+    date: '2026-10-09'
+    subject: 'supervisor-dashboard: §20 bounded-live acceptance demo'
+    is_default: false
+    protected: false
+  - branch: canonical/main
+    sha: 434f53bddae7ffbfd8fd9696e4cd599de5d04768
+    date: '2026-09-18'
+    subject: 'feat: ingest IDE-Workspace source (React app, Python workspace, integration layer, docs,
+      p'
+    is_default: false
+    protected: false
+  - branch: feature/v0.10.0
+    sha: 126820b858e7a95767fac53f9b8199a4b95a17cf
+    date: '2026-09-17'
+    subject: 'checkpoint: sync current Agent Bridge development state'
+    is_default: false
+    protected: false
+  - branch: recovery/agent-bridge-main
+    sha: 126820b858e7a95767fac53f9b8199a4b95a17cf
+    date: '2026-09-17'
+    subject: 'checkpoint: sync current Agent Bridge development state'
+    is_default: false
+    protected: false
+  - branch: recovery/feature-v0.10.0
+    sha: 126820b858e7a95767fac53f9b8199a4b95a17cf
+    date: '2026-09-17'
+    subject: 'checkpoint: sync current Agent Bridge development state'
+    is_default: false
+    protected: false
+  - branch: recovery/feature-v0.9.0
+    sha: f989dfbc3d56f6483e2165024a7a7ed987e6f513
+    date: '2026-09-14'
+    subject: 'v0.9.0: keep scanner fixture out of secret-scan reach (runtime-assembled)'
+    is_default: false
+    protected: false
+  - branch: recovery/maintenance-v0.8.2
+    sha: 87a9f484bc1eca0518e30bf5e8b9b3ef1626da3f
+    date: '2026-09-13'
+    subject: 'v0.8.2: Workspace canonicalization and preflight validation'
+    is_default: false
+    protected: false
+  - branch: recovery/maintenance-v0.8.1
+    sha: 8347ca9a7a52865e8f120a3f912d067e7c3fbb34
+    date: '2026-09-12'
+    subject: Agent Bridge v0.8.1 reliability and repository hardening
+    is_default: false
+    protected: false
+- repository: jayprophit/Genesis
+  default_branch: main
+  canonical_branch: main
+  decision: NONE_ALREADY_CANONICAL
+  decision_reason: The default branch is the active one.
+  history_rewritten: false
+  preserved_branches: []
+  archived: false
+  branches:
+  - branch: main
+    sha: 9e8cf345bdb66f380c7dc87e685123a00c435dad
+    date: '2026-10-21'
+    subject: Record the tool executor in the repository content inventory
+    is_default: true
+    protected: false
+  - branch: dependabot/pip/pip-412233372c
+    sha: 5b0245e761797167cea29a76aa9404c9be79db2a
+    date: '2026-09-17'
+    subject: Bump the pip group across 1 directory with 9 updates
+    is_default: false
+    protected: false
+- repository: jayprophit/IDE-Workspace
+  default_branch: master
+  canonical_branch: master
+  decision: NONE_ALREADY_CANONICAL
+  decision_reason: The default branch is the active one.
+  history_rewritten: false
+  preserved_branches:
+  - unit/supervisor-dashboard-ui
+  archived: false
+  branches:
+  - branch: master
+    sha: 668000eeaf3fbb82b0126ab113c63060eb24eaf8
+    date: '2026-10-21'
+    subject: Do not carry a model entry that has no name
+    is_default: true
+    protected: false
+  - branch: unit/supervisor-dashboard-ui
+    sha: 647c6e767cda4966124da48e1414f293171b7abb
+    date: '2026-10-12'
+    subject: 'P0-A: finish interrupted runtime binding — fix 3 tsc errors (recovery)'
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/workspace/app/npm_and_yarn-501f592bae
+    sha: 3c0e947ec0deff06b1a5736117ed6c3bca4e4dc6
+    date: '2026-10-09'
+    subject: Bump source-map-js
+    is_default: false
+    protected: false
+- repository: jayprophit/Universal-Bridge
+  default_branch: main
+  canonical_branch: main
+  decision: MERGE_DEVELOPMENT_INTO_DEFAULT
+  decision_reason: The default branch had no src/ directory because a merge had deleted the implementation,
+    which is why CodeQL failed at configure. The development branch restored it and its CI passes. The
+    merge is clean and restores the implementation rather than replacing it.
+  history_rewritten: false
+  preserved_branches:
+  - develop/v0.5-production-foundation
+  - feature/v1-windows-hardware
+  archived: false
+  branches:
+  - branch: main
+    sha: eee144d6b8237eccf846d9340cf337c139d76268
+    date: '2026-10-21'
+    subject: Restore the implementation that a previous merge deleted
+    is_default: true
+    protected: false
+  - branch: develop/v0.5-production-foundation
+    sha: ab75e4bb8b1f5167790a7a75a70b9a4c5b26e1d6
+    date: '2026-10-20'
+    subject: Add the build manifest
+    is_default: false
+    protected: false
+  - branch: dependabot/github_actions/actions/checkout-7.0.1
+    sha: b7a04af90fe583510bbfc48853dfa6f4ae6c94e8
+    date: '2026-09-19'
+    subject: 'build(deps): bump actions/checkout from 5.1.0 to 7.0.1'
+    is_default: false
+    protected: false
+  - branch: dependabot/github_actions/actions/upload-artifact-7.0.1
+    sha: 190089a87ce7a67506b435974e7defb75da4cfa9
+    date: '2026-09-19'
+    subject: 'build(deps): bump actions/upload-artifact from 4.6.2 to 7.0.1'
+    is_default: false
+    protected: false
+  - branch: feature/v1-windows-hardware
+    sha: 9d097dcb153b717d47f9670f8120ebdb70cc4e64
+    date: '2026-09-06'
+    subject: 'feat: integrate Poietek requirements and sync contracts'
+    is_default: false
+    protected: false
+- repository: jayprophit/Poietek
+  default_branch: main
+  canonical_branch: main
+  decision: FAST_FORWARD_DEFAULT
+  decision_reason: The default branch was eighteen commits behind its own successor and its CI failed
+    because the workflows still assumed a directory that no longer exists at that path. The successor
+    contains the corrected workflows and its quality gate passes. The default is a strict ancestor, so
+    moving it forward loses nothing and rewrites nothing.
+  history_rewritten: false
+  preserved_branches:
+  - refactor/architecture-foundation
+  - codex/poietek-v3.1-production-build
+  archived: false
+  branches:
+  - branch: main
+    sha: 5ce4b7d033248e807bf94cb7c89ea2b4e19f20e1
+    date: '2026-10-20'
+    subject: Record the work in progress
+    is_default: true
+    protected: false
+  - branch: refactor/architecture-foundation
+    sha: 5ce4b7d033248e807bf94cb7c89ea2b4e19f20e1
+    date: '2026-10-20'
+    subject: Record the work in progress
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/npm_and_yarn-501f592bae
+    sha: 069cf32f153acc446fdda307dafcad27858bd0f1
+    date: '2026-10-18'
+    subject: Bump source-map-js
+    is_default: false
+    protected: false
+  - branch: dependabot/cargo/src-tauri/serde_json-1.0.152
+    sha: 3b831db5297e0f6a7eb213c775f701ce62b87dcb
+    date: '2026-10-14'
+    subject: Bump serde_json from 1.0.151 to 1.0.152 in /src-tauri
+    is_default: false
+    protected: false
+  - branch: dependabot/cargo/src-tauri/tauri-build-2.7.1
+    sha: dbedf7397197fae7d5f3b14423d183ce3e590645
+    date: '2026-10-06'
+    subject: Bump tauri-build from 2.6.3 to 2.7.1 in /src-tauri
+    is_default: false
+    protected: false
+  - branch: dependabot/cargo/src-tauri/tauri-2.11.6
+    sha: f0345045183b1c608e869176f0a325b038f5cf96
+    date: '2026-09-29'
+    subject: Bump tauri from 2.11.5 to 2.11.6 in /src-tauri
+    is_default: false
+    protected: false
+  - branch: codex/poietek-v3.1-production-build
+    sha: ad4ab84e829ecaceaf664461bf63673083e6534c
+    date: '2026-08-24'
+    subject: update
+    is_default: false
+    protected: false
+  - branch: dependabot/cargo/src-tauri/cpal-0.18.2
+    sha: ad39e2fbb158dfb722cf0817a068ddaf7d7e370b
+    date: '2026-08-24'
+    subject: Bump cpal from 0.18.1 to 0.18.2 in /src-tauri
+    is_default: false
+    protected: false
+  - branch: dependabot/cargo/src-tauri/thread-priority-3.1.1
+    sha: d90dad509ed650c108b5b99ca424e4e9fe268576
+    date: '2026-08-24'
+    subject: Bump thread-priority from 0.3.0 to 3.1.1 in /src-tauri
+    is_default: false
+    protected: false
+  - branch: dependabot/github_actions/actions/cache-6
+    sha: b0820b90b8c75710367a9e0ed414b3283787208f
+    date: '2026-08-24'
+    subject: Bump actions/cache from 4 to 6
+    is_default: false
+    protected: false
+  - branch: dependabot/github_actions/actions/download-artifact-8
+    sha: d382032ee37443c86f45854aac70118195ee5509
+    date: '2026-08-24'
+    subject: Bump actions/download-artifact from 4 to 8
+    is_default: false
+    protected: false
+  - branch: dependabot/github_actions/actions/setup-node-7
+    sha: 25abcc24fefffe27bbd82adef619b9c539f64d5d
+    date: '2026-08-24'
+    subject: Bump actions/setup-node from 4 to 7
+    is_default: false
+    protected: false
+  - branch: dependabot/github_actions/actions/upload-artifact-7
+    sha: fc9d3b4b39597f3a5a26b064d7364efe15c3ce5b
+    date: '2026-08-24'
+    subject: Bump actions/upload-artifact from 4 to 7
+    is_default: false
+    protected: false
+  - branch: dependabot/github_actions/android-actions/setup-android-4
+    sha: 52fb57b29a74d83b2158f105296b267677cd1e43
+    date: '2026-08-24'
+    subject: Bump android-actions/setup-android from 3 to 4
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/lucide-react-1.33.0
+    sha: 76adc8f01242d82cf2666c3eac4a7a4284037732
+    date: '2026-08-24'
+    subject: Bump lucide-react from 0.546.0 to 1.33.0
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/types/node-26.2.0
+    sha: fe0c505669277ee7336b534bc063d53ac9dbd141
+    date: '2026-08-24'
+    subject: Bump @types/node from 22.20.1 to 26.2.0
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/typescript-7.0.2
+    sha: 3255e795bd5fb523862012a236321becd9af1c83
+    date: '2026-08-24'
+    subject: Bump typescript from 5.8.3 to 7.0.2
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/vite-8.2.2
+    sha: 86eb0337b7b412ae74845feb4eaec1f23a457679
+    date: '2026-08-24'
+    subject: Bump vite from 6.4.3 to 8.2.2
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/vitejs/plugin-react-6.1.0
+    sha: c5ac3271d761806d97cb9625d080011b282cedd2
+    date: '2026-08-24'
+    subject: Bump @vitejs/plugin-react from 5.2.0 to 6.1.0
+    is_default: false
+    protected: false
+- repository: jayprophit/LedgerLands
+  default_branch: main
+  canonical_branch: main
+  decision: NONE_ALREADY_CANONICAL
+  decision_reason: The default branch is the active one.
+  history_rewritten: false
+  preserved_branches: []
+  archived: false
+  branches:
+  - branch: dependabot/npm_and_yarn/npm_and_yarn-80c5c3f978
+    sha: 9cb6b927633f15ffe809536fe3524622b628d358
+    date: '2026-10-20'
+    subject: 'chore(deps): bump the npm_and_yarn group across 2 directories with 4 updates'
+    is_default: false
+    protected: false
+  - branch: main
+    sha: 8f994f009c73297325c4cd05d65ae8a37002a92b
+    date: '2026-10-20'
+    subject: Add the build manifest and keep the project's history beside it
+    is_default: true
+    protected: false
+- repository: jayprophit/aetherial-platform
+  default_branch: main
+  canonical_branch: main
+  decision: NONE_PREDECESSOR_RETIREMENT_PATH
+  decision_reason: The owner confirmed this repository as a predecessor of Aetherius OS, so it follows
+    the predecessor absorption path rather than the active-project path. Its default branch carries the
+    commit that redacted a GitHub token, which is why its history is a security matter before it is a
+    branch matter.
+  history_rewritten: false
+  preserved_branches:
+  - master
+  archived: false
+  branches:
+  - branch: main
+    sha: 3fa98dec3b0d722d0751351023569ffce2eddd6e
+    date: '2026-10-20'
+    subject: Redact the GitHub token from the conversation transcript
+    is_default: true
+    protected: false
+  - branch: dependabot/npm_and_yarn/npm_and_yarn-b23f7d3257
+    sha: dbd4e0d81a1af5e5fc2ee8c6abab2d0ab8053e26
+    date: '2026-03-27'
+    subject: Bump the npm_and_yarn group across 1 directory with 2 updates
+    is_default: false
+    protected: false
+  - branch: dependabot/npm_and_yarn/npm_and_yarn-4607d27f44
+    sha: 37e694249833e946235aac157a15e562f62582ae
+    date: '2025-11-15'
+    subject: Bump the npm_and_yarn group across 2 directories with 1 update
+    is_default: false
+    protected: false
+  - branch: master
+    sha: d6938fe23b60c8ea281b033f44e57f22f11551f5
+    date: '2025-10-27'
+    subject: Add AI Writer and AI Image Generator components
+    is_default: false
+    protected: false
+- repository: jayprophit/THE-ARCHITECTURE-OF-SHADOWS
+  default_branch: main
+  canonical_branch: main
+  decision: NONE_ALREADY_CANONICAL
+  decision_reason: The default branch is the active one.
+  history_rewritten: false
+  preserved_branches: []
+  archived: false
+  branches:
+  - branch: main
+    sha: 999d356c7a0dafce288d15bfd3e53113e755cb0b
+    date: '2026-10-21'
+    subject: Use the recorded build state vocabulary
+    is_default: true
+    protected: false

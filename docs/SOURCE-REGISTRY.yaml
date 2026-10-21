@@ -19,7 +19,7 @@ source_date: "2026-10-20"
 scopes:
   - name: documents-root
     root: "C:\\Users\\jpowe\\Documents"
-    documents: 143
+    documents: 144
   - name: documents-master-prompt
     root: "C:\\Users\\jpowe\\Documents\\master prompt"
     documents: 25
@@ -31,17 +31,17 @@ scopes:
     documents: 127
   - name: downloads
     root: "C:\\Users\\jpowe\\Downloads"
-    documents: 23
+    documents: 25
 
 totals:
-  documents: 408
-  bytes: 21489048
+  documents: 411
+  bytes: 21563846
   kind_build_record: 115
-  kind_document: 56
+  kind_document: 57
   kind_handoff: 9
-  kind_master_prompt: 31
+  kind_master_prompt: 32
   kind_process: 1
-  kind_prompt_or_brief: 196
+  kind_prompt_or_brief: 197
 
 # Material recovered from the owner's own accounts. It is not on
 # disk under Documents, so it is recorded explicitly rather than
@@ -3146,6 +3146,14 @@ sources:
     lines: 3
     modified: 2026-09-26
     digest: sha256:953dd4c695bbd74d800fe1bf86bacd9141e3e6c61bab7e7f62d4f3ed4820396e
+  - path: "Documents/update.txt"
+    scope: documents-root
+    kind: prompt_or_brief
+    title: "from pathlib import Path"
+    bytes: 42439
+    lines: 420
+    modified: 2026-10-21
+    digest: sha256:749a91056344a335b3e8eef5c2e2b5d1b5e7e996fffc48b33d92d18e9499c414
   - path: "Downloads/AETHERIUS_FIGMA_AGENT_HANDOFF/AETHERIUS_FIGMA_AGENT_MASTER_PROMPT.md"
     scope: downloads
     kind: master_prompt
@@ -3274,6 +3282,14 @@ sources:
     lines: 196
     modified: 2026-10-16
     digest: sha256:13443827ec9c423897ccf8a26da91c49863a0069ce1784152a6f461a8405d668
+  - path: "Downloads/AETHERIUS_PREDECESSOR_ABSORPTION_MASTER_PLAN_2026-10-21.md"
+    scope: downloads
+    kind: master_prompt
+    title: "Aetherius — Predecessor Repository Absorption and Verified Retirement Programme"
+    bytes: 17765
+    lines: 169
+    modified: 2026-10-21
+    digest: sha256:d5ecca3b589b20f671dc4394d8a58ae1cd1a8756805b96210d8381f17b1a0934
   - path: "Downloads/Aetherius_Current_Chat_Master_Inheritance_2026-09-15.md"
     scope: downloads
     kind: master_prompt
@@ -3298,6 +3314,14 @@ sources:
     lines: 422
     modified: 2026-10-08
     digest: sha256:3312508d8a6412824bc272a4e7f2c98b0bf0d6827b20ba4e96fab24b3e97cd5c
+  - path: "Downloads/Aetherius_GitHub_Diagnostic_2026-10-21.md"
+    scope: downloads
+    kind: document
+    title: "Aetherius portfolio – GitHub diagnostic and gap analysis"
+    bytes: 14594
+    lines: 102
+    modified: 2026-10-21
+    digest: sha256:38e184a3d02db27342e8f80a1a13ee4c2f7795657837e68a6a860e2a63a5bdcc
   - path: "Downloads/Aetherius_Research_and_Learning_Reconciliation_2026-10-02.md"
     scope: downloads
     kind: document

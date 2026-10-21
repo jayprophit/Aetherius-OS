@@ -251,3 +251,32 @@ sources:
   title: The prototype source archives the handoff carries, by origin and permission
   date: '2026-10-17'
   read: full
+- id: OM-PLAN-PREDECESSOR-ABSORPTION
+  kind: master_handoff
+  path: C:\Users\jpowe\Downloads\AETHERIUS_PREDECESSOR_ABSORPTION_MASTER_PLAN_2026-10-21.md
+  title: The predecessor absorption and verified retirement programme
+  date: '2026-10-21'
+  read: full
+  note: The owner's implementation directive for consolidating earlier first-party projects into the current
+    ecosystem and retiring the repositories afterwards. It states the architectural rule, the state machine
+    every repository moves through, the capture requirements before any migration, the licence gate, the
+    deletion gate, the persistent registry contract, and a P0 to P2 action queue. It is a directive and
+    not proof that any migration or deletion has happened.
+- id: OM-AUDIT-PORTFOLIO-2026-10-21
+  kind: handoff
+  path: C:\Users\jpowe\Downloads\Aetherius_GitHub_Diagnostic_2026-10-21.md
+  title: The portfolio diagnostic and gap analysis
+  date: '2026-10-21'
+  read: full
+  note: 'An independent read-only audit of the connected GitHub account, with a P0 to P2 implementation
+    queue and per-repository findings. It separates remote observation from self-reported manifests, and
+    it says so: repository data and CI observations are not equivalent to runtime acceptance.'
+- id: OM-AUDIT-PORTFOLIO-WRAPPED
+  kind: handoff
+  path: C:\Users\jpowe\Documents\update.txt
+  title: The portfolio audit, in a script wrapper
+  date: '2026-10-21'
+  read: full
+  note: The same audit as the document above, saved as a script that writes the report rather than as
+    the report itself. It is declared so that the file is accounted for; the report is read from the clean
+    document.
