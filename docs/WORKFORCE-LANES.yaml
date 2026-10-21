@@ -1,0 +1,439 @@
+schema_version: 1
+source_date: '2026-10-21'
+generated_by: tools/build_workforce_lanes.py
+notes:
+- The lanes are the write sets, not the wish lists. Two lanes may run at the same time only if their write
+  sets do not overlap, and the tool checks every pair and says which pair conflicts.
+- 'The work, the activity and the CI state are measured. The starvation gap is a measurement too: how
+  much older a lane''s last activity is than the newest activity across the lanes.'
+- A lane with open work and no next action is a lane that is not ready, and the tool says so rather than
+  leaving it to be noticed.
+- A predecessor is only ever read, never written. A predecessor's deletion is the owner's separate decision,
+  and this register never proposes one.
+starvation_threshold_days: 7
+problems: []
+notes_and_observations: []
+lanes:
+- id: agent-bridge
+  name: Agent Bridge
+  repository: jayprophit/Agent-Bridge
+  cloned_locally: true
+  projects:
+  - agent-bridge
+  - agent-bridge-cloudhybrid
+  - agent-bridge-dashboard
+  - agent-bridge-runtimesafety
+  write_set:
+    include:
+    - ''
+    exclude: []
+  guard: The variants live inside this repository and are the same write set, so they are one lane and
+    not four. A change in the core has to be made in the variants too, and a lane that edited only the
+    core would leave the variants behind.
+  work:
+    open: 39
+    done: 8
+    by_priority:
+      '1': 8
+      '2': 19
+      '3': 11
+      '5': 1
+    next_action: Rotate and remove the credentials in Agent-Bridge
+    next_action_id: TODO-AGENT-BRIDGE-002
+    next_action_is_owner_gate: false
+    top_three:
+    - id: TODO-AGENT-BRIDGE-002
+      priority: 1
+      title: Rotate and remove the credentials in Agent-Bridge
+    - id: TODO-AGENT-BRIDGE-CLOUDHYBRID-000
+      priority: 1
+      title: Build the Agent-Bridge-cloudhybrid project the manifest describes
+    - id: TODO-AGENT-BRIDGE-DASHBOARD-000
+      priority: 1
+      title: Build the Agent-Bridge-dashboard project the manifest describes
+  activity:
+    last_commit: '2026-10-21'
+    head: 2b88eef8
+    subject: Substitute only among the models the role map declares
+    days_behind_the_newest: 0
+    starved: false
+  ci:
+    known: true
+    workflow: ci
+    status: in_progress
+    conclusion: ''
+    head: 2b88eef8
+    at: '2026-10-21T20:00:08Z'
+    green: false
+- id: genesis
+  name: Genesis
+  repository: jayprophit/Genesis
+  cloned_locally: true
+  projects:
+  - genesis
+  write_set:
+    include:
+    - ''
+    exclude: []
+  guard: The kernel is a separate repository nested in the Aetherius OS tree, so the Aetherius OS lane
+    may not write inside it. The content manifest is generated and compared byte for byte, so it is regenerated
+    after every change here.
+  work:
+    open: 7
+    done: 13
+    by_priority:
+      '1': 2
+      '2': 2
+      '3': 2
+      '5': 1
+    next_action: Build the Genesis project the manifest describes
+    next_action_id: TODO-GENESIS-000
+    next_action_is_owner_gate: false
+    top_three:
+    - id: TODO-GENESIS-000
+      priority: 1
+      title: Build the Genesis project the manifest describes
+    - id: TODO-STR-001
+      priority: 1
+      title: Make Genesis downloadable and usable as an agent in its own right
+    - id: TODO-GEN-003
+      priority: 2
+      title: Implement the missing Genesis plan and action stages
+  activity:
+    last_commit: '2026-10-21'
+    head: af6ec86d
+    subject: Scan the dotfiles, and stop crashing on them
+    days_behind_the_newest: 0
+    starved: false
+  ci:
+    known: true
+    workflow: Genesis CI
+    status: in_progress
+    conclusion: ''
+    head: af6ec86d
+    at: '2026-10-21T20:11:20Z'
+    green: false
+- id: aetherius-os
+  name: Aetherius OS
+  repository: jayprophit/Aetherius-OS
+  cloned_locally: true
+  projects:
+  - aetherius-os
+  - aetherius-os-prototype
+  - aetherius-os-worldclass-prototype
+  - aetherius-commerce
+  - aetherius-learning
+  - aetherius-community
+  - aetherius-health-library
+  - aetherion-engine
+  - athena
+  - crossplatform
+  - decentralized-messaging-app
+  - food-wiki-app
+  - football-card-game
+  - holonav-os
+  - ledgerlands
+  - niche-platform
+  - quantum-ai-assistant
+  - quantum-os
+  - qva-merged
+  - self-building-ai
+  - sovereign-financial-os
+  - trading-bot
+  - veyra
+  - virtual-assistant
+  - web-platform
+  - ai-digital-twin
+  write_set:
+    include:
+    - ''
+    exclude:
+    - kernel/Genesis
+    - apps/IDE-Workspace
+    - apps/Poietek
+    - docs/PREDECESSOR-MIGRATION-REGISTRY.yaml
+    - docs/PREDECESSOR-CAPABILITY-MATRIX.yaml
+    - docs/PREDECESSOR-CAPTURE-REGISTRY.yaml
+    - docs/evidence/credential-exposure-report.yaml
+    - tools/capture_predecessor.py
+    - tools/build_predecessor_register.py
+    - tools/build_predecessor_capability_matrix.py
+    - tools/build_credential_exposure_report.py
+  guard: The largest lane and the one that owns the shared registers. The nested repositories are excluded,
+    because they are separate write sets in the same working tree.
+  work:
+    open: 127
+    done: 19
+    by_priority:
+      '1': 38
+      '2': 37
+      '3': 43
+      '4': 9
+    next_action: Build the aetherion-engine project the manifest describes
+    next_action_id: TODO-AETHERION-ENGINE-000
+    next_action_is_owner_gate: false
+    top_three:
+    - id: TODO-AETHERION-ENGINE-000
+      priority: 1
+      title: Build the aetherion-engine project the manifest describes
+    - id: TODO-AETHERIUS-OS-002
+      priority: 1
+      title: Rotate and remove the credentials in Aetherius-OS
+    - id: TODO-AETHERIUS-OS-PROTO-000
+      priority: 1
+      title: Build the aetherius-os-prototype project the manifest describes
+  activity:
+    last_commit: '2026-10-21'
+    head: bc7ed45e
+    subject: Map the predecessors' capabilities against the current components
+    days_behind_the_newest: 0
+    starved: false
+  ci:
+    known: true
+    workflow: Aetherius OS
+    status: completed
+    conclusion: success
+    head: bc7ed45e
+    at: '2026-10-21T19:28:56Z'
+    green: true
+- id: ide-workspace
+  name: IDE Workspace
+  repository: jayprophit/IDE-Workspace
+  cloned_locally: true
+  projects:
+  - ide-workspace
+  write_set:
+    include:
+    - ''
+    exclude: []
+  guard: A separate repository nested in the Aetherius OS tree. The IDE reads the Bridge, and the Bridge
+    is the Agent Bridge lane, so the two lanes are dependent but not overlapping.
+  work:
+    open: 10
+    done: 8
+    by_priority:
+      '1': 1
+      '2': 4
+      '3': 5
+    next_action: Build the IDE-Workspace project the manifest describes
+    next_action_id: TODO-IDE-WORKSPACE-000
+    next_action_is_owner_gate: false
+    top_three:
+    - id: TODO-IDE-WORKSPACE-000
+      priority: 1
+      title: Build the IDE-Workspace project the manifest describes
+    - id: TODO-IDE-WORKSPACE-003
+      priority: 2
+      title: Choose and record a licence for IDE-Workspace
+    - id: TODO-IDE-WORKSPACE-DASHBOARD-003
+      priority: 2
+      title: Choose and record a licence for IDE-Workspace-dashboard
+  activity:
+    last_commit: '2026-10-21'
+    head: 15691f27
+    subject: Run the CI on the Node the project develops against
+    days_behind_the_newest: 0
+    starved: false
+  ci:
+    known: true
+    workflow: Dependabot Updates
+    status: completed
+    conclusion: success
+    head: 15691f27
+    at: '2026-10-21T10:18:01Z'
+    green: true
+- id: poietek
+  name: Poietek
+  repository: jayprophit/Poietek
+  cloned_locally: true
+  projects:
+  - poietek
+  write_set:
+    include:
+    - ''
+    exclude: []
+  guard: A separate repository nested in the Aetherius OS tree.
+  work:
+    open: 13
+    done: 1
+    by_priority:
+      '1': 2
+      '2': 6
+      '3': 5
+    next_action: Apply the licence audit to every audio candidate before adoption
+    next_action_id: TODO-POI-013
+    next_action_is_owner_gate: false
+    top_three:
+    - id: TODO-POI-013
+      priority: 1
+      title: Apply the licence audit to every audio candidate before adoption
+    - id: TODO-POIETEK-000
+      priority: 1
+      title: Build the Poietek project the manifest describes
+    - id: TODO-POI-010
+      priority: 2
+      title: Build the DAW product capability registry
+  activity:
+    last_commit: '2026-10-20'
+    head: 5ce4b7d0
+    subject: Record the work in progress
+    days_behind_the_newest: 1
+    starved: false
+  ci:
+    known: true
+    workflow: Dependabot Updates
+    status: completed
+    conclusion: success
+    head: 5ce4b7d0
+    at: '2026-10-21T08:37:11Z'
+    green: true
+- id: mat
+  name: Materials Atlas Table Codex (MAT)
+  repository: jayprophit/Materials-Atlas-Table-Codex---MAT
+  cloned_locally: true
+  projects:
+  - mat
+  write_set:
+    include:
+    - ''
+    exclude: []
+  guard: A separate repository outside the Aetherius OS tree. It carries the materials knowledge, and
+    its own provenance checkpoints, so a change here is a provenance claim and not only a code change.
+  work:
+    open: 13
+    done: 0
+    by_priority:
+      '1': 1
+      '2': 4
+      '3': 8
+    next_action: Finish MAT, which is still being worked on by the Codex desktop app
+    next_action_id: TODO-STR-004
+    next_action_is_owner_gate: true
+    top_three:
+    - id: TODO-STR-004
+      priority: 1
+      title: Finish MAT, which is still being worked on by the Codex desktop app
+    - id: TODO-MAT-004
+      priority: 2
+      title: Fix the Studio publication data route
+    - id: TODO-MAT-005
+      priority: 2
+      title: Widen the MAT record schema to accept MAT:0100 to MAT:0118
+  activity:
+    last_commit: '2026-10-21'
+    head: 69f0938f
+    subject: Record the Zinc solid provenance checkpoint of 21 October 2026
+    days_behind_the_newest: 0
+    starved: false
+  ci:
+    known: true
+    workflow: validate
+    status: completed
+    conclusion: failure
+    head: 69f0938f
+    at: '2026-10-21T11:36:25Z'
+    green: false
+- id: universal-bridge
+  name: Universal Bridge
+  repository: jayprophit/Universal-Bridge
+  cloned_locally: true
+  projects:
+  - universal-bridge
+  write_set:
+    include:
+    - ''
+    exclude: []
+  guard: A separate repository outside the Aetherius OS tree. It was cloned on 21 October 2026 so that
+    its lane state is measured from the working tree and not only from the remote, because a lane whose
+    movement cannot be shown is a lane that cannot be shown to have moved.
+  work:
+    open: 5
+    done: 2
+    by_priority:
+      '1': 1
+      '2': 2
+      '3': 1
+      '4': 1
+    next_action: Build the Universal-Bridge project the manifest describes
+    next_action_id: TODO-UNIVERSAL-BRIDGE-000
+    next_action_is_owner_gate: false
+    top_three:
+    - id: TODO-UNIVERSAL-BRIDGE-000
+      priority: 1
+      title: Build the Universal-Bridge project the manifest describes
+    - id: TODO-UB-004
+      priority: 2
+      title: Make Universal Bridge read mixing desks and reach the installed hardware
+    - id: TODO-UNIVERSAL-BRIDGE-010
+      priority: 2
+      title: Build the missing Universal-Bridge capabilities
+  activity:
+    last_commit: '2026-10-21'
+    head: eee144d6
+    subject: Restore the implementation that a previous merge deleted
+    days_behind_the_newest: 0
+    starved: false
+  ci:
+    known: true
+    workflow: CI
+    status: completed
+    conclusion: success
+    head: eee144d6
+    at: '2026-10-21T08:38:01Z'
+    green: true
+- id: predecessor-absorption
+  name: Predecessor absorption
+  repository: jayprophit/Aetherius-OS
+  cloned_locally: true
+  projects:
+  - aetherial-platform
+  - aetherial
+  - aetherium
+  write_set:
+    include:
+    - docs/PREDECESSOR-MIGRATION-REGISTRY.yaml
+    - docs/PREDECESSOR-CAPABILITY-MATRIX.yaml
+    - docs/PREDECESSOR-CAPTURE-REGISTRY.yaml
+    - docs/evidence/credential-exposure-report.yaml
+    - tools/capture_predecessor.py
+    - tools/build_predecessor_register.py
+    - tools/build_predecessor_capability_matrix.py
+    - tools/build_credential_exposure_report.py
+    exclude: []
+  guard: 'This lane shares its repository with the Aetherius OS lane and takes a NARROWER write set, so
+    the two can run at the same time. The predecessor repositories themselves are read, never written:
+    a predecessor is only ever captured, and the deletion of one is the owner''s separate decision.'
+  work:
+    open: 13
+    done: 0
+    by_priority:
+      '1': 9
+      '2': 1
+      '3': 3
+    next_action: Build the Aetherial project the manifest describes
+    next_action_id: TODO-AETHERIAL-000
+    next_action_is_owner_gate: false
+    top_three:
+    - id: TODO-AETHERIAL-000
+      priority: 1
+      title: Build the Aetherial project the manifest describes
+    - id: TODO-AETHERIAL-001
+      priority: 1
+      title: Give Aetherial a test suite
+    - id: TODO-AETHERIAL-PLATFORM-000
+      priority: 1
+      title: Build the aetherial-platform project the manifest describes
+  activity:
+    last_commit: '2026-10-21'
+    head: bc7ed45e
+    subject: Map the predecessors' capabilities against the current components
+    days_behind_the_newest: 0
+    starved: false
+  ci:
+    known: true
+    workflow: Aetherius OS
+    status: completed
+    conclusion: success
+    head: bc7ed45e
+    at: '2026-10-21T19:28:56Z'
+    green: true

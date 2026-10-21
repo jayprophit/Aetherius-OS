@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **296** (244 open, 52 done)
+- Tasks: **299** (244 open, 55 done)
 
 ## By project
 
@@ -16,7 +16,7 @@
 | aetherium | 2 | 0 |
 | aetherius-commerce | 1 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 54 | 17 |
+| aetherius-os | 54 | 18 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 19 | 8 |
@@ -30,7 +30,7 @@
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
 | football-card-game | 2 | 0 |
-| genesis | 7 | 13 |
+| genesis | 7 | 15 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
 | ide-workspace | 10 | 8 |
@@ -1437,6 +1437,54 @@ Acceptance:
 - [ ] The organism is the same one after the model changes
 - [ ] What is durable and what is scheduled is stated, so nothing is claimed that is not so
 
+### ✅ TODO-GEN-016 — The Genesis secret scanner skipped every dotfile, and crashed on the first one
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** owner-audit — The Genesis CI of 21 October 2026
+
+The secret scan failed on Linux and passed on Windows, and the reason was that a file whose name begins with a dot is a HIDDEN file on Unix. Get-Item leaves hidden files out unless it is told not to, so the scan reached .gitattributes, Test-Path said the file was there, and Get-Item then said it could not find it.
+
+Evidence:
+
+```
+It was not only a crash. Without -Force the scan would have passed over every dotfile in the tree, and a dotfile is exactly where a .env or a .npmrc or a .git-credentials would live. The file walk in the fallback branch had the same omission. Both now ask for -Force, the scan passes on both operating systems, and it reports 610 files scanned with 8 allowed with a stated reason.
+```
+
+Resolution:
+
+Resolved 2026-10-21. Both branches ask for -Force and the scan is green on both operating systems.
+
+Acceptance:
+
+- [ ] The scanner does not skip a hidden file
+- [ ] The scan passes on Linux and on Windows
+- [ ] The dotfiles are actually scanned
+
+### ✅ TODO-GEN-017 — The Genesis content manifest was green on Windows and stale on Linux for the same commit
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** owner-audit — The Genesis CI of 21 October 2026
+
+A file was TEXT when it decoded as UTF-8 and carried no NUL, and a binary file was hashed RAW. But git does not decide what to normalise on the way in and out by asking whether the bytes decode as UTF-8: it looks for a NUL. So git treated the two audit reports in integration-archive as text, committed them with LF, and checked them out with CRLF on a Windows machine and with LF on a Linux one. The tool called them binary, because they are CP1252 rather than UTF-8, and so it hashed the raw working tree. A raw hash of a text file depends on the checkout's line-ending convention, so the same commit produced two different manifests.
+
+Evidence:
+
+```
+The rule is now git's rule: no NUL means text, and text is hashed as canonical LF. The two audit reports are now text, at 1,275 bytes, hashed the same way on every machine. The validation now says WHAT differs, because 'the manifest is stale' is not a diagnosis: it names the paths whose rows differ and the paths that are only in the regenerated manifest. The manifest was checked on both sides and the two are byte for byte the same, 122,521 bytes each.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The two audit reports are still CP1252, and that is recorded rather than silently rewritten: they are archived evidence, and changing an archived file's bytes is the owner's call, not the tool's.
+
+Acceptance:
+
+- [ ] The manifest is the same on every machine
+- [ ] The validation names what differs when it does differ
+- [ ] The content gate passes on Linux and on Windows
+
 ### ⬜ TODO-GENESIS-000 — Build the Genesis project the manifest describes
 
 - **Project:** genesis
@@ -2394,6 +2442,31 @@ Acceptance:
 - [ ] The workflow requirements from COMMERCE_LEARNING_SPEC.md are in the requirement register
 - [ ] It shares one identity, entitlement and billing model with Commerce
 - [ ] It is presented as an OS app, not as IDE functionality
+
+### ✅ TODO-AOS-021 — Keep the lanes ready, and keep the Agent Bridge's repair work from starving the rest
+
+- **Project:** aetherius-os
+- **Status:** DONE
+- **Source:** owner-directive — Aetherius_GitHub_Diagnostic_2026-10-21.md section 9
+
+The directive asks for several ready project lanes and for the Agent Bridge's repair work not to starve Genesis, Aetherius OS, the IDE, Poietek, MAT, the Universal Bridge or the rest of the programme. A register is how that is kept honest, because a register can be checked and a belief cannot.
+
+Evidence:
+
+```
+docs/WORKFORCE-LANES.yaml names eight lanes and what each one owns, which is a WRITE SET: the paths inside its repository that it may change. Two lanes may run at the same time only if their write sets do not overlap, so the tool checks every pair and says which pair conflicts. The check found a real one: the predecessor absorption lane shares the Aetherius OS repository, so it takes a narrower write set and the two can run together. Each lane carries its state, measured: the open work, the next action, the last commit, the CI state and the starvation gap. The Universal Bridge was cloned so that its movement can be shown rather than asserted.
+```
+
+Resolution:
+
+Resolved 2026-10-21. Eight lanes, no write-set conflicts, no lane without a next action and no starved lane. The register is rebuilt by tools/build_workforce_lanes.py and it is a measurement, not a description.
+
+Acceptance:
+
+- [ ] Every lane has a write set and no two overlapping ones
+- [ ] Every lane with open work has a next action
+- [ ] A lane that has not moved is measured, not assumed
+- [ ] The starvation gap is measured and a starved lane is named
 
 ### ✅ TODO-APP-001 — Build the workspace application registry
 
