@@ -4,8 +4,8 @@
 > project's own `build.yaml`. Do not hand-edit this file.
 
 - Projects: **37**
-- States: VERIFIED 7 · PARTIAL 15 · NOT_STARTED 15
-- Source date: 2026-10-20
+- States: VERIFIED 7 · PARTIAL 16 · NOT_STARTED 14
+- Source date: 2026-10-21
 
 ## Build order
 
@@ -29,7 +29,7 @@ finished before it.
 14. agent-bridge-dashboard       ⚠️ PARTIAL  (needs: agent-bridge, ide-workspace)
 15. agent-bridge-runtimesafety   ⚠️ PARTIAL  (needs: agent-bridge, genesis)
 16. ai-digital-twin              ❌ NOT_STARTED
-17. architecture-of-shadows-book ❌ NOT_STARTED  (needs: aetherius-os)
+17. architecture-of-shadows-book ⚠️ PARTIAL
 18. athena                       ❌ NOT_STARTED  (needs: aetherius-os)
 19. crossplatform                ⚠️ PARTIAL  (needs: aetherius-os)
 20. decentralized-messaging-app  ❌ NOT_STARTED  (needs: aetherius-os)
@@ -72,7 +72,7 @@ finished before it.
 | Agent-Bridge (supervisor UI / worker telemetry) | ⚠️ PARTIAL | application | unit/external-worker-telemetry | python/pytest | agent-bridge, ide-workspace |
 | Agent-Bridge (runtime safety) | ⚠️ PARTIAL | library | unit/runtime-safety-fixes | python/pytest | agent-bridge, genesis |
 | ai-digital-clone | ❌ NOT_STARTED | application | main | unknown | - |
-| Architecture of Shadows Book | ❌ NOT_STARTED | dataset | - | none | aetherius-os |
+| Architecture of Shadows Book | ⚠️ PARTIAL | dataset | - | pandoc | - |
 | Athena | ❌ NOT_STARTED | application | - | none | aetherius-os |
 | crossplatform | ⚠️ PARTIAL | tool | main | unknown | aetherius-os |
 | Decentralized Messaging App | ❌ NOT_STARTED | application | - | none | aetherius-os |
@@ -186,7 +186,7 @@ finished before it.
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
-| 🟡 medium | The project has no recorded scope, no outline, no format decision and no authoring pipeline. | OPEN | TODO-AOSB-001 |
+| 🟠 high | The document toolchain is not installed, so neither the PDF nor the EPUB has ever been built on this machine … | OPEN | TODO-AOSB-001 |
 
 ### Athena
 
@@ -494,12 +494,18 @@ Commands: `inspect`
 
 ### Architecture of Shadows Book
 
-The folder exists and is completely empty: zero files and zero subdirectories. There is nothing to build and no recorded intent for the book's scope or format.
+The content is present and substantial: sixteen volumes, fifty-three parts and four hundred and three chapters in the master edition; twelve volumes, forty-six parts and three hundred and sixty four chapters in the student edition; a web version; and a hundred and thirty eight kilobyte text of the whole work. The toolchain is absent. Pandoc and XeLaTeX are not installed on this machine, so no PDF or EPUB has been built here and the build gate has never run for this project.
 
 Evidence:
 
-- Folder survey: Architecture of Shadows Book -> 0 items total
-- No git repository, no package.json, no README, no source
+- Folder survey: 810 files in the tree, 782 tracked by the repository.
+- MASTER-EDITION: 16 volumes, 53 parts, 403 chapter-*.md files, 6 front matter files.
+- STUDENT-EDITION: 12 volumes, 46 parts, 364 chapter-*.md files.
+- WEB-VERSION: index.html, styles.css, script.js, README.md.
+- THE ARCHITECTURE OF SHADOWS.txt is 138,076 bytes.
+- pandoc: not installed. xelatex: not installed.
+
+Commands: `build-master-pdf` · `build-master-epub` · `build-student-pdf` · `build-student-epub` · `build-print-pdf`
 
 ### Athena
 
@@ -752,6 +758,6 @@ Commands: `inspect`
 | Materials Atlas Table Codex | aetherius-os, agent-bridge, genesis, ide-workspace |
 | Genesis | aetherius-os, agent-bridge, agent-bridge-cloudhybrid, agent-bridge-runtimesafety, ide-workspace, virtual-assistant |
 | Agent-Bridge | aetherius-os, agent-bridge-cloudhybrid, agent-bridge-dashboard, agent-bridge-runtimesafety, ide-workspace |
-| Aetherius-OS | aetherial, aetherial-platform, aetherium, aetherius-health-library, architecture-of-shadows-book, athena, crossplatform, decentralized-messaging-app, food-wiki-app, football-card-game, hermes-config-audit, ledgerlands, niche-platform, quantum-os, qva-merged, self-building-ai, veyra, web-platform |
+| Aetherius-OS | aetherial, aetherial-platform, aetherium, aetherius-health-library, athena, crossplatform, decentralized-messaging-app, food-wiki-app, football-card-game, hermes-config-audit, ledgerlands, niche-platform, quantum-os, qva-merged, self-building-ai, veyra, web-platform |
 | IDE-Workspace | agent-bridge-dashboard |
 | Poietek | universal-bridge |

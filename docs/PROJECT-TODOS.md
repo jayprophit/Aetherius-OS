@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **259** (231 open, 28 done)
+- Tasks: **259** (230 open, 29 done)
 
 ## By project
 
@@ -23,7 +23,7 @@
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
 | ai-digital-twin | 4 | 0 |
-| architecture-of-shadows-book | 4 | 0 |
+| architecture-of-shadows-book | 3 | 1 |
 | athena | 4 | 0 |
 | crossplatform | 2 | 0 |
 | decentralized-messaging-app | 4 | 0 |
@@ -2490,6 +2490,46 @@ Acceptance:
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
+### ⬜ TODO-AOSB-001 — The book project has no document toolchain, so it has never been built
+
+- **Project:** architecture-of-shadows-book
+- **Status:** OPEN
+- **Source:** build-audit — Architecture of Shadows Book folder survey, 2026-10-20
+
+The book is a real project with real content: sixteen volumes, fifty-three parts and four hundred and three chapters in the master edition, a student edition, a web version, and a hundred and thirty eight kilobyte text of the whole work. It cannot be built on this machine. Pandoc and XeLaTeX are not installed, so no PDF or EPUB has ever been produced here and no build gate has ever run for the project. The build commands themselves are sound: they are the owner's own, and their globs were checked against the tree and match it. The toolchain is the missing part.
+
+Evidence:
+
+```
+pandoc: not installed. xelatex: not installed. The master's own BUILD-INSTRUCTIONS.md gives the commands, and the glob patterns 00-FRONT-MATTER/*.md and VOLUME-*/PART-*/chapter-*.md match the tree exactly.
+```
+
+Acceptance:
+
+- [ ] Pandoc and a LaTeX distribution are installed on this machine,The master edition builds to a PDF and an EPUB,The student edition builds to a PDF and an EPUB,The build gate runs for this project and passes
+
+### ✅ TODO-AOSB-002 — The book project was not in the workspace at all, and its manifest was not published
+
+- **Project:** architecture-of-shadows-book
+- **Status:** DONE
+- **Source:** conversation-history — chatgpt conversation /c/6a415e55-8ba4-83eb-b67a-c96004d46dcf
+
+The book was a registered project whose content was never in the workspace. The register described it accurately as an empty folder, and that was the problem: the folder was empty, but the project was not. It lived in a public repository, and the manifest that the register pointed at sat in a folder the parent repository ignores, so a clone of the parent would not have had it either.
+
+Evidence:
+
+```
+The public repository jayprophit/THE-ARCHITECTURE-OF-SHADOWS carried 782 tracked files across three editions. Aetherius-OS/.gitignore excludes books/Architecture of Shadows Book/ along with every other nested project repository, and git ls-files books returned nothing.
+```
+
+Resolution:
+
+Resolved 2026-10-21. The repository is cloned into books/Architecture of Shadows Book/, its own manifest is committed inside it, and the register entry now describes the three editions and the real status: the content is present and the toolchain is absent. The counts in the manifest were counted from the tree.
+
+Acceptance:
+
+- [ ] The book repository is cloned into the place the register names,The manifest is inside the book's own repository, so it is published with it,The register describes what the project actually holds,The manifest counts the tree rather than describing it
+
 ### ⬜ TODO-GEN-003 — Implement the missing Genesis plan and action stages
 
 - **Project:** genesis
@@ -3790,43 +3830,6 @@ Acceptance:
 
 - [ ] The file is either replaced with a working installer or removed
 - [ ] The reference to GPT4All in the owner's material is corrected if the runner is not available
-
-### ⬜ TODO-AOSB-001 — Record the scope of the Architecture of Shadows book project
-
-- **Project:** architecture-of-shadows-book
-- **Status:** OPEN
-- **Source:** build-audit — Architecture of Shadows Book folder survey, 2026-10-20
-
-The project has no recorded scope, no outline, no format decision and no authoring pipeline of its own. The recovered conversation gives the chapter structure and image batches, and the MAT publication toolchain supplies the build, so the manifest needs to state which of those it uses.
-
-Evidence:
-
-```
-Architecture of Shadows Book -> 0 items total.
-```
-
-Acceptance:
-
-- [ ] The project manifest states the scope, the chapter structure and the authoring pipeline
-
-### ⬜ TODO-AOSB-002 — Recover the Architecture of Shadows book structure and image batches
-
-- **Project:** architecture-of-shadows-book
-- **Status:** OPEN
-- **Source:** conversation-history — chatgpt conversation /c/6a415e55-8ba4-83eb-b67a-c96004d46dcf
-
-The Architecture of Shadows conversation is an illustrated book delivered as numbered image batches. Batch 3 was split into ten individual PNG files with a manifest of filename, byte size and sha256 prefix, plus the original contact sheet for reference, and zipped. The batch naming pattern is batch_N_<number>_<slug>.png, and the user asked explicitly for individual images rather than contact sheets. The chapter range visible in Batch 3 runs 21 to 30, ending at "30_checkmate", so the book is at least thirty chapters long.
-
-Evidence:
-
-```
-"For the next batch, I'll continue with single image files only, not collage sheets." and the Batch 3 manifest listing chapters 21_the_pyramid_of_power through 30_checkmate.
-```
-
-Acceptance:
-
-- [ ] The full chapter list and the image batch inventory are recovered
-- [ ] The MAT publication toolchain is used rather than a new book pipeline
 
 ### ⬜ TODO-ARCH-SHADOWS-010 — Build the missing Architecture of Shadows Book capabilities
 
