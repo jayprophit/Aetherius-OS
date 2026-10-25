@@ -54,6 +54,10 @@ commands:
     command: npm run typecheck
     working_directory: .
     timeout_minutes: 10
+  - name: typecheck-apps
+    command: npm run typecheck:apps
+    working_directory: .
+    timeout_minutes: 10
   - name: build
     command: npm run build
     working_directory: .
@@ -63,11 +67,19 @@ commands:
     command: npm test
     working_directory: .
     timeout_minutes: 20
+  - name: test-apps
+    command: npm run test:apps
+    working_directory: .
+    timeout_minutes: 10
+  - name: secret-scan
+    command: npm run secret-scan
+    working_directory: .
+    timeout_minutes: 5
   - name: verify
-    command: npm run typecheck && npm test && npm run build
+    command: npm run verify
     working_directory: .
     timeout_minutes: 40
-    requires: [typecheck, test]
+    requires: [secret-scan, typecheck, typecheck-apps, test, test-apps]
   - name: source-registry
     command: python tools/generate_source_registry.py
     working_directory: .
@@ -140,7 +152,9 @@ known_issues:
     notes: >-
       The gate document now lives in Hermes-Config-Audit, which owns the
       Hermes configuration audit, and the BUILD86-R7B inventory now lives in
-      Aetherius-OS, which is the project it inventoried.
+      Aetherius-OS, which is the project it inventoried. 2026-10-25: a new
+      root-level audit document (GENESIS_AETHERIUS_MASTER_GAP_ANALYSIS_2026-10-25.md)
+      appeared and was preserved in Temp/; the hygiene guard now passes 14/14.
   - id: AOS-HYG-003
     severity: medium
     summary: >-
@@ -159,12 +173,17 @@ known_issues:
     todo_ref: TODO-AOS-003
     notes: >-
       Resolved 2026-10-20. The fix is at the root rather than in the
-      timeouts: the Vitest pool is limited to eight forks and the timeouts
-      are raised only enough to cover the slowest real operation, the
+      timeouts: the Vitest pool is capped at the four physical cores and the
+      timeouts are raised only enough to cover the slowest real operation, the
       registry audit that walks the whole programme. Two consecutive
       full-suite runs after the change each reported 1800 of 1800 passing in
       36 and 39 seconds. Raising a timeout would have hidden the problem;
-      stopping the machine being oversubscribed fixes it.
+      stopping the machine being oversubscribed fixes it. Correction
+      (2026-10-25): the cap was written as `poolOptions.forks.maxForks`, which
+      Vitest 4 removed; the option was read only to print a deprecation warning,
+      so the suite actually ran at the default (logical processors minus one,
+      seven on four cores). It is now the top-level `maxWorkers: 4`, which
+      Vitest 5 reads.
   - id: AOS-DIR-001
     severity: high
     summary: >-

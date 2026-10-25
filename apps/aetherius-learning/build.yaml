@@ -14,45 +14,69 @@ project:
   kind: application
   domain: learning
   description: >-
-    The Aetherius OS Learning application: the learner and educator views, the courses, the lessons, the assessment, the groups and the assignments. An integrated application domain of the one Aetherius ecosystem, not a platform of its own.
+    The Aetherius OS Learning application: the learner and educator views, the courses and lessons, the assessment, and the groups. An integrated application domain of the one Aetherius ecosystem, not a platform of its own.
   repository: false
-  languages: []
+  languages: [typescript]
 
 toolchain:
-  build_system: none
+  build_system: node --test
   package_manager: none
-  requirements: []
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
 
-commands: []
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
 
 dependencies:
   projects: [aetherius-os, agent-bridge, genesis]
   external: []
 
 status:
-  state: NOT_STARTED
-  last_verified: "2026-10-21"
+  state: PARTIAL
+  last_verified: "2026-10-25"
   summary: >-
-    The application is registered and its scope is recorded, and nothing has been
-    built. It is an integrated domain of the one Aetherius ecosystem, and the
-    primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml
-    rather than built three times over.
+    The learning domain slice is built and tested: courses, ordered lessons,
+    enrolment, prerequisite enforcement, quizzes with pass marks, assignments
+    and grading, progress and completion. It is not yet mounted in the
+    Aetherius OS host UI, and authoring is an API rather than an editor.
   evidence:
-    - "The Figma handoff of 17 October 2026 names the application and its destination."
-    - "The shared primitive map names the owner of every primitive this application uses."
+    - "2026-10-25: node --test \"tests/*.test.ts\" -> 6 tests passed."
+    - "2026-10-25: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 (all four app slices)."
+    - "2026-10-25: node apps/verify.mjs -> 4/4 slices passed."
+    - "The service uses the shared app-kit accounts, entitlements and hash-chained ledger."
 
 known_issues:
   - id: AETHERIUS-LEARNING-001
-    severity: high
+    severity: medium
     summary: >-
-      The application is registered but not built. Its thin vertical slice waits on the
-      shared primitives it consumes.
+      The domain slice is built and listed in the host application registry,
+      but the learner and educator UI and a content authoring editor are not.
     evidence: >-
-      docs/APPLICATION-SHARED-PRIMITIVES.yaml records the primitives this application
-      uses and the project that owns each one. A slice is a slice of a shared
-      mechanism, not a private copy of it.
+      The service and its tests live in apps/aetherius-learning and
+      src/apps/registry.ts lists the application; the learner and educator views
+      are not built, and courses are created through the service API with no
+      editor.
     status: OPEN
-    todo_ref: TODO-APP-002
+    todo_ref: TODO-APP-004
 
 notes:
   - >-

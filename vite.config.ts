@@ -62,13 +62,19 @@ export default defineConfig(({ mode }) => {
         // headroom for the build and the browser, and the suite still
         // finishes in about the same wall-clock time because the workers
         // were contending for the same cores anyway.
+        //
+        // This used to be written as `poolOptions.forks.maxForks`, which
+        // Vitest 4 removed: the option is now read only to print a
+        // deprecation warning, so the cap never applied and the suite ran at
+        // the default (logical processors minus one, seven here on four
+        // cores). On 2026-10-25 two in-memory tests then failed at their
+        // thirty second limit while an unrelated build held one core, and
+        // both passed alone. `maxWorkers` is the option that is actually
+        // read, and the number is the physical core count, which is what the
+        // paragraph above always meant.
         pool: 'forks',
-        poolOptions: {
-          forks: {
-            maxForks: 8,
-            minForks: 1,
-          },
-        },
+        maxWorkers: 4,
+        minWorkers: 1,
         // A test that legitimately needs longer than the default says so
         // itself. The default is raised only enough to cover the slowest
         // real operation, which is the registry audit walking the whole

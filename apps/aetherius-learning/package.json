@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/learning",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS Learning vertical slice: courses, lessons, enrolment and assessment.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

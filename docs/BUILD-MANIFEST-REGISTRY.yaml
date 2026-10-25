@@ -367,9 +367,10 @@ projects:
 - id: aetherius-commerce
   name: Aetherius OS Commerce
   manifest: Aetherius-OS/apps/aetherius-commerce/build.yaml
-  role: 'A future Aetherius OS application for selling and buying: the storefront, the merchant administration,
-    the checkout, and the payment providers where they are legally and commercially authorised.'
-  status: NOT_STARTED
+  role: 'The built commerce domain slice: catalogue, cart, checkout, inventory, fulfilment,
+    refunds and entitlements, with a local test payment provider. The storefront UI and a real
+    payment provider are not built.'
+  status: PARTIAL
   depends_on:
   - aetherius-os
   - agent-bridge
@@ -383,9 +384,9 @@ projects:
 - id: aetherius-learning
   name: Aetherius OS Learning
   manifest: Aetherius-OS/apps/aetherius-learning/build.yaml
-  role: 'A future Aetherius OS application for learning and teaching: the learner and educator views,
-    the courses and lessons, the assessment, and the groups.'
-  status: NOT_STARTED
+  role: 'The built learning domain slice: courses, lessons, enrolment, prerequisites, quizzes,
+    assignments and grading. The learner and educator UI and an authoring editor are not built.'
+  status: PARTIAL
   depends_on:
   - aetherius-os
   - agent-bridge
@@ -399,9 +400,9 @@ projects:
 - id: aetherius-community
   name: Aetherius OS Community
   manifest: Aetherius-OS/apps/aetherius-community/build.yaml
-  role: 'A future Aetherius OS application for people and teams: the feed, the groups, the chat and the
-    events.'
-  status: NOT_STARTED
+  role: 'The built community domain slice: groups, invitations, feed, comments, events and
+    moderation. Chat remains the Agent-Bridge messaging primitive, and the UI is not built.'
+  status: PARTIAL
   depends_on:
   - aetherius-os
   - agent-bridge

@@ -45,8 +45,19 @@ const TEMP_DIR = "Temp";
 const KNOWN_PROJECTS = [
   "Aetherius-OS",
   "Agent-Bridge",
+  "Genesis",
   "Materials-Atlas-Table-Codex---MAT",
+  "Universal-Bridge",
 ] as const;
+
+/**
+ * Tool state directories that are not projects and must not be moved.
+ * `.freebuff` holds Freebuff Desktop's project-id, which is how that tool
+ * finds its own chats; deleting or relocating it breaks the user's tool.
+ */
+const TOOL_DIRS = new Map<string, string>([
+  [".freebuff", "Freebuff Desktop project metadata"],
+]);
 
 /**
  * Non-project entries allowed at the Projects root, with the reason they are
@@ -72,6 +83,7 @@ interface Stray {
 
 function classify(name: string, isDir: boolean): Stray | null {
   if (isDir) {
+    if (TOOL_DIRS.has(name)) return null;
     if (GENERATED_DIR.test(name)) return { name, kind: "dir", reason: "generated directory" };
     if (!KNOWN_PROJECTS.includes(name as never) && name !== TEMP_DIR) {
       return { name, kind: "dir", reason: "folder that is not a known project" };
@@ -131,6 +143,10 @@ describe("workspace hygiene: the Projects folder holds projects and nothing else
     // flag it; this pins the reason so the exemption is deliberate.
     expect(ALLOWED_ROOT_FILES.get("opencode.json")).toContain("user opencode configuration");
   });
+
+  it("records why the tool directory exemption is not a project", () => {
+    expect(TOOL_DIRS.get(".freebuff")).toContain("Freebuff Desktop");
+  });
 });
 
 describe("workspace hygiene: classification logic (repository-local)", () => {
@@ -167,7 +183,7 @@ describe("workspace hygiene: classification logic (repository-local)", () => {
     if (!PROJECTS_PRESENT) return;
     const onDisk = readdirSync(PROJECTS_ROOT)
       .filter((e) => statSync(join(PROJECTS_ROOT, e)).isDirectory())
-      .filter((e) => e !== TEMP_DIR)
+      .filter((e) => e !== TEMP_DIR && !TOOL_DIRS.has(e))
       .sort();
     expect(onDisk).toEqual([...KNOWN_PROJECTS].sort());
   });

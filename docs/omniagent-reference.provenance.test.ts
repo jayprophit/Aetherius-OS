@@ -151,7 +151,12 @@ describe("omniagent reference: the owner's own tree is tracked, and the guard st
       }
       rmSync(probe, { force: true });
     }
-  });
+    // Spawning a POSIX shell on Windows and letting it run git against a
+    // worktree with references/ costs several seconds per call even when the
+    // machine is idle (measured 9s). The default 30s budget is not enough
+    // when the rest of the suite is running in parallel, and the earlier
+    // timeout was a slow shell, not a hook that failed to refuse.
+  }, 120_000);
 
   needsGenesis("the commit hook allows the owner's own tree", () => {
     // The exception must be a named path and not a relaxation, so the hook
@@ -161,7 +166,8 @@ describe("omniagent reference: the owner's own tree is tracked, and the guard st
     git(["reset", "-q", "HEAD", "--", "references/omniagent-runtime-&-workspace"], GENESIS);
     if (refused === null) return;
     expect(refused, "the hook must allow the owner's own reference tree").toBe(false);
-  });
+    // Same POSIX-shell-on-Windows cost as the refusal test above.
+  }, 120_000);
 });
 
 describe("omniagent reference: what the material actually is", () => {

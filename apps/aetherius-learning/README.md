@@ -1,20 +1,30 @@
 # Aetherius OS Learning
 
-The Aetherius OS Learning application: the learner and educator views, the courses, the lessons, the assessment, the groups and the assignments. An integrated application domain of the one Aetherius ecosystem, not a platform of its own.
+The Aetherius OS Learning application: the learner and educator views, the courses and lessons, the assessment, and the groups. An integrated application domain of the one Aetherius ecosystem, not a platform of its own.
 
-**Registered, not built.** The scope is recorded and the primitives it
-needs are mapped in `docs/APPLICATION-SHARED-PRIMITIVES.yaml`.
+**Built: the learning domain slice.** Courses, ordered lessons, enrolment, prerequisite enforcement, quizzes with pass marks, assignments and grading, progress and completion. **Not built:** the learner and educator UI, the host application registry mount, and a content authoring editor.
 
-This is an integrated application domain of the one Aetherius
-ecosystem. It does not get its own account system, its own billing
-system or its own search index: the primitives it uses belong to the
-projects the map names, and this application is a consumer of them.
+This is an integrated application domain of the one Aetherius ecosystem. It does not get its own account system, its own billing system or its own search index: the primitives it uses belong to the projects named in `docs/APPLICATION-SHARED-PRIMITIVES.yaml`. Accounts, entitlements and the hash-chained ledger come from `apps/app-kit`; Commerce and Learning share their data model rather than creating two.
 
-Named as a first-party application in the Figma handoff of 17 October 2026, with the concepts taken from the LearnDash LMS archive. The shared primitives are in docs/APPLICATION-SHARED-PRIMITIVES.yaml. The handoff is explicit that Commerce and Learning share their data model, so the enrolment, entitlement and payment mechanisms are one set and not two.
+## What is built
 
-## What it will be
+- Courses with draft/published state, ordered lessons and prerequisite courses.
+- Enrolment that refuses an unmet prerequisite and records the enrolment event.
+- Quizzes with a pass mark; submissions are graded and completion is recorded.
+- Assignments submitted by learners and graded by an educator.
+- Progress through the ordered lessons and a completion result per enrolment.
 
-A future Aetherius OS application for learning and teaching: the learner and educator views, the courses and lessons, the assessment, and the groups.
+## Run
+
+```sh
+node --test "tests/*.test.ts"
+```
+
+No dependency install is needed: Node 24 runs the TypeScript directly. The shared typecheck is `npx tsc -p ../tsconfig.json --noEmit` from this directory.
+
+## Not built
+
+The learner and educator UI, the host registry mount, and an authoring editor. Courses are currently created through the service API.
 
 ## Where it comes from
 

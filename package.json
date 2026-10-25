@@ -8,13 +8,15 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "typecheck:apps": "tsc -p apps/tsconfig.json --noEmit",
     "test": "vitest run",
+    "test:apps": "node apps/verify.mjs",
     "registry:validate": "vitest run src/programme src/state",
     "build:manifest": "vitest run src/programme/buildManifest.test.ts src/programme/workspaceRegistry.test.ts",
     "build:manifest:report": "vitest run src/programme/buildReport.test.ts src/programme/todoReport.test.ts",
     "capability:report": "vitest run src/programme/capabilityRegistry.test.ts -t regenerates",
     "secret-scan": "python tools/scan_for_secrets.py",
-    "verify": "npm run secret-scan && npm run typecheck && npm test && npm run build"
+    "verify": "npm run secret-scan && npm run typecheck && npm run typecheck:apps && npm test && npm run test:apps && npm run build"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

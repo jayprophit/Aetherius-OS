@@ -4,7 +4,7 @@
 > project's own `build.yaml`. Do not hand-edit this file.
 
 - Projects: **40**
-- States: VERIFIED 7 · PARTIAL 16 · NOT_STARTED 17
+- States: VERIFIED 7 · PARTIAL 19 · NOT_STARTED 14
 - Source date: 2026-10-21
 - Project detail below: **4 of 40** — the projects whose
   manifests this repository tracks. The rest live in their own
@@ -24,10 +24,10 @@ finished before it.
  6. aetherial-platform           ⚠️ PARTIAL  (needs: aetherius-os)
  7. aetherion-engine             ❌ NOT_STARTED
  8. aetherium                    ❌ NOT_STARTED  (needs: aetherius-os)
- 9. aetherius-commerce           ❌ NOT_STARTED  (needs: aetherius-os, agent-bridge, genesis)
-10. aetherius-community          ❌ NOT_STARTED  (needs: aetherius-os, agent-bridge, genesis)
+ 9. aetherius-commerce           ⚠️ PARTIAL  (needs: aetherius-os, agent-bridge, genesis)
+10. aetherius-community          ⚠️ PARTIAL  (needs: aetherius-os, agent-bridge, genesis)
 11. aetherius-health-library     ❌ NOT_STARTED  (needs: aetherius-os)
-12. aetherius-learning           ❌ NOT_STARTED  (needs: aetherius-os, agent-bridge, genesis)
+12. aetherius-learning           ⚠️ PARTIAL  (needs: aetherius-os, agent-bridge, genesis)
 13. aetherius-os-prototype       ❌ NOT_STARTED
 14. aetherius-os-worldclass-prototype ❌ NOT_STARTED
 15. agent-bridge-cloudhybrid     ⚠️ PARTIAL  (needs: agent-bridge, genesis)
@@ -70,10 +70,10 @@ finished before it.
 | aetherial-platform | ⚠️ PARTIAL | - | - | - | aetherius-os |
 | aetherion-engine | ❌ NOT_STARTED | - | - | - | - |
 | aetherium | ❌ NOT_STARTED | - | - | - | aetherius-os |
-| Aetherius OS Commerce | ❌ NOT_STARTED | application | - | none | aetherius-os, agent-bridge, genesis |
-| Aetherius OS Community | ❌ NOT_STARTED | application | - | none | aetherius-os, agent-bridge, genesis |
+| Aetherius OS Commerce | ⚠️ PARTIAL | application | - | node --test | aetherius-os, agent-bridge, genesis |
+| Aetherius OS Community | ⚠️ PARTIAL | application | - | node --test | aetherius-os, agent-bridge, genesis |
 | aetherius-health-library | ❌ NOT_STARTED | - | - | - | aetherius-os |
-| Aetherius OS Learning | ❌ NOT_STARTED | application | - | none | aetherius-os, agent-bridge, genesis |
+| Aetherius OS Learning | ⚠️ PARTIAL | application | - | node --test | aetherius-os, agent-bridge, genesis |
 | aetherius-os | ❌ NOT_STARTED | - | - | - | - |
 | aetherius-os-worldclass-prototype | ❌ NOT_STARTED | - | - | - | - |
 | Agent-Bridge (cloud-hybrid runtime) | ⚠️ PARTIAL | - | - | - | agent-bridge, genesis |
@@ -123,19 +123,19 @@ finished before it.
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
-| 🟠 high | The application is registered but not built. Its thin vertical slice waits on the shared primitives it consum… | OPEN | TODO-APP-002 |
+| 🟡 medium | The domain slice is built and listed in the host application registry, but the storefront UI and a real payme… | OPEN | TODO-APP-003 |
 
 ### Aetherius OS Community
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
-| 🟠 high | The application is registered but not built. Its thin vertical slice waits on the shared primitives it consum… | OPEN | TODO-APP-002 |
+| 🟡 medium | The domain slice is built and listed in the host application registry, but chat and the UI are not. | OPEN | TODO-APP-005 |
 
 ### Aetherius OS Learning
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
-| 🟠 high | The application is registered but not built. Its thin vertical slice waits on the shared primitives it consum… | OPEN | TODO-APP-002 |
+| 🟡 medium | The domain slice is built and listed in the host application registry, but the learner and educator UI and a … | OPEN | TODO-APP-004 |
 
 ## Verified state per project
 
@@ -156,30 +156,42 @@ Commands: `install` · `typecheck` · `build` · `test` · `verify` · `source-r
 
 ### Aetherius OS Commerce
 
-The application is registered and its scope is recorded, and nothing has been built. It is an integrated domain of the one Aetherius ecosystem, and the primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml rather than built three times over.
+The commerce domain slice is built and tested: catalogue, cart, idempotent checkout, inventory, a deterministic local test payment provider, fulfilment, refund, entitlements, sales reporting and ledger events. It is not yet mounted in the Aetherius OS host UI, and no real payment provider is connected.
 
 Evidence:
 
-- The Figma handoff of 17 October 2026 names the application and its destination.
-- The shared primitive map names the owner of every primitive this application uses.
+- 2026-10-25: node --test "tests/*.test.ts" -> 6 tests passed.
+- 2026-10-25: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 (all four app slices).
+- 2026-10-25: node apps/verify.mjs -> 4/4 slices passed.
+- The service uses the shared app-kit accounts, entitlements, notifications and hash-chained ledger.
+
+Commands: `test` · `typecheck` · `verify`
 
 ### Aetherius OS Community
 
-The application is registered and its scope is recorded, and nothing has been built. It is an integrated domain of the one Aetherius ecosystem, and the primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml rather than built three times over.
+The community domain slice is built and tested: public and private groups, invitations, membership, a feed, comments with notifications, events with capacity, reports and moderator resolution with an audit trail. Chat is not built here because messaging is the Agent-Bridge primitive, and the slice is not yet mounted in the Aetherius OS host UI.
 
 Evidence:
 
-- The Figma handoff of 17 October 2026 names the application and its destination.
-- The shared primitive map names the owner of every primitive this application uses.
+- 2026-10-25: node --test "tests/*.test.ts" -> 10 tests passed.
+- 2026-10-25: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 (all four app slices).
+- 2026-10-25: node apps/verify.mjs -> 4/4 slices passed.
+- The service uses the shared app-kit accounts, notifications and hash-chained ledger.
+
+Commands: `test` · `typecheck` · `verify`
 
 ### Aetherius OS Learning
 
-The application is registered and its scope is recorded, and nothing has been built. It is an integrated domain of the one Aetherius ecosystem, and the primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml rather than built three times over.
+The learning domain slice is built and tested: courses, ordered lessons, enrolment, prerequisite enforcement, quizzes with pass marks, assignments and grading, progress and completion. It is not yet mounted in the Aetherius OS host UI, and authoring is an API rather than an editor.
 
 Evidence:
 
-- The Figma handoff of 17 October 2026 names the application and its destination.
-- The shared primitive map names the owner of every primitive this application uses.
+- 2026-10-25: node --test "tests/*.test.ts" -> 6 tests passed.
+- 2026-10-25: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 (all four app slices).
+- 2026-10-25: node apps/verify.mjs -> 4/4 slices passed.
+- The service uses the shared app-kit accounts, entitlements and hash-chained ledger.
+
+Commands: `test` · `typecheck` · `verify`
 
 ## Dependents
 

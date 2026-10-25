@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "app-kit/src",
+    "app-kit/tests",
+    "aetherius-commerce/src",
+    "aetherius-commerce/tests",
+    "aetherius-learning/src",
+    "aetherius-learning/tests",
+    "aetherius-community/src",
+    "aetherius-community/tests"
+  ],
+  "exclude": ["**/node_modules", "**/dist"]
+}

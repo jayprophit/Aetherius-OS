@@ -16,43 +16,68 @@ project:
   description: >-
     The Aetherius OS Community application: the feed, the groups, the chat and the events. An integrated application domain of the one Aetherius ecosystem, not a platform of its own.
   repository: false
-  languages: []
+  languages: [typescript]
 
 toolchain:
-  build_system: none
+  build_system: node --test
   package_manager: none
-  requirements: []
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
 
-commands: []
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
 
 dependencies:
   projects: [aetherius-os, agent-bridge, genesis]
   external: []
 
 status:
-  state: NOT_STARTED
-  last_verified: "2026-10-21"
+  state: PARTIAL
+  last_verified: "2026-10-25"
   summary: >-
-    The application is registered and its scope is recorded, and nothing has been
-    built. It is an integrated domain of the one Aetherius ecosystem, and the
-    primitives it needs are mapped in docs/APPLICATION-SHARED-PRIMITIVES.yaml
-    rather than built three times over.
+    The community domain slice is built and tested: public and private groups,
+    invitations, membership, a feed, comments with notifications, events with
+    capacity, reports and moderator resolution with an audit trail. Chat is
+    not built here because messaging is the Agent-Bridge primitive, and the
+    slice is not yet mounted in the Aetherius OS host UI.
   evidence:
-    - "The Figma handoff of 17 October 2026 names the application and its destination."
-    - "The shared primitive map names the owner of every primitive this application uses."
+    - "2026-10-25: node --test \"tests/*.test.ts\" -> 10 tests passed."
+    - "2026-10-25: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 (all four app slices)."
+    - "2026-10-25: node apps/verify.mjs -> 4/4 slices passed."
+    - "The service uses the shared app-kit accounts, notifications and hash-chained ledger."
 
 known_issues:
   - id: AETHERIUS-COMMUNITY-001
-    severity: high
+    severity: medium
     summary: >-
-      The application is registered but not built. Its thin vertical slice waits on the
-      shared primitives it consumes.
+      The domain slice is built and listed in the host application registry,
+      but chat and the UI are not.
     evidence: >-
-      docs/APPLICATION-SHARED-PRIMITIVES.yaml records the primitives this application
-      uses and the project that owns each one. A slice is a slice of a shared
-      mechanism, not a private copy of it.
+      apps/aetherius-community implements groups, feed, comments, events and
+      moderation only; it deliberately does not implement messaging, which
+      docs/APPLICATION-SHARED-PRIMITIVES.yaml assigns to Agent-Bridge. The
+      application is listed in src/apps/registry.ts, but no UI is mounted.
     status: OPEN
-    todo_ref: TODO-APP-002
+    todo_ref: TODO-APP-005
 
 notes:
   - >-

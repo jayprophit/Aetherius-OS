@@ -47,7 +47,9 @@ const registry = loadBuildRegistry(readFileSync(REGISTRY_PATH, "utf8"));
 function projectFoldersOnDisk(): string[] {
   return readdirSync(PROJECTS_ROOT)
     .filter((e) => statSync(join(PROJECTS_ROOT, e)).isDirectory())
-    .filter((e) => e !== TEMP_DIR)
+    // Temp is the designated holding folder. `.freebuff` is Freebuff
+    // Desktop's own project metadata (project-id), not a project of ours.
+    .filter((e) => e !== TEMP_DIR && e !== ".freebuff")
     .sort();
 }
 
@@ -167,8 +169,17 @@ describe("build manifest registry: the real file", () => {
     const registeredFolders = new Set(
       registry.projects.map((p) => p.manifest.split("/")[0]!.replace(/^"|"$/g, "")),
     );
+    // A standalone checkout can live at the projects root while its
+    // registered manifest points at the vendored copy inside the host tree
+    // (Genesis at Aetherius-OS/kernel/Genesis, Universal-Bridge inside
+    // Poietek). The project is registered; the folder is therefore not
+    // unregistered. Match on the project name as well as on the manifest's
+    // first segment.
+    const registeredNames = new Set(registry.projects.map((p) => p.name.toLowerCase()));
     const onDisk = projectFoldersOnDisk();
-    const unregistered = onDisk.filter((f) => !registeredFolders.has(f) && !registered.has(f));
+    const unregistered = onDisk.filter(
+      (f) => !registeredFolders.has(f) && !registered.has(f) && !registeredNames.has(f.toLowerCase()),
+    );
     expect(
       unregistered,
       `project folders on disk with no registry entry: ${unregistered.join(", ")}`,

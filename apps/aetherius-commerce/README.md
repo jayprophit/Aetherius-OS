@@ -2,19 +2,29 @@
 
 The Aetherius OS Commerce and Marketplace application: the storefront, the merchant administration, the checkout and the payment providers. An integrated application domain of the one Aetherius ecosystem, not a platform of its own.
 
-**Registered, not built.** The scope is recorded and the primitives it
-needs are mapped in `docs/APPLICATION-SHARED-PRIMITIVES.yaml`.
+**Built: the commerce domain slice.** Catalogue, cart, idempotent checkout, inventory, a deterministic local test payment provider, fulfilment, refunds, entitlements, sales reporting and ledger events. **Not built:** the storefront UI, the host application registry mount, and a real payment provider.
 
-This is an integrated application domain of the one Aetherius
-ecosystem. It does not get its own account system, its own billing
-system or its own search index: the primitives it uses belong to the
-projects the map names, and this application is a consumer of them.
+This is an integrated application domain of the one Aetherius ecosystem. It does not get its own account system, its own billing system or its own search index: the primitives it uses belong to the projects named in `docs/APPLICATION-SHARED-PRIMITIVES.yaml`, and this application is a consumer of them. Accounts, entitlements, notifications and the hash-chained ledger come from `apps/app-kit`.
 
-Named as a first-party application in the Figma handoff of 17 October 2026, with the concepts taken from the WooCommerce archive. The shared primitives are in docs/APPLICATION-SHARED-PRIMITIVES.yaml and are not duplicated here: the account, permission, search, notification and payment mechanisms are the ones the rest of Aetherius uses.
+## What is built
 
-## What it will be
+- Products with SKU, price in integer minor units, inventory, tags, draft/published state.
+- A per-account cart and an idempotent checkout keyed by the caller's idempotency key.
+- Stock is decremented once, after payment succeeds; a declined payment changes nothing.
+- Fulfilment, refunds that restore stock and revoke the entitlement, and a sales report.
+- An append-only ledger event for every state change.
 
-A future Aetherius OS application for selling and buying: the storefront, the merchant administration, the checkout, and the payment providers where they are legally and commercially authorised.
+## Run
+
+```sh
+node --test "tests/*.test.ts"
+```
+
+No dependency install is needed: Node 24 runs the TypeScript directly. The shared typecheck is `npx tsc -p ../tsconfig.json --noEmit` from this directory.
+
+## Not built
+
+The storefront and merchant UI, the host registry mount, and any real payment provider. `LocalTestPaymentProvider` is deterministic and performs no financial transaction. A real transaction must not be performed without the owner's approval.
 
 ## Where it comes from
 

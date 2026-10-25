@@ -9,6 +9,13 @@ notes:
   so that the cost is visible before the code is written.
 - 'The source is the Figma handoff of 17 October 2026, which states the rule: Commerce and Learning share
   their data model and must not create overlapping authentication or billing systems.'
+- 'Implementation note (2026-10-25): apps/app-kit now implements the shareable primitives as library
+  code: accounts and profiles, permissions (default-deny), content composition and revision, search,
+  notifications, entitlements, the hash-chained event ledger, and workflow with approval gates.
+  Groups and moderation are implemented in aetherius-community on top of it; catalogue, checkout,
+  fulfilment and the local test payment provider are in aetherius-commerce; courses, enrolment and
+  grading are in aetherius-learning. Messaging and collaboration remain Agent-Bridge primitives and
+  are not reimplemented here.'
 primitives:
 - primitive: identity
   description: Who somebody is, and how that is established.
@@ -105,9 +112,11 @@ primitives:
   reused_by:
   - aetherius-commerce
   - aetherius-learning
-  state: NOT_STARTED
-  note: One billing mechanism for Commerce and Learning, with the entitlements shared. No real financial
-    transaction is performed and no paid service is provisioned without the owner's approval.
+  state: PARTIAL
+  note: One billing mechanism for Commerce and Learning, with the entitlements shared. apps/app-kit
+    holds the entitlement service and integer money type; aetherius-commerce holds checkout, refunds
+    and a deterministic LocalTestPaymentProvider. No real payment provider is connected, no real
+    financial transaction is performed and no paid service is provisioned without the owner's approval.
 - primitive: workflow
   description: A sequence of steps with state, approvals and a record.
   owner: agent-bridge
@@ -124,11 +133,12 @@ primitives:
   - aetherius-learning
   - aetherius-community
   state: PARTIAL
-not_implemented:
 - primitive: moderation
   description: Deciding what a community may publish.
   owner: aetherius-community
   reused_by: []
-  state: NOT_STARTED
+  state: PARTIAL
   note: Community's own, and only Community's. It is listed here rather than assumed, because it is the
-    one primitive the three do not share.
+    one primitive the three do not share. Implemented as reports, moderator-only resolution, hiding a
+    post, a notification to the author and a ledger event for every decision.
+not_implemented: []

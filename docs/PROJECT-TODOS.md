@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **308** (244 open, 64 done)
+- Tasks: **320** (254 open, 66 done)
 
 ## By project
 
@@ -16,7 +16,7 @@
 | aetherium | 2 | 0 |
 | aetherius-commerce | 1 | 0 |
 | aetherius-health-library | 4 | 0 |
-| aetherius-os | 54 | 18 |
+| aetherius-os | 59 | 18 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 19 | 16 |
@@ -30,7 +30,7 @@
 | decentralized-messaging-app | 4 | 0 |
 | food-wiki-app | 5 | 0 |
 | football-card-game | 2 | 0 |
-| genesis | 7 | 15 |
+| genesis | 12 | 17 |
 | hermes-config-audit | 14 | 0 |
 | holonav-os | 2 | 0 |
 | ide-workspace | 10 | 8 |
@@ -1674,6 +1674,41 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
+### ✅ TODO-GENESIS-HTTP-001 — Activate AetheriusBackend in Genesis HTTP service via trusted startup config
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** phase12 — RUNTIME_FOLLOWUP_PATCH.patch
+
+serve() does not expose backend/agent_bridge. Followup patch adds env-var support (GENESIS_AGENT_BRIDGE=1, GENESIS_CHECKPOINT) and optional checkpoint loading. Patch prepared and validated (git apply --check OK) but NOT applied pending approval.
+
+Resolution:
+
+Applied 2026-10-25. serve() reads GENESIS_AGENT_BRIDGE and GENESIS_CHECKPOINT, and GenesisRuntime registers the Agent-Bridge tools when the bridge is enabled. The default path still loads a native checkpoint.
+
+Acceptance:
+
+- [ ] GENESIS_AGENT_BRIDGE=1 starts the service with AetheriusBackend
+- [ ] Native default (no env) still uses GenesisModelBackend
+- [ ] No HTTP client can inject backend/executor
+
+### ✅ TODO-GENESIS-HTTP-002 — Increase Aetherius Ollama backend timeout from 120s to 300s
+
+- **Project:** genesis
+- **Status:** DONE
+- **Source:** phase12 — RUNTIME_FOLLOWUP_PATCH.patch
+
+Default 120s timeout caused TimeoutError on cold/slow inference. Followup patch raises to 300s. Validated end-to-end (262.52s agent turn succeeded with patched timeout).
+
+Resolution:
+
+Applied 2026-10-25 in genesis_model/aetherius_bridge.py; the URL open uses timeout=300.
+
+Acceptance:
+
+- [ ] _chat uses 300s timeout
+- [ ] No regression in existing tests
+
 ### ⬜ TODO-STR-001 — Make Genesis downloadable and usable as an agent in its own right
 
 - **Project:** genesis
@@ -2684,6 +2719,69 @@ Acceptance:
 - [ ] Every installed application and surfaced shortcut is recorded with its category
 - [ ] The tool folders are recorded with their contents
 
+### ⬜ TODO-APP-003 — Mount the Commerce domain slice in the Aetherius OS host
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-evidence — 2026-10-25: apps/aetherius-commerce/build.yaml
+- **Depends on:** TODO-APP-001
+
+The domain slice is built and tested: catalogue, cart, idempotent checkout, inventory, a deterministic local test payment provider, fulfilment, refund, entitlements, sales reporting and ledger events. What is not built is the storefront and merchant UI, the host application registry entry, and any real payment provider. A real financial transaction must not be performed without the owner's approval.
+
+Evidence:
+
+```
+apps/aetherius-commerce/build.yaml records 6 passing tests and a clean typecheck on 2026-10-25. src/apps/registry.ts lists the slice; it is not mounted in the host UI.
+```
+
+Acceptance:
+
+- [ ] The slice is reachable from the host application registry
+- [ ] The storefront and checkout are mounted in the host UI
+- [ ] A payment provider is chosen and integrated only with the owner's approval
+
+### ⬜ TODO-APP-004 — Mount the Learning domain slice in the Aetherius OS host
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-evidence — 2026-10-25: apps/aetherius-learning/build.yaml
+- **Depends on:** TODO-APP-001
+
+The domain slice is built and tested: courses, ordered lessons, enrolment, prerequisite enforcement, quizzes with pass marks, assignments and grading, progress and completion. What is not built is the learner and educator UI, the host application registry entry, and a content authoring editor; courses are currently created through the service API.
+
+Evidence:
+
+```
+apps/aetherius-learning/build.yaml records 6 passing tests and a clean typecheck on 2026-10-25. src/apps/registry.ts lists the slice; it is not mounted in the host UI.
+```
+
+Acceptance:
+
+- [ ] The slice is reachable from the host application registry
+- [ ] The learner and educator views are mounted in the host UI
+- [ ] An educator can author a course without calling the service directly
+
+### ⬜ TODO-APP-005 — Mount the Community domain slice and connect chat to the messaging primitive
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-evidence — 2026-10-25: apps/aetherius-community/build.yaml
+- **Depends on:** TODO-APP-001
+
+The domain slice is built and tested: public and private groups, invitations, membership, a feed, comments with notifications, events with capacity, reports and moderator resolution with an audit trail. Chat is deliberately not implemented here because messaging is the Agent-Bridge primitive named in docs/APPLICATION-SHARED-PRIMITIVES.yaml. The host application registry entry and the UI are also not built.
+
+Evidence:
+
+```
+apps/aetherius-community/build.yaml records 10 passing tests and a clean typecheck on 2026-10-25. src/apps/registry.ts lists the slice; it is not mounted in the host UI.
+```
+
+Acceptance:
+
+- [ ] The slice is reachable from the host application registry
+- [ ] The feed, groups and events are mounted in the host UI
+- [ ] Chat consumes the Agent-Bridge messaging primitive instead of a private copy
+
 ### ⬜ TODO-ARC-001 — Decide where the two gigabytes of research artefacts should live
 
 - **Project:** aetherius-os
@@ -2799,6 +2897,19 @@ Acceptance:
 
 - [ ] Each repository is placed in a project, or recorded as a learning repository
 - [ ] The programme catalogue records where each one lives
+
+### 🔑 TODO-IDE-GENESIS-001 — Integrate GenesisClient adapter into Aetherius IDE (separate approval)
+
+- **Project:** aetherius-os
+- **Status:** OWNER_GATED
+- **Source:** phase12 — IDE_GENESIS_ADAPTER.ts
+
+Isolated adapter prepared. Real IDE integration requires new code in apps/IDE-Workspace. Not yet applied.
+
+Acceptance:
+
+- [ ] GenesisClient wired into useGenesisRuntime or parallel hook
+- [ ] Real IDE smoke test against Genesis HTTP endpoint
 
 ### ⬜ TODO-KRN-005 — Generate language bindings from the syscall ABI
 
@@ -3620,6 +3731,26 @@ Acceptance:
 
 - [ ] Each recorded gap is either implemented and tested, or explicitly re-scoped with a reason
 
+### 🔨 TODO-GEN-007 — Verify Genesis data file, pasted text and text files are recorded
+
+- **Project:** genesis
+- **Status:** IN_PROGRESS
+- **Source:** owner-decision — PROJECT-TODOS.yaml line 1892; Genesis-Model repo data/local/ and docs/EVIDENCE.md
+
+The instruction requires all data added to the YAML to be checkable. Genesis has a public-domain Gutenberg corpus (59 files, 42,991,165 bytes / 41,421,627 characters after newline normalisation) with a JSONL manifest (data/local/gutenberg_manifest.jsonl) and SHA-256 hashes, a provenance-recorded token shard (runs/local_1m_clean/corpus.bin, 12,633,141 tokens), a tokenizer (tokenizer.json), and the full training pipeline (scripts/local_train.py, scripts/fetch_gutenberg.py). The master prompt folder (25 + 90 documents) and conversation-corpus material have not been folded into the registry or into Genesis training. The pasted text from earlier conversation history (chat transcripts) has not been registered either; it remains untracked output rather than a verified source.
+
+Evidence:
+
+```
+Stage 1 (master prompt full set integration): attempted with scripts/local_train.py using --corpus "C:\Users\jpowe\Documents\master prompt", preset local_1m, --steps 2; tokenizer trained (vocab 4096), shard written (10.86 MB), process timed out before checkpoint saved (previous process may still hold directory lock). Stage 2 (conversation transcript): file data/local/conversation-corpus/conversation-checkpoint.md (632 bytes) and manifest.jsonl created; registered in SOURCE-REGISTRY.yaml as unverified output. Stage 3 (held-out eval): DONE 2026-10-25 on the clean checkpoint, full held-out text, zero digest overlap, bpb 1.638118, ppl 32.0542 (docs/heldout_local_1m_clean.json). Stage 4 (model card): DONE 2026-10-25 for runs/local_1m_clean/genesis.pt. Stage 5 (longer runs): not yet executed. Full master prompt (115 files) not integrated into model training; subset (10 files) only.
+```
+
+Acceptance:
+
+- [ ] The Gutenberg corpus manifest and each cleaned file is listed in SOURCE-REGISTRY.yaml (or explicitly excluded as generated output with a recorded reason)
+- [ ] The master prompt folder and any pasted conversation text are either registered, explicitly excluded, or marked unverified with a reason
+- [ ] A reader can go from the registry entry back to the file on disk and confirm the digest matches
+
 ### ✅ TODO-GEN-011 — The gap register said the authority engine was not bound to the tool execution path, which was no longer true
 
 - **Project:** genesis
@@ -3668,6 +3799,58 @@ Acceptance:
 - [ ] The checkout gives LF on every platform
 - [ ] Regenerating the manifest leaves the working tree clean
 - [ ] The manifest gate passes on both operating systems
+
+### ⬜ TODO-GENESIS-HTTP-003 — Add streaming endpoint to Genesis HTTP runtime
+
+- **Project:** genesis
+- **Status:** OPEN
+- **Source:** phase12 — GENESIS_RUNTIME_HTTP_VERIFICATION.md
+
+Current runtime is non-streaming only. IDE adapter cannot show progressive output.
+
+Acceptance:
+
+- [ ] SSE or chunked endpoint implemented
+- [ ] IDE adapter consumes stream
+
+### ⬜ TODO-GENESIS-HTTP-004 — Add cancellation endpoint to Genesis HTTP runtime
+
+- **Project:** genesis
+- **Status:** OPEN
+- **Source:** phase12 — GENESIS_RUNTIME_HTTP_VERIFICATION.md
+
+No cancel support. Long-running agent turns cannot be aborted.
+
+Acceptance:
+
+- [ ] POST /v1/cancel or equivalent
+- [ ] Runtime aborts in-flight generation
+
+### ⬜ TODO-GENESIS-HTTP-005 — Add session persistence and restore endpoints
+
+- **Project:** genesis
+- **Status:** OPEN
+- **Source:** phase12 — GENESIS_RUNTIME_HTTP_VERIFICATION.md
+
+No session store exposed over HTTP. IDE cannot restore history.
+
+Acceptance:
+
+- [ ] Session create/get/list endpoints
+- [ ] Restart restores session
+
+### ⬜ TODO-GENESIS-HTTP-006 — Add authentication and CORS restriction for browser deployment
+
+- **Project:** genesis
+- **Status:** OPEN
+- **Source:** phase12 — GENESIS_RUNTIME_SECURITY_RESULTS.md
+
+Current API is unauthenticated with CORS *. Acceptable for localhost research only.
+
+Acceptance:
+
+- [ ] Auth token or session cookie required
+- [ ] CORS restricted to trusted origins
 
 ### ⬜ TODO-HERM-001 — Fix the Hermes model and provider routing mismatch
 
@@ -4556,6 +4739,19 @@ Acceptance:
 - [ ] The project is in the build manifest registry with a build manifest and a location
 - [ ] The account, message, post and moderation requirements are in the requirement register
 - [ ] It is presented as an OS app, not as IDE functionality
+
+### ⬜ TODO-IDE-GENESIS-002 — Tool-approval UI for phase4 Agent Bridge tools
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** phase12 — IDE_GENESIS_ADAPTER.ts
+
+IDE has approval UI gated on interactive flag for Agent Bridge; phase4 tools need equivalent.
+
+Acceptance:
+
+- [ ] Approve/deny controls for phase4.* tools
+- [ ] Audit record displayed
 
 ### ⬜ TODO-KRN-004 — Retire the Rust native layer once the C kernel is proven
 
