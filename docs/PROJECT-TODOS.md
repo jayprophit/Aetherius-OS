@@ -1064,7 +1064,7 @@ The audit of 21 October 2026, which is an independent read-only inspection of th
 
 Resolution:
 
-Closed 2026-10-27. The local suite was run in full earlier: 1,854 tests, and its 13 failures and 3 errors were each shown to be pre-existing by running the same tests against the code from before the changes. The remote failures were larger because the runner had no model runtime, so the closure is a hermetic fast gate that needs no provider. That gate now passes on this host: 2,297 passed, 18 skipped, 55 deselected, 18 subtests passed in 1,114.05 s, exit 0. The external proofs (desktop apps, browsers, hardware probes, live Ollama) and the 23-mutation proof are marked `slow` and scheduled separately. GitHub Actions run 40211806596 on 57304d0 is green.
+Closed 2026-10-27. The local suite was run in full earlier: 1,854 tests, and its 13 failures and 3 errors were each shown to be pre-existing by running the same tests against the code from before the changes. The remote failures were larger because the runner had no model runtime, so the closure is a hermetic fast gate that needs no provider. That gate now passes on this host: 2,297 passed, 18 skipped, 55 deselected, 18 subtests passed in 1,114.05 s, exit 0. The external proofs (desktop apps, browsers, hardware probes, live Ollama) and the 23-mutation proof are marked `slow` and scheduled separately. On the review branch `review/genesis-ide-integration-20261025`, GitHub Actions run 40211806596 on 57304d0 is green and the 2026-10-27 progress commit is d1927fb; main remains at fda42f3 with run 40190750560 green.
 
 Acceptance:
 

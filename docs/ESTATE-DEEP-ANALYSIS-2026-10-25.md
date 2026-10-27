@@ -203,8 +203,10 @@ existed is superseded.
 - Measured fast gate (2026-10-25): 2,301 passed, 18 skipped, 1 failed (MAT
   timeout, now slow-marked with a 300 s timeout), 50 deselected, 18 subtests
   passed in 2,158.66 s. A clean re-run is recorded in the 2026-10-27 update.
-- `main` CI is green (run at 2026-10-25 11:53); `build.yaml` records
-  `AB-TST-001` as FIXED and `TODO-AB-001` as DONE.
+- `main` is at `fda42f3` and its CI run `40190750560` is green (2026-10-25
+  11:53). The fast-gate record (`57304d0`, `AB-TST-001` FIXED) and the
+  2026-10-27 progress commit (`d1927fb`) are on the review branch
+  `review/genesis-ide-integration-20261025`, not on `main`.
 - Remaining: AB-SCR-001 (root-level scripts), AB-GOV-001 (4,066 unknown
   requirements), AB-PRS-001 (63 reuse decisions), AB-PUSH-001 (push blocked by
   environment deny-rule), credential rotation.
@@ -303,7 +305,10 @@ rewrite the earlier measurements.
   `[mutation-proof] 23 mutations`, `1/23 start: intake bypasses
   protocol.validate_action`, `1/23 done in 152.3s` and `2/23 start`. The
   documented full gate runs with `-s` so the lines are not captured.
-- `main` CI is green (run `40211806596` on `57304d0`, 2026-10-25).
+- `main` is `fda42f3` (CI run `40190750560` green). The fast-gate record
+  `57304d0` and the 2026-10-27 progress commit `d1927fb` are on
+  `review/genesis-ide-integration-20261025`; run `40211806596` on `57304d0`
+  was green.
 
 ### OpenClaw live gateway
 

@@ -5362,8 +5362,10 @@ todos:
     passes on this host: 2,297 passed, 18 skipped, 55 deselected, 18 subtests
     passed in 1,114.05 s, exit 0. The external proofs (desktop apps, browsers,
     hardware probes, live Ollama) and the 23-mutation proof are marked `slow`
-    and scheduled separately. GitHub Actions run 40211806596 on 57304d0 is
-    green.
+    and scheduled separately. On the review branch
+    `review/genesis-ide-integration-20261025`, GitHub Actions run 40211806596
+    on 57304d0 is green and the 2026-10-27 progress commit is d1927fb; main
+    remains at fda42f3 with run 40190750560 green.
   blocks: []
 - id: TODO-PRED-001
   title: The predecessor migration register does not exist yet
