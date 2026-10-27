@@ -337,7 +337,7 @@ rewrite the earlier measurements.
 |---|---|
 | Genesis public repository | `jayprophit/Genesis-Model`, `main` `f8484cb`, secret scan clean |
 | aetherion-engine public repository | `jayprophit/aetherion-engine`, public, `main` `ac28aca`, 3 docs only |
-| Aetherius CI | run `40464186852` green for `8724f3d` |
+| Aetherius CI | runs `40475133095` (`7397f87`) and `40475371246` (`fe96977`) green; earlier `40464186852` (`8724f3d`) green |
 | OpenClaw direct local inference | 25.32 tok/s, tool call returned `get_weather({"city":"Lagos"})` |
 | OpenClaw gateway plain turn | `42`, provider `ollama`, no fallback, no error |
 | OpenClaw gateway tool turn | `read` once, 0 failures, `DESKTOP-IONV32V` |
@@ -345,5 +345,6 @@ rewrite the earlier measurements.
 | OpenClaw secret audit | 1 pre-existing plaintext gateway token, 6 expected unresolved refs, 0 stored provider keys |
 | Agent-Bridge fast gate re-run | 2,297 passed, 18 skipped, 55 deselected, 18 subtests passed in 1,114.05 s (18:34), exit 0 |
 | Agent-Bridge mutation-proof progress | `[mutation-proof] 23 mutations`, `1/23 start`, `1/23 done in 152.3s`, `2/23 start` (capped check, not the full proof) |
+| Agent-Bridge CI (review branch) | run `40475269559` green on `d1927fb`; fast gate 6m49s |
 | Aetherius `npm run verify` re-run | exit 0: secret scan clean (970 files, 5 allowlisted), 1,804 passed / 1 skipped in 77.33 s, app slices 4/4, build 4.51 s |
 | Aetherius first verify attempt | failed 2 provenance tests on a two-day-old `kernel/Genesis/.git/index.lock`; lock removed and the test's probe path reset, then the clean re-run passed |
