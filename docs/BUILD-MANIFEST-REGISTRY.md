@@ -152,7 +152,7 @@ Evidence:
 - src/programme/ -> 470 tests pass, including the build manifest gate, the gap analysis gate, the source registry coverage gate and the report sync gates
 - native/kernel host suite -> 126 checks, 0 failures
 
-Commands: `install` · `typecheck` · `build` · `test` · `verify` · `source-registry` · `kernel-test` · `dev` · `registry-validate`
+Commands: `install` · `typecheck` · `typecheck-apps` · `build` · `test` · `test-apps` · `secret-scan` · `verify` · `source-registry` · `kernel-test` · `dev` · `registry-validate`
 
 ### Aetherius OS Commerce
 

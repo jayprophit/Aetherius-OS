@@ -35,7 +35,7 @@ scopes:
 
 totals:
   documents: 1163
-  bytes: 26212212
+  bytes: 26221033
   kind_build_record: 116
   kind_document: 652
   kind_handoff: 28
@@ -2367,10 +2367,10 @@ sources:
     scope: documents-root
     kind: document
     title: "Genesis IDE Live Acceptance Report"
-    bytes: 1948
-    lines: 34
+    bytes: 10769
+    lines: 142
     modified: 2026-10-25
-    digest: sha256:e808e67e63c5ba16172e145112d9011bd860a511edf96c3e64ab2a9465cb1298
+    digest: sha256:4fb1c7985d639d35fe8f21287bff5e6545b3ac264ff5dc6befcc3dee5e6102df
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase12/GENESIS_RUNTIME_HTTP_VERIFICATION.md"
     scope: documents-root
     kind: document

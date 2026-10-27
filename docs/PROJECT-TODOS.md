@@ -2726,7 +2726,7 @@ Acceptance:
 - **Source:** build-evidence — 2026-10-25: apps/aetherius-commerce/build.yaml
 - **Depends on:** TODO-APP-001
 
-The domain slice is built and tested: catalogue, cart, idempotent checkout, inventory, a deterministic local test payment provider, fulfilment, refund, entitlements, sales reporting and ledger events. What is not built is the storefront and merchant UI, the host application registry entry, and any real payment provider. A real financial transaction must not be performed without the owner's approval.
+The domain slice is built and tested: catalogue, cart, idempotent checkout, inventory, a deterministic local test payment provider, fulfilment, refund, entitlements, sales reporting and ledger events. What is not built is the storefront and merchant UI and any real payment provider; the host application registry entry exists in `src/apps/registry.ts`. A real financial transaction must not be performed without the owner's approval.
 
 Evidence:
 
@@ -2747,7 +2747,7 @@ Acceptance:
 - **Source:** build-evidence — 2026-10-25: apps/aetherius-learning/build.yaml
 - **Depends on:** TODO-APP-001
 
-The domain slice is built and tested: courses, ordered lessons, enrolment, prerequisite enforcement, quizzes with pass marks, assignments and grading, progress and completion. What is not built is the learner and educator UI, the host application registry entry, and a content authoring editor; courses are currently created through the service API.
+The domain slice is built and tested: courses, ordered lessons, enrolment, prerequisite enforcement, quizzes with pass marks, assignments and grading, progress and completion. What is not built is the learner and educator UI and a content authoring editor; the host application registry entry exists in `src/apps/registry.ts`, and courses are currently created through the service API.
 
 Evidence:
 
@@ -2768,7 +2768,7 @@ Acceptance:
 - **Source:** build-evidence — 2026-10-25: apps/aetherius-community/build.yaml
 - **Depends on:** TODO-APP-001
 
-The domain slice is built and tested: public and private groups, invitations, membership, a feed, comments with notifications, events with capacity, reports and moderator resolution with an audit trail. Chat is deliberately not implemented here because messaging is the Agent-Bridge primitive named in docs/APPLICATION-SHARED-PRIMITIVES.yaml. The host application registry entry and the UI are also not built.
+The domain slice is built and tested: public and private groups, invitations, membership, a feed, comments with notifications, events with capacity, reports and moderator resolution with an audit trail. Chat is deliberately not implemented here because messaging is the Agent-Bridge primitive named in docs/APPLICATION-SHARED-PRIMITIVES.yaml. The host application registry entry exists in `src/apps/registry.ts`; the UI is not built.
 
 Evidence:
 
