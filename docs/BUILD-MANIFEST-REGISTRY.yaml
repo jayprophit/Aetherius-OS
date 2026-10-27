@@ -289,11 +289,12 @@ projects:
 - id: aetherion-engine
   name: aetherion-engine
   manifest: Aetherius-OS/apps/aetherion-engine/build.yaml
-  role: 'The aetherion engine: recovered design material for the engine behind the Aetherius organism.'
+  role: 'The aetherion engine: video, graphics, audio and game engine in one runtime; design seed only.'
   status: NOT_STARTED
   depends_on: []
   notes: Registered during the workspace reorganisation of 2026-10-20. It had no folder in the workspace
-    before, so it was invisible to the registry and to the gate.
+    before, so it was invisible to the registry and to the gate. The design seed and manifest are
+    published at jayprophit/aetherion-engine (public, main ac28aca); there is still no source code.
 - id: holonav-os
   name: holonav-os
   manifest: Aetherius-OS/predecessors/holonav-os/build.yaml

@@ -109,20 +109,25 @@ dependencies:
 
 status:
   state: VERIFIED
-  last_verified: "2026-10-20"
+  last_verified: "2026-10-27"
   summary: >-
-    Typecheck, build and the full test suite are clean. 1,800 tests across
-    100 files, all passing, in 32 seconds. The five failures the audit
-    started with are resolved: the stale project list and the two stray
-    root documents, the unlicensed third-party source tracked in Genesis,
-    and the HTTP bridge transport timing artefact.
+    The full declared gate is clean. On 2026-10-27 `npm run verify` passed
+    every stage: secret scan clean (970 files, 5 allowlisted), both
+    typechecks clean, 1,804 tests passed and 1 skipped across 100 files in
+    77.33 s, all four app slices passed (30 tests), and the production build
+    completed in 4.51 s. The five failures the audit started with remain
+    resolved: the stale project list and the two stray root documents, the
+    unlicensed third-party source tracked in Genesis, and the HTTP bridge
+    transport timing artefact.
   evidence:
-    - "npm run typecheck -> exit 0, no diagnostics"
-    - "npm test -> 1800 passed / 0 failed / 1800 total, 32.40s, 100 files"
-    - "docs/workspace-hygiene.test.ts -> 13 of 13 pass"
-    - "docs/omniagent-reference.provenance.test.ts -> 11 of 11 pass"
-    - "src/programme/ -> 470 tests pass, including the build manifest gate, the gap analysis gate, the source registry coverage gate and the report sync gates"
-    - "native/kernel host suite -> 126 checks, 0 failures"
+    - "2026-10-27: npm run verify -> exit 0; secret scan clean (970 files, 5 allowlisted); typecheck and typecheck:apps clean"
+    - "2026-10-27: npm test -> 100 files passed, 1,804 passed / 1 skipped / 1,805 total, 77.33 s"
+    - "2026-10-27: node apps/verify.mjs -> 4/4 slices passed (commerce 6, community 10, learning 6, app-kit 8)"
+    - "2026-10-27: npm run build -> vite 6.4.3, 46 modules transformed, dist/assets/index-DewxI7pW.js 276.44 kB, built in 4.51 s"
+    - "2026-10-27: docs/workspace-hygiene.test.ts + docs/omniagent-reference.provenance.test.ts -> 26 passed (14 + 12)"
+    - "First verify attempt on 2026-10-27 failed two provenance tests because kernel/Genesis held a stale .git/index.lock from an interrupted 2026-10-25 run; the lock was removed, the test's own probe path was reset, and the clean re-run above passed"
+    - "src/programme/ -> build manifest gate, gap analysis gate, source registry coverage gate and report sync gates pass"
+    - "native/kernel host suite -> 126 checks, 0 failures (2026-10-25 baseline)"
 
 known_issues:
   - id: AOS-HYG-001

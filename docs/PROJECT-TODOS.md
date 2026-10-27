@@ -4,7 +4,7 @@
 > file; edit the YAML and regenerate.
 
 - Source date: 2026-10-21
-- Tasks: **320** (254 open, 66 done)
+- Tasks: **320** (252 open, 68 done)
 
 ## By project
 
@@ -19,7 +19,7 @@
 | aetherius-os | 59 | 18 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
-| agent-bridge | 19 | 16 |
+| agent-bridge | 17 | 18 |
 | agent-bridge-cloudhybrid | 5 | 0 |
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
@@ -1048,10 +1048,10 @@ Acceptance:
 - [ ] The receipts are read back off the disk
 - [ ] The OpenCode CLI is really invoked and whatever it says is recorded
 
-### ⬜ TODO-PLAT-001 — Agent Bridge's CI is red and the failures are not classified
+### ✅ TODO-PLAT-001 — Agent Bridge's CI is red and the failures are not classified
 
 - **Project:** agent-bridge
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** owner-audit — Aetherius_GitHub_Diagnostic_2026-10-21.md AUD-003
 
 The remote run reported 1856 tests with 26 failures and 28 errors, grouped into policy grant expectations, a missing Ollama service, a Windows short-path mismatch, dependency lock and import failures, model inventory mismatches and supervised worker expectations. The audit was explicit that the security-policy failures are to be treated as real until classified, and that they are not to be skipped to make the build green.
@@ -1064,7 +1064,7 @@ The audit of 21 October 2026, which is an independent read-only inspection of th
 
 Resolution:
 
-The local suite was run in full: 1854 tests, and its 13 failures and 3 errors were each shown to be pre-existing by running the same tests against the code from before the changes. The remote failures are larger because the runner has no model runtime, so a hermetic fast gate that does not need a provider is what closes this.
+Closed 2026-10-27. The local suite was run in full earlier: 1,854 tests, and its 13 failures and 3 errors were each shown to be pre-existing by running the same tests against the code from before the changes. The remote failures were larger because the runner had no model runtime, so the closure is a hermetic fast gate that needs no provider. That gate now passes on this host: 2,297 passed, 18 skipped, 55 deselected, 18 subtests passed in 1,114.05 s, exit 0. The external proofs (desktop apps, browsers, hardware probes, live Ollama) and the 23-mutation proof are marked `slow` and scheduled separately. GitHub Actions run 40211806596 on 57304d0 is green.
 
 Acceptance:
 
@@ -3180,10 +3180,10 @@ Acceptance:
 - [ ] A written strategy says which tree is canonical and how the others sync
 - [ ] A check exists that reports divergence between the trees
 
-### ⬜ TODO-AB-010 — The Bridge's mutation proof makes the whole suite look hung
+### ✅ TODO-AB-010 — The Bridge's mutation proof makes the whole suite look hung
 
 - **Project:** agent-bridge
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** owner-inspection — Agent-Bridge/tests/test_actions_intake_mutations.py, 2026-10-21
 
 The Bridge's test suite runs a mutation proof. For each of twenty-three mutations it copies the whole repository into a temporary directory, changes one line, and runs the affected tests there, expecting them to fail. Each of those runs is a separate pytest process, and the pytest subset takes about seventy seconds on its own, so the proof alone is roughly half an hour. The child's output is captured rather than streamed, so the suite's own log does not grow while it works, and the parent process does no work of its own while it waits. The result is a suite that looks frozen: flat processor time, no new output, no progress line, for as long as the proof runs.
@@ -3193,6 +3193,10 @@ Evidence:
 ```
 Observed three times on 2026-10-21. The suite was judged hung twice and had to be killed both times, and the third run was left to finish. The pytest subset run on its own passed 107 tests in 69.69 seconds, and the mutation list holds twenty-three entries, so the proof is expected to take about half an hour. The copy-and-mutate pattern is in tests/test_actions_intake_mutations.py, which copies the repository with shutil.copytree and runs the suite in the copy.
 ```
+
+Resolution:
+
+Resolved 2026-10-27. The mutation proof now prints a start line for every mutation and a completion line with the per-mutation and elapsed seconds, and the documented full gate runs with `-s` (`python -m pytest tests -s`) so pytest does not capture those lines. The `slow` marker keeps the proof out of the default fast gate, which completed cleanly on 2026-10-27 (2,297 passed, 18 skipped, 55 deselected, 18 subtests passed in 1,114.05 s). A capped run captured the live output: `[mutation-proof] 23 mutations; progress follows`, `1/23 start: intake bypasses protocol.validate_action`, `1/23 done in 152.3s`, `2/23 start: intake stops refusing patterns and escapes`.
 
 Acceptance:
 
