@@ -17,7 +17,8 @@ export function money(amount: number, currency = "USD"): Money {
   }
   const code = currency.toUpperCase();
   if (!CURRENCY.test(code)) throw new Error(`invalid currency: ${currency}`);
-  return { amount, currency: code };
+  // Normalise negative zero so a settled balance compares equal to zero.
+  return { amount: amount === 0 ? 0 : amount, currency: code };
 }
 
 export function assertMoney(value: Money): void {

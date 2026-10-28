@@ -1998,17 +1998,13 @@ todos:
   source:
     kind: build-evidence
     ref: '2026-10-25: apps/aetherius-commerce/build.yaml'
-  detail: >-
-    The domain slice is built and tested: catalogue, cart, idempotent checkout,
-    inventory, a deterministic local test payment provider, fulfilment, refund,
-    entitlements, sales reporting and ledger events. What is not built is the
-    storefront and merchant UI and any real payment provider; the host
-    application registry entry exists in `src/apps/registry.ts`. A real
-    financial transaction must not be performed without the owner's approval.
-  evidence: >-
-    apps/aetherius-commerce/build.yaml records 6 passing tests and a clean
-    typecheck on 2026-10-25. src/apps/registry.ts lists the slice; it is not
-    mounted in the host UI.
+  detail: 'The domain slice is built and tested: catalogue, cart, idempotent checkout, inventory, a deterministic
+    local test payment provider, fulfilment, refund, entitlements, sales reporting and ledger events.
+    What is not built is the storefront and merchant UI and any real payment provider; the host application
+    registry entry exists in `src/apps/registry.ts`. A real financial transaction must not be performed
+    without the owner''s approval.'
+  evidence: apps/aetherius-commerce/build.yaml records 6 passing tests and a clean typecheck on 2026-10-25.
+    src/apps/registry.ts lists the slice; it is not mounted in the host UI.
   depends_on:
   - TODO-APP-001
   acceptance:
@@ -2023,17 +2019,12 @@ todos:
   source:
     kind: build-evidence
     ref: '2026-10-25: apps/aetherius-learning/build.yaml'
-  detail: >-
-    The domain slice is built and tested: courses, ordered lessons, enrolment,
-    prerequisite enforcement, quizzes with pass marks, assignments and grading,
-    progress and completion. What is not built is the learner and educator UI
-    and a content authoring editor; the host application registry entry exists
-    in `src/apps/registry.ts`, and courses are currently created through the
-    service API.
-  evidence: >-
-    apps/aetherius-learning/build.yaml records 6 passing tests and a clean
-    typecheck on 2026-10-25. src/apps/registry.ts lists the slice; it is not
-    mounted in the host UI.
+  detail: 'The domain slice is built and tested: courses, ordered lessons, enrolment, prerequisite enforcement,
+    quizzes with pass marks, assignments and grading, progress and completion. What is not built is the
+    learner and educator UI and a content authoring editor; the host application registry entry exists
+    in `src/apps/registry.ts`, and courses are currently created through the service API.'
+  evidence: apps/aetherius-learning/build.yaml records 6 passing tests and a clean typecheck on 2026-10-25.
+    src/apps/registry.ts lists the slice; it is not mounted in the host UI.
   depends_on:
   - TODO-APP-001
   acceptance:
@@ -2048,17 +2039,13 @@ todos:
   source:
     kind: build-evidence
     ref: '2026-10-25: apps/aetherius-community/build.yaml'
-  detail: >-
-    The domain slice is built and tested: public and private groups, invitations,
-    membership, a feed, comments with notifications, events with capacity,
-    reports and moderator resolution with an audit trail. Chat is deliberately
-    not implemented here because messaging is the Agent-Bridge primitive named
-    in docs/APPLICATION-SHARED-PRIMITIVES.yaml. The host application registry
-    entry exists in `src/apps/registry.ts`; the UI is not built.
-  evidence: >-
-    apps/aetherius-community/build.yaml records 10 passing tests and a clean
-    typecheck on 2026-10-25. src/apps/registry.ts lists the slice; it is not
-    mounted in the host UI.
+  detail: 'The domain slice is built and tested: public and private groups, invitations, membership, a
+    feed, comments with notifications, events with capacity, reports and moderator resolution with an
+    audit trail. Chat is deliberately not implemented here because messaging is the Agent-Bridge primitive
+    named in docs/APPLICATION-SHARED-PRIMITIVES.yaml. The host application registry entry exists in `src/apps/registry.ts`;
+    the UI is not built.'
+  evidence: apps/aetherius-community/build.yaml records 10 passing tests and a clean typecheck on 2026-10-25.
+    src/apps/registry.ts lists the slice; it is not mounted in the host UI.
   depends_on:
   - TODO-APP-001
   acceptance:
@@ -4830,17 +4817,13 @@ todos:
   title: The Bridge's mutation proof makes the whole suite look hung
   project: agent-bridge
   status: DONE
-  resolution: >-
-    Resolved 2026-10-27. The mutation proof now prints a start line for every
-    mutation and a completion line with the per-mutation and elapsed seconds,
-    and the documented full gate runs with `-s` (`python -m pytest tests -s`)
-    so pytest does not capture those lines. The `slow` marker keeps the proof
-    out of the default fast gate, which completed cleanly on 2026-10-27
-    (2,297 passed, 18 skipped, 55 deselected, 18 subtests passed in 1,114.05
-    s). A capped run captured the live output: `[mutation-proof] 23
-    mutations; progress follows`, `1/23 start: intake bypasses
-    protocol.validate_action`, `1/23 done in 152.3s`, `2/23 start: intake
-    stops refusing patterns and escapes`.
+  resolution: 'Resolved 2026-10-27. The mutation proof now prints a start line for every mutation and
+    a completion line with the per-mutation and elapsed seconds, and the documented full gate runs with
+    `-s` (`python -m pytest tests -s`) so pytest does not capture those lines. The `slow` marker keeps
+    the proof out of the default fast gate, which completed cleanly on 2026-10-27 (2,297 passed, 18 skipped,
+    55 deselected, 18 subtests passed in 1,114.05 s). A capped run captured the live output: `[mutation-proof]
+    23 mutations; progress follows`, `1/23 start: intake bypasses protocol.validate_action`, `1/23 done
+    in 152.3s`, `2/23 start: intake stops refusing patterns and escapes`.'
   priority: 2
   source:
     kind: owner-inspection
@@ -5353,19 +5336,15 @@ todos:
   acceptance:
   - The finding is closed by something that runs, not by a description
   - The evidence is reproducible on this machine
-  resolution: >-
-    Closed 2026-10-27. The local suite was run in full earlier: 1,854 tests,
-    and its 13 failures and 3 errors were each shown to be pre-existing by
-    running the same tests against the code from before the changes. The
-    remote failures were larger because the runner had no model runtime, so
-    the closure is a hermetic fast gate that needs no provider. That gate now
-    passes on this host: 2,297 passed, 18 skipped, 55 deselected, 18 subtests
-    passed in 1,114.05 s, exit 0. The external proofs (desktop apps, browsers,
-    hardware probes, live Ollama) and the 23-mutation proof are marked `slow`
-    and scheduled separately. On the review branch
-    `review/genesis-ide-integration-20261025`, GitHub Actions run 40211806596
-    on 57304d0 is green and the 2026-10-27 progress commit is d1927fb; main
-    remains at fda42f3 with run 40190750560 green.
+  resolution: 'Closed 2026-10-27. The local suite was run in full earlier: 1,854 tests, and its 13 failures
+    and 3 errors were each shown to be pre-existing by running the same tests against the code from before
+    the changes. The remote failures were larger because the runner had no model runtime, so the closure
+    is a hermetic fast gate that needs no provider. That gate now passes on this host: 2,297 passed, 18
+    skipped, 55 deselected, 18 subtests passed in 1,114.05 s, exit 0. The external proofs (desktop apps,
+    browsers, hardware probes, live Ollama) and the 23-mutation proof are marked `slow` and scheduled
+    separately. On the review branch `review/genesis-ide-integration-20261025`, GitHub Actions run 40211806596
+    on 57304d0 is green and the 2026-10-27 progress commit is d1927fb; main remains at fda42f3 with run
+    40190750560 green.'
   blocks: []
 - id: TODO-PRED-001
   title: The predecessor migration register does not exist yet
@@ -6132,16 +6111,24 @@ todos:
   priority: 2
   source:
     kind: owner-decision
-    ref: 'PROJECT-TODOS.yaml line 1892; Genesis-Model repo data/local/ and docs/EVIDENCE.md'
+    ref: PROJECT-TODOS.yaml line 1892; Genesis-Model repo data/local/ and docs/EVIDENCE.md
   detail: The instruction requires all data added to the YAML to be checkable. Genesis has a public-domain
     Gutenberg corpus (59 files, 42,991,165 bytes / 41,421,627 characters after newline normalisation)
     with a JSONL manifest (data/local/gutenberg_manifest.jsonl) and SHA-256 hashes, a provenance-recorded
     token shard (runs/local_1m_clean/corpus.bin, 12,633,141 tokens), a tokenizer (tokenizer.json), and
-    the full training pipeline (scripts/local_train.py, scripts/fetch_gutenberg.py). The master prompt folder
-    (25 + 90 documents) and conversation-corpus material have not been folded into the registry or into
-    Genesis training. The pasted text from earlier conversation history (chat transcripts) has not been
-    registered either; it remains untracked output rather than a verified source.
-  evidence: 'Stage 1 (master prompt full set integration): attempted with scripts/local_train.py using --corpus "C:\Users\jpowe\Documents\master prompt", preset local_1m, --steps 2; tokenizer trained (vocab 4096), shard written (10.86 MB), process timed out before checkpoint saved (previous process may still hold directory lock). Stage 2 (conversation transcript): file data/local/conversation-corpus/conversation-checkpoint.md (632 bytes) and manifest.jsonl created; registered in SOURCE-REGISTRY.yaml as unverified output. Stage 3 (held-out eval): DONE 2026-10-25 on the clean checkpoint, full held-out text, zero digest overlap, bpb 1.638118, ppl 32.0542 (docs/heldout_local_1m_clean.json). Stage 4 (model card): DONE 2026-10-25 for runs/local_1m_clean/genesis.pt. Stage 5 (longer runs): not yet executed. Full master prompt (115 files) not integrated into model training; subset (10 files) only.'
+    the full training pipeline (scripts/local_train.py, scripts/fetch_gutenberg.py). The master prompt
+    folder (25 + 90 documents) and conversation-corpus material have not been folded into the registry
+    or into Genesis training. The pasted text from earlier conversation history (chat transcripts) has
+    not been registered either; it remains untracked output rather than a verified source.
+  evidence: 'Stage 1 (master prompt full set integration): attempted with scripts/local_train.py using
+    --corpus "C:\Users\jpowe\Documents\master prompt", preset local_1m, --steps 2; tokenizer trained (vocab
+    4096), shard written (10.86 MB), process timed out before checkpoint saved (previous process may still
+    hold directory lock). Stage 2 (conversation transcript): file data/local/conversation-corpus/conversation-checkpoint.md
+    (632 bytes) and manifest.jsonl created; registered in SOURCE-REGISTRY.yaml as unverified output. Stage
+    3 (held-out eval): DONE 2026-10-25 on the clean checkpoint, full held-out text, zero digest overlap,
+    bpb 1.638118, ppl 32.0542 (docs/heldout_local_1m_clean.json). Stage 4 (model card): DONE 2026-10-25
+    for runs/local_1m_clean/genesis.pt. Stage 5 (longer runs): not yet executed. Full master prompt (115
+    files) not integrated into model training; subset (10 files) only.'
   acceptance:
   - The Gutenberg corpus manifest and each cleaned file is listed in SOURCE-REGISTRY.yaml (or explicitly
     excluded as generated output with a recorded reason)
@@ -6149,7 +6136,6 @@ todos:
     or marked unverified with a reason
   - A reader can go from the registry entry back to the file on disk and confirm the digest matches
   blocks: []
-
 - id: TODO-GENESIS-HTTP-001
   title: Activate AetheriusBackend in Genesis HTTP service via trusted startup config
   project: genesis
@@ -6158,14 +6144,17 @@ todos:
   source:
     kind: phase12
     ref: RUNTIME_FOLLOWUP_PATCH.patch
-  detail: serve() does not expose backend/agent_bridge. Followup patch adds env-var support (GENESIS_AGENT_BRIDGE=1, GENESIS_CHECKPOINT) and optional checkpoint loading. Patch prepared and validated (git apply --check OK) but NOT applied pending approval.
-  resolution: Applied 2026-10-25. serve() reads GENESIS_AGENT_BRIDGE and GENESIS_CHECKPOINT, and GenesisRuntime registers the Agent-Bridge tools when the bridge is enabled. The default path still loads a native checkpoint.
+  detail: serve() does not expose backend/agent_bridge. Followup patch adds env-var support (GENESIS_AGENT_BRIDGE=1,
+    GENESIS_CHECKPOINT) and optional checkpoint loading. Patch prepared and validated (git apply --check
+    OK) but NOT applied pending approval.
+  resolution: Applied 2026-10-25. serve() reads GENESIS_AGENT_BRIDGE and GENESIS_CHECKPOINT, and GenesisRuntime
+    registers the Agent-Bridge tools when the bridge is enabled. The default path still loads a native
+    checkpoint.
   acceptance:
   - GENESIS_AGENT_BRIDGE=1 starts the service with AetheriusBackend
   - Native default (no env) still uses GenesisModelBackend
   - No HTTP client can inject backend/executor
   blocks: []
-
 - id: TODO-GENESIS-HTTP-002
   title: Increase Aetherius Ollama backend timeout from 120s to 300s
   project: genesis
@@ -6174,13 +6163,13 @@ todos:
   source:
     kind: phase12
     ref: RUNTIME_FOLLOWUP_PATCH.patch
-  detail: Default 120s timeout caused TimeoutError on cold/slow inference. Followup patch raises to 300s. Validated end-to-end (262.52s agent turn succeeded with patched timeout).
+  detail: Default 120s timeout caused TimeoutError on cold/slow inference. Followup patch raises to 300s.
+    Validated end-to-end (262.52s agent turn succeeded with patched timeout).
   resolution: Applied 2026-10-25 in genesis_model/aetherius_bridge.py; the URL open uses timeout=300.
   acceptance:
   - _chat uses 300s timeout
   - No regression in existing tests
   blocks: []
-
 - id: TODO-GENESIS-HTTP-003
   title: Add streaming endpoint to Genesis HTTP runtime
   project: genesis
@@ -6194,7 +6183,6 @@ todos:
   - SSE or chunked endpoint implemented
   - IDE adapter consumes stream
   blocks: []
-
 - id: TODO-GENESIS-HTTP-004
   title: Add cancellation endpoint to Genesis HTTP runtime
   project: genesis
@@ -6208,7 +6196,6 @@ todos:
   - POST /v1/cancel or equivalent
   - Runtime aborts in-flight generation
   blocks: []
-
 - id: TODO-GENESIS-HTTP-005
   title: Add session persistence and restore endpoints
   project: genesis
@@ -6222,7 +6209,6 @@ todos:
   - Session create/get/list endpoints
   - Restart restores session
   blocks: []
-
 - id: TODO-GENESIS-HTTP-006
   title: Add authentication and CORS restriction for browser deployment
   project: genesis
@@ -6236,7 +6222,6 @@ todos:
   - Auth token or session cookie required
   - CORS restricted to trusted origins
   blocks: []
-
 - id: TODO-IDE-GENESIS-001
   title: Integrate GenesisClient adapter into Aetherius IDE (separate approval)
   project: aetherius-os
@@ -6245,12 +6230,12 @@ todos:
   source:
     kind: phase12
     ref: IDE_GENESIS_ADAPTER.ts
-  detail: Isolated adapter prepared. Real IDE integration requires new code in apps/IDE-Workspace. Not yet applied.
+  detail: Isolated adapter prepared. Real IDE integration requires new code in apps/IDE-Workspace. Not
+    yet applied.
   acceptance:
   - GenesisClient wired into useGenesisRuntime or parallel hook
   - Real IDE smoke test against Genesis HTTP endpoint
   blocks: []
-
 - id: TODO-IDE-GENESIS-002
   title: Tool-approval UI for phase4 Agent Bridge tools
   project: aetherius-os
@@ -6263,4 +6248,4075 @@ todos:
   acceptance:
   - Approve/deny controls for phase4.* tools
   - Audit record displayed
+  blocks: []
+- id: TODO-AETHERIAL-002
+  title: Aetherial has no tests
+  project: aetherial
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project holds 276820 lines of its own source and not one test file. Nothing about it can
+    be shown to work.
+  evidence: 'Measured own source lines: 276820, test files: 0.'
+  acceptance:
+  - A test suite exists that covers the project's own source
+  - The tests run in the project's build gate
+  blocks: []
+- id: TODO-AETHERIAL-PLATFORM-003
+  title: aetherial-platform has credentials in its source
+  project: aetherial-platform
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own files. These must be treated as compromised
+    and rotated, not merely deleted.
+  evidence: 'Files with literal credentials: [''tests/auth/validators/auth.validators.spec.ts''].'
+  acceptance:
+  - The credentials are rotated
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
+  blocks: []
+- id: TODO-AETHERION-ENGINE-001
+  title: aetherion-engine has no source
+  project: aetherion-engine
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-001
+  title: aetherius-os-prototype has no source
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-AGENT-BRIDGE-DASHBOARD-003
+  title: Agent-Bridge-dashboard has credentials in its source
+  project: agent-bridge-dashboard
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own files. These must be treated as compromised
+    and rotated, not merely deleted.
+  evidence: 'Files with literal credentials: [''tests/test_h07_h09.py''].'
+  acceptance:
+  - The credentials are rotated
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
+  blocks: []
+- id: TODO-AI-DIGITAL-TWIN-003
+  title: ai-digital-clone has credentials in its source
+  project: ai-digital-twin
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own files. These must be treated as compromised
+    and rotated, not merely deleted.
+  evidence: 'Files with literal credentials: [''scripts/setup_local_cloud.sh''].'
+  acceptance:
+  - The credentials are rotated
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
+  blocks: []
+- id: TODO-ARCH-SHADOWS-001
+  title: Architecture of Shadows Book has no source
+  project: arch-shadows
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-ATHENA-001
+  title: Athena has no source
+  project: athena
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-CROSSPLATFORM-001
+  title: Crossplatform---multiplatform has no source
+  project: crossplatform
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-001
+  title: Decentralized Messaging App has no source
+  project: decentralized-messaging
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-FOOD-WIKI-001
+  title: Food Wiki App has no source
+  project: food-wiki
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-001
+  title: aetherius-health-library has no source
+  project: health-library
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-HERMES-AUDIT-001
+  title: Hermes-Config-Audit has no source
+  project: hermes-audit
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-HOLONAV-OS-001
+  title: holonav-os has no source
+  project: holonav-os
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-LEDGERLANDS-003
+  title: LedgerLands has credentials in its source
+  project: ledgerlands
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own files. These must be treated as compromised
+    and rotated, not merely deleted.
+  evidence: 'Files with literal credentials: [''generated/prisma/internal/class.ts''].'
+  acceptance:
+  - The credentials are rotated
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-001
+  title: quantum-ai-assistant has no source
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-QUANTUM-OS-001
+  title: Quantum-OS has no source
+  project: quantum-os
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-001
+  title: sovereign-financial-os has no source
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-TRADING-BOT-003
+  title: Multi-Cross-Platform-Trading-Bot has credentials in its source
+  project: trading-bot
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own files. These must be treated as compromised
+    and rotated, not merely deleted.
+  evidence: 'Files with literal credentials: [''production/AI-Voice-assistant/assistant.py'', ''production/Facial_Authentication/backend/app.js''].'
+  acceptance:
+  - The credentials are rotated
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
+  blocks: []
+- id: TODO-VEYRA-003
+  title: Veyra has credentials in its source
+  project: veyra
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: Literal credentials were found in the project's own files. These must be treated as compromised
+    and rotated, not merely deleted.
+  evidence: 'Files with literal credentials: [''tests/integration/tests/conftest.py''].'
+  acceptance:
+  - The credentials are rotated
+  - No credential literal remains in the tree
+  - The secret scanner gate rejects the pattern
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-001
+  title: VirtualAssistant has no source
+  project: virtual-assistant
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-WEB-PLATFORM-002
+  title: Web-platform has no tests
+  project: web-platform
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project holds 9638 lines of its own source and not one test file. Nothing about it can be
+    shown to work.
+  evidence: 'Measured own source lines: 9638, test files: 0.'
+  acceptance:
+  - A test suite exists that covers the project's own source
+  - The tests run in the project's build gate
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-001
+  title: aetherius-os-worldclass-prototype has no source
+  project: worldcass-proto
+  status: OPEN
+  priority: 1
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project directory exists and is registered, but it holds 0 source files. The build manifest
+    describes a project that does not exist yet.
+  evidence: 'Measured own source lines: 0. Manifests found: [''build.yaml''].'
+  acceptance:
+  - The project holds the source its manifest describes
+  - The build runs and its tests pass
+  blocks: []
+- id: TODO-AETHERIAL-PLATFORM-004
+  title: aetherial-platform has no licence
+  project: aetherial-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 797 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-AGENT-BRIDGE-004
+  title: Agent-Bridge has no licence
+  project: agent-bridge
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 672 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-AGENT-BRIDGE-CLOUDHYBRID-004
+  title: Agent-Bridge-cloudhybrid has no licence
+  project: agent-bridge-cloudhybrid
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 487 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-AGENT-BRIDGE-DASHBOARD-004
+  title: Agent-Bridge-dashboard has no licence
+  project: agent-bridge-dashboard
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 553 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-AGENT-BRIDGE-RUNTIMESAFETY-004
+  title: Agent-Bridge-runtimesafety has no licence
+  project: agent-bridge-runtimesafety
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 487 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-AI-DIGITAL-TWIN-004
+  title: ai-digital-clone has no licence
+  project: ai-digital-twin
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 453 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-IDE-WORKSPACE-004
+  title: IDE-Workspace has no licence
+  project: ide-workspace
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 172 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-MAT-004
+  title: Materials-Atlas-Table-Codex---MAT has no licence
+  project: mat
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 286 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-NICHE-PLATFORM-004
+  title: Niche_platform has no licence
+  project: niche-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 153 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-POIETEK-004
+  title: Poietek has no licence
+  project: poietek
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 465 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-QVA-MERGED-004
+  title: QVA-merged has no licence
+  project: qva-merged
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 21 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-WEB-PLATFORM-004
+  title: Web-platform has no licence
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The project has no licence file. For a first-party project that is the owner's choice to make,
+    but until it is made the project cannot be published or shared.
+  evidence: No licence file found among 52 source files.
+  acceptance:
+  - A licence is chosen and a licence file is present
+  - The build manifest records the licence
+  blocks: []
+- id: TODO-FOOD-WIKI-001
+  title: Food Wiki App has no application shell and navigation
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Application shell and navigation' was looked for in Food Wiki App's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-001 in 0 own source files.
+  acceptance:
+  - Application shell and navigation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-002
+  title: Food Wiki App has no session state management
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Session state management' was looked for in Food Wiki App's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-002 in 0 own source files.
+  acceptance:
+  - Session state management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-003
+  title: Food Wiki App has no offline behaviour and sync
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Offline behaviour and sync' was looked for in Food Wiki App's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-003 in 0 own source files.
+  acceptance:
+  - Offline behaviour and sync exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-004
+  title: Food Wiki App has no push notification delivery
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Push notification delivery' was looked for in Food Wiki App's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-004 in 0 own source files.
+  acceptance:
+  - Push notification delivery exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-005
+  title: Food Wiki App has no account and sign-in
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Account and sign-in' was looked for in Food Wiki App's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-005 in 0 own source files.
+  acceptance:
+  - Account and sign-in exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-006
+  title: Food Wiki App has no user preferences and settings
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'User preferences and settings' was looked for in Food Wiki App's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-006 in 0 own source files.
+  acceptance:
+  - User preferences and settings exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-007
+  title: Food Wiki App has no accessibility
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Accessibility' was looked for in Food Wiki App's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-007 in 0 own source files.
+  acceptance:
+  - Accessibility exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-008
+  title: Food Wiki App has no packaging and distribution
+  project: food-wiki
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Packaging and distribution' was looked for in Food Wiki App's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-008 in 0 own source files.
+  acceptance:
+  - Packaging and distribution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-LEDGERLANDS-002
+  title: LedgerLands has no invoicing
+  project: ledgerlands
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Invoicing' was looked for in LedgerLands's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-002 in 170 own source files.
+  acceptance:
+  - Invoicing exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-LEDGERLANDS-004
+  title: LedgerLands has no budgeting
+  project: ledgerlands
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Budgeting' was looked for in LedgerLands's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-004 in 170 own source files.
+  acceptance:
+  - Budgeting exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-001
+  title: sovereign-financial-os has no accounting and double-entry ledger
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Accounting and double-entry ledger' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-001 in 0 own source files.
+  acceptance:
+  - Accounting and double-entry ledger exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-002
+  title: sovereign-financial-os has no invoicing
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Invoicing' was looked for in sovereign-financial-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-002 in 0 own source files.
+  acceptance:
+  - Invoicing exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-003
+  title: sovereign-financial-os has no payment handling
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Payment handling' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-003 in 0 own source files.
+  acceptance:
+  - Payment handling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-004
+  title: sovereign-financial-os has no budgeting
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Budgeting' was looked for in sovereign-financial-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-004 in 0 own source files.
+  acceptance:
+  - Budgeting exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-005
+  title: sovereign-financial-os has no markets and trading
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Markets and trading' was looked for in sovereign-financial-os's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-005 in 0 own source files.
+  acceptance:
+  - Markets and trading exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-006
+  title: sovereign-financial-os has no tax handling
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Tax handling' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-006 in 0 own source files.
+  acceptance:
+  - Tax handling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-007
+  title: sovereign-financial-os has no financial reporting
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Financial reporting' was looked for in sovereign-financial-os's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-007 in 0 own source files.
+  acceptance:
+  - Financial reporting exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-008
+  title: sovereign-financial-os has no reconciliation
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Reconciliation' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-008 in 0 own source files.
+  acceptance:
+  - Reconciliation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-009
+  title: sovereign-financial-os has no risk and compliance controls
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Risk and compliance controls' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-009 in 0 own source files.
+  acceptance:
+  - Risk and compliance controls exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-TRADING-BOT-001
+  title: Multi-Cross-Platform-Trading-Bot has no accounting and double-entry ledger
+  project: trading-bot
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Accounting and double-entry ledger' was looked for in Multi-Cross-Platform-Trading-Bot's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-001 in 26 own source files.
+  acceptance:
+  - Accounting and double-entry ledger exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-TRADING-BOT-003
+  title: Multi-Cross-Platform-Trading-Bot has no payment handling
+  project: trading-bot
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Payment handling' was looked for in Multi-Cross-Platform-Trading-Bot's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-003 in 26 own source files.
+  acceptance:
+  - Payment handling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-TRADING-BOT-006
+  title: Multi-Cross-Platform-Trading-Bot has no tax handling
+  project: trading-bot
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The finance capability 'Tax handling' was looked for in Multi-Cross-Platform-Trading-Bot's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for FIN-006 in 26 own source files.
+  acceptance:
+  - Tax handling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-001
+  title: Web-platform has no application shell and navigation
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Application shell and navigation' was looked for in Web-platform's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-001 in 52 own source files.
+  acceptance:
+  - Application shell and navigation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-003
+  title: Web-platform has no offline behaviour and sync
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Offline behaviour and sync' was looked for in Web-platform's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-003 in 52 own source files.
+  acceptance:
+  - Offline behaviour and sync exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-007
+  title: Web-platform has no accessibility
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The apps capability 'Accessibility' was looked for in Web-platform's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for APP-007 in 52 own source files.
+  acceptance:
+  - Accessibility exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-003
+  title: Web-platform has no checkout
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The commerce capability 'Checkout' was looked for in Web-platform's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-003 in 52 own source files.
+  acceptance:
+  - Checkout exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-005
+  title: Web-platform has no payments integration
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The commerce capability 'Payments integration' was looked for in Web-platform's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-005 in 52 own source files.
+  acceptance:
+  - Payments integration exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-006
+  title: Web-platform has no inventory and stock
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The commerce capability 'Inventory and stock' was looked for in Web-platform's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-006 in 52 own source files.
+  acceptance:
+  - Inventory and stock exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-009
+  title: Web-platform has no seller or merchant dashboard
+  project: web-platform
+  status: OPEN
+  priority: 2
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The commerce capability 'Seller or merchant dashboard' was looked for in Web-platform's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-009 in 52 own source files.
+  acceptance:
+  - Seller or merchant dashboard exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-001
+  title: aetherion-engine has no model routing across providers
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Model routing across providers' was looked for in aetherion-engine's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-001 in 0 own source files.
+  acceptance:
+  - Model routing across providers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-002
+  title: aetherion-engine has no tool execution
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Tool execution' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-002 in 0 own source files.
+  acceptance:
+  - Tool execution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-003
+  title: aetherion-engine has no planning and decomposition
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Planning and decomposition' was looked for in aetherion-engine's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-003 in 0 own source files.
+  acceptance:
+  - Planning and decomposition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-004
+  title: aetherion-engine has no working memory and context
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Working memory and context' was looked for in aetherion-engine's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-004 in 0 own source files.
+  acceptance:
+  - Working memory and context exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-005
+  title: aetherion-engine has no long term memory
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Long term memory' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-005 in 0 own source files.
+  acceptance:
+  - Long term memory exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-006
+  title: aetherion-engine has no multi agent coordination
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Multi agent coordination' was looked for in aetherion-engine's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-006 in 0 own source files.
+  acceptance:
+  - Multi agent coordination exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-007
+  title: aetherion-engine has no authority and permissions
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Authority and permissions' was looked for in aetherion-engine's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-007 in 0 own source files.
+  acceptance:
+  - Authority and permissions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-008
+  title: aetherion-engine has no durable task state
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Durable task state' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-008 in 0 own source files.
+  acceptance:
+  - Durable task state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-009
+  title: aetherion-engine has no evaluation and benchmarking
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Evaluation and benchmarking' was looked for in aetherion-engine's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-009 in 0 own source files.
+  acceptance:
+  - Evaluation and benchmarking exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-010
+  title: aetherion-engine has no local and offline model
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Local and offline model' was looked for in aetherion-engine's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-010 in 0 own source files.
+  acceptance:
+  - Local and offline model exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-001
+  title: aetherion-engine has no local runtime
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local runtime' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-001 in 0 own source files.
+  acceptance:
+  - Local runtime exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-002
+  title: aetherion-engine has no local model inference
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local model inference' was looked for in aetherion-engine's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-002 in 0 own source files.
+  acceptance:
+  - Local model inference exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-003
+  title: aetherion-engine has no offline caching
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Offline caching' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-003 in 0 own source files.
+  acceptance:
+  - Offline caching exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-004
+  title: aetherion-engine has no local data store
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local data store' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-004 in 0 own source files.
+  acceptance:
+  - Local data store exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-005
+  title: aetherion-engine has no device access
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Device access' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-005 in 0 own source files.
+  acceptance:
+  - Device access exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-006
+  title: aetherion-engine has no resource scheduling
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Resource scheduling' was looked for in aetherion-engine's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-006 in 0 own source files.
+  acceptance:
+  - Resource scheduling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-007
+  title: aetherion-engine has no local installation
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local installation' was looked for in aetherion-engine's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-007 in 0 own source files.
+  acceptance:
+  - Local installation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERION-ENGINE-008
+  title: aetherion-engine has no update mechanism
+  project: aetherion-engine
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Update mechanism' was looked for in aetherion-engine's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-008 in 0 own source files.
+  acceptance:
+  - Update mechanism exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-001
+  title: aetherius-os-prototype has no runtime or kernel
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Runtime or kernel' was looked for in aetherius-os-prototype's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-001 in 0 own source files.
+  acceptance:
+  - Runtime or kernel exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-002
+  title: aetherius-os-prototype has no module system
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Module system' was looked for in aetherius-os-prototype's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-002 in 0 own source files.
+  acceptance:
+  - Module system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-003
+  title: aetherius-os-prototype has no isolation between parts
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Isolation between parts' was looked for in aetherius-os-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-003 in 0 own source files.
+  acceptance:
+  - Isolation between parts exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-004
+  title: aetherius-os-prototype has no user interface shell
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'User interface shell' was looked for in aetherius-os-prototype's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-004 in 0 own source files.
+  acceptance:
+  - User interface shell exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-005
+  title: aetherius-os-prototype has no extension system
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Extension system' was looked for in aetherius-os-prototype's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-005 in 0 own source files.
+  acceptance:
+  - Extension system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-006
+  title: aetherius-os-prototype has no configuration management
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Configuration management' was looked for in aetherius-os-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-006 in 0 own source files.
+  acceptance:
+  - Configuration management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-007
+  title: aetherius-os-prototype has no observability
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Observability' was looked for in aetherius-os-prototype's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-007 in 0 own source files.
+  acceptance:
+  - Observability exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AETHERIUS-OS-PROTO-008
+  title: aetherius-os-prototype has no distribution and packaging
+  project: aetherius-os-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Distribution and packaging' was looked for in aetherius-os-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-008 in 0 own source files.
+  acceptance:
+  - Distribution and packaging exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-AGENT-BRIDGE-CLOUDHYBRID-005
+  title: Agent-Bridge-cloudhybrid has no autoscaling
+  project: agent-bridge-cloudhybrid
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The cloud_services capability 'Autoscaling' was looked for in Agent-Bridge-cloudhybrid's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for CLD-005 in 487 own source files.
+  acceptance:
+  - Autoscaling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ARCH-SHADOWS-001
+  title: Architecture of Shadows Book has no ingest
+  project: arch-shadows
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Ingest' was looked for in Architecture of Shadows Book's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-001 in 0 own source files.
+  acceptance:
+  - Ingest exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ARCH-SHADOWS-002
+  title: Architecture of Shadows Book has no structure and categorisation
+  project: arch-shadows
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Structure and categorisation' was looked for in Architecture of Shadows
+    Book's own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-002 in 0 own source files.
+  acceptance:
+  - Structure and categorisation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ARCH-SHADOWS-003
+  title: Architecture of Shadows Book has no link graph
+  project: arch-shadows
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Link graph' was looked for in Architecture of Shadows Book's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-003 in 0 own source files.
+  acceptance:
+  - Link graph exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ARCH-SHADOWS-004
+  title: Architecture of Shadows Book has no search
+  project: arch-shadows
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Search' was looked for in Architecture of Shadows Book's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-004 in 0 own source files.
+  acceptance:
+  - Search exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ARCH-SHADOWS-005
+  title: Architecture of Shadows Book has no source citation
+  project: arch-shadows
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Source citation' was looked for in Architecture of Shadows Book's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-005 in 0 own source files.
+  acceptance:
+  - Source citation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ARCH-SHADOWS-006
+  title: Architecture of Shadows Book has no versioning
+  project: arch-shadows
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Versioning' was looked for in Architecture of Shadows Book's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-006 in 0 own source files.
+  acceptance:
+  - Versioning exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ARCH-SHADOWS-007
+  title: Architecture of Shadows Book has no publication
+  project: arch-shadows
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Publication' was looked for in Architecture of Shadows Book's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-007 in 0 own source files.
+  acceptance:
+  - Publication exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-001
+  title: Athena has no model routing across providers
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Model routing across providers' was looked for in Athena's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-001 in 0 own source files.
+  acceptance:
+  - Model routing across providers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-002
+  title: Athena has no tool execution
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Tool execution' was looked for in Athena's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-002 in 0 own source files.
+  acceptance:
+  - Tool execution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-003
+  title: Athena has no planning and decomposition
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Planning and decomposition' was looked for in Athena's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-003 in 0 own source files.
+  acceptance:
+  - Planning and decomposition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-004
+  title: Athena has no working memory and context
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Working memory and context' was looked for in Athena's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-004 in 0 own source files.
+  acceptance:
+  - Working memory and context exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-005
+  title: Athena has no long term memory
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Long term memory' was looked for in Athena's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-005 in 0 own source files.
+  acceptance:
+  - Long term memory exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-006
+  title: Athena has no multi agent coordination
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Multi agent coordination' was looked for in Athena's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-006 in 0 own source files.
+  acceptance:
+  - Multi agent coordination exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-007
+  title: Athena has no authority and permissions
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Authority and permissions' was looked for in Athena's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-007 in 0 own source files.
+  acceptance:
+  - Authority and permissions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-008
+  title: Athena has no durable task state
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Durable task state' was looked for in Athena's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-008 in 0 own source files.
+  acceptance:
+  - Durable task state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-009
+  title: Athena has no evaluation and benchmarking
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Evaluation and benchmarking' was looked for in Athena's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-009 in 0 own source files.
+  acceptance:
+  - Evaluation and benchmarking exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-ATHENA-010
+  title: Athena has no local and offline model
+  project: athena
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Local and offline model' was looked for in Athena's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-010 in 0 own source files.
+  acceptance:
+  - Local and offline model exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-001
+  title: Crossplatform---multiplatform has no runtime or kernel
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Runtime or kernel' was looked for in Crossplatform---multiplatform's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-001 in 0 own source files.
+  acceptance:
+  - Runtime or kernel exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-002
+  title: Crossplatform---multiplatform has no module system
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Module system' was looked for in Crossplatform---multiplatform's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-002 in 0 own source files.
+  acceptance:
+  - Module system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-003
+  title: Crossplatform---multiplatform has no isolation between parts
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Isolation between parts' was looked for in Crossplatform---multiplatform's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-003 in 0 own source files.
+  acceptance:
+  - Isolation between parts exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-004
+  title: Crossplatform---multiplatform has no user interface shell
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'User interface shell' was looked for in Crossplatform---multiplatform's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-004 in 0 own source files.
+  acceptance:
+  - User interface shell exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-005
+  title: Crossplatform---multiplatform has no extension system
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Extension system' was looked for in Crossplatform---multiplatform's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-005 in 0 own source files.
+  acceptance:
+  - Extension system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-006
+  title: Crossplatform---multiplatform has no configuration management
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Configuration management' was looked for in Crossplatform---multiplatform's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-006 in 0 own source files.
+  acceptance:
+  - Configuration management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-007
+  title: Crossplatform---multiplatform has no observability
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Observability' was looked for in Crossplatform---multiplatform's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-007 in 0 own source files.
+  acceptance:
+  - Observability exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-008
+  title: Crossplatform---multiplatform has no distribution and packaging
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Distribution and packaging' was looked for in Crossplatform---multiplatform's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-008 in 0 own source files.
+  acceptance:
+  - Distribution and packaging exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-001
+  title: Crossplatform---multiplatform has no command line entry point
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Command line entry point' was looked for in Crossplatform---multiplatform's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-001 in 0 own source files.
+  acceptance:
+  - Command line entry point exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-002
+  title: Crossplatform---multiplatform has no configuration
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Configuration' was looked for in Crossplatform---multiplatform's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-002 in 0 own source files.
+  acceptance:
+  - Configuration exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-003
+  title: Crossplatform---multiplatform has no structured output
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Structured output' was looked for in Crossplatform---multiplatform's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-003 in 0 own source files.
+  acceptance:
+  - Structured output exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-CROSSPLATFORM-004
+  title: Crossplatform---multiplatform has no testing
+  project: crossplatform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Testing' was looked for in Crossplatform---multiplatform's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-004 in 0 own source files.
+  acceptance:
+  - Testing exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-101
+  title: Decentralized Messaging App has no realtime delivery
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Realtime delivery' was looked for in Decentralized Messaging App's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-101 in 0 own source files.
+  acceptance:
+  - Realtime delivery exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-102
+  title: Decentralized Messaging App has no message store
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Message store' was looked for in Decentralized Messaging App's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-102 in 0 own source files.
+  acceptance:
+  - Message store exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-103
+  title: Decentralized Messaging App has no presence
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Presence' was looked for in Decentralized Messaging App's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-103 in 0 own source files.
+  acceptance:
+  - Presence exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-104
+  title: Decentralized Messaging App has no notification delivery
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Notification delivery' was looked for in Decentralized Messaging
+    App's own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-104 in 0 own source files.
+  acceptance:
+  - Notification delivery exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-105
+  title: Decentralized Messaging App has no rich media messages
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Rich media messages' was looked for in Decentralized Messaging
+    App's own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-105 in 0 own source files.
+  acceptance:
+  - Rich media messages exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-106
+  title: Decentralized Messaging App has no voice and video
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Voice and video' was looked for in Decentralized Messaging App's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-106 in 0 own source files.
+  acceptance:
+  - Voice and video exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-107
+  title: Decentralized Messaging App has no email integration
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Email integration' was looked for in Decentralized Messaging App's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-107 in 0 own source files.
+  acceptance:
+  - Email integration exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-108
+  title: Decentralized Messaging App has no encryption of messages
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Encryption of messages' was looked for in Decentralized Messaging
+    App's own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-108 in 0 own source files.
+  acceptance:
+  - Encryption of messages exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-DECENTRALIZED-MESSAGING-109
+  title: Decentralized Messaging App has no federation between servers
+  project: decentralized-messaging
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Federation between servers' was looked for in Decentralized Messaging
+    App's own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-109 in 0 own source files.
+  acceptance:
+  - Federation between servers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-001
+  title: Food Wiki App has no ingest
+  project: food-wiki
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Ingest' was looked for in Food Wiki App's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-001 in 0 own source files.
+  acceptance:
+  - Ingest exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-002
+  title: Food Wiki App has no structure and categorisation
+  project: food-wiki
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Structure and categorisation' was looked for in Food Wiki App's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-002 in 0 own source files.
+  acceptance:
+  - Structure and categorisation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-003
+  title: Food Wiki App has no link graph
+  project: food-wiki
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Link graph' was looked for in Food Wiki App's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-003 in 0 own source files.
+  acceptance:
+  - Link graph exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-004
+  title: Food Wiki App has no search
+  project: food-wiki
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Search' was looked for in Food Wiki App's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-004 in 0 own source files.
+  acceptance:
+  - Search exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-005
+  title: Food Wiki App has no source citation
+  project: food-wiki
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Source citation' was looked for in Food Wiki App's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-005 in 0 own source files.
+  acceptance:
+  - Source citation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-006
+  title: Food Wiki App has no versioning
+  project: food-wiki
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Versioning' was looked for in Food Wiki App's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-006 in 0 own source files.
+  acceptance:
+  - Versioning exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-FOOD-WIKI-007
+  title: Food Wiki App has no publication
+  project: food-wiki
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Publication' was looked for in Food Wiki App's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-007 in 0 own source files.
+  acceptance:
+  - Publication exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-001
+  title: aetherius-health-library has no ingest
+  project: health-library
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Ingest' was looked for in aetherius-health-library's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-001 in 0 own source files.
+  acceptance:
+  - Ingest exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-002
+  title: aetherius-health-library has no structure and categorisation
+  project: health-library
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Structure and categorisation' was looked for in aetherius-health-library's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-002 in 0 own source files.
+  acceptance:
+  - Structure and categorisation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-003
+  title: aetherius-health-library has no link graph
+  project: health-library
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Link graph' was looked for in aetherius-health-library's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-003 in 0 own source files.
+  acceptance:
+  - Link graph exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-004
+  title: aetherius-health-library has no search
+  project: health-library
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Search' was looked for in aetherius-health-library's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-004 in 0 own source files.
+  acceptance:
+  - Search exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-005
+  title: aetherius-health-library has no source citation
+  project: health-library
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Source citation' was looked for in aetherius-health-library's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-005 in 0 own source files.
+  acceptance:
+  - Source citation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-006
+  title: aetherius-health-library has no versioning
+  project: health-library
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Versioning' was looked for in aetherius-health-library's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-006 in 0 own source files.
+  acceptance:
+  - Versioning exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HEALTH-LIBRARY-007
+  title: aetherius-health-library has no publication
+  project: health-library
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The knowledge capability 'Publication' was looked for in aetherius-health-library's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for KNW-007 in 0 own source files.
+  acceptance:
+  - Publication exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HERMES-AUDIT-001
+  title: Hermes-Config-Audit has no command line entry point
+  project: hermes-audit
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Command line entry point' was looked for in Hermes-Config-Audit's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-001 in 0 own source files.
+  acceptance:
+  - Command line entry point exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HERMES-AUDIT-002
+  title: Hermes-Config-Audit has no configuration
+  project: hermes-audit
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Configuration' was looked for in Hermes-Config-Audit's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-002 in 0 own source files.
+  acceptance:
+  - Configuration exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HERMES-AUDIT-003
+  title: Hermes-Config-Audit has no structured output
+  project: hermes-audit
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Structured output' was looked for in Hermes-Config-Audit's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-003 in 0 own source files.
+  acceptance:
+  - Structured output exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HERMES-AUDIT-004
+  title: Hermes-Config-Audit has no testing
+  project: hermes-audit
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The tools capability 'Testing' was looked for in Hermes-Config-Audit's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for TLS-004 in 0 own source files.
+  acceptance:
+  - Testing exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-001
+  title: holonav-os has no local runtime
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local runtime' was looked for in holonav-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-001 in 0 own source files.
+  acceptance:
+  - Local runtime exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-002
+  title: holonav-os has no local model inference
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local model inference' was looked for in holonav-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-002 in 0 own source files.
+  acceptance:
+  - Local model inference exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-003
+  title: holonav-os has no offline caching
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Offline caching' was looked for in holonav-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-003 in 0 own source files.
+  acceptance:
+  - Offline caching exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-004
+  title: holonav-os has no local data store
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local data store' was looked for in holonav-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-004 in 0 own source files.
+  acceptance:
+  - Local data store exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-005
+  title: holonav-os has no device access
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Device access' was looked for in holonav-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-005 in 0 own source files.
+  acceptance:
+  - Device access exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-006
+  title: holonav-os has no resource scheduling
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Resource scheduling' was looked for in holonav-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-006 in 0 own source files.
+  acceptance:
+  - Resource scheduling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-007
+  title: holonav-os has no local installation
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Local installation' was looked for in holonav-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-007 in 0 own source files.
+  acceptance:
+  - Local installation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-008
+  title: holonav-os has no update mechanism
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The local_services capability 'Update mechanism' was looked for in holonav-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for LOC-008 in 0 own source files.
+  acceptance:
+  - Update mechanism exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-001
+  title: holonav-os has no runtime or kernel
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Runtime or kernel' was looked for in holonav-os's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-001 in 0 own source files.
+  acceptance:
+  - Runtime or kernel exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-002
+  title: holonav-os has no module system
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Module system' was looked for in holonav-os's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-002 in 0 own source files.
+  acceptance:
+  - Module system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-003
+  title: holonav-os has no isolation between parts
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Isolation between parts' was looked for in holonav-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-003 in 0 own source files.
+  acceptance:
+  - Isolation between parts exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-004
+  title: holonav-os has no user interface shell
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'User interface shell' was looked for in holonav-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-004 in 0 own source files.
+  acceptance:
+  - User interface shell exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-005
+  title: holonav-os has no extension system
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Extension system' was looked for in holonav-os's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-005 in 0 own source files.
+  acceptance:
+  - Extension system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-006
+  title: holonav-os has no configuration management
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Configuration management' was looked for in holonav-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-006 in 0 own source files.
+  acceptance:
+  - Configuration management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-007
+  title: holonav-os has no observability
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Observability' was looked for in holonav-os's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-007 in 0 own source files.
+  acceptance:
+  - Observability exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-HOLONAV-OS-008
+  title: holonav-os has no distribution and packaging
+  project: holonav-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Distribution and packaging' was looked for in holonav-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-008 in 0 own source files.
+  acceptance:
+  - Distribution and packaging exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-NICHE-PLATFORM-003
+  title: Niche_platform has no isolation between parts
+  project: niche-platform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Isolation between parts' was looked for in Niche_platform's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-003 in 153 own source files.
+  acceptance:
+  - Isolation between parts exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-001
+  title: quantum-ai-assistant has no model routing across providers
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Model routing across providers' was looked for in quantum-ai-assistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-001 in 0 own source files.
+  acceptance:
+  - Model routing across providers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-002
+  title: quantum-ai-assistant has no tool execution
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Tool execution' was looked for in quantum-ai-assistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-002 in 0 own source files.
+  acceptance:
+  - Tool execution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-003
+  title: quantum-ai-assistant has no planning and decomposition
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Planning and decomposition' was looked for in quantum-ai-assistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-003 in 0 own source files.
+  acceptance:
+  - Planning and decomposition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-004
+  title: quantum-ai-assistant has no working memory and context
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Working memory and context' was looked for in quantum-ai-assistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-004 in 0 own source files.
+  acceptance:
+  - Working memory and context exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-005
+  title: quantum-ai-assistant has no long term memory
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Long term memory' was looked for in quantum-ai-assistant's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-005 in 0 own source files.
+  acceptance:
+  - Long term memory exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-006
+  title: quantum-ai-assistant has no multi agent coordination
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Multi agent coordination' was looked for in quantum-ai-assistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-006 in 0 own source files.
+  acceptance:
+  - Multi agent coordination exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-007
+  title: quantum-ai-assistant has no authority and permissions
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Authority and permissions' was looked for in quantum-ai-assistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-007 in 0 own source files.
+  acceptance:
+  - Authority and permissions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-008
+  title: quantum-ai-assistant has no durable task state
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Durable task state' was looked for in quantum-ai-assistant's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-008 in 0 own source files.
+  acceptance:
+  - Durable task state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-009
+  title: quantum-ai-assistant has no evaluation and benchmarking
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Evaluation and benchmarking' was looked for in quantum-ai-assistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-009 in 0 own source files.
+  acceptance:
+  - Evaluation and benchmarking exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-AI-ASSISTANT-010
+  title: quantum-ai-assistant has no local and offline model
+  project: quantum-ai-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Local and offline model' was looked for in quantum-ai-assistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-010 in 0 own source files.
+  acceptance:
+  - Local and offline model exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-001
+  title: Quantum-OS has no runtime or kernel
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Runtime or kernel' was looked for in Quantum-OS's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-001 in 0 own source files.
+  acceptance:
+  - Runtime or kernel exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-002
+  title: Quantum-OS has no module system
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Module system' was looked for in Quantum-OS's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-002 in 0 own source files.
+  acceptance:
+  - Module system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-003
+  title: Quantum-OS has no isolation between parts
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Isolation between parts' was looked for in Quantum-OS's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-003 in 0 own source files.
+  acceptance:
+  - Isolation between parts exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-004
+  title: Quantum-OS has no user interface shell
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'User interface shell' was looked for in Quantum-OS's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-004 in 0 own source files.
+  acceptance:
+  - User interface shell exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-005
+  title: Quantum-OS has no extension system
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Extension system' was looked for in Quantum-OS's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-005 in 0 own source files.
+  acceptance:
+  - Extension system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-006
+  title: Quantum-OS has no configuration management
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Configuration management' was looked for in Quantum-OS's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-006 in 0 own source files.
+  acceptance:
+  - Configuration management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-007
+  title: Quantum-OS has no observability
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Observability' was looked for in Quantum-OS's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-007 in 0 own source files.
+  acceptance:
+  - Observability exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QUANTUM-OS-008
+  title: Quantum-OS has no distribution and packaging
+  project: quantum-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Distribution and packaging' was looked for in Quantum-OS's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-008 in 0 own source files.
+  acceptance:
+  - Distribution and packaging exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-003
+  title: QVA-merged has no token or asset standard
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Token or asset standard' was looked for in QVA-merged's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-003 in 21 own source files.
+  acceptance:
+  - Token or asset standard exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-006
+  title: QVA-merged has no fees or gas
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Fees or gas' was looked for in QVA-merged's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-006 in 21 own source files.
+  acceptance:
+  - Fees or gas exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-007
+  title: QVA-merged has no bridges and oracles
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Bridges and oracles' was looked for in QVA-merged's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-007 in 21 own source files.
+  acceptance:
+  - Bridges and oracles exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-008
+  title: QVA-merged has no auditable history
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Auditable history' was looked for in QVA-merged's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-008 in 21 own source files.
+  acceptance:
+  - Auditable history exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-001
+  title: QVA-merged has no schema definition
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Schema definition' was looked for in QVA-merged's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-001 in 21 own source files.
+  acceptance:
+  - Schema definition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-002
+  title: QVA-merged has no migrations
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Migrations' was looked for in QVA-merged's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-002 in 21 own source files.
+  acceptance:
+  - Migrations exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-004
+  title: QVA-merged has no indexing
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Indexing' was looked for in QVA-merged's own source and not found.
+    The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-004 in 21 own source files.
+  acceptance:
+  - Indexing exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-006
+  title: QVA-merged has no backup and restore
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Backup and restore' was looked for in QVA-merged's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-006 in 21 own source files.
+  acceptance:
+  - Backup and restore exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-007
+  title: QVA-merged has no replication and scaling
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Replication and scaling' was looked for in QVA-merged's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-007 in 21 own source files.
+  acceptance:
+  - Replication and scaling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-008
+  title: QVA-merged has no connection management
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Connection management' was looked for in QVA-merged's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-008 in 21 own source files.
+  acceptance:
+  - Connection management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-009
+  title: QVA-merged has no database observability
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Database observability' was looked for in QVA-merged's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-009 in 21 own source files.
+  acceptance:
+  - Database observability exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-001
+  title: QVA-merged has no model routing across providers
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Model routing across providers' was looked for in QVA-merged's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-001 in 21 own source files.
+  acceptance:
+  - Model routing across providers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-002
+  title: QVA-merged has no tool execution
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Tool execution' was looked for in QVA-merged's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-002 in 21 own source files.
+  acceptance:
+  - Tool execution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-003
+  title: QVA-merged has no planning and decomposition
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Planning and decomposition' was looked for in QVA-merged's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-003 in 21 own source files.
+  acceptance:
+  - Planning and decomposition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-004
+  title: QVA-merged has no working memory and context
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Working memory and context' was looked for in QVA-merged's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-004 in 21 own source files.
+  acceptance:
+  - Working memory and context exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-005
+  title: QVA-merged has no long term memory
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Long term memory' was looked for in QVA-merged's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-005 in 21 own source files.
+  acceptance:
+  - Long term memory exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-006
+  title: QVA-merged has no multi agent coordination
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Multi agent coordination' was looked for in QVA-merged's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-006 in 21 own source files.
+  acceptance:
+  - Multi agent coordination exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-007
+  title: QVA-merged has no authority and permissions
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Authority and permissions' was looked for in QVA-merged's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-007 in 21 own source files.
+  acceptance:
+  - Authority and permissions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-008
+  title: QVA-merged has no durable task state
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Durable task state' was looked for in QVA-merged's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-008 in 21 own source files.
+  acceptance:
+  - Durable task state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-009
+  title: QVA-merged has no evaluation and benchmarking
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Evaluation and benchmarking' was looked for in QVA-merged's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-009 in 21 own source files.
+  acceptance:
+  - Evaluation and benchmarking exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-QVA-MERGED-010
+  title: QVA-merged has no local and offline model
+  project: qva-merged
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Local and offline model' was looked for in QVA-merged's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-010 in 21 own source files.
+  acceptance:
+  - Local and offline model exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-001
+  title: self-building-ai has no model routing across providers
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Model routing across providers' was looked for in self-building-ai's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-001 in 17 own source files.
+  acceptance:
+  - Model routing across providers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-002
+  title: self-building-ai has no tool execution
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Tool execution' was looked for in self-building-ai's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-002 in 17 own source files.
+  acceptance:
+  - Tool execution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-003
+  title: self-building-ai has no planning and decomposition
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Planning and decomposition' was looked for in self-building-ai's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-003 in 17 own source files.
+  acceptance:
+  - Planning and decomposition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-004
+  title: self-building-ai has no working memory and context
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Working memory and context' was looked for in self-building-ai's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-004 in 17 own source files.
+  acceptance:
+  - Working memory and context exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-005
+  title: self-building-ai has no long term memory
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Long term memory' was looked for in self-building-ai's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-005 in 17 own source files.
+  acceptance:
+  - Long term memory exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-006
+  title: self-building-ai has no multi agent coordination
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Multi agent coordination' was looked for in self-building-ai's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-006 in 17 own source files.
+  acceptance:
+  - Multi agent coordination exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-007
+  title: self-building-ai has no authority and permissions
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Authority and permissions' was looked for in self-building-ai's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-007 in 17 own source files.
+  acceptance:
+  - Authority and permissions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-008
+  title: self-building-ai has no durable task state
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Durable task state' was looked for in self-building-ai's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-008 in 17 own source files.
+  acceptance:
+  - Durable task state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-009
+  title: self-building-ai has no evaluation and benchmarking
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Evaluation and benchmarking' was looked for in self-building-ai's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-009 in 17 own source files.
+  acceptance:
+  - Evaluation and benchmarking exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SELF-BUILDING-AI-010
+  title: self-building-ai has no local and offline model
+  project: self-building-ai
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Local and offline model' was looked for in self-building-ai's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-010 in 17 own source files.
+  acceptance:
+  - Local and offline model exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-001
+  title: sovereign-financial-os has no chain runtime or node
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Chain runtime or node' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-001 in 0 own source files.
+  acceptance:
+  - Chain runtime or node exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-002
+  title: sovereign-financial-os has no smart contracts
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Smart contracts' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-002 in 0 own source files.
+  acceptance:
+  - Smart contracts exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-003
+  title: sovereign-financial-os has no token or asset standard
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Token or asset standard' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-003 in 0 own source files.
+  acceptance:
+  - Token or asset standard exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-004
+  title: sovereign-financial-os has no wallet and key custody
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Wallet and key custody' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-004 in 0 own source files.
+  acceptance:
+  - Wallet and key custody exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-005
+  title: sovereign-financial-os has no transaction history and state
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Transaction history and state' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-005 in 0 own source files.
+  acceptance:
+  - Transaction history and state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-006
+  title: sovereign-financial-os has no fees or gas
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Fees or gas' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-006 in 0 own source files.
+  acceptance:
+  - Fees or gas exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-007
+  title: sovereign-financial-os has no bridges and oracles
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Bridges and oracles' was looked for in sovereign-financial-os's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-007 in 0 own source files.
+  acceptance:
+  - Bridges and oracles exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-008
+  title: sovereign-financial-os has no auditable history
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Auditable history' was looked for in sovereign-financial-os's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-008 in 0 own source files.
+  acceptance:
+  - Auditable history exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-001
+  title: sovereign-financial-os has no schema definition
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Schema definition' was looked for in sovereign-financial-os's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-001 in 0 own source files.
+  acceptance:
+  - Schema definition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-002
+  title: sovereign-financial-os has no migrations
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Migrations' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-002 in 0 own source files.
+  acceptance:
+  - Migrations exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-003
+  title: sovereign-financial-os has no query layer
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Query layer' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-003 in 0 own source files.
+  acceptance:
+  - Query layer exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-004
+  title: sovereign-financial-os has no indexing
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Indexing' was looked for in sovereign-financial-os's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-004 in 0 own source files.
+  acceptance:
+  - Indexing exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-005
+  title: sovereign-financial-os has no transactions
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Transactions' was looked for in sovereign-financial-os's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-005 in 0 own source files.
+  acceptance:
+  - Transactions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-006
+  title: sovereign-financial-os has no backup and restore
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Backup and restore' was looked for in sovereign-financial-os's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-006 in 0 own source files.
+  acceptance:
+  - Backup and restore exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-007
+  title: sovereign-financial-os has no replication and scaling
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Replication and scaling' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-007 in 0 own source files.
+  acceptance:
+  - Replication and scaling exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-008
+  title: sovereign-financial-os has no connection management
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Connection management' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-008 in 0 own source files.
+  acceptance:
+  - Connection management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-SOVEREIGN-FINANCIAL-OS-009
+  title: sovereign-financial-os has no database observability
+  project: sovereign-financial-os
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The databases capability 'Database observability' was looked for in sovereign-financial-os's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for DB-009 in 0 own source files.
+  acceptance:
+  - Database observability exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-UNIVERSAL-BRIDGE-001
+  title: Universal-Bridge has no runtime or kernel
+  project: universal-bridge
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Runtime or kernel' was looked for in Universal-Bridge's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-001 in 47 own source files.
+  acceptance:
+  - Runtime or kernel exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-101
+  title: VirtualAssistant has no realtime delivery
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Realtime delivery' was looked for in VirtualAssistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-101 in 0 own source files.
+  acceptance:
+  - Realtime delivery exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-102
+  title: VirtualAssistant has no message store
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Message store' was looked for in VirtualAssistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-102 in 0 own source files.
+  acceptance:
+  - Message store exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-103
+  title: VirtualAssistant has no presence
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Presence' was looked for in VirtualAssistant's own source and
+    not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-103 in 0 own source files.
+  acceptance:
+  - Presence exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-104
+  title: VirtualAssistant has no notification delivery
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Notification delivery' was looked for in VirtualAssistant's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-104 in 0 own source files.
+  acceptance:
+  - Notification delivery exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-105
+  title: VirtualAssistant has no rich media messages
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Rich media messages' was looked for in VirtualAssistant's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-105 in 0 own source files.
+  acceptance:
+  - Rich media messages exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-106
+  title: VirtualAssistant has no voice and video
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Voice and video' was looked for in VirtualAssistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-106 in 0 own source files.
+  acceptance:
+  - Voice and video exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-107
+  title: VirtualAssistant has no email integration
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Email integration' was looked for in VirtualAssistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-107 in 0 own source files.
+  acceptance:
+  - Email integration exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-108
+  title: VirtualAssistant has no encryption of messages
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Encryption of messages' was looked for in VirtualAssistant's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-108 in 0 own source files.
+  acceptance:
+  - Encryption of messages exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-109
+  title: VirtualAssistant has no federation between servers
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The communication capability 'Federation between servers' was looked for in VirtualAssistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-109 in 0 own source files.
+  acceptance:
+  - Federation between servers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-001
+  title: VirtualAssistant has no model routing across providers
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Model routing across providers' was looked for in VirtualAssistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-001 in 0 own source files.
+  acceptance:
+  - Model routing across providers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-002
+  title: VirtualAssistant has no tool execution
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Tool execution' was looked for in VirtualAssistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-002 in 0 own source files.
+  acceptance:
+  - Tool execution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-003
+  title: VirtualAssistant has no planning and decomposition
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Planning and decomposition' was looked for in VirtualAssistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-003 in 0 own source files.
+  acceptance:
+  - Planning and decomposition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-004
+  title: VirtualAssistant has no working memory and context
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Working memory and context' was looked for in VirtualAssistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-004 in 0 own source files.
+  acceptance:
+  - Working memory and context exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-005
+  title: VirtualAssistant has no long term memory
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Long term memory' was looked for in VirtualAssistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-005 in 0 own source files.
+  acceptance:
+  - Long term memory exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-006
+  title: VirtualAssistant has no multi agent coordination
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Multi agent coordination' was looked for in VirtualAssistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-006 in 0 own source files.
+  acceptance:
+  - Multi agent coordination exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-007
+  title: VirtualAssistant has no authority and permissions
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Authority and permissions' was looked for in VirtualAssistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-007 in 0 own source files.
+  acceptance:
+  - Authority and permissions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-008
+  title: VirtualAssistant has no durable task state
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Durable task state' was looked for in VirtualAssistant's own source
+    and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-008 in 0 own source files.
+  acceptance:
+  - Durable task state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-009
+  title: VirtualAssistant has no evaluation and benchmarking
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Evaluation and benchmarking' was looked for in VirtualAssistant's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-009 in 0 own source files.
+  acceptance:
+  - Evaluation and benchmarking exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-VIRTUAL-ASSISTANT-010
+  title: VirtualAssistant has no local and offline model
+  project: virtual-assistant
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Local and offline model' was looked for in VirtualAssistant's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-010 in 0 own source files.
+  acceptance:
+  - Local and offline model exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-006
+  title: Web-platform has no fees or gas
+  project: web-platform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The blockchain capability 'Fees or gas' was looked for in Web-platform's own source and not
+    found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for BC-006 in 52 own source files.
+  acceptance:
+  - Fees or gas exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-010
+  title: Web-platform has no tax and shipping calculation
+  project: web-platform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The commerce capability 'Tax and shipping calculation' was looked for in Web-platform's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-010 in 52 own source files.
+  acceptance:
+  - Tax and shipping calculation exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WEB-PLATFORM-012
+  title: Web-platform has no order tracking and fulfilment
+  project: web-platform
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The commerce capability 'Order tracking and fulfilment' was looked for in Web-platform's own
+    source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for COM-012 in 52 own source files.
+  acceptance:
+  - Order tracking and fulfilment exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-001
+  title: aetherius-os-worldclass-prototype has no model routing across providers
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Model routing across providers' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-001 in 0 own source files.
+  acceptance:
+  - Model routing across providers exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-002
+  title: aetherius-os-worldclass-prototype has no tool execution
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Tool execution' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-002 in 0 own source files.
+  acceptance:
+  - Tool execution exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-003
+  title: aetherius-os-worldclass-prototype has no planning and decomposition
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Planning and decomposition' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-003 in 0 own source files.
+  acceptance:
+  - Planning and decomposition exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-004
+  title: aetherius-os-worldclass-prototype has no working memory and context
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Working memory and context' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-004 in 0 own source files.
+  acceptance:
+  - Working memory and context exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-005
+  title: aetherius-os-worldclass-prototype has no long term memory
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Long term memory' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-005 in 0 own source files.
+  acceptance:
+  - Long term memory exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-006
+  title: aetherius-os-worldclass-prototype has no multi agent coordination
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Multi agent coordination' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-006 in 0 own source files.
+  acceptance:
+  - Multi agent coordination exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-007
+  title: aetherius-os-worldclass-prototype has no authority and permissions
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Authority and permissions' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-007 in 0 own source files.
+  acceptance:
+  - Authority and permissions exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-008
+  title: aetherius-os-worldclass-prototype has no durable task state
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Durable task state' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-008 in 0 own source files.
+  acceptance:
+  - Durable task state exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-009
+  title: aetherius-os-worldclass-prototype has no evaluation and benchmarking
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Evaluation and benchmarking' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-009 in 0 own source files.
+  acceptance:
+  - Evaluation and benchmarking exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-010
+  title: aetherius-os-worldclass-prototype has no local and offline model
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The intelligence capability 'Local and offline model' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for INT-010 in 0 own source files.
+  acceptance:
+  - Local and offline model exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-001
+  title: aetherius-os-worldclass-prototype has no runtime or kernel
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Runtime or kernel' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-001 in 0 own source files.
+  acceptance:
+  - Runtime or kernel exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-002
+  title: aetherius-os-worldclass-prototype has no module system
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Module system' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-002 in 0 own source files.
+  acceptance:
+  - Module system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-003
+  title: aetherius-os-worldclass-prototype has no isolation between parts
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Isolation between parts' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-003 in 0 own source files.
+  acceptance:
+  - Isolation between parts exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-004
+  title: aetherius-os-worldclass-prototype has no user interface shell
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'User interface shell' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-004 in 0 own source files.
+  acceptance:
+  - User interface shell exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-005
+  title: aetherius-os-worldclass-prototype has no extension system
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Extension system' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-005 in 0 own source files.
+  acceptance:
+  - Extension system exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-006
+  title: aetherius-os-worldclass-prototype has no configuration management
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Configuration management' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-006 in 0 own source files.
+  acceptance:
+  - Configuration management exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-007
+  title: aetherius-os-worldclass-prototype has no observability
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Observability' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-007 in 0 own source files.
+  acceptance:
+  - Observability exists and is reachable
+  - A test covers it
+  blocks: []
+- id: TODO-WORLDCASS-PROTO-008
+  title: aetherius-os-worldclass-prototype has no distribution and packaging
+  project: worldcass-proto
+  status: OPEN
+  priority: 3
+  source:
+    kind: programme-gap-analysis
+    ref: Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
+  detail: The platform capability 'Distribution and packaging' was looked for in aetherius-os-worldclass-prototype's
+    own source and not found. The search terms were recorded so the finding can be checked.
+  evidence: No occurrence of the search terms for PLT-008 in 0 own source files.
+  acceptance:
+  - Distribution and packaging exists and is reachable
+  - A test covers it
   blocks: []

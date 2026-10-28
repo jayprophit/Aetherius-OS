@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/food-wiki",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS Food Wiki vertical slice: cited food knowledge, deterministic allergen and medical-flag rules, offline sync and barcode lookup.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

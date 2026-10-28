@@ -11,7 +11,23 @@
     "aetherius-learning/src",
     "aetherius-learning/tests",
     "aetherius-community/src",
-    "aetherius-community/tests"
+    "aetherius-community/tests",
+    "aetherius-food-wiki/src",
+    "aetherius-food-wiki/tests",
+    "aetherius-health-library/src",
+    "aetherius-health-library/tests",
+    "sovereign-financial-os/src",
+    "sovereign-financial-os/tests",
+    "Decentralized Messaging App/src",
+    "Decentralized Messaging App/tests",
+    "Athena/src",
+    "Athena/tests",
+    "quantum-ai-assistant/src",
+    "quantum-ai-assistant/tests",
+    "Multi-Cross-Platform-Trading-Bot/src",
+    "Multi-Cross-Platform-Trading-Bot/tests",
+    "aetherius-crossplatform/src",
+    "aetherius-crossplatform/tests"
   ],
   "exclude": ["**/node_modules", "**/dist"]
 }

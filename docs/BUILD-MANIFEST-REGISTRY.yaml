@@ -128,10 +128,16 @@ projects:
 - id: athena
   name: Athena
   manifest: Aetherius-OS/apps/Athena/build.yaml
-  role: A reserved project folder. Empty, with no recorded scope.
-  status: NOT_STARTED
+  role: 'The shared intelligence runtime: routing, tools, planning, memory, delegation, durable tasks,
+    evaluation and a local-model contract. Candidate scope until the original Athena requirements are
+    recovered.'
+  status: PARTIAL
   depends_on:
   - aetherius-os
+  - agent-bridge
+  notes: The runtime and tests are built. The owner's original Athena requirements live in a ChatGPT
+    project that is not in the local corpus, so the implemented capability set is candidate scope
+    (TODO-ATH-002). No hosted model provider or user interface is connected.
 - id: architecture-of-shadows-book
   name: Architecture of Shadows Book
   manifest: Aetherius-OS/books/Architecture of Shadows Book/build.yaml
@@ -149,30 +155,37 @@ projects:
 - id: decentralized-messaging-app
   name: Decentralized Messaging App
   manifest: Aetherius-OS/apps/Decentralized Messaging App/build.yaml
-  role: A reserved messaging project folder. Empty, with no recorded scope.
-  status: NOT_STARTED
-  depends_on:
-  - aetherius-os
-  notes: The Agent-Bridge communication core provider already exists. A messaging application should build
-    on it rather than recreate it.
-- id: food-wiki-app
-  name: Food Wiki App
-  manifest: Aetherius-OS/apps/Food Wiki App/build.yaml
-  role: A reserved Food Wiki / FaturaWiki project folder. Contains one empty design directory and nothing
-    else.
-  status: NOT_STARTED
-  depends_on:
-  - aetherius-os
-- id: crossplatform
-  name: crossplatform
-  manifest: Aetherius-OS/ecosystem/crossplatform---multiplatform/build.yaml
-  role: The cross-network, cross-platform, cross-device system, absorbed into Aetherius OS as part of
-    its ecosystem.
+  role: 'The messaging slice: encrypted storage, membership, presence, notifications, attachments, call
+    signalling and signed federation envelopes, built on the Agent-Bridge communication core.'
   status: PARTIAL
   depends_on:
   - aetherius-os
-  notes: Promoted from Temp/Repository-Reconciliation on 2026-10-20 and then absorbed into Aetherius OS.
-    It keeps its own repository and its own remote; Aetherius-OS's gitignore excludes it.
+  - agent-bridge
+  notes: The messaging core and tests are built. There is no WebRTC media plane, no live federation
+    transport and no messaging user interface. The product requirements are candidate scope
+    (TODO-DMA-002), not recovered owner requirements.
+- id: food-wiki-app
+  name: Food Wiki App (FaturaWiki)
+  manifest: Aetherius-OS/apps/aetherius-food-wiki/build.yaml
+  role: 'The food knowledge slice: cited food facts, allergen and medical rules, an offline conflict queue,
+    barcode throttling and an auditable publication workflow.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The knowledge service and tests are built. The user interface and host mount are not. The
+    FaturaWiki product requirements are candidate scope recorded in TODO-FWA-003; the corpus contains no
+    confirmed Food Wiki requirements. This entry supersedes the empty apps/Food Wiki App stub.
+- id: crossplatform
+  name: crossplatform
+  manifest: Aetherius-OS/apps/aetherius-crossplatform/build.yaml
+  role: 'The host-neutral cross-platform runtime library: scheduler, modules, capability isolation,
+    workspace layout, extensions, configuration, telemetry, packaging and a CLI.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The runtime library, CLI and tests are built and implement PLT-001..PLT-008 and
+    TLS-001..TLS-004. There is no native or web renderer, installer, code signing or artifact publication.
+    This entry supersedes the README-and-licence-only ecosystem/crossplatform---multiplatform folder.
 - id: aetherial-platform
   name: aetherial-platform
   manifest: Aetherius-OS/ecosystem/aetherial-platform/build.yaml
@@ -280,12 +293,14 @@ projects:
 - id: sovereign-financial-os
   name: sovereign-financial-os
   manifest: Aetherius-OS/apps/sovereign-financial-os/build.yaml
-  role: 'The sovereign financial operating system: recovered design material for a financial system the
-    owner owns outright, with a security specification and a recorded list of implementation gaps.'
-  status: NOT_STARTED
-  depends_on: []
-  notes: Registered during the workspace reorganisation of 2026-10-20. It had no folder in the workspace
-    before, so it was invisible to the registry and to the gate.
+  role: 'The sovereign financial operating system: a double-entry ledger, invoices, tax, budgets,
+    reconciliation, risk limits, reversals and an audit trail, in integer minor units.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The financial core and tests are built. There is no live bank, card or exchange adapter, no
+    durable database adapter and no user interface. No regulatory certification or tax filing capability
+    is claimed.
 - id: aetherion-engine
   name: aetherion-engine
   manifest: Aetherius-OS/apps/aetherion-engine/build.yaml
@@ -306,26 +321,26 @@ projects:
 - id: quantum-ai-assistant
   name: quantum-ai-assistant
   manifest: Aetherius-OS/apps/quantum-ai-assistant/build.yaml
-  role: 'The quantum AI assistant: recovered design material for the assistant the owner wants on the
-    organism.'
-  status: NOT_STARTED
-  depends_on: []
-  notes: Registered during the workspace reorganisation of 2026-10-20. It had no folder in the workspace
-    before, so it was invisible to the registry and to the gate.
+  role: 'The quantum AI assistant: a statevector simulator for small circuits, sampling, and an
+    Athena-backed explanation path with an audit trail.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  - athena
+  notes: The simulator, assistant path and tests are built. This is classical statevector simulation, not
+    quantum hardware, and there is no assistant user interface.
 - id: aetherius-health-library
   name: aetherius-health-library
   manifest: Aetherius-OS/apps/aetherius-health-library/build.yaml
-  role: 'The health library: new and old discoveries to help with development. It is part of Aetherius
-    OS once it is finished, and when it is finished it will have its own repository.'
-  status: NOT_STARTED
+  role: 'The health library: recovered reference material plus a working Rife parser, SHA-256 duplicate
+    detection, search, citations and publication.'
+  status: PARTIAL
   depends_on:
   - aetherius-os
-  notes: 'The health library is part of Aetherius OS once it is finished. It is not finished, and when
-    it is it will have its own repository, holding new and old discoveries to help with development.
-
-    What it holds at present is material rather than software: a handbook introduction, two frequency
-    tables, and a note about healing-web optical character recognition. The two frequency tables are the
-    same size and are the same file, which is worth settling before either is treated as a distinct dataset.'
+  notes: The ingestion, search, citation and publication services and tests are built. The library user
+    interface, host mount and its own repository are not. The two supplied frequency tables are
+    byte-identical (SHA-256 a60a985f...); spooky2_frequency.txt is recorded as an alias of the same
+    content rather than a distinct dataset.
 - id: aetherius-os-worldclass-prototype
   name: aetherius-os-worldclass-prototype
   manifest: Aetherius-OS/predecessors/aetherius-os-worldclass-prototype/build.yaml
@@ -358,13 +373,15 @@ projects:
 - id: trading-bot
   name: Multi-Cross-Platform-Trading-Bot
   manifest: Aetherius-OS/apps/Multi-Cross-Platform-Trading-Bot/build.yaml
-  role: Third-party trading bot, published under CC0-1.0, held in the workspace as the reference implementation
-    for the owner's own financial systems.
-  status: NOT_STARTED
-  depends_on: []
-  notes: It belongs to Sifdat, not to the owner. CC0-1.0 permits reuse without restriction, and the convention
-    in this workspace is still to write first-party code fresh rather than paste third-party code into
-    a first-party repository, so that the provenance of every line is clear.
+  role: 'A paper-only trading bot slice: SMA crossover, integer-cent paper broker, commissions,
+    idempotent order ids, risk limits, a daily-loss kill switch, deterministic backtests and an audit
+    trail.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The paper trading system and tests are built; there is no live exchange adapter. The upstream
+    Sifdat project is CC0-1.0 and is a reference, not pasted source. Its repository history still contains
+    six compromised credentials (TODO-SEC-002), and the upstream repository is private (TODO-PUB-001).
 - id: aetherius-commerce
   name: Aetherius OS Commerce
   manifest: Aetherius-OS/apps/aetherius-commerce/build.yaml

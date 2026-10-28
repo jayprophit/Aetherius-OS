@@ -1,0 +1,106 @@
+# =============================================================================
+# BUILD MANIFEST - Crossplatform---multiplatform
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+#
+# The old ecosystem/crossplatform---multiplatform folder held only a README and
+# a licence. The implemented slice is apps/aetherius-crossplatform.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: crossplatform
+  name: Crossplatform---multiplatform
+  kind: library
+  domain: crossplatform
+  description: >-
+    A host-neutral cross-platform runtime library: a cooperative scheduler and
+    lifecycle core, a dependency-aware module system, capability isolation, a
+    workspace layout model, an extension registry, layered configuration,
+    telemetry and release packaging, with a CLI. It is a runtime library, not
+    an operating-system kernel and not a native windowing toolkit.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-27"
+  summary: >-
+    The cross-platform runtime slice is built and tested. It implements the
+    twelve capabilities the programme measured as missing: PLT-001..PLT-008
+    (kernel, modules, isolation, workspace shell, extensions, configuration,
+    observability, packaging) and TLS-001..TLS-004 (CLI, flags, structured
+    output, tests). It is a host-neutral library: there is no native or web
+    renderer, installer or signed release yet.
+  evidence:
+    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/aetherius-crossplatform -> 15 tests passed, 0 failed."
+    - "2026-10-27: the tests cover scheduler priority and ordering, dependency cycles and rollback, capability denial, workspace persistence, extension contribution and withdrawal, configuration precedence, telemetry, packaging and the CLI."
+    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
+    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+
+known_issues:
+  - id: CROSSPLATFORM-001
+    severity: medium
+    summary: >-
+      The workspace is a layout model only. There is no native or web renderer
+      that draws the panels.
+    evidence: >-
+      WorkspaceLayout owns regions, sizes, visibility and order; the slice
+      contains no window toolkit, DOM renderer or CSS.
+    status: OPEN
+  - id: CROSSPLATFORM-002
+    severity: medium
+    summary: >-
+      Packaging produces and verifies a release manifest, but there is no
+      installer, code signing or artifact publication pipeline.
+    evidence: >-
+      Packager creates a canonical digest and refuses an untested stable
+      release; no installer builder or signing key is configured.
+    status: OPEN
+  - id: CROSSPLATFORM-003
+    severity: low
+    summary: >-
+      "Kernel" in this project means the scheduler and lifecycle core of the
+      runtime, not an operating-system kernel.
+    evidence: >-
+      RuntimeKernel is a cooperative in-process scheduler; it has no syscalls,
+      bootloader, memory manager or hardware drivers.
+    status: ACCEPTED
+
+notes:
+  - "Supersedes the README-and-licence-only ecosystem/crossplatform---multiplatform folder."

@@ -1,0 +1,97 @@
+# =============================================================================
+# BUILD MANIFEST - Food Wiki App (FaturaWiki)
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+#
+# The old apps/Food Wiki App folder is a superseded stub. The implemented
+# slice is apps/aetherius-food-wiki.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: food-wiki-app
+  name: Food Wiki App (FaturaWiki)
+  kind: application
+  domain: knowledge
+  description: >-
+    The Food Wiki knowledge slice: cited food facts, ingredient and nutrition
+    records, allergen and medical rules, an offline conflict queue and an
+    auditable publication workflow. The FaturaWiki product requirements are
+    candidate scope recorded in TODO-FWA-003, not recovered requirements.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-27"
+  summary: >-
+    The food knowledge slice is built and tested: cited facts, allergen and
+    medical rules, UNKNOWN results when a declaration is missing, an offline
+    conflict queue, barcode lookup throttling and an audit trail. It is not
+    mounted in the Aetherius OS host UI, and the FaturaWiki product scope is
+    still candidate scope.
+  evidence:
+    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/aetherius-food-wiki -> 15 tests passed, 0 failed."
+    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
+    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+    - "The slice uses the shared app-kit accounts, entitlements and hash-chained EventLedger."
+
+known_issues:
+  - id: FOOD-WIKI-001
+    severity: medium
+    summary: >-
+      The knowledge service is built, but the Food Wiki user interface and the
+      host application registry mount are not.
+    evidence: >-
+      apps/aetherius-food-wiki contains a service and tests only; there is no
+      route, screen or host registration for it.
+    status: OPEN
+  - id: FOOD-WIKI-002
+    severity: medium
+    summary: >-
+      The FaturaWiki requirements are not recovered. The implemented scope is
+      the candidate specification recorded in TODO-FWA-003 and must not be
+      presented as the owner's confirmed product scope.
+    evidence: >-
+      The local corpus search returned no NaturaWiki or Food Wiki requirements;
+      TODO-FWA-003 is the only recorded candidate specification.
+    status: OPEN
+    todo_ref: TODO-FWA-003
+
+notes:
+  - "Supersedes the empty apps/Food Wiki App stub, which held one empty design directory."

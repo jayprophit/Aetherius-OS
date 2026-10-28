@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/crossplatform",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS cross-platform runtime slice: scheduler, module system, capability isolation, workspace shell, extensions, configuration, telemetry, packaging and a CLI.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}
