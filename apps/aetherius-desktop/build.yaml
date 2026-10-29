@@ -1,0 +1,115 @@
+# =============================================================================
+# BUILD MANIFEST - Aetherius Desktop
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: aetherius-desktop
+  name: Aetherius Desktop
+  kind: application
+  domain: platform
+  description: >-
+    The desktop preferences and packaging model: layered system/user/app
+    settings with validation, policy locks, presets and secret-redacting
+    export/import; a catalogue of first-party equivalents for every default-app
+    role across Apple, Linux, Microsoft, Android, iOS and Google OS; URL/MIME
+    routing; and per-OS installer plans for MSIX, DMG, DEB and related formats.
+    It is a model, not a native OS integration.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-29"
+  summary: >-
+    The desktop model is built and tested: four-layer settings precedence
+    (default, system, user, app), type/range/enum validation, policy locks,
+    six OS presets, secret-redacting export and validated import, 26 default-app
+    roles on each of six OS families, override/reset resolution, URL-scheme and
+    MIME routing, and installer plans for MSIX, DMG, DEB, AAB, IPA and PWA with
+    signing blockers. It does not read or write a real registry, plist, dconf,
+    systemd unit or mobile bundle, and it does not build or sign a package.
+  evidence:
+    - "2026-10-29: node --test \"tests/*.test.ts\" in apps/aetherius-desktop -> 13 tests passed, 0 failed."
+    - "2026-10-29: the tests cover settings precedence, validation, policy locks, presets, redacted export/import, the 26x6 default-app catalogue, overrides and resets, URL/MIME routing, package formats and signing blockers."
+    - "2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 16 app slices."
+    - "2026-10-29: node apps/verify.mjs -> 16/16 slices passed."
+
+known_issues:
+  - id: DESKTOP-001
+    severity: high
+    summary: >-
+      Settings are a model. There is no native adapter that reads or writes the
+      Windows registry, macOS plists, Linux dconf/systemd configuration,
+      Android settings or iOS preferences.
+    evidence: >-
+      SettingsService resolves values in memory. The slice contains no registry,
+      plist, dconf, systemd, Android or iOS adapter.
+    status: OPEN
+  - id: DESKTOP-002
+    severity: high
+    summary: >-
+      The default-app catalogue is a model. Registering a handler with a real
+      operating system is not implemented.
+    evidence: >-
+      DefaultAppService resolves roles, overrides and URL/MIME routes in memory;
+      there is no OS handler registration call.
+    status: OPEN
+  - id: DESKTOP-003
+    severity: high
+    summary: >-
+      Installer plans name real package formats but do not build, sign, notarise
+      or publish a package.
+    evidence: >-
+      InstallerPlanner returns a format, artifact name, signing requirement and
+      blocker list. There is no MSIX/DMG/DEB builder, signing key or
+      notarisation step.
+    status: OPEN
+  - id: DESKTOP-004
+    severity: medium
+    summary: >-
+      There is no settings user interface or host mount.
+    evidence: >-
+      apps/aetherius-desktop contains a domain core and tests only; there is no
+      route or screen.
+    status: OPEN
+
+notes:
+  - "The owner asked for first-party versions of default OS apps for Apple, Linux, Microsoft, Android, iOS and Google OS, plus settings/preferences for the back and front end. The app-suite slice holds the app cores; this slice holds the settings and packaging model."

@@ -321,6 +321,61 @@ known_issues:
       the manifests now say so.
     status: OPEN
     todo_ref: TODO-WS-003
+  - id: AOS-APP-002
+    severity: high
+    summary: >-
+      The app suite, store, Food Wiki and Athena Health are tested domain
+      libraries with no native host shell, renderer or per-OS binary.
+    evidence: >-
+      node apps/verify.mjs passes 17/17 slices, but every slice is a Node
+      library. The desktop slice models window chrome and themes without
+      rendering a window. No MSIX, DMG, DEB, AAB, IPA or PWA artifact exists.
+    status: OPEN
+    todo_ref: TODO-APP-006
+  - id: AOS-APP-003
+    severity: medium
+    summary: >-
+      The Office modules export Markdown, CSV and slide outlines only. They
+      cannot import or export DOCX, PPTX or XLSX, and there is no original
+      template registry.
+    evidence: >-
+      WriterDocument.toMarkdown(), Spreadsheet.toCsv() and
+      SlideDeck.toOutline() are the only export paths. The 20 Codex reference
+      templates are not importable and are not redistributed.
+    status: OPEN
+    todo_ref: TODO-APP-007
+  - id: AOS-APP-004
+    severity: medium
+    summary: >-
+      The commerce slice has no CRM or sales pipeline, the finance slice has
+      no driver-based forecast, and the suite has no general analytics module.
+    evidence: >-
+      apps/aetherius-commerce/src/commerce.ts has no lead or pipeline entity.
+      apps/sovereign-financial-os/src/finance.ts has budgetVariance() but no
+      driver forecast. The analytics-dashboard template has no counterpart.
+    status: OPEN
+    todo_ref: TODO-APP-008
+  - id: AOS-CODEX-001
+    severity: medium
+    summary: >-
+      The Codex conversation corpus is inventoried but unread and unredacted,
+      so it cannot be used as evidence or published material.
+    evidence: >-
+      The Codex store records 124 threads, 1,014 turns and 50,994 items across
+      128 session files (988.55 MB). No conversation text was read for the
+      inventory.
+    status: OPEN
+    todo_ref: TODO-CODEX-001
+  - id: AOS-CODEX-002
+    severity: low
+    summary: >-
+      The 18 generated Codex images are unclassified and have no rights
+      review, so none can be adopted as a product or book asset.
+    evidence: >-
+      All 18 PNGs are unique by SHA-256 and total 30.34 MB. Their subjects,
+      people, logos and text are unknown; no image content was read.
+    status: OPEN
+    todo_ref: TODO-CODEX-002
 
 notes:
   - >-

@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/athena-health",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Athena health and wellbeing app: exercise library, workout plans, activity log, goals, recovery, wellbeing journal and privacy controls.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

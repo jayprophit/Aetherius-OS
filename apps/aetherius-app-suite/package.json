@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/app-suite",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius default-app suite: Notes, Calculator, Files, Calendar, Photos and Browser domain cores with tests.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

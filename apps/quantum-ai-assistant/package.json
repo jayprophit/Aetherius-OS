@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/quantum-assistant",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS Quantum Assistant slice: a small statevector circuit simulator with Athena routing, tools, memory and audit.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

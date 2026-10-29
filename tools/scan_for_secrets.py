@@ -82,6 +82,10 @@ ALLOWLIST: dict[str, str] = {
         "Holds deliberately fake credentials to prove the proposal validator rejects "
         "raw secrets. The values are not functional."
     ),
+    "apps/aetherius-crossplatform/tests/bridge.test.ts": (
+        "A test that proves the bridge refuses a URL with embedded credentials. "
+        "The URL is shop.example.com and the userinfo is the literal user:pass."
+    ),
     # These were found by the history scan on 21 October 2026. Each one holds
     # a credential SHAPE and not a credential, and each has been checked.
     "tests/test_h07_h09.py": (

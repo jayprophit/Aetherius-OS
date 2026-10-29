@@ -1,0 +1,101 @@
+# =============================================================================
+# BUILD MANIFEST - Aetherius Health Library
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: aetherius-health-library
+  name: Aetherius Health Library
+  kind: application
+  domain: health
+  description: >-
+    The Aetherius health library: recovered reference material and a working
+    ingestion, search, citation and publication slice. It is part of Aetherius
+    OS once it is finished; it does not yet have its own repository.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-27"
+  summary: >-
+    The health library slice is built and tested: a real Rife frequency parser
+    producing more than one thousand records, SHA-256 duplicate detection,
+    search, citation and a publication workflow. The two supplied frequency
+    files are byte-identical, so the second name is recorded as an alias, not
+    as distinct data. The library UI and its own repository are not built.
+  evidence:
+    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/aetherius-health-library -> 8 tests passed, 0 failed."
+    - "2026-10-27: rife_frequency.txt and spooky2_frequency.txt both hash to a60a985f... (SHA-256); the duplicate detector records spooky2_frequency.txt as an alias of the same content."
+    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
+    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+
+known_issues:
+  - id: HEALTH-LIBRARY-001
+    severity: medium
+    summary: >-
+      The ingestion, search, citation and publication services are built, but
+      the health library user interface and host mount are not.
+    evidence: >-
+      apps/aetherius-health-library contains a service, tests and source
+      reference text only; there is no route, screen or host registration.
+    status: OPEN
+  - id: HEALTH-LIBRARY-002
+    severity: low
+    summary: >-
+      The health library does not yet have its own repository, which the
+      programme requires once it is finished.
+    evidence: >-
+      The slice lives inside Aetherius-OS/apps and no separate remote exists.
+    status: OPEN
+    todo_ref: TODO-STR-007
+  - id: HEALTH-LIBRARY-003
+    severity: low
+    summary: >-
+      The two supplied frequency tables are the same bytes. The second file is
+      retained as a named alias rather than counted as a second data source.
+    evidence: >-
+      SHA-256 comparison of rife_frequency.txt and spooky2_frequency.txt
+      produced the same digest and the tests assert the alias behaviour.
+    status: FIXED
+    todo_ref: TODO-STR-006
+
+notes:
+  - "The Rife parser reads the recovered reference text in this folder; the original text is retained unchanged."

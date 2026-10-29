@@ -1025,3 +1025,5 @@ export function canonical(value: unknown): string {
     .map((key) => `${JSON.stringify(key)}:${canonical(record[key])}`)
     .join(",")}}`;
 }
+
+export * from "./bridge.ts";

@@ -1,18 +1,18 @@
 schema_version: 1
-source_date: 2026-10-21
+source_date: 2026-10-29
 generated_by: tools/generate_programme_registers.py
 notes:
   - "The programme gap analysis, across every first-party project and every family the owner named."
   - "A gap is only recorded where something measurable was missing: no source, no tests, a credential in the tree, no licence, or a family capability that a search of the project's own source did not find."
   - The search terms for each capability are in tools/programme_capabilities.py.
 totals:
-  projects: 37
-  gaps: 271
+  projects: 41
+  gaps: 220
   by_priority:
-    1: 23
-    2: 12
-    3: 29
-    4: 207
+    1: 14
+    2: 14
+    3: 33
+    4: 159
 gaps:
   - id: PRJ-AETHERIAL-GAP-002
     project: PRJ-AETHERIAL
@@ -95,84 +95,6 @@ gaps:
       - No credential literal remains in the tree
       - The secret scanner gate rejects the pattern
     todo: TODO-PRG-0006
-  - id: PRJ-ARCH-SHADOWS-GAP-001
-    project: PRJ-ARCH-SHADOWS
-    project_name: Architecture of Shadows Book
-    family: knowledge
-    title: Architecture of Shadows Book has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0007
-  - id: PRJ-ATHENA-GAP-001
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0008
-  - id: PRJ-CROSSPLATFORM-GAP-001
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: tools
-    title: Crossplatform---multiplatform has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0009
-  - id: PRJ-DECENTRALIZED-MESSAGING-GAP-001
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0010
-  - id: PRJ-FOOD-WIKI-GAP-001
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: knowledge
-    title: Food Wiki App has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0011
-  - id: PRJ-HEALTH-LIBRARY-GAP-001
-    project: PRJ-HEALTH-LIBRARY
-    project_name: aetherius-health-library
-    family: knowledge
-    title: aetherius-health-library has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0012
   - id: PRJ-HERMES-AUDIT-GAP-001
     project: PRJ-HERMES-AUDIT
     project_name: Hermes-Config-Audit
@@ -185,7 +107,7 @@ gaps:
     acceptance:
       - The project holds the source its manifest describes
       - The build runs and its tests pass
-    todo: TODO-PRG-0013
+    todo: TODO-PRG-0007
   - id: PRJ-HOLONAV-OS-GAP-001
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -198,7 +120,7 @@ gaps:
     acceptance:
       - The project holds the source its manifest describes
       - The build runs and its tests pass
-    todo: TODO-PRG-0014
+    todo: TODO-PRG-0008
   - id: PRJ-LEDGERLANDS-GAP-003
     project: PRJ-LEDGERLANDS
     project_name: LedgerLands
@@ -212,20 +134,7 @@ gaps:
       - The credentials are rotated
       - No credential literal remains in the tree
       - The secret scanner gate rejects the pattern
-    todo: TODO-PRG-0015
-  - id: PRJ-QUANTUM-AI-ASSISTANT-GAP-001
-    project: PRJ-QUANTUM-AI-ASSISTANT
-    project_name: quantum-ai-assistant
-    family: intelligence
-    title: quantum-ai-assistant has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0016
+    todo: TODO-PRG-0009
   - id: PRJ-QUANTUM-OS-GAP-001
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -238,34 +147,7 @@ gaps:
     acceptance:
       - The project holds the source its manifest describes
       - The build runs and its tests pass
-    todo: TODO-PRG-0017
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-GAP-001
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no source
-    status: OPEN
-    priority: 1
-    detail: "The project directory exists and is registered, but it holds 0 source files. The build manifest describes a project that does not exist yet."
-    evidence: "Measured own source lines: 0. Manifests found: ['build.yaml']."
-    acceptance:
-      - The project holds the source its manifest describes
-      - The build runs and its tests pass
-    todo: TODO-PRG-0018
-  - id: PRJ-TRADING-BOT-GAP-003
-    project: PRJ-TRADING-BOT
-    project_name: Multi-Cross-Platform-Trading-Bot
-    family: platform
-    title: Multi-Cross-Platform-Trading-Bot has credentials in its source
-    status: OPEN
-    priority: 1
-    detail: "Literal credentials were found in the project's own files. These must be treated as compromised and rotated, not merely deleted."
-    evidence: "Files with literal credentials: ['production/AI-Voice-assistant/assistant.py', 'production/Facial_Authentication/backend/app.js']."
-    acceptance:
-      - The credentials are rotated
-      - No credential literal remains in the tree
-      - The secret scanner gate rejects the pattern
-    todo: TODO-PRG-0019
+    todo: TODO-PRG-0010
   - id: PRJ-VEYRA-GAP-003
     project: PRJ-VEYRA
     project_name: Veyra
@@ -279,7 +161,7 @@ gaps:
       - The credentials are rotated
       - No credential literal remains in the tree
       - The secret scanner gate rejects the pattern
-    todo: TODO-PRG-0020
+    todo: TODO-PRG-0011
   - id: PRJ-VIRTUAL-ASSISTANT-GAP-001
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -292,7 +174,7 @@ gaps:
     acceptance:
       - The project holds the source its manifest describes
       - The build runs and its tests pass
-    todo: TODO-PRG-0021
+    todo: TODO-PRG-0012
   - id: PRJ-WEB-PLATFORM-GAP-002
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -305,7 +187,7 @@ gaps:
     acceptance:
       - "A test suite exists that covers the project's own source"
       - "The tests run in the project's build gate"
-    todo: TODO-PRG-0022
+    todo: TODO-PRG-0013
   - id: PRJ-WORLDCASS-PROTO-GAP-001
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -318,7 +200,7 @@ gaps:
     acceptance:
       - The project holds the source its manifest describes
       - The build runs and its tests pass
-    todo: TODO-PRG-0023
+    todo: TODO-PRG-0014
   - id: PRJ-AETHERIAL-PLATFORM-GAP-004
     project: PRJ-AETHERIAL-PLATFORM
     project_name: aetherial-platform
@@ -331,7 +213,7 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0024
+    todo: TODO-PRG-0015
   - id: PRJ-AGENT-BRIDGE-GAP-004
     project: PRJ-AGENT-BRIDGE
     project_name: Agent-Bridge
@@ -340,11 +222,11 @@ gaps:
     status: OPEN
     priority: 2
     detail: "The project has no licence file. For a first-party project that is the owner's choice to make, but until it is made the project cannot be published or shared."
-    evidence: No licence file found among 672 source files.
+    evidence: No licence file found among 700 source files.
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0025
+    todo: TODO-PRG-0016
   - id: PRJ-AGENT-BRIDGE-CLOUDHYBRID-GAP-004
     project: PRJ-AGENT-BRIDGE-CLOUDHYBRID
     project_name: Agent-Bridge-cloudhybrid
@@ -357,7 +239,7 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0026
+    todo: TODO-PRG-0017
   - id: PRJ-AGENT-BRIDGE-DASHBOARD-GAP-004
     project: PRJ-AGENT-BRIDGE-DASHBOARD
     project_name: Agent-Bridge-dashboard
@@ -370,7 +252,7 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0027
+    todo: TODO-PRG-0018
   - id: PRJ-AGENT-BRIDGE-RUNTIMESAFETY-GAP-004
     project: PRJ-AGENT-BRIDGE-RUNTIMESAFETY
     project_name: Agent-Bridge-runtimesafety
@@ -383,7 +265,7 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0028
+    todo: TODO-PRG-0019
   - id: PRJ-AI-DIGITAL-TWIN-GAP-004
     project: PRJ-AI-DIGITAL-TWIN
     project_name: ai-digital-clone
@@ -396,7 +278,33 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0029
+    todo: TODO-PRG-0020
+  - id: PRJ-CROSSPLATFORM-GAP-004
+    project: PRJ-CROSSPLATFORM
+    project_name: Crossplatform---multiplatform
+    family: platform
+    title: Crossplatform---multiplatform has no licence
+    status: OPEN
+    priority: 2
+    detail: "The project has no licence file. For a first-party project that is the owner's choice to make, but until it is made the project cannot be published or shared."
+    evidence: No licence file found among 5 source files.
+    acceptance:
+      - A licence is chosen and a licence file is present
+      - The build manifest records the licence
+    todo: TODO-PRG-0021
+  - id: PRJ-FOOD-WIKI-GAP-004
+    project: PRJ-FOOD-WIKI
+    project_name: Food Wiki App
+    family: platform
+    title: Food Wiki App has no licence
+    status: OPEN
+    priority: 2
+    detail: "The project has no licence file. For a first-party project that is the owner's choice to make, but until it is made the project cannot be published or shared."
+    evidence: No licence file found among 4 source files.
+    acceptance:
+      - A licence is chosen and a licence file is present
+      - The build manifest records the licence
+    todo: TODO-PRG-0022
   - id: PRJ-IDE-WORKSPACE-GAP-004
     project: PRJ-IDE-WORKSPACE
     project_name: IDE-Workspace
@@ -405,11 +313,11 @@ gaps:
     status: OPEN
     priority: 2
     detail: "The project has no licence file. For a first-party project that is the owner's choice to make, but until it is made the project cannot be published or shared."
-    evidence: No licence file found among 172 source files.
+    evidence: No licence file found among 175 source files.
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0030
+    todo: TODO-PRG-0023
   - id: PRJ-MAT-GAP-004
     project: PRJ-MAT
     project_name: Materials-Atlas-Table-Codex---MAT
@@ -418,11 +326,11 @@ gaps:
     status: OPEN
     priority: 2
     detail: "The project has no licence file. For a first-party project that is the owner's choice to make, but until it is made the project cannot be published or shared."
-    evidence: No licence file found among 286 source files.
+    evidence: No licence file found among 292 source files.
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0031
+    todo: TODO-PRG-0024
   - id: PRJ-NICHE-PLATFORM-GAP-004
     project: PRJ-NICHE-PLATFORM
     project_name: Niche_platform
@@ -435,7 +343,7 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0032
+    todo: TODO-PRG-0025
   - id: PRJ-POIETEK-GAP-004
     project: PRJ-POIETEK
     project_name: Poietek
@@ -444,11 +352,11 @@ gaps:
     status: OPEN
     priority: 2
     detail: "The project has no licence file. For a first-party project that is the owner's choice to make, but until it is made the project cannot be published or shared."
-    evidence: No licence file found among 465 source files.
+    evidence: No licence file found among 461 source files.
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0033
+    todo: TODO-PRG-0026
   - id: PRJ-QVA-MERGED-GAP-004
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -461,7 +369,7 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0034
+    todo: TODO-PRG-0027
   - id: PRJ-WEB-PLATFORM-GAP-004
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -474,46 +382,280 @@ gaps:
     acceptance:
       - A licence is chosen and a licence file is present
       - The build manifest records the licence
-    todo: TODO-PRG-0035
-  - id: PRJ-FOOD-WIKI-CAP-APP-001
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
+    todo: TODO-PRG-0028
+  - id: PRJ-AETHERIUS-APP-SUITE-CAP-APP-002
+    project: PRJ-AETHERIUS-APP-SUITE
+    project_name: Aetherius App Suite
     family: apps
-    title: Food Wiki App has no application shell and navigation
+    title: Aetherius App Suite has no session state management
     status: OPEN
     priority: 3
-    detail: "The apps capability 'Application shell and navigation' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-001 in 0 own source files.
-    acceptance:
-      - Application shell and navigation exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0036
-  - id: PRJ-FOOD-WIKI-CAP-APP-002
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: apps
-    title: Food Wiki App has no session state management
-    status: OPEN
-    priority: 3
-    detail: "The apps capability 'Session state management' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-002 in 0 own source files.
+    detail: "The apps capability 'Session state management' was looked for in Aetherius App Suite's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-002 in 8 own source files.
     acceptance:
       - Session state management exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0037
-  - id: PRJ-FOOD-WIKI-CAP-APP-003
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
+    todo: TODO-PRG-0029
+  - id: PRJ-AETHERIUS-APP-SUITE-CAP-APP-003
+    project: PRJ-AETHERIUS-APP-SUITE
+    project_name: Aetherius App Suite
     family: apps
-    title: Food Wiki App has no offline behaviour and sync
+    title: Aetherius App Suite has no offline behaviour and sync
     status: OPEN
     priority: 3
-    detail: "The apps capability 'Offline behaviour and sync' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-003 in 0 own source files.
+    detail: "The apps capability 'Offline behaviour and sync' was looked for in Aetherius App Suite's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-003 in 8 own source files.
+    acceptance:
+      - Offline behaviour and sync exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0030
+  - id: PRJ-AETHERIUS-APP-SUITE-CAP-APP-004
+    project: PRJ-AETHERIUS-APP-SUITE
+    project_name: Aetherius App Suite
+    family: apps
+    title: Aetherius App Suite has no push notification delivery
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Push notification delivery' was looked for in Aetherius App Suite's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-004 in 8 own source files.
+    acceptance:
+      - Push notification delivery exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0031
+  - id: PRJ-AETHERIUS-APP-SUITE-CAP-APP-005
+    project: PRJ-AETHERIUS-APP-SUITE
+    project_name: Aetherius App Suite
+    family: apps
+    title: Aetherius App Suite has no account and sign-in
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Account and sign-in' was looked for in Aetherius App Suite's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-005 in 8 own source files.
+    acceptance:
+      - Account and sign-in exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0032
+  - id: PRJ-AETHERIUS-APP-SUITE-CAP-APP-008
+    project: PRJ-AETHERIUS-APP-SUITE
+    project_name: Aetherius App Suite
+    family: apps
+    title: Aetherius App Suite has no packaging and distribution
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Packaging and distribution' was looked for in Aetherius App Suite's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-008 in 8 own source files.
+    acceptance:
+      - Packaging and distribution exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0033
+  - id: PRJ-AETHERIUS-DESKTOP-CAP-APP-003
+    project: PRJ-AETHERIUS-DESKTOP
+    project_name: Aetherius Desktop
+    family: apps
+    title: Aetherius Desktop has no offline behaviour and sync
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Offline behaviour and sync' was looked for in Aetherius Desktop's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-003 in 2 own source files.
+    acceptance:
+      - Offline behaviour and sync exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0034
+  - id: PRJ-AETHERIUS-DESKTOP-CAP-APP-004
+    project: PRJ-AETHERIUS-DESKTOP
+    project_name: Aetherius Desktop
+    family: apps
+    title: Aetherius Desktop has no push notification delivery
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Push notification delivery' was looked for in Aetherius Desktop's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-004 in 2 own source files.
+    acceptance:
+      - Push notification delivery exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0035
+  - id: PRJ-AETHERIUS-DESKTOP-CAP-APP-007
+    project: PRJ-AETHERIUS-DESKTOP
+    project_name: Aetherius Desktop
+    family: apps
+    title: Aetherius Desktop has no accessibility
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Accessibility' was looked for in Aetherius Desktop's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-007 in 2 own source files.
+    acceptance:
+      - Accessibility exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0036
+  - id: PRJ-AETHERIUS-STORE-CAP-APP-001
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: apps
+    title: Aetherius Store has no application shell and navigation
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Application shell and navigation' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-001 in 2 own source files.
+    acceptance:
+      - Application shell and navigation exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0037
+  - id: PRJ-AETHERIUS-STORE-CAP-APP-003
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: apps
+    title: Aetherius Store has no offline behaviour and sync
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Offline behaviour and sync' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-003 in 2 own source files.
     acceptance:
       - Offline behaviour and sync exists and is reachable
       - A test covers it
     todo: TODO-PRG-0038
+  - id: PRJ-AETHERIUS-STORE-CAP-APP-004
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: apps
+    title: Aetherius Store has no push notification delivery
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Push notification delivery' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-004 in 2 own source files.
+    acceptance:
+      - Push notification delivery exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0039
+  - id: PRJ-AETHERIUS-STORE-CAP-APP-005
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: apps
+    title: Aetherius Store has no account and sign-in
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Account and sign-in' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-005 in 2 own source files.
+    acceptance:
+      - Account and sign-in exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0040
+  - id: PRJ-AETHERIUS-STORE-CAP-APP-006
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: apps
+    title: Aetherius Store has no user preferences and settings
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'User preferences and settings' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-006 in 2 own source files.
+    acceptance:
+      - User preferences and settings exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0041
+  - id: PRJ-AETHERIUS-STORE-CAP-APP-007
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: apps
+    title: Aetherius Store has no accessibility
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Accessibility' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-007 in 2 own source files.
+    acceptance:
+      - Accessibility exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0042
+  - id: PRJ-ATHENA-HEALTH-CAP-APP-001
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
+    family: apps
+    title: Athena Health has no application shell and navigation
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Application shell and navigation' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-001 in 2 own source files.
+    acceptance:
+      - Application shell and navigation exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0043
+  - id: PRJ-ATHENA-HEALTH-CAP-APP-002
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
+    family: apps
+    title: Athena Health has no session state management
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Session state management' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-002 in 2 own source files.
+    acceptance:
+      - Session state management exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0044
+  - id: PRJ-ATHENA-HEALTH-CAP-APP-004
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
+    family: apps
+    title: Athena Health has no push notification delivery
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Push notification delivery' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-004 in 2 own source files.
+    acceptance:
+      - Push notification delivery exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0045
+  - id: PRJ-ATHENA-HEALTH-CAP-APP-005
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
+    family: apps
+    title: Athena Health has no account and sign-in
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Account and sign-in' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-005 in 2 own source files.
+    acceptance:
+      - Account and sign-in exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0046
+  - id: PRJ-ATHENA-HEALTH-CAP-APP-006
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
+    family: apps
+    title: Athena Health has no user preferences and settings
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'User preferences and settings' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-006 in 2 own source files.
+    acceptance:
+      - User preferences and settings exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0047
+  - id: PRJ-ATHENA-HEALTH-CAP-APP-007
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
+    family: apps
+    title: Athena Health has no accessibility
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Accessibility' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-007 in 2 own source files.
+    acceptance:
+      - Accessibility exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0048
+  - id: PRJ-ATHENA-HEALTH-CAP-APP-008
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
+    family: apps
+    title: Athena Health has no packaging and distribution
+    status: OPEN
+    priority: 3
+    detail: "The apps capability 'Packaging and distribution' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for APP-008 in 2 own source files.
+    acceptance:
+      - Packaging and distribution exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0049
   - id: PRJ-FOOD-WIKI-CAP-APP-004
     project: PRJ-FOOD-WIKI
     project_name: Food Wiki App
@@ -522,37 +664,11 @@ gaps:
     status: OPEN
     priority: 3
     detail: "The apps capability 'Push notification delivery' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-004 in 0 own source files.
+    evidence: No occurrence of the search terms for APP-004 in 4 own source files.
     acceptance:
       - Push notification delivery exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0039
-  - id: PRJ-FOOD-WIKI-CAP-APP-005
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: apps
-    title: Food Wiki App has no account and sign-in
-    status: OPEN
-    priority: 3
-    detail: "The apps capability 'Account and sign-in' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-005 in 0 own source files.
-    acceptance:
-      - Account and sign-in exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0040
-  - id: PRJ-FOOD-WIKI-CAP-APP-006
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: apps
-    title: Food Wiki App has no user preferences and settings
-    status: OPEN
-    priority: 3
-    detail: "The apps capability 'User preferences and settings' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-006 in 0 own source files.
-    acceptance:
-      - User preferences and settings exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0041
+    todo: TODO-PRG-0050
   - id: PRJ-FOOD-WIKI-CAP-APP-007
     project: PRJ-FOOD-WIKI
     project_name: Food Wiki App
@@ -561,24 +677,11 @@ gaps:
     status: OPEN
     priority: 3
     detail: "The apps capability 'Accessibility' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-007 in 0 own source files.
+    evidence: No occurrence of the search terms for APP-007 in 4 own source files.
     acceptance:
       - Accessibility exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0042
-  - id: PRJ-FOOD-WIKI-CAP-APP-008
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: apps
-    title: Food Wiki App has no packaging and distribution
-    status: OPEN
-    priority: 3
-    detail: "The apps capability 'Packaging and distribution' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for APP-008 in 0 own source files.
-    acceptance:
-      - Packaging and distribution exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0043
+    todo: TODO-PRG-0051
   - id: PRJ-LEDGERLANDS-CAP-FIN-002
     project: PRJ-LEDGERLANDS
     project_name: LedgerLands
@@ -591,7 +694,7 @@ gaps:
     acceptance:
       - Invoicing exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0044
+    todo: TODO-PRG-0052
   - id: PRJ-LEDGERLANDS-CAP-FIN-004
     project: PRJ-LEDGERLANDS
     project_name: LedgerLands
@@ -604,150 +707,7 @@ gaps:
     acceptance:
       - Budgeting exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0045
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-001
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no accounting and double-entry ledger
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Accounting and double-entry ledger' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-001 in 0 own source files.
-    acceptance:
-      - Accounting and double-entry ledger exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0046
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-002
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no invoicing
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Invoicing' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-002 in 0 own source files.
-    acceptance:
-      - Invoicing exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0047
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-003
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no payment handling
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Payment handling' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-003 in 0 own source files.
-    acceptance:
-      - Payment handling exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0048
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-004
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no budgeting
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Budgeting' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-004 in 0 own source files.
-    acceptance:
-      - Budgeting exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0049
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-005
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no markets and trading
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Markets and trading' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-005 in 0 own source files.
-    acceptance:
-      - Markets and trading exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0050
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-006
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no tax handling
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Tax handling' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-006 in 0 own source files.
-    acceptance:
-      - Tax handling exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0051
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-007
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no financial reporting
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Financial reporting' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-007 in 0 own source files.
-    acceptance:
-      - Financial reporting exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0052
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-008
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no reconciliation
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Reconciliation' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-008 in 0 own source files.
-    acceptance:
-      - Reconciliation exists and is reachable
-      - A test covers it
     todo: TODO-PRG-0053
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-009
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: finance
-    title: sovereign-financial-os has no risk and compliance controls
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Risk and compliance controls' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-009 in 0 own source files.
-    acceptance:
-      - Risk and compliance controls exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0054
-  - id: PRJ-TRADING-BOT-CAP-FIN-001
-    project: PRJ-TRADING-BOT
-    project_name: Multi-Cross-Platform-Trading-Bot
-    family: finance
-    title: Multi-Cross-Platform-Trading-Bot has no accounting and double-entry ledger
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Accounting and double-entry ledger' was looked for in Multi-Cross-Platform-Trading-Bot's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-001 in 26 own source files.
-    acceptance:
-      - Accounting and double-entry ledger exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0055
-  - id: PRJ-TRADING-BOT-CAP-FIN-003
-    project: PRJ-TRADING-BOT
-    project_name: Multi-Cross-Platform-Trading-Bot
-    family: finance
-    title: Multi-Cross-Platform-Trading-Bot has no payment handling
-    status: OPEN
-    priority: 3
-    detail: "The finance capability 'Payment handling' was looked for in Multi-Cross-Platform-Trading-Bot's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-003 in 26 own source files.
-    acceptance:
-      - Payment handling exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0056
   - id: PRJ-TRADING-BOT-CAP-FIN-006
     project: PRJ-TRADING-BOT
     project_name: Multi-Cross-Platform-Trading-Bot
@@ -756,11 +716,11 @@ gaps:
     status: OPEN
     priority: 3
     detail: "The finance capability 'Tax handling' was looked for in Multi-Cross-Platform-Trading-Bot's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for FIN-006 in 26 own source files.
+    evidence: No occurrence of the search terms for FIN-006 in 30 own source files.
     acceptance:
       - Tax handling exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0057
+    todo: TODO-PRG-0054
   - id: PRJ-WEB-PLATFORM-CAP-APP-001
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -773,7 +733,7 @@ gaps:
     acceptance:
       - Application shell and navigation exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0058
+    todo: TODO-PRG-0055
   - id: PRJ-WEB-PLATFORM-CAP-APP-003
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -786,7 +746,7 @@ gaps:
     acceptance:
       - Offline behaviour and sync exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0059
+    todo: TODO-PRG-0056
   - id: PRJ-WEB-PLATFORM-CAP-APP-007
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -799,7 +759,7 @@ gaps:
     acceptance:
       - Accessibility exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0060
+    todo: TODO-PRG-0057
   - id: PRJ-WEB-PLATFORM-CAP-COM-003
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -812,7 +772,7 @@ gaps:
     acceptance:
       - Checkout exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0061
+    todo: TODO-PRG-0058
   - id: PRJ-WEB-PLATFORM-CAP-COM-005
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -825,7 +785,7 @@ gaps:
     acceptance:
       - Payments integration exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0062
+    todo: TODO-PRG-0059
   - id: PRJ-WEB-PLATFORM-CAP-COM-006
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -838,7 +798,7 @@ gaps:
     acceptance:
       - Inventory and stock exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0063
+    todo: TODO-PRG-0060
   - id: PRJ-WEB-PLATFORM-CAP-COM-009
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -851,7 +811,7 @@ gaps:
     acceptance:
       - Seller or merchant dashboard exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0064
+    todo: TODO-PRG-0061
   - id: PRJ-AETHERION-ENGINE-CAP-INT-001
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -864,7 +824,7 @@ gaps:
     acceptance:
       - Model routing across providers exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0065
+    todo: TODO-PRG-0062
   - id: PRJ-AETHERION-ENGINE-CAP-INT-002
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -877,7 +837,7 @@ gaps:
     acceptance:
       - Tool execution exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0066
+    todo: TODO-PRG-0063
   - id: PRJ-AETHERION-ENGINE-CAP-INT-003
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -890,7 +850,7 @@ gaps:
     acceptance:
       - Planning and decomposition exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0067
+    todo: TODO-PRG-0064
   - id: PRJ-AETHERION-ENGINE-CAP-INT-004
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -903,7 +863,7 @@ gaps:
     acceptance:
       - Working memory and context exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0068
+    todo: TODO-PRG-0065
   - id: PRJ-AETHERION-ENGINE-CAP-INT-005
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -916,7 +876,7 @@ gaps:
     acceptance:
       - Long term memory exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0069
+    todo: TODO-PRG-0066
   - id: PRJ-AETHERION-ENGINE-CAP-INT-006
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -929,7 +889,7 @@ gaps:
     acceptance:
       - Multi agent coordination exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0070
+    todo: TODO-PRG-0067
   - id: PRJ-AETHERION-ENGINE-CAP-INT-007
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -942,7 +902,7 @@ gaps:
     acceptance:
       - Authority and permissions exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0071
+    todo: TODO-PRG-0068
   - id: PRJ-AETHERION-ENGINE-CAP-INT-008
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -955,7 +915,7 @@ gaps:
     acceptance:
       - Durable task state exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0072
+    todo: TODO-PRG-0069
   - id: PRJ-AETHERION-ENGINE-CAP-INT-009
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -968,7 +928,7 @@ gaps:
     acceptance:
       - Evaluation and benchmarking exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0073
+    todo: TODO-PRG-0070
   - id: PRJ-AETHERION-ENGINE-CAP-INT-010
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -981,7 +941,7 @@ gaps:
     acceptance:
       - Local and offline model exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0074
+    todo: TODO-PRG-0071
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-001
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -994,7 +954,7 @@ gaps:
     acceptance:
       - Local runtime exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0075
+    todo: TODO-PRG-0072
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-002
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -1007,7 +967,7 @@ gaps:
     acceptance:
       - Local model inference exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0076
+    todo: TODO-PRG-0073
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-003
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -1020,7 +980,7 @@ gaps:
     acceptance:
       - Offline caching exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0077
+    todo: TODO-PRG-0074
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-004
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -1033,7 +993,7 @@ gaps:
     acceptance:
       - Local data store exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0078
+    todo: TODO-PRG-0075
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-005
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -1046,7 +1006,7 @@ gaps:
     acceptance:
       - Device access exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0079
+    todo: TODO-PRG-0076
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-006
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -1059,7 +1019,7 @@ gaps:
     acceptance:
       - Resource scheduling exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0080
+    todo: TODO-PRG-0077
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-007
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -1072,7 +1032,7 @@ gaps:
     acceptance:
       - Local installation exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0081
+    todo: TODO-PRG-0078
   - id: PRJ-AETHERION-ENGINE-CAP-LOC-008
     project: PRJ-AETHERION-ENGINE
     project_name: aetherion-engine
@@ -1085,7 +1045,59 @@ gaps:
     acceptance:
       - Update mechanism exists and is reachable
       - A test covers it
+    todo: TODO-PRG-0079
+  - id: PRJ-AETHERIUS-DESKTOP-CAP-PLT-001
+    project: PRJ-AETHERIUS-DESKTOP
+    project_name: Aetherius Desktop
+    family: platform
+    title: Aetherius Desktop has no runtime or kernel
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Runtime or kernel' was looked for in Aetherius Desktop's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-001 in 2 own source files.
+    acceptance:
+      - Runtime or kernel exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0080
+  - id: PRJ-AETHERIUS-DESKTOP-CAP-PLT-003
+    project: PRJ-AETHERIUS-DESKTOP
+    project_name: Aetherius Desktop
+    family: platform
+    title: Aetherius Desktop has no isolation between parts
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Isolation between parts' was looked for in Aetherius Desktop's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-003 in 2 own source files.
+    acceptance:
+      - Isolation between parts exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0081
+  - id: PRJ-AETHERIUS-DESKTOP-CAP-PLT-004
+    project: PRJ-AETHERIUS-DESKTOP
+    project_name: Aetherius Desktop
+    family: platform
+    title: Aetherius Desktop has no user interface shell
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'User interface shell' was looked for in Aetherius Desktop's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-004 in 2 own source files.
+    acceptance:
+      - User interface shell exists and is reachable
+      - A test covers it
     todo: TODO-PRG-0082
+  - id: PRJ-AETHERIUS-DESKTOP-CAP-PLT-007
+    project: PRJ-AETHERIUS-DESKTOP
+    project_name: Aetherius Desktop
+    family: platform
+    title: Aetherius Desktop has no observability
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Observability' was looked for in Aetherius Desktop's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-007 in 2 own source files.
+    acceptance:
+      - Observability exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0083
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-001
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1098,7 +1110,7 @@ gaps:
     acceptance:
       - Runtime or kernel exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0083
+    todo: TODO-PRG-0084
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-002
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1111,7 +1123,7 @@ gaps:
     acceptance:
       - Module system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0084
+    todo: TODO-PRG-0085
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-003
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1124,7 +1136,7 @@ gaps:
     acceptance:
       - Isolation between parts exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0085
+    todo: TODO-PRG-0086
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-004
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1137,7 +1149,7 @@ gaps:
     acceptance:
       - User interface shell exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0086
+    todo: TODO-PRG-0087
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-005
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1150,7 +1162,7 @@ gaps:
     acceptance:
       - Extension system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0087
+    todo: TODO-PRG-0088
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-006
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1163,7 +1175,7 @@ gaps:
     acceptance:
       - Configuration management exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0088
+    todo: TODO-PRG-0089
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-007
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1176,7 +1188,7 @@ gaps:
     acceptance:
       - Observability exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0089
+    todo: TODO-PRG-0090
   - id: PRJ-AETHERIUS-OS-PROTO-CAP-PLT-008
     project: PRJ-AETHERIUS-OS-PROTO
     project_name: aetherius-os-prototype
@@ -1189,7 +1201,85 @@ gaps:
     acceptance:
       - Distribution and packaging exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0090
+    todo: TODO-PRG-0091
+  - id: PRJ-AETHERIUS-STORE-CAP-PLT-001
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: platform
+    title: Aetherius Store has no runtime or kernel
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Runtime or kernel' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-001 in 2 own source files.
+    acceptance:
+      - Runtime or kernel exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0092
+  - id: PRJ-AETHERIUS-STORE-CAP-PLT-002
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: platform
+    title: Aetherius Store has no module system
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Module system' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-002 in 2 own source files.
+    acceptance:
+      - Module system exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0093
+  - id: PRJ-AETHERIUS-STORE-CAP-PLT-003
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: platform
+    title: Aetherius Store has no isolation between parts
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Isolation between parts' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-003 in 2 own source files.
+    acceptance:
+      - Isolation between parts exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0094
+  - id: PRJ-AETHERIUS-STORE-CAP-PLT-004
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: platform
+    title: Aetherius Store has no user interface shell
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'User interface shell' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-004 in 2 own source files.
+    acceptance:
+      - User interface shell exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0095
+  - id: PRJ-AETHERIUS-STORE-CAP-PLT-005
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: platform
+    title: Aetherius Store has no extension system
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Extension system' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-005 in 2 own source files.
+    acceptance:
+      - Extension system exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0096
+  - id: PRJ-AETHERIUS-STORE-CAP-PLT-006
+    project: PRJ-AETHERIUS-STORE
+    project_name: Aetherius Store
+    family: platform
+    title: Aetherius Store has no configuration management
+    status: OPEN
+    priority: 4
+    detail: "The platform capability 'Configuration management' was looked for in Aetherius Store's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for PLT-006 in 2 own source files.
+    acceptance:
+      - Configuration management exists and is reachable
+      - A test covers it
+    todo: TODO-PRG-0097
   - id: PRJ-AGENT-BRIDGE-CLOUDHYBRID-CAP-CLD-005
     project: PRJ-AGENT-BRIDGE-CLOUDHYBRID
     project_name: Agent-Bridge-cloudhybrid
@@ -1202,20 +1292,7 @@ gaps:
     acceptance:
       - Autoscaling exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0091
-  - id: PRJ-ARCH-SHADOWS-CAP-KNW-001
-    project: PRJ-ARCH-SHADOWS
-    project_name: Architecture of Shadows Book
-    family: knowledge
-    title: Architecture of Shadows Book has no ingest
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Ingest' was looked for in Architecture of Shadows Book's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-001 in 0 own source files.
-    acceptance:
-      - Ingest exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0092
+    todo: TODO-PRG-0098
   - id: PRJ-ARCH-SHADOWS-CAP-KNW-002
     project: PRJ-ARCH-SHADOWS
     project_name: Architecture of Shadows Book
@@ -1224,11 +1301,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The knowledge capability 'Structure and categorisation' was looked for in Architecture of Shadows Book's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-002 in 0 own source files.
+    evidence: No occurrence of the search terms for KNW-002 in 1 own source files.
     acceptance:
       - Structure and categorisation exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0093
+    todo: TODO-PRG-0099
   - id: PRJ-ARCH-SHADOWS-CAP-KNW-003
     project: PRJ-ARCH-SHADOWS
     project_name: Architecture of Shadows Book
@@ -1237,583 +1314,37 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The knowledge capability 'Link graph' was looked for in Architecture of Shadows Book's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-003 in 0 own source files.
+    evidence: No occurrence of the search terms for KNW-003 in 1 own source files.
     acceptance:
       - Link graph exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0094
-  - id: PRJ-ARCH-SHADOWS-CAP-KNW-004
-    project: PRJ-ARCH-SHADOWS
-    project_name: Architecture of Shadows Book
-    family: knowledge
-    title: Architecture of Shadows Book has no search
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Search' was looked for in Architecture of Shadows Book's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-004 in 0 own source files.
-    acceptance:
-      - Search exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0095
-  - id: PRJ-ARCH-SHADOWS-CAP-KNW-005
-    project: PRJ-ARCH-SHADOWS
-    project_name: Architecture of Shadows Book
-    family: knowledge
-    title: Architecture of Shadows Book has no source citation
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Source citation' was looked for in Architecture of Shadows Book's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-005 in 0 own source files.
-    acceptance:
-      - Source citation exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0096
-  - id: PRJ-ARCH-SHADOWS-CAP-KNW-006
-    project: PRJ-ARCH-SHADOWS
-    project_name: Architecture of Shadows Book
-    family: knowledge
-    title: Architecture of Shadows Book has no versioning
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Versioning' was looked for in Architecture of Shadows Book's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-006 in 0 own source files.
-    acceptance:
-      - Versioning exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0097
-  - id: PRJ-ARCH-SHADOWS-CAP-KNW-007
-    project: PRJ-ARCH-SHADOWS
-    project_name: Architecture of Shadows Book
-    family: knowledge
-    title: Architecture of Shadows Book has no publication
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Publication' was looked for in Architecture of Shadows Book's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-007 in 0 own source files.
-    acceptance:
-      - Publication exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0098
-  - id: PRJ-ATHENA-CAP-INT-001
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no model routing across providers
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Model routing across providers' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-001 in 0 own source files.
-    acceptance:
-      - Model routing across providers exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0099
-  - id: PRJ-ATHENA-CAP-INT-002
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no tool execution
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Tool execution' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-002 in 0 own source files.
-    acceptance:
-      - Tool execution exists and is reachable
       - A test covers it
     todo: TODO-PRG-0100
-  - id: PRJ-ATHENA-CAP-INT-003
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no planning and decomposition
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Planning and decomposition' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-003 in 0 own source files.
-    acceptance:
-      - Planning and decomposition exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0101
-  - id: PRJ-ATHENA-CAP-INT-004
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no working memory and context
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Working memory and context' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-004 in 0 own source files.
-    acceptance:
-      - Working memory and context exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0102
-  - id: PRJ-ATHENA-CAP-INT-005
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no long term memory
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Long term memory' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-005 in 0 own source files.
-    acceptance:
-      - Long term memory exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0103
-  - id: PRJ-ATHENA-CAP-INT-006
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no multi agent coordination
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Multi agent coordination' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-006 in 0 own source files.
-    acceptance:
-      - Multi agent coordination exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0104
-  - id: PRJ-ATHENA-CAP-INT-007
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no authority and permissions
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Authority and permissions' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-007 in 0 own source files.
-    acceptance:
-      - Authority and permissions exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0105
-  - id: PRJ-ATHENA-CAP-INT-008
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no durable task state
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Durable task state' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-008 in 0 own source files.
-    acceptance:
-      - Durable task state exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0106
-  - id: PRJ-ATHENA-CAP-INT-009
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no evaluation and benchmarking
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Evaluation and benchmarking' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-009 in 0 own source files.
-    acceptance:
-      - Evaluation and benchmarking exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0107
-  - id: PRJ-ATHENA-CAP-INT-010
-    project: PRJ-ATHENA
-    project_name: Athena
-    family: intelligence
-    title: Athena has no local and offline model
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Local and offline model' was looked for in Athena's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-010 in 0 own source files.
-    acceptance:
-      - Local and offline model exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0108
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-001
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no runtime or kernel
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'Runtime or kernel' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-001 in 0 own source files.
-    acceptance:
-      - Runtime or kernel exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0109
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-002
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no module system
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'Module system' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-002 in 0 own source files.
-    acceptance:
-      - Module system exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0110
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-003
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no isolation between parts
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'Isolation between parts' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-003 in 0 own source files.
-    acceptance:
-      - Isolation between parts exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0111
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-004
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no user interface shell
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'User interface shell' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-004 in 0 own source files.
-    acceptance:
-      - User interface shell exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0112
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-005
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no extension system
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'Extension system' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-005 in 0 own source files.
-    acceptance:
-      - Extension system exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0113
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-006
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no configuration management
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'Configuration management' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-006 in 0 own source files.
-    acceptance:
-      - Configuration management exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0114
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-007
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no observability
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'Observability' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-007 in 0 own source files.
-    acceptance:
-      - Observability exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0115
-  - id: PRJ-CROSSPLATFORM-CAP-PLT-008
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: platform
-    title: Crossplatform---multiplatform has no distribution and packaging
-    status: OPEN
-    priority: 4
-    detail: "The platform capability 'Distribution and packaging' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for PLT-008 in 0 own source files.
-    acceptance:
-      - Distribution and packaging exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0116
-  - id: PRJ-CROSSPLATFORM-CAP-TLS-001
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: tools
-    title: Crossplatform---multiplatform has no command line entry point
-    status: OPEN
-    priority: 4
-    detail: "The tools capability 'Command line entry point' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for TLS-001 in 0 own source files.
-    acceptance:
-      - Command line entry point exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0117
-  - id: PRJ-CROSSPLATFORM-CAP-TLS-002
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: tools
-    title: Crossplatform---multiplatform has no configuration
-    status: OPEN
-    priority: 4
-    detail: "The tools capability 'Configuration' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for TLS-002 in 0 own source files.
-    acceptance:
-      - Configuration exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0118
-  - id: PRJ-CROSSPLATFORM-CAP-TLS-003
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: tools
-    title: Crossplatform---multiplatform has no structured output
-    status: OPEN
-    priority: 4
-    detail: "The tools capability 'Structured output' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for TLS-003 in 0 own source files.
-    acceptance:
-      - Structured output exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0119
-  - id: PRJ-CROSSPLATFORM-CAP-TLS-004
-    project: PRJ-CROSSPLATFORM
-    project_name: Crossplatform---multiplatform
-    family: tools
-    title: Crossplatform---multiplatform has no testing
-    status: OPEN
-    priority: 4
-    detail: "The tools capability 'Testing' was looked for in Crossplatform---multiplatform's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for TLS-004 in 0 own source files.
-    acceptance:
-      - Testing exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0120
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-101
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no realtime delivery
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Realtime delivery' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-101 in 0 own source files.
-    acceptance:
-      - Realtime delivery exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0121
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-102
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no message store
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Message store' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-102 in 0 own source files.
-    acceptance:
-      - Message store exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0122
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-103
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no presence
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Presence' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-103 in 0 own source files.
-    acceptance:
-      - Presence exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0123
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-104
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no notification delivery
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Notification delivery' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-104 in 0 own source files.
-    acceptance:
-      - Notification delivery exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0124
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-105
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no rich media messages
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Rich media messages' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-105 in 0 own source files.
-    acceptance:
-      - Rich media messages exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0125
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-106
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no voice and video
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Voice and video' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-106 in 0 own source files.
-    acceptance:
-      - Voice and video exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0126
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-107
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no email integration
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Email integration' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-107 in 0 own source files.
-    acceptance:
-      - Email integration exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0127
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-108
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no encryption of messages
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Encryption of messages' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-108 in 0 own source files.
-    acceptance:
-      - Encryption of messages exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0128
-  - id: PRJ-DECENTRALIZED-MESSAGING-CAP-COM-109
-    project: PRJ-DECENTRALIZED-MESSAGING
-    project_name: Decentralized Messaging App
-    family: communication
-    title: Decentralized Messaging App has no federation between servers
-    status: OPEN
-    priority: 4
-    detail: "The communication capability 'Federation between servers' was looked for in Decentralized Messaging App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for COM-109 in 0 own source files.
-    acceptance:
-      - Federation between servers exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0129
-  - id: PRJ-FOOD-WIKI-CAP-KNW-001
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
+  - id: PRJ-ATHENA-HEALTH-CAP-KNW-003
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
     family: knowledge
-    title: Food Wiki App has no ingest
+    title: Athena Health has no link graph
     status: OPEN
     priority: 4
-    detail: "The knowledge capability 'Ingest' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-001 in 0 own source files.
-    acceptance:
-      - Ingest exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0130
-  - id: PRJ-FOOD-WIKI-CAP-KNW-002
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: knowledge
-    title: Food Wiki App has no structure and categorisation
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Structure and categorisation' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-002 in 0 own source files.
-    acceptance:
-      - Structure and categorisation exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0131
-  - id: PRJ-FOOD-WIKI-CAP-KNW-003
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: knowledge
-    title: Food Wiki App has no link graph
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Link graph' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-003 in 0 own source files.
+    detail: "The knowledge capability 'Link graph' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for KNW-003 in 2 own source files.
     acceptance:
       - Link graph exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0132
-  - id: PRJ-FOOD-WIKI-CAP-KNW-004
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
+    todo: TODO-PRG-0101
+  - id: PRJ-ATHENA-HEALTH-CAP-KNW-005
+    project: PRJ-ATHENA-HEALTH
+    project_name: Athena Health
     family: knowledge
-    title: Food Wiki App has no search
+    title: Athena Health has no source citation
     status: OPEN
     priority: 4
-    detail: "The knowledge capability 'Search' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-004 in 0 own source files.
-    acceptance:
-      - Search exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0133
-  - id: PRJ-FOOD-WIKI-CAP-KNW-005
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: knowledge
-    title: Food Wiki App has no source citation
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Source citation' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-005 in 0 own source files.
+    detail: "The knowledge capability 'Source citation' was looked for in Athena Health's own source and not found. The search terms were recorded so the finding can be checked."
+    evidence: No occurrence of the search terms for KNW-005 in 2 own source files.
     acceptance:
       - Source citation exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0134
-  - id: PRJ-FOOD-WIKI-CAP-KNW-006
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: knowledge
-    title: Food Wiki App has no versioning
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Versioning' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-006 in 0 own source files.
-    acceptance:
-      - Versioning exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0135
-  - id: PRJ-FOOD-WIKI-CAP-KNW-007
-    project: PRJ-FOOD-WIKI
-    project_name: Food Wiki App
-    family: knowledge
-    title: Food Wiki App has no publication
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Publication' was looked for in Food Wiki App's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-007 in 0 own source files.
-    acceptance:
-      - Publication exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0136
-  - id: PRJ-HEALTH-LIBRARY-CAP-KNW-001
-    project: PRJ-HEALTH-LIBRARY
-    project_name: aetherius-health-library
-    family: knowledge
-    title: aetherius-health-library has no ingest
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Ingest' was looked for in aetherius-health-library's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-001 in 0 own source files.
-    acceptance:
-      - Ingest exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0137
-  - id: PRJ-HEALTH-LIBRARY-CAP-KNW-002
-    project: PRJ-HEALTH-LIBRARY
-    project_name: aetherius-health-library
-    family: knowledge
-    title: aetherius-health-library has no structure and categorisation
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Structure and categorisation' was looked for in aetherius-health-library's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-002 in 0 own source files.
-    acceptance:
-      - Structure and categorisation exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0138
+    todo: TODO-PRG-0102
   - id: PRJ-HEALTH-LIBRARY-CAP-KNW-003
     project: PRJ-HEALTH-LIBRARY
     project_name: aetherius-health-library
@@ -1822,63 +1353,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The knowledge capability 'Link graph' was looked for in aetherius-health-library's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-003 in 0 own source files.
+    evidence: No occurrence of the search terms for KNW-003 in 2 own source files.
     acceptance:
       - Link graph exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0139
-  - id: PRJ-HEALTH-LIBRARY-CAP-KNW-004
-    project: PRJ-HEALTH-LIBRARY
-    project_name: aetherius-health-library
-    family: knowledge
-    title: aetherius-health-library has no search
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Search' was looked for in aetherius-health-library's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-004 in 0 own source files.
-    acceptance:
-      - Search exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0140
-  - id: PRJ-HEALTH-LIBRARY-CAP-KNW-005
-    project: PRJ-HEALTH-LIBRARY
-    project_name: aetherius-health-library
-    family: knowledge
-    title: aetherius-health-library has no source citation
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Source citation' was looked for in aetherius-health-library's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-005 in 0 own source files.
-    acceptance:
-      - Source citation exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0141
-  - id: PRJ-HEALTH-LIBRARY-CAP-KNW-006
-    project: PRJ-HEALTH-LIBRARY
-    project_name: aetherius-health-library
-    family: knowledge
-    title: aetherius-health-library has no versioning
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Versioning' was looked for in aetherius-health-library's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-006 in 0 own source files.
-    acceptance:
-      - Versioning exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0142
-  - id: PRJ-HEALTH-LIBRARY-CAP-KNW-007
-    project: PRJ-HEALTH-LIBRARY
-    project_name: aetherius-health-library
-    family: knowledge
-    title: aetherius-health-library has no publication
-    status: OPEN
-    priority: 4
-    detail: "The knowledge capability 'Publication' was looked for in aetherius-health-library's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for KNW-007 in 0 own source files.
-    acceptance:
-      - Publication exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0143
+    todo: TODO-PRG-0103
   - id: PRJ-HERMES-AUDIT-CAP-TLS-001
     project: PRJ-HERMES-AUDIT
     project_name: Hermes-Config-Audit
@@ -1891,7 +1370,7 @@ gaps:
     acceptance:
       - Command line entry point exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0144
+    todo: TODO-PRG-0104
   - id: PRJ-HERMES-AUDIT-CAP-TLS-002
     project: PRJ-HERMES-AUDIT
     project_name: Hermes-Config-Audit
@@ -1904,7 +1383,7 @@ gaps:
     acceptance:
       - Configuration exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0145
+    todo: TODO-PRG-0105
   - id: PRJ-HERMES-AUDIT-CAP-TLS-003
     project: PRJ-HERMES-AUDIT
     project_name: Hermes-Config-Audit
@@ -1917,7 +1396,7 @@ gaps:
     acceptance:
       - Structured output exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0146
+    todo: TODO-PRG-0106
   - id: PRJ-HERMES-AUDIT-CAP-TLS-004
     project: PRJ-HERMES-AUDIT
     project_name: Hermes-Config-Audit
@@ -1930,7 +1409,7 @@ gaps:
     acceptance:
       - Testing exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0147
+    todo: TODO-PRG-0107
   - id: PRJ-HOLONAV-OS-CAP-LOC-001
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -1943,7 +1422,7 @@ gaps:
     acceptance:
       - Local runtime exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0148
+    todo: TODO-PRG-0108
   - id: PRJ-HOLONAV-OS-CAP-LOC-002
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -1956,7 +1435,7 @@ gaps:
     acceptance:
       - Local model inference exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0149
+    todo: TODO-PRG-0109
   - id: PRJ-HOLONAV-OS-CAP-LOC-003
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -1969,7 +1448,7 @@ gaps:
     acceptance:
       - Offline caching exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0150
+    todo: TODO-PRG-0110
   - id: PRJ-HOLONAV-OS-CAP-LOC-004
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -1982,7 +1461,7 @@ gaps:
     acceptance:
       - Local data store exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0151
+    todo: TODO-PRG-0111
   - id: PRJ-HOLONAV-OS-CAP-LOC-005
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -1995,7 +1474,7 @@ gaps:
     acceptance:
       - Device access exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0152
+    todo: TODO-PRG-0112
   - id: PRJ-HOLONAV-OS-CAP-LOC-006
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2008,7 +1487,7 @@ gaps:
     acceptance:
       - Resource scheduling exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0153
+    todo: TODO-PRG-0113
   - id: PRJ-HOLONAV-OS-CAP-LOC-007
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2021,7 +1500,7 @@ gaps:
     acceptance:
       - Local installation exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0154
+    todo: TODO-PRG-0114
   - id: PRJ-HOLONAV-OS-CAP-LOC-008
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2034,7 +1513,7 @@ gaps:
     acceptance:
       - Update mechanism exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0155
+    todo: TODO-PRG-0115
   - id: PRJ-HOLONAV-OS-CAP-PLT-001
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2047,7 +1526,7 @@ gaps:
     acceptance:
       - Runtime or kernel exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0156
+    todo: TODO-PRG-0116
   - id: PRJ-HOLONAV-OS-CAP-PLT-002
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2060,7 +1539,7 @@ gaps:
     acceptance:
       - Module system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0157
+    todo: TODO-PRG-0117
   - id: PRJ-HOLONAV-OS-CAP-PLT-003
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2073,7 +1552,7 @@ gaps:
     acceptance:
       - Isolation between parts exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0158
+    todo: TODO-PRG-0118
   - id: PRJ-HOLONAV-OS-CAP-PLT-004
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2086,7 +1565,7 @@ gaps:
     acceptance:
       - User interface shell exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0159
+    todo: TODO-PRG-0119
   - id: PRJ-HOLONAV-OS-CAP-PLT-005
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2099,7 +1578,7 @@ gaps:
     acceptance:
       - Extension system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0160
+    todo: TODO-PRG-0120
   - id: PRJ-HOLONAV-OS-CAP-PLT-006
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2112,7 +1591,7 @@ gaps:
     acceptance:
       - Configuration management exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0161
+    todo: TODO-PRG-0121
   - id: PRJ-HOLONAV-OS-CAP-PLT-007
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2125,7 +1604,7 @@ gaps:
     acceptance:
       - Observability exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0162
+    todo: TODO-PRG-0122
   - id: PRJ-HOLONAV-OS-CAP-PLT-008
     project: PRJ-HOLONAV-OS
     project_name: holonav-os
@@ -2138,7 +1617,7 @@ gaps:
     acceptance:
       - Distribution and packaging exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0163
+    todo: TODO-PRG-0123
   - id: PRJ-NICHE-PLATFORM-CAP-PLT-003
     project: PRJ-NICHE-PLATFORM
     project_name: Niche_platform
@@ -2151,46 +1630,7 @@ gaps:
     acceptance:
       - Isolation between parts exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0164
-  - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-001
-    project: PRJ-QUANTUM-AI-ASSISTANT
-    project_name: quantum-ai-assistant
-    family: intelligence
-    title: quantum-ai-assistant has no model routing across providers
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Model routing across providers' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-001 in 0 own source files.
-    acceptance:
-      - Model routing across providers exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0165
-  - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-002
-    project: PRJ-QUANTUM-AI-ASSISTANT
-    project_name: quantum-ai-assistant
-    family: intelligence
-    title: quantum-ai-assistant has no tool execution
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Tool execution' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-002 in 0 own source files.
-    acceptance:
-      - Tool execution exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0166
-  - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-003
-    project: PRJ-QUANTUM-AI-ASSISTANT
-    project_name: quantum-ai-assistant
-    family: intelligence
-    title: quantum-ai-assistant has no planning and decomposition
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Planning and decomposition' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-003 in 0 own source files.
-    acceptance:
-      - Planning and decomposition exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0167
+    todo: TODO-PRG-0124
   - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-004
     project: PRJ-QUANTUM-AI-ASSISTANT
     project_name: quantum-ai-assistant
@@ -2199,11 +1639,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The intelligence capability 'Working memory and context' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-004 in 0 own source files.
+    evidence: No occurrence of the search terms for INT-004 in 2 own source files.
     acceptance:
       - Working memory and context exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0168
+    todo: TODO-PRG-0125
   - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-005
     project: PRJ-QUANTUM-AI-ASSISTANT
     project_name: quantum-ai-assistant
@@ -2212,11 +1652,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The intelligence capability 'Long term memory' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-005 in 0 own source files.
+    evidence: No occurrence of the search terms for INT-005 in 2 own source files.
     acceptance:
       - Long term memory exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0169
+    todo: TODO-PRG-0126
   - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-006
     project: PRJ-QUANTUM-AI-ASSISTANT
     project_name: quantum-ai-assistant
@@ -2225,11 +1665,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The intelligence capability 'Multi agent coordination' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-006 in 0 own source files.
+    evidence: No occurrence of the search terms for INT-006 in 2 own source files.
     acceptance:
       - Multi agent coordination exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0170
+    todo: TODO-PRG-0127
   - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-007
     project: PRJ-QUANTUM-AI-ASSISTANT
     project_name: quantum-ai-assistant
@@ -2238,24 +1678,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The intelligence capability 'Authority and permissions' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-007 in 0 own source files.
+    evidence: No occurrence of the search terms for INT-007 in 2 own source files.
     acceptance:
       - Authority and permissions exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0171
-  - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-008
-    project: PRJ-QUANTUM-AI-ASSISTANT
-    project_name: quantum-ai-assistant
-    family: intelligence
-    title: quantum-ai-assistant has no durable task state
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Durable task state' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-008 in 0 own source files.
-    acceptance:
-      - Durable task state exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0172
+    todo: TODO-PRG-0128
   - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-009
     project: PRJ-QUANTUM-AI-ASSISTANT
     project_name: quantum-ai-assistant
@@ -2264,24 +1691,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The intelligence capability 'Evaluation and benchmarking' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-009 in 0 own source files.
+    evidence: No occurrence of the search terms for INT-009 in 2 own source files.
     acceptance:
       - Evaluation and benchmarking exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0173
-  - id: PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-010
-    project: PRJ-QUANTUM-AI-ASSISTANT
-    project_name: quantum-ai-assistant
-    family: intelligence
-    title: quantum-ai-assistant has no local and offline model
-    status: OPEN
-    priority: 4
-    detail: "The intelligence capability 'Local and offline model' was looked for in quantum-ai-assistant's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for INT-010 in 0 own source files.
-    acceptance:
-      - Local and offline model exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0174
+    todo: TODO-PRG-0129
   - id: PRJ-QUANTUM-OS-CAP-PLT-001
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2294,7 +1708,7 @@ gaps:
     acceptance:
       - Runtime or kernel exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0175
+    todo: TODO-PRG-0130
   - id: PRJ-QUANTUM-OS-CAP-PLT-002
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2307,7 +1721,7 @@ gaps:
     acceptance:
       - Module system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0176
+    todo: TODO-PRG-0131
   - id: PRJ-QUANTUM-OS-CAP-PLT-003
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2320,7 +1734,7 @@ gaps:
     acceptance:
       - Isolation between parts exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0177
+    todo: TODO-PRG-0132
   - id: PRJ-QUANTUM-OS-CAP-PLT-004
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2333,7 +1747,7 @@ gaps:
     acceptance:
       - User interface shell exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0178
+    todo: TODO-PRG-0133
   - id: PRJ-QUANTUM-OS-CAP-PLT-005
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2346,7 +1760,7 @@ gaps:
     acceptance:
       - Extension system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0179
+    todo: TODO-PRG-0134
   - id: PRJ-QUANTUM-OS-CAP-PLT-006
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2359,7 +1773,7 @@ gaps:
     acceptance:
       - Configuration management exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0180
+    todo: TODO-PRG-0135
   - id: PRJ-QUANTUM-OS-CAP-PLT-007
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2372,7 +1786,7 @@ gaps:
     acceptance:
       - Observability exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0181
+    todo: TODO-PRG-0136
   - id: PRJ-QUANTUM-OS-CAP-PLT-008
     project: PRJ-QUANTUM-OS
     project_name: Quantum-OS
@@ -2385,7 +1799,7 @@ gaps:
     acceptance:
       - Distribution and packaging exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0182
+    todo: TODO-PRG-0137
   - id: PRJ-QVA-MERGED-CAP-BC-003
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2398,7 +1812,7 @@ gaps:
     acceptance:
       - Token or asset standard exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0183
+    todo: TODO-PRG-0138
   - id: PRJ-QVA-MERGED-CAP-BC-006
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2411,7 +1825,7 @@ gaps:
     acceptance:
       - Fees or gas exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0184
+    todo: TODO-PRG-0139
   - id: PRJ-QVA-MERGED-CAP-BC-007
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2424,7 +1838,7 @@ gaps:
     acceptance:
       - Bridges and oracles exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0185
+    todo: TODO-PRG-0140
   - id: PRJ-QVA-MERGED-CAP-BC-008
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2437,7 +1851,7 @@ gaps:
     acceptance:
       - Auditable history exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0186
+    todo: TODO-PRG-0141
   - id: PRJ-QVA-MERGED-CAP-DB-001
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2450,7 +1864,7 @@ gaps:
     acceptance:
       - Schema definition exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0187
+    todo: TODO-PRG-0142
   - id: PRJ-QVA-MERGED-CAP-DB-002
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2463,7 +1877,7 @@ gaps:
     acceptance:
       - Migrations exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0188
+    todo: TODO-PRG-0143
   - id: PRJ-QVA-MERGED-CAP-DB-004
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2476,7 +1890,7 @@ gaps:
     acceptance:
       - Indexing exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0189
+    todo: TODO-PRG-0144
   - id: PRJ-QVA-MERGED-CAP-DB-006
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2489,7 +1903,7 @@ gaps:
     acceptance:
       - Backup and restore exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0190
+    todo: TODO-PRG-0145
   - id: PRJ-QVA-MERGED-CAP-DB-007
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2502,7 +1916,7 @@ gaps:
     acceptance:
       - Replication and scaling exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0191
+    todo: TODO-PRG-0146
   - id: PRJ-QVA-MERGED-CAP-DB-008
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2515,7 +1929,7 @@ gaps:
     acceptance:
       - Connection management exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0192
+    todo: TODO-PRG-0147
   - id: PRJ-QVA-MERGED-CAP-DB-009
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2528,7 +1942,7 @@ gaps:
     acceptance:
       - Database observability exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0193
+    todo: TODO-PRG-0148
   - id: PRJ-QVA-MERGED-CAP-INT-001
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2541,7 +1955,7 @@ gaps:
     acceptance:
       - Model routing across providers exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0194
+    todo: TODO-PRG-0149
   - id: PRJ-QVA-MERGED-CAP-INT-002
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2554,7 +1968,7 @@ gaps:
     acceptance:
       - Tool execution exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0195
+    todo: TODO-PRG-0150
   - id: PRJ-QVA-MERGED-CAP-INT-003
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2567,7 +1981,7 @@ gaps:
     acceptance:
       - Planning and decomposition exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0196
+    todo: TODO-PRG-0151
   - id: PRJ-QVA-MERGED-CAP-INT-004
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2580,7 +1994,7 @@ gaps:
     acceptance:
       - Working memory and context exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0197
+    todo: TODO-PRG-0152
   - id: PRJ-QVA-MERGED-CAP-INT-005
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2593,7 +2007,7 @@ gaps:
     acceptance:
       - Long term memory exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0198
+    todo: TODO-PRG-0153
   - id: PRJ-QVA-MERGED-CAP-INT-006
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2606,7 +2020,7 @@ gaps:
     acceptance:
       - Multi agent coordination exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0199
+    todo: TODO-PRG-0154
   - id: PRJ-QVA-MERGED-CAP-INT-007
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2619,7 +2033,7 @@ gaps:
     acceptance:
       - Authority and permissions exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0200
+    todo: TODO-PRG-0155
   - id: PRJ-QVA-MERGED-CAP-INT-008
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2632,7 +2046,7 @@ gaps:
     acceptance:
       - Durable task state exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0201
+    todo: TODO-PRG-0156
   - id: PRJ-QVA-MERGED-CAP-INT-009
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2645,7 +2059,7 @@ gaps:
     acceptance:
       - Evaluation and benchmarking exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0202
+    todo: TODO-PRG-0157
   - id: PRJ-QVA-MERGED-CAP-INT-010
     project: PRJ-QVA-MERGED
     project_name: QVA-merged
@@ -2658,7 +2072,7 @@ gaps:
     acceptance:
       - Local and offline model exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0203
+    todo: TODO-PRG-0158
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-001
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2671,7 +2085,7 @@ gaps:
     acceptance:
       - Model routing across providers exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0204
+    todo: TODO-PRG-0159
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-002
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2684,7 +2098,7 @@ gaps:
     acceptance:
       - Tool execution exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0205
+    todo: TODO-PRG-0160
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-003
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2697,7 +2111,7 @@ gaps:
     acceptance:
       - Planning and decomposition exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0206
+    todo: TODO-PRG-0161
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-004
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2710,7 +2124,7 @@ gaps:
     acceptance:
       - Working memory and context exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0207
+    todo: TODO-PRG-0162
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-005
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2723,7 +2137,7 @@ gaps:
     acceptance:
       - Long term memory exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0208
+    todo: TODO-PRG-0163
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-006
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2736,7 +2150,7 @@ gaps:
     acceptance:
       - Multi agent coordination exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0209
+    todo: TODO-PRG-0164
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-007
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2749,7 +2163,7 @@ gaps:
     acceptance:
       - Authority and permissions exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0210
+    todo: TODO-PRG-0165
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-008
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2762,7 +2176,7 @@ gaps:
     acceptance:
       - Durable task state exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0211
+    todo: TODO-PRG-0166
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-009
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2775,7 +2189,7 @@ gaps:
     acceptance:
       - Evaluation and benchmarking exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0212
+    todo: TODO-PRG-0167
   - id: PRJ-SELF-BUILDING-AI-CAP-INT-010
     project: PRJ-SELF-BUILDING-AI
     project_name: self-building-ai
@@ -2788,20 +2202,7 @@ gaps:
     acceptance:
       - Local and offline model exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0213
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-001
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: blockchain
-    title: sovereign-financial-os has no chain runtime or node
-    status: OPEN
-    priority: 4
-    detail: "The blockchain capability 'Chain runtime or node' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-001 in 0 own source files.
-    acceptance:
-      - Chain runtime or node exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0214
+    todo: TODO-PRG-0168
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-002
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2810,11 +2211,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The blockchain capability 'Smart contracts' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-002 in 0 own source files.
+    evidence: No occurrence of the search terms for BC-002 in 2 own source files.
     acceptance:
       - Smart contracts exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0215
+    todo: TODO-PRG-0169
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-003
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2823,37 +2224,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The blockchain capability 'Token or asset standard' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-003 in 0 own source files.
+    evidence: No occurrence of the search terms for BC-003 in 2 own source files.
     acceptance:
       - Token or asset standard exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0216
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-004
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: blockchain
-    title: sovereign-financial-os has no wallet and key custody
-    status: OPEN
-    priority: 4
-    detail: "The blockchain capability 'Wallet and key custody' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-004 in 0 own source files.
-    acceptance:
-      - Wallet and key custody exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0217
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-005
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: blockchain
-    title: sovereign-financial-os has no transaction history and state
-    status: OPEN
-    priority: 4
-    detail: "The blockchain capability 'Transaction history and state' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-005 in 0 own source files.
-    acceptance:
-      - Transaction history and state exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0218
+    todo: TODO-PRG-0170
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-006
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2862,11 +2237,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The blockchain capability 'Fees or gas' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-006 in 0 own source files.
+    evidence: No occurrence of the search terms for BC-006 in 2 own source files.
     acceptance:
       - Fees or gas exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0219
+    todo: TODO-PRG-0171
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-007
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2875,24 +2250,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The blockchain capability 'Bridges and oracles' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-007 in 0 own source files.
+    evidence: No occurrence of the search terms for BC-007 in 2 own source files.
     acceptance:
       - Bridges and oracles exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0220
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-008
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: blockchain
-    title: sovereign-financial-os has no auditable history
-    status: OPEN
-    priority: 4
-    detail: "The blockchain capability 'Auditable history' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for BC-008 in 0 own source files.
-    acceptance:
-      - Auditable history exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0221
+    todo: TODO-PRG-0172
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-001
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2901,11 +2263,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The databases capability 'Schema definition' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-001 in 0 own source files.
+    evidence: No occurrence of the search terms for DB-001 in 2 own source files.
     acceptance:
       - Schema definition exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0222
+    todo: TODO-PRG-0173
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-002
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2914,24 +2276,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The databases capability 'Migrations' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-002 in 0 own source files.
+    evidence: No occurrence of the search terms for DB-002 in 2 own source files.
     acceptance:
       - Migrations exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0223
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-003
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: databases
-    title: sovereign-financial-os has no query layer
-    status: OPEN
-    priority: 4
-    detail: "The databases capability 'Query layer' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-003 in 0 own source files.
-    acceptance:
-      - Query layer exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0224
+    todo: TODO-PRG-0174
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-004
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2940,24 +2289,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The databases capability 'Indexing' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-004 in 0 own source files.
+    evidence: No occurrence of the search terms for DB-004 in 2 own source files.
     acceptance:
       - Indexing exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0225
-  - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-005
-    project: PRJ-SOVEREIGN-FINANCIAL-OS
-    project_name: sovereign-financial-os
-    family: databases
-    title: sovereign-financial-os has no transactions
-    status: OPEN
-    priority: 4
-    detail: "The databases capability 'Transactions' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-005 in 0 own source files.
-    acceptance:
-      - Transactions exists and is reachable
-      - A test covers it
-    todo: TODO-PRG-0226
+    todo: TODO-PRG-0175
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-006
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2966,11 +2302,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The databases capability 'Backup and restore' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-006 in 0 own source files.
+    evidence: No occurrence of the search terms for DB-006 in 2 own source files.
     acceptance:
       - Backup and restore exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0227
+    todo: TODO-PRG-0176
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-007
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2979,11 +2315,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The databases capability 'Replication and scaling' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-007 in 0 own source files.
+    evidence: No occurrence of the search terms for DB-007 in 2 own source files.
     acceptance:
       - Replication and scaling exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0228
+    todo: TODO-PRG-0177
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-008
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -2992,11 +2328,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The databases capability 'Connection management' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-008 in 0 own source files.
+    evidence: No occurrence of the search terms for DB-008 in 2 own source files.
     acceptance:
       - Connection management exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0229
+    todo: TODO-PRG-0178
   - id: PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-009
     project: PRJ-SOVEREIGN-FINANCIAL-OS
     project_name: sovereign-financial-os
@@ -3005,11 +2341,11 @@ gaps:
     status: OPEN
     priority: 4
     detail: "The databases capability 'Database observability' was looked for in sovereign-financial-os's own source and not found. The search terms were recorded so the finding can be checked."
-    evidence: No occurrence of the search terms for DB-009 in 0 own source files.
+    evidence: No occurrence of the search terms for DB-009 in 2 own source files.
     acceptance:
       - Database observability exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0230
+    todo: TODO-PRG-0179
   - id: PRJ-UNIVERSAL-BRIDGE-CAP-PLT-001
     project: PRJ-UNIVERSAL-BRIDGE
     project_name: Universal-Bridge
@@ -3022,7 +2358,7 @@ gaps:
     acceptance:
       - Runtime or kernel exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0231
+    todo: TODO-PRG-0180
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-101
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3035,7 +2371,7 @@ gaps:
     acceptance:
       - Realtime delivery exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0232
+    todo: TODO-PRG-0181
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-102
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3048,7 +2384,7 @@ gaps:
     acceptance:
       - Message store exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0233
+    todo: TODO-PRG-0182
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-103
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3061,7 +2397,7 @@ gaps:
     acceptance:
       - Presence exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0234
+    todo: TODO-PRG-0183
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-104
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3074,7 +2410,7 @@ gaps:
     acceptance:
       - Notification delivery exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0235
+    todo: TODO-PRG-0184
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-105
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3087,7 +2423,7 @@ gaps:
     acceptance:
       - Rich media messages exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0236
+    todo: TODO-PRG-0185
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-106
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3100,7 +2436,7 @@ gaps:
     acceptance:
       - Voice and video exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0237
+    todo: TODO-PRG-0186
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-107
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3113,7 +2449,7 @@ gaps:
     acceptance:
       - Email integration exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0238
+    todo: TODO-PRG-0187
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-108
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3126,7 +2462,7 @@ gaps:
     acceptance:
       - Encryption of messages exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0239
+    todo: TODO-PRG-0188
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-COM-109
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3139,7 +2475,7 @@ gaps:
     acceptance:
       - Federation between servers exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0240
+    todo: TODO-PRG-0189
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-001
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3152,7 +2488,7 @@ gaps:
     acceptance:
       - Model routing across providers exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0241
+    todo: TODO-PRG-0190
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-002
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3165,7 +2501,7 @@ gaps:
     acceptance:
       - Tool execution exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0242
+    todo: TODO-PRG-0191
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-003
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3178,7 +2514,7 @@ gaps:
     acceptance:
       - Planning and decomposition exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0243
+    todo: TODO-PRG-0192
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-004
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3191,7 +2527,7 @@ gaps:
     acceptance:
       - Working memory and context exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0244
+    todo: TODO-PRG-0193
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-005
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3204,7 +2540,7 @@ gaps:
     acceptance:
       - Long term memory exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0245
+    todo: TODO-PRG-0194
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-006
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3217,7 +2553,7 @@ gaps:
     acceptance:
       - Multi agent coordination exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0246
+    todo: TODO-PRG-0195
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-007
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3230,7 +2566,7 @@ gaps:
     acceptance:
       - Authority and permissions exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0247
+    todo: TODO-PRG-0196
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-008
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3243,7 +2579,7 @@ gaps:
     acceptance:
       - Durable task state exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0248
+    todo: TODO-PRG-0197
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-009
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3256,7 +2592,7 @@ gaps:
     acceptance:
       - Evaluation and benchmarking exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0249
+    todo: TODO-PRG-0198
   - id: PRJ-VIRTUAL-ASSISTANT-CAP-INT-010
     project: PRJ-VIRTUAL-ASSISTANT
     project_name: VirtualAssistant
@@ -3269,7 +2605,7 @@ gaps:
     acceptance:
       - Local and offline model exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0250
+    todo: TODO-PRG-0199
   - id: PRJ-WEB-PLATFORM-CAP-BC-006
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -3282,7 +2618,7 @@ gaps:
     acceptance:
       - Fees or gas exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0251
+    todo: TODO-PRG-0200
   - id: PRJ-WEB-PLATFORM-CAP-COM-010
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -3295,7 +2631,7 @@ gaps:
     acceptance:
       - Tax and shipping calculation exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0252
+    todo: TODO-PRG-0201
   - id: PRJ-WEB-PLATFORM-CAP-COM-012
     project: PRJ-WEB-PLATFORM
     project_name: Web-platform
@@ -3308,7 +2644,7 @@ gaps:
     acceptance:
       - Order tracking and fulfilment exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0253
+    todo: TODO-PRG-0202
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-001
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3321,7 +2657,7 @@ gaps:
     acceptance:
       - Model routing across providers exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0254
+    todo: TODO-PRG-0203
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-002
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3334,7 +2670,7 @@ gaps:
     acceptance:
       - Tool execution exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0255
+    todo: TODO-PRG-0204
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-003
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3347,7 +2683,7 @@ gaps:
     acceptance:
       - Planning and decomposition exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0256
+    todo: TODO-PRG-0205
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-004
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3360,7 +2696,7 @@ gaps:
     acceptance:
       - Working memory and context exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0257
+    todo: TODO-PRG-0206
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-005
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3373,7 +2709,7 @@ gaps:
     acceptance:
       - Long term memory exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0258
+    todo: TODO-PRG-0207
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-006
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3386,7 +2722,7 @@ gaps:
     acceptance:
       - Multi agent coordination exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0259
+    todo: TODO-PRG-0208
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-007
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3399,7 +2735,7 @@ gaps:
     acceptance:
       - Authority and permissions exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0260
+    todo: TODO-PRG-0209
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-008
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3412,7 +2748,7 @@ gaps:
     acceptance:
       - Durable task state exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0261
+    todo: TODO-PRG-0210
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-009
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3425,7 +2761,7 @@ gaps:
     acceptance:
       - Evaluation and benchmarking exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0262
+    todo: TODO-PRG-0211
   - id: PRJ-WORLDCASS-PROTO-CAP-INT-010
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3438,7 +2774,7 @@ gaps:
     acceptance:
       - Local and offline model exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0263
+    todo: TODO-PRG-0212
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-001
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3451,7 +2787,7 @@ gaps:
     acceptance:
       - Runtime or kernel exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0264
+    todo: TODO-PRG-0213
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-002
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3464,7 +2800,7 @@ gaps:
     acceptance:
       - Module system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0265
+    todo: TODO-PRG-0214
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-003
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3477,7 +2813,7 @@ gaps:
     acceptance:
       - Isolation between parts exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0266
+    todo: TODO-PRG-0215
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-004
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3490,7 +2826,7 @@ gaps:
     acceptance:
       - User interface shell exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0267
+    todo: TODO-PRG-0216
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-005
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3503,7 +2839,7 @@ gaps:
     acceptance:
       - Extension system exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0268
+    todo: TODO-PRG-0217
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-006
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3516,7 +2852,7 @@ gaps:
     acceptance:
       - Configuration management exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0269
+    todo: TODO-PRG-0218
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-007
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3529,7 +2865,7 @@ gaps:
     acceptance:
       - Observability exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0270
+    todo: TODO-PRG-0219
   - id: PRJ-WORLDCASS-PROTO-CAP-PLT-008
     project: PRJ-WORLDCASS-PROTO
     project_name: aetherius-os-worldclass-prototype
@@ -3542,4 +2878,4 @@ gaps:
     acceptance:
       - Distribution and packaging exists and is reachable
       - A test covers it
-    todo: TODO-PRG-0271
+    todo: TODO-PRG-0220

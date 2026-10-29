@@ -1,0 +1,135 @@
+# =============================================================================
+# BUILD MANIFEST - OpenClaw Model Catalogue
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: openclaw-models
+  name: OpenClaw Model Catalogue
+  kind: library
+  domain: ai
+  description: >-
+    A provider and model catalogue for OpenClaw covering local inference,
+    hosted free tiers, metered paid models, premium flagships and other
+    surfaces. It records exact provider endpoints and model ids, assigns each
+    model to a free/paid/premium/other tier, keeps credentials as environment
+    references, and renders the models.providers and agents.defaults config
+    fragments for a selected tier or model. It is a read-only catalogue and
+    renderer; it does not call a provider, download a model or edit a live
+    OpenClaw configuration.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-29"
+  summary: >-
+    The catalogue is built and tested: 17 providers and 52 models across four
+    tiers, 29 aliases, per-tier primary/fallback chains, and renderers for the
+    models.providers and agents.defaults fragments. Validation rejects
+    duplicate refs, missing aliases, invalid tiers, empty modalities and
+    negative costs. Hosted providers remain cold because the owner has not
+    supplied their keys; the live gateway has not been changed by this slice.
+  evidence:
+    - "2026-10-29: node --test \"tests/*.test.ts\" in apps/openclaw-models -> 11 tests passed, 0 failed."
+    - "2026-10-29: the tests cover catalogue validation, all four tiers, local and hosted providers, aliases, single-model selection, env-reference rendering, secret absence, tier/provider filtering, omitted unknown metadata, agent defaults and the CLI."
+    - "2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0."
+    - "2026-10-29: node src/cli.ts validate -> catalogue valid: 17 providers, 52 models, source 2026-10-29."
+    - "Model ids and endpoints were checked against the provider documentation shipped with OpenClaw 2026.9.6 and the live gateway configuration."
+
+known_issues:
+  - id: OCM-001
+    severity: high
+    summary: >-
+      Every hosted provider is configured but cold: no owner API key is
+      present, so no hosted inference has been proven by this slice.
+    evidence: >-
+      The catalogue renders ${OPENAI_API_KEY}, ${ANTHROPIC_API_KEY} and the
+      other environment references. The live gateway measured on 2026-10-29
+      has only ollama verified; all hosted entries are marked
+      CONFIGURED_COLD or NEEDS_OWNER_KEY.
+    status: OPEN
+    todo_ref: TODO-OCM-001
+  - id: OCM-002
+    severity: medium
+    summary: >-
+      The LM Studio provider is catalogued but unavailable: the Windows
+      lms.exe exits 0xC000001D and the installed 9B GGUF is not served.
+    evidence: >-
+      The lmstudio provider is marked LOCAL_UNAVAILABLE, and its single model
+      is in the other tier rather than the free primary chain.
+    status: OPEN
+    todo_ref: TODO-OCM-003
+  - id: OCM-003
+    severity: medium
+    summary: >-
+      Model metadata is a point-in-time snapshot. Context windows, output
+      limits and prices change, and unknown fields are omitted rather than
+      guessed.
+    evidence: >-
+      The catalogue records sourceDate 2026-10-29. Several providers (xAI,
+      Together, Fireworks) publish no context or price in the shipped docs, so
+      those fields are absent from their entries.
+    status: OPEN
+  - id: OCM-004
+    severity: medium
+    summary: >-
+      The slice renders config fragments but does not apply or verify them on
+      a live gateway, and it has no user interface.
+    evidence: >-
+      renderProviderConfig and renderAgentDefaults return plain objects. The
+      CLI prints JSON and is read-only; there is no config writer, gateway
+      client or screen.
+    status: OPEN
+    todo_ref: TODO-OCM-002
+  - id: OCM-005
+    severity: low
+    summary: >-
+      Free-tier classification reflects published terms on 2026-10-29; a
+      provider can change quotas or pricing without notice.
+    evidence: >-
+      The free tier includes local inference and hosted models that the live
+      configuration records at zero cost. No quota or rate-limit probe was
+      run because the hosted keys are absent.
+    status: OPEN
+
+notes:
+  - "The owner asked for OpenClaw to support any model, selectable local models and free/paid/premium/other provider tiers. This slice is the catalogue and renderer; the live gateway remains on the measured local Ollama model until the owner applies a selection."
+  - "Provider documentation used: OpenClaw 2026.9.6 docs/providers/*.md, plus docs/providers/openai/models.md."

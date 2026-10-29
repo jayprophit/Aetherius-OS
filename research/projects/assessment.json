@@ -2,15 +2,26 @@
  {
   "name": "Aetherius-OS",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS",
-  "own_source_files": 655,
+  "own_source_files": 725,
   "vendor_source_files": 456,
-  "own_lines": 138668,
+  "own_lines": 162985,
   "vendor_lines": 102571,
-  "test_files": 110,
-  "test_lines": 25235,
+  "test_files": 128,
+  "test_lines": 30509,
   "docs": [
    "README.md",
-   "apps/aetherion-engine/README.md",
+   "apps/aetherius-app-suite/README.md",
+   "apps/aetherius-athena-health/README.md",
+   "apps/aetherius-commerce/README.md",
+   "apps/aetherius-community/README.md",
+   "apps/aetherius-crossplatform/README.md",
+   "apps/aetherius-desktop/README.md",
+   "apps/aetherius-food-wiki/README.md",
+   "apps/aetherius-health-library/README.md",
+   "apps/aetherius-learning/README.md",
+   "apps/aetherius-store/README.md",
+   "apps/Athena/README.md",
+   "apps/Decentralized Messaging App/README.md",
    "apps/quantum-ai-assistant/README.md",
    "apps/sovereign-financial-os/README.md",
    "apps/sovereign-financial-os/mobile/README.md",
@@ -29,13 +40,35 @@
    "build.yaml",
    "package.json",
    "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "package.json",
+   "build.yaml",
+   "package.json",
+   "build.yaml",
+   "package.json",
    "build.yaml",
    "build.yaml",
+   "package.json",
    "build.yaml",
-   "build.yaml",
-   "build.yaml",
-   "build.yaml",
-   "build.yaml",
+   "package.json",
    "package.json",
    "requirements.txt",
    "package.json",
@@ -62,7 +95,7 @@
    "local/legacy-intake/F-Recovered/Aetherius-OS/config/.env.local"
   ],
   "secret_literals": [],
-  "has_ci": false,
+  "has_ci": true,
   "has_docker": true,
   "has_tests_dir": false,
   "top_level": [
@@ -70,6 +103,7 @@
    ".git",
    ".gitattributes",
    ".githooks",
+   ".github",
    ".gitignore",
    "App.tsx",
    "BUILD86-R5-FINAL-REPORT.md",
@@ -118,32 +152,32 @@
    "vite.config.ts"
   ],
   "languages": {
-   "typescript": 91645,
-   "python": 28707,
+   "typescript": 110168,
+   "python": 34173,
    "rust": 5795,
-   "javascript": 4351,
+   "javascript": 4418,
    "php": 4271,
    "c": 3149,
    "java": 555,
-   "powershell": 137,
+   "powershell": 398,
    "shell": 58
   },
   "primary_language": "typescript",
-  "vendor_fraction": 0.425,
-  "test_line_fraction": 0.182,
-  "doc_count": 15,
+  "vendor_fraction": 0.386,
+  "test_line_fraction": 0.187,
+  "doc_count": 26,
   "has_secret_literals": false,
   "secret_literal_files": []
  },
  {
   "name": "Genesis",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\kernel\\Genesis",
-  "own_source_files": 377,
+  "own_source_files": 394,
   "vendor_source_files": 0,
-  "own_lines": 58008,
+  "own_lines": 64054,
   "vendor_lines": 0,
-  "test_files": 38,
-  "test_lines": 7903,
+  "test_files": 44,
+  "test_lines": 10194,
   "docs": [
    "README.md",
    "assets/README.md",
@@ -192,6 +226,7 @@
    "benchmarks",
    "build",
    "build-host",
+   "build-verify",
    "build.yaml",
    "capabilities.config.ts",
    "cmake",
@@ -217,15 +252,15 @@
    "veyra_ai_engine.py"
   ],
   "languages": {
-   "c++": 25850,
+   "c++": 31732,
    "typescript": 22676,
    "python": 8144,
-   "powershell": 1284,
-   "shell": 54
+   "powershell": 1418,
+   "shell": 84
   },
   "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.136,
+  "test_line_fraction": 0.159,
   "doc_count": 10,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -233,12 +268,12 @@
  {
   "name": "Agent-Bridge",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Agent-Bridge",
-  "own_source_files": 672,
+  "own_source_files": 700,
   "vendor_source_files": 0,
-  "own_lines": 145743,
+  "own_lines": 154888,
   "vendor_lines": 0,
-  "test_files": 217,
-  "test_lines": 40406,
+  "test_files": 231,
+  "test_lines": 43994,
   "docs": [
    "README.md",
    "docs/releases/v0.8/INDEX.md",
@@ -280,6 +315,7 @@
    "SHARED_COMPONENT_REGISTRY.json",
    "SUBTASK_G_FINAL_REPORT.md",
    "SUPERSESSION_REGISTER.json",
+   "TODO.md",
    "UNKNOWN_REQUIREMENT_RECONCILIATION.json",
    "__pycache__",
    "actions.py",
@@ -364,6 +400,7 @@
    "genesis_client_simulator.py",
    "genesis_client_simulator_v2.py",
    "genesis_cognition.py",
+   "genesis_kernel.py",
    "genesis_ledger_bridge.py",
    "genesis_runtime.py",
    "git_checkpoint.py",
@@ -491,16 +528,17 @@
    "worker_main.py",
    "worker_runtime.py",
    "workspace_api.py",
+   "workspace_paths.py",
    "world_audit.py"
   ],
   "languages": {
-   "python": 142040,
+   "python": 151185,
    "powershell": 1881,
    "javascript": 1822
   },
   "primary_language": "python",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.277,
+  "test_line_fraction": 0.284,
   "doc_count": 5,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -1334,13 +1372,14 @@
  {
   "name": "IDE-Workspace",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\IDE-Workspace",
-  "own_source_files": 172,
+  "own_source_files": 175,
   "vendor_source_files": 0,
-  "own_lines": 35638,
+  "own_lines": 36201,
   "vendor_lines": 0,
-  "test_files": 43,
-  "test_lines": 7967,
+  "test_files": 44,
+  "test_lines": 8265,
   "docs": [
+   "README.md",
    "references/vibe-prototype/aetherius-ide/README.md",
    "workspace/app/src/genesis-ui/README.md",
    "workspace/app/src/supervisor-ui/README.md"
@@ -1355,16 +1394,18 @@
    "references/vibe-prototype/aetherius-ide/.env.example"
   ],
   "secret_literals": [],
-  "has_ci": false,
+  "has_ci": true,
   "has_docker": false,
   "has_tests_dir": false,
   "top_level": [
    ".git",
    ".gitattributes",
+   ".github",
    ".gitignore",
    ".gitignore.test",
    ".pytest_cache",
    "FINAL_REPORT.md",
+   "README.md",
    "audit_report.txt",
    "build.yaml",
    "docs",
@@ -1387,7 +1428,7 @@
    "workspace"
   ],
   "languages": {
-   "typescript": 30778,
+   "typescript": 31341,
    "python": 4400,
    "javascript": 195,
    "powershell": 102,
@@ -1397,17 +1438,17 @@
   },
   "primary_language": "python",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.224,
-  "doc_count": 3,
+  "test_line_fraction": 0.228,
+  "doc_count": 4,
   "has_secret_literals": false,
   "secret_literal_files": []
  },
  {
   "name": "Poietek",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Poietek",
-  "own_source_files": 465,
+  "own_source_files": 461,
   "vendor_source_files": 0,
-  "own_lines": 65995,
+  "own_lines": 64090,
   "vendor_lines": 0,
   "test_files": 51,
   "test_lines": 7763,
@@ -1436,7 +1477,6 @@
    ".github",
    ".gitignore",
    ".node-version",
-   ".npm-cache-local",
    ".qodo",
    "AGENTS.md",
    "CONTRIBUTING.md",
@@ -1449,10 +1489,7 @@
    "absorbed",
    "assets",
    "bridges",
-   "build",
    "build.yaml",
-   "buildlog-tail.txt",
-   "buildlog.txt",
    "deployment",
    "dist",
    "docs",
@@ -1479,14 +1516,14 @@
   "languages": {
    "typescript": 53033,
    "javascript": 8876,
-   "c++": 2390,
    "rust": 779,
    "sql": 693,
-   "c": 224
+   "c++": 490,
+   "c": 219
   },
   "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.118,
+  "test_line_fraction": 0.121,
   "doc_count": 5,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -1572,12 +1609,12 @@
  {
   "name": "Materials-Atlas-Table-Codex---MAT",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Materials-Atlas-Table-Codex---MAT",
-  "own_source_files": 286,
+  "own_source_files": 292,
   "vendor_source_files": 0,
-  "own_lines": 26740,
+  "own_lines": 27862,
   "vendor_lines": 0,
-  "test_files": 67,
-  "test_lines": 6284,
+  "test_files": 71,
+  "test_lines": 7112,
   "docs": [
    "README.md",
    "archive/legacy-genesis/README.md",
@@ -1627,7 +1664,6 @@
    ".github",
    ".gitignore",
    ".mat-local",
-   ".qodo",
    "AGENTS.md",
    "CHANGELOG.md",
    "MAT-ADVANCED-RESUME.md",
@@ -1651,14 +1687,14 @@
    "templates"
   ],
   "languages": {
-   "javascript": 22468,
+   "javascript": 23564,
    "python": 2521,
-   "typescript": 1604,
+   "typescript": 1630,
    "powershell": 147
   },
   "primary_language": "javascript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.235,
+  "test_line_fraction": 0.255,
   "doc_count": 28,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -1776,45 +1812,62 @@
  {
   "name": "Architecture of Shadows Book",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\books\\Architecture of Shadows Book",
-  "own_source_files": 0,
+  "own_source_files": 1,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 84,
   "vendor_lines": 0,
   "test_files": 0,
   "test_lines": 0,
-  "docs": [],
+  "docs": [
+   "README.md",
+   "STUDENT-EDITION/README.md",
+   "WEB-VERSION/README.md"
+  ],
   "manifests": [
    "build.yaml"
   ],
-  "licence": null,
+  "licence": "LICENSE",
   "secret_files": [],
   "secret_literals": [],
   "has_ci": false,
   "has_docker": false,
   "has_tests_dir": false,
   "top_level": [
+   ".git",
+   "BUILD-INSTRUCTIONS.md",
+   "LICENSE",
+   "MASTER-EDITION",
+   "README.md",
+   "STUDENT-EDITION",
+   "THE ARCHITECTURE OF SHADOWS.txt",
+   "WEB-VERSION",
    "build.yaml"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "javascript": 84
+  },
+  "primary_language": "javascript",
   "vendor_fraction": 0.0,
   "test_line_fraction": 0.0,
-  "doc_count": 0,
+  "doc_count": 3,
   "has_secret_literals": false,
   "secret_literal_files": []
  },
  {
   "name": "Athena",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Athena",
-  "own_source_files": 0,
+  "own_source_files": 2,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 840,
   "vendor_lines": 0,
-  "test_files": 0,
-  "test_lines": 0,
-  "docs": [],
+  "test_files": 1,
+  "test_lines": 215,
+  "docs": [
+   "README.md"
+  ],
   "manifests": [
-   "build.yaml"
+   "build.yaml",
+   "package.json"
   ],
   "licence": null,
   "secret_files": [],
@@ -1823,28 +1876,37 @@
   "has_docker": false,
   "has_tests_dir": false,
   "top_level": [
-   "build.yaml"
+   "README.md",
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "typescript": 840
+  },
+  "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.0,
-  "doc_count": 0,
+  "test_line_fraction": 0.256,
+  "doc_count": 1,
   "has_secret_literals": false,
   "secret_literal_files": []
  },
  {
   "name": "Decentralized Messaging App",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Decentralized Messaging App",
-  "own_source_files": 0,
+  "own_source_files": 2,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 887,
   "vendor_lines": 0,
-  "test_files": 0,
-  "test_lines": 0,
-  "docs": [],
+  "test_files": 1,
+  "test_lines": 223,
+  "docs": [
+   "README.md"
+  ],
   "manifests": [
-   "build.yaml"
+   "build.yaml",
+   "package.json"
   ],
   "licence": null,
   "secret_files": [],
@@ -1853,28 +1915,38 @@
   "has_docker": false,
   "has_tests_dir": false,
   "top_level": [
-   "build.yaml"
+   "README.md",
+   "THREAT-MODEL.md",
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "typescript": 887
+  },
+  "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.0,
-  "doc_count": 0,
+  "test_line_fraction": 0.251,
+  "doc_count": 1,
   "has_secret_literals": false,
   "secret_literal_files": []
  },
  {
   "name": "Food Wiki App",
-  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Food Wiki App",
-  "own_source_files": 0,
+  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-food-wiki",
+  "own_source_files": 4,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 2245,
   "vendor_lines": 0,
-  "test_files": 0,
-  "test_lines": 0,
-  "docs": [],
+  "test_files": 2,
+  "test_lines": 744,
+  "docs": [
+   "README.md"
+  ],
   "manifests": [
-   "build.yaml"
+   "build.yaml",
+   "package.json"
   ],
   "licence": null,
   "secret_files": [],
@@ -1883,14 +1955,19 @@
   "has_docker": false,
   "has_tests_dir": false,
   "top_level": [
-   "AI System Desisgn for FaturaWiki",
-   "build.yaml"
+   "README.md",
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "typescript": 2245
+  },
+  "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.0,
-  "doc_count": 0,
+  "test_line_fraction": 0.331,
+  "doc_count": 1,
   "has_secret_literals": false,
   "secret_literal_files": []
  },
@@ -2088,7 +2165,9 @@
    "mobile-app",
    "monitoring",
    "nginx.conf",
+   "node_modules",
    "organize_files.bat",
+   "package-lock.json",
    "package.json",
    "packages",
    "patches",
@@ -2296,10 +2375,10 @@
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\ecosystem\\Niche_platform",
   "own_source_files": 153,
   "vendor_source_files": 2,
-  "own_lines": 27626,
+  "own_lines": 27720,
   "vendor_lines": 773,
   "test_files": 21,
-  "test_lines": 992,
+  "test_lines": 1120,
   "docs": [
    "README.md",
    "public/sounds/README.md",
@@ -2335,6 +2414,7 @@
    "jest.setup.js",
    "jest.setup.tsx",
    "next.config.js",
+   "node_modules",
    "package-lock.json",
    "package.json",
    "public",
@@ -2345,12 +2425,12 @@
   ],
   "languages": {
    "javascript": 13638,
-   "typescript": 12545,
+   "typescript": 12639,
    "sql": 1443
   },
   "primary_language": "javascript",
   "vendor_fraction": 0.027,
-  "test_line_fraction": 0.036,
+  "test_line_fraction": 0.04,
   "doc_count": 3,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -3119,35 +3199,39 @@
  },
  {
   "name": "Crossplatform---multiplatform",
-  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\ecosystem\\crossplatform---multiplatform",
-  "own_source_files": 0,
+  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-crossplatform",
+  "own_source_files": 5,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 3656,
   "vendor_lines": 0,
-  "test_files": 0,
-  "test_lines": 0,
+  "test_files": 2,
+  "test_lines": 1283,
   "docs": [
    "README.md"
   ],
   "manifests": [
-   "build.yaml"
+   "build.yaml",
+   "package.json"
   ],
-  "licence": "LICENSE",
+  "licence": null,
   "secret_files": [],
   "secret_literals": [],
   "has_ci": false,
   "has_docker": false,
   "has_tests_dir": false,
   "top_level": [
-   ".git",
-   "LICENSE",
    "README.md",
-   "build.yaml"
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "typescript": 3656
+  },
+  "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.0,
+  "test_line_fraction": 0.351,
   "doc_count": 1,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -3191,18 +3275,19 @@
  {
   "name": "sovereign-financial-os",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\sovereign-financial-os",
-  "own_source_files": 0,
+  "own_source_files": 2,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 1065,
   "vendor_lines": 0,
-  "test_files": 0,
-  "test_lines": 0,
+  "test_files": 1,
+  "test_lines": 313,
   "docs": [
    "README.md",
    "mobile/README.md"
   ],
   "manifests": [
-   "build.yaml"
+   "build.yaml",
+   "package.json"
   ],
   "licence": null,
   "secret_files": [],
@@ -3217,12 +3302,17 @@
    "SOVEREIGN_OS_STRATEGY.md",
    "build.yaml",
    "mobile",
-   "security_spec.md"
+   "package.json",
+   "security_spec.md",
+   "src",
+   "tests"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "typescript": 1065
+  },
+  "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.0,
+  "test_line_fraction": 0.294,
   "doc_count": 2,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -3249,6 +3339,8 @@
   "has_docker": false,
   "has_tests_dir": false,
   "top_level": [
+   ".git",
+   "DESIGN_SEED.md",
    "README.md",
    "build.yaml"
   ],
@@ -3296,17 +3388,18 @@
  {
   "name": "quantum-ai-assistant",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\quantum-ai-assistant",
-  "own_source_files": 0,
+  "own_source_files": 2,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 442,
   "vendor_lines": 0,
-  "test_files": 0,
-  "test_lines": 0,
+  "test_files": 1,
+  "test_lines": 112,
   "docs": [
    "README.md"
   ],
   "manifests": [
-   "build.yaml"
+   "build.yaml",
+   "package.json"
   ],
   "licence": null,
   "secret_files": [],
@@ -3316,12 +3409,17 @@
   "has_tests_dir": false,
   "top_level": [
    "README.md",
-   "build.yaml"
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "typescript": 442
+  },
+  "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.0,
+  "test_line_fraction": 0.253,
   "doc_count": 1,
   "has_secret_literals": false,
   "secret_literal_files": []
@@ -3329,15 +3427,18 @@
  {
   "name": "aetherius-health-library",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-health-library",
-  "own_source_files": 0,
+  "own_source_files": 2,
   "vendor_source_files": 0,
-  "own_lines": 0,
+  "own_lines": 460,
   "vendor_lines": 0,
-  "test_files": 0,
-  "test_lines": 0,
-  "docs": [],
+  "test_files": 1,
+  "test_lines": 114,
+  "docs": [
+   "README.md"
+  ],
   "manifests": [
-   "build.yaml"
+   "build.yaml",
+   "package.json"
   ],
   "licence": null,
   "secret_files": [],
@@ -3347,16 +3448,22 @@
   "has_tests_dir": false,
   "top_level": [
    "Healing_Web_OCR_first2.txt",
+   "README.md",
    "RifeHandbook5thEdIntroduction.txt",
    "build.yaml",
+   "package.json",
    "rife_frequency.txt",
-   "spooky2_frequency.txt"
+   "spooky2_frequency.txt",
+   "src",
+   "tests"
   ],
-  "languages": {},
-  "primary_language": null,
+  "languages": {
+   "typescript": 460
+  },
+  "primary_language": "typescript",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.0,
-  "doc_count": 0,
+  "test_line_fraction": 0.248,
+  "doc_count": 1,
   "has_secret_literals": false,
   "secret_literal_files": []
  },
@@ -3430,18 +3537,19 @@
  {
   "name": "Multi-Cross-Platform-Trading-Bot",
   "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Multi-Cross-Platform-Trading-Bot",
-  "own_source_files": 26,
+  "own_source_files": 30,
   "vendor_source_files": 0,
-  "own_lines": 1755,
+  "own_lines": 3453,
   "vendor_lines": 0,
-  "test_files": 1,
-  "test_lines": 9,
+  "test_files": 3,
+  "test_lines": 599,
   "docs": [
    "README.md",
    "production/client/README.md"
   ],
   "manifests": [
    "build.yaml",
+   "package.json",
    "docker-compose.yml",
    "package.json",
    "package.json",
@@ -3453,36 +3561,35 @@
    "production/API/.env",
    "production/Authentication/.env"
   ],
-  "secret_literals": [
-   "production/AI-Voice-assistant/assistant.py",
-   "production/Facial_Authentication/backend/app.js"
-  ],
+  "secret_literals": [],
   "has_ci": false,
   "has_docker": true,
   "has_tests_dir": false,
   "top_level": [
    ".git",
+   ".gitignore",
    "Code_guides",
    "LICENSE",
    "README.md",
    "Whitepaper.md",
    "build.yaml",
    "daily-logs",
-   "production"
+   "package.json",
+   "production",
+   "src",
+   "tests"
   ],
   "languages": {
+   "typescript": 1698,
    "javascript": 915,
    "python": 840
   },
   "primary_language": "python",
   "vendor_fraction": 0.0,
-  "test_line_fraction": 0.005,
+  "test_line_fraction": 0.173,
   "doc_count": 2,
-  "has_secret_literals": true,
-  "secret_literal_files": [
-   "production/AI-Voice-assistant/assistant.py",
-   "production/Facial_Authentication/backend/app.js"
-  ]
+  "has_secret_literals": false,
+  "secret_literal_files": []
  },
  {
   "name": "ai-digital-clone",
@@ -3611,5 +3718,161 @@
   "secret_literal_files": [
    "scripts/setup_local_cloud.sh"
   ]
+ },
+ {
+  "name": "Aetherius Store",
+  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-store",
+  "own_source_files": 2,
+  "vendor_source_files": 0,
+  "own_lines": 908,
+  "vendor_lines": 0,
+  "test_files": 1,
+  "test_lines": 244,
+  "docs": [
+   "README.md"
+  ],
+  "manifests": [
+   "build.yaml",
+   "package.json"
+  ],
+  "licence": null,
+  "secret_files": [],
+  "secret_literals": [],
+  "has_ci": false,
+  "has_docker": false,
+  "has_tests_dir": false,
+  "top_level": [
+   "README.md",
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
+  ],
+  "languages": {
+   "typescript": 908
+  },
+  "primary_language": "typescript",
+  "vendor_fraction": 0.0,
+  "test_line_fraction": 0.269,
+  "doc_count": 1,
+  "has_secret_literals": false,
+  "secret_literal_files": []
+ },
+ {
+  "name": "Aetherius Desktop",
+  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-desktop",
+  "own_source_files": 2,
+  "vendor_source_files": 0,
+  "own_lines": 1088,
+  "vendor_lines": 0,
+  "test_files": 1,
+  "test_lines": 279,
+  "docs": [
+   "README.md"
+  ],
+  "manifests": [
+   "build.yaml",
+   "package.json"
+  ],
+  "licence": null,
+  "secret_files": [],
+  "secret_literals": [],
+  "has_ci": false,
+  "has_docker": false,
+  "has_tests_dir": false,
+  "top_level": [
+   "README.md",
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
+  ],
+  "languages": {
+   "typescript": 1088
+  },
+  "primary_language": "typescript",
+  "vendor_fraction": 0.0,
+  "test_line_fraction": 0.256,
+  "doc_count": 1,
+  "has_secret_literals": false,
+  "secret_literal_files": []
+ },
+ {
+  "name": "Aetherius App Suite",
+  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-app-suite",
+  "own_source_files": 8,
+  "vendor_source_files": 0,
+  "own_lines": 1867,
+  "vendor_lines": 0,
+  "test_files": 1,
+  "test_lines": 412,
+  "docs": [
+   "README.md"
+  ],
+  "manifests": [
+   "build.yaml",
+   "package.json"
+  ],
+  "licence": null,
+  "secret_files": [],
+  "secret_literals": [],
+  "has_ci": false,
+  "has_docker": false,
+  "has_tests_dir": false,
+  "top_level": [
+   "README.md",
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
+  ],
+  "languages": {
+   "typescript": 1867
+  },
+  "primary_language": "typescript",
+  "vendor_fraction": 0.0,
+  "test_line_fraction": 0.221,
+  "doc_count": 1,
+  "has_secret_literals": false,
+  "secret_literal_files": []
+ },
+ {
+  "name": "Athena Health",
+  "path": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-athena-health",
+  "own_source_files": 2,
+  "vendor_source_files": 0,
+  "own_lines": 1515,
+  "vendor_lines": 0,
+  "test_files": 1,
+  "test_lines": 449,
+  "docs": [
+   "README.md"
+  ],
+  "manifests": [
+   "build.yaml",
+   "package.json"
+  ],
+  "licence": null,
+  "secret_files": [],
+  "secret_literals": [],
+  "has_ci": false,
+  "has_docker": false,
+  "has_tests_dir": false,
+  "top_level": [
+   "README.md",
+   "build.yaml",
+   "package.json",
+   "src",
+   "tests"
+  ],
+  "languages": {
+   "typescript": 1515
+  },
+  "primary_language": "typescript",
+  "vendor_fraction": 0.0,
+  "test_line_fraction": 0.296,
+  "doc_count": 1,
+  "has_secret_literals": false,
+  "secret_literal_files": []
  }
 ]

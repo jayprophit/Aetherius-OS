@@ -107,3 +107,35 @@ predecessors/aetherius-os-worldclass-prototype/
 predecessors/ai-digital-clone/
 predecessors/holonav-os/
 tools/Hermes-Config-Audit/
+
+# First-party slices that do NOT have a repository of their own.
+#
+# The block above assumes every ignored directory is a nested git
+# repository with its own remote. That is true for Poietek, IDE-Workspace,
+# LedgerLands, the football card game, aetherion-engine, the book, the
+# predecessors with .git directories and the ecosystem repositories. It is
+# not true for the slices below: they are part of Aetherius-OS, they are
+# run by apps/verify.mjs, and leaving them ignored meant their source and
+# tests could never be committed or reviewed. These negations re-include
+# only those slices.
+!apps/Athena/
+!apps/Athena/**
+!apps/Decentralized Messaging App/
+!apps/Decentralized Messaging App/**
+!apps/aetherius-health-library/
+!apps/aetherius-health-library/**
+# The two frequency lists are the data the health-library tests read. The
+# Rife handbook introduction and the OCR note are reference material whose
+# redistribution rights are not established, so they stay local-only.
+apps/aetherius-health-library/RifeHandbook5thEdIntroduction.txt
+apps/aetherius-health-library/Healing_Web_OCR_first2.txt
+!apps/quantum-ai-assistant/
+!apps/quantum-ai-assistant/**
+!apps/sovereign-financial-os/
+!apps/sovereign-financial-os/**
+!predecessors/holonav-os/
+!predecessors/holonav-os/**
+!predecessors/aetherius-os-prototype/
+!predecessors/aetherius-os-prototype/**
+!predecessors/aetherius-os-worldclass-prototype/
+!predecessors/aetherius-os-worldclass-prototype/**

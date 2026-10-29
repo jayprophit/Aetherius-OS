@@ -17,10 +17,14 @@ project:
   kind: application
   domain: knowledge
   description: >-
-    The Food Wiki knowledge slice: cited food facts, ingredient and nutrition
-    records, allergen and medical rules, an offline conflict queue and an
-    auditable publication workflow. The FaturaWiki product requirements are
-    candidate scope recorded in TODO-FWA-003, not recovered requirements.
+    The Food Wiki product slice: a food catalogue covering foods, herbs,
+    vegetables, fruit, meat, fish and other kinds; a location atlas for wild,
+    shop, market, garden, online and foraged sources with seasons; a recipe book
+    that ranks recipes by available ingredients; photo-assisted recipe
+    suggestions from caller-supplied labels; a Rife-style frequency library that
+    renders real WAV tones; app navigation, account and preference state; and
+    read-only Athena tool definitions. It also keeps the earlier cited-facts,
+    allergen, medical-rule, offline-sync and publication core.
   repository: false
   languages: [typescript]
 
@@ -53,45 +57,86 @@ commands:
     requires: [test, typecheck]
 
 dependencies:
-  projects: [aetherius-os]
+  projects: [aetherius-os, athena]
   external: []
 
 status:
   state: PARTIAL
-  last_verified: "2026-10-27"
+  last_verified: "2026-10-29"
   summary: >-
-    The food knowledge slice is built and tested: cited facts, allergen and
-    medical rules, UNKNOWN results when a declaration is missing, an offline
-    conflict queue, barcode lookup throttling and an audit trail. It is not
-    mounted in the Aetherius OS host UI, and the FaturaWiki product scope is
-    still candidate scope.
+    The Food Wiki slice is built and tested. The catalogue covers ten food
+    kinds and can be filtered by kind. The location atlas records wild, shop,
+    market, garden, online and foraged sources with coordinates, seasons and
+    notes. The recipe book validates ingredients, ranks recipes by what is
+    available and suggests recipes from caller-supplied photo detections while
+    stating that no vision model is running. The frequency library records
+    Rife-style protocols with an explicit no-evidence disclaimer and renders
+    real 16-bit PCM WAV tones. The app model covers eight screens, accounts,
+    sessions and preferences, and exposes read-only Athena ToolDefinitions.
+    The earlier knowledge core still provides citations, allergen and medical
+    rules, barcode throttling, offline conflict handling and an auditable
+    publication workflow. There is no user interface, host mount, database,
+    vision model, map/geocoding provider or live Athena host.
   evidence:
-    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/aetherius-food-wiki -> 15 tests passed, 0 failed."
-    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
-    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
-    - "The slice uses the shared app-kit accounts, entitlements and hash-chained EventLedger."
+    - "2026-10-29: node --test \"tests/*.test.ts\" in apps/aetherius-food-wiki -> 22 tests passed, 0 failed (7 atlas/app tests plus 15 knowledge tests)."
+    - "2026-10-29: the tests cover food kinds and filtering, wild/shop/market locations and seasons, recipe validation and availability ranking, photo-label suggestions with the no-vision note, Rife protocols and WAV output, app navigation/account/preferences, Athena tools, allergen verdicts, medical flags, citations, publication history, search and the ingredient graph, barcode throttling, offline conflicts and audit-chain verification."
+    - "2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 16 app slices."
+    - "2026-10-29: node apps/verify.mjs -> 16/16 slices passed."
 
 known_issues:
   - id: FOOD-WIKI-001
-    severity: medium
+    severity: high
     summary: >-
-      The knowledge service is built, but the Food Wiki user interface and the
-      host application registry mount are not.
+      The Food Wiki user interface and the host application registry mount are
+      not built. The app model is a state machine, not a rendered product.
     evidence: >-
-      apps/aetherius-food-wiki contains a service and tests only; there is no
-      route, screen or host registration for it.
+      FoodWikiApp tracks navigation, account and preferences in memory;
+      apps/aetherius-food-wiki contains no route, screen, renderer or host
+      registration.
     status: OPEN
   - id: FOOD-WIKI-002
+    severity: high
+    summary: >-
+      Photo-assisted recipe suggestions do not use a vision model. The caller
+      must supply the detected food labels; the result attaches PHOTO_NOTE and
+      makes no claim to recognise food from pixels.
+    evidence: >-
+      RecipeBook.suggestFromPhoto takes a PhotoDetection list. There is no image
+      decoder, classifier, camera integration or model call in the slice.
+    status: OPEN
+  - id: FOOD-WIKI-003
     severity: medium
     summary: >-
-      The FaturaWiki requirements are not recovered. The implemented scope is
-      the candidate specification recorded in TODO-FWA-003 and must not be
-      presented as the owner's confirmed product scope.
+      Rife-style frequency claims are not supported by robust clinical
+      evidence. The library records them as cultural artefacts with
+      RIFE_DISCLAIMER attached; the WAV renderer is real audio, not a therapy.
     evidence: >-
-      The local corpus search returned no NaturaWiki or Food Wiki requirements;
-      TODO-FWA-003 is the only recorded candidate specification.
+      BUILT_IN_FREQUENCIES records protocols and renderToneWav emits 16-bit PCM
+      WAV bytes. There is no clinical trial, regulator clearance or medical
+      device claim.
+    status: ACCEPTED
+  - id: FOOD-WIKI-004
+    severity: medium
+    summary: >-
+      Locations, foods and recipes are caller-supplied seed data. There is no
+      map provider, geocoder, shop inventory feed or authoritative food
+      database.
+    evidence: >-
+      LocationAtlas and RecipeBook store in-memory records with validation and
+      query helpers; there is no network client, GIS integration or imported
+      catalogue.
     status: OPEN
-    todo_ref: TODO-FWA-003
+  - id: FOOD-WIKI-005
+    severity: medium
+    summary: >-
+      The slice is in-memory. There is no persistent database, multi-device
+      sync service or encrypted storage.
+    evidence: >-
+      FoodWikiService, OfflineQueue and FoodWikiApp hold state in process and
+      record changes on the shared EventLedger; no database or sync server is
+      present.
+    status: OPEN
 
 notes:
-  - "Supersedes the empty apps/Food Wiki App stub, which held one empty design directory."
+  - "Supersedes the empty apps/Food Wiki App stub, which held one empty design directory. That directory was renamed to 'AI System Design for FaturaWiki' on 2026-10-29."
+  - "The owner's direct statements define the product scope: foods, herbs, vegetables, fruit, meat and fish; wild, shop and market locations; recipes; photo-assisted suggestions; Athena access; and Rife-style frequency sounds. The local corpus contains no NaturaWiki or Food Wiki requirements, so no recovered ChatGPT specification is claimed."

@@ -1,5 +1,5 @@
 schema_version: 1
-source_date: '2026-10-21'
+source_date: '2026-10-29'
 generated_by: tools/build_predecessor_register.py
 contract:
   schema: aetherius.predecessor-migration.v1
@@ -84,6 +84,7 @@ predecessors:
   source_repo: jayprophit/aetherial-platform
   repository_id: 1084029910
   relation: CONFIRMED_PREDECESSOR
+  content_classification: SOURCE_BEARING
   confirmed_by: OWNER
   primary_target: Aetherius-OS
   secondary_targets:
@@ -103,12 +104,23 @@ predecessors:
   note: The owner confirmed this one on 21 October 2026. It carries accounts and permissions, social,
     commerce, education, jobs, content, the marketplace, the dashboard and the unified data types, and
     its CI stops at the Node setup because the workflow expects a root lockfile that is not there.
+  measured:
+    files: 1235
+    source_files: 791
+    source_lines: 198276
+    unique_source_files: 647
+    repeated_copies: 144
+    duplication_ratio: 0.182
+    test_files: 18
+    files_named_like_tests: 24
+    declared_licence: ''
   backup:
-    git_mirror_sha256: null
-    git_bundle_sha256: null
-    git_lfs_verified: false
+    git_mirror_sha256: b2f2ccfde44f3627fa669aab6591a88e526b368fa52b51b10213f3454af54ca6
+    git_bundle_sha256: b2f2ccfde44f3627fa669aab6591a88e526b368fa52b51b10213f3454af54ca6
+    git_lfs_verified: true
     external_assets_exported: false
-    issues_prs_wiki_releases_captured: false
+    issues_prs_wiki_releases_captured: true
+    wiki_content_exported: false
     independent_copies: 0
     restore_drill_passed: true
     captured: true
@@ -116,8 +128,8 @@ predecessors:
     restored_files: 1243
     fsck_clean: true
     unresolved_capture_gaps:
-    - The issues, pull requests, wiki and releases have not been captured.
-    - The LFS objects have not been verified, so a restore of the large files is not yet proven.
+    - 'The GitHub context is metadata only: the issues, pull requests and releases are listed, but the
+      wiki pages and the discussions were not exported.'
     - The capture exists in one place. An independent copy has not been made, and a backup in one place
       is a hope.
   security:
@@ -127,7 +139,7 @@ predecessors:
     tree_findings: 1
     history_clean: false
     history_findings: 4
-    credentials_to_rotate: 1
+    credentials_to_rotate: 5
   licence:
     classification: REVIEW_REQUIRED
   artifacts:
@@ -151,11 +163,12 @@ predecessors:
 - schema: aetherius.predecessor-migration.v1
   source_repo: jayprophit/Aetherial
   repository_id: 1027510231
-  relation: PROBABLE_PREDECESSOR
-  confirmed_by: ''
+  relation: CONFIRMED_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confirmed_by: OWNER
   primary_target: Aetherius-OS
   secondary_targets: []
-  state: CLASSIFIED
+  state: MAPPED
   head_refs:
   - branch: main
     sha: bbd40135d83f8a0d7244a0d31c57f2c8818c894a
@@ -163,15 +176,27 @@ predecessors:
   archived: true
   visibility: public
   declared_licence: GPL-3.0
-  note: Archived with an ABSORBED.md notice, which is a claim and not proof of incorporation. Its manifest
-    says about 276,820 source lines and zero test files, and its licence is GPLv3, so it cannot be integrated
-    into a proprietary product without rights clearance. The absorption claim is unverified.
+  note: Archived with an ABSORBED.md notice, which is a claim and not proof of incorporation. Its tree
+    holds 1,079 source files and 275,741 source lines with zero test files, and its licence is GPLv3,
+    so it cannot be integrated into a proprietary product without rights clearance. The absorption claim
+    is unverified.
+  measured:
+    files: 1622
+    source_files: 1079
+    source_lines: 275741
+    unique_source_files: 449
+    repeated_copies: 630
+    duplication_ratio: 0.584
+    test_files: 0
+    files_named_like_tests: 12
+    declared_licence: GPL
   backup:
-    git_mirror_sha256: null
-    git_bundle_sha256: null
-    git_lfs_verified: false
+    git_mirror_sha256: 50da69af202fec5aae3042131ecb7d0b619ec673b7634c1370c62a85b0d22dd8
+    git_bundle_sha256: 50da69af202fec5aae3042131ecb7d0b619ec673b7634c1370c62a85b0d22dd8
+    git_lfs_verified: true
     external_assets_exported: false
-    issues_prs_wiki_releases_captured: false
+    issues_prs_wiki_releases_captured: true
+    wiki_content_exported: false
     independent_copies: 0
     restore_drill_passed: true
     captured: true
@@ -179,8 +204,8 @@ predecessors:
     restored_files: 1622
     fsck_clean: true
     unresolved_capture_gaps:
-    - The issues, pull requests, wiki and releases have not been captured.
-    - The LFS objects have not been verified, so a restore of the large files is not yet proven.
+    - 'The GitHub context is metadata only: the issues, pull requests and releases are listed, but the
+      wiki pages and the discussions were not exported.'
     - The capture exists in one place. An independent copy has not been made, and a backup in one place
       is a hope.
   security:
@@ -213,14 +238,15 @@ predecessors:
 - schema: aetherius.predecessor-migration.v1
   source_repo: jayprophit/aetherium
   repository_id: 1011026268
-  relation: PROBABLE_PREDECESSOR
-  confirmed_by: ''
+  relation: CONFIRMED_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confirmed_by: OWNER
   primary_target: Aetherius-OS
   secondary_targets:
   - Agent-Bridge
   - Genesis
   - IDE-Workspace
-  state: CLASSIFIED
+  state: MAPPED
   head_refs:
   - branch: main
     sha: 21d758dd661a2bd70a7f85ffcd8a814ced257242
@@ -228,16 +254,27 @@ predecessors:
   archived: true
   visibility: public
   declared_licence: MIT
-  note: Archived with an ABSORBED.md notice, MIT licence, and source, configuration, scripts and knowledge
-    assets visible. Its manifest paradoxically says NOT_STARTED and zero source lines, which contradicts
-    the tree, so the inventory and the manifest have to be reconciled before the absorption claim is checked.
-    The claim is unverified.
+  note: Archived with an ABSORBED.md notice, MIT licence, and 423 source files totalling 118,149 source
+    lines with 13 test files. Its manifest paradoxically says NOT_STARTED and zero source lines, which
+    contradicts the tree, so the inventory and the manifest have to be reconciled before the absorption
+    claim is checked. The claim is unverified.
+  measured:
+    files: 1460
+    source_files: 423
+    source_lines: 118149
+    unique_source_files: 422
+    repeated_copies: 1
+    duplication_ratio: 0.002
+    test_files: 13
+    files_named_like_tests: 14
+    declared_licence: MIT
   backup:
-    git_mirror_sha256: null
-    git_bundle_sha256: null
-    git_lfs_verified: false
+    git_mirror_sha256: 5a2db94c0519b98aee10f6977f5241effabca64e04778ee4cc253b312e1494a3
+    git_bundle_sha256: 5a2db94c0519b98aee10f6977f5241effabca64e04778ee4cc253b312e1494a3
+    git_lfs_verified: true
     external_assets_exported: false
-    issues_prs_wiki_releases_captured: false
+    issues_prs_wiki_releases_captured: true
+    wiki_content_exported: false
     independent_copies: 0
     restore_drill_passed: true
     captured: true
@@ -245,8 +282,159 @@ predecessors:
     restored_files: 1539
     fsck_clean: true
     unresolved_capture_gaps:
-    - The issues, pull requests, wiki and releases have not been captured.
-    - The LFS objects have not been verified, so a restore of the large files is not yet proven.
+    - 'The GitHub context is metadata only: the issues, pull requests and releases are listed, but the
+      wiki pages and the discussions were not exported.'
+    - The capture exists in one place. An independent copy has not been made, and a backup in one place
+      is a hope.
+  security:
+    historical_secret_exposure: NONE_FOUND
+    owner_rotation_status: NOT_REQUIRED
+    tree_clean: true
+    tree_findings: 0
+    history_clean: true
+    history_findings: 0
+    credentials_to_rotate: 0
+  licence:
+    classification: MIT
+  artifacts:
+    total: 5
+    classified: 5
+    dispositions:
+      ADAPT: 3
+      ARCHIVE_ONLY: 1
+      LEGAL_REVIEW: 1
+  integration:
+    tasks: []
+    target_commit_shas: []
+    tests: []
+    qa_accepted: false
+  retirement:
+    archive_grace_complete: false
+    delete_eligible: false
+    owner_approved: false
+    deletion_timestamp: null
+    links_relocated: false
+- schema: aetherius.predecessor-migration.v1
+  source_repo: jayprophit/Veyra
+  repository_id: 1220417775
+  relation: CONFIRMED_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confirmed_by: OWNER
+  primary_target: Aetherius-OS
+  secondary_targets: []
+  state: INVENTORIED
+  head_refs:
+  - branch: cloudflare/workers-autoconfig
+    sha: 80d84ae4274f1682c904b4080396d3d11f5a52a9
+  - branch: codex/foundation-cleanup
+    sha: 9c4bc6325fd5c0e94706b9680ab4e07369a207ce
+  - branch: main
+    sha: a0a7abede0096f637367c9a732ee7d59e13f8764
+  default_branch: main
+  archived: true
+  visibility: public
+  declared_licence: MIT
+  note: Archived, MIT licence, 1,532 source files totalling 278,589 source lines with 45 test files. It
+    carries an ABSORBED.md notice, which is a claim and not proof of incorporation. No capability mapping
+    exists yet, so the relation remains probable.
+  measured:
+    files: 1750
+    source_files: 1532
+    source_lines: 278589
+    unique_source_files: 1530
+    repeated_copies: 2
+    duplication_ratio: 0.001
+    test_files: 45
+    files_named_like_tests: 46
+    declared_licence: MIT
+  backup:
+    git_mirror_sha256: 4c0e1a6365827e6684cea34cd93ca3632102a87a93619ce34df076daafee2fc6
+    git_bundle_sha256: 4c0e1a6365827e6684cea34cd93ca3632102a87a93619ce34df076daafee2fc6
+    git_lfs_verified: true
+    external_assets_exported: false
+    issues_prs_wiki_releases_captured: true
+    wiki_content_exported: false
+    independent_copies: 0
+    restore_drill_passed: true
+    captured: true
+    restored_commits: 181
+    restored_files: 2987
+    fsck_clean: true
+    unresolved_capture_gaps:
+    - 'The GitHub context is metadata only: the issues, pull requests and releases are listed, but the
+      wiki pages and the discussions were not exported.'
+    - The capture exists in one place. An independent copy has not been made, and a backup in one place
+      is a hope.
+  security:
+    historical_secret_exposure: CONFIRMED
+    owner_rotation_status: PENDING
+    tree_clean: false
+    tree_findings: 1
+    history_clean: false
+    history_findings: 4
+    credentials_to_rotate: 5
+  licence:
+    classification: MIT
+  artifacts:
+    total: 0
+    classified: 0
+    dispositions: {}
+  integration:
+    tasks: []
+    target_commit_shas: []
+    tests: []
+    qa_accepted: false
+  retirement:
+    archive_grace_complete: false
+    delete_eligible: false
+    owner_approved: false
+    deletion_timestamp: null
+    links_relocated: false
+- schema: aetherius.predecessor-migration.v1
+  source_repo: jayprophit/QVA-merged
+  repository_id: 982819002
+  relation: CONFIRMED_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confirmed_by: OWNER
+  primary_target: Aetherius-OS
+  secondary_targets: []
+  state: INVENTORIED
+  head_refs:
+  - branch: main
+    sha: 8ccee753509ce48e16610562d9765c060492d9c6
+  default_branch: main
+  archived: true
+  visibility: public
+  declared_licence: ''
+  note: Archived, no licence file, 21 source files totalling 3,040 source lines with zero test files.
+    It carries an ABSORBED.md notice. Without a licence, reuse needs the owner's rights decision before
+    any code is adopted.
+  measured:
+    files: 33
+    source_files: 21
+    source_lines: 3040
+    unique_source_files: 21
+    repeated_copies: 0
+    duplication_ratio: 0.0
+    test_files: 0
+    files_named_like_tests: 0
+    declared_licence: ''
+  backup:
+    git_mirror_sha256: def5048f873f34d522d706edd7ab2f8423a3a2bb729b3e34e990e901e79d1ddf
+    git_bundle_sha256: def5048f873f34d522d706edd7ab2f8423a3a2bb729b3e34e990e901e79d1ddf
+    git_lfs_verified: true
+    external_assets_exported: false
+    issues_prs_wiki_releases_captured: true
+    wiki_content_exported: false
+    independent_copies: 0
+    restore_drill_passed: true
+    captured: true
+    restored_commits: 3
+    restored_files: 33
+    fsck_clean: true
+    unresolved_capture_gaps:
+    - 'The GitHub context is metadata only: the issues, pull requests and releases are listed, but the
+      wiki pages and the discussions were not exported.'
     - The capture exists in one place. An independent copy has not been made, and a backup in one place
       is a hope.
   security:
@@ -260,12 +448,80 @@ predecessors:
   licence:
     classification: REVIEW_REQUIRED
   artifacts:
-    total: 5
-    classified: 5
-    dispositions:
-      ADAPT: 3
-      ARCHIVE_ONLY: 1
-      LEGAL_REVIEW: 1
+    total: 0
+    classified: 0
+    dispositions: {}
+  integration:
+    tasks: []
+    target_commit_shas: []
+    tests: []
+    qa_accepted: false
+  retirement:
+    archive_grace_complete: false
+    delete_eligible: false
+    owner_approved: false
+    deletion_timestamp: null
+    links_relocated: false
+- schema: aetherius.predecessor-migration.v1
+  source_repo: jayprophit/Quantum-OS
+  repository_id: 1090496854
+  relation: CONFIRMED_PREDECESSOR
+  content_classification: EMPTY_SCAFFOLD
+  confirmed_by: OWNER
+  primary_target: Aetherius-OS
+  secondary_targets: []
+  state: INVENTORIED
+  head_refs:
+  - branch: main
+    sha: 52913be1bda464b2c44f6622fb47a4ab3dc3d10f
+  default_branch: main
+  archived: true
+  visibility: public
+  declared_licence: MIT
+  note: Archived, MIT licence, 164 files but zero source files and zero source lines. It is a scaffold,
+    not an implementation; the ABSORBED.md notice cannot be substantiated by source.
+  measured:
+    files: 164
+    source_files: 0
+    source_lines: 0
+    unique_source_files: 0
+    repeated_copies: 0
+    duplication_ratio: 0.0
+    test_files: 0
+    files_named_like_tests: 0
+    declared_licence: MIT
+  backup:
+    git_mirror_sha256: baf83111db65ff5292e48a03aa21c0875c07e254bf05fbf68782bc46c823fe11
+    git_bundle_sha256: baf83111db65ff5292e48a03aa21c0875c07e254bf05fbf68782bc46c823fe11
+    git_lfs_verified: true
+    external_assets_exported: false
+    issues_prs_wiki_releases_captured: true
+    wiki_content_exported: false
+    independent_copies: 0
+    restore_drill_passed: true
+    captured: true
+    restored_commits: 8
+    restored_files: 164
+    fsck_clean: true
+    unresolved_capture_gaps:
+    - 'The GitHub context is metadata only: the issues, pull requests and releases are listed, but the
+      wiki pages and the discussions were not exported.'
+    - The capture exists in one place. An independent copy has not been made, and a backup in one place
+      is a hope.
+  security:
+    historical_secret_exposure: NONE_FOUND
+    owner_rotation_status: NOT_REQUIRED
+    tree_clean: true
+    tree_findings: 0
+    history_clean: true
+    history_findings: 0
+    credentials_to_rotate: 0
+  licence:
+    classification: MIT
+  artifacts:
+    total: 0
+    classified: 0
+    dispositions: {}
   integration:
     tasks: []
     target_commit_shas: []

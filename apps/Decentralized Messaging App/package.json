@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/messaging",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS decentralized messaging vertical slice: conversations, encrypted message store, presence, notifications and signed federation envelopes.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

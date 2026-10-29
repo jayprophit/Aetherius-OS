@@ -1,5 +1,5 @@
 schema_version: 1
-source_date: '2026-10-21'
+source_date: '2026-10-29'
 generated_by: tools/capture_predecessor.py
 notes:
 - 'The capture the owner''s predecessor absorption programme requires before anything is migrated or deleted:
@@ -7,6 +7,8 @@ notes:
   scan of the tree and the history, and a test restoration.'
 - A backup that has never been restored is a hope, so the restore drill is a result and not a claim.
 - The tool writes the manifest. It never deletes anything.
+- 'Captures are cumulative: a later run adds to the registry rather than replacing the evidence of an
+  earlier one.'
 captures:
 - schema: aetherius.predecessor-capture.v1
   source_repo: jayprophit/aetherial-platform
@@ -242,4 +244,215 @@ captures:
     commits: 98
     branches: 1
     files: 1539
+    note: the history and the files were restored, and the restored copy passes git fsck
+- schema: aetherius.predecessor-capture.v1
+  source_repo: jayprophit/Veyra
+  captured_at: '2026-10-29T08:27:53.880079+00:00'
+  metadata:
+    repository_id: 1220417775
+    source_url: https://github.com/jayprophit/Veyra
+    clone_url: https://github.com/jayprophit/Veyra.git
+    visibility: public
+    description: null
+    default_branch: main
+    archived: true
+    owner: jayprophit
+    topics: []
+    created_at: '2026-04-24T22:02:59Z'
+    pushed_at: '2026-10-20T15:51:05Z'
+    declared_licence: MIT
+    licence_file_present: true
+  git:
+    mirror: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\Veyra.mirror
+    bundle: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\Veyra.mirror.bundle
+    git_mirror_sha256: 4c0e1a6365827e6684cea34cd93ca3632102a87a93619ce34df076daafee2fc6
+    git_bundle_sha256: 4c0e1a6365827e6684cea34cd93ca3632102a87a93619ce34df076daafee2fc6
+    fsck:
+      exit_code: 0
+      clean: true
+      output: ''
+    counts:
+      branches: 5
+      tags: 0
+      commits: '186'
+    notes_captured: false
+    submodules: []
+    lfs_pointer_objects: 0
+    errors: []
+  github_context:
+    issues: []
+    pull_requests:
+    - number: 5
+      title: Bump the npm_and_yarn group across 3 directories with 2 updates
+      state: open
+      created_at: '2026-05-23T14:58:26Z'
+      author: dependabot[bot]
+      url: https://github.com/jayprophit/Veyra/pull/5
+    - number: 4
+      title: Bump the pip group across 1 directory with 5 updates
+      state: open
+      created_at: '2026-05-15T01:09:28Z'
+      author: dependabot[bot]
+      url: https://github.com/jayprophit/Veyra/pull/4
+    - number: 3
+      title: Bump the npm_and_yarn group across 2 directories with 1 update
+      state: closed
+      created_at: '2026-05-15T00:21:30Z'
+      author: dependabot[bot]
+      url: https://github.com/jayprophit/Veyra/pull/3
+    - number: 2
+      title: Bump the pip group across 2 directories with 15 updates
+      state: closed
+      created_at: '2026-05-14T17:33:07Z'
+      author: dependabot[bot]
+      url: https://github.com/jayprophit/Veyra/pull/2
+    - number: 1
+      title: Add Cloudflare Workers configuration
+      state: open
+      created_at: '2026-05-14T16:16:13Z'
+      author: cloudflare-workers-and-pages[bot]
+      url: https://github.com/jayprophit/Veyra/pull/1
+    releases: []
+    wiki: the repository has no wiki
+    discussions: the discussions could not be listed
+    unexportable: []
+  secret_scan:
+    tree:
+      exit_code: 1
+      findings: 1
+      clean: false
+      note: 'secret scan: 1 finding(s) in 1 file(s)'
+    history:
+      exit_code: 1
+      findings: 4
+      clean: false
+      note: '  HISTORY FINDING tools/devops/deploy/staging/deploy.sh (basic-auth-url) at line 226, blob
+        4f03463f58e0;   HISTORY FINDING deploy/staging/deploy.sh (basic-auth-url) at line 226, blob b249a8fc2a0e;   HISTORY
+        FINDING 07_Working_Files/00_Master_Spreadsheet_System/docs/GITHUB_SECRETS_SETUP.md (private-key)
+        at line 48, blob 982d2b922b54;   HISTORY FINDING 07_Working_Files/00_Master_Spreadsheet_System/d'
+  restore_drill:
+    target: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\Veyra-restored
+    ok: true
+    commits: 181
+    branches: 1
+    files: 2987
+    note: the history and the files were restored, and the restored copy passes git fsck
+- schema: aetherius.predecessor-capture.v1
+  source_repo: jayprophit/QVA-merged
+  captured_at: '2026-10-29T08:47:24.898781+00:00'
+  metadata:
+    repository_id: 982819002
+    source_url: https://github.com/jayprophit/QVA-merged
+    clone_url: https://github.com/jayprophit/QVA-merged.git
+    visibility: public
+    description: null
+    default_branch: main
+    archived: true
+    owner: jayprophit
+    topics: []
+    created_at: '2025-05-13T13:02:04Z'
+    pushed_at: '2026-10-20T15:50:59Z'
+    declared_licence: ''
+    licence_file_present: false
+  git:
+    mirror: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\QVA-merged.mirror
+    bundle: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\QVA-merged.mirror.bundle
+    git_mirror_sha256: def5048f873f34d522d706edd7ab2f8423a3a2bb729b3e34e990e901e79d1ddf
+    git_bundle_sha256: def5048f873f34d522d706edd7ab2f8423a3a2bb729b3e34e990e901e79d1ddf
+    fsck:
+      exit_code: 0
+      clean: true
+      output: ''
+    counts:
+      branches: 1
+      tags: 0
+      commits: '3'
+    notes_captured: false
+    submodules: []
+    lfs_pointer_objects: 0
+    errors: []
+  github_context:
+    issues: []
+    pull_requests: []
+    releases: []
+    wiki: a wiki is enabled
+    discussions: the discussions could not be listed
+    unexportable: []
+  secret_scan:
+    tree:
+      exit_code: 0
+      findings: 0
+      clean: true
+      note: ''
+    history:
+      exit_code: 0
+      findings: 0
+      clean: true
+      note: ''
+  restore_drill:
+    target: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\QVA-merged-restored
+    ok: true
+    commits: 3
+    branches: 1
+    files: 33
+    note: the history and the files were restored, and the restored copy passes git fsck
+- schema: aetherius.predecessor-capture.v1
+  source_repo: jayprophit/Quantum-OS
+  captured_at: '2026-10-29T08:47:43.551213+00:00'
+  metadata:
+    repository_id: 1090496854
+    source_url: https://github.com/jayprophit/Quantum-OS
+    clone_url: https://github.com/jayprophit/Quantum-OS.git
+    visibility: public
+    description: a Quantum Operating System built within a Virtual machine. with Quantum Artificial intelligence,
+      on the blockchain
+    default_branch: main
+    archived: true
+    owner: jayprophit
+    topics: []
+    created_at: '2025-11-05T18:39:58Z'
+    pushed_at: '2026-10-20T15:50:52Z'
+    declared_licence: MIT
+    licence_file_present: true
+  git:
+    mirror: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\Quantum-OS.mirror
+    bundle: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\Quantum-OS.mirror.bundle
+    git_mirror_sha256: baf83111db65ff5292e48a03aa21c0875c07e254bf05fbf68782bc46c823fe11
+    git_bundle_sha256: baf83111db65ff5292e48a03aa21c0875c07e254bf05fbf68782bc46c823fe11
+    fsck:
+      exit_code: 0
+      clean: true
+      output: ''
+    counts:
+      branches: 1
+      tags: 0
+      commits: '8'
+    notes_captured: false
+    submodules: []
+    lfs_pointer_objects: 0
+    errors: []
+  github_context:
+    issues: []
+    pull_requests: []
+    releases: []
+    wiki: a wiki is enabled
+    discussions: the discussions could not be listed
+    unexportable: []
+  secret_scan:
+    tree:
+      exit_code: 0
+      findings: 0
+      clean: true
+      note: ''
+    history:
+      exit_code: 0
+      findings: 0
+      clean: true
+      note: ''
+  restore_drill:
+    target: C:\Users\jpowe\AppData\Local\Temp\opencode\predecessor-capture\Quantum-OS-restored
+    ok: true
+    commits: 8
+    branches: 1
+    files: 164
     note: the history and the files were restored, and the restored copy passes git fsck

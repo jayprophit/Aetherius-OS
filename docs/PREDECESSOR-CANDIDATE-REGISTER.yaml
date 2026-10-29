@@ -1,0 +1,374 @@
+schema_version: 1
+source_date: '2026-10-29'
+generated_by: curated from docs/BUILD-MANIFEST-REGISTRY.yaml, the captured repositories, and the owner's programme conversation
+contract:
+  schema: aetherius.predecessor-candidate.v1
+  purpose: >-
+    List projects that the programme has found and that may be predecessors,
+    absorbed components, or design material, without upgrading any of them to
+    confirmed predecessor status. The six confirmed predecessors are recorded
+    in docs/PREDECESSOR-MIGRATION-REGISTRY.yaml. This register exists so that
+    every other candidate is visible, sourced, and blocked on named evidence
+    instead of being guessed at or silently forgotten.
+  confirmed_predecessors:
+  - jayprophit/aetherial-platform
+  - jayprophit/Aetherial
+  - jayprophit/aetherium
+  - jayprophit/Veyra
+  - jayprophit/QVA-merged
+  - jayprophit/Quantum-OS
+  candidate_kinds:
+  - OS_PREDECESSOR_CANDIDATE
+  - ABSORBED_PLATFORM_CANDIDATE
+  - ABSORBED_APP_CANDIDATE
+  - ABSORBED_COMPONENT_CANDIDATE
+  confidence_levels:
+  - HIGH
+  - MEDIUM
+  - LOW
+  states:
+  - IDENTIFIED
+  - INVENTORIED
+  - CAPTURED
+  - CLASSIFIED
+  - MAPPED
+  rules:
+  - A build-registry description of a project as absorbed is evidence that it was absorbed into the workspace, not proof that it is a predecessor of Aetherius OS.
+  - A README that calls a project an operating system is a claim, not lineage evidence.
+  - A folder inside the Aetherius-OS repository is not a separately captured repository.
+  - No candidate is delete-eligible. No candidate has an approved deletion.
+summary:
+  total_candidates: 10
+  by_kind:
+    OS_PREDECESSOR_CANDIDATE: 5
+    ABSORBED_PLATFORM_CANDIDATE: 2
+    ABSORBED_APP_CANDIDATE: 1
+    ABSORBED_COMPONENT_CANDIDATE: 2
+  by_confidence:
+    HIGH: 5
+    MEDIUM: 5
+    LOW: 0
+  captured_repositories: 5
+  local_design_folders: 4
+  delete_eligible: 0
+candidates:
+- id: self-building-ai
+  name: self-building-ai
+  candidate_kind: OS_PREDECESSOR_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confidence: HIGH
+  state: INVENTORIED
+  build_registry_id: self-building-ai
+  manifest: Aetherius-OS/absorbed/self-building-ai/build.yaml
+  local_path: Aetherius-OS/absorbed/self-building-ai
+  repository: jayprophit/self-building-ai
+  git_head: d68283cbb0f60b62a9784f6a7b60d70a2b543ade
+  git_branch: main
+  measured:
+    files: 33
+    source_lines: 969
+    test_files: 0
+    licence: MIT
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml describes it as 'An absorbed predecessor of Aetherius OS.'
+  - The build manifest records 969 source lines and no tests, measured 2026-10-20.
+  - The repository history contains a commit that removes a live OpenAI key; the key must be treated as exposed until the owner confirms rotation.
+  why_candidate: The build registry uses the word predecessor for this project and the self-building intent is the same idea Genesis implements.
+  why_not_confirmed: The owner has not named this repository among the six confirmed predecessors, and no lineage or capability mapping exists.
+  next_evidence:
+  - The owner's exact confirmation of the repository as a predecessor, or a documented lineage record.
+  - A licence classification that permits reuse.
+  - A secret-scan result and the owner's rotation confirmation.
+  - A capability map to Genesis or Aetherius OS.
+  proposed_targets:
+  - Genesis
+  disposition: RESEARCH_REFERENCE
+  deletion_eligible: false
+- id: universal-bridge
+  name: Universal-Bridge
+  candidate_kind: ABSORBED_COMPONENT_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confidence: HIGH
+  state: INVENTORIED
+  build_registry_id: universal-bridge
+  manifest: Aetherius-OS/apps/Poietek/absorbed/Universal-Bridge/build.yaml
+  local_path: Aetherius-OS/apps/Poietek/absorbed/Universal-Bridge
+  repository: jayprophit/Universal-Bridge
+  git_head: eee144d6b8237eccf846d9340cf337c139d76268
+  git_branch: main
+  measured:
+    files: 12871
+    source_lines: null
+    test_files: null
+    licence: present, not classified in this register
+    note: The file count includes build outputs; it is not a source-line measurement.
+  evidence:
+  - The build registry places it under Poietek/absorbed and says Aetherius-OS and Poietek both depend on it.
+  - The build manifest claims 41 build steps and 11 CTest gates passing on 2026-10-20.
+  - The repository is a separate clone with its own remote and a clean working tree.
+  why_candidate: It is explicitly absorbed into Poietek and is a dependency of Aetherius-OS.
+  why_not_confirmed: It is a hardware and session bridge, not an operating-system predecessor; the owner has not named it as a predecessor.
+  next_evidence:
+  - A boundary review that decides whether it remains a Poietek component or becomes a shared first-party component.
+  - A licence classification and a source-only measurement.
+  proposed_targets:
+  - Poietek
+  - Aetherius-OS
+  disposition: ADAPT
+  deletion_eligible: false
+- id: niche-platform
+  name: niche-platform
+  candidate_kind: ABSORBED_PLATFORM_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confidence: HIGH
+  state: INVENTORIED
+  build_registry_id: niche-platform
+  manifest: Aetherius-OS/ecosystem/Niche_platform/build.yaml
+  local_path: Aetherius-OS/ecosystem/Niche_platform
+  repository: jayprophit/Niche_platform
+  git_head: f8763d6ec85abf1bd0a75da80c6a18577be3b329
+  git_branch: main
+  measured:
+    files: 45790
+    source_lines: 27626
+    test_files: 21
+    licence: not recorded
+    working_tree: five modified files, including the notification preference and analytics work
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml says it is 'absorbed into Aetherius OS as part of its ecosystem'.
+  - The build manifest records 27,626 own source lines and 21 test files, measured 2026-10-20.
+  - The local clone has uncommitted work; it must be preserved.
+  why_candidate: It is an absorbed platform with a real test suite.
+  why_not_confirmed: It is an absorbed ecosystem platform, not one of the six named OS predecessors; no owner lineage confirmation exists.
+  next_evidence:
+  - A boundary review and capability map.
+  - A licence classification.
+  - A decision on the uncommitted notification work.
+  proposed_targets:
+  - Aetherius-OS
+  - Aetherius App Suite
+  disposition: ADAPT
+  deletion_eligible: false
+- id: web-platform
+  name: web-platform
+  candidate_kind: ABSORBED_PLATFORM_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confidence: HIGH
+  state: INVENTORIED
+  build_registry_id: web-platform
+  manifest: Aetherius-OS/ecosystem/Web-platform/build.yaml
+  local_path: Aetherius-OS/ecosystem/Web-platform
+  repository: jayprophit/Web-platform-with-E-commerce-E-learning-social-media-job-hunting-post-articles-blockchain-ai
+  git_head: 74af70f15006c24a8b96dcd0c859917b43183a95
+  git_branch: main
+  measured:
+    files: 132
+    source_lines: 9638
+    test_files: 0
+    licence: not recorded
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml says it is 'absorbed into Aetherius OS'.
+  - The build manifest records 9,638 own source lines and no tests, measured 2026-10-20.
+  why_candidate: It is an absorbed web platform whose capability families overlap commerce, learning and community.
+  why_not_confirmed: It is not one of the six named OS predecessors, has no tests, and has no owner lineage confirmation.
+  next_evidence:
+  - A capability map against Aetherius Commerce, Learning and Community.
+  - A licence classification and a source review.
+  proposed_targets:
+  - Aetherius-OS
+  - Aetherius Commerce
+  - Aetherius Learning
+  disposition: RESEARCH_REFERENCE
+  deletion_eligible: false
+- id: football-card-game
+  name: football-card-game
+  candidate_kind: ABSORBED_APP_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: SOURCE_BEARING
+  confidence: HIGH
+  state: INVENTORIED
+  build_registry_id: football-card-game
+  manifest: Aetherius-OS/apps/football-card-game/build.yaml
+  local_path: Aetherius-OS/apps/football-card-game
+  repository: jayprophit/football-card-game
+  git_head: 00fbae3c54915d2b454ab47ca17f06efe1751c05
+  git_branch: main
+  measured:
+    files: 220
+    source_lines: 28448
+    test_files: 2
+    licence: not recorded
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml says it is 'absorbed into Aetherius OS as an app'.
+  - The build manifest records 28,448 own source lines and two test files, measured 2026-10-20.
+  why_candidate: It is an absorbed game app with a real codebase.
+  why_not_confirmed: It is an app, not an operating-system predecessor, and the owner has not confirmed it as one.
+  next_evidence:
+  - A product decision on whether the game ships in the Aetherius app catalogue.
+  - A licence classification and a build/test run.
+  proposed_targets:
+  - Aetherius App Suite
+  disposition: ADAPT
+  deletion_eligible: false
+- id: virtual-assistant
+  name: VirtualAssistant
+  candidate_kind: ABSORBED_COMPONENT_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: EMPTY_SCAFFOLD
+  confidence: HIGH
+  state: INVENTORIED
+  build_registry_id: virtual-assistant
+  manifest: Aetherius-OS/kernel/Genesis/absorbed/VirtualAssistant/build.yaml
+  local_path: Aetherius-OS/kernel/Genesis/absorbed/VirtualAssistant
+  repository: jayprophit/VirtualAssistant
+  git_head: 77b7eade34c91e878ee472b59736cfd8b5934f4e
+  git_branch: main
+  measured:
+    files: 4
+    source_lines: 0
+    test_files: 0
+    licence: present, not classified in this register
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml says it is 'absorbed into Genesis'.
+  - The build manifest records a README and a licence only, with zero source lines.
+  - The owner's conversations name the intended product the QuantumVirtualAssistant.
+  why_candidate: It is the named virtual-assistant concept that Genesis and Quantum Assistant now cover.
+  why_not_confirmed: The repository holds no implementation and the owner has not named it among the six predecessors.
+  next_evidence:
+  - A product-boundary decision between Genesis, Quantum Assistant and the assistant surface.
+  - Confirmation that no source exists outside the repository.
+  proposed_targets:
+  - Genesis
+  - Quantum Assistant
+  disposition: REIMPLEMENT_ORIGINALLY
+  deletion_eligible: false
+- id: holonav-os
+  name: holonav-os
+  candidate_kind: OS_PREDECESSOR_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: DESIGN_MATERIAL
+  confidence: MEDIUM
+  state: IDENTIFIED
+  build_registry_id: holonav-os
+  manifest: Aetherius-OS/predecessors/holonav-os/build.yaml
+  local_path: Aetherius-OS/predecessors/holonav-os
+  repository: null
+  git_head: null
+  git_branch: null
+  measured:
+    files: 2
+    source_lines: 0
+    test_files: 0
+    licence: none recorded
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml calls it 'recovered design material for a predecessor of Aetherius OS'.
+  - The folder holds only README.md and build.yaml; the README is the generic AI Studio starter text.
+  - The folder lives inside the Aetherius-OS repository, so it is not a separately captured repository.
+  why_candidate: The build registry names it as predecessor design material.
+  why_not_confirmed: There is no source, no separate repository, and no owner lineage confirmation.
+  next_evidence:
+  - The original repository or design source, if one exists.
+  - An owner statement that the design material belongs to the Aetherius lineage.
+  proposed_targets:
+  - Aetherius-OS
+  disposition: ARCHIVE_ONLY
+  deletion_eligible: false
+- id: aetherius-os-worldclass-prototype
+  name: aetherius-os-worldclass-prototype
+  candidate_kind: OS_PREDECESSOR_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: DESIGN_MATERIAL
+  confidence: MEDIUM
+  state: IDENTIFIED
+  build_registry_id: aetherius-os-worldclass-prototype
+  manifest: Aetherius-OS/predecessors/aetherius-os-worldclass-prototype/build.yaml
+  local_path: Aetherius-OS/predecessors/aetherius-os-worldclass-prototype
+  repository: null
+  git_head: null
+  git_branch: null
+  measured:
+    files: 6
+    source_lines: 0
+    test_files: 0
+    licence: none recorded
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml calls it 'recovered design material for a predecessor of Aetherius OS, with an adapter and a connectivity test'.
+  - The folder holds a 33,925-byte README, an adapter document, a connectivity-testing document and AI guidelines; it holds no application source.
+  - The adapter document describes local, Hugging Face and Gemini backend stubs.
+  why_candidate: It contains design material and an adapter design for a predecessor.
+  why_not_confirmed: There is no source tree, no separate repository, and no owner lineage confirmation.
+  next_evidence:
+  - The original repository and its history, if one exists.
+  - A review that separates adopted design from discarded claims.
+  proposed_targets:
+  - Aetherius-OS
+  - Genesis
+  disposition: RESEARCH_REFERENCE
+  deletion_eligible: false
+- id: aetherius-os-prototype
+  name: aetherius-os
+  candidate_kind: OS_PREDECESSOR_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: DESIGN_MATERIAL
+  confidence: MEDIUM
+  state: IDENTIFIED
+  build_registry_id: aetherius-os-prototype
+  manifest: Aetherius-OS/predecessors/aetherius-os-prototype/build.yaml
+  local_path: Aetherius-OS/predecessors/aetherius-os-prototype
+  repository: null
+  git_head: null
+  git_branch: null
+  measured:
+    files: 3
+    source_lines: 0
+    test_files: 0
+    licence: none recorded
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml calls it 'recovered design material for an Aetherius OS prototype, with the AI guidelines the owner wrote'.
+  - The folder holds a 33,925-byte README and the AI guidelines; it holds no application source.
+  why_candidate: It is explicitly recovered Aetherius OS design material.
+  why_not_confirmed: There is no source tree, no separate repository, and no owner lineage confirmation beyond the folder's label.
+  next_evidence:
+  - A document-by-document review that records which requirements were adopted.
+  - The original repository and its history, if one exists.
+  proposed_targets:
+  - Aetherius-OS
+  disposition: RESEARCH_REFERENCE
+  deletion_eligible: false
+- id: ai-digital-twin
+  name: ai-digital-clone
+  candidate_kind: OS_PREDECESSOR_CANDIDATE
+  relation: PROBABLE_PREDECESSOR
+  content_classification: EXTERNAL_SOURCE
+  confidence: MEDIUM
+  state: IDENTIFIED
+  build_registry_id: ai-digital-twin
+  manifest: Aetherius-OS/predecessors/ai-digital-clone/build.yaml
+  local_path: Aetherius-OS/predecessors/ai-digital-clone
+  repository: null
+  git_head: null
+  git_branch: null
+  measured:
+    files: 2
+    source_lines: 0
+    test_files: 0
+    licence: none recorded
+    note: The source is recorded at E:\external drive\AI Digital Twin\ai-digital-clone and was deliberately not copied.
+  evidence:
+  - docs/BUILD-MANIFEST-REGISTRY.yaml calls it 'the predecessor of the Genesis organism'.
+  - SOURCE.txt records the external path and says the project is recorded rather than copied because it is 216,000 lines.
+  - The folder holds only build.yaml and SOURCE.txt.
+  why_candidate: It is named as the predecessor of Genesis and holds the persistent memory, multi-agent and local-model ideas.
+  why_not_confirmed: It is a predecessor of Genesis, not necessarily of Aetherius OS; its source has not been reviewed line by line and no owner lineage confirmation exists for this register.
+  next_evidence:
+  - A read-only inventory of the external source.
+  - A line-by-line review or a sampled review with a recorded method.
+  - A decision on whether Genesis already covers the reusable mechanisms.
+  proposed_targets:
+  - Genesis
+  disposition: RESEARCH_REFERENCE
+  deletion_eligible: false

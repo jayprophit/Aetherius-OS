@@ -41,6 +41,23 @@ export const EU_ALLERGENS = [
 ] as const;
 
 export type Allergen = (typeof EU_ALLERGENS)[number];
+
+export const FOOD_KINDS = [
+  "herb",
+  "vegetable",
+  "fruit",
+  "meat",
+  "fish",
+  "seafood",
+  "fungus",
+  "grain",
+  "legume",
+  "dairy",
+  "spice",
+  "other",
+] as const;
+
+export type FoodKind = (typeof FOOD_KINDS)[number];
 export type Presence = "contains" | "may_contain" | "free";
 export type MedicalFlag =
   | "pregnancy"
@@ -92,6 +109,7 @@ export interface FoodRecord {
   name: string;
   aliases: string[];
   category: string;
+  kind: FoodKind;
   tags: string[];
   barcode: string | null;
   ingredients: IngredientRef[];
@@ -109,6 +127,7 @@ export interface CreateFoodInput {
   name: string;
   aliases?: string[];
   category: string;
+  kind?: FoodKind;
   tags?: string[];
   barcode?: string | null;
   ingredients?: IngredientRef[];
@@ -216,6 +235,7 @@ export class FoodWikiService {
   ingest(input: CreateFoodInput): FoodRecord {
     if (!input.name.trim()) throw new Error("a food needs a name");
     if (!input.category.trim()) throw new Error("a food needs a category");
+    if (input.kind !== undefined && !FOOD_KINDS.includes(input.kind)) throw new Error(`unknown food kind: ${input.kind}`);
     if (input.sources.length === 0) throw new Error("a food needs at least one cited source");
     for (const sourceId of input.sources) this.requireSource(sourceId);
     validateNutrition(input.nutrition);
@@ -234,6 +254,7 @@ export class FoodWikiService {
       name: input.name.trim(),
       aliases: [...new Set((input.aliases ?? []).map((alias) => alias.trim()).filter(Boolean))],
       category: input.category.trim(),
+      kind: input.kind ?? "other",
       tags: [...new Set((input.tags ?? []).map((tag) => tag.trim().toLowerCase()).filter(Boolean))].sort(),
       barcode: input.barcode?.trim() || null,
       ingredients: (input.ingredients ?? []).map((ingredient) => ({ ...ingredient })),
@@ -274,6 +295,7 @@ export class FoodWikiService {
     for (const sourceId of patch.sources ?? current.sources) this.requireSource(sourceId);
     const allergens = patch.allergens ? normaliseAllergens(patch.allergens) : current.allergens;
     for (const declaration of allergens) this.requireSource(declaration.sourceId);
+    if (patch.kind !== undefined && !FOOD_KINDS.includes(patch.kind)) throw new Error(`unknown food kind: ${patch.kind}`);
     if (patch.nutrition) validateNutrition(patch.nutrition);
     if (patch.barcode && patch.barcode !== current.barcode && this.byBarcode(patch.barcode)) {
       throw new Error(`barcode is already recorded: ${patch.barcode}`);
@@ -283,6 +305,7 @@ export class FoodWikiService {
       name: patch.name?.trim() || current.name,
       aliases: patch.aliases ? [...new Set(patch.aliases.map((alias) => alias.trim()).filter(Boolean))] : current.aliases,
       category: patch.category?.trim() || current.category,
+      kind: patch.kind ?? current.kind,
       tags: patch.tags
         ? [...new Set(patch.tags.map((tag) => tag.trim().toLowerCase()).filter(Boolean))].sort()
         : current.tags,
@@ -343,6 +366,15 @@ export class FoodWikiService {
       .search(query, limit)
       .map((hit) => this.foods.get(hit.id))
       .filter((food): food is FoodRecord => food !== undefined && food.state !== "archived")
+      .map((food) => structuredClone(food));
+  }
+
+  /** Every non-archived food, sorted by name. */
+  list(): FoodRecord[] {
+    return this.foods
+      .all()
+      .filter((food) => food.state !== "archived")
+      .sort((a, b) => a.name.localeCompare(b.name))
       .map((food) => structuredClone(food));
   }
 
@@ -548,7 +580,7 @@ function toDocument(food: FoodRecord) {
   return {
     id: food.id,
     title: food.name,
-    body: [food.category, food.processing, ...food.aliases, ...food.ingredients.map((i) => i.name)].join(" "),
+    body: [food.category, food.kind, food.processing, ...food.aliases, ...food.ingredients.map((i) => i.name)].join(" "),
     tags: food.tags,
     kind: "food",
   };

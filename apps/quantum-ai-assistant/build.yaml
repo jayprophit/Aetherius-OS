@@ -1,0 +1,90 @@
+# =============================================================================
+# BUILD MANIFEST - Quantum AI Assistant
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: quantum-ai-assistant
+  name: Quantum AI Assistant
+  kind: application
+  domain: quantum
+  description: >-
+    The quantum AI assistant slice: a real statevector simulator for small
+    circuits, sampling, and an Athena-backed explanation path with an audit
+    trail. It is a simulator, not quantum hardware, and it has no user
+    interface.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os, athena]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-27"
+  summary: >-
+    The assistant is built and tested: a statevector simulator with X, H, RX,
+    RY and CNOT gates, Bell-state and superposition checks, seeded sampling,
+    input validation, an Athena runtime path and an explicit simulation
+    disclaimer. It does not connect to quantum hardware and has no user
+    interface.
+  evidence:
+    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/quantum-ai-assistant -> 10 tests passed, 0 failed."
+    - "2026-10-27: the tests assert the Bell state produces only |00> and |11>, that RX(pi) reaches |1>, and that sampling is deterministic for a seed."
+    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
+    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+
+known_issues:
+  - id: QUANTUM-ASSISTANT-001
+    severity: high
+    summary: >-
+      This is a classical statevector simulation. No quantum hardware or
+      quantum cloud provider is connected.
+    evidence: >-
+      The simulator holds a complex amplitude vector in process memory; there
+      is no hardware client or job submission path.
+    status: OPEN
+  - id: QUANTUM-ASSISTANT-002
+    severity: medium
+    summary: >-
+      The assistant user interface and host application mount are not built.
+    evidence: >-
+      The slice exposes a runtime and tests only; there is no route or screen.
+    status: OPEN
+
+notes:
+  - "The simulator is intentionally limited to small circuits; the qubit limit is enforced by the implementation."

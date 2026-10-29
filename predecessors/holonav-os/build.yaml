@@ -1,0 +1,55 @@
+# BUILD MANIFEST - holonav-os
+
+# Recorded on 2026-10-20 when the workspace was reorganised so that every first-party project
+# sits inside the project that owns it. The manifest records what
+# was measured, not what the project's own documentation claims.
+
+schema_version: "1.0.0"
+
+project:
+  id: holonav-os
+  name: holonav-os
+  kind: application
+  domain: platform
+  description: >-
+    The holonav operating system: recovered design material for a
+    predecessor of Aetherius OS.
+  repository: true
+  branch: main
+  languages: []
+
+toolchain:
+  build_system: unknown
+  package_manager: unknown
+  requirements:
+    - name: a toolchain
+      version: "undetermined"
+      required: true
+      purpose: "the project declares no build system yet"
+
+commands:
+  - name: inspect
+    command: "echo 'no build system is declared by this project'"
+    working_directory: .
+    timeout_minutes: 1
+
+dependencies:
+  projects: []
+  external: []
+
+status:
+  state: NOT_STARTED
+  last_verified: "2026-10-20"
+  summary: >-
+    The project is registered so that it is visible and owned, and so that
+    the work to build it is tracked rather than forgotten. It holds no
+    buildable source at the time of recording.
+  evidence:
+    - "The project was registered during the workspace reorganisation of 2026-10-20"
+    - "Measured own source lines: 0"
+
+notes:
+  - >-
+    The project is a first-party project of the owner that had no folder in the
+    workspace until the reorganisation. It is now registered, and the manifest
+    records that it is not yet buildable.

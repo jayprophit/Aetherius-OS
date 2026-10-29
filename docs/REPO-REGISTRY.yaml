@@ -10,9 +10,9 @@
 # compared against them. The forks are what the reverse-engineering
 # work reads from.
 #
-A fork's axis records which capability it informs. An unclassified
-fork is a finding: it is reference material that nobody has decided
-what it is for.
+# A fork's axis records which capability it informs. An unclassified
+# fork is a finding: it is reference material that nobody has decided
+# what it is for.
 # ============================================================================
 schema_version: "1.0.0"
 source_date: "2026-10-20"

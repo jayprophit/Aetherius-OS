@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/store",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius Store: signed package catalogue, semver resolution, dependency-aware install, update, rollback and entitlement checks.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

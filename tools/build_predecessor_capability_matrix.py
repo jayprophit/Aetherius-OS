@@ -541,7 +541,7 @@ def build() -> dict:
             })
         predecessors.append({
             "source_repo": "jayprophit/Aetherial",
-            "relation": "PROBABLE_PREDECESSOR",
+            "relation": "CONFIRMED_PREDECESSOR",
             "measurement": measure(root),
             "capability_areas": rows,
             "unaccounted_route_modules": [],
@@ -572,7 +572,7 @@ def build() -> dict:
             })
         predecessors.append({
             "source_repo": "jayprophit/aetherium",
-            "relation": "PROBABLE_PREDECESSOR",
+            "relation": "CONFIRMED_PREDECESSOR",
             "measurement": measure(root),
             "capability_areas": rows,
             "unaccounted_route_modules": [],

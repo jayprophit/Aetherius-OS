@@ -1,0 +1,125 @@
+# =============================================================================
+# BUILD MANIFEST - Aetherius App Suite
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: aetherius-app-suite
+  name: Aetherius App Suite
+  kind: application
+  domain: apps
+  description: >-
+    Domain cores for first-party equivalents of common default apps: Notes with
+    revisions and restore, a recursive-descent Calculator with history and
+    memory, a quota-enforcing virtual Filesystem with move/copy/search, a
+    recurring Calendar with conflict detection and real ICS export, a Photos
+    album/tag/dedupe library, and a Browser session with tabs, bookmarks,
+    downloads, a host blocklist and pagination extraction.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-29"
+  summary: >-
+    Six app cores are built and tested: Notes (create, tag, pin, search,
+    revisions, restore), Calculator (precedence, unary minus, right-associative
+    powers, history, memory, unsafe-expression refusal), virtual Files (create,
+    write, read, list, move, copy, remove, quota, traversal refusal, name and
+    content search), Calendar (validation, daily/weekly/monthly recurrence,
+    conflicts, ICS export), Photos (albums, tags, favourites, content-hash
+    duplicates, metadata validation) and Browser (tabs with back/forward,
+    bookmarks, downloads, host blocklist, pagination extraction). There is no
+    user interface, no native filesystem adapter, no browser engine and no
+    image decoder.
+  evidence:
+    - "2026-10-29: node --test \"tests/*.test.ts\" in apps/aetherius-app-suite -> 17 tests passed, 0 failed."
+    - "2026-10-29: the tests cover note revisions and restore, calculator precedence and refusal, filesystem quota and traversal, calendar recurrence/conflicts/ICS, photo albums and duplicates, and browser history/bookmarks/blocklist/pagination."
+    - "2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 16 app slices."
+    - "2026-10-29: node apps/verify.mjs -> 16/16 slices passed."
+
+known_issues:
+  - id: APP-SUITE-001
+    severity: high
+    summary: >-
+      These are domain cores, not applications: there is no window, route,
+      screen, accessibility layer or host mount for any of the six apps.
+    evidence: >-
+      apps/aetherius-app-suite contains TypeScript state machines and tests;
+      there is no UI framework, renderer or app registration.
+    status: OPEN
+  - id: APP-SUITE-002
+    severity: medium
+    summary: >-
+      Files is a virtual in-memory filesystem. It does not read or write the
+      host filesystem and has no permissions model beyond path normalisation.
+    evidence: >-
+      VirtualFiles stores nodes in memory; there is no fs adapter, OS handle or
+      sandbox integration.
+    status: OPEN
+  - id: APP-SUITE-003
+    severity: medium
+    summary: >-
+      Browser is a session model. It does not fetch pages, execute JavaScript,
+      render HTML or maintain cookies; pagination is an anchor extractor.
+    evidence: >-
+      BrowserSession stores tabs, history, bookmarks and downloads. The
+      pagination helper scans anchor tags and does not implement a DOM.
+    status: OPEN
+  - id: APP-SUITE-004
+    severity: medium
+    summary: >-
+      Calculator uses JavaScript numbers, not arbitrary-precision arithmetic.
+    evidence: >-
+      evaluate() parses and evaluates with the number type; there is no decimal
+      or big-integer arithmetic path.
+    status: OPEN
+  - id: APP-SUITE-005
+    severity: medium
+    summary: >-
+      Photos validates metadata and hashes caller-supplied bytes. It does not
+      decode, thumbnail, crop or recognise image content.
+    evidence: >-
+      PhotoLibrary accepts bytes for a SHA-256 content hash; there is no image
+      codec, EXIF parser or vision model.
+    status: OPEN
+
+notes:
+  - "Built for the owner's request for first-party versions of default OS apps. The per-OS settings, default-app routing and installer plans live in apps/aetherius-desktop."

@@ -3,8 +3,8 @@
 > Generated from `docs/PROJECT-TODOS.yaml`. Do not hand-edit this
 > file; edit the YAML and regenerate.
 
-- Source date: 2026-10-21
-- Tasks: **320** (252 open, 68 done)
+- Source date: 2026-10-29
+- Tasks: **333** (252 open, 81 done)
 
 ## By project
 
@@ -15,8 +15,8 @@
 | aetherion-engine | 2 | 0 |
 | aetherium | 2 | 0 |
 | aetherius-commerce | 1 | 0 |
-| aetherius-health-library | 4 | 0 |
-| aetherius-os | 59 | 18 |
+| aetherius-health-library | 3 | 1 |
+| aetherius-os | 64 | 18 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 17 | 18 |
@@ -24,11 +24,11 @@
 | agent-bridge-dashboard | 10 | 0 |
 | agent-bridge-runtimesafety | 5 | 0 |
 | ai-digital-twin | 4 | 0 |
-| architecture-of-shadows-book | 3 | 1 |
-| athena | 4 | 0 |
-| crossplatform | 2 | 0 |
-| decentralized-messaging-app | 4 | 0 |
-| food-wiki-app | 5 | 0 |
+| architecture-of-shadows-book | 8 | 1 |
+| athena | 1 | 3 |
+| crossplatform | 0 | 2 |
+| decentralized-messaging-app | 3 | 1 |
+| food-wiki-app | 2 | 3 |
 | football-card-game | 2 | 0 |
 | genesis | 12 | 17 |
 | hermes-config-audit | 14 | 0 |
@@ -37,13 +37,14 @@
 | ledgerlands | 11 | 2 |
 | mat | 13 | 1 |
 | niche-platform | 3 | 0 |
+| openclaw-models | 3 | 0 |
 | poietek | 13 | 1 |
-| quantum-ai-assistant | 2 | 0 |
+| quantum-ai-assistant | 1 | 1 |
 | quantum-os | 2 | 0 |
 | qva-merged | 3 | 0 |
 | self-building-ai | 2 | 0 |
-| sovereign-financial-os | 2 | 0 |
-| trading-bot | 5 | 0 |
+| sovereign-financial-os | 1 | 1 |
+| trading-bot | 4 | 1 |
 | universal-bridge | 5 | 2 |
 | veyra | 3 | 0 |
 | virtual-assistant | 2 | 0 |
@@ -266,10 +267,10 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
-### ⬜ TODO-HEALTH-LIBRARY-000 — Build the aetherius-health-library project the manifest describes
+### ✅ TODO-HEALTH-LIBRARY-000 — Build the aetherius-health-library project the manifest describes
 
 - **Project:** aetherius-health-library
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 aetherius-health-library is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
@@ -279,6 +280,10 @@ Evidence:
 ```
 Measured own source lines: 0.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/aetherius-health-library contains the health library slice: two TypeScript files totalling 410 lines, with 8 passing tests. It parses real frequency lists without inventing values, records datasets and aliases, ingests and publishes with citations, and keeps a verifiable ledger. The Rife reference texts are retained as source material. The separate Athena health product slice is apps/aetherius-athena-health (12 tests).
 
 Acceptance:
 
@@ -349,6 +354,26 @@ Acceptance:
 - [ ] Every application category has a stated control strategy
 - [ ] The strategy is recorded against the application registry
 - [ ] The first control surface is implemented and proven
+
+### ⬜ TODO-APP-006 — Build one native host shell and render the app suite
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: apps/verify.mjs and the app-suite build manifest
+
+The app suite, store, Food Wiki and Athena Health are tested domain libraries, not rendered applications. There is no native shell that mounts them, no per-OS window chrome and no renderer. One host shell with one real app is the next product step; more unrendered libraries are not.
+
+Evidence:
+
+```
+node apps/verify.mjs passes 17/17 slices, but every slice is a Node library. The desktop slice models window chrome and themes without rendering a window. No MSIX, DMG, DEB, AAB, IPA or PWA artifact has been produced.
+```
+
+Acceptance:
+
+- [ ] One host shell launches on Windows or Linux
+- [ ] It mounts at least one app from the suite with a real screen
+- [ ] The shell is covered by an end-to-end test
 
 ### ✅ TODO-BRN-001 — Freeze the authoritative branch matrix for every active project
 
@@ -1243,10 +1268,10 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
-### ⬜ TODO-ATHENA-000 — Build the Athena project the manifest describes
+### ✅ TODO-ATHENA-000 — Build the Athena project the manifest describes
 
 - **Project:** athena
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 Athena is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
@@ -1257,16 +1282,20 @@ Evidence:
 Measured own source lines: 0.
 ```
 
+Resolution:
+
+Resolved 2026-10-29. apps/Athena contains the shared intelligence runtime: two TypeScript files totalling 752 lines, with 11 passing node --test tests. The manifest matches the implementation (routing, tools, planning, memory, delegation, durable tasks, evaluation and the offline local-model contract). The separate health product slice is apps/aetherius-athena-health, which passes 12 tests.
+
 Acceptance:
 
 - [ ] Source exists in the project directory
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
-### ⬜ TODO-CROSSPLATFORM-000 — Build the Crossplatform---multiplatform project the manifest describes
+### ✅ TODO-CROSSPLATFORM-000 — Build the Crossplatform---multiplatform project the manifest describes
 
 - **Project:** crossplatform
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 Crossplatform---multiplatform is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
@@ -1276,6 +1305,10 @@ Evidence:
 ```
 Measured own source lines: 0.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/aetherius-crossplatform implements the runtime library and CLI with 32 passing tests: 15 platform/CLI tests plus 17 Genesis bridge tests. The old ecosystem/crossplatform---multiplatform folder held only a README and a licence; the implementation lives in the app slice.
 
 Acceptance:
 
@@ -1303,10 +1336,10 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
-### ⬜ TODO-FOOD-WIKI-000 — Build the Food Wiki App project the manifest describes
+### ✅ TODO-FOOD-WIKI-000 — Build the Food Wiki App project the manifest describes
 
 - **Project:** food-wiki-app
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 Food Wiki App is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
@@ -1316,6 +1349,10 @@ Evidence:
 ```
 Measured own source lines: 0.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/aetherius-food-wiki implements the Food Wiki slice with 22 passing tests: ten food kinds and filtering, a wild/shop/market/garden/online/foraged location atlas, recipe validation and availability ranking, photo-label recipe suggestions with an explicit no-vision note, a Rife-style frequency library with real WAV rendering, app navigation/account/preferences, read-only Athena tools, and the cited allergen, medical, publication and offline core. There is no UI, database, map provider or vision model.
 
 Acceptance:
 
@@ -1965,6 +2002,27 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
+### ⬜ TODO-OCM-001 — Apply and verify an OpenClaw tier selection on the live gateway
+
+- **Project:** openclaw-models
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: docs/OPENCLAW-MODEL-CATALOGUE-2026-10-29.md
+
+The catalogue and its renderers are built and tested, but the live gateway was not changed. Hosted providers are cold because no owner key is set, and no hosted turn has been proven. Applying a selection means backing up openclaw.json, merging the rendered models.providers and agents.defaults fragments, setting the environment variable for each enabled provider, restarting the gateway and recording one real turn with the exact model ref and whether a fallback was used.
+
+Evidence:
+
+```
+apps/openclaw-models passes 11 tests and validates 17 providers / 52 models. The live gateway measured on 2026-10-29 has 7 providers, 15 hosted free models and 13 aliases, all cold except Ollama. openclaw models list --json returned 0 bytes with exit 0; plain models list hung under shell quoting.
+```
+
+Acceptance:
+
+- [ ] The live config is backed up before the merge
+- [ ] The rendered fragments are merged without discarding existing providers
+- [ ] One real gateway turn is recorded for each enabled provider, with the model ref and fallback state
+- [ ] No credential is written into openclaw.json
+
 ### ✅ TODO-BRN-004 — Poietek's default branch was eighteen commits behind its own successor
 
 - **Project:** poietek
@@ -2027,10 +2085,10 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
-### ⬜ TODO-QUANTUM-AI-ASSISTANT-000 — Build the quantum-ai-assistant project the manifest describes
+### ✅ TODO-QUANTUM-AI-ASSISTANT-000 — Build the quantum-ai-assistant project the manifest describes
 
 - **Project:** quantum-ai-assistant
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 quantum-ai-assistant is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
@@ -2040,6 +2098,10 @@ Evidence:
 ```
 Measured own source lines: 0.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/Quantum-AI-Assistant contains the quantum assistant slice: two TypeScript files totalling 390 lines, with 10 passing tests. It implements a state-vector simulator for X/Y/Z/H/CNOT/RX/RY/RZ, deterministic seeded sampling, a LocalQuantumModel that implements Athena's real ModelAdapter contract (offline, synchronous generate), a tool registry, role-gated access and an audit trail. The explanation states explicitly that this is simulation, not quantum hardware.
 
 Acceptance:
 
@@ -2107,10 +2169,10 @@ Acceptance:
 - [ ] The project builds and its tests pass
 - [ ] The build manifest matches what is there
 
-### ⬜ TODO-SOVEREIGN-FINANCIAL-OS-000 — Build the sovereign-financial-os project the manifest describes
+### ✅ TODO-SOVEREIGN-FINANCIAL-OS-000 — Build the sovereign-financial-os project the manifest describes
 
 - **Project:** sovereign-financial-os
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 sovereign-financial-os is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
@@ -2120,6 +2182,10 @@ Evidence:
 ```
 Measured own source lines: 0.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/Sovereign-Financial-OS contains the finance slice: two TypeScript files totalling 988 lines, with 14 passing tests. It implements double-entry posting with balance enforcement, trial balance, profit and loss, balance sheet, invoices with tax and idempotent payments, ageing, tax summaries, budget variance, bank reconciliation, explainable risk warnings, reversals and a verifiable audit chain. It is a finance core, not a live banking or payment integration.
 
 Acceptance:
 
@@ -2147,10 +2213,10 @@ Acceptance:
 - [ ] The histories are rewritten, or the repositories stay private until they are
 - [ ] A scan of the workspace finds no credential in a publishable location
 
-### ⬜ TODO-TRADING-BOT-000 — Build the Multi-Cross-Platform-Trading-Bot project the manifest describes
+### ✅ TODO-TRADING-BOT-000 — Build the Multi-Cross-Platform-Trading-Bot project the manifest describes
 
 - **Project:** trading-bot
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 Multi-Cross-Platform-Trading-Bot is registered in the programme and has a build manifest, but there is no source. The conversations and the recovered material describe what it is.
@@ -2160,6 +2226,10 @@ Evidence:
 ```
 Measured own source lines: 0.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/Multi-Cross-Platform-Trading-Bot contains 30 TypeScript/JavaScript files totalling 3,032 lines and 28 passing tests: the original 13 plus 15 venue tests. It covers paper fiat and crypto exchanges, instrument metadata, integer minor units, portfolio risk, venue routing, limit and market orders, idempotency, risk allowlists, price collars and a kill switch. No live exchange adapter is claimed.
 
 Acceptance:
 
@@ -2782,6 +2852,46 @@ Acceptance:
 - [ ] The feed, groups and events are mounted in the host UI
 - [ ] Chat consumes the Agent-Bridge messaging primitive instead of a private copy
 
+### ⬜ TODO-APP-007 — Add OOXML import/export and an original template registry
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: docs/CODEX-LIBRARY-INVENTORY-2026-10-29.md
+
+The Office modules export Markdown, CSV and slide outlines only. They cannot open or write DOCX, PPTX or XLSX, so the 20 Codex reference templates cannot be used as layouts. A converter or a dependency-free OOXML adapter and an original Aetherius template registry are needed. The OpenAI templates are reference material and must not be shipped as Aetherius templates.
+
+Evidence:
+
+```
+WriterDocument.toMarkdown(), Spreadsheet.toCsv() and SlideDeck.toOutline() are the only export paths. The inventory records 7 PPTX, 7 DOCX and 6 XLSX reference files, none importable.
+```
+
+Acceptance:
+
+- [ ] The app suite imports and exports DOCX, PPTX and XLSX, or a documented subset
+- [ ] An original template registry maps template ids to WriterDocument, Spreadsheet and SlideDeck structures
+- [ ] No OpenAI reference template is redistributed
+
+### ⬜ TODO-APP-008 — Add CRM, driver-based forecasting and analytics modules
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: docs/CODEX-LIBRARY-INVENTORY-2026-10-29.md
+
+The commerce slice handles orders, payments and entitlements but has no leads, accounts, stages or pipeline forecast. The sovereign finance slice reports actuals, budgets, tax and reconciliation but has no driver-based revenue, headcount, working-capital or financing forecast. The analytics-dashboard template has no general counterpart. These are separate domain modules, not a single screen.
+
+Evidence:
+
+```
+apps/aetherius-commerce/src/commerce.ts has no lead or pipeline entity. apps/sovereign-financial-os/src/finance.ts has budgetVariance() but no driver forecast. The analytics-dashboard.xlsx template has sheets Dashboard, Data & Targets and _Chart Helpers.
+```
+
+Acceptance:
+
+- [ ] A CRM module records leads, accounts, stages and a weighted pipeline
+- [ ] A forecast module projects revenue, headcount, working capital and financing from drivers
+- [ ] An analytics module renders KPIs from a defined data contract
+
 ### ⬜ TODO-ARC-001 — Decide where the two gigabytes of research artefacts should live
 
 - **Project:** aetherius-os
@@ -2800,6 +2910,27 @@ Acceptance:
 
 - [ ] A place is chosen for the artefacts that is not the git repository
 - [ ] A script can restore them from that place on a fresh machine
+
+### ⬜ TODO-CODEX-001 — Redact and ingest the Codex conversation corpus
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: docs/CODEX-LIBRARY-INVENTORY-2026-10-29.md
+
+The Codex store holds 124 threads, 1,014 turns, 50,994 items and 128 session files (988.55 MB). It is inventoried but unread. It may contain credentials, personal data, third-party content and unverified claims, so it cannot be used as evidence or published material until it is redacted and sourced.
+
+Evidence:
+
+```
+thread_history_1.sqlite records 50,994 thread items and 1,014 turns. Sessions span 2026-08-22 to 2026-10-29. No conversation text was read for the inventory.
+```
+
+Acceptance:
+
+- [ ] A redaction pass removes credentials, personal data and third-party material
+- [ ] Every retained record has a provenance link to its thread and item
+- [ ] A structured extraction pass records requirements separately from claims
+- [ ] The raw corpus is not committed or published
 
 ### ⬜ TODO-DIR-001 — Check every change against the owner's standing directives
 
@@ -3658,23 +3789,25 @@ Acceptance:
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
-### ⬜ TODO-AOSB-001 — The book project has no document toolchain, so it has never been built
+### ⬜ TODO-AOSB-001 — The book has no XeLaTeX toolchain, so the PDF is A4 Chromium output with no print-ready edition
 
 - **Project:** architecture-of-shadows-book
 - **Status:** OPEN
-- **Source:** build-audit — Architecture of Shadows Book folder survey, 2026-10-20
+- **Source:** build-audit — Architecture of Shadows Book build, 2026-10-29
 
-The book is a real project with real content: sixteen volumes, fifty-three parts and four hundred and three chapters in the master edition, a student edition, a web version, and a hundred and thirty eight kilobyte text of the whole work. It cannot be built on this machine. Pandoc and XeLaTeX are not installed, so no PDF or EPUB has ever been produced here and no build gate has ever run for the project. The build commands themselves are sound: they are the owner's own, and their globs were checked against the tree and match it. The toolchain is the missing part.
+The book now builds: build-book.py produces master and student EPUB and PDF from the Markdown tree, and verify-book.py checks the containers, spine, XML and page counts. The remaining gap is the PDF engine. No LaTeX distribution is installed, so the PDF is standalone HTML printed by headless Edge at A4 with CSS margins. It is not the XeLaTeX layout described in BUILD-INSTRUCTIONS.md, and the documented print-ready letter PDF has not been produced. This TODO replaces the old statement that the book had never been built, which is no longer true.
 
 Evidence:
 
 ```
-pandoc: not installed. xelatex: not installed. The master's own BUILD-INSTRUCTIONS.md gives the commands, and the glob patterns 00-FRONT-MATTER/*.md and VOLUME-*/PART-*/chapter-*.md match the tree exactly.
+Pandoc 3.13 and Microsoft Edge 156.0.4314.50 are installed and were used. xelatex is absent. The four artifacts are master EPUB 0.57 MB / 410 spine items, master PDF 8.60 MB / 462 pages, student EPUB 0.51 MB / 365 spine items, and student PDF 7.47 MB / 397 pages. The PDFs report producer Skia/PDF m156.
 ```
 
 Acceptance:
 
-- [ ] Pandoc and a LaTeX distribution are installed on this machine,The master edition builds to a PDF and an EPUB,The student edition builds to a PDF and an EPUB,The build gate runs for this project and passes
+- [ ] A LaTeX distribution is installed, or the owner explicitly accepts the Chromium PDF as the publication format
+- [ ] The XeLaTeX commands in BUILD-INSTRUCTIONS.md run successfully
+- [ ] A print-ready letter-size PDF is produced and checked
 
 ### ✅ TODO-AOSB-002 — The book project was not in the workspace at all, and its manifest was not published
 
@@ -3697,6 +3830,64 @@ Resolved 2026-10-21. The repository is cloned into books/Architecture of Shadows
 Acceptance:
 
 - [ ] The book repository is cloned into the place the register names,The manifest is inside the book's own repository, so it is published with it,The register describes what the project actually holds,The manifest counts the tree rather than describing it
+
+### ⬜ TODO-AOSB-003 — Fill or explicitly remove the three title-page metadata placeholders
+
+- **Project:** architecture-of-shadows-book
+- **Status:** OPEN
+- **Source:** build-audit — verify-book.py, 2026-10-29
+
+The master title page still contains [Author Name], [Publisher Name] and [ISBN Number]. The placeholders are present in the source and in the built EPUB. They cannot be filled from evidence, because no author, publisher or ISBN has been supplied.
+
+Evidence:
+
+```
+MASTER-EDITION/00-FRONT-MATTER/title-page.md contains all three placeholders. python verify-book.py reports three content findings; python verify-book.py --strict exits 1.
+```
+
+Acceptance:
+
+- [ ] The owner supplies the author, publisher and ISBN, or decides to remove the fields
+- [ ] The title page contains no square-bracket placeholder
+- [ ] The EPUB is rebuilt and verify-book.py --strict passes
+
+### ⬜ TODO-AOSB-004 — Reconcile the 17-Volume label with the 16-volume master tree
+
+- **Project:** architecture-of-shadows-book
+- **Status:** OPEN
+- **Source:** build-audit — verify-book.py, 2026-10-29
+
+The title page and copyright page describe a 17-Volume hardcover set. The master edition tree contains 16 volumes, VOLUME-I to VOLUME-XVI, and the manifest counts 16. Either a volume is missing from the tree or the label is wrong; the build cannot decide which.
+
+Evidence:
+
+```
+MASTER-EDITION/00-FRONT-MATTER/title-page.md and copyright.md contain "17-Volume". MASTER-EDITION has 16 VOLUME-* directories. verify-book.py reports the mismatch.
+```
+
+Acceptance:
+
+- [ ] The owner confirms whether the intended count is 16 or 17
+- [ ] The title page, copyright page and manifest agree with the tree
+
+### ⬜ TODO-AOSB-005 — Run epubcheck and an editorial accuracy review
+
+- **Project:** architecture-of-shadows-book
+- **Status:** OPEN
+- **Source:** build-audit — Architecture of Shadows Book build, 2026-10-29
+
+The current verification is structural: ZIP container, OPF, spine, XML well-formedness and PDF page counts. It does not check EPUB conformance beyond well-formedness and it says nothing about whether the prose is correct, sourced or safe to publish. No fact-check, legal review or source audit of the 403 chapters was performed.
+
+Evidence:
+
+```
+verify-book.py performs XML and page-count checks only. epubcheck is not installed. No editorial review record exists in the repository.
+```
+
+Acceptance:
+
+- [ ] epubcheck runs against both EPUBs with no errors
+- [ ] A documented editorial and source review covers the chapters, or the owner records the review as out of scope
 
 ### ⬜ TODO-GEN-003 — Implement the missing Genesis plan and action stages
 
@@ -4340,6 +4531,27 @@ Acceptance:
 - [ ] A licence file is present
 - [ ] The build manifest records it
 
+### ⬜ TODO-OCM-002 — Build a model and tier settings surface for OpenClaw
+
+- **Project:** openclaw-models
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: apps/openclaw-models/src/cli.ts
+
+The catalogue has a read-only CLI but no settings screen. A user cannot browse tiers, see which providers are authenticated, choose a local model or preview the fallback chain without reading JSON. The surface must show missing-key and unavailable-runtime states honestly and must not store secrets.
+
+Evidence:
+
+```
+The CLI commands tiers, models, select, providers, agents and validate print to stdout. There is no UI and no config writer.
+```
+
+Acceptance:
+
+- [ ] A settings surface lists tiers, providers, models and auth state
+- [ ] The user can select a primary model and see the fallback chain
+- [ ] The surface never displays a secret value
+- [ ] Applying a selection is a reviewed action with a backup and a verification step
+
 ### ⬜ TODO-POI-010 — Build the DAW product capability registry
 
 - **Project:** poietek
@@ -4743,6 +4955,26 @@ Acceptance:
 - [ ] The project is in the build manifest registry with a build manifest and a location
 - [ ] The account, message, post and moderation requirements are in the requirement register
 - [ ] It is presented as an OS app, not as IDE functionality
+
+### ⬜ TODO-CODEX-002 — Classify and rights-review the generated image library
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: docs/CODEX-LIBRARY-INVENTORY-2026-10-29.md
+
+The 18 generated PNGs (30.34 MB) have not been visually classified. Their subjects, people, logos and text are unknown, so none can be adopted as a wallpaper, store asset or book illustration until they are reviewed.
+
+Evidence:
+
+```
+All 18 files are unique by SHA-256. Dimensions: 3 x 1536x1024, 1 x 1672x941, 11 x 1254x1254 and 3 x 1122x1402. No image content was read for the inventory.
+```
+
+Acceptance:
+
+- [ ] Each image is classified by subject and checked for third-party marks and identifiable people
+- [ ] A rights decision is recorded per image
+- [ ] Only cleared images are copied into a product asset directory
 
 ### ⬜ TODO-IDE-GENESIS-002 — Tool-approval UI for phase4 Agent Bridge tools
 
@@ -5200,6 +5432,44 @@ Acceptance:
 - [ ] The file is either replaced with a working installer or removed
 - [ ] The reference to GPT4All in the owner's material is corrected if the runner is not available
 
+### ⬜ TODO-AOSB-006 — Remove the duplicate table of contents
+
+- **Project:** architecture-of-shadows-book
+- **Status:** OPEN
+- **Source:** build-audit — Architecture of Shadows Book build, 2026-10-29
+
+The master edition carries two tables of contents: the Pandoc-generated navigation document and the hand-written 00-FRONT-MATTER/table-of-contents.md. Both appear in the built book.
+
+Evidence:
+
+```
+The master EPUB has nav.xhtml plus 410 XHTML documents. One front-matter document is table-of-contents.md. The built HTML contains one nav#TOC and one "TABLE OF CONTENTS" heading.
+```
+
+Acceptance:
+
+- [ ] The book has one table of contents, or the duplication is intentional and documented
+- [ ] The EPUB is rebuilt and the navigation is checked
+
+### ⬜ TODO-AOSB-007 — Label the root transcript as non-source and keep it out of the build
+
+- **Project:** architecture-of-shadows-book
+- **Status:** OPEN
+- **Source:** build-audit — Architecture of Shadows Book build, 2026-10-29
+
+THE ARCHITECTURE OF SHADOWS.txt (138 KB) is a transcript, not the source of either edition. The build reads only the chapter trees. The transcript has not been reconciled with the chapters, and a reader could mistake it for the authoritative text.
+
+Evidence:
+
+```
+build-book.py reads MASTER-EDITION/00-FRONT-MATTER/*.md and VOLUME-*/PART-*/chapter-*.md, and the student equivalents. It never reads "THE ARCHITECTURE OF SHADOWS.txt". BUILD-INSTRUCTIONS.md now states this.
+```
+
+Acceptance:
+
+- [ ] The repository README or the transcript itself states that it is a transcript, not the build source
+- [ ] The build continues to ignore the transcript
+
 ### ⬜ TODO-ARCH-SHADOWS-010 — Build the missing Architecture of Shadows Book capabilities
 
 - **Project:** architecture-of-shadows-book
@@ -5219,10 +5489,10 @@ Acceptance:
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
-### ⬜ TODO-ATH-001 — Record the scope of the Athena project
+### ✅ TODO-ATH-001 — Record the scope of the Athena project
 
 - **Project:** athena
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** build-audit — Athena folder survey, 2026-10-20
 
 The project has no recorded scope of its own, so the folder can only be classified, not worked. The scope recovered from the ChatGPT project is the candidate, and the manifest needs to state it.
@@ -5232,6 +5502,10 @@ Evidence:
 ```
 Athena -> 0 items total.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/Athena/build.yaml now states the runtime scope: model routing, tool registration and execution, planning, working and long-term memory, delegation, durable tasks, evaluation and a local-model contract. The health product scope is recorded separately in apps/aetherius-athena-health/build.yaml, following the owner's direct statement that Athena is an exercise, health and wellbeing app. apps/Athena has 11 passing tests covering INT-001 to INT-010.
 
 Acceptance:
 
@@ -5256,10 +5530,10 @@ Acceptance:
 - [ ] The Athena requirements are recovered and recorded in the project
 - [ ] The recovered scope is attributed to its source
 
-### ⬜ TODO-ATHENA-010 — Build the missing Athena capabilities
+### ✅ TODO-ATHENA-010 — Build the missing Athena capabilities
 
 - **Project:** athena
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 Athena was checked against the capability set for its family and 10 of 10 were not found in its own source. The missing ones are: Model routing across providers (INT-001); Tool execution (INT-002); Planning and decomposition (INT-003); Working memory and context (INT-004); Long term memory (INT-005); Multi agent coordination (INT-006); Authority and permissions (INT-007); Durable task state (INT-008); Evaluation and benchmarking (INT-009); Local and offline model (INT-010).
@@ -5270,15 +5544,19 @@ Evidence:
 The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
 ```
 
+Resolution:
+
+Resolved 2026-10-29. All ten capabilities are implemented in apps/Athena/src/athena.ts and exercised by the 11-test suite: INT-001 model routing, INT-002 tool execution, INT-003 planning, INT-004 working memory, INT-005 long-term memory, INT-006 multi-agent coordination, INT-007 authority and permissions, INT-008 durable task state, INT-009 evaluation and INT-010 the local offline model. The tests are named for the capabilities and exercise their behaviour, including default-deny tool authority and resuming a checkpoint in a new service instance.
+
 Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
-### ⬜ TODO-CROSSPLATFORM-010 — Build the missing Crossplatform---multiplatform capabilities
+### ✅ TODO-CROSSPLATFORM-010 — Build the missing Crossplatform---multiplatform capabilities
 
 - **Project:** crossplatform
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** programme-gap-analysis — Aetherius-OS/docs/PROGRAMME-GAP-ANALYSIS.yaml
 
 Crossplatform---multiplatform was checked against the capability set for its family and 12 of 12 were not found in its own source. The missing ones are: Command line entry point (TLS-001); Configuration (TLS-002); Structured output (TLS-003); Testing (TLS-004); Runtime or kernel (PLT-001); Module system (PLT-002); Isolation between parts (PLT-003); User interface shell (PLT-004); Extension system (PLT-005); Configuration management (PLT-006); Observability (PLT-007); Distribution and packaging (PLT-008).
@@ -5288,6 +5566,10 @@ Evidence:
 ```
 The capability search terms are in tools/programme_capabilities.py and the search was run over 0 own source files.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. All twelve capabilities are implemented and tested: TLS-001 command-line entry point, TLS-002 configuration, TLS-003 structured output, TLS-004 testing, PLT-001 runtime/kernel, PLT-002 module system, PLT-003 isolation, PLT-004 workspace shell, PLT-005 extensions, PLT-006 configuration management, PLT-007 observability and PLT-008 packaging. The slice also adds the host-neutral Genesis bridge: nine scoped capabilities, expiring grants, bounded pagination and crawling, app control, input/screen capture and a redacting hash-chained audit journal. Live browser, screen and input drivers are not claimed.
 
 Acceptance:
 
@@ -5313,10 +5595,10 @@ Acceptance:
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
-### ⬜ TODO-DMA-001 — Record the scope of the decentralised messaging application
+### ✅ TODO-DMA-001 — Record the scope of the decentralised messaging application
 
 - **Project:** decentralized-messaging-app
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** build-audit — Decentralized Messaging App folder survey, 2026-10-20
 
 The project has no recorded scope, no transport decision and no threat model. A decentralised messaging application carries real security and privacy obligations, so an empty folder is a risk if it is mistaken for progress.
@@ -5326,6 +5608,10 @@ Evidence:
 ```
 Decentralized Messaging App -> 0 items total.
 ```
+
+Resolution:
+
+Resolved 2026-10-29. apps/Decentralized Messaging App/build.yaml records the scope and the transport decision: delivery and email are caller-supplied ports, with no live relay, Matrix bridge, WebRTC media plane or SMTP client. THREAT-MODEL.md records fourteen threat/control pairs, the assets and trust boundaries, and the security gates that must be closed before a transport is enabled. The slice passes 16 tests. The original folder survey found zero items; the scope is now recorded rather than implied.
 
 Acceptance:
 
@@ -5351,10 +5637,10 @@ Acceptance:
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
 
-### ⬜ TODO-FWA-001 — Record the scope of the Food Wiki project
+### ✅ TODO-FWA-001 — Record the scope of the Food Wiki project
 
 - **Project:** food-wiki-app
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** build-audit — Food Wiki App folder survey, 2026-10-20
 
 The project has no recorded scope of its own. The scope now recovered from the ChatGPT conversations is recorded separately, so the project needs a manifest that states what it is and what its first vertical slice is.
@@ -5365,14 +5651,18 @@ Evidence:
 Food Wiki App -> 1 item: "AI System Desisgn for FaturaWiki" (empty).
 ```
 
+Resolution:
+
+Resolved 2026-10-29. apps/aetherius-food-wiki/build.yaml now records the product scope from the owner's direct statements: foods, herbs, vegetables, fruit, meat, fish and other kinds; wild, shop and market locations; recipes; photo-assisted suggestions; Athena access; and Rife-style frequency sounds. The local corpus contains no recovered FaturaWiki requirements, and the manifest says so rather than presenting candidate scope as recovered fact.
+
 Acceptance:
 
 - [ ] The project manifest states the scope and a first vertical slice
 
-### ⬜ TODO-FWA-002 — Correct the misspelled FaturaWiki design directory
+### ✅ TODO-FWA-002 — Correct the misspelled FaturaWiki design directory
 
 - **Project:** food-wiki-app
-- **Status:** OPEN
+- **Status:** DONE
 - **Source:** build-audit — Food Wiki App folder survey, 2026-10-20
 
 The only artefact in the project is a directory named "AI System Desisgn for FaturaWiki". Correcting it now costs one rename, before any content lands in it.
@@ -5382,6 +5672,10 @@ Evidence:
 ```
 Directory name is "AI System Desisgn for FaturaWiki".
 ```
+
+Resolution:
+
+Resolved 2026-10-29. Renamed apps/Food Wiki App/AI System Desisgn for FaturaWiki to apps/Food Wiki App/AI System Design for FaturaWiki. The directory was empty, so no content moved.
 
 Acceptance:
 
@@ -5964,6 +6258,25 @@ Acceptance:
 
 - [ ] Each missing capability is present in the source
 - [ ] Each capability that is present is recorded in PROGRAMME-CATALOGUE.yaml
+
+### ⬜ TODO-OCM-003 — Resolve LM Studio availability or record it as unsupported
+
+- **Project:** openclaw-models
+- **Status:** OPEN
+- **Source:** build-audit — 2026-10-29: docs/OPENCLAW-MODEL-CATALOGUE-2026-10-29.md
+
+The LM Studio provider is catalogued with the installed Qwen3.5-9B GGUF, but the Windows lms.exe exits 0xC000001D and the WSL distro has automount disabled, so the model cannot be served. Either the runtime is repaired and the model is served, or the provider is recorded as unsupported and removed from the other-tier primary position.
+
+Evidence:
+
+```
+The lmstudio provider is marked LOCAL_UNAVAILABLE. The 9B GGUF is installed at C:\Users\jpowe\.lmstudio\models. WSL has automount.enabled=false.
+```
+
+Acceptance:
+
+- [ ] LM Studio serves the installed 9B model, or the provider is documented as unsupported
+- [ ] The catalogue status matches the measured runtime
 
 ### ⬜ TODO-POI-001 — Exercise the Tauri desktop packaging path
 

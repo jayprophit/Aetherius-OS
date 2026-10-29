@@ -232,3 +232,12 @@ wsl.exe -d OpenClawGateway -e openclaw agent --agent main \
 
 The gateway config is not in this repository. It lives in the WSL distro at
 `/home/openclaw/.openclaw/openclaw.json`; the pre-change backup is beside it.
+
+## 10. See also
+
+The provider and model catalogue built on 2026-10-29 is in
+`docs/OPENCLAW-MODEL-CATALOGUE-2026-10-29.md` and
+`apps/openclaw-models`. It records 17 providers and 52 models in free, paid,
+premium and other tiers, with env-reference auth and config renderers. It does
+not change the live gateway: the state measured above remains the live state
+until the owner applies a selection and proves it with a real turn.

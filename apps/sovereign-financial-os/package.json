@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/sovereign-finance",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS Sovereign Financial OS vertical slice: double-entry ledger, invoicing, tax, budgets, reconciliation and risk controls.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

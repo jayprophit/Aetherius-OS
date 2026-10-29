@@ -9,11 +9,6 @@ import {
   OfflineQueue,
   RULES_VERSION,
   createFoodWiki,
-  type NavigationRoute,
-  type NavigationScreen,
-  type UserPreferences,
-  type UserAccount,
-  type UserState,
   type EaterProfile,
   type FoodRecord,
 } from "../src/foodWiki.ts";

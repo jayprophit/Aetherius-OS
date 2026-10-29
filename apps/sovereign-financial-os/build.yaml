@@ -1,0 +1,92 @@
+# =============================================================================
+# BUILD MANIFEST - Sovereign Financial OS
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: sovereign-financial-os
+  name: Sovereign Financial OS
+  kind: application
+  domain: finance
+  description: >-
+    The sovereign financial operating system: a double-entry ledger, invoices,
+    tax, budgets, reconciliation, risk limits, reversals and an audit trail.
+    Money is held in integer minor units. No live bank, card or exchange
+    connection is claimed.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-27"
+  summary: >-
+    The financial core is built and tested: double-entry posting, a trial
+    balance, profit and loss, a balance sheet, invoices with tax and payment
+    settlement, idempotent payments, budgets, reconciliation, risk checks,
+    reversals and an audit trail. The user interface, persistence adapters and
+    any live banking or exchange integration are not built.
+  evidence:
+    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/sovereign-financial-os -> 14 tests passed, 0 failed."
+    - "2026-10-27: the tests assert that an unbalanced entry is refused and that the trial balance, profit and loss and balance sheet agree with the ledger."
+    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
+    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+
+known_issues:
+  - id: SOVEREIGN-FINANCE-001
+    severity: high
+    summary: >-
+      There is no live bank, card or exchange adapter. All balances and
+      settlements in this slice are internal records.
+    evidence: >-
+      The slice exposes ledger and invoice services only; no provider client,
+      credential flow or webhook endpoint exists.
+    status: OPEN
+  - id: SOVEREIGN-FINANCE-002
+    severity: medium
+    summary: >-
+      The financial user interface and durable database adapters are not built.
+    evidence: >-
+      apps/sovereign-financial-os contains an in-memory service and tests; it
+      has no route, screen, migration or database driver.
+    status: OPEN
+
+notes:
+  - "The slice uses the shared app-kit money helpers and hash-chained EventLedger."
+  - "No regulatory certification, audit opinion or tax filing capability is claimed."

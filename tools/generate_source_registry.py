@@ -144,7 +144,24 @@ def classify(path: Path) -> str:
     return "prompt_or_brief"
 
 
+CONTROL_CHARS = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+
+
+def clean_text(text: str) -> str:
+    """Remove terminal control characters from a title.
+
+    Some recovered documents contain overstrike formatting: a glyph,
+    a backspace, then the same glyph again to simulate bold. Keeping
+    the backspace makes the YAML unparseable, and keeping both glyphs
+    doubles every letter. Collapse the pair first, then drop whatever
+    control characters remain.
+    """
+    text = re.sub(r"(.)\x08\1", r"\1", text)
+    return CONTROL_CHARS.sub("", text)
+
+
 def title_of(text: str, fallback: str) -> str:
+    text = clean_text(text)
     for line in text.splitlines():
         stripped = line.strip()
         if not stripped:
@@ -214,7 +231,8 @@ def iter_documents():
 
 
 def yaml_escape(text: str) -> str:
-    return '"' + str(text).replace("\\", "\\\\").replace('"', '\\"').replace("\n", " ") + '"'
+    text = clean_text(str(text))
+    return '"' + text.replace("\\", "\\\\").replace('"', '\\"').replace("\n", " ") + '"'
 
 
 def main() -> int:

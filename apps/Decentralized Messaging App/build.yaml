@@ -1,0 +1,109 @@
+# =============================================================================
+# BUILD MANIFEST - Decentralized Messaging App
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: decentralized-messaging-app
+  name: Decentralized Messaging App
+  kind: application
+  domain: messaging
+  description: >-
+    The messaging slice: encrypted message storage, membership and presence,
+    notifications, attachments, call signalling and signed federation
+    envelopes. It builds on the Agent-Bridge communication core concepts. The
+    transport is deliberately an interface, not a live relay or media plane,
+    and THREAT-MODEL.md records the assets, trust boundaries, controls and
+    residual risks. The product requirements are candidate scope; no WebRTC
+    media plane or live federation transport is claimed.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os, agent-bridge]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-29"
+  summary: >-
+    The messaging core is built and tested: AES-256-GCM encryption at rest,
+    membership checks, presence, notification fan-out, attachment metadata,
+    call signalling records, Ed25519-signed federation envelopes and an audit
+    trail. THREAT-MODEL.md records the assets, trust boundaries, controls and
+    residual risks, including key custody, replay, metadata leakage and the
+    absence of host authentication. There is no media plane, no live federation
+    transport and no messaging user interface.
+  evidence:
+    - "2026-10-29: node --test \"tests/*.test.ts\" in apps/Decentralized Messaging App -> 16 tests passed, 0 failed."
+    - "2026-10-29: the tests cover AES-256-GCM round trips, membership refusal, presence, notifications, attachments, call signals, Ed25519 envelope verification and tamper rejection."
+    - "2026-10-29: THREAT-MODEL.md records the transport decision (interfaces only) and fourteen threat/control pairs with residual-risk status."
+    - "2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 16 app slices."
+    - "2026-10-29: node apps/verify.mjs -> 16/16 slices passed."
+
+known_issues:
+  - id: MESSAGING-001
+    severity: high
+    summary: >-
+      There is no WebRTC media plane. Call records are signalling metadata, not
+      audio or video.
+    evidence: >-
+      The slice records call offers, answers and candidates; it does not
+      create peer connections or carry media.
+    status: OPEN
+  - id: MESSAGING-002
+    severity: medium
+    summary: >-
+      There is no live federation transport. Signed envelopes are constructed
+      and verified in-process; they are not delivered between hosts.
+    evidence: >-
+      The federation code exposes envelope creation and verification only; no
+      relay, server or socket transport exists.
+    status: OPEN
+  - id: MESSAGING-003
+    severity: medium
+    summary: >-
+      The messaging product requirements are candidate scope, not recovered
+      owner requirements.
+    evidence: >-
+      The project names in TODO-DMA-002 did not yield messaging requirements in
+      the local corpus; the slice follows the Agent-Bridge communication core.
+    status: OPEN
+    todo_ref: TODO-DMA-002
+
+notes:
+  - "The slice uses the shared app-kit accounts and hash-chained EventLedger."
+  - "THREAT-MODEL.md (2026-10-29) records the scope, transport decision and threat model required by TODO-DMA-001. It is a first version and must be revisited before any network transport is enabled."

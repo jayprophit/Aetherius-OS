@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/openclaw-models",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "OpenClaw model catalogue: local, free, paid, premium and other providers with env-reference auth, tier selections and config renderers.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "cli": "node src/cli.ts"
+  }
+}

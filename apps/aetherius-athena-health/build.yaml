@@ -1,0 +1,122 @@
+# =============================================================================
+# BUILD MANIFEST - Athena Health
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: aetherius-athena-health
+  name: Athena Health
+  kind: application
+  domain: health
+  description: >-
+    The Athena health and wellbeing product slice: an exercise library with
+    equipment and medical-flag filtering, workout-plan building, an activity log
+    with weekly load and streaks, weekly/monthly goals, deterministic recovery
+    readiness, a wellbeing journal and privacy consent/export/erase controls,
+    combined in one dashboard. It is a wellness tool, not a medical device.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-29"
+  summary: >-
+    The health and wellbeing core is built and tested: a seeded exercise
+    library with category, equipment, difficulty, search and medical-flag
+    filtering; validated custom exercises; plan building for strength,
+    endurance, mobility and general goals; an activity log with weekly load and
+    consecutive-day streaks; weekly/monthly goals; a deterministic recovery
+    readiness band; a wellbeing journal with averages and trend; consent that
+    defaults to off and gates research/cloud/export; and a dashboard that
+    combines them. Every mutation is recorded on the hash-chained EventLedger.
+    The readiness score is a transparent heuristic, not a clinical assessment.
+    There is no user interface, wearable integration, clinician review or
+    encrypted storage.
+  evidence:
+    - "2026-10-29: node --test \"tests/*.test.ts\" in apps/aetherius-athena-health -> 12 tests passed, 0 failed."
+    - "2026-10-29: the tests cover library filtering and medical flags, custom-exercise validation, plan mixes, activity summaries and streaks, goal windows, readiness bands, journal averages, consent dependencies, export/erase and dashboard composition."
+    - "2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 16 app slices."
+    - "2026-10-29: node apps/verify.mjs -> 16/16 slices passed."
+
+known_issues:
+  - id: ATHENA-HEALTH-001
+    severity: high
+    summary: >-
+      This is a wellness tool, not a medical device or a clinical decision
+      system. The readiness score and plan suggestions are heuristics and must
+      not be presented as diagnosis or treatment.
+    evidence: >-
+      HEALTH_DISCLAIMER is attached to plans and the dashboard. Readiness is a
+      fixed scoring rule over sleep, soreness, resting heart rate and stress;
+      there is no clinician, validated instrument or regulatory clearance.
+    status: ACCEPTED
+  - id: ATHENA-HEALTH-002
+    severity: high
+    summary: >-
+      There is no user interface, host mount or wearable/device integration.
+      Activity must be entered by a caller.
+    evidence: >-
+      apps/aetherius-athena-health contains a domain core and tests only; there
+      is no route, screen, HealthKit/Google Fit adapter or device sync.
+    status: OPEN
+  - id: ATHENA-HEALTH-003
+    severity: high
+    summary: >-
+      Privacy controls are an in-process model. Data is not encrypted at rest,
+      and export/erase operate on caller-supplied data rather than a durable
+      store.
+    evidence: >-
+      HealthPrivacy records consent and access actions and exports caller data;
+      there is no database, key management, encryption layer or secure deletion.
+    status: OPEN
+  - id: ATHENA-HEALTH-004
+    severity: medium
+    summary: >-
+      The exercise catalogue is a small generic seed. It is not a complete
+      exercise database and has not been reviewed by a qualified trainer or
+      physiotherapist.
+    evidence: >-
+      The library seeds a dozen exercises across five categories with
+      contraindication flags; there is no external catalogue import or clinical
+      review record.
+    status: OPEN
+
+notes:
+  - "The owner described Athena as an exercise, health and wellbeing app. apps/Athena remains the separate shared intelligence runtime used by the quantum assistant; this slice is the health product surface. Food Wiki exposes Athena ToolDefinitions, but a live host integration is not built."

@@ -141,6 +141,18 @@ PROJECTS: list[dict] = [
     {"id": "PRJ-AI-DIGITAL-TWIN", "registry_id": "ai-digital-twin", "name": "ai-digital-clone",
      "family": ["intelligence", "local_services"], "role": "predecessor",
      "path": r"E:\external drive\AI Digital Twin\ai-digital-clone"},
+    {"id": "PRJ-AETHERIUS-STORE", "registry_id": "aetherius-store", "name": "Aetherius Store",
+     "family": ["apps", "platform"], "role": "first_party",
+     "path": str(REPO_ROOT / "apps" / "aetherius-store")},
+    {"id": "PRJ-AETHERIUS-DESKTOP", "registry_id": "aetherius-desktop", "name": "Aetherius Desktop",
+     "family": ["platform", "apps"], "role": "first_party",
+     "path": str(REPO_ROOT / "apps" / "aetherius-desktop")},
+    {"id": "PRJ-AETHERIUS-APP-SUITE", "registry_id": "aetherius-app-suite", "name": "Aetherius App Suite",
+     "family": ["apps"], "role": "first_party",
+     "path": str(REPO_ROOT / "apps" / "aetherius-app-suite")},
+    {"id": "PRJ-ATHENA-HEALTH", "registry_id": "aetherius-athena-health", "name": "Athena Health",
+     "family": ["apps", "knowledge"], "role": "first_party",
+     "path": str(REPO_ROOT / "apps" / "aetherius-athena-health")},
 ]
 
 PROJECTS_BY_ID = {p["id"]: p for p in PROJECTS}

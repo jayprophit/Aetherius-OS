@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/health-library",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS Health Library vertical slice: cited frequency-list ingest, search, provenance and duplicate-dataset detection.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

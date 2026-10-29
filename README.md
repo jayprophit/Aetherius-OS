@@ -1,5 +1,25 @@
 # AI Productivity Platform - Comprehensive Documentation v2.0
 
+> **Status: historical design document, not a build claim.**
+>
+> This README describes an early, aspirational vision. It is retained for
+> history. It is **not** the current status of Aetherius OS, and the claims in
+> it (120+ tools, quantum computing, blockchain, a production platform) are not
+> supported by the current build evidence.
+>
+> The current status is recorded in:
+>
+> - `docs/PROMPT-AND-GAP-AUDIT-2026-10-29.md` — what was asked, what exists,
+>   what does not, and the new gaps.
+> - `docs/BUILD-MANIFEST-REGISTRY.yaml` — the build manifest of every project.
+> - `docs/PROJECT-TODOS.yaml` — the curated TODO list.
+>
+> The tested core is 16 dependency-free TypeScript app slices, a host-neutral
+> cross-platform runtime, a policy/orchestration bridge and a set of domain
+> libraries. There is no bootable Aetherius OS image, native app shell, signed
+> installer, live exchange adapter or live browser driver. Do not quote this
+> historical README as proof of completion.
+
 ## Project Overview
 
 ### Purpose

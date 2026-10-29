@@ -20,8 +20,11 @@ project:
     A host-neutral cross-platform runtime library: a cooperative scheduler and
     lifecycle core, a dependency-aware module system, capability isolation, a
     workspace layout model, an extension registry, layered configuration,
-    telemetry and release packaging, with a CLI. It is a runtime library, not
-    an operating-system kernel and not a native windowing toolkit.
+    telemetry and release packaging, with a CLI. It also provides the
+    host-neutral Genesis bridge: capability grants, scoped file access,
+    paginated browser automation, front-to-back app control, input/screen
+    capture and a redacting hash-chained audit journal. It is a runtime
+    library, not an operating-system kernel and not a native windowing toolkit.
   repository: false
   languages: [typescript]
 
@@ -59,19 +62,25 @@ dependencies:
 
 status:
   state: PARTIAL
-  last_verified: "2026-10-27"
+  last_verified: "2026-10-29"
   summary: >-
     The cross-platform runtime slice is built and tested. It implements the
     twelve capabilities the programme measured as missing: PLT-001..PLT-008
     (kernel, modules, isolation, workspace shell, extensions, configuration,
     observability, packaging) and TLS-001..TLS-004 (CLI, flags, structured
-    output, tests). It is a host-neutral library: there is no native or web
-    renderer, installer or signed release yet.
+    output, tests). It also implements the Genesis bridge policy layer:
+    nine explicit capabilities, scoped file roots, exact/wildcard browser
+    hosts, app allowlists, expiring grants, bounded pagination and crawling,
+    front-to-back app command sequences, pointer/keyboard/screen limits and a
+    redacting hash-chained audit journal. It is a host-neutral library: hosts
+    must supply the filesystem, browser, app, screen and input ports. There is
+    no native or web renderer, live browser driver, installer or signed
+    release yet.
   evidence:
-    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/aetherius-crossplatform -> 15 tests passed, 0 failed."
-    - "2026-10-27: the tests cover scheduler priority and ordering, dependency cycles and rollback, capability denial, workspace persistence, extension contribution and withdrawal, configuration precedence, telemetry, packaging and the CLI."
-    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
-    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+    - "2026-10-29: node --test \"tests/*.test.ts\" in apps/aetherius-crossplatform -> 32 tests passed, 0 failed (17 bridge tests plus 15 platform/CLI tests)."
+    - "2026-10-29: the bridge tests cover grant normalisation and expiry, path traversal, file read/write/search limits, wildcard host scoping, redirect refusal, page-size limits, next/previous/numbered pagination, crawl limits and cycles, app launch/invoke/front-to-back failure, input bounds, screen capture, secret redaction and ledger verification."
+    - "2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 16 app slices."
+    - "2026-10-29: node apps/verify.mjs -> 16/16 slices passed."
 
 known_issues:
   - id: CROSSPLATFORM-001
@@ -101,6 +110,27 @@ known_issues:
       RuntimeKernel is a cooperative in-process scheduler; it has no syscalls,
       bootloader, memory manager or hardware drivers.
     status: ACCEPTED
+  - id: CROSSPLATFORM-004
+    severity: high
+    summary: >-
+      The Genesis bridge is a policy and orchestration layer only. It ships no
+      live browser driver, screen-capture implementation or OS-level input
+      injector; a host must supply every port.
+    evidence: >-
+      GenesisBridge requires caller-supplied FileSystemPort, BrowserPort,
+      AppControlPort, ScreenPort and InputPort implementations. The tests use
+      in-memory ports, so live automation is not claimed.
+    status: OPEN
+  - id: CROSSPLATFORM-005
+    severity: medium
+    summary: >-
+      Browser pagination is a bounded anchor extractor, not a JavaScript DOM
+      renderer. Pages that build pagination client-side or behind authentication
+      are not reachable without a host driver.
+    evidence: >-
+      extractPagination scans anchor tags for rel=next/prev and numeric labels;
+      it does not execute scripts, solve challenges or maintain cookies.
+    status: OPEN
 
 notes:
   - "Supersedes the README-and-licence-only ecosystem/crossplatform---multiplatform folder."

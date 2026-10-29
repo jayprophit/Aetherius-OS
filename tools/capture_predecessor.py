@@ -382,6 +382,21 @@ def main() -> int:
             print(f"  the tree is clean: {entry['secret_scan']['tree']['clean']}  "
                   f"the history is clean: {entry['secret_scan']['history']['clean']}")
 
+    # A capture run must not erase the evidence of an earlier run. Keep
+    # every capture that is already recorded and replace only the
+    # repositories captured again in this run.
+    out_path = Path(args.out)
+    existing: list[dict] = []
+    if out_path.is_file():
+        try:
+            previous = yaml.safe_load(out_path.read_text(encoding="utf-8")) or {}
+            existing = list(previous.get("captures") or [])
+        except Exception:  # noqa: BLE001
+            existing = []
+    captured_names = {entry["source_repo"] for entry in entries}
+    merged = [entry for entry in existing
+              if entry.get("source_repo") not in captured_names] + entries
+
     doc = {
         "schema_version": 1,
         "source_date": date.today().isoformat(),
@@ -394,10 +409,12 @@ def main() -> int:
             "A backup that has never been restored is a hope, so the restore drill "
             "is a result and not a claim.",
             "The tool writes the manifest. It never deletes anything.",
+            "Captures are cumulative: a later run adds to the registry rather than "
+            "replacing the evidence of an earlier one.",
         ],
-        "captures": entries,
+        "captures": merged,
     }
-    Path(args.out).write_text(
+    out_path.write_text(
         yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=100),
         encoding="utf-8")
     print(f"wrote {args.out}")

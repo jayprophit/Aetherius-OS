@@ -1,0 +1,104 @@
+# =============================================================================
+# BUILD MANIFEST - Athena
+# =============================================================================
+# Authoritative record of how this project is built, tested and verified, and
+# of what is still broken. Read by Aetherius-OS's build manifest registry
+# (docs/BUILD-MANIFEST-REGISTRY.yaml) and validated by
+# src/programme/buildManifest.ts.
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: athena
+  name: Athena
+  kind: application
+  domain: ai
+  description: >-
+    Athena, the shared intelligence runtime: model routing, tool registration
+    and execution, planning, working and long-term memory, delegation, durable
+    tasks, evaluation and a local-model contract. The owner's original Athena
+    requirements live in a ChatGPT project that is not in the local corpus, so
+    this is candidate scope.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping; there is no build step
+    - name: typescript
+      version: "~5.8.2"
+      required: false
+      purpose: typecheck only, provided by the Aetherius-OS root devDependencies
+
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: typecheck
+    command: npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+  - name: verify
+    command: node --test "tests/*.test.ts" && npx tsc -p ../tsconfig.json --noEmit
+    working_directory: .
+    timeout_minutes: 10
+    requires: [test, typecheck]
+
+dependencies:
+  projects: [aetherius-os, agent-bridge]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-27"
+  summary: >-
+    The intelligence runtime is built and tested: deterministic model routing,
+    a tool registry with permission checks, planning, bounded working memory,
+    long-term memory retrieval, delegation, durable task checkpoints,
+    evaluation and a local-model contract. It is not connected to a hosted
+    model provider and has no user interface. The original Athena requirements
+    have not been recovered.
+  evidence:
+    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/Athena -> 11 tests passed, 0 failed."
+    - "2026-10-27: the tests cover INT-001..INT-010, including a task that resumes in a new service instance."
+    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
+    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+
+known_issues:
+  - id: ATHENA-001
+    severity: high
+    summary: >-
+      The original Athena requirements are not recovered. The implemented
+      capability set is candidate scope derived from the programme's capability
+      list, not the owner's confirmed Athena specification.
+    evidence: >-
+      TODO-ATH-002 records that the requirements live in the ChatGPT project
+      "Athena Project Requirements"; a local corpus search found only generic
+      Athena mentions.
+    status: OPEN
+    todo_ref: TODO-ATH-002
+  - id: ATHENA-002
+    severity: medium
+    summary: >-
+      No hosted model provider is connected. The local-model contract is
+      exercised with a deterministic stub in the tests.
+    evidence: >-
+      apps/Athena defines the provider interface and routing but contains no
+      network client or credential flow.
+    status: OPEN
+  - id: ATHENA-003
+    severity: medium
+    summary: >-
+      The Athena user interface and host application mount are not built.
+    evidence: >-
+      The slice is a service library with tests; there is no route or screen.
+    status: OPEN
+
+notes:
+  - "The runtime is reused by the quantum assistant slice."

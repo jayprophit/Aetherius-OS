@@ -1,0 +1,10 @@
+{
+  "name": "@aetherius/athena",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius OS Athena intelligence slice: provider routing, tools, planning, memory, coordination, authority, durable state, evaluation and local-model contracts.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\""
+  }
+}

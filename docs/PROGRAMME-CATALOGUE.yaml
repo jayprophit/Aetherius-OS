@@ -1,5 +1,5 @@
 schema_version: 1
-source_date: 2026-10-21
+source_date: 2026-10-29
 generated_by: tools/generate_programme_registers.py
 notes:
   - "Every first-party project the owner holds, in every place they hold one."
@@ -24,23 +24,45 @@ projects:
         pushed_at: "2026-10-20T13:47:43Z"
     state: PRESENT
     measured:
-      own_lines: 138668
-      own_source_files: 655
-      test_files: 110
-      test_line_fraction: 0.182
+      own_lines: 162985
+      own_source_files: 725
+      test_files: 128
+      test_line_fraction: 0.187
       primary_language: typescript
       licence: LICENSE
       manifests:
         - build.yaml
         - package.json
         - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
+        - package.json
+        - build.yaml
+        - package.json
+        - build.yaml
+        - package.json
         - build.yaml
         - build.yaml
+        - package.json
         - build.yaml
-        - build.yaml
-        - build.yaml
-        - build.yaml
-        - build.yaml
+        - package.json
         - package.json
         - requirements.txt
         - package.json
@@ -61,7 +83,7 @@ projects:
         - build.yaml
         - package.json
         - build.yaml
-      has_ci: false
+      has_ci: true
       has_docker: true
       secret_literal_files: []
     capabilities:
@@ -86,10 +108,10 @@ projects:
         pushed_at: "2026-10-20T13:03:25Z"
     state: PRESENT
     measured:
-      own_lines: 58008
-      own_source_files: 377
-      test_files: 38
-      test_line_fraction: 0.136
+      own_lines: 64054
+      own_source_files: 394
+      test_files: 44
+      test_line_fraction: 0.159
       primary_language: typescript
       licence: LICENSE
       manifests:
@@ -123,10 +145,10 @@ projects:
         pushed_at: "2026-10-20T12:39:58Z"
     state: PRESENT
     measured:
-      own_lines: 145743
-      own_source_files: 672
-      test_files: 217
-      test_line_fraction: 0.277
+      own_lines: 154888
+      own_source_files: 700
+      test_files: 231
+      test_line_fraction: 0.284
       primary_language: python
       licence: null
       manifests:
@@ -247,17 +269,17 @@ projects:
         pushed_at: "2026-10-20T12:40:18Z"
     state: PRESENT
     measured:
-      own_lines: 35638
-      own_source_files: 172
-      test_files: 43
-      test_line_fraction: 0.224
+      own_lines: 36201
+      own_source_files: 175
+      test_files: 44
+      test_line_fraction: 0.228
       primary_language: python
       licence: null
       manifests:
         - build.yaml
         - package.json
         - package.json
-      has_ci: false
+      has_ci: true
       has_docker: false
       secret_literal_files: []
     capabilities:
@@ -282,10 +304,10 @@ projects:
         pushed_at: "2026-10-20T12:40:01Z"
     state: PRESENT
     measured:
-      own_lines: 65995
-      own_source_files: 465
+      own_lines: 64090
+      own_source_files: 461
       test_files: 51
-      test_line_fraction: 0.118
+      test_line_fraction: 0.121
       primary_language: typescript
       licence: null
       manifests:
@@ -354,10 +376,10 @@ projects:
         pushed_at: "2026-10-20T12:31:58Z"
     state: PRESENT
     measured:
-      own_lines: 26740
-      own_source_files: 286
-      test_files: 67
-      test_line_fraction: 0.235
+      own_lines: 27862
+      own_source_files: 292
+      test_files: 71
+      test_line_fraction: 0.255
       primary_language: javascript
       licence: null
       manifests:
@@ -451,14 +473,14 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\books\\Architecture of Shadows Book"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
+      own_lines: 84
+      own_source_files: 1
       test_files: 0
       test_line_fraction: 0.0
-      primary_language: null
-      licence: null
+      primary_language: javascript
+      licence: LICENSE
       manifests:
         - build.yaml
       has_ci: false
@@ -466,17 +488,11 @@ projects:
       secret_literal_files: []
     capabilities:
       checked: 7
-      present: 0
-      missing: 7
+      present: 5
+      missing: 2
     gaps:
-      - PRJ-ARCH-SHADOWS-GAP-001
-      - PRJ-ARCH-SHADOWS-CAP-KNW-001
       - PRJ-ARCH-SHADOWS-CAP-KNW-002
       - PRJ-ARCH-SHADOWS-CAP-KNW-003
-      - PRJ-ARCH-SHADOWS-CAP-KNW-004
-      - PRJ-ARCH-SHADOWS-CAP-KNW-005
-      - PRJ-ARCH-SHADOWS-CAP-KNW-006
-      - PRJ-ARCH-SHADOWS-CAP-KNW-007
   - id: PRJ-ATHENA
     name: Athena
     family:
@@ -485,35 +501,25 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Athena"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0.0
-      primary_language: null
+      own_lines: 840
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.256
+      primary_language: typescript
       licence: null
       manifests:
         - build.yaml
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 10
-      present: 0
-      missing: 10
-    gaps:
-      - PRJ-ATHENA-GAP-001
-      - PRJ-ATHENA-CAP-INT-001
-      - PRJ-ATHENA-CAP-INT-002
-      - PRJ-ATHENA-CAP-INT-003
-      - PRJ-ATHENA-CAP-INT-004
-      - PRJ-ATHENA-CAP-INT-005
-      - PRJ-ATHENA-CAP-INT-006
-      - PRJ-ATHENA-CAP-INT-007
-      - PRJ-ATHENA-CAP-INT-008
-      - PRJ-ATHENA-CAP-INT-009
-      - PRJ-ATHENA-CAP-INT-010
+      present: 10
+      missing: 0
+    gaps: []
   - id: PRJ-DECENTRALIZED-MESSAGING
     name: Decentralized Messaging App
     family:
@@ -522,34 +528,25 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Decentralized Messaging App"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0.0
-      primary_language: null
+      own_lines: 887
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.251
+      primary_language: typescript
       licence: null
       manifests:
         - build.yaml
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 9
-      present: 0
-      missing: 9
-    gaps:
-      - PRJ-DECENTRALIZED-MESSAGING-GAP-001
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-101
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-102
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-103
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-104
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-105
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-106
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-107
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-108
-      - PRJ-DECENTRALIZED-MESSAGING-CAP-COM-109
+      present: 9
+      missing: 0
+    gaps: []
   - id: PRJ-FOOD-WIKI
     name: Food Wiki App
     family:
@@ -558,41 +555,29 @@ projects:
     role: first_party
     locations:
       - kind: absorbed
-        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Food Wiki App"
-    state: EMPTY
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-food-wiki"
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0.0
-      primary_language: null
+      own_lines: 2245
+      own_source_files: 4
+      test_files: 2
+      test_line_fraction: 0.331
+      primary_language: typescript
       licence: null
       manifests:
         - build.yaml
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 15
-      present: 0
-      missing: 15
+      present: 13
+      missing: 2
     gaps:
-      - PRJ-FOOD-WIKI-GAP-001
-      - PRJ-FOOD-WIKI-CAP-KNW-001
-      - PRJ-FOOD-WIKI-CAP-KNW-002
-      - PRJ-FOOD-WIKI-CAP-KNW-003
-      - PRJ-FOOD-WIKI-CAP-KNW-004
-      - PRJ-FOOD-WIKI-CAP-KNW-005
-      - PRJ-FOOD-WIKI-CAP-KNW-006
-      - PRJ-FOOD-WIKI-CAP-KNW-007
-      - PRJ-FOOD-WIKI-CAP-APP-001
-      - PRJ-FOOD-WIKI-CAP-APP-002
-      - PRJ-FOOD-WIKI-CAP-APP-003
+      - PRJ-FOOD-WIKI-GAP-004
       - PRJ-FOOD-WIKI-CAP-APP-004
-      - PRJ-FOOD-WIKI-CAP-APP-005
-      - PRJ-FOOD-WIKI-CAP-APP-006
       - PRJ-FOOD-WIKI-CAP-APP-007
-      - PRJ-FOOD-WIKI-CAP-APP-008
   - id: PRJ-HERMES-AUDIT
     name: Hermes-Config-Audit
     family:
@@ -775,10 +760,10 @@ projects:
         pushed_at: "2026-09-19T10:52:38Z"
     state: PRESENT
     measured:
-      own_lines: 27626
+      own_lines: 27720
       own_source_files: 153
       test_files: 21
-      test_line_fraction: 0.036
+      test_line_fraction: 0.04
       primary_language: javascript
       licence: null
       manifests:
@@ -1084,44 +1069,33 @@ projects:
     role: first_party
     locations:
       - kind: absorbed
-        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\ecosystem\\crossplatform---multiplatform"
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-crossplatform"
       - kind: github
         path: jayprophit/Crossplatform---multiplatform
         url: "https://github.com/jayprophit/Crossplatform---multiplatform"
         fork: false
         private: false
         pushed_at: "2024-12-19T21:42:22Z"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0.0
-      primary_language: null
-      licence: LICENSE
+      own_lines: 3656
+      own_source_files: 5
+      test_files: 2
+      test_line_fraction: 0.351
+      primary_language: typescript
+      licence: null
       manifests:
         - build.yaml
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 12
-      present: 0
-      missing: 12
+      present: 12
+      missing: 0
     gaps:
-      - PRJ-CROSSPLATFORM-GAP-001
-      - PRJ-CROSSPLATFORM-CAP-TLS-001
-      - PRJ-CROSSPLATFORM-CAP-TLS-002
-      - PRJ-CROSSPLATFORM-CAP-TLS-003
-      - PRJ-CROSSPLATFORM-CAP-TLS-004
-      - PRJ-CROSSPLATFORM-CAP-PLT-001
-      - PRJ-CROSSPLATFORM-CAP-PLT-002
-      - PRJ-CROSSPLATFORM-CAP-PLT-003
-      - PRJ-CROSSPLATFORM-CAP-PLT-004
-      - PRJ-CROSSPLATFORM-CAP-PLT-005
-      - PRJ-CROSSPLATFORM-CAP-PLT-006
-      - PRJ-CROSSPLATFORM-CAP-PLT-007
-      - PRJ-CROSSPLATFORM-CAP-PLT-008
+      - PRJ-CROSSPLATFORM-GAP-004
   - id: PRJ-VIRTUAL-ASSISTANT
     name: VirtualAssistant
     family:
@@ -1185,47 +1159,32 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\sovereign-financial-os"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0.0
-      primary_language: null
+      own_lines: 1065
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.294
+      primary_language: typescript
       licence: null
       manifests:
         - build.yaml
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 26
-      present: 0
-      missing: 26
+      present: 15
+      missing: 11
     gaps:
-      - PRJ-SOVEREIGN-FINANCIAL-OS-GAP-001
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-001
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-002
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-003
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-004
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-005
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-006
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-007
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-008
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-FIN-009
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-001
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-002
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-003
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-004
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-005
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-006
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-007
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-BC-008
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-001
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-002
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-003
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-004
-      - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-005
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-006
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-007
       - PRJ-SOVEREIGN-FINANCIAL-OS-CAP-DB-008
@@ -1328,35 +1287,30 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\quantum-ai-assistant"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0.0
-      primary_language: null
+      own_lines: 442
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.253
+      primary_language: typescript
       licence: null
       manifests:
         - build.yaml
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 10
-      present: 0
-      missing: 10
+      present: 5
+      missing: 5
     gaps:
-      - PRJ-QUANTUM-AI-ASSISTANT-GAP-001
-      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-001
-      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-002
-      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-003
       - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-004
       - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-005
       - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-006
       - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-007
-      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-008
       - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-009
-      - PRJ-QUANTUM-AI-ASSISTANT-CAP-INT-010
   - id: PRJ-HEALTH-LIBRARY
     name: aetherius-health-library
     family:
@@ -1365,32 +1319,26 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-health-library"
-    state: EMPTY
+    state: PRESENT
     measured:
-      own_lines: 0
-      own_source_files: 0
-      test_files: 0
-      test_line_fraction: 0.0
-      primary_language: null
+      own_lines: 460
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.248
+      primary_language: typescript
       licence: null
       manifests:
         - build.yaml
+        - package.json
       has_ci: false
       has_docker: false
       secret_literal_files: []
     capabilities:
       checked: 7
-      present: 0
-      missing: 7
+      present: 6
+      missing: 1
     gaps:
-      - PRJ-HEALTH-LIBRARY-GAP-001
-      - PRJ-HEALTH-LIBRARY-CAP-KNW-001
-      - PRJ-HEALTH-LIBRARY-CAP-KNW-002
       - PRJ-HEALTH-LIBRARY-CAP-KNW-003
-      - PRJ-HEALTH-LIBRARY-CAP-KNW-004
-      - PRJ-HEALTH-LIBRARY-CAP-KNW-005
-      - PRJ-HEALTH-LIBRARY-CAP-KNW-006
-      - PRJ-HEALTH-LIBRARY-CAP-KNW-007
   - id: PRJ-WORLDCASS-PROTO
     name: aetherius-os-worldclass-prototype
     family:
@@ -1480,16 +1428,17 @@ projects:
     locations:
       - kind: absorbed
         path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\Multi-Cross-Platform-Trading-Bot"
-    state: SECRET_EXPOSED
+    state: PRESENT
     measured:
-      own_lines: 1755
-      own_source_files: 26
-      test_files: 1
-      test_line_fraction: 0.005
+      own_lines: 3453
+      own_source_files: 30
+      test_files: 3
+      test_line_fraction: 0.173
       primary_language: python
       licence: LICENSE
       manifests:
         - build.yaml
+        - package.json
         - docker-compose.yml
         - package.json
         - package.json
@@ -1497,17 +1446,12 @@ projects:
         - package.json
       has_ci: false
       has_docker: true
-      secret_literal_files:
-        - production/AI-Voice-assistant/assistant.py
-        - production/Facial_Authentication/backend/app.js
+      secret_literal_files: []
     capabilities:
       checked: 9
-      present: 6
-      missing: 3
+      present: 8
+      missing: 1
     gaps:
-      - PRJ-TRADING-BOT-GAP-003
-      - PRJ-TRADING-BOT-CAP-FIN-001
-      - PRJ-TRADING-BOT-CAP-FIN-003
       - PRJ-TRADING-BOT-CAP-FIN-006
   - id: PRJ-AI-DIGITAL-TWIN
     name: ai-digital-clone
@@ -1545,3 +1489,147 @@ projects:
     gaps:
       - PRJ-AI-DIGITAL-TWIN-GAP-003
       - PRJ-AI-DIGITAL-TWIN-GAP-004
+  - id: PRJ-AETHERIUS-STORE
+    name: Aetherius Store
+    family:
+      - apps
+      - platform
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-store"
+    state: PRESENT
+    measured:
+      own_lines: 908
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.269
+      primary_language: typescript
+      licence: null
+      manifests:
+        - build.yaml
+        - package.json
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 16
+      present: 4
+      missing: 12
+    gaps:
+      - PRJ-AETHERIUS-STORE-CAP-APP-001
+      - PRJ-AETHERIUS-STORE-CAP-APP-003
+      - PRJ-AETHERIUS-STORE-CAP-APP-004
+      - PRJ-AETHERIUS-STORE-CAP-APP-005
+      - PRJ-AETHERIUS-STORE-CAP-APP-006
+      - PRJ-AETHERIUS-STORE-CAP-APP-007
+      - PRJ-AETHERIUS-STORE-CAP-PLT-001
+      - PRJ-AETHERIUS-STORE-CAP-PLT-002
+      - PRJ-AETHERIUS-STORE-CAP-PLT-003
+      - PRJ-AETHERIUS-STORE-CAP-PLT-004
+      - PRJ-AETHERIUS-STORE-CAP-PLT-005
+      - PRJ-AETHERIUS-STORE-CAP-PLT-006
+  - id: PRJ-AETHERIUS-DESKTOP
+    name: Aetherius Desktop
+    family:
+      - platform
+      - apps
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-desktop"
+    state: PRESENT
+    measured:
+      own_lines: 1088
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.256
+      primary_language: typescript
+      licence: null
+      manifests:
+        - build.yaml
+        - package.json
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 16
+      present: 9
+      missing: 7
+    gaps:
+      - PRJ-AETHERIUS-DESKTOP-CAP-PLT-001
+      - PRJ-AETHERIUS-DESKTOP-CAP-PLT-003
+      - PRJ-AETHERIUS-DESKTOP-CAP-PLT-004
+      - PRJ-AETHERIUS-DESKTOP-CAP-PLT-007
+      - PRJ-AETHERIUS-DESKTOP-CAP-APP-003
+      - PRJ-AETHERIUS-DESKTOP-CAP-APP-004
+      - PRJ-AETHERIUS-DESKTOP-CAP-APP-007
+  - id: PRJ-AETHERIUS-APP-SUITE
+    name: Aetherius App Suite
+    family:
+      - apps
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-app-suite"
+    state: PRESENT
+    measured:
+      own_lines: 1867
+      own_source_files: 8
+      test_files: 1
+      test_line_fraction: 0.221
+      primary_language: typescript
+      licence: null
+      manifests:
+        - build.yaml
+        - package.json
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 8
+      present: 3
+      missing: 5
+    gaps:
+      - PRJ-AETHERIUS-APP-SUITE-CAP-APP-002
+      - PRJ-AETHERIUS-APP-SUITE-CAP-APP-003
+      - PRJ-AETHERIUS-APP-SUITE-CAP-APP-004
+      - PRJ-AETHERIUS-APP-SUITE-CAP-APP-005
+      - PRJ-AETHERIUS-APP-SUITE-CAP-APP-008
+  - id: PRJ-ATHENA-HEALTH
+    name: Athena Health
+    family:
+      - apps
+      - knowledge
+    role: first_party
+    locations:
+      - kind: absorbed
+        path: "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS\\apps\\aetherius-athena-health"
+    state: PRESENT
+    measured:
+      own_lines: 1515
+      own_source_files: 2
+      test_files: 1
+      test_line_fraction: 0.296
+      primary_language: typescript
+      licence: null
+      manifests:
+        - build.yaml
+        - package.json
+      has_ci: false
+      has_docker: false
+      secret_literal_files: []
+    capabilities:
+      checked: 15
+      present: 6
+      missing: 9
+    gaps:
+      - PRJ-ATHENA-HEALTH-CAP-APP-001
+      - PRJ-ATHENA-HEALTH-CAP-APP-002
+      - PRJ-ATHENA-HEALTH-CAP-APP-004
+      - PRJ-ATHENA-HEALTH-CAP-APP-005
+      - PRJ-ATHENA-HEALTH-CAP-APP-006
+      - PRJ-ATHENA-HEALTH-CAP-APP-007
+      - PRJ-ATHENA-HEALTH-CAP-APP-008
+      - PRJ-ATHENA-HEALTH-CAP-KNW-003
+      - PRJ-ATHENA-HEALTH-CAP-KNW-005

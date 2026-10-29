@@ -27,7 +27,17 @@
     "Multi-Cross-Platform-Trading-Bot/src",
     "Multi-Cross-Platform-Trading-Bot/tests",
     "aetherius-crossplatform/src",
-    "aetherius-crossplatform/tests"
+    "aetherius-crossplatform/tests",
+    "aetherius-store/src",
+    "aetherius-store/tests",
+    "aetherius-desktop/src",
+    "aetherius-desktop/tests",
+    "aetherius-app-suite/src",
+    "aetherius-app-suite/tests",
+    "aetherius-athena-health/src",
+    "aetherius-athena-health/tests",
+    "openclaw-models/src",
+    "openclaw-models/tests"
   ],
   "exclude": ["**/node_modules", "**/dist"]
 }

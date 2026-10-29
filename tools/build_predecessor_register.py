@@ -23,7 +23,9 @@ not complete.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import os
 import subprocess
 import sys
 from datetime import date
@@ -107,6 +109,7 @@ def gh_json(path: str):
 PREDECESSORS = [
     {
         "source_repo": "jayprophit/aetherial-platform",
+        "local_path": r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\ecosystem\aetherial-platform",
         "relation": "CONFIRMED_PREDECESSOR",
         "confirmed_by": "OWNER",
         "primary_target": "Aetherius-OS",
@@ -125,17 +128,19 @@ PREDECESSORS = [
     },
     {
         "source_repo": "jayprophit/Aetherial",
-        "relation": "PROBABLE_PREDECESSOR",
-        "confirmed_by": "",
+        "local_path": r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\predecessors\Aetherial",
+        "relation": "CONFIRMED_PREDECESSOR",
+        "confirmed_by": "OWNER",
+        "content_classification": "SOURCE_BEARING",
         "primary_target": "Aetherius-OS",
         "secondary_targets": [],
         "state": "IDENTIFIED",
         "note": (
             "Archived with an ABSORBED.md notice, which is a claim and not "
-            "proof of incorporation. Its manifest says about 276,820 source "
-            "lines and zero test files, and its licence is GPLv3, so it "
-            "cannot be integrated into a proprietary product without rights "
-            "clearance. The absorption claim is unverified."
+            "proof of incorporation. Its tree holds 1,079 source files and "
+            "275,741 source lines with zero test files, and its licence is "
+            "GPLv3, so it cannot be integrated into a proprietary product "
+            "without rights clearance. The absorption claim is unverified."
         ),
         "licence_classification": "REVIEW_REQUIRED",
         "security_historical_secret_exposure": "UNKNOWN",
@@ -143,28 +148,114 @@ PREDECESSORS = [
     },
     {
         "source_repo": "jayprophit/aetherium",
-        "relation": "PROBABLE_PREDECESSOR",
-        "confirmed_by": "",
+        "local_path": r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\predecessors\aetherium",
+        "relation": "CONFIRMED_PREDECESSOR",
+        "confirmed_by": "OWNER",
+        "content_classification": "SOURCE_BEARING",
         "primary_target": "Aetherius-OS",
         "secondary_targets": ["Agent-Bridge", "Genesis", "IDE-Workspace"],
         "state": "IDENTIFIED",
         "note": (
-            "Archived with an ABSORBED.md notice, MIT licence, and source, "
-            "configuration, scripts and knowledge assets visible. Its "
+            "Archived with an ABSORBED.md notice, MIT licence, and 423 source "
+            "files totalling 118,149 source lines with 13 test files. Its "
             "manifest paradoxically says NOT_STARTED and zero source lines, "
             "which contradicts the tree, so the inventory and the manifest "
             "have to be reconciled before the absorption claim is checked. "
             "The claim is unverified."
         ),
+        "licence_classification": "MIT",
+        "security_historical_secret_exposure": "UNKNOWN",
+        "owner_rotation_status": "UNKNOWN",
+    },
+    {
+        "source_repo": "jayprophit/Veyra",
+        "local_path": r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\predecessors\Veyra",
+        "relation": "CONFIRMED_PREDECESSOR",
+        "confirmed_by": "OWNER",
+        "content_classification": "SOURCE_BEARING",
+        "primary_target": "Aetherius-OS",
+        "secondary_targets": [],
+        "state": "IDENTIFIED",
+        "note": (
+            "Archived, MIT licence, 1,532 source files totalling 278,589 "
+            "source lines with 45 test files. It carries an ABSORBED.md "
+            "notice, which is a claim and not proof of incorporation. No "
+            "capability mapping exists yet, so the relation remains probable."
+        ),
+        "licence_classification": "MIT",
+        "security_historical_secret_exposure": "UNKNOWN",
+        "owner_rotation_status": "UNKNOWN",
+    },
+    {
+        "source_repo": "jayprophit/QVA-merged",
+        "local_path": r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\predecessors\QVA-merged",
+        "relation": "CONFIRMED_PREDECESSOR",
+        "confirmed_by": "OWNER",
+        "content_classification": "SOURCE_BEARING",
+        "primary_target": "Aetherius-OS",
+        "secondary_targets": [],
+        "state": "IDENTIFIED",
+        "note": (
+            "Archived, no licence file, 21 source files totalling 3,040 "
+            "source lines with zero test files. It carries an ABSORBED.md "
+            "notice. Without a licence, reuse needs the owner's rights "
+            "decision before any code is adopted."
+        ),
         "licence_classification": "REVIEW_REQUIRED",
+        "security_historical_secret_exposure": "UNKNOWN",
+        "owner_rotation_status": "UNKNOWN",
+    },
+    {
+        "source_repo": "jayprophit/Quantum-OS",
+        "local_path": r"C:\Users\jpowe\Desktop\Projects\Aetherius-OS\predecessors\Quantum-OS",
+        "relation": "CONFIRMED_PREDECESSOR",
+        "confirmed_by": "OWNER",
+        "content_classification": "EMPTY_SCAFFOLD",
+        "primary_target": "Aetherius-OS",
+        "secondary_targets": [],
+        "state": "IDENTIFIED",
+        "note": (
+            "Archived, MIT licence, 164 files but zero source files and zero "
+            "source lines. It is a scaffold, not an implementation; the "
+            "ABSORBED.md notice cannot be substantiated by source."
+        ),
+        "licence_classification": "MIT",
         "security_historical_secret_exposure": "UNKNOWN",
         "owner_rotation_status": "UNKNOWN",
     },
 ]
 
 
-def live_facts(name: str) -> dict:
-    """What the account says about the repository, read live."""
+def live_facts(spec: dict) -> dict:
+    """What the account, or the local clone, says about the repository."""
+    name = spec["source_repo"]
+    if not spec.get("has_remote", True):
+        root = Path(spec["local_path"])
+        head_refs = []
+        branch = ""
+        if (root / ".git").is_dir():
+            try:
+                sha = subprocess.run(
+                    ["git", "-C", str(root), "rev-parse", "HEAD"],
+                    capture_output=True, text=True, timeout=30,
+                    encoding="utf-8", errors="replace").stdout.strip()
+                branch = subprocess.run(
+                    ["git", "-C", str(root), "branch", "--show-current"],
+                    capture_output=True, text=True, timeout=30,
+                    encoding="utf-8", errors="replace").stdout.strip()
+                if sha:
+                    head_refs = [{"branch": branch, "sha": sha}]
+            except Exception:  # noqa: BLE001
+                pass
+        return {
+            "repository_id": None,
+            "default_branch": branch,
+            "archived": False,
+            "visibility": "local",
+            "licence": "",
+            "head_refs": head_refs,
+            "short_name": name.split("/")[-1],
+        }
     short = name.split("/")[-1]
     info = gh_json(f"repos/{name}") or {}
     branches = gh_json(f"repos/{name}/branches?per_page=100") or []
@@ -188,8 +279,7 @@ def gates_for(entry: dict) -> dict:
     security = entry.get("security") or {}
     retirement = entry.get("retirement") or {}
     holds = {
-        "owner_confirmed": entry.get("relation") == "CONFIRMED_PREDECESSOR"
-                           and entry.get("confirmed_by") == "OWNER",
+        "owner_confirmed": entry.get("confirmed_by") == "OWNER",
         "captured": bool(backup.get("git_mirror_sha256"))
                     and bool(backup.get("git_bundle_sha256"))
                     and not backup.get("unresolved_capture_gaps"),
@@ -245,24 +335,48 @@ def capture_facts(source_repo: str) -> dict:
         scan = capture.get("secret_scan") or {}
         tree = scan.get("tree") or {}
         history = scan.get("history") or {}
+        git = capture.get("git") or {}
+        github = capture.get("github_context") or {}
+        # The capture tool records the GitHub-side context as metadata: the
+        # issues, pull requests and releases are listed, and the wiki is
+        # recorded as enabled or absent. The wiki pages and the discussions
+        # are not exported, so the metadata flag and the gap both say so.
+        github_metadata = all(
+            key in github for key in
+            ("issues", "pull_requests", "releases", "wiki"))
+        wiki_content_exported = bool(github.get("wiki_content_exported"))
+        lfs_objects = git.get("lfs_pointer_objects") or 0
+        lfs_verified = lfs_objects == 0 or bool(git.get("lfs_verified"))
         gaps = []
-        if not capture.get("github_context", {}).get("issues_prs_wiki_releases"):
+        if not github_metadata:
             gaps.append(
-                "The issues, pull requests, wiki and releases have not been "
-                "captured.")
-        if not capture.get("github_context", {}).get("lfs_verified"):
+                "The issues, pull requests, releases and wiki metadata have "
+                "not all been captured.")
+        elif not wiki_content_exported:
             gaps.append(
-                "The LFS objects have not been verified, so a restore of the "
-                "large files is not yet proven.")
+                "The GitHub context is metadata only: the issues, pull "
+                "requests and releases are listed, but the wiki pages and the "
+                "discussions were not exported.")
+        if not lfs_verified:
+            gaps.append(
+                f"The capture has {lfs_objects} LFS pointer object(s) and the "
+                "LFS objects have not been verified, so a restore of the large "
+                "files is not yet proven.")
         if not capture.get("independent_copies"):
             gaps.append(
                 "The capture exists in one place. An independent copy has not "
                 "been made, and a backup in one place is a hope.")
         return {
             "captured": True,
-            "commits": (capture.get("git") or {}).get("counts", {}).get("commits"),
-            "branches": (capture.get("git") or {}).get("counts", {}).get("branches"),
-            "fsck_clean": ((capture.get("git") or {}).get("fsck") or {}).get("clean"),
+            "commits": (git.get("counts") or {}).get("commits"),
+            "branches": (git.get("counts") or {}).get("branches"),
+            "fsck_clean": (git.get("fsck") or {}).get("clean"),
+            "git_mirror_sha256": git.get("git_mirror_sha256"),
+            "git_bundle_sha256": git.get("git_bundle_sha256"),
+            "git_lfs_verified": lfs_verified,
+            "github_context_metadata_captured": github_metadata,
+            "wiki_content_exported": wiki_content_exported,
+            "independent_copies": capture.get("independent_copies") or 0,
             "restore_drill_passed": bool(drill.get("ok")),
             "restored_commits": drill.get("commits"),
             "restored_files": drill.get("files"),
@@ -324,16 +438,117 @@ def matrix_facts(source_repo: str) -> dict:
     return {"total": 0, "classified": 0, "dispositions": {}, "mapped": False}
 
 
+SOURCE_SUFFIXES = {
+    ".ts", ".tsx", ".js", ".jsx", ".py", ".sh", ".sql", ".go", ".rs",
+    ".java", ".c", ".cpp", ".h", ".rb", ".php", ".cs", ".swift", ".kt",
+}
+SKIP_PARTS = {
+    ".git", "node_modules", ".venv", "venv", "__pycache__", "dist", "build",
+    "out", "target", ".next", "coverage", ".pytest_cache", ".mypy_cache",
+    ".tox", "site-packages", ".gradle", ".idea", ".vscode", "vendor",
+    "third_party", "thirdparty", "external", "deps", "Pods", ".wrangler",
+    ".turbo", ".cache", ".parcel-cache", "storybook-static",
+}
+
+
+def _files_under(root: Path):
+    for dirpath, dirnames, filenames in os.walk(root, onerror=lambda e: None):
+        dirnames[:] = [name for name in dirnames if name not in SKIP_PARTS]
+        for filename in filenames:
+            yield Path(dirpath) / filename
+
+
+def _licence_of(root: Path) -> str:
+    for name in ("LICENSE", "LICENSE.md", "LICENCE", "LICENCE.md", "COPYING"):
+        candidate = root / name
+        if not candidate.is_file():
+            continue
+        head = candidate.read_text(encoding="utf-8", errors="replace")[:4000].lower()
+        for token, label in (
+            ("apache license", "Apache-2.0"),
+            ("mit license", "MIT"),
+            ("gnu affero", "AGPL"),
+            ("gnu general public license", "GPL"),
+            ("mozilla public", "MPL"),
+            ("bsd", "BSD"),
+        ):
+            if token in head:
+                return label
+        return "SEE-THE-FILE"
+    return ""
+
+
+def measure_tree(root: Path) -> dict:
+    """What is actually in the local tree, measured rather than claimed."""
+    files = list(_files_under(root))
+    source = [path for path in files if path.suffix.lower() in SOURCE_SUFFIXES]
+    tests = [
+        path for path in files
+        if any(part.lower() in ("test", "tests", "spec", "__tests__")
+               for part in path.parts)
+    ]
+    lines = 0
+    digests: dict[str, int] = {}
+    for path in source:
+        try:
+            raw = path.read_bytes()
+        except OSError:
+            continue
+        lines += raw.count(b"\n")
+        digest = hashlib.sha256(raw).hexdigest()
+        digests[digest] = digests.get(digest, 0) + 1
+    repeated = sum(count - 1 for count in digests.values() if count > 1)
+    return {
+        "files": len(files),
+        "source_files": len(source),
+        "source_lines": lines,
+        "unique_source_files": len(digests),
+        "repeated_copies": repeated,
+        "duplication_ratio": round(1 - len(digests) / len(source), 3) if source else 0.0,
+        "test_files": len(tests),
+        "files_named_like_tests": len([
+            path for path in source
+            if "test" in path.name.lower() or "spec" in path.name.lower()
+        ]),
+        "declared_licence": _licence_of(root),
+    }
+
+
 def build_entry(spec: dict) -> dict:
-    facts = live_facts(spec["source_repo"])
+    facts = live_facts(spec)
     capture = capture_facts(spec["source_repo"])
     exposure = exposure_facts(spec["source_repo"])
     matrix = matrix_facts(spec["source_repo"])
+    measurement = None
+    local_path = spec.get("local_path")
+    if local_path and Path(local_path).is_dir():
+        measurement = measure_tree(Path(local_path))
+
+    # A capture's own secret scan is evidence. The exposure report lists
+    # findings that were triaged, not every repository that was scanned,
+    # so absence from it is not a clean bill of health.
+    tree_findings = capture.get("tree_findings") or 0
+    history_findings = capture.get("history_findings") or 0
+    if capture.get("captured"):
+        if tree_findings or history_findings:
+            exposure["historical_secret_exposure"] = "CONFIRMED"
+            exposure["owner_rotation_status"] = "PENDING"
+            exposure["rotate_required"] = max(
+                int(exposure.get("rotate_required") or 0),
+                tree_findings + history_findings,
+            )
+    elif exposure["historical_secret_exposure"] == "NONE_FOUND":
+        exposure["historical_secret_exposure"] = spec.get(
+            "security_historical_secret_exposure", "UNKNOWN")
+        exposure["owner_rotation_status"] = spec.get(
+            "owner_rotation_status", "UNKNOWN")
+
     entry = {
         "schema": SCHEMA,
         "source_repo": spec["source_repo"],
         "repository_id": facts["repository_id"],
         "relation": spec["relation"],
+        "content_classification": spec.get("content_classification", "SOURCE_BEARING"),
         "confirmed_by": spec["confirmed_by"],
         "primary_target": spec["primary_target"],
         "secondary_targets": spec["secondary_targets"],
@@ -344,13 +559,16 @@ def build_entry(spec: dict) -> dict:
         "visibility": facts["visibility"],
         "declared_licence": facts["licence"],
         "note": spec["note"],
+        "measured": measurement,
         "backup": {
-            "git_mirror_sha256": None,
-            "git_bundle_sha256": None,
-            "git_lfs_verified": False,
+            "git_mirror_sha256": capture.get("git_mirror_sha256"),
+            "git_bundle_sha256": capture.get("git_bundle_sha256"),
+            "git_lfs_verified": bool(capture.get("git_lfs_verified")),
             "external_assets_exported": False,
-            "issues_prs_wiki_releases_captured": False,
-            "independent_copies": 0,
+            "issues_prs_wiki_releases_captured": bool(
+                capture.get("github_context_metadata_captured")),
+            "wiki_content_exported": bool(capture.get("wiki_content_exported")),
+            "independent_copies": capture.get("independent_copies", 0),
             "restore_drill_passed": bool(capture.get("restore_drill_passed")),
             "captured": bool(capture.get("captured")),
             "restored_commits": capture.get("restored_commits"),

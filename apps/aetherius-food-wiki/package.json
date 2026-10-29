@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Aetherius OS Food Wiki vertical slice: cited food knowledge, deterministic allergen and medical-flag rules, offline sync and barcode lookup.",
+  "description": "Aetherius OS Food Wiki: food catalogue, wild/shop/market location atlas, recipe book with photo-label suggestions, Rife-style WAV tones, app state, Athena tools and the cited allergen knowledge core.",
   "scripts": {
     "test": "node --test \"tests/*.test.ts\""
   }

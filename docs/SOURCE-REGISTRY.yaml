@@ -31,17 +31,17 @@ scopes:
     documents: 127
   - name: downloads
     root: "C:\\Users\\jpowe\\Downloads"
-    documents: 42
+    documents: 1
 
 totals:
-  documents: 1163
-  bytes: 26221033
+  documents: 1122
+  bytes: 25147083
   kind_build_record: 116
-  kind_document: 652
-  kind_handoff: 28
-  kind_master_prompt: 39
+  kind_document: 628
+  kind_handoff: 25
+  kind_master_prompt: 26
   kind_process: 1
-  kind_prompt_or_brief: 319
+  kind_prompt_or_brief: 318
   kind_requirements: 8
 
 # Material recovered from the owner's own accounts. It is not on
@@ -2318,7 +2318,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase11/pager-quarantine/pager-artifact-01.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "SSUUMMMMAARRYY OOFF LLEESSSS CCOOMMMMAANNDDSS"
+    title: "SUMMARY OF LESS COMMANDS"
     bytes: 17499
     lines: 340
     modified: 2026-10-24
@@ -2326,7 +2326,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase11/pager-quarantine/pager-artifact-02.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "[1mdiff --git a/genesis_model/server.py b/genesis_model/server.py[m"
+    title: "[1mdiff --git a/genesis_model/server.py b/genesis_model/server.py[m"
     bytes: 3413
     lines: 68
     modified: 2026-10-24
@@ -2334,7 +2334,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase11/pager-quarantine/pager-artifact-03.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "[1mdiff --git a/genesis_model/server.py b/genesis_model/server.py[m"
+    title: "[1mdiff --git a/genesis_model/server.py b/genesis_model/server.py[m"
     bytes: 3413
     lines: 68
     modified: 2026-10-24
@@ -3726,7 +3726,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/github_repos.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��j a y p r o p h i t / C o m f y U I 	 T h e   m o s t   p o w e r f u l   a n d   m o d u l a r   d i f f u s i o n   "
+    title: "��jayprophit/ComfyUI	The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.	pu"
     bytes: 54292
     lines: 201
     modified: 2026-10-24
@@ -4374,7 +4374,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/pytest_core.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 3482
     lines: 32
     modified: 2026-10-24
@@ -4382,7 +4382,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/pytest_core2.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 1780
     lines: 16
     modified: 2026-10-24
@@ -4390,7 +4390,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/pytest_final.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 12342
     lines: 72
     modified: 2026-10-24
@@ -4398,7 +4398,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/pytest_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 10040
     lines: 66
     modified: 2026-10-24
@@ -4406,7 +4406,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/pytest_results.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��p y t h o n   :   u s a g e :   _ _ m a i n _ _ . p y   [ - h ]   [ - v ]   [ - q ]   [ - - l o c a l s ]   [ - - d u "
+    title: "��python : usage: __main__.py [-h] [-v] [-q] [--locals] [--durations N] [-f] [-c] [-b]"
     bytes: 29742
     lines: 151
     modified: 2026-10-24
@@ -4422,7 +4422,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/test_full_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��[ 2 0 2 6 - 0 9 - 1 3 T 0 0 : 5 9 : 3 4 ]   s e s s i o n = 9 5 8 0 0 7 6 0 4 c d 5   m o d e l = h h a o / q w e n 2 "
+    title: "��[2026-09-13T00:59:34] session=958007604cd5 model=hhao/qwen2.5-coder-tools:3b mode=build START workspace=C:\\Users\\jpowe"
     bytes: 260516
     lines: 782
     modified: 2026-10-24
@@ -5230,7 +5230,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/cloudhybrid/github_repos.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��j a y p r o p h i t / C o m f y U I 	 T h e   m o s t   p o w e r f u l   a n d   m o d u l a r   d i f f u s i o n   "
+    title: "��jayprophit/ComfyUI	The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.	pu"
     bytes: 54292
     lines: 201
     modified: 2026-10-24
@@ -5326,7 +5326,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/cloudhybrid/pytest_core.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 3482
     lines: 32
     modified: 2026-10-24
@@ -5334,7 +5334,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/cloudhybrid/pytest_core2.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 1780
     lines: 16
     modified: 2026-10-24
@@ -5342,7 +5342,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/cloudhybrid/pytest_final.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 12342
     lines: 72
     modified: 2026-10-24
@@ -5350,7 +5350,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/cloudhybrid/pytest_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 10040
     lines: 66
     modified: 2026-10-24
@@ -5358,7 +5358,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/cloudhybrid/pytest_results.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��p y t h o n   :   u s a g e :   _ _ m a i n _ _ . p y   [ - h ]   [ - v ]   [ - q ]   [ - - l o c a l s ]   [ - - d u "
+    title: "��python : usage: __main__.py [-h] [-v] [-q] [--locals] [--durations N] [-f] [-c] [-b]"
     bytes: 29742
     lines: 151
     modified: 2026-10-24
@@ -5374,7 +5374,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/cloudhybrid/test_full_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��[ 2 0 2 6 - 0 9 - 1 3 T 0 0 : 5 9 : 3 4 ]   s e s s i o n = 9 5 8 0 0 7 6 0 4 c d 5   m o d e l = h h a o / q w e n 2 "
+    title: "��[2026-09-13T00:59:34] session=958007604cd5 model=hhao/qwen2.5-coder-tools:3b mode=build START workspace=C:\\Users\\jpowe"
     bytes: 260516
     lines: 782
     modified: 2026-10-24
@@ -6310,7 +6310,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/dashboard/github_repos.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��j a y p r o p h i t / C o m f y U I 	 T h e   m o s t   p o w e r f u l   a n d   m o d u l a r   d i f f u s i o n   "
+    title: "��jayprophit/ComfyUI	The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.	pu"
     bytes: 54292
     lines: 201
     modified: 2026-10-24
@@ -6406,7 +6406,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/dashboard/pytest_core.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 3482
     lines: 32
     modified: 2026-10-24
@@ -6414,7 +6414,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/dashboard/pytest_core2.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 1780
     lines: 16
     modified: 2026-10-24
@@ -6422,7 +6422,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/dashboard/pytest_final.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 12342
     lines: 72
     modified: 2026-10-24
@@ -6430,7 +6430,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/dashboard/pytest_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 10040
     lines: 66
     modified: 2026-10-24
@@ -6438,7 +6438,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/dashboard/pytest_results.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��p y t h o n   :   u s a g e :   _ _ m a i n _ _ . p y   [ - h ]   [ - v ]   [ - q ]   [ - - l o c a l s ]   [ - - d u "
+    title: "��python : usage: __main__.py [-h] [-v] [-q] [--locals] [--durations N] [-f] [-c] [-b]"
     bytes: 29742
     lines: 151
     modified: 2026-10-24
@@ -6454,7 +6454,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/dashboard/test_full_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��[ 2 0 2 6 - 0 9 - 1 3 T 0 0 : 5 9 : 3 4 ]   s e s s i o n = 9 5 8 0 0 7 6 0 4 c d 5   m o d e l = h h a o / q w e n 2 "
+    title: "��[2026-09-13T00:59:34] session=958007604cd5 model=hhao/qwen2.5-coder-tools:3b mode=build START workspace=C:\\Users\\jpowe"
     bytes: 260516
     lines: 782
     modified: 2026-10-24
@@ -7278,7 +7278,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/runtimesafety/github_repos.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��j a y p r o p h i t / C o m f y U I 	 T h e   m o s t   p o w e r f u l   a n d   m o d u l a r   d i f f u s i o n   "
+    title: "��jayprophit/ComfyUI	The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.	pu"
     bytes: 54292
     lines: 201
     modified: 2026-10-24
@@ -7374,7 +7374,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/runtimesafety/pytest_core.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 3482
     lines: 32
     modified: 2026-10-24
@@ -7382,7 +7382,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/runtimesafety/pytest_core2.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 1780
     lines: 16
     modified: 2026-10-24
@@ -7390,7 +7390,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/runtimesafety/pytest_final.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 12342
     lines: 72
     modified: 2026-10-24
@@ -7398,7 +7398,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/runtimesafety/pytest_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��= = = = = = = = = = = = = = = = = = = = = = = = = = = = =   t e s t   s e s s i o n   s t a r t s   = = = = = = = = = "
+    title: "��============================= test session starts ============================="
     bytes: 10040
     lines: 66
     modified: 2026-10-24
@@ -7406,7 +7406,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/runtimesafety/pytest_results.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��p y t h o n   :   u s a g e :   _ _ m a i n _ _ . p y   [ - h ]   [ - v ]   [ - q ]   [ - - l o c a l s ]   [ - - d u "
+    title: "��python : usage: __main__.py [-h] [-v] [-q] [--locals] [--durations N] [-f] [-c] [-b]"
     bytes: 29742
     lines: 151
     modified: 2026-10-24
@@ -7422,7 +7422,7 @@ sources:
   - path: "Documents/Aetherius/ModelAudit/2026-10-23/Phase8/Agent-Bridge-isolated/variants/runtimesafety/test_full_output.txt"
     scope: documents-root
     kind: prompt_or_brief
-    title: "��[ 2 0 2 6 - 0 9 - 1 3 T 0 0 : 5 9 : 3 4 ]   s e s s i o n = 9 5 8 0 0 7 6 0 4 c d 5   m o d e l = h h a o / q w e n 2 "
+    title: "��[2026-09-13T00:59:34] session=958007604cd5 model=hhao/qwen2.5-coder-tools:3b mode=build START workspace=C:\\Users\\jpowe"
     bytes: 260516
     lines: 782
     modified: 2026-10-24
@@ -9043,361 +9043,3 @@ sources:
     lines: 129
     modified: 2026-10-24
     digest: sha256:71739278ed37e99c88c278408dda75891055730120aeb943dfe8063887040d6f
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF/AETHERIUS_FIGMA_AGENT_MASTER_PROMPT.md"
-    scope: downloads
-    kind: master_prompt
-    title: "AETHERIUS — MASTER FIGMA AGENT BRIEF"
-    bytes: 19251
-    lines: 132
-    modified: 2026-10-16
-    digest: sha256:ee763e9a9d493c82d845b8109c99fcfa24b6f3ec0c68d4f518e7d249943cd3bf
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF/AETHERIUS_FIGMA_AGENT_SOURCE_AUDIT.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius Figma Agent — inspected-source briefing"
-    bytes: 5156
-    lines: 36
-    modified: 2026-10-16
-    digest: sha256:c27b50fec434f1b2be9d2eeb031477edcf7745dfe91576a4b9e567c4561c4c0a
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/COMMERCE_LEARNING_SPEC.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius OS — Future Commerce, Learning, Community & Payment Designs"
-    bytes: 4491
-    lines: 49
-    modified: 2026-10-16
-    digest: sha256:44428661c46eb25f461e3b175c7beca88cdfe8c6aa7e390ccbfca6a7c3472938
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/CURRENT_STATE_AND_NEXT_STEPS.md"
-    scope: downloads
-    kind: document
-    title: "Current Truth, Open Work & Next Agent Actions"
-    bytes: 5229
-    lines: 46
-    modified: 2026-10-16
-    digest: sha256:ebf37aa5ee3b22f06b73c385438cff3ed0a496a59b0dc191ceb3ea7a99880c7e
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/DESIGN_ARCHITECTURE.md"
-    scope: downloads
-    kind: document
-    title: "Design Architecture — Aetherius Unified OS + Genesis Supervisor"
-    bytes: 5598
-    lines: 54
-    modified: 2026-10-16
-    digest: sha256:6e365fe56630b1f35daf1dccd767efe2cfdb2aeb3f46ab1751449385b86c3254
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/FIGMA_AGENT_MASTER_PROMPT_V2.md"
-    scope: downloads
-    kind: master_prompt
-    title: "AETHERIUS — FIGMA AGENT MASTER HANDOFF V2 · 17 OCTOBER 2026"
-    bytes: 26112
-    lines: 161
-    modified: 2026-10-16
-    digest: sha256:b93e93ec30864c45110a0237006ac09a11c4690aa575450fac150d3fdd5f7451
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/NAVIGATION_AVATAR_CONTRACT.md"
-    scope: downloads
-    kind: document
-    title: "Navigation, Avatar, and Shared Interaction Contract"
-    bytes: 5251
-    lines: 78
-    modified: 2026-10-16
-    digest: sha256:d9fd665a5663a4fb35f1b51440890f8726ca243655f628daedc4cf2bfd728987
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/QUICK_PASTE_PROMPT.md"
-    scope: downloads
-    kind: master_prompt
-    title: "Figma agent quick-paste prompt (short variant)"
-    bytes: 2844
-    lines: 16
-    modified: 2026-10-16
-    digest: sha256:611b21f020e45d82517d4cefb5e50fed211f572f96ea4c04721750a690bc4f1e
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/README_START_HERE.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius — Figma Agent Handoff V2 (17 October 2026)"
-    bytes: 4644
-    lines: 48
-    modified: 2026-10-16
-    digest: sha256:0149ccf922e1d654f5bd2a89415c51362c31624534dc1d70a5fd1a0a2f37a5f8
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/SOURCE_AUDIT_V2.md"
-    scope: downloads
-    kind: document
-    title: "Source Audit V2 — Aetherius Figma handoff"
-    bytes: 9950
-    lines: 74
-    modified: 2026-10-16
-    digest: sha256:a4fd62eaa6fab9a7ffda32e6d4a8d91e1f24df8267debc35c339c4eb18139ba0
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_HANDOFF_V2_2026-10-17/project_sources/ABOUT_SOURCES.md"
-    scope: downloads
-    kind: document
-    title: "Included prototype ZIPs"
-    bytes: 460
-    lines: 5
-    modified: 2026-10-16
-    digest: sha256:cd5276470aa66770a1b9371522221550e13dba07986c2b3c654c3395e1efb392
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_MASTER_PROMPT.md"
-    scope: downloads
-    kind: master_prompt
-    title: "AETHERIUS — MASTER FIGMA AGENT BRIEF"
-    bytes: 19251
-    lines: 132
-    modified: 2026-10-16
-    digest: sha256:ee763e9a9d493c82d845b8109c99fcfa24b6f3ec0c68d4f518e7d249943cd3bf
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_FIGMA_AGENT_MASTER_PROMPT_V2.md"
-    scope: downloads
-    kind: master_prompt
-    title: "AETHERIUS — FIGMA AGENT MASTER HANDOFF V2 · 17 OCTOBER 2026"
-    bytes: 26112
-    lines: 161
-    modified: 2026-10-16
-    digest: sha256:b93e93ec30864c45110a0237006ac09a11c4690aa575450fac150d3fdd5f7451
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_GENESIS_AI_CLOUD_MASTER_HANDOFF.txt"
-    scope: downloads
-    kind: handoff
-    title: "AETHERIUS / GENESIS — MASTER AI CLOUD & AUTONOMOUS HIVE HANDOFF"
-    bytes: 46318
-    lines: 429
-    modified: 2026-10-14
-    digest: sha256:c5b18f11607f6960457085ea1830b19f13b5c3140bafd336fcfa25fc2b69934a
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_GENESIS_AI_CLOUD_MASTER_HANDOFF_V2.md"
-    scope: downloads
-    kind: handoff
-    title: "AETHERIUS / GENESIS — MASTER AI CLOUD & AUTONOMOUS HIVE HANDOFF"
-    bytes: 61638
-    lines: 542
-    modified: 2026-10-15
-    digest: sha256:44f9bf6922753517a0989cb267559cf10ce93b7fe7910ec367d937c2c80be15a
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_GENESIS_TEAM_WORKFORCE_ADDENDUM_2026-10-16.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius Genesis — Workforce, Team Topology, Isolation and Scheduling Addendum"
-    bytes: 18770
-    lines: 196
-    modified: 2026-10-16
-    digest: sha256:13443827ec9c423897ccf8a26da91c49863a0069ce1784152a6f461a8405d668
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_PREDECESSOR_ABSORPTION_MASTER_PLAN_2026-10-21 (1).md"
-    scope: downloads
-    kind: master_prompt
-    title: "Aetherius — Predecessor Repository Absorption and Verified Retirement Programme"
-    bytes: 17765
-    lines: 169
-    modified: 2026-10-23
-    digest: sha256:d5ecca3b589b20f671dc4394d8a58ae1cd1a8756805b96210d8381f17b1a0934
-  - path: "Downloads/Organized_readonly/Aetherius/AETHERIUS_PREDECESSOR_ABSORPTION_MASTER_PLAN_2026-10-21.md"
-    scope: downloads
-    kind: master_prompt
-    title: "Aetherius — Predecessor Repository Absorption and Verified Retirement Programme"
-    bytes: 17765
-    lines: 169
-    modified: 2026-10-21
-    digest: sha256:d5ecca3b589b20f671dc4394d8a58ae1cd1a8756805b96210d8381f17b1a0934
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Current_Chat_Master_Inheritance_2026-09-15.md"
-    scope: downloads
-    kind: master_prompt
-    title: "MASTER CHAT INHERITANCE PACKET"
-    bytes: 29142
-    lines: 691
-    modified: 2026-09-15
-    digest: sha256:870918d5cc90c02b465bb56f0ae3628549af3fe4090b9b4f73176f9261806415
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Fork_and_Predecessor_Migration_Analysis_2026-10-08 (1).md"
-    scope: downloads
-    kind: document
-    title: "Aetherius Fork + Predecessor Migration Analysis"
-    bytes: 159571
-    lines: 422
-    modified: 2026-10-24
-    digest: sha256:3312508d8a6412824bc272a4e7f2c98b0bf0d6827b20ba4e96fab24b3e97cd5c
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Fork_and_Predecessor_Migration_Analysis_2026-10-08.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius Fork + Predecessor Migration Analysis"
-    bytes: 159571
-    lines: 422
-    modified: 2026-10-08
-    digest: sha256:3312508d8a6412824bc272a4e7f2c98b0bf0d6827b20ba4e96fab24b3e97cd5c
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Genesis_Complete_Master_Research_2026-10-22.md"
-    scope: downloads
-    kind: master_prompt
-    title: "AETHERIUS / GENESIS — COMPLETE CONSOLIDATED RESEARCH AND ENGINEERING DOSSIER"
-    bytes: 81773
-    lines: 866
-    modified: 2026-10-23
-    digest: sha256:425030118db1143b4bde8daff51291cb77f8d57e11326021d9184956313b9bff
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_GitHub_Diagnostic_2026-10-21 (1).md"
-    scope: downloads
-    kind: document
-    title: "Aetherius portfolio – GitHub diagnostic and gap analysis"
-    bytes: 14594
-    lines: 102
-    modified: 2026-10-24
-    digest: sha256:38e184a3d02db27342e8f80a1a13ee4c2f7795657837e68a6a860e2a63a5bdcc
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_GitHub_Diagnostic_2026-10-21.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius portfolio – GitHub diagnostic and gap analysis"
-    bytes: 14594
-    lines: 102
-    modified: 2026-10-21
-    digest: sha256:38e184a3d02db27342e8f80a1a13ee4c2f7795657837e68a6a860e2a63a5bdcc
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Master_Link_and_Mechanism_Audit_v1_3_2026-10-22 (1).md"
-    scope: downloads
-    kind: master_prompt
-    title: "Aetherius Master Link and Mechanism Audit — 2026-10-22"
-    bytes: 23449
-    lines: 214
-    modified: 2026-10-24
-    digest: sha256:8934335947931383f21051a5c7b3d2d7568058133f9bac35dcccb281199bb270
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Master_Link_and_Mechanism_Audit_v1_3_2026-10-22 (2).md"
-    scope: downloads
-    kind: master_prompt
-    title: "Aetherius Master Link and Mechanism Audit — 2026-10-22"
-    bytes: 23449
-    lines: 214
-    modified: 2026-10-24
-    digest: sha256:8934335947931383f21051a5c7b3d2d7568058133f9bac35dcccb281199bb270
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Master_Link_and_Mechanism_Audit_v1_3_2026-10-22.md"
-    scope: downloads
-    kind: master_prompt
-    title: "Aetherius Master Link and Mechanism Audit — 2026-10-22"
-    bytes: 23449
-    lines: 214
-    modified: 2026-10-23
-    digest: sha256:8934335947931383f21051a5c7b3d2d7568058133f9bac35dcccb281199bb270
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Nine_Video_Mechanism_Audit_Addendum_2026-10-22.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius / Genesis — Nine-Video Cross-Mechanism Audit Addendum"
-    bytes: 18135
-    lines: 142
-    modified: 2026-10-23
-    digest: sha256:a72ba823373012c370595a1ff40dd1b4fd3ebe881cd970f34151b1ac16b3c690
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Reference_26_Hermes_Security_Agent_Audit_2026-10-22.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius Research Audit — Reference 26: Hermes Agent Cloud Security Teams"
-    bytes: 11438
-    lines: 109
-    modified: 2026-10-23
-    digest: sha256:e17eb963d8a6fd31e444a571695dbd670d63646edf9d1523ef31474ea8e099ec
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Research_and_Learning_Reconciliation_2026-10-02.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius / Genesis — cross-domain research and autonomous learning reconciliation"
-    bytes: 11732
-    lines: 60
-    modified: 2026-10-02
-    digest: sha256:ce79483c397f19073ffa0b0095033c7e462bf4177dc696b03cceef55184ebc94
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Runtime_2_0_IP_Compliance_Architecture_Blueprint_2026-10-13.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius AI Runtime 2.0 — Maximum-Depth IP-Safe Engineering and Commercialisation Blueprint"
-    bytes: 46169
-    lines: 451
-    modified: 2026-10-16
-    digest: sha256:4bdf49b2e500b15eeaa08a9be7e755639f48f1620651b4a31efbaca40addd336
-  - path: "Downloads/Organized_readonly/Aetherius/Aetherius_Unified_Engine_Mechanism_Audit_2026-10-22.md"
-    scope: downloads
-    kind: document
-    title: "Aetherius Unified Engine — Cross-Industry Mechanical Audit & Benchmark Master Plan"
-    bytes: 27226
-    lines: 247
-    modified: 2026-10-23
-    digest: sha256:dac0a095dd978bc925a6f002817cd0b2762f7f105def3d8a1750be6a0c981b64
-  - path: "Downloads/Organized_readonly/General/ARCHITECTURE.md"
-    scope: downloads
-    kind: document
-    title: "First-party Genesis model + supporting systems: engineering contracts"
-    bytes: 10090
-    lines: 92
-    modified: 2026-10-23
-    digest: sha256:0e9a6fb6226059bc8f83bfd7e5a6ecd672c01b445d53c75c306696dcefa44b45
-  - path: "Downloads/Organized_readonly/General/OpenCode-Multi-Agent-Setup-Prompt.txt"
-    scope: downloads
-    kind: master_prompt
-    title: "OPENCode MASTER MULTI-AGENT WORKSTATION SETUP / RECOVERY"
-    bytes: 8080
-    lines: 282
-    modified: 2026-09-21
-    digest: sha256:9f1cd49931fb10f3cb6d01639b893af9e25bbcf12a6a390dbe78c3ca5852149b
-  - path: "Downloads/Organized_readonly/General/README_NATIVE_V0_2 (1).md"
-    scope: downloads
-    kind: document
-    title: "Genesis native model — phase v0.2 (October 23, 2026)"
-    bytes: 7813
-    lines: 93
-    modified: 2026-10-23
-    digest: sha256:7c8dadeed423b1abcc1ad68fdfedce0b20517b7923b65275b8e1476ef694dc94
-  - path: "Downloads/Organized_readonly/General/README_NATIVE_V0_2.md"
-    scope: downloads
-    kind: document
-    title: "Genesis native model — phase v0.2 (October 23, 2026)"
-    bytes: 7813
-    lines: 93
-    modified: 2026-10-23
-    digest: sha256:7c8dadeed423b1abcc1ad68fdfedce0b20517b7923b65275b8e1476ef694dc94
-  - path: "Downloads/Organized_readonly/General/Telegram Desktop/message.txt"
-    scope: downloads
-    kind: prompt_or_brief
-    title: "I’ve consolidated the uploaded handoff documents, the current-project corrections, the MAT material, and the image refer"
-    bytes: 36338
-    lines: 1850
-    modified: 2026-09-19
-    digest: sha256:4faf1779529dcdb8c4a271e0b18b665506b858aa5ee58b9059ce1999a8457317
-  - path: "Downloads/Organized_readonly/General/VERIFICATION_REPORT_2026-10-23.md"
-    scope: downloads
-    kind: document
-    title: "Genesis native model v0.2 — development verification"
-    bytes: 4051
-    lines: 27
-    modified: 2026-10-23
-    digest: sha256:ed959ce9888f89e20a2137a093ec414c326a7a5d56bdef34e191bdec9cfa4a56
-  - path: "Downloads/Organized_readonly/General/inventory_report.md"
-    scope: downloads
-    kind: document
-    title: "Downloads Inventory Report — Genesis / Aetherius / Agent Computers"
-    bytes: 13099
-    lines: 218
-    modified: 2026-10-24
-    digest: sha256:d5844c088b7c392f55919ad9ebbac47906ff77d14e2f07726dd5b6262b0bc05d
-  - path: "Downloads/Organized_readonly/Genesis/Genesis_Digital_Organism_Architecture_Handoff_2026-10-22.md"
-    scope: downloads
-    kind: handoff
-    title: "GENESIS — Digital Organism, Biological Twin, Developmental Learning and Photorealistic Embodiment"
-    bytes: 40823
-    lines: 340
-    modified: 2026-10-23
-    digest: sha256:d7ee8c30e358abf17ddb0208a3332aafa9ae2d33423dc1d5b816c769d32cc62b
-  - path: "Downloads/Organized_readonly/Genesis_Human/Genesis_v0_6_Real_Dataset_Helper/genesis_v06_dataset_repair/README.md"
-    scope: downloads
-    kind: document
-    title: "Genesis v0.6 — bounded TinyStories corpus repair"
-    bytes: 4946
-    lines: 77
-    modified: 2026-10-24
-    digest: sha256:13b10c7853d82bb00cecdcc6dd0852faa0f3c040e4ec424da44b2e1aa4212177
-
-# Generated / excluded data files (Genesis-Model) - tracked in TODO-GEN-006
-# - data/local/gutenberg/ : 59 public-domain text files (41,421,627 characters, 42,991,165 bytes)
-#   and data/local/gutenberg_manifest.jsonl, the SHA-256 manifest with provenance.
-#   Two books are held out of training by name: pg1342 and pg1399 live in
-#   data/local/gutenberg_heldout/ (2,693,480 characters) and every training command excludes them.
-# - runs/local_1m_gutenberg/genesis.pt : trained checkpoint (14.7 MB, 1,741,952 params) - output, not source
-# - runs/local_1m_gutenberg/corpus.bin : token shard (4,124,787 tokens) - generated output.
-#   Corrected 2026-10-25: this shard holds the first 13 books in path order (12,523,599 characters),
-#   not the whole folder. Its local_plan.json claimed "59 files / 42,991,165 bytes" because the plan
-#   re-enumerated the folder at the end of a --reuse run instead of describing the shard. Verified by
-#   decoding the shard and matching each document. scripts/local_train.py now writes
-#   shard_manifest.json and refuses to reuse a shard whose corpus digest does not match.
-# - docs/EVIDENCE.md : verified training manifest (checkpoint meta, loss curve, throughput)
-# These are outputs of the local-first pipeline; they are excluded from source scope by design.
-# See Genesis-Model/docs/EVIDENCE.md for exact commands, results and digest confirmation.
-
-
-# Genesis-Model master prompt index (generated/index, excluded from source scope) - recorded 2026-10-24
-# Path: data/local/master-prompt-manifest.jsonl
-# Count: 115 files, 10,862,227 bytes
-# Scope: master prompt folder (C:\Users\jpowe\Documents\master prompt) and project subfolder
-# Note: the manifest lists filenames, bytes and SHA-256 hashes. It is output, not a source document.
-
-
-# Conversation-corpus (Genesis-Model) - unverified output tracked in TODO-GEN-006
-# Path: Genesis-Model/data/local/conversation-corpus/conversation-checkpoint.md
-# Manifest: Genesis-Model/data/local/conversation-corpus/manifest.jsonl
-# Note: conversation transcript (pasted chat text) registered as file; not a verified source.
-

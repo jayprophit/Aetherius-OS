@@ -1,6 +1,14 @@
 schema_version: 1.0.0
-source_date: '2026-10-21'
+source_date: '2026-10-29'
 projects_root: ..
+predecessor_candidates:
+  register: docs/PREDECESSOR-CANDIDATE-REGISTER.yaml
+  count: 10
+  note: >-
+    Ten build-registry projects are candidates for predecessor status but are not
+    confirmed. They are recorded separately from the six owner-confirmed
+    predecessors in docs/PREDECESSOR-MIGRATION-REGISTRY.yaml and are not treated
+    as absorbed, deleted or rewritten until evidence or the owner classifies them.
 projects:
 - id: aetherius-os
   name: Aetherius-OS
@@ -142,15 +150,20 @@ projects:
   name: Architecture of Shadows Book
   manifest: Aetherius-OS/books/Architecture of Shadows Book/build.yaml
   role: 'A reference work on the global drug trade, in three editions: a master edition of sixteen volumes
-    and four hundred and three chapters, a student edition, and a web version. Built with Pandoc and XeLaTeX.'
+    and four hundred and three chapters, a student edition, and a web version. EPUB is built with Pandoc;
+    PDF is Pandoc HTML printed by headless Edge.'
   status: PARTIAL
   depends_on: []
   notes: The content was a public repository that had never been brought into the workspace, so the register
     described an empty folder and the folder was empty. The project is now cloned into the place the register
-    names, and the manifest counts the tree rather than describing it. The document toolchain is not installed
-    on this machine, so no PDF or EPUB has been built here. The MAT publication toolchain already provides
-    a validated-record build, a glossary build, a source-navigation build and a Playwright-backed studio,
-    which a book of this size would be materially served by.
+    names, and the manifest counts the tree rather than describing it. All four artifacts were built and
+    structurally verified on 2026-10-29. Master EPUB 0.57 MB / 410 spine items and PDF 8.60 MB / 462 pages;
+    student EPUB 0.51 MB / 365 spine items and PDF 7.47 MB / 397 pages. The PDF path is Chromium A4, not
+    XeLaTeX, and there is no print-ready letter PDF. The title page still has three metadata placeholders,
+    the title and copyright pages say 17-Volume on a 16-volume tree, and no epubcheck or editorial review
+    has run. The MAT publication toolchain already provides a validated-record build, a glossary build,
+    a source-navigation build and a Playwright-backed studio, which a book of this size would be materially
+    served by.
   repository: https://github.com/jayprophit/THE-ARCHITECTURE-OF-SHADOWS
 - id: decentralized-messaging-app
   name: Decentralized Messaging App
@@ -431,3 +444,57 @@ projects:
     for the messaging primitive rather than a second implementation of it. The Figma handoff''s screen
     family table lists Community with the feed, groups, chat and events, and the account, message, post
     and moderation primitives.'
+- id: aetherius-store
+  name: Aetherius Store
+  manifest: Aetherius-OS/apps/aetherius-store/build.yaml
+  role: 'The store core: signed catalogue, semver resolution, dependency-aware install plans,
+    update, rollback, uninstall and signing-key revocation.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The domain core and tests are built. The signature verifier is a demo port, no artifact
+    is downloaded or executed, and there is no store UI, account/payment system or hosted catalogue.
+- id: aetherius-desktop
+  name: Aetherius Desktop
+  manifest: Aetherius-OS/apps/aetherius-desktop/build.yaml
+  role: 'The desktop model: layered settings, default-app equivalents for six OS families,
+    URL/MIME routing and per-OS installer plans.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The settings, default-app and installer-planning core and tests are built. There is no
+    native registry/plist/dconf/mobile adapter, no OS handler registration, no package builder
+    or signing step, and no settings UI.
+- id: aetherius-app-suite
+  name: Aetherius App Suite
+  manifest: Aetherius-OS/apps/aetherius-app-suite/build.yaml
+  role: 'Domain cores for first-party default-app equivalents: Notes, Calculator, Files,
+    Calendar, Photos and Browser.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The six cores and tests are built. There is no UI or host mount, Files is in-memory,
+    Browser does not fetch or render, Calculator uses JavaScript numbers, and Photos does not
+    decode pixels.
+- id: openclaw-models
+  name: OpenClaw Model Catalogue
+  manifest: Aetherius-OS/apps/openclaw-models/build.yaml
+  role: 'The OpenClaw provider and model catalogue: local, free, paid, premium and other
+    tiers, env-reference auth, tier selections and config renderers.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The catalogue, CLI and 11 tests are built. Hosted providers are cold without
+    owner keys, the LM Studio runtime is unavailable, metadata is a 2026-10-29 snapshot,
+    and the slice renders config fragments but does not apply or verify them on a live gateway.
+- id: aetherius-athena-health
+  name: Athena Health
+  manifest: Aetherius-OS/apps/aetherius-athena-health/build.yaml
+  role: 'The Athena health and wellbeing product slice: exercise library, plans, activity log,
+    goals, recovery, journal, privacy controls and dashboard.'
+  status: PARTIAL
+  depends_on:
+  - aetherius-os
+  notes: The health core and tests are built. There is no UI, wearable integration, encrypted
+    storage or clinician review. Readiness is a heuristic wellness score, not a medical
+    assessment. apps/Athena remains the separate shared intelligence runtime.
