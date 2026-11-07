@@ -175,7 +175,7 @@ export const SystemWidget: React.FC = () => {
                             ? 'Unknown'
                             : `${stats.jsHeapMb} / ${stats.jsHeapMaxMb} MB`}
                     </div>
-                    {stats?.jsHeapMb !== null && stats?.jsHeapMaxMb !== null && (
+                    {stats?.jsHeapMb != null && stats?.jsHeapMaxMb != null && (
                         <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden mt-1">
                             <div className="h-full bg-purple-500 transition-all duration-500" style={{ width: `${Math.min(100, (stats.jsHeapMb / stats.jsHeapMaxMb) * 100)}%` }}></div>
                         </div>
