@@ -1,12 +1,16 @@
 import {
   BookOpenIcon,
+  CalculatorIcon,
   CloudIcon,
   Cog6ToothIcon,
+  CommandLineIcon,
   DisplayIcon,
   DocumentTextIcon,
+  FolderIcon,
   InformationCircleIcon,
   MicrophoneIcon,
   PaintBrushIcon,
+  PencilIcon,
   PresentationChartBarIcon,
   Squares2X2Icon,
   TableCellsIcon,
@@ -39,6 +43,10 @@ export const desktopItems: any = [
   { type: "app", id: "aetherius-slides", title: "Slides", component: "aetherius-slides", icon: PresentationChartBarIcon },
   { type: "app", id: "aetherius-canvas", title: "Canvas", component: "aetherius-canvas", icon: PaintBrushIcon },
   { type: "app", id: "aetherius-recorder", title: "Recorder", component: "aetherius-recorder", icon: MicrophoneIcon },
+  { type: "app", id: "aetherius-terminal", title: "Terminal", component: "aetherius-terminal", icon: CommandLineIcon },
+  { type: "app", id: "aetherius-calculator", title: "Calculator", component: "aetherius-calculator", icon: CalculatorIcon },
+  { type: "app", id: "aetherius-notepad", title: "Notepad", component: "aetherius-notepad", icon: PencilIcon },
+  { type: "app", id: "aetherius-files", title: "Files", component: "aetherius-files", icon: FolderIcon },
 ];
 export const mainMenuItems: any = [
   {
@@ -50,6 +58,10 @@ export const mainMenuItems: any = [
       { title: "Slides", component: "aetherius-slides", icon: PresentationChartBarIcon },
       { title: "Canvas", component: "aetherius-canvas", icon: PaintBrushIcon },
       { title: "Recorder", component: "aetherius-recorder", icon: MicrophoneIcon },
+      { title: "Terminal", component: "aetherius-terminal", icon: CommandLineIcon },
+      { title: "Calculator", component: "aetherius-calculator", icon: CalculatorIcon },
+      { title: "Notepad", component: "aetherius-notepad", icon: PencilIcon },
+      { title: "Files", component: "aetherius-files", icon: FolderIcon },
     ],
   },
 ];

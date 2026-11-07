@@ -123,6 +123,27 @@ Required cascading structure (see below). Borrow from:
 - **grafana** (forked) → the monitoring dashboard model for system telemetry.
 - Signed artifacts + install/rollback evidence are the gate.
 
+### Ubuntu as a base (abstracted, not copied)
+
+Ubuntu is the pragmatic base for the native stack: a reproducible Debian
+core, `.deb` distribution, and `systemd` supervision (already forked).
+Nothing from Ubuntu is copied into Aetherius OS source; the integration is
+at the packaging and service boundary:
+
+- **Distribution**: Aetherius OS ships as a `.deb` against the Ubuntu LTS
+  core. The `aetherius-store` domain already plans deb/rpm/msix formats;
+  the store UI + installer worker paths are the integration point.
+- **Service supervision**: sync and agent services run as `systemd` units
+  (the forked `systemd` is the reference). Bootc-style atomic upgrades
+  (forked) are the north star for updates.
+- **Apps**: Ubuntu's free software (LibreOffice, GIMP, VLC) can ship as
+  optional integrations, not bundled code. The OS stays AGPL; integrations
+  stay their own licences.
+
+Legal boundary: Ubuntu packages are GPL/Apache/MIT under their own terms;
+linking them is not copying. The Aetherius OS source stays AGPL; package
+names and marks are respected (no "Ubuntu" branding on Aetherius artifacts).
+
 ## Menus and settings structure (recommended)
 
 ### Global menu bar (macOS-style, always on top)

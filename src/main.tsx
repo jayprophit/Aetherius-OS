@@ -21,6 +21,10 @@ import { WriterApp } from "../components/apps/WriterApp";
 import { SheetsApp } from "../components/apps/SheetsApp";
 import { SlidesApp } from "../components/apps/SlidesApp";
 import { CanvasApp } from "../components/apps/CanvasApp";
+import { Terminal } from "../components/apps/Terminal";
+import { Calculator } from "../components/apps/Calculator";
+import { Notepad } from "../components/apps/Notepad";
+import { FileManager } from "../components/apps/FileManager";
 import { SettingsView } from "../components/settings/SettingsModal";
 import { MenuBar, type MenuData } from "../components/MenuBar";
 
@@ -252,6 +256,18 @@ function Shell() {
         break;
       case "aetherius-canvas":
         view = <CanvasApp />;
+        break;
+      case "aetherius-terminal":
+        view = <Terminal />;
+        break;
+      case "aetherius-calculator":
+        view = <Calculator />;
+        break;
+      case "aetherius-notepad":
+        view = <Notepad />;
+        break;
+      case "aetherius-files":
+        view = <FileManager />;
         break;
       case "settings":
         view = <SettingsView />;
