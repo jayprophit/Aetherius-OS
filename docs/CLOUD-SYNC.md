@@ -117,4 +117,8 @@ in KeePass; the build carries no credential.
   change log needs a retention window longer than the longest expected
   offline period; the SQL file contains a commented retention helper and it
   is deliberately not automatic.
-- R2 object storage requires a payment method and is **not** used.
+- R2 object storage was enabled by the owner on 2026-11-07 (card on file);
+  the `aetherius-blobs` bucket is provisioned and bound to the worker as
+  `BLOBS`, but holds nothing yet. The free tier is 10 GB storage /
+  1M Class A ops / 10M Class B ops per month; staying under it costs $0.
+  Blob sync (photos, audio, attachments) is the future use.

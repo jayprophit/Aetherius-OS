@@ -125,6 +125,7 @@ Each is a real decision, not paperwork to forge:
 | Cloudflare Pages | Live (`aetherius-preview.pages.dev`) |
 | Cloudflare D1/KV | Created; D1 holds the sync schema |
 | Sync Worker `aetherius-sync` | **Live** (`aetherius-sync.jprophit-87b.workers.dev`), D1 schema applied, `SYNC_TOKEN` rotated and in KeePass, live end-to-end sync proven (push/pull/converge across two devices) |
+| Cloudflare R2 | **Enabled by owner 2026-11-07** (card on file); bucket `aetherius-blobs` created and bound to the worker as `BLOBS`; holds nothing yet. Free tier is 10 GB / 1M Class A / 10M Class B per month — staying under it costs $0 |
 | Supabase `aetherius-preview` | Active (`eu-west-2`); `Commerce` paused |
 | Sentry | **Project `aetherius-os` created** (org `aetherius-os`, EU `de`); public DSN in KeePass; SDK not yet wired into the bundle |
 | Codecov | Signup returns HTTP 400 from `api.codecov.io`** |

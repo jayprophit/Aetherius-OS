@@ -10,6 +10,14 @@ binding = "DB"
 database_name = "aetherius-preview"
 database_id = "53c247a9-4dd2-43c8-b3fc-f8f0d643b0f0"
 
+# R2 blob storage (enabled by the owner 2026-11-07). Free tier is
+# 10 GB storage / 1M Class A ops / 10M Class B ops per month; usage
+# above that is billed. The bucket is provisioned for future blob sync
+# (photos, audio, attachments) and holds nothing yet.
+[[r2_buckets]]
+binding = "BLOBS"
+bucket_name = "aetherius-blobs"
+
 [vars]
 # Same-origin Pages production plus the local Vite shell. Add another
 # origin only when a real client exists; an empty list keeps CORS closed.
