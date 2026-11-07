@@ -2,8 +2,8 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { BenchmarkStore } from "./benchmarks";
-import type { CapabilityRequest, ModelCard } from "./capabilities";
+import { BenchmarkStore } from "./benchmarks.ts";
+import type { CapabilityRequest, ModelCard } from "./capabilities.ts";
 import {
   CodexProbe,
   ConfigProbe,
@@ -11,8 +11,8 @@ import {
   OllamaProbe,
   effectiveStatus,
   type HealthRecord,
-} from "./health";
-import { routeWithLiveState, type LiveModel } from "./live";
+} from "./health.ts";
+import { routeWithLiveState, type LiveModel } from "./live.ts";
 import { FileStateStore } from "../state/store";
 
 function card(over: Partial<ModelCard> & { id: string }): ModelCard {

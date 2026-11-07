@@ -10,7 +10,7 @@
   },
   "units": "millimetre (G21 expected in header)",
   "g21_present": true,
-  "gcode_bytes": 1922052,
+  "gcode_bytes": 1922127,
   "gcode_start": ";FLAVOR:Marlin",
   "cura_metadata": {
     "TIME": "TIME:6666",
@@ -20,8 +20,8 @@
   "layer_height_mm": 0.2,
   "distinct_z_layers": 200,
   "implied_layer_count": 200,
-  "motion_commands": 67507,
-  "rapid_moves_G0": 32234,
+  "motion_commands": 67509,
+  "rapid_moves_G0": 32236,
   "extruding_moves": 23420,
   "toolpath_bounds_mm": {
     "X": {

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "deck_b258d433-0ab1-4897-a725-629f4d96df82",
+    "name": "PersistDeck",
+    "slides": [
+      {
+        "id": "slide_bb218a63-94d9-46fc-b95c-f34944eda0a7",
+        "title": "PersistSlide",
+        "elements": [
+          {
+            "id": "el_dbd6beff-d78d-441b-bc50-0c2aa8998036",
+            "kind": "asset",
+            "text": "asset_a913ef1e-de1e-4e56-9c08-6587601abf9c",
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "assetId": "asset_a913ef1e-de1e-4e56-9c08-6587601abf9c",
+            "assetSnapshot": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAMUlEQVR4nO3OwQkAAAgDMfdfWqewKOSg76ZKx+rgAAAAAAAAAAAAAAAAbgM2S3w8agCF+79dPJ+KNgAAAABJRU5ErkJggg=="
+          }
+        ],
+        "notes": "",
+        "order": 0
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset_a913ef1e-de1e-4e56-9c08-6587601abf9c",
+        "schemaVersion": "aetherius-asset-v1",
+        "mimeType": "image/png",
+        "contentHash": "b4ff409823a1e139f9e4e22e1c9fdecd219ecc42dd3642cb09e69d70ad4c5f4d",
+        "ownership": "aetherius-canvas",
+        "provenance": {
+          "sourceApp": "aetherius-canvas",
+          "exportedAt": "2026-11-07T10:52:38.220Z",
+          "exporterVersion": "batch-25"
+        },
+        "contentDimensions": {
+          "width": 32,
+          "height": 32
+        },
+        "sourceRelationship": {
+          "sourceId": "board_f3bbe4a7-c446-4496-b863-e777085e53d8",
+          "sourceType": "canvas-board"
+        },
+        "createdAt": "2026-11-07T10:52:38.220Z"
+      }
+    ],
+    "createdAt": "2026-11-07T10:52:38.220Z",
+    "updatedAt": "2026-11-07T10:52:38.297Z"
+  }
+]

@@ -5,7 +5,7 @@ import {
   routeCapabilityRequest,
   type CapabilityRequest,
   type ModelCard,
-} from "./capabilities";
+} from "./capabilities.ts";
 
 function model(over: Partial<ModelCard> & { id: string }): ModelCard {
   return {

@@ -1,0 +1,45 @@
+{
+  "runAt": "2026-11-02T21:58:13.864Z",
+  "fixtureScope": "STRUCTURAL — not the full DOCX-200page / XLSX-1Mrow / media / CAD acceptance fixtures",
+  "passed": 4,
+  "total": 4,
+  "results": [
+    {
+      "id": "fix-docx-structural",
+      "file": "golden_structural.docx",
+      "bytes": 1358,
+      "signatureOk": true,
+      "contentOk": true,
+      "passed": true,
+      "scope": "structural only; not full acceptance fixture"
+    },
+    {
+      "id": "fix-xlsx-structural",
+      "file": "golden_structural.xlsx",
+      "bytes": 1860,
+      "signatureOk": true,
+      "contentOk": true,
+      "passed": true,
+      "scope": "structural only; not full acceptance fixture"
+    },
+    {
+      "id": "fix-pptx-structural",
+      "file": "golden_structural.pptx",
+      "bytes": 1254,
+      "signatureOk": true,
+      "contentOk": true,
+      "passed": true,
+      "scope": "structural only; not full acceptance fixture"
+    },
+    {
+      "id": "fix-pdf-structural",
+      "file": "golden_structural.pdf",
+      "bytes": 141,
+      "signatureOk": true,
+      "contentOk": true,
+      "passed": true,
+      "scope": "structural only; not full acceptance fixture"
+    }
+  ],
+  "note": "Passing structural checks does not earn any 5-star dimension score."
+}

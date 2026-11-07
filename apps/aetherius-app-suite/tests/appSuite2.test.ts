@@ -298,13 +298,13 @@ test("the app catalogue covers every OS, every core module exists and deployment
     assert.ok(existsSync(path), `${app.id} core module is missing: ${path}`);
   }
 
-  const signed = deploymentPlan("notes", "microsoft", { signed: true });
+  const signed = deploymentPlan("aetherius-notes", "microsoft", { signed: true });
   assert.deepEqual(signed.formats, ["msix"]);
   assert.ok(DEPLOYMENT_TARGETS.microsoft.formats.includes("exe"));
   assert.deepEqual(signed.blockers, []);
-  const unsigned = deploymentPlan("notes", "apple", { signed: false });
+  const unsigned = deploymentPlan("aetherius-notes", "apple", { signed: false });
   assert.match(unsigned.blockers.join(" "), /notarisation/);
-  const planned = deploymentPlan("camera", "android", { signed: true });
+  const planned = deploymentPlan("aetherius-camera", "android", { signed: true });
   assert.match(planned.blockers.join(" "), /PLANNED/);
   assert.throws(() => deploymentPlan("genesis-console", "microsoft"), /not available/);
 });

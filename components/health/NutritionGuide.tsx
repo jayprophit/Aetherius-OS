@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { AcademicCapIcon, CameraIcon } from '../Icons';
 import { GoogleGenAI } from '@google/genai';
+import { getRuntimeGeminiKey } from '../../src/ai/runtimeCredentials';
 import { marked } from 'marked';
 import { healthAndWellnessData } from '../../healthData';
 
@@ -69,14 +70,15 @@ export const NutritionGuide: React.FC = () => {
         setAnalysisResult(null);
         setError('');
 
-        if (!process.env.API_KEY) {
-            setError('API key is not configured.');
+        const apiKey = getRuntimeGeminiKey();
+        if (!apiKey) {
+            setError('Image analysis needs a configured vision model. No API key is bundled into this build, and no result is simulated.');
             setIsAnalyzing(false);
             return;
         }
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const ai = new GoogleGenAI({ apiKey });
             const imagePart = await fileToGenerativePart(file);
             const prompt = `You are a nutrition expert and chef. Analyze this image of food. Provide the following in your response, formatted in Markdown: 1. A list of 2-3 suggested recipes using these ingredients. 2. A step-by-step cooking guide for one of the recipes. 3. A detailed nutritional breakdown including pros, cons, and a table with key data (Calories, Protein, Fat, Carbs, key Vitamins/Minerals).`;
             

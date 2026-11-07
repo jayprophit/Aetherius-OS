@@ -1,6 +1,7 @@
-import { createHash } from "node:crypto";
+// Browser-compatible hash
 
 import { EventLedger, newId, nowIso } from "../../app-kit/src/index.ts";
+import { computeHash } from "./asset-exchange.ts";
 
 /**
  * Photos core.
@@ -175,5 +176,5 @@ export class PhotoLibrary {
 
 /** The host hashes the bytes; this helper exists for adapters that hold them. */
 export function contentHashOf(bytes: Uint8Array): string {
-  return createHash("sha256").update(bytes).digest("hex");
+  return computeHash(bytes);
 }

@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/security-center",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius security center with firewall, permissions, audit log, quarantine and policy.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  }
+}

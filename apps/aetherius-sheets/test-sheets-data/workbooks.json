@@ -1,0 +1,41 @@
+[
+  {
+    "id": "workbook_8f40d2a2-df2c-4cc1-b940-3cf8409c97f9",
+    "name": "Deps",
+    "sheets": [
+      {
+        "id": "sheet_ab31200a-4370-4698-a4d7-a5c0a45a85f7",
+        "name": "Sheet1",
+        "cells": {
+          "A1": {
+            "ref": "A1",
+            "raw": "10",
+            "value": 10,
+            "formula": false
+          },
+          "B1": {
+            "ref": "B1",
+            "raw": "=A1*2",
+            "value": 20,
+            "formula": true,
+            "dependencies": [
+              "A1"
+            ]
+          },
+          "C1": {
+            "ref": "C1",
+            "raw": "=B1+1",
+            "value": 21,
+            "formula": true,
+            "dependencies": [
+              "B1"
+            ]
+          }
+        }
+      }
+    ],
+    "activeSheetId": "sheet_ab31200a-4370-4698-a4d7-a5c0a45a85f7",
+    "createdAt": "2026-11-07T10:53:02.098Z",
+    "updatedAt": "2026-11-07T10:53:02.102Z"
+  }
+]

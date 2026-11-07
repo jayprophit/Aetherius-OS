@@ -1,10 +1,10 @@
 {
-  "name": "@aetherius/commerce",
-  "private": true,
+  "name": "@aetherius/aetherius-commerce",
   "version": "0.1.0",
+  "private": true,
   "type": "module",
-  "description": "Aetherius OS Commerce vertical slice: catalogue, cart, checkout, fulfilment.",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "node --test \"tests/*.test.ts\""
+    "test": "node --test tests/*.test.ts"
   }
 }

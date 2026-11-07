@@ -14,11 +14,17 @@
 > - `docs/BUILD-MANIFEST-REGISTRY.yaml` — the build manifest of every project.
 > - `docs/PROJECT-TODOS.yaml` — the curated TODO list.
 >
-> The tested core is 16 dependency-free TypeScript app slices, a host-neutral
-> cross-platform runtime, a policy/orchestration bridge and a set of domain
-> libraries. There is no bootable Aetherius OS image, native app shell, signed
-> installer, live exchange adapter or live browser driver. Do not quote this
-> historical README as proof of completion.
+> The tested core is 108 app entry points, 15 passing app suites, a host-neutral
+> cross-platform runtime, a policy/orchestration bridge, domain libraries, a
+> compute kernel (binary native; ternary and quantum simulated), and a
+> 14-service self-host template. There is no bootable Aetherius OS image, native
+> app shell, signed installer, live exchange adapter or live browser driver.
+> The public-release gate is `NOT_RELEASABLE`. Do not quote this historical
+> README as proof of completion.
+
+See `docs/EXECUTION_STATUS.md`, `docs/GAP_ANALYSIS_COMPLETE.md`,
+`docs/RELEASE-SCOPE-RECOMMENDATION.md`, and `release/README.md` for the current
+status and the exact blockers.
 
 ## Project Overview
 

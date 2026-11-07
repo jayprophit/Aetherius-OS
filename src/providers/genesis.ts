@@ -1,5 +1,5 @@
-import type { Provider, ProviderReport } from "./types";
-import { baseReport } from "./types";
+import type { Provider, ProviderReport } from "./types.ts";
+import { baseReport } from "./types.ts";
 
 // Genesis has no HTTP surface: genesis_runtime_host is a CLI whose lifecycle
 // is verified via the P14 E2E. This provider reports that honestly instead

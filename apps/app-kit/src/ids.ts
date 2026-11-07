@@ -1,11 +1,12 @@
-import { randomUUID } from "node:crypto";
-
 /** A prefixed identifier. The prefix makes a raw id readable in a ledger. */
 export function newId(prefix: string): string {
   if (!/^[a-z][a-z0-9-]*$/.test(prefix)) {
     throw new Error(`invalid id prefix: ${prefix}`);
   }
-  return `${prefix}_${randomUUID()}`;
+  const uuid = typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+  return `${prefix}_${uuid}`;
 }
 
 /** A stable, lower-case slug suitable for a URL or a file name. */

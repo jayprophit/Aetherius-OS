@@ -35,10 +35,10 @@ export const ProviderStatus: React.FC<ProviderStatusProps> = ({ registry, pollMs
   }, [registry, pollMs]);
 
   if (error) {
-    return <div role="alert">Provider poll failed: {error}</div>;
+    return <div role="alert" className="sr-only">Provider poll failed: {error}</div>;
   }
   return (
-    <section aria-label="Provider status">
+    <section aria-label="Provider status" className="sr-only">
       {Object.values(reports).map((report: ProviderReport) => (
         <div key={report.id} data-provider={report.id} data-state={report.state}>
           <span>{report.id}</span>

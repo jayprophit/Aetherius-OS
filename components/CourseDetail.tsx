@@ -4,6 +4,8 @@ import { courses, enrolledCourses, achievements } from '../data';
 import { Course } from '../types';
 import { StarIcon, UserCircleIcon, PlayIcon, DocumentTextIcon, LockClosedIcon, ChatBubbleOvalLeftEllipsisIcon, LightBulbIcon, TrophyIcon, CheckCircleIcon } from './Icons';
 import { GoogleGenAI } from '@google/genai';
+import { chatWithLocalModel } from '../src/ai/localClient';
+import { getRuntimeGeminiKey } from '../src/ai/runtimeCredentials';
 
 interface CourseDetailProps {
     context: { courseId: number };
@@ -28,15 +30,31 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ context, onSetView }
         setIsLoadingHint(lessonId);
         setHint(prev => ({ ...prev, [lessonId]: 'Thinking...' }));
 
-        if (!process.env.API_KEY) {
-            setHint(prev => ({ ...prev, [lessonId]: 'Error: API key not set.' }));
+        const prompt = `The user is studying a lesson titled "${lessonTitle}" and has requested a hint. Provide a concise, helpful hint that guides them toward understanding the key concept without giving away the direct answer or solution. The hint should be encouraging.`;
+
+        const local = await chatWithLocalModel([
+            { role: 'system', content: 'You are a patient tutor. Give a hint, not the answer.' },
+            { role: 'user', content: prompt },
+        ], { timeoutMs: 60_000 });
+
+        if (local.ok) {
+            setHint(prev => ({ ...prev, [lessonId]: local.text }));
+            setIsLoadingHint(null);
+            return;
+        }
+
+        const apiKey = getRuntimeGeminiKey();
+        if (!apiKey) {
+            setHint(prev => ({
+                ...prev,
+                [lessonId]: 'No local model is available. Start Ollama and install a model to get token-free hints.',
+            }));
             setIsLoadingHint(null);
             return;
         }
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-            const prompt = `The user is studying a lesson titled "${lessonTitle}" and has requested a hint. Provide a concise, helpful hint that guides them toward understanding the key concept without giving away the direct answer or solution. The hint should be encouraging.`;
+            const ai = new GoogleGenAI({ apiKey });
             const response = await ai.models.generateContent({
                 model: 'gemini-2.5-flash',
                 contents: prompt,
@@ -56,13 +74,15 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ context, onSetView }
             id: `achieve-${Date.now()}`,
             courseTitle: course.title,
             completionDate: new Date().toISOString().split('T')[0],
-            transactionId: `0x${[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')}`,
-            certificateUrl: 'https://i.imgur.com/example-cert.png',
+            // A local record, not a blockchain transaction. The old demo wrote
+            // a random 64-hex string and called it a transaction id; that is a
+            // simulated claim and is not recorded here.
+            transactionId: `local-${Date.now()}`,
+            certificateUrl: '',
         };
-        // In a real app, this would be a state update. For this demo, we can push to the imported array.
         achievements.push(newAchievement);
         setClaimed(true);
-        alert(`Achievement for "${course.title}" recorded on the blockchain!`);
+        alert(`Achievement for "${course.title}" recorded locally. No blockchain transaction was made.`);
     };
 
     if (!course) {

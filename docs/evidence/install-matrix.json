@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "generatedAt": "2026-11-04T05:30:58.970Z",
+  "platforms": [
+    {
+      "id": "web-pwa-selfhost",
+      "name": "Self-hosted web/PWA",
+      "install": "PASS",
+      "launch": "PASS",
+      "uninstall": "NOT_APPLICABLE",
+      "evidence": {
+        "installability": [
+          "manifest name, short name, start URL, scope and standalone display",
+          "192x192 and 512x512 PNG icons with verified dimensions",
+          "maskable 512x512 icon",
+          "service worker with a fetch handler",
+          "generated precache manifest including the hashed JavaScript bundle",
+          "served from a localhost secure context"
+        ],
+        "launch": [
+          "index.html, manifest, service worker, precache manifest and icons returned HTTP 200",
+          "the hashed JavaScript bundle returned HTTP 200 with a JavaScript content type"
+        ],
+        "command": "npm run verify:pwa",
+        "report": "release/evidence/pwa-report.json"
+      },
+      "notes": "Installability criteria were verified programmatically. The browser's user-driven install prompt was not automated; no native package exists."
+    }
+  ]
+}

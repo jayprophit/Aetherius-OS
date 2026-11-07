@@ -1,0 +1,215 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "generatedAt": "2026-11-04T05:30:58.970Z",
+  "p95Ms": 8.093,
+  "p50Ms": 3.079,
+  "p99Ms": 13.992,
+  "samples": 1600,
+  "method": "Loopback HTTP GET of the production build served by a local static server; 10 warmups and 200 samples per endpoint. Bodies were fully consumed.",
+  "hardware": {
+    "cpu": "Intel(R) Core(TM) i7 CPU         870  @ 2.93GHz",
+    "logicalCores": 8,
+    "memoryGiB": 16,
+    "platform": "win32",
+    "release": "10.0.19045",
+    "arch": "x64"
+  },
+  "environment": {
+    "node": "v24.22.1",
+    "cwd": "C:\\Users\\jpowe\\Desktop\\Projects\\Aetherius-OS",
+    "origin": "http://127.0.0.1 (ephemeral port)"
+  },
+  "endpoints": [
+    {
+      "path": "/",
+      "expectedType": "text/html",
+      "samples": 200,
+      "p50Ms": 3.417,
+      "p95Ms": 7.822,
+      "p99Ms": 8.755
+    },
+    {
+      "path": "/manifest.webmanifest",
+      "expectedType": "application/manifest+json",
+      "samples": 200,
+      "p50Ms": 4.082,
+      "p95Ms": 10.168,
+      "p99Ms": 21.673
+    },
+    {
+      "path": "/sw.js",
+      "expectedType": "text/javascript",
+      "samples": 200,
+      "p50Ms": 2.536,
+      "p95Ms": 4.617,
+      "p99Ms": 6.007
+    },
+    {
+      "path": "/sw-manifest.json",
+      "expectedType": "application/json",
+      "samples": 200,
+      "p50Ms": 2.627,
+      "p95Ms": 6.31,
+      "p99Ms": 8.39
+    },
+    {
+      "path": "/icons/icon-192.png",
+      "expectedType": "image/png",
+      "samples": 200,
+      "p50Ms": 2.361,
+      "p95Ms": 4.387,
+      "p99Ms": 6.238
+    },
+    {
+      "path": "/icons/icon-512.png",
+      "expectedType": "image/png",
+      "samples": 200,
+      "p50Ms": 2.779,
+      "p95Ms": 4.262,
+      "p99Ms": 6.22
+    },
+    {
+      "path": "/icons/icon-maskable-512.png",
+      "expectedType": "image/png",
+      "samples": 200,
+      "p50Ms": 2.821,
+      "p95Ms": 5.049,
+      "p99Ms": 10.344
+    },
+    {
+      "path": "/assets/index-DW0YeoX7.js",
+      "expectedType": "text/javascript",
+      "samples": 200,
+      "p50Ms": 5.949,
+      "p95Ms": 14.555,
+      "p99Ms": 22.887
+    }
+  ],
+  "thresholds": {
+    "loopbackP95CeilingMs": 250
+  },
+  "notes": "Loopback baseline only. This does not measure wide-area network latency, production capacity, or client rendering time.",
+  "checks": [
+    {
+      "id": "index-manifest-link",
+      "passed": true,
+      "detail": "index.html links the web app manifest"
+    },
+    {
+      "id": "index-theme-color",
+      "passed": true,
+      "detail": "index.html declares the theme colour"
+    },
+    {
+      "id": "index-root",
+      "passed": true,
+      "detail": "index.html has the application root"
+    },
+    {
+      "id": "manifest-name",
+      "passed": true,
+      "detail": "manifest has a name"
+    },
+    {
+      "id": "manifest-short-name",
+      "passed": true,
+      "detail": "manifest has a short name"
+    },
+    {
+      "id": "manifest-start-url",
+      "passed": true,
+      "detail": "manifest has a start URL"
+    },
+    {
+      "id": "manifest-scope",
+      "passed": true,
+      "detail": "manifest has a scope"
+    },
+    {
+      "id": "manifest-display",
+      "passed": true,
+      "detail": "manifest display is standalone"
+    },
+    {
+      "id": "manifest-theme-colors",
+      "passed": true,
+      "detail": "manifest declares theme and background colours"
+    },
+    {
+      "id": "manifest-icon-192x192",
+      "passed": true,
+      "detail": "manifest declares a 192x192 PNG icon"
+    },
+    {
+      "id": "icon-file-192x192",
+      "passed": true,
+      "detail": "icons/icon-192.png exists in the build"
+    },
+    {
+      "id": "icon-dimensions-192x192",
+      "passed": true,
+      "detail": "icons/icon-192.png is 192x192"
+    },
+    {
+      "id": "manifest-icon-512x512",
+      "passed": true,
+      "detail": "manifest declares a 512x512 PNG icon"
+    },
+    {
+      "id": "icon-file-512x512",
+      "passed": true,
+      "detail": "icons/icon-512.png exists in the build"
+    },
+    {
+      "id": "icon-dimensions-512x512",
+      "passed": true,
+      "detail": "icons/icon-512.png is 512x512"
+    },
+    {
+      "id": "manifest-maskable-icon",
+      "passed": true,
+      "detail": "manifest declares a maskable 512x512 icon"
+    },
+    {
+      "id": "service-worker-exists",
+      "passed": true,
+      "detail": "sw.js exists in the build"
+    },
+    {
+      "id": "service-worker-fetch-handler",
+      "passed": true,
+      "detail": "service worker installs a fetch handler"
+    },
+    {
+      "id": "service-worker-precache",
+      "passed": true,
+      "detail": "service worker precaches the generated asset manifest"
+    },
+    {
+      "id": "precache-files",
+      "passed": true,
+      "detail": "precache manifest lists 1 files"
+    },
+    {
+      "id": "precache-hashed-js",
+      "passed": true,
+      "detail": "precache manifest lists the hashed JavaScript bundle"
+    },
+    {
+      "id": "index-script",
+      "passed": true,
+      "detail": "index.html references /assets/index-DW0YeoX7.js"
+    },
+    {
+      "id": "http-all-200",
+      "passed": true,
+      "detail": "every endpoint returned 200 with the expected content type"
+    },
+    {
+      "id": "performance-p95",
+      "passed": true,
+      "detail": "p95 8.093ms over 1600 loopback requests (ceiling 250ms)"
+    }
+  ]
+}

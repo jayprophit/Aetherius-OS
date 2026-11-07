@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "status": "NOT_PERFORMED",
+  "independent": false,
+  "auditor": null,
+  "scope": [],
+  "findings": [],
+  "notes": "Template only. Replace with a real independent penetration test report, named auditor, scope, findings, remediation status, and PASS/FAIL. Self-testing with OWASP ZAP, Semgrep, or Trivy does not satisfy this gate."
+}

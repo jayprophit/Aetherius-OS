@@ -1,0 +1,39 @@
+[
+  {
+    "id": "board_17a270f4-51dc-43df-89b4-7a9cc1e70677",
+    "title": "Asset",
+    "width": 640,
+    "height": 480,
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 10,
+        "y": 20,
+        "width": 100,
+        "height": 50,
+        "visible": true,
+        "locked": false,
+        "id": "shape_ce5d0c92-60c5-41bd-a62b-810c7690a546",
+        "zIndex": 0,
+        "createdAt": "2026-11-07T10:49:46.257Z",
+        "updatedAt": "2026-11-07T10:49:46.257Z"
+      },
+      {
+        "kind": "text",
+        "x": 50,
+        "y": 80,
+        "text": "Hello & World",
+        "visible": true,
+        "locked": false,
+        "id": "shape_5e56415c-8c85-447f-bb39-8c69429c239d",
+        "zIndex": 1,
+        "createdAt": "2026-11-07T10:49:46.258Z",
+        "updatedAt": "2026-11-07T10:49:46.258Z"
+      }
+    ],
+    "selectedIds": [],
+    "createdAt": "2026-11-07T10:49:46.256Z",
+    "updatedAt": "2026-11-07T10:49:46.258Z",
+    "revision": 2
+  }
+]

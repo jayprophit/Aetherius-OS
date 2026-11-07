@@ -1,5 +1,5 @@
-import type { Provider, ProviderReport } from "./types";
-import { baseReport } from "./types";
+import type { Provider, ProviderReport } from "./types.ts";
+import { baseReport } from "./types.ts";
 
 export class ProviderError extends Error {
   code: "TIMEOUT" | "HTTP" | "NETWORK" | "CANCELLED";

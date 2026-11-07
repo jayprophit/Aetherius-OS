@@ -1,0 +1,27 @@
+[
+  {
+    "id": "board_3130eeb2-4988-40a4-a1ef-4dca8e217f8b",
+    "title": "Decode",
+    "width": 8,
+    "height": 8,
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 2,
+        "y": 2,
+        "width": 4,
+        "height": 4,
+        "visible": true,
+        "locked": false,
+        "id": "shape_34fdbfc1-6197-47e4-9e53-d6e809d43210",
+        "zIndex": 0,
+        "createdAt": "2026-11-07T10:52:38.191Z",
+        "updatedAt": "2026-11-07T10:52:38.191Z"
+      }
+    ],
+    "selectedIds": [],
+    "createdAt": "2026-11-07T10:52:38.190Z",
+    "updatedAt": "2026-11-07T10:52:38.191Z",
+    "revision": 1
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "status": "NOT_PERFORMED",
+  "standard": "WCAG 2.2 AA",
+  "independent": false,
+  "auditor": null,
+  "scope": [],
+  "findings": [],
+  "notes": "Template only. Replace with a real independent accessibility audit, named auditor, tested surfaces, assistive technologies, findings, and PASS/FAIL. axe-core/Lighthouse self-checks do not satisfy this gate."
+}

@@ -146,6 +146,14 @@ export class NotesApp {
     return this.revisions.get(noteId)!.map((revision) => structuredClone(revision));
   }
 
+  export(noteId: string, format: "md" | "json" = "md"): string {
+    const note = this.require(noteId);
+    if (format === "md") {
+      return `# ${note.title}\n\n${note.body}\n\nTags: ${note.tags.join(", ")}`;
+    }
+    return JSON.stringify(note, null, 2);
+  }
+
   restore(noteId: string, version: number): Note {
     const revisions = this.revisions.get(noteId);
     if (!revisions) throw new Error(`no note: ${noteId}`);

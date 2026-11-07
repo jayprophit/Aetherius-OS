@@ -1,16 +1,47 @@
 import path from 'path';
-import { loadEnv } from 'vite';
+import type { Plugin } from 'vite';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
+function pwaPrecache(): Plugin {
+  return {
+    name: 'aetherius-pwa-precache',
+    apply: 'build',
+    generateBundle(_options, bundle) {
+      const files = Object.keys(bundle)
+        .filter((file) => /\.(?:js|css|html|svg|png|webmanifest)$/.test(file))
+        .map((file) => `./${file.replace(/\\/g, '/')}`);
+      this.emitFile({
+        type: 'asset',
+        fileName: 'sw-manifest.json',
+        source: JSON.stringify({ files }, null, 2),
+      });
+    },
+  };
+}
+
+export default defineConfig(() => {
     return {
       server: {
         port: 3000,
         host: '0.0.0.0',
       },
-      plugins: [react()],
+      plugins: [
+        react(),
+        tailwindcss(),
+        {
+          name: 'replace-node-builtins',
+          enforce: 'pre',
+          resolveId(source) {
+            if (source.startsWith('node:')) {
+              return { id: source, external: true, moduleSideEffects: false };
+            }
+            return null;
+          },
+        },
+        pwaPrecache(),
+      ],
       test: {
         // This suite is Aetherius-OS's own suite, and it runs Aetherius-OS's
         // own tests.
@@ -82,14 +113,21 @@ export default defineConfig(({ mode }) => {
         testTimeout: 30_000,
         hookTimeout: 30_000,
       },
+      // No credential is ever injected at build time. AI providers resolve
+      // secrets at runtime by reference, and the browser-side legacy views
+      // read a session-scoped key only when the user supplies one. A build
+      // that embeds a key publishes it, so the define block deliberately
+      // contains no API key.
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
+        __AETHERIUS_BUILD_ID__: JSON.stringify(
+          process.env.AETHERIUS_BUILD_ID || process.env.npm_package_version || 'dev'
+        ),
       },
+
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
     };
 });

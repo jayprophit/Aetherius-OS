@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "generatedAt": "2026-11-04T05:31:34.429Z",
+  "platform": "web-pwa-selfhost",
+  "release": "0.1.0",
+  "method": "Two production Vite builds with distinct build stamps were served on one loopback origin. The active release directory was switched to upgrade, then switched back to roll back. A headless Chrome instance verified the live build stamp, rendered root, service-worker registration, and origin-scoped browser storage at each step.",
+  "dataPreserved": true,
+  "dataKeys": [
+    "aetherius.shell.settings.v1",
+    "aetherius.rollback.drill"
+  ],
+  "browser": {
+    "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "protocol": "Chrome DevTools Protocol",
+    "headless": true
+  },
+  "builds": {
+    "a": {
+      "buildId": "0.1.0-rollback-a",
+      "indexHtmlSha256": "6f6109f4cffcf91b488772cef3625a507fa7930bc7386feed735ea802fe7ea06",
+      "scriptSrc": "/assets/index-Cb7OfEyA.js",
+      "scriptFile": "assets/index-Cb7OfEyA.js",
+      "scriptSha256": "f227f0559df83e6436aa8c82b547b05a5c75833245bc9b035294af4b47aac9e2",
+      "files": [
+        {
+          "path": "index.html",
+          "bytes": 677,
+          "sha256": "6f6109f4cffcf91b488772cef3625a507fa7930bc7386feed735ea802fe7ea06"
+        },
+        {
+          "path": "assets/index-Cb7OfEyA.js",
+          "bytes": 353078,
+          "sha256": "f227f0559df83e6436aa8c82b547b05a5c75833245bc9b035294af4b47aac9e2"
+        },
+        {
+          "path": "manifest.webmanifest",
+          "bytes": 845
+        },
+        {
+          "path": "sw.js",
+          "bytes": 2908
+        }
+      ]
+    },
+    "b": {
+      "buildId": "0.1.0-rollback-b",
+      "indexHtmlSha256": "ef7183ec837b1cd0839c6f361d2f4e4a9c55746b8558eb5e8546bcd03d3f0ae6",
+      "scriptSrc": "/assets/index-BUS402Iz.js",
+      "scriptFile": "assets/index-BUS402Iz.js",
+      "scriptSha256": "c3925b95f2dd75e9c4e4ce128df525b0b0cef398796ab13b6265745b45b025d2",
+      "files": [
+        {
+          "path": "index.html",
+          "bytes": 677,
+          "sha256": "ef7183ec837b1cd0839c6f361d2f4e4a9c55746b8558eb5e8546bcd03d3f0ae6"
+        },
+        {
+          "path": "assets/index-BUS402Iz.js",
+          "bytes": 353078,
+          "sha256": "c3925b95f2dd75e9c4e4ce128df525b0b0cef398796ab13b6265745b45b025d2"
+        },
+        {
+          "path": "manifest.webmanifest",
+          "bytes": 845
+        },
+        {
+          "path": "sw.js",
+          "bytes": 2908
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "step": "baseline",
+      "status": "PASS",
+      "buildId": "0.1.0-rollback-a",
+      "script": "http://127.0.0.1:62167/assets/index-Cb7OfEyA.js",
+      "scriptSha256": "f227f0559df83e6436aa8c82b547b05a5c75833245bc9b035294af4b47aac9e2",
+      "indexHtmlSha256": "6f6109f4cffcf91b488772cef3625a507fa7930bc7386feed735ea802fe7ea06",
+      "rootChildren": 1,
+      "serviceWorkers": 1,
+      "storageWritten": {
+        "settings": "{\"theme\":\"light\",\"providerPollMs\":4242,\"bridgeEndpoint\":\"http://127.0.0.1:8471\",\"matEndpoint\":\"http://127.0.0.1:8472\"}",
+        "drill": "survives-upgrade-and-rollback"
+      }
+    },
+    {
+      "step": "upgrade",
+      "status": "PASS",
+      "fromBuildId": "0.1.0-rollback-a",
+      "toBuildId": "0.1.0-rollback-b",
+      "script": "http://127.0.0.1:62167/assets/index-BUS402Iz.js",
+      "scriptSha256": "c3925b95f2dd75e9c4e4ce128df525b0b0cef398796ab13b6265745b45b025d2",
+      "indexHtmlSha256": "ef7183ec837b1cd0839c6f361d2f4e4a9c55746b8558eb5e8546bcd03d3f0ae6",
+      "rootChildren": 1,
+      "serviceWorkers": 1,
+      "storagePreserved": {
+        "settings": "{\"theme\":\"light\",\"providerPollMs\":4242,\"bridgeEndpoint\":\"http://127.0.0.1:8471\",\"matEndpoint\":\"http://127.0.0.1:8472\"}",
+        "drill": "survives-upgrade-and-rollback"
+      }
+    },
+    {
+      "step": "rollback",
+      "status": "PASS",
+      "fromBuildId": "0.1.0-rollback-b",
+      "toBuildId": "0.1.0-rollback-a",
+      "script": "http://127.0.0.1:62167/assets/index-Cb7OfEyA.js",
+      "scriptSha256": "f227f0559df83e6436aa8c82b547b05a5c75833245bc9b035294af4b47aac9e2",
+      "indexHtmlSha256": "6f6109f4cffcf91b488772cef3625a507fa7930bc7386feed735ea802fe7ea06",
+      "matchesBaselineScript": true,
+      "rootChildren": 1,
+      "serviceWorkers": 1,
+      "storagePreserved": {
+        "settings": "{\"theme\":\"light\",\"providerPollMs\":4242,\"bridgeEndpoint\":\"http://127.0.0.1:8471\",\"matEndpoint\":\"http://127.0.0.1:8472\"}",
+        "drill": "survives-upgrade-and-rollback"
+      }
+    }
+  ],
+  "console": {
+    "totalMessages": 0,
+    "errorsOrExceptions": []
+  },
+  "limitations": [
+    "Loopback static server only; no production DNS, TLS, load balancer, or CDN was switched.",
+    "No prior public release exists, so the previous bundle is a locally built artifact with a distinct build stamp.",
+    "Browser storage persistence was tested in a fresh temporary Chrome profile; server-side data stores were not involved."
+  ]
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "deck_91d874dc-89fc-46ea-ac42-5cbec7cfc9a8",
+    "name": "PersistAsset",
+    "slides": [
+      {
+        "id": "slide_d1558ba1-1d1d-4de7-ba07-2f526c147429",
+        "title": "Slide",
+        "elements": [
+          {
+            "id": "el_e7f0e781-c414-45c7-b72a-eb7c70e5220e",
+            "kind": "asset",
+            "text": "asset-persist",
+            "x": 10,
+            "y": 10,
+            "width": 100,
+            "height": 100,
+            "assetId": "asset-persist",
+            "assetSnapshot": "<svg/>"
+          }
+        ],
+        "notes": "",
+        "order": 0
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset-persist",
+        "schemaVersion": "aetherius-asset-v1",
+        "mimeType": "image/svg+xml",
+        "contentHash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "ownership": "aetherius-canvas",
+        "provenance": {
+          "sourceApp": "aetherius-canvas",
+          "exportedAt": "2026-11-03T00:00:00.000Z",
+          "exporterVersion": "batch-23"
+        },
+        "contentDimensions": {
+          "width": 200,
+          "height": 200
+        },
+        "createdAt": "2026-11-03T00:00:00.000Z"
+      }
+    ],
+    "createdAt": "2026-11-07T10:53:04.386Z",
+    "updatedAt": "2026-11-07T10:53:04.388Z"
+  }
+]

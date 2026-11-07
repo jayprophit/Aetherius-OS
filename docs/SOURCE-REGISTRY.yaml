@@ -19,7 +19,7 @@ source_date: "2026-10-20"
 scopes:
   - name: documents-root
     root: "C:\\Users\\jpowe\\Documents"
-    documents: 879
+    documents: 884
   - name: documents-master-prompt
     root: "C:\\Users\\jpowe\\Documents\\master prompt"
     documents: 25
@@ -31,17 +31,17 @@ scopes:
     documents: 127
   - name: downloads
     root: "C:\\Users\\jpowe\\Downloads"
-    documents: 1
+    documents: 5
 
 totals:
-  documents: 1122
-  bytes: 25147083
+  documents: 1131
+  bytes: 25302319
   kind_build_record: 116
-  kind_document: 628
-  kind_handoff: 25
+  kind_document: 629
+  kind_handoff: 27
   kind_master_prompt: 26
   kind_process: 1
-  kind_prompt_or_brief: 318
+  kind_prompt_or_brief: 324
   kind_requirements: 8
 
 # Material recovered from the owner's own accounts. It is not on
@@ -1887,10 +1887,10 @@ sources:
     scope: documents-opencde
     kind: prompt_or_brief
     title: "openrouter"
-    bytes: 968
+    bytes: 800
     lines: 37
-    modified: 2026-08-28
-    digest: sha256:70ec856e1c055c7a9fc0b716421ea726d7d29bd7a88c550a88e88ec16cc87664
+    modified: 2026-11-04
+    digest: sha256:9666d41a8714db26850a0ed145eda5cd8f4f164602031153c7154f533ca42023
   - path: "Documents/openCDE-agent/original codespaces settings for json.txt"
     scope: documents-opencde
     kind: prompt_or_brief
@@ -8875,6 +8875,30 @@ sources:
     lines: 1345
     modified: 2026-09-29
     digest: sha256:a5acec9cbbe7cc84d397a8070931fee03e58aae8dc9dfede727d7d63e6bf7e39
+  - path: "Documents/checklist.txt"
+    scope: documents-root
+    kind: prompt_or_brief
+    title: "Full checklist written to `Aetherius-OS/docs/OWNER-REQUIRED-INPUTS.md`. Here’s what only you can supply, in priority ord"
+    bytes: 11161
+    lines: 203
+    modified: 2026-11-04
+    digest: sha256:7cfaedc20a79d2f9c7aa8a133713ab8438df4ee4b536abf04020fed7d641ab51
+  - path: "Documents/checklist2.txt"
+    scope: documents-root
+    kind: prompt_or_brief
+    title: "Yes — for most of the stack. But it splits into three layers, and only two of them can be free."
+    bytes: 10353
+    lines: 126
+    modified: 2026-11-04
+    digest: sha256:01376cf00387b84b72b33043a009e421187f8d3081593d8da29d5c89f8d72862
+  - path: "Documents/checklist3.txt"
+    scope: documents-root
+    kind: prompt_or_brief
+    title: "Remaining blockers"
+    bytes: 5075
+    lines: 67
+    modified: 2026-11-04
+    digest: sha256:0c370e1e413586d215e8d0ced48ec1d06546a80784d40789594aa7e8c41ed2c0
   - path: "Documents/cubase le.txt"
     scope: documents-root
     kind: prompt_or_brief
@@ -8883,6 +8907,14 @@ sources:
     lines: 1
     modified: 2026-07-26
     digest: sha256:97b057c4101a4558f0b856c70c3ac11cda80c7d429ea9feb038cd72914f67650
+  - path: "Documents/file locations.txt"
+    scope: documents-root
+    kind: prompt_or_brief
+    title: "main directory for projects location:"
+    bytes: 418
+    lines: 29
+    modified: 2026-11-05
+    digest: sha256:ce5faa2c0a15c72e91cb893f8a5bae50e98bae5cd052eb05b6697d7b0fe8526b
   - path: "Documents/free cloud ai desktop or terminal apps.txt"
     scope: documents-root
     kind: prompt_or_brief
@@ -8999,10 +9031,18 @@ sources:
     scope: documents-root
     kind: prompt_or_brief
     title: "openrouter"
-    bytes: 956
+    bytes: 788
     lines: 36
-    modified: 2026-10-07
-    digest: sha256:dca1dd4aeca61b49dbc5f8f1c72ee37f298e34b6a3c2f662bf77b1ea1cf3cac6
+    modified: 2026-11-04
+    digest: sha256:ea8c7b899ef06fce2ee6b57f531e0c71dfb890af390a5ea7de1b683d4324a739
+  - path: "Documents/password 3d printing work.txt"
+    scope: documents-root
+    kind: prompt_or_brief
+    title: "password 3d printing work"
+    bytes: 104
+    lines: 7
+    modified: 2026-11-04
+    digest: sha256:8d037eae0e9eb80fd00ae69115ec4310948e6d468f38ef383e516dd3a2e30d61
   - path: "Documents/prompt.txt"
     scope: documents-root
     kind: master_prompt
@@ -9035,11 +9075,43 @@ sources:
     lines: 281
     modified: 2026-10-21
     digest: sha256:d2656ed7a64d5e0868cd93a0b0e83807689d62359817025b27075d3df1ce0bfa
-  - path: "Downloads/Genesis_Reconciliation/GENESIS_DATASET_TRAINER_RECONCILIATION_2026-10-24.md"
+  - path: "Downloads/AETHERIUS_ARCHIVE_STATIC_AUDIT_2026-11-06.md"
     scope: downloads
     kind: document
-    title: "Genesis — Dataset Helper ↔ Native Trainer Reconciliation"
-    bytes: 12856
-    lines: 129
-    modified: 2026-10-24
-    digest: sha256:71739278ed37e99c88c278408dda75891055730120aeb943dfe8063887040d6f
+    title: "Aetherius / Veyra / Predecessor Archives — Read-Only Static Audit"
+    bytes: 11056
+    lines: 64
+    modified: 2026-11-06
+    digest: sha256:4f98dbc4ddd3a5f6d2c86d2edd7b0b9e9b56acbfbd5a65b7338991f88ed0a712
+  - path: "Downloads/AETHERIUS_GENESIS_RESEARCH_MILESTONE_HANDOFF_2026-11-05.md"
+    scope: downloads
+    kind: handoff
+    title: "AETHERIUS / GENESIS — CONSOLIDATED RESEARCH-TO-MILESTONE HANDOFF"
+    bytes: 24921
+    lines: 231
+    modified: 2026-11-05
+    digest: sha256:7d6345effc2f5694a55d2be39d728272c6c689ea4fc665f5f00094c6503cee54
+  - path: "Downloads/AETHERIUS_OS_DEFAULT_APPS_CROSS_PLATFORM_BUILD_HANDOFF_2026-10-29.md"
+    scope: downloads
+    kind: handoff
+    title: "Aetherius OS — Default Applications Cross-Platform Build Handoff"
+    bytes: 32911
+    lines: 283
+    modified: 2026-10-29
+    digest: sha256:1aa45709b6fff07e5af564006f4cbcc5aa4d970eff3ab1487ebf231113a92f57
+  - path: "Downloads/AETHERIUS_OS_PROFESSIONAL_APP_SUITES_5_STAR_BENCHMARK_GAP_ANALYSIS_2026-10-29.md"
+    scope: downloads
+    kind: document
+    title: "AETHERIUS OS — Professional Application Ecosystem, 5-Star Benchmark & Gap Analysis"
+    bytes: 70772
+    lines: 422
+    modified: 2026-10-29
+    digest: sha256:ceb066b807975cb030333ae787ea391914144dc2a496b418c2e709dec56c60c1
+  - path: "Downloads/CP01_Print_Fit_Calibration_Kit/README.txt"
+    scope: downloads
+    kind: prompt_or_brief
+    title: "CREALITY CP-01: GP-015 / GP-016 / GP-017 3D-PRINT CALIBRATION KIT"
+    bytes: 1657
+    lines: 35
+    modified: 2026-11-04
+    digest: sha256:417d17094893903fac3a23a154cd0254ab46defbca65f18fd988fab56a5f9283

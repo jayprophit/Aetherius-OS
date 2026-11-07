@@ -1,0 +1,16 @@
+# TEMPLATE ONLY — do not publish this file as-is.
+# Replace every value marked REPLACE, provision the mailbox or HTTPS endpoint,
+# and test it before copying this file to public/.well-known/security.txt.
+#
+# RFC 9116 fields. Keep the file ASCII or UTF-8.
+
+Contact: mailto:security@aetherius.invalid
+Expires: 2027-11-04T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://example.invalid/.well-known/security.txt
+Policy: https://example.invalid/security-policy
+Acknowledgments: https://example.invalid/security-acknowledgments
+
+# The .invalid top-level domain is reserved and cannot receive mail. It is a
+# placeholder, not a working contact. A published policy with a dead contact
+# address is worse than no policy because it wastes a reporter's time.

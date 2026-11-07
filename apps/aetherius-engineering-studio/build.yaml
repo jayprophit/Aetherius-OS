@@ -1,0 +1,44 @@
+schema_version: "1.0.0"
+project:
+  id: aetherius-engineering-studio
+  name: Aetherius Engineering Studio
+  kind: application
+  domain: apps
+  description: >-
+    Web-based engineering studio product built with Vite, React and Three.js.
+    Separate product with its own package manifest; it is not an @aetherius
+    shell slice and is not run by apps/verify.mjs.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: npm/vite
+  package_manager: npm
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: dev
+    command: npm run dev
+    working_directory: .
+    timeout_minutes: 5
+  - name: build
+    command: npm run build
+    working_directory: .
+    timeout_minutes: 10
+dependencies:
+  projects: []
+  external: []
+status:
+  state: NOT_STARTED
+  last_verified: "2026-11-07"
+  summary: Vite/React project scaffold. No test suite and the build has not
+    been run as part of the workspace gate.
+  evidence:
+    - "2026-11-07: apps/aetherius-engineering-studio/package.json declares
+      dev/build/preview scripts only; no tests directory"
+known_issues:
+  - id: engineering-studio-001
+    severity: medium
+    summary: No tests and no recorded build. State is unmeasured.
+    status: OPEN

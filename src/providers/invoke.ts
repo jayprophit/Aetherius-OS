@@ -10,7 +10,7 @@
  * cost boundaries.
  */
 
-import type { PrivacyClass } from "./capabilities";
+import type { PrivacyClass } from "./capabilities.ts";
 
 export interface InvokeMessage {
   role: "system" | "user" | "assistant";

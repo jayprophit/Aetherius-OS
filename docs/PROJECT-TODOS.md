@@ -3,8 +3,8 @@
 > Generated from `docs/PROJECT-TODOS.yaml`. Do not hand-edit this
 > file; edit the YAML and regenerate.
 
-- Source date: 2026-10-29
-- Tasks: **333** (252 open, 81 done)
+- Source date: 2026-11-04
+- Tasks: **342** (261 open, 81 done)
 
 ## By project
 
@@ -16,7 +16,7 @@
 | aetherium | 2 | 0 |
 | aetherius-commerce | 1 | 0 |
 | aetherius-health-library | 3 | 1 |
-| aetherius-os | 64 | 18 |
+| aetherius-os | 72 | 18 |
 | aetherius-os-prototype | 2 | 0 |
 | aetherius-os-worldclass-prototype | 2 | 0 |
 | agent-bridge | 17 | 18 |
@@ -44,7 +44,7 @@
 | qva-merged | 3 | 0 |
 | self-building-ai | 2 | 0 |
 | sovereign-financial-os | 1 | 1 |
-| trading-bot | 4 | 1 |
+| trading-bot | 5 | 1 |
 | universal-bridge | 5 | 2 |
 | veyra | 3 | 0 |
 | virtual-assistant | 2 | 0 |
@@ -361,12 +361,12 @@ Acceptance:
 - **Status:** OPEN
 - **Source:** build-audit — 2026-10-29: apps/verify.mjs and the app-suite build manifest
 
-The app suite, store, Food Wiki and Athena Health are tested domain libraries, not rendered applications. There is no native shell that mounts them, no per-OS window chrome and no renderer. One host shell with one real app is the next product step; more unrendered libraries are not.
+The app suite, store, Food Wiki and Athena Health are tested domain libraries. A self-hosted web/PWA shell now mounts the Notes, Writer, Sheets, Slides, Canvas and Recorder panes and boots in headless Chrome, but there is still no native shell, no per-OS window chrome and no native renderer. One native host shell with one real app remains the next product step; more unrendered libraries are not.
 
 Evidence:
 
 ```
-node apps/verify.mjs passes 17/17 slices, but every slice is a Node library. The desktop slice models window chrome and themes without rendering a window. No MSIX, DMG, DEB, AAB, IPA or PWA artifact has been produced.
+node apps/verify.mjs passes 15/15 slices; apps/smoke-all.mjs imports 108/108 entry points. npm run verify:pwa passes 24 installability/launch checks with a loopback p95 of 8.093 ms. npm run verify:rollback passes a headless-Chrome upgrade/rollback drill with browser storage preserved. No MSIX, DMG, DEB, AAB or IPA artifact has been produced; the PWA bundle is unsigned and has no native package.
 ```
 
 Acceptance:
@@ -718,7 +718,7 @@ The conversation corpus held twelve live-looking OpenRouter keys that had been p
 Evidence:
 
 ```
-"12 hit(s)" for openrouter_key across research/codex-history/index.jsonl and threads.json, before the extractor was taught to redact.
+"12 hit(s)" for openrouter_key across research/codex-history/index.jsonl and threads.json, before the extractor was taught to redact. Local cleanup on 2026-11-04 redacted every located plaintext copy: Documents/openrouter.txt, Documents/openCDE-agent/openrouter.txt, and two .env copies under the retired Hermes profile in Documents/Codex. That retired profile's Google, Hugging Face, xAI and Ollama token copies were redacted as well. A re-scan of the codex-history corpus found 0 plaintext OpenRouter keys. The live Hermes OPENROUTER_API_KEY in %LOCALAPPDATA%/hermes/.env was preserved because it is a working configuration value, not a corpus copy. Provider-side revocation remains owner-only.
 ```
 
 Acceptance:
@@ -2204,7 +2204,7 @@ The trading bot carried six live credentials in its history: an AWS account emai
 Evidence:
 
 ```
-A scan of every repository in the workspace found them: daily-logs/03-10-2024.md held the AWS account and password, production/Facial_Authentication/backend/app.js the AWS access key id, production/AI-Voice-assistant/ assistant.py and crypto.py the Google, Groq and OpenAI keys, and production/API/.env the Coinbase secret. All are redacted in the working tree and pushed on 2026-10-20.
+A scan of every repository in the workspace found them: daily-logs/03-10-2024.md held the AWS account and password, production/Facial_Authentication/backend/app.js the AWS access key id, production/AI-Voice-assistant/ assistant.py and crypto.py the Google, Groq and OpenAI keys, and production/API/.env the Coinbase secret. All are redacted in the working tree and pushed on 2026-10-20. Local cleanup on 2026-11-04 also redacted the remaining AWS secret access key, the Coinbase API key id, and credentials in production/Authentication/.env. The nested trading-bot Git history still contains the old blobs, and provider-side rotation remains owner-only.
 ```
 
 Acceptance:
@@ -2248,7 +2248,7 @@ Literal credentials were found in the project's own source. They are compromised
 Evidence:
 
 ```
-Files: ['production/AI-Voice-assistant/assistant.py', 'production/Facial_Authentication/backend/app.js'].
+Files: ['production/AI-Voice-assistant/assistant.py', 'production/Facial_Authentication/backend/app.js']. Local cleanup on 2026-11-04 redacted the remaining AWS secret access key and Coinbase API key id, plus credentials in production/Authentication/.env. The nested trading-bot history still contains the old blobs, so provider-side rotation and history rewriting remain owner-only.
 ```
 
 Acceptance:
@@ -3079,6 +3079,156 @@ Acceptance:
 
 - [ ] npm run verify in Aetherius-OS runs the kernel host suite
 - [ ] A kernel change that breaks the host suite fails the build
+
+### ⬜ TODO-KRN-007 — Publish the kernel platform support matrix and claim rules
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, 2026-11-04
+
+ADR-002 chooses the target architectures, firmware, filesystems, networking, driver policy, ABI and deployment model. That decision is not yet a machine-checkable support matrix, so a build can still imply support it has not measured. The matrix must name each platform, its boot path, the gate that proves it and its honest claim status.
+
+Evidence:
+
+```
+ADR-002 records the decision. native/kernel/build.ps1 reports 126 host checks and no boot proof. kernel/compute/manifest.json records bootable_general_purpose_os as false.
+```
+
+Acceptance:
+
+- [ ] A support matrix lists each architecture, firmware and platform as PLANNED, IN_PROGRESS, SIMULATED or VERIFIED
+- [ ] A gate fails when a build manifest claims support that the matrix does not record
+- [ ] The 0.1.0 matrix contains no bootable kernel, ARM64 or RISC-V claim
+
+### ⬜ TODO-KRN-008 — Implement AetherFS, the VFS policy and the filesystem set
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, section 3
+- **Depends on:** TODO-KRN-003, TODO-KRN-007
+
+The kernel needs a native read/write root filesystem, a FAT32 EFI system partition and exchange format, ISO9660 installer media and a user-space ext4 path. AI read/write access must go through the VFS and capability checks with audited writes, never through raw block-device access.
+
+Evidence:
+
+```
+There is no filesystem implementation, VFS or block layer in native/kernel yet. ADR-002 records the target filesystems and the licence review needed before lwext4 is linked or distributed.
+```
+
+Acceptance:
+
+- [ ] The AetherFS on-disk format is documented and a host tool reads and writes an image
+- [ ] VFS tests cover mount, read, write, rename, permissions and recovery from an interrupted write
+- [ ] FAT32 and ISO9660 mount in QEMU and the EFI system partition is readable
+- [ ] The ext4 path has a recorded licence decision and an integration test
+
+### ⬜ TODO-KRN-009 — Integrate lwIP behind the Aetherius socket and policy layer
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, section 4
+- **Depends on:** TODO-KRN-003
+
+The protocol engine is lwIP, but the socket API, capability checks, per-process policy, address configuration and audit remain Aetherius-owned. The integration must record the upstream version, licence and every local patch so it can be maintained across releases.
+
+Evidence:
+
+```
+No network stack or socket layer exists in native/kernel. The ADR fixes the hybrid boundary and allows another permissive stack to replace lwIP without changing the userland contract.
+```
+
+Acceptance:
+
+- [ ] The lwIP version, licence and local patches are recorded
+- [ ] Loopback and virtio-net tests pass in QEMU
+- [ ] Policy tests prove that network access is allowed, denied and audited per process
+- [ ] No path reaches the network without passing the capability check
+
+### ⬜ TODO-KRN-010 — Define the driver model and signed loadable modules
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, section 5
+- **Depends on:** TODO-KRN-003, TODO-KRN-007
+
+Core drivers are built into the kernel. Non-core and hot-pluggable devices may be loadable modules, but a module is accepted only when it is signed by a trusted key, matches the kernel ABI version and declares the capabilities it needs.
+
+Evidence:
+
+```
+The current scaffold has no driver model and no module loader. ADR-002 lists the core drivers and the module acceptance rules.
+```
+
+Acceptance:
+
+- [ ] The core driver set is enumerated and built in-tree
+- [ ] Module metadata carries an ABI version, a signature and a capability list
+- [ ] A signed module loads; unsigned, wrong-key and wrong-version modules are rejected
+- [ ] QEMU device tests cover the core drivers and at least one loadable module
+
+### ⬜ TODO-KRN-011 — Implement the native, Linux-subset and WASM/WASI userland ABIs
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, section 6
+- **Depends on:** TODO-KRN-003, TODO-KRN-005
+
+The native Aether ABI is primary, a documented Linux x86_64 syscall subset is the compatibility personality, and WASM/WASI is the portable sandbox. The three must share one process, memory and capability model, and the Linux subset must state what it does not support.
+
+Evidence:
+
+```
+native/kernel/docs/SYSCALL-ABI.md defines the native contract. There is no Linux compatibility personality and no WASM runtime in the kernel.
+```
+
+Acceptance:
+
+- [ ] The native ABI v1 is frozen and its generated bindings compile
+- [ ] The Linux subset matrix lists supported and unsupported syscalls and tests both outcomes
+- [ ] WASM/WASI sandbox tests prove that a module cannot leave its capability set
+- [ ] All three ABIs use the same process and capability model
+
+### ⬜ TODO-KRN-013 — Build the VM-first test matrix and the bare-metal validation gate
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, section 7
+- **Depends on:** TODO-KRN-003, TODO-KRN-012
+
+Development and CI run in QEMU: x86_64 UEFI, x86_64 BIOS/Multiboot2, ARM64 virt and RISC-V virt. Bare metal is a separate validation gate on named hardware, covering boot, storage, network, a power cycle and a soak test before any support claim.
+
+Evidence:
+
+```
+The Rust UEFI proof exists but the C kernel has no automated boot harness. No bare-metal validation has been recorded for the C kernel.
+```
+
+Acceptance:
+
+- [ ] The four QEMU configurations run as automated jobs
+- [ ] A named device has recorded boot, storage, network, power-cycle and soak evidence
+- [ ] The support matrix is updated only from those results
+
+### ⬜ TODO-KRN-014 — Keep ternary and quantum execution simulation-only and fail closed
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, section 8
+
+Ternary arithmetic and quantum state-vector simulation run locally and offline in v1. An optional online QPU or FPGA backend may exist later, but it is disabled by default, requires an explicit owner decision and credentials, and fails closed with a named blocked-dependency error.
+
+Evidence:
+
+```
+kernel/compute/manifest.json records ternary and quantum as simulated. Remote QPU access fails closed with QUANTUM_HARDWARE_BLOCKED_DEPENDENCY. No hardware backend exists.
+```
+
+Acceptance:
+
+- [ ] Local ternary and state-vector simulation run offline with deterministic tests
+- [ ] Every simulated result is labelled SIMULATED
+- [ ] The online backend is disabled by default and fails closed when unconfigured or unavailable
+- [ ] No hardware claim is made without measured evidence on named hardware
 
 ### ✅ TODO-REPO-001 — Build the GitHub repository registry as the reverse-engineering corpus
 
@@ -4686,6 +4836,29 @@ Acceptance:
 - [ ] A licence file is present
 - [ ] The build manifest records it
 
+### ⬜ TODO-TRADING-BOT-003 — Add PAPER, DEMO and LIVE modes with provenance and separate ledgers
+
+- **Project:** trading-bot
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-003-FINANCE-PAPER-FIRST.md, 2026-11-04
+- **Depends on:** TODO-TRADING-BOT-000
+
+The bot currently has one paper mode. It needs an explicit mode on every account and session: PAPER for simulated or replayed data, DEMO for play money with licensed live or delayed data where available, and LIVE for real venues. Every quote, bar, order, fill and valuation must carry a provenance label, and the three modes must have separate, non-transferable ledgers.
+
+Evidence:
+
+```
+apps/Multi-Cross-Platform-Trading-Bot/README.md describes a paper-only bot and its build.yaml records that no live exchange adapter exists. ADR-003 records the three-mode model and the live gate.
+```
+
+Acceptance:
+
+- [ ] PAPER, DEMO and LIVE are explicit modes, and LIVE is disabled by default
+- [ ] Every quote, bar, order, fill and valuation has a provenance label
+- [ ] An unlabelled value is rejected by the domain layer and by a test
+- [ ] Demo and live ledgers are separate, and a demo balance cannot be withdrawn or converted
+- [ ] LIVE returns a fail-closed error until the authorisation and compliance gate passes
+
 ### ⬜ TODO-UB-004 — Make Universal Bridge read mixing desks and reach the installed hardware
 
 - **Project:** universal-bridge
@@ -5008,6 +5181,28 @@ Acceptance:
 
 - [ ] The Rust native layer is archived, not deleted
 - [ ] The C kernel is the only native build in the tree
+
+### ⬜ TODO-KRN-012 — Port the kernel to ARM64 and then RISC-V
+
+- **Project:** aetherius-os
+- **Status:** OPEN
+- **Source:** owner-decision — docs/adr/ADR-002-KERNEL-PLATFORM.md, section 1
+- **Depends on:** TODO-KRN-003, TODO-KRN-007
+
+x86_64 is first. ARM64 is the second port and RISC-V the third. Each port needs its own boot shim, interrupt and timer code, memory layout and QEMU target, and each must produce the same marker sequence as x86_64 before it is claimed.
+
+Evidence:
+
+```
+The kernel is x86_64 only. There is no ARM64 or RISC-V build target in the tree.
+```
+
+Acceptance:
+
+- [ ] ARM64 boots under QEMU virt and matches the x86_64 marker sequence
+- [ ] RISC-V boots under QEMU virt and matches the x86_64 marker sequence
+- [ ] The core test suite passes on both architectures
+- [ ] No architecture is marked VERIFIED before its evidence is recorded
 
 ### ⬜ TODO-LEG-001 — Reconcile the predecessor Aetherius task surface into the current registry
 

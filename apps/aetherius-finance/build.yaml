@@ -1,0 +1,39 @@
+schema_version: "1.0.0"
+project:
+  id: aetherius-finance
+  name: Aetherius Finance
+  kind: application
+  domain: apps
+  description: Domain core for Finance.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: verify
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
+status:
+  state: PARTIAL
+  last_verified: "2026-10-30"
+  summary: "Domain core. No UI or host adapters yet."
+  evidence:
+    - "2026-10-30: node --test tests/*.test.ts -> tests pass"
+known_issues:
+  - id: aetherius-finance-001
+    severity: high
+    summary: "No UI, window, or host filesystem adapter."
+    status: OPEN

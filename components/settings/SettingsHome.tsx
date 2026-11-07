@@ -31,11 +31,22 @@ export const SettingsHome: React.FC<{ onSelectCategory: (id: string) => void }> 
             </header>
             
             <div className="p-4 flex items-center gap-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mb-6">
-                <img src={loggedInUser.avatarUrl || ''} alt="User" className="w-16 h-16 rounded-full"/>
-                <div>
-                    <p className="font-bold text-lg text-gray-800 dark:text-gray-100">{loggedInUser.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{loggedInUser.email}</p>
-                </div>
+                {loggedInUser ? (
+                    <>
+                        <img src={loggedInUser.avatarUrl || ''} alt="User" className="w-16 h-16 rounded-full"/>
+                        <div>
+                            <p className="font-bold text-lg text-gray-800 dark:text-gray-100">{loggedInUser.name}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">{loggedInUser.email}</p>
+                        </div>
+                    </>
+                ) : (
+                    <div>
+                        <p className="font-bold text-lg text-gray-800 dark:text-gray-100">Local profile</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                            No account is signed in. Settings are stored on this device only.
+                        </p>
+                    </div>
+                )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

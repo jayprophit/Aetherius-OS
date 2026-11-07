@@ -1,0 +1,27 @@
+[
+  {
+    "id": "board_f3bbe4a7-c446-4496-b863-e777085e53d8",
+    "title": "Persistence",
+    "width": 32,
+    "height": 32,
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 4,
+        "y": 4,
+        "width": 24,
+        "height": 24,
+        "visible": true,
+        "locked": false,
+        "id": "shape_f1d3d783-ee02-4078-953e-71d228d42caa",
+        "zIndex": 0,
+        "createdAt": "2026-11-07T10:52:38.217Z",
+        "updatedAt": "2026-11-07T10:52:38.217Z"
+      }
+    ],
+    "selectedIds": [],
+    "createdAt": "2026-11-07T10:52:38.216Z",
+    "updatedAt": "2026-11-07T10:52:38.217Z",
+    "revision": 1
+  }
+]

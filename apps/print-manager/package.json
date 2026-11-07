@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/print-manager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius print manager with queues, drivers, preview, duplex and scan-to-cloud.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  }
+}

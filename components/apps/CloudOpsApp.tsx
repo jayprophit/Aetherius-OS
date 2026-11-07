@@ -406,7 +406,7 @@ export const CloudOpsApp: React.FC = () => {
                                 <InputField label="Twilio Account SID (SMS/VoIP)" placeholder="AC..." type="text" />
                                 <InputField label="Twilio Auth Token" placeholder="..." type="password" />
                                 <InputField label="SendGrid API Key (Email)" placeholder="SG...." type="password" />
-                                <InputField label="OpenAI / Gemini API Key" placeholder="sk-..." type="password" value={process.env.API_KEY || ''} />
+                                <InputField label="OpenAI / Gemini API Key" placeholder="Supply at runtime; never bundled" type="password" value="" />
                             </div>
                              <div className="mt-6 pt-4 border-t border-gray-700 flex justify-end">
                                 <button className="px-6 py-2 bg-green-600 text-white rounded-lg font-bold hover:bg-green-500">Save Securely</button>

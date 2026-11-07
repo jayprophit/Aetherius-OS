@@ -1,0 +1,41 @@
+# =============================================================================
+# BUILD MANIFEST - App Launcher
+# =============================================================================
+schema_version: "1.0.0"
+
+project:
+  id: app-launcher
+  name: App Launcher
+  kind: application
+  domain: apps
+  description: >-
+    Aetherius app launcher with search, categories, recent, favourites and workspace switcher.
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+      purpose: runs the TypeScript sources directly via type stripping
+
+commands:
+  - name: test
+    import: tests/*.test.ts
+  - name: typecheck
+    import: src/**/*.ts
+
+status:
+  state: PARTIAL
+  last_verified: "2026-11-07"
+  summary: "Scaffold only: exports a version constant, a state interface and a create factory. The test proves importability and nothing more. No domain logic, UI or host adapter yet."
+  evidence:
+    - "2026-11-07: npm run test:apps -> scaffold import test passes; tsc -p apps/tsconfig.json --noEmit passes"
+known_issues:
+  - id: app-launcher-001
+    severity: medium
+    summary: "Domain logic not implemented. The package is intentionally a compile-and-import stub."
+    status: OPEN

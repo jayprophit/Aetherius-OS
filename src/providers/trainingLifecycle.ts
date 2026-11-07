@@ -1,4 +1,4 @@
-import type { BenchmarkSource } from "./benchmarks";
+import type { BenchmarkSource } from "./benchmarks.ts";
 
 /**
  * REQ-p18-training-compute: model training-compute LIFECYCLE PROFILE.

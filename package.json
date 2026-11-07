@@ -1,7 +1,8 @@
 {
   "name": "aetherius-os",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.0",
+  "license": "SEE LICENSE IN LICENSING.md",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,6 +17,12 @@
     "build:manifest:report": "vitest run src/programme/buildReport.test.ts src/programme/todoReport.test.ts",
     "capability:report": "vitest run src/programme/capabilityRegistry.test.ts -t regenerates",
     "secret-scan": "python tools/scan_for_secrets.py",
+    "release:sbom": "node scripts/release-sbom.mjs",
+    "release:notices": "node scripts/generate-third-party-notices.mjs",
+    "release:gate": "node scripts/release-gate.mjs",
+    "verify:pwa": "npm run build && node scripts/verify-pwa.mjs",
+    "verify:rollback": "node scripts/verify-rollback.mjs",
+    "pwa:icons": "node scripts/generate-pwa-icons.mjs",
     "verify": "npm run secret-scan && npm run typecheck && npm run typecheck:apps && npm test && npm run test:apps && npm run build"
   },
   "dependencies": {
@@ -29,8 +36,10 @@
     "rxjs": "^7.8.2"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.4",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "^4.3.4",
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
     "vitest": "^5.0.1",

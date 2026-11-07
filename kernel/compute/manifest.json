@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "name": "aetherius-compute-kernel",
+  "version": "0.1.0",
+  "status": "PARTIAL_COMPLETE",
+  "status_reason": "Binary, ternary, and quantum arithmetic pass local tests. Ternary and quantum are simulated, not hardware. The native x86_64 kernel scaffold passes host tests but is not a bootable general-purpose OS.",
+  "backends": {
+    "binary": {
+      "implementation": "packed uint64 XNOR + popcount",
+      "execution_class": "NATIVE_HOST",
+      "hardware_isa": false,
+      "verified": true
+    },
+    "ternary": {
+      "implementation": "dual uint64 bit-masks",
+      "execution_class": "SIMULATED",
+      "hardware_ternary": false,
+      "verified": true
+    },
+    "quantum": {
+      "implementation": "local state-vector simulator",
+      "execution_class": "SIMULATED",
+      "max_qubits": 24,
+      "hardware_quantum": false,
+      "verified": true
+    },
+    "remote_qpu": {
+      "execution_class": "BLOCKED_DEPENDENCY",
+      "available": false,
+      "reason": "No provider, credentials, device, or budget configured"
+    },
+    "native_kernel": {
+      "implementation": "x86_64 C scaffold (GDT, IDT, scheduler, syscall ABI)",
+      "execution_class": "NATIVE_HOST",
+      "bootable_general_purpose_os": false,
+      "host_checks": 126,
+      "host_failures": 0
+    }
+  },
+  "provenance": {
+    "promoted_from": "research/build85",
+    "reference_tests": [
+      "research/build85/kernel_binary/test_kernel_binary.py",
+      "research/build85/kernel_ternary/test_kernel_ternary.py",
+      "research/build85/kernel_quantum/test_quantum.py",
+      "native/kernel/tests/test_kernel.c"
+    ],
+    "note": "The BUILD85 research copies are retained as evidence. The canonical runtime package is kernel/compute/aetherius_kernel."
+  },
+  "claims": {
+    "binary_host_integer": true,
+    "binary_custom_isa": false,
+    "ternary_simulated": true,
+    "ternary_hardware": false,
+    "quantum_simulated": true,
+    "quantum_hardware": false,
+    "bootable_general_purpose_os": false
+  }
+}

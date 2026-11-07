@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/aetherius-pdf",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius PDF viewer with annotations, form fill, search and digital signatures.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  }
+}

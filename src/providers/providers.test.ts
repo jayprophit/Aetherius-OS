@@ -1,13 +1,13 @@
 import { createServer, type Server } from "node:http";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ProviderRegistry } from "./registry";
-import { createAgentBridgeProvider } from "./agentBridge";
-import { createMatProvider } from "./mat";
-import { createComputeProvider } from "./compute";
-import { createGenesisProvider } from "./genesis";
-import { createIdeProvider } from "./ide";
+import { ProviderRegistry } from "./registry.ts";
+import { createAgentBridgeProvider } from "./agentBridge.ts";
+import { createMatProvider } from "./mat.ts";
+import { createComputeProvider } from "./compute.ts";
+import { createGenesisProvider } from "./genesis.ts";
+import { createIdeProvider } from "./ide.ts";
 import { getApp, listApps } from "../apps/registry";
-import type { Provider } from "./types";
+import type { Provider } from "./types.ts";
 
 const servers: Server[] = [];
 afterEach(async () => {

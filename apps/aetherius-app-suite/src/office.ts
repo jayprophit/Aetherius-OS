@@ -28,12 +28,14 @@ export interface SheetCell {
 
 export interface SlideElement {
   id: string;
-  kind: "title" | "text" | "image";
+  kind: "title" | "text" | "image" | "asset";
   text: string;
   x: number;
   y: number;
   width: number;
   height: number;
+  assetId?: string;
+  assetSnapshot?: string;
 }
 
 export interface Slide {

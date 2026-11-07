@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { WindowState, TaskbarConfig, MenuItemData, SystemLocale } from '../types';
 import { 
-    Squares2X2Icon, WifiIcon, BatteryIcon, SpeakerWaveIcon, 
+    Squares2X2Icon, WifiIcon, BatteryIcon,
     ChevronDownIcon, BellIcon, CalendarIcon, GyeNyameIcon,
     SearchIcon
 } from './Icons';
@@ -27,10 +27,53 @@ export const Taskbar: React.FC<TaskbarProps> = ({
     windows, pinnedAppIds, onFocus, activeWindowId, activeWorkspace, onSwitchWorkspace, config, onLaunchApp, onTogglePin, systemLocale
 }) => {
   const [startMenuOpen, setStartMenuOpen] = useState(false);
-  const [volume, setVolume] = useState(80);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
+  const [online, setOnline] = useState(() => navigator.onLine);
+  const [battery, setBattery] = useState<{ level: number; charging: boolean } | null>(null);
+
+  useEffect(() => {
+    const updateOnline = () => setOnline(navigator.onLine);
+    window.addEventListener('online', updateOnline);
+    window.addEventListener('offline', updateOnline);
+    return () => {
+      window.removeEventListener('online', updateOnline);
+      window.removeEventListener('offline', updateOnline);
+    };
+  }, []);
+
+  useEffect(() => {
+    const nav = navigator as Navigator & {
+      getBattery?: () => Promise<{
+        level: number;
+        charging: boolean;
+        addEventListener: (type: string, listener: () => void) => void;
+        removeEventListener: (type: string, listener: () => void) => void;
+      }>;
+    };
+    if (!nav.getBattery) return;
+    let mounted = true;
+    let manager: Awaited<ReturnType<NonNullable<typeof nav.getBattery>>> | null = null;
+    const update = () => {
+      if (mounted && manager) {
+        setBattery({ level: manager.level, charging: manager.charging });
+      }
+    };
+    nav.getBattery()
+      .then((value) => {
+        manager = value;
+        update();
+        value.addEventListener('levelchange', update);
+        value.addEventListener('chargingchange', update);
+      })
+      .catch(() => setBattery(null));
+    return () => {
+      mounted = false;
+      manager?.removeEventListener('levelchange', update);
+      manager?.removeEventListener('chargingchange', update);
+    };
+  }, []);
 
   useEffect(() => {
       const timer = setInterval(() => {
@@ -226,18 +269,19 @@ export const Taskbar: React.FC<TaskbarProps> = ({
                 )}
 
                 <div className={`flex items-center gap-3 ${isVertical ? 'flex-col gap-4' : 'flex-row'}`}>
-                    <button className="text-gray-600 dark:text-gray-300 hover:text-blue-500 relative" title={`Volume: ${volume}%`}>
-                        <SpeakerWaveIcon className="w-4 h-4" />
-                    </button>
-                    
-                    <div className="text-gray-600 dark:text-gray-300" title="Network: Connected">
-                        <WifiIcon className="w-4 h-4" />
+                    <div className="text-gray-600 dark:text-gray-300" title={`Network: ${online ? 'online' : 'offline'}`}>
+                        <WifiIcon className={`w-4 h-4 ${online ? '' : 'opacity-40'}`} />
                     </div>
-                    
-                    <div className="text-gray-600 dark:text-gray-300 relative" title="Battery: 85%">
-                        <BatteryIcon className="w-5 h-5" />
-                        <div className="absolute top-1.5 left-0.5 h-2 bg-green-500 rounded-[1px]" style={{width: '70%'}}></div>
-                    </div>
+
+                    {battery && (
+                        <div className="text-gray-600 dark:text-gray-300 relative" title={`Battery: ${Math.round(battery.level * 100)}%${battery.charging ? ' (charging)' : ''}`}>
+                            <BatteryIcon className="w-5 h-5" />
+                            <div
+                                className={`absolute top-1.5 left-0.5 h-2 rounded-[1px] ${battery.level <= 0.2 ? 'bg-red-500' : 'bg-green-500'}`}
+                                style={{ width: `${Math.round(battery.level * 100)}%` }}
+                            ></div>
+                        </div>
+                    )}
                 </div>
 
                 {/* Clock */}

@@ -48,15 +48,23 @@ const KNOWN_PROJECTS = [
   "Genesis",
   "Materials-Atlas-Table-Codex---MAT",
   "Universal-Bridge",
+  // Review worktrees that are kept as their own folders because each has
+  // its own branch, build manifest and evidence trail. They are branches of
+  // Agent-Bridge and IDE-Workspace, not new products.
+  "ab-authorisation-isolated",
+  "ide-corrections",
 ] as const;
 
 /**
  * Tool state directories that are not projects and must not be moved.
  * `.freebuff` holds Freebuff Desktop's project-id, which is how that tool
  * finds its own chats; deleting or relocating it breaks the user's tool.
+ * `.wrangler` is the Wrangler CLI cache, created whenever wrangler runs
+ * from the Projects root; it is transient tool state, not a project.
  */
 const TOOL_DIRS = new Map<string, string>([
   [".freebuff", "Freebuff Desktop project metadata"],
+  [".wrangler", "Wrangler CLI cache directory"],
 ]);
 
 /**

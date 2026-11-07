@@ -1,0 +1,40 @@
+schema_version: "1.0.0"
+project:
+  id: aetherius-slides
+  name: Aetherius ${app#aetherius-}
+  kind: application
+  domain: apps
+  description: Domain core for ${app#aetherius-}.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: verify
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
+status:
+  state: TESTED
+  last_verified: "2026-11-02"
+  summary: "Functional presentation editor with decks, slide ordering, positioned elements, speaker notes, persistence, and JSON export."
+  evidence:
+    - "2026-11-02: node --test tests/*.test.ts -> 8/8 pass"
+    - "2026-11-02: verify-slides.js confirms deck/slide creation, element editing, reordering, notes, persistence, JSON export"
+known_issues:
+  - id: ${app#aetherius-}-001
+    severity: medium
+    summary: "No native GUI, host adapter, or PPTX export."
+    status: OPEN

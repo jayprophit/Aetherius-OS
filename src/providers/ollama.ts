@@ -3,7 +3,7 @@ import type {
   InvokeFailure,
   InvokeRequest,
   InvokeResult,
-} from "./invoke";
+} from "./invoke.ts";
 
 export type FetchFn = (url: string, init: RequestInit) => Promise<Response>;
 
@@ -43,11 +43,16 @@ export class OllamaAdapter implements InvocationAdapter {
   readonly runtimeId: string;
   readonly local = true;
 
+  readonly baseUrl: string;
+  readonly fetchFn: FetchFn;
+
   constructor(
-    private readonly baseUrl = "http://127.0.0.1:11434",
-    private readonly fetchFn: FetchFn = (url, init) => fetch(url, init),
+    baseUrl = "http://127.0.0.1:11434",
+    fetchFn: FetchFn = (url, init) => fetch(url, init),
     runtimeId = "ollama",
   ) {
+    this.baseUrl = baseUrl;
+    this.fetchFn = fetchFn;
     this.runtimeId = runtimeId;
   }
 

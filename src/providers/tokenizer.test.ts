@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { TokenizerRegistry, resolveModelTokenizers, unknownTokenizerProfile, validateTokenizerProfile } from "./tokenizer";
-import type { TokenizerProfile } from "./tokenizer";
+import { TokenizerRegistry, resolveModelTokenizers, unknownTokenizerProfile, validateTokenizerProfile } from "./tokenizer.ts";
+import type { TokenizerProfile } from "./tokenizer.ts";
 
 function profile(over: Partial<TokenizerProfile> = {}): TokenizerProfile {
   return {

@@ -1,0 +1,42 @@
+schema_version: "1.0.0"
+project:
+  id: genesis-layer
+  name: Genesis Layer
+  kind: application
+  domain: intelligence
+  description: >-
+    Financial & trading integration layer linking sovereign-financial-os and
+    trading-bot to Genesis. These are Genesis-accessible functions, not
+    standalone public apps. Shared through durableRepo / durableTradingRepo
+    interfaces.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: typecheck
+    command: tsc --noEmit
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, sovereign-financial-os, trading-bot]
+  external: []
+status:
+  state: NOT_STARTED
+  last_verified: "2026-11-07"
+  summary: One interface file (financial-trading-layer.ts) declares the
+    durable repository contracts. No implementation, no tests, no build yet.
+  evidence:
+    - "2026-11-07: apps/genesis-layer contains only src/financial-trading-layer.ts
+      and a README"
+known_issues:
+  - id: genesis-layer-001
+    severity: medium
+    summary: Interfaces are declared but no implementation exists and nothing
+      consumes them yet.
+    status: OPEN

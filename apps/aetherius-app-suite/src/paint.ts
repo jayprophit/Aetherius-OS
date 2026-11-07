@@ -23,7 +23,7 @@ export interface Shape {
   text?: string;
 }
 
-export interface Layer {
+export interface PaintLayer {
   id: string;
   name: string;
   visible: boolean;
@@ -39,7 +39,7 @@ export interface PaintOptions {
 }
 
 interface Snapshot {
-  layers: Layer[];
+  layers: PaintLayer[];
 }
 
 function finite(value: number, label: string): number {
@@ -57,7 +57,7 @@ function escapeXml(value: string): string {
 }
 
 export class PaintDocument {
-  private readonly layers: Layer[] = [];
+  private readonly layers: PaintLayer[] = [];
   private readonly undoStack: Snapshot[] = [];
   private readonly redoStack: Snapshot[] = [];
   private readonly ledger: EventLedger;
@@ -74,9 +74,9 @@ export class PaintDocument {
     this.layers.push({ id: newId("layer"), name: "Background", visible: true, opacity: 1, shapes: [] });
   }
 
-  addLayer(name: string): Layer {
+  addLayer(name: string): PaintLayer {
     this.checkpoint();
-    const layer: Layer = {
+    const layer: PaintLayer = {
       id: newId("layer"),
       name: name.trim() || `Layer ${this.layers.length + 1}`,
       visible: true,
@@ -88,7 +88,7 @@ export class PaintDocument {
     return structuredClone(layer);
   }
 
-  layersList(): Layer[] {
+  layersList(): PaintLayer[] {
     return this.layers.map((layer) => structuredClone(layer));
   }
 
@@ -139,14 +139,14 @@ export class PaintDocument {
     return true;
   }
 
-  setLayerVisible(layerId: string, visible: boolean): Layer {
+  setLayerVisible(layerId: string, visible: boolean): PaintLayer {
     const layer = this.requireLayer(layerId);
     this.checkpoint();
     layer.visible = visible;
     return structuredClone(layer);
   }
 
-  setLayerOpacity(layerId: string, opacity: number): Layer {
+  setLayerOpacity(layerId: string, opacity: number): PaintLayer {
     const layer = this.requireLayer(layerId);
     if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1) throw new Error("opacity must be between 0 and 1");
     this.checkpoint();
@@ -154,7 +154,7 @@ export class PaintDocument {
     return structuredClone(layer);
   }
 
-  reorderLayer(layerId: string, toIndex: number): Layer[] {
+  reorderLayer(layerId: string, toIndex: number): PaintLayer[] {
     const index = this.layers.findIndex((layer) => layer.id === layerId);
     if (index === -1) throw new Error(`no layer: ${layerId}`);
     if (!Number.isInteger(toIndex) || toIndex < 0 || toIndex >= this.layers.length) {
@@ -228,7 +228,7 @@ export class PaintDocument {
     this.layers.push(...snapshot.layers.map((layer) => structuredClone(layer)));
   }
 
-  private requireLayer(layerId: string): Layer {
+  private requireLayer(layerId: string): PaintLayer {
     const layer = this.layers.find((entry) => entry.id === layerId);
     if (!layer) throw new Error(`no layer: ${layerId}`);
     return layer;

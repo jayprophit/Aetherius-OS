@@ -7,6 +7,7 @@ import {
 } from './Icons';
 import { SystemIdentity } from '../types';
 import { GoogleGenAI } from "@google/genai";
+import { getRuntimeGeminiKey } from '../src/ai/runtimeCredentials';
 
 interface OnboardingWizardProps {
     onComplete: (identity: SystemIdentity, avatarUrl: string) => void;
@@ -177,17 +178,21 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete }
     };
 
     const verifyLivenessWithAI = async (imageBase64: string) => {
-        if (!process.env.API_KEY) {
-            // Simulation Fallback if no key is present
-            setTimeout(() => {
-                setCapturedSelfie(imageBase64);
-                setLivenessStatus('success');
-            }, 1500);
+        const apiKey = getRuntimeGeminiKey();
+        if (!apiKey) {
+            // A liveness check that cannot run must fail closed. The old
+            // fallback set "success" after a timer, which is a simulated
+            // security result; this build does not do that.
+            setLivenessStatus('failed');
+            setErrors(prev => ({
+                ...prev,
+                liveness: 'Liveness verification is unavailable: no vision model is configured. No pass is simulated.',
+            }));
             return;
         }
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const ai = new GoogleGenAI({ apiKey });
             const response = await ai.models.generateContent({
                 model: 'gemini-2.5-flash',
                 contents: [
@@ -217,17 +222,11 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete }
             }
         } catch (e: any) {
             console.error("Liveness AI Error", e);
-            // Handle 429 specifically to allow user to proceed in demo/dev mode
-            if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
-                 console.warn("Quota exceeded during liveness check. Bypassing for demo.");
-                 setCapturedSelfie(imageBase64);
-                 setLivenessStatus('success');
-                 return;
-            }
-            
-            // Fallback to success in demo/offline mode to prevent blocking user
-            setCapturedSelfie(imageBase64);
-            setLivenessStatus('success');
+            setLivenessStatus('failed');
+            setErrors(prev => ({
+                ...prev,
+                liveness: `Liveness verification failed: ${e?.message || 'the vision provider is unavailable'}. No pass is simulated.`,
+            }));
         }
     };
 

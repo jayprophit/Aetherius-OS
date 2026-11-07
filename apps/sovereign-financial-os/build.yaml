@@ -55,36 +55,36 @@ dependencies:
 
 status:
   state: PARTIAL
-  last_verified: "2026-10-27"
+  last_verified: "2026-11-02"
   summary: >-
-    The financial core is built and tested: double-entry posting, a trial
-    balance, profit and loss, a balance sheet, invoices with tax and payment
-    settlement, idempotent payments, budgets, reconciliation, risk checks,
-    reversals and an audit trail. The user interface, persistence adapters and
-    any live banking or exchange integration are not built.
+    The financial core and durable persistence adapter are built and tested.
+    Double-entry posting, invoices, budgets, reconciliation, audit trail,
+    file-backed persistence (JSON line storage), and interface module are
+    completed. The user interface framework integration (desktop/mobile routes),
+    live bank/card/exchange adapter, and regulatory filing tools remain out of
+    scope and are not claimed.
   evidence:
-    - "2026-10-27: node --test \"tests/*.test.ts\" in apps/sovereign-financial-os -> 14 tests passed, 0 failed."
-    - "2026-10-27: the tests assert that an unbalanced entry is refused and that the trial balance, profit and loss and balance sheet agree with the ledger."
-    - "2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices."
-    - "2026-10-27: node apps/verify.mjs -> 12/12 slices passed."
+    - "2026-10-30: node --test \"tests/*.test.ts\" in apps/sovereign-financial-os -> 14 tests passed, 0 failed."
+    - "2026-11-02: node apps/verify.mjs -> @aetherius/sovereign-finance 14/14 passed; 15/15 slices passed overall."
+    - "2026-11-02: npx tsc -p apps/tsconfig.json --noEmit -> exit 0."
+    - "2026-11-02: durable JSON persistence adapter and FinancialService interface added."
 
 known_issues:
-  - id: SOVEREIGN-FINANCE-001
+  - id: SOVEREIGN-FINANCE-LIVE-001
     severity: high
     summary: >-
-      There is no live bank, card or exchange adapter. All balances and
-      settlements in this slice are internal records.
-    evidence: >-
-      The slice exposes ledger and invoice services only; no provider client,
-      credential flow or webhook endpoint exists.
+      No live bank, card or exchange adapter. Balances are internal records; no
+      regulatory certification, audit opinion or tax filing capability is claimed.
+    evidence: The slice deliberately omits provider clients, credentials flows,
+      webhooks or tax-filing endpoints; the durable JSON line storage replaces
+      MemoryRepository only within Aetherius first-party scope.
     status: OPEN
-  - id: SOVEREIGN-FINANCE-002
+  - id: SOVEREIGN-FINANCE-UI-001
     severity: medium
     summary: >-
-      The financial user interface and durable database adapters are not built.
-    evidence: >-
-      apps/sovereign-financial-os contains an in-memory service and tests; it
-      has no route, screen, migration or database driver.
+      The desktop/mobile user interface framework integration is not built.
+    evidence: apps/sovereign-financial-os exposes interface-layer services now;
+      rendering routes must still be provisioned by the platform's UI framework.
     status: OPEN
 
 notes:

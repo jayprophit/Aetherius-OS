@@ -1,0 +1,96 @@
+{
+    "benchmark":  "AETHERIUS_OS_5_STAR_REFERENCE_FIXTURES",
+    "updatedAt":  "2026-10-30",
+    "status":  "PROPOSED_FIXTURES_NOT_EXECUTED",
+    "fixtures":  [
+                     {
+                         "id":  "fix-docx-200",
+                         "domain":  "Word processing",
+                         "format":  "DOCX",
+                         "criteria":  "import -\u003e edit -\u003e export -\u003e structural/visual fidelity",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/docx/golden_200page.docx",
+                         "structuralVerified":  true
+                     },
+                     {
+                         "id":  "fix-xlsx-1m",
+                         "domain":  "Spreadsheet",
+                         "format":  "XLSX",
+                         "criteria":  "1M-row bounded workbook, formulas, cycles, locale, pivot, CSV/XLSX roundtrip",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/xlsx/golden_1m_rows.xlsx",
+                         "structuralVerified":  true
+                     },
+                     {
+                         "id":  "fix-pdf-gold",
+                         "domain":  "Document",
+                         "format":  "PDF",
+                         "criteria":  "import -\u003e edit -\u003e export -\u003e structural/visual fidelity",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/pdf/golden_structural.pdf",
+                         "structuralVerified":  true
+                     },
+                     {
+                         "id":  "fix-psd-layered",
+                         "domain":  "Raster/Vector",
+                         "format":  "PSD/SVG",
+                         "criteria":  "layered fixtures; 16-bit; masks; ICC; print; loss report",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/image/golden_layered"
+                     },
+                     {
+                         "id":  "fix-midi-clock",
+                         "domain":  "Audio",
+                         "format":  "WAV/MIDI",
+                         "criteria":  "multitrack; MIDI clock jitter; plugin host; silent failure",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/audio/golden_multitrack.wav"
+                     },
+                     {
+                         "id":  "fix-cad-brep",
+                         "domain":  "CAD",
+                         "format":  "STEP/DXF/IFC",
+                         "criteria":  "B-rep tolerances; sketch/rebuild; booleans; large assembly; roundtrip",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/cad/golden_brep.step"
+                     },
+                     {
+                         "id":  "fix-bim-ifc",
+                         "domain":  "BIM/GIS",
+                         "format":  "IFC/GeoPackage",
+                         "criteria":  "IFC/BCF; GeoPackage/GeoJSON; coordinate; topology; clash",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/bim/golden_ifc.ifc"
+                     },
+                     {
+                         "id":  "fix-collab-1000",
+                         "domain":  "Cloud/Collab",
+                         "format":  "API/Document",
+                         "criteria":  "multi-user conflict; offline edits; auth expiry/revocation; 1,000-op failure/recovery",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/collab/golden_1000_ops.json"
+                     },
+                     {
+                         "id":  "fix-deploy-win",
+                         "domain":  "Deployment",
+                         "format":  "MSIX/DEB/APK/DMG",
+                         "criteria":  "install/sign/uninstall/rollback/accessibility per OS",
+                         "evidence":  "NOT_MEASURED",
+                         "fixture_location":  "tests/fixtures/deploy/"
+                     }
+                 ],
+    "acceptance_rule":  "Weighted score = sum(weight_i * dimension_score_i)/100; no unmeasured dimension receives a numerical score; overall_5_star = all(dimensions==5) AND mandatory_gates==PASS",
+    "mandatory_gates":  [
+                            "Security_review_passed",
+                            "Accessibility_review_passed",
+                            "Deployment_installed_on_target",
+                            "Fixture_roundtrip_verified"
+                        ],
+    "structuralEvidence":  {
+                               "runAt":  "2026-11-02T21:58:44.9636707+00:00",
+                               "passed":  4,
+                               "total":  4,
+                               "scope":  "structural DOCX/XLSX/PPTX/PDF only; full acceptance fixtures not run",
+                               "resultsFile":  "tests/fixtures/fixture-results.json"
+                           }
+}

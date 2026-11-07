@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-11-02T21:58:23.998Z",
+  "benchmark": "Aetherius OS 5-Star Pre-Public Readiness",
+  "overall": "NOT_5_STAR",
+  "weightedScore": null,
+  "scoreRule": "No unmeasured dimension receives a numeric score; overall 5-star requires every dimension = 5 and all gates PASS.",
+  "dimensions": [
+    {
+      "id": "foundation",
+      "weight": 15,
+      "status": "PARTIAL_EVIDENCE",
+      "note": "app-kit + 100 app slices compile; registry reconciliation not closed"
+    },
+    {
+      "id": "default_core",
+      "weight": 20,
+      "status": "PARTIAL_EVIDENCE",
+      "note": "15/15 app slices pass their own tests; full mandatory workflows not fixture-tested"
+    },
+    {
+      "id": "advanced_unique",
+      "weight": 15,
+      "status": "NOT_MEASURED",
+      "note": "Studio/Engineering/Science workspaces not implemented"
+    },
+    {
+      "id": "settings",
+      "weight": 10,
+      "status": "NOT_MEASURED",
+      "note": "per-app profile/portability fixtures not executed"
+    },
+    {
+      "id": "formats",
+      "weight": 10,
+      "status": "PARTIAL_EVIDENCE",
+      "note": "structural DOCX/XLSX/PPTX/PDF checks 4/4; full acceptance fixtures absent"
+    },
+    {
+      "id": "performance",
+      "weight": 10,
+      "status": "NOT_MEASURED",
+      "note": "no timing/resource/crash-recovery measurements"
+    },
+    {
+      "id": "security_accessibility",
+      "weight": 10,
+      "status": "NOT_MEASURED",
+      "note": "security rules empty; accessibility fixtures verified=false"
+    },
+    {
+      "id": "cross_platform",
+      "weight": 10,
+      "status": "NOT_MEASURED",
+      "note": "no signed install artifacts; no hardware installation/rollback tests"
+    }
+  ],
+  "gates": [
+    {
+      "id": "security_review",
+      "passed": false
+    },
+    {
+      "id": "accessibility_review",
+      "passed": false
+    },
+    {
+      "id": "deployment_installed",
+      "passed": false
+    },
+    {
+      "id": "fixture_roundtrip",
+      "passed": false,
+      "note": "structural checks only"
+    }
+  ],
+  "fixtureEvidence": {
+    "passed": 4,
+    "total": 4,
+    "scope": "STRUCTURAL — not the full DOCX-200page / XLSX-1Mrow / media / CAD acceptance fixtures"
+  },
+  "verdict": "Pre-public only. Not comparable to mass-adopted industrial platforms yet."
+}

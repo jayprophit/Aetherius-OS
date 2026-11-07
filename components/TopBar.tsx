@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Bars3Icon, SearchIcon, BellIcon, UserCircleIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, ChevronDownIcon, GyeNyameIcon, SunIcon, MoonIcon, Cog6ToothIcon, ComputerDesktopIcon, DevicePhoneMobileIcon, MapPinIcon } from './Icons';
+import { Bars3Icon, BellIcon, MessageIcon, ShoppingCartIcon, EllipsisHorizontalIcon, GyeNyameIcon, SunIcon, MoonIcon, ComputerDesktopIcon, DevicePhoneMobileIcon, MapPinIcon } from './Icons';
 import { MenuItemData, ViewMode, SystemLocale } from '../types';
 import { ICON_BUTTON_CLASSES } from '../constants';
 import { LaunchableApp } from '../App';
@@ -129,7 +129,6 @@ export const TopBar: React.FC<{
     toggleLeftSidebar, onLaunchApp, contextualActions, aetheriusMenu, 
     zoom, onZoom, onOpenCart, viewMode, onToggleViewMode, onToggleNotifications, systemLocale
 }) => {
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState('');
   
   useEffect(() => {
@@ -147,9 +146,9 @@ export const TopBar: React.FC<{
 
   const actions = contextualActions.filter(a => a.type !== 'divider' && a.component);
   
-  const handleLaunch = (app: LaunchableApp) => {
+  const handleLaunch = (app?: LaunchableApp | null) => {
+    if (!app) return;
     onLaunchApp(app);
-    setIsProfileOpen(false); 
   }
 
   const findApp = (component: string): LaunchableApp | undefined => {
@@ -161,9 +160,6 @@ export const TopBar: React.FC<{
                  }
              }
         }
-    }
-    if(component === 'settings') {
-        return { component: 'settings', title: 'Settings', icon: Cog6ToothIcon };
     }
     return undefined;
   }
@@ -218,41 +214,28 @@ export const TopBar: React.FC<{
 
           <ZoomControls zoom={zoom} onZoom={onZoom} />
           <ThemeToggle />
-          <div className="relative hidden sm:block">
-              <SearchIcon className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input type="text" placeholder="Search..." title="Global Search" className="bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-full h-9 pl-10 pr-4 w-48 text-sm focus:outline-none focus:ring-1 focus:ring-primary text-content-light dark:text-content-dark" />
-          </div>
-           <button onClick={() => handleLaunch(findApp('messenger')!)} className={`${ICON_BUTTON_CLASSES} relative`} title="Open Messenger">
+
+          {findApp('messenger') && (
+            <button onClick={() => handleLaunch(findApp('messenger'))} className={`${ICON_BUTTON_CLASSES} relative`} title="Open Messenger">
               <MessageIcon className="w-6 h-6" />
-              <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-800"></span>
-          </button>
-          
+            </button>
+          )}
+
           <button onClick={onToggleNotifications} className={`${ICON_BUTTON_CLASSES} relative`} title="Show Notifications">
             <BellIcon className="w-6 h-6" />
-            <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-800"></span>
           </button>
 
-           <button onClick={onOpenCart} className={ICON_BUTTON_CLASSES} title="Open Shopping Cart">
+          {onOpenCart && (
+            <button onClick={onOpenCart} className={ICON_BUTTON_CLASSES} title="Open Shopping Cart">
               <ShoppingCartIcon className="w-6 h-6" />
-          </button>
-          <div className="relative">
-            <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="flex items-center space-x-2 p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10" title="Account & Settings">
-               <UserCircleIcon className="w-8 h-8 text-gray-600 dark:text-gray-300" />
-               <span className="text-sm font-semibold hidden lg:block text-content-light dark:text-content-dark">John</span>
-               <ChevronDownIcon className="w-4 h-4 text-gray-500 dark:text-gray-400 hidden lg:block" />
             </button>
-            {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-md shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50">
-                <button onClick={() => handleLaunch(findApp('myProfile')!)} className="w-full text-left block px-4 py-2 text-sm text-content-light dark:text-content-dark hover:bg-primary/20" title="Go to My Profile">Your Profile</button>
-                <button onClick={() => handleLaunch(findApp('settings')!)} className="w-full text-left block px-4 py-2 text-sm text-content-light dark:text-content-dark hover:bg-primary/20" title="Open System Settings">Settings</button>
-                <div className="border-t border-gray-200 dark:border-gray-700 my-1"></div>
-                <a href="#" className="block px-4 py-2 text-sm text-content-light dark:text-content-dark hover:bg-primary/20" title="Log out">Sign out</a>
-              </div>
-            )}
-          </div>
-          <button onClick={() => handleLaunch(findApp('aiHub')!)} className={ICON_BUTTON_CLASSES} title="Launch AI Hub">
-            <EllipsisHorizontalIcon className="w-6 h-6" />
-          </button>
+          )}
+
+          {findApp('aiHub') && (
+            <button onClick={() => handleLaunch(findApp('aiHub'))} className={ICON_BUTTON_CLASSES} title="Launch AI Hub">
+              <EllipsisHorizontalIcon className="w-6 h-6" />
+            </button>
+          )}
         </div>
       </header>
     </>

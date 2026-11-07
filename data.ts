@@ -1,3 +1,17 @@
+import {
+  BookOpenIcon,
+  CloudIcon,
+  Cog6ToothIcon,
+  DisplayIcon,
+  DocumentTextIcon,
+  InformationCircleIcon,
+  MicrophoneIcon,
+  PaintBrushIcon,
+  PresentationChartBarIcon,
+  Squares2X2Icon,
+  TableCellsIcon,
+} from "./components/Icons";
+
 // Canonical shared data (P10 shell increment).
 //
 // Empty until real providers land. Components must render empty states,
@@ -18,10 +32,65 @@ export const commerceData: any = [];
 export const courses: any = [];
 export const enrolledCourses: any = [];
 export const creatorMarketplaceItems: any = [];
-export const desktopItems: any = [];
-export const mainMenuItems: any = [];
-export const osMenuStructures: any = {};
-export const settingsConfig: any = [];
+export const desktopItems: any = [
+  { type: "app", id: "aetherius-notes", title: "Notes", component: "aetherius-notes", icon: BookOpenIcon },
+  { type: "app", id: "aetherius-writer", title: "Writer", component: "aetherius-writer", icon: DocumentTextIcon },
+  { type: "app", id: "aetherius-sheets", title: "Sheets", component: "aetherius-sheets", icon: TableCellsIcon },
+  { type: "app", id: "aetherius-slides", title: "Slides", component: "aetherius-slides", icon: PresentationChartBarIcon },
+  { type: "app", id: "aetherius-canvas", title: "Canvas", component: "aetherius-canvas", icon: PaintBrushIcon },
+  { type: "app", id: "aetherius-recorder", title: "Recorder", component: "aetherius-recorder", icon: MicrophoneIcon },
+];
+export const mainMenuItems: any = [
+  {
+    title: "Aetherius Apps",
+    children: [
+      { title: "Notes", component: "aetherius-notes", icon: BookOpenIcon },
+      { title: "Writer", component: "aetherius-writer", icon: DocumentTextIcon },
+      { title: "Sheets", component: "aetherius-sheets", icon: TableCellsIcon },
+      { title: "Slides", component: "aetherius-slides", icon: PresentationChartBarIcon },
+      { title: "Canvas", component: "aetherius-canvas", icon: PaintBrushIcon },
+      { title: "Recorder", component: "aetherius-recorder", icon: MicrophoneIcon },
+    ],
+  },
+];
+export const osMenuStructures: any = {
+  desktopContext: [],
+};
+// Settings categories. Every component key resolves in the componentMap in
+// components/settings/SettingsModal.tsx. Only pages that are functional and
+// honest today are listed; pages with fake data or dead controls stay out
+// until they are fixed (see docs/GAP-ANALYSIS-2026-11-07.md).
+export const settingsConfig: any = [
+  {
+    id: "shell",
+    icon: Cog6ToothIcon,
+    title: "Shell",
+    description: "Theme, endpoints and status polling for the shell.",
+    items: [
+      { id: "shell-settings", title: "Shell settings", component: "systemSettings", icon: Cog6ToothIcon },
+      { id: "display", title: "Display", component: "display", icon: DisplayIcon },
+      { id: "about", title: "About", component: "about", icon: InformationCircleIcon },
+    ],
+  },
+  {
+    id: "cloud-sync",
+    icon: CloudIcon,
+    title: "Cloud & Sync",
+    description: "Endpoint, access token, health test and manual sync.",
+    items: [
+      { id: "cloud-sync", title: "Cloud & Sync", component: "cloud_sync", icon: CloudIcon },
+    ],
+  },
+  {
+    id: "applications",
+    icon: Squares2X2Icon,
+    title: "Applications",
+    description: "Every directory under apps/ with its manifest status.",
+    items: [
+      { id: "applications", title: "Applications", component: "applications", icon: Squares2X2Icon },
+    ],
+  },
+];
 export const jobs: any = [];
 export const mockCompanies: any = [];
 export const mockFreelanceProjects: any = [];

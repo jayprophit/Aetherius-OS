@@ -1,0 +1,40 @@
+schema_version: "1.0.0"
+project:
+  id: aetherius-sheets
+  name: Aetherius ${app#aetherius-}
+  kind: application
+  domain: apps
+  description: Domain core for ${app#aetherius-}.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: verify
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
+status:
+  state: TESTED
+  last_verified: "2026-11-02"
+  summary: "Functional spreadsheet with formulas, dependency recalculation, circular reference detection, persistence, and CSV export."
+  evidence:
+    - "2026-11-02: node --test tests/*.test.ts -> 7/7 pass"
+    - "2026-11-02: verify-sheets.js confirms workbook/sheet creation, formula evaluation, circular detection, persistence, CSV export"
+known_issues:
+  - id: ${app#aetherius-}-001
+    severity: medium
+    summary: "No native GUI, host filesystem adapter, or XLSX format support."
+    status: OPEN

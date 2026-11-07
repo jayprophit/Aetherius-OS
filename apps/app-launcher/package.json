@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/app-launcher",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius app launcher with search, categories, recent, favourites and workspace switcher.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  }
+}

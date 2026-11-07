@@ -498,3 +498,29 @@ projects:
   notes: The health core and tests are built. There is no UI, wearable integration, encrypted
     storage or clinician review. Readiness is a heuristic wellness score, not a medical
     assessment. apps/Athena remains the separate shared intelligence runtime.
+- id: agent-bridge-authorisation-isolated
+  name: Agent-Bridge (authorisation-isolated review)
+  manifest: ab-authorisation-isolated/build.yaml
+  role: 'The authorisation-isolation review branch of Agent-Bridge, kept as its own folder
+    because it carries a separate branch, test evidence and approval-gated adapter work.'
+  status: PARTIAL
+  depends_on:
+  - agent-bridge
+  - genesis
+  notes: A branch review tree of Agent-Bridge on review/genesis-ide-integration-20261025.
+    It is not a second Agent-Bridge product; it is retained so the review evidence and
+    approval-gated phase 4 adapter remain inspectable. The local origin points at the
+    Agent-Bridge folder, and nothing in this tree is published on its own.
+- id: ide-workspace-postpub-corrections
+  name: IDE-Workspace (post-publication corrections review)
+  manifest: ide-corrections/build.yaml
+  role: 'The post-publication corrections review branch of IDE-Workspace: lifecycle,
+    runtime approval-gating and IDE regression evidence.'
+  status: VERIFIED
+  depends_on:
+  - ide-workspace
+  - agent-bridge
+  - genesis
+  notes: A branch review tree of IDE-Workspace on review/genesis-ide-postpub-corrections-20261028.
+    It is not a second IDE product. Its remote is the public IDE-Workspace repository, and
+    its evidence is retained because the corrections gate the next IDE release.

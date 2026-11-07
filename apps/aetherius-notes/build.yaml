@@ -1,0 +1,44 @@
+schema_version: "1.0.0"
+project:
+  id: aetherius-notes
+  name: Aetherius Notes
+  kind: application
+  domain: apps
+  description: Note-taking with persistence, revision and export.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: verify
+    command: node verify.js
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
+status:
+  state: TESTED
+  last_verified: "2026-11-02"
+  summary: "Functional note-taking with filesystem persistence and export."
+  evidence:
+    - "2026-11-02: node --test tests/*.test.ts -> 6/6 pass"
+    - "2026-11-02: verify.js demonstrates create/edit/save/reload/recover/export"
+known_issues:
+  - id: Notes-001
+    severity: medium
+    summary: "No UI, window manager or host filesystem integration."
+    status: OPEN
+  - id: Notes-002
+    severity: low
+    summary: "No collaborative editing or sync."
+    status: OPEN

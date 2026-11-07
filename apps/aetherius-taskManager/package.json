@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/aetherius-taskManager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius task manager with processes, services, resource graphs and force quit.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  }
+}

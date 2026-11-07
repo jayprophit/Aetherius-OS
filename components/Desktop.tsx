@@ -178,7 +178,9 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl, syste
     }, [draggedIcon, handleMouseMove, handleMouseUp]);
 
 
-    const defaultWallpaper = 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto-format=fit-crop';
+    // Local gradient, not a third-party image: the default shell must work
+    // offline and must not leak a request to an external image host.
+    const defaultWallpaper = 'linear-gradient(135deg, #0b1020 0%, #1b2a4a 50%, #4a2a5a 100%)';
   
     const mapAction = (item: any): any => {
         if (item.type === 'divider') return item;
@@ -226,7 +228,7 @@ export const Desktop: React.FC<DesktopProps> = ({ launchApp, wallpaperUrl, syste
         <div 
             ref={desktopRef}
             className="w-full h-full bg-cover bg-center absolute inset-0 transition-all duration-700 ease-in-out"
-            style={{ backgroundImage: `url(${wallpaperUrl || defaultWallpaper})` }}
+            style={{ backgroundImage: wallpaperUrl ? `url(${wallpaperUrl})` : defaultWallpaper }}
             onContextMenu={handleContextMenu}
             onClick={() => setContextMenu({ ...contextMenu, visible: false })}
             title="Desktop Workspace"

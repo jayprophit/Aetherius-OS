@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-11-04T05:41:19.349Z",
+  "product": "aetherius-os",
+  "version": "0.1.0",
+  "verdict": "NOT_RELEASABLE",
+  "passed": 11,
+  "blockers": 7,
+  "warnings": 1,
+  "checks": [
+    {
+      "id": "release-scope",
+      "passed": true,
+      "detail": "release/release-scope.json must be APPROVED with a real version, platforms, and in-release list",
+      "evidence": "release/release-scope.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "package-version",
+      "passed": true,
+      "detail": "package.json version=0.1.0 private=false; public release needs a real version and private=false",
+      "evidence": "package.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "license",
+      "passed": true,
+      "detail": "A real LICENSE file with the chosen terms is required; placeholders do not count",
+      "evidence": "LICENSE",
+      "severity": "blocker"
+    },
+    {
+      "id": "security-policy",
+      "passed": false,
+      "detail": "A security policy with a real disclosure contact (email or HTTPS URL) is required",
+      "evidence": null,
+      "severity": "blocker"
+    },
+    {
+      "id": "privacy-policy",
+      "passed": false,
+      "detail": "A reviewed privacy policy (not a draft or placeholder) is required",
+      "evidence": null,
+      "severity": "blocker"
+    },
+    {
+      "id": "third-party-notices",
+      "passed": true,
+      "detail": "A generated third-party notices file with a non-zero component count is required",
+      "evidence": "THIRD_PARTY_NOTICES.md",
+      "severity": "blocker"
+    },
+    {
+      "id": "owner-inputs",
+      "passed": true,
+      "detail": "Owner-required inputs must be documented",
+      "evidence": "docs/OWNER-REQUIRED-INPUTS.md",
+      "severity": "blocker"
+    },
+    {
+      "id": "sbom",
+      "passed": true,
+      "detail": "A CycloneDX SBOM with components is required at release/evidence/sbom.cdx.json",
+      "evidence": "release/evidence/sbom.cdx.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "signed-artifacts",
+      "passed": false,
+      "detail": "artifacts=0 signed=0; every artifact needs a detached signature",
+      "evidence": "release/artifacts/",
+      "severity": "blocker"
+    },
+    {
+      "id": "security-audit",
+      "passed": false,
+      "detail": "An independent penetration test with PASS status and named auditor is required",
+      "evidence": "docs/evidence/security-audit.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "accessibility-audit",
+      "passed": false,
+      "detail": "An independent WCAG 2.2 AA audit with PASS status and named auditor is required",
+      "evidence": "docs/evidence/accessibility-audit.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "install-matrix",
+      "passed": true,
+      "detail": "Install and launch must PASS on every declared platform",
+      "evidence": "docs/evidence/install-matrix.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "rollback",
+      "passed": true,
+      "detail": "Rollback must be exercised and recorded as PASS",
+      "evidence": "docs/evidence/rollback.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "performance",
+      "passed": true,
+      "detail": "Performance evidence with a measured p95 is required",
+      "evidence": "docs/evidence/performance.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "full-acceptance-fixtures",
+      "passed": false,
+      "detail": "Full acceptance fixtures (DOCX/XLSX/PPTX/PDF/media/CAD/BIM/MIDI/collaboration) must pass; structural-only results do not count",
+      "evidence": "tests/fixtures/fixture-results.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "five-star-benchmark",
+      "passed": false,
+      "detail": "Every benchmark dimension must independently measure 5/5; overall must be FIVE_STAR with score 100",
+      "evidence": "tests/fixtures/benchmark-results.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "kernel-honesty",
+      "passed": true,
+      "detail": "Kernel claims must not assert ternary hardware, quantum hardware, or a bootable general-purpose OS without evidence",
+      "evidence": "kernel/compute/manifest.json",
+      "severity": "blocker"
+    },
+    {
+      "id": "kernel-status",
+      "passed": false,
+      "detail": "Kernel status is PARTIAL_COMPLETE; PARTIAL_COMPLETE is a warning unless the release scope includes the kernel",
+      "evidence": "kernel/compute/manifest.json",
+      "severity": "warning"
+    },
+    {
+      "id": "selfhost-stack",
+      "passed": true,
+      "detail": "The self-hosted deployment template must be present",
+      "evidence": "deploy/selfhost/docker-compose.yml",
+      "severity": "blocker"
+    }
+  ],
+  "note": "RELEASABLE requires every blocker to pass. This gate does not replace legal, security, accessibility, or store review."
+}

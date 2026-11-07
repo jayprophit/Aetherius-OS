@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "status": "RECOMMENDED",
+  "owner_decision_required": true,
+  "product": "Aetherius OS",
+  "channel": "foundation-developer-preview",
+  "version": "0.1.0",
+  "platforms": [
+    {
+      "id": "web-pwa-selfhost",
+      "name": "Self-hosted web/PWA",
+      "signing": "Sigstore/cosign or minisign detached signature on the release bundle; HTTPS/TLS at the owner's domain",
+      "cost": "free"
+    },
+    {
+      "id": "linux-x86_64-flatpak",
+      "name": "Linux x86_64 Flatpak",
+      "signing": "Flathub build and repository signing",
+      "cost": "free"
+    },
+    {
+      "id": "linux-x86_64-deb",
+      "name": "Linux x86_64 DEB repository",
+      "signing": "GPG-signed apt repository",
+      "cost": "free"
+    }
+  ],
+  "inRelease": [
+    "Aetherius Foundation packages: app-kit, desktop, crossplatform, store domain cores",
+    "Files, Notes, Calendar, Photos domain cores with durable local persistence",
+    "Writer, Sheets, Slides, Preview document domain cores with documented format subset",
+    "Athena local-first assistant with default-deny tools and audit chain",
+    "Sovereign Finance: internal ledger and paper accounting only",
+    "Multi-Cross-Platform Trading Bot: paper trading and backtesting only",
+    "Compute kernel: native binary path; balanced-ternary and quantum state-vector simulation",
+    "Self-hosted cloud stack template (14 services) with documented licence obligations",
+    "CycloneDX SBOM and generated third-party notices"
+  ],
+  "outOfRelease": [
+    "Live banking, card issuing, brokerage, exchange, market-data, KYC/AML, and custody adapters",
+    "Ternary hardware execution and FPGA synthesis claims",
+    "Quantum hardware execution and remote QPU claims",
+    "A bootable general-purpose Aetherius OS kernel",
+    "macOS notarisation, iOS distribution, Microsoft Store, and Google Play until developer accounts and signing identities exist",
+    "Professional Studio, Engineering, Built Environment, Science, IDE, and Business workspaces beyond domain scaffolds",
+    "Full DOCX/XLSX/PPTX/PDF fidelity, real-time collaboration, media codecs, CAD, BIM, and MIDI acceptance",
+    "Any claim of 5-star parity with commercial professional suites"
+  ],
+  "requiredEvidenceBeforeApproval": [
+    "Owner-written approval naming the product, version, channel, platforms, and in/out lists",
+    "A real LICENSE matching the chosen distribution model",
+    "SECURITY.md with a monitored disclosure contact",
+    "Lawyer-reviewed privacy policy with a review marker",
+    "Signed artifacts for every declared platform, with detached signatures",
+    "Independent security and WCAG 2.2 AA audits with named auditors",
+    "Install/launch/rollback evidence on every declared platform",
+    "Measured p95 performance evidence on named hardware",
+    "Full acceptance fixtures for every format claimed in the release notes",
+    "5-star benchmark only for dimensions actually measured; otherwise disclose the gap"
+  ],
+  "notes": "This is a recommendation, not an approval. The active release/release-scope.json remains DRAFT and the release gate must stay red until the owner approves a scope and the required evidence exists. A developer-preview channel is recommended because the current build has no production UI, no signed installers, no independent audits, and no live financial adapters."
+}

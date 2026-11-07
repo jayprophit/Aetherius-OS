@@ -7,4 +7,6 @@ export * from "./money.ts";
 export * from "./permissions.ts";
 export * from "./search.ts";
 export * from "./store.ts";
+export * from "./storage.ts";
+export * from "./storage-browser.ts";
 export * from "./workflow.ts";

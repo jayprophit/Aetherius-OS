@@ -3,10 +3,10 @@
 > Generated from `docs/BUILD-MANIFEST-REGISTRY.yaml` and each
 > project's own `build.yaml`. Do not hand-edit this file.
 
-- Projects: **45**
-- States: VERIFIED 7 · PARTIAL 31 · NOT_STARTED 7
+- Projects: **47**
+- States: VERIFIED 8 · PARTIAL 32 · NOT_STARTED 7
 - Source date: 2026-10-29
-- Project detail below: **19 of 45** — the projects whose
+- Project detail below: **19 of 47** — the projects whose
   manifests this repository tracks. The rest live in their own
   repositories and are reported there.
 
@@ -34,33 +34,35 @@ finished before it.
 16. aetherius-os-prototype       ❌ NOT_STARTED
 17. aetherius-os-worldclass-prototype ❌ NOT_STARTED
 18. aetherius-store              ⚠️ PARTIAL  (needs: aetherius-os)
-19. agent-bridge-cloudhybrid     ⚠️ PARTIAL  (needs: agent-bridge, genesis)
-20. ide-workspace                🟢 VERIFIED  (needs: agent-bridge, genesis, mat)
-21. agent-bridge-dashboard       ⚠️ PARTIAL  (needs: agent-bridge, ide-workspace)
-22. agent-bridge-runtimesafety   ⚠️ PARTIAL  (needs: agent-bridge, genesis)
-23. ai-digital-twin              ❌ NOT_STARTED
-24. architecture-of-shadows-book ⚠️ PARTIAL
-25. athena                       ⚠️ PARTIAL  (needs: aetherius-os, agent-bridge)
-26. crossplatform                ⚠️ PARTIAL  (needs: aetherius-os)
-27. decentralized-messaging-app  ⚠️ PARTIAL  (needs: aetherius-os, agent-bridge)
-28. food-wiki-app                ⚠️ PARTIAL  (needs: aetherius-os)
-29. football-card-game           ⚠️ PARTIAL  (needs: aetherius-os)
-30. hermes-config-audit          🟢 VERIFIED  (needs: aetherius-os)
-31. holonav-os                   ❌ NOT_STARTED
-32. ledgerlands                  🟢 VERIFIED  (needs: aetherius-os)
-33. niche-platform               ⚠️ PARTIAL  (needs: aetherius-os)
-34. openclaw-models              ⚠️ PARTIAL  (needs: aetherius-os)
-35. poietek                      🟢 VERIFIED
-36. quantum-ai-assistant         ⚠️ PARTIAL  (needs: aetherius-os, athena)
-37. quantum-os                   ⚠️ PARTIAL  (needs: aetherius-os)
-38. qva-merged                   ⚠️ PARTIAL  (needs: aetherius-os)
-39. self-building-ai             ⚠️ PARTIAL  (needs: aetherius-os)
-40. sovereign-financial-os       ⚠️ PARTIAL  (needs: aetherius-os)
-41. trading-bot                  ⚠️ PARTIAL  (needs: aetherius-os)
-42. universal-bridge             🟢 VERIFIED  (needs: poietek)
-43. veyra                        ❌ NOT_STARTED  (needs: aetherius-os)
-44. virtual-assistant            ⚠️ PARTIAL  (needs: genesis)
-45. web-platform                 ⚠️ PARTIAL  (needs: aetherius-os)
+19. agent-bridge-authorisation-isolated ⚠️ PARTIAL  (needs: agent-bridge, genesis)
+20. agent-bridge-cloudhybrid     ⚠️ PARTIAL  (needs: agent-bridge, genesis)
+21. ide-workspace                🟢 VERIFIED  (needs: agent-bridge, genesis, mat)
+22. agent-bridge-dashboard       ⚠️ PARTIAL  (needs: agent-bridge, ide-workspace)
+23. agent-bridge-runtimesafety   ⚠️ PARTIAL  (needs: agent-bridge, genesis)
+24. ai-digital-twin              ❌ NOT_STARTED
+25. architecture-of-shadows-book ⚠️ PARTIAL
+26. athena                       ⚠️ PARTIAL  (needs: aetherius-os, agent-bridge)
+27. crossplatform                ⚠️ PARTIAL  (needs: aetherius-os)
+28. decentralized-messaging-app  ⚠️ PARTIAL  (needs: aetherius-os, agent-bridge)
+29. food-wiki-app                ⚠️ PARTIAL  (needs: aetherius-os)
+30. football-card-game           ⚠️ PARTIAL  (needs: aetherius-os)
+31. hermes-config-audit          🟢 VERIFIED  (needs: aetherius-os)
+32. holonav-os                   ❌ NOT_STARTED
+33. ide-workspace-postpub-corrections 🟢 VERIFIED  (needs: agent-bridge, genesis, ide-workspace)
+34. ledgerlands                  🟢 VERIFIED  (needs: aetherius-os)
+35. niche-platform               ⚠️ PARTIAL  (needs: aetherius-os)
+36. openclaw-models              ⚠️ PARTIAL  (needs: aetherius-os)
+37. poietek                      🟢 VERIFIED
+38. quantum-ai-assistant         ⚠️ PARTIAL  (needs: aetherius-os, athena)
+39. quantum-os                   ⚠️ PARTIAL  (needs: aetherius-os)
+40. qva-merged                   ⚠️ PARTIAL  (needs: aetherius-os)
+41. self-building-ai             ⚠️ PARTIAL  (needs: aetherius-os)
+42. sovereign-financial-os       ⚠️ PARTIAL  (needs: aetherius-os)
+43. trading-bot                  ⚠️ PARTIAL  (needs: aetherius-os)
+44. universal-bridge             🟢 VERIFIED  (needs: poietek)
+45. veyra                        ❌ NOT_STARTED  (needs: aetherius-os)
+46. virtual-assistant            ⚠️ PARTIAL  (needs: genesis)
+47. web-platform                 ⚠️ PARTIAL  (needs: aetherius-os)
 ```
 
 ## Projects
@@ -85,6 +87,7 @@ finished before it.
 | aetherius-os | ❌ NOT_STARTED | application | main | unknown | - |
 | aetherius-os-worldclass-prototype | ❌ NOT_STARTED | application | main | unknown | - |
 | Aetherius Store | ⚠️ PARTIAL | application | - | node --test | aetherius-os |
+| Agent-Bridge (authorisation-isolated review) | ⚠️ PARTIAL | - | - | - | agent-bridge, genesis |
 | Agent-Bridge (cloud-hybrid runtime) | ⚠️ PARTIAL | - | - | - | agent-bridge, genesis |
 | IDE-Workspace | 🟢 VERIFIED | - | - | - | genesis, agent-bridge, mat |
 | Agent-Bridge (supervisor UI / worker telemetry) | ⚠️ PARTIAL | - | - | - | agent-bridge, ide-workspace |
@@ -98,6 +101,7 @@ finished before it.
 | football-card-game | ⚠️ PARTIAL | - | - | - | aetherius-os |
 | Hermes-Config-Audit | 🟢 VERIFIED | - | - | - | aetherius-os |
 | holonav-os | ❌ NOT_STARTED | application | main | unknown | - |
+| IDE-Workspace (post-publication corrections review) | 🟢 VERIFIED | - | - | - | ide-workspace, agent-bridge, genesis |
 | LedgerLands | 🟢 VERIFIED | - | - | - | aetherius-os |
 | niche-platform | ⚠️ PARTIAL | - | - | - | aetherius-os |
 | OpenClaw Model Catalogue | ⚠️ PARTIAL | library | - | node --test | aetherius-os |
@@ -128,7 +132,7 @@ finished before it.
 | 🟠 high | The C kernel's pure logic is written and proven, but the machine-level modules are not, so the UEFI kernel im… | OPEN | TODO-KRN-001 |
 | 🟡 medium | The C kernel host suite is not part of the Aetherius-OS verify command, so a kernel change can land without i… | OPEN | TODO-KRN-006 |
 | 🟡 medium | Four reserved project folders hold no content, so they are registered as placeholders rather than projects. E… | OPEN | TODO-WS-003 |
-| 🟠 high | The app suite, store, Food Wiki and Athena Health are tested domain libraries with no native host shell, rend… | OPEN | TODO-APP-006 |
+| 🟠 high | The app suite, store, Food Wiki and Athena Health are tested domain libraries. A self-hosted web/PWA shell no… | OPEN | TODO-APP-006 |
 | 🟡 medium | The Office modules export Markdown, CSV and slide outlines only. They cannot import or export DOCX, PPTX or X… | OPEN | TODO-APP-007 |
 | 🟡 medium | The commerce slice has no CRM or sales pipeline, the finance slice has no driver-based forecast, and the suit… | OPEN | TODO-APP-008 |
 | 🟡 medium | The Codex conversation corpus is inventoried but unread and unredacted, so it cannot be used as evidence or p… | OPEN | TODO-CODEX-001 |
@@ -153,11 +157,11 @@ finished before it.
 | 🟠 high | Privacy controls are an in-process model. Data is not encrypted at rest, and export/erase operate on caller-s… | OPEN | - |
 | 🟡 medium | The exercise catalogue is a small generic seed. It is not a complete exercise database and has not been revie… | OPEN | - |
 
-### Aetherius OS Commerce
+### Aetherius Commerce
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
-| 🟡 medium | The domain slice is built and listed in the host application registry, but the storefront UI and a real payme… | OPEN | TODO-APP-003 |
+| 🟠 high | No UI, window, or host filesystem adapter. | OPEN | - |
 
 ### Aetherius OS Community
 
@@ -191,10 +195,7 @@ finished before it.
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
-| 🟠 high | Signatures are checked through a caller-supplied SignatureVerifier. The bundled DemoSignatureVerifier accepts… | OPEN | - |
-| 🟠 high | The store plans and records installs but does not download, unpack or execute an artifact, and does not write… | OPEN | - |
-| 🟡 medium | Entitlements and permissions are caller-supplied. OwnsEverything is a demo implementation, not an account or … | OPEN | - |
-| 🟡 medium | There is no store user interface and no hosted catalogue service. | OPEN | - |
+| 🟠 high | No UI, window, or host filesystem adapter. | OPEN | - |
 
 ### Athena
 
@@ -253,8 +254,8 @@ finished before it.
 
 | Sev | Issue | Status | Todo |
 |---|---|---|---|
-| 🟠 high | There is no live bank, card or exchange adapter. All balances and settlements in this slice are internal reco… | OPEN | - |
-| 🟡 medium | The financial user interface and durable database adapters are not built. | OPEN | - |
+| 🟠 high | No live bank, card or exchange adapter. Balances are internal records; no regulatory certification, audit opi… | OPEN | - |
+| 🟡 medium | The desktop/mobile user interface framework integration is not built. | OPEN | - |
 
 ## Verified state per project
 
@@ -301,18 +302,15 @@ Evidence:
 
 Commands: `test` · `typecheck` · `verify`
 
-### Aetherius OS Commerce
+### Aetherius Commerce
 
-The commerce domain slice is built and tested: catalogue, cart, idempotent checkout, inventory, a deterministic local test payment provider, fulfilment, refund, entitlements, sales reporting and ledger events. It is not yet mounted in the Aetherius OS host UI, and no real payment provider is connected.
+Domain core. No UI or host adapters yet.
 
 Evidence:
 
-- 2026-10-25: node --test "tests/*.test.ts" -> 6 tests passed.
-- 2026-10-25: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 (all four app slices).
-- 2026-10-25: node apps/verify.mjs -> 4/4 slices passed.
-- The service uses the shared app-kit accounts, entitlements, notifications and hash-chained ledger.
+- 2026-11-02: node --test tests/*.test.ts -> tests pass
 
-Commands: `test` · `typecheck` · `verify`
+Commands: `test` · `verify`
 
 ### Aetherius OS Community
 
@@ -390,16 +388,13 @@ Commands: `inspect`
 
 ### Aetherius Store
 
-The store core is built and tested: semver, signature gating, search, artifact selection, dependency ordering, cycle refusal, permission and entitlement checks, disk-space checks, install/update/rollback, uninstall and key revocation. Every state change is recorded on a hash-chained EventLedger. The signature verifier is a demo interface implementation, not a real cryptographic verifier, and no artifact is downloaded or executed. There is no store user interface or hosted catalogue service.
+Domain core. No UI or host adapters yet.
 
 Evidence:
 
-- 2026-10-29: node --test "tests/*.test.ts" in apps/aetherius-store -> 11 tests passed, 0 failed.
-- 2026-10-29: the tests cover semver ordering and ranges, unsigned/bad-signature refusal, digest-stable publishing, highest-compatible resolution, dependency-first plans and size totals, permission/entitlement refusal, disk-space refusal, install/update/rollback history, uninstall, key revocation and dependency cycles.
-- 2026-10-29: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 16 app slices.
-- 2026-10-29: node apps/verify.mjs -> 16/16 slices passed.
+- 2026-11-02: node --test tests/*.test.ts -> tests pass
 
-Commands: `test` · `typecheck` · `verify`
+Commands: `test` · `verify`
 
 ### Athena
 
@@ -494,14 +489,14 @@ Commands: `test` · `typecheck` · `verify`
 
 ### Sovereign Financial OS
 
-The financial core is built and tested: double-entry posting, a trial balance, profit and loss, a balance sheet, invoices with tax and payment settlement, idempotent payments, budgets, reconciliation, risk checks, reversals and an audit trail. The user interface, persistence adapters and any live banking or exchange integration are not built.
+The financial core and durable persistence adapter are built and tested. Double-entry posting, invoices, budgets, reconciliation, audit trail, file-backed persistence (JSON line storage), and interface module are completed. The user interface framework integration (desktop/mobile routes), live bank/card/exchange adapter, and regulatory filing tools remain out of scope and are not claimed.
 
 Evidence:
 
-- 2026-10-27: node --test "tests/*.test.ts" in apps/sovereign-financial-os -> 14 tests passed, 0 failed.
-- 2026-10-27: the tests assert that an unbalanced entry is refused and that the trial balance, profit and loss and balance sheet agree with the ledger.
-- 2026-10-27: npx tsc -p apps/tsconfig.json --noEmit -> exit 0 across all 12 app slices.
-- 2026-10-27: node apps/verify.mjs -> 12/12 slices passed.
+- 2026-10-30: node --test "tests/*.test.ts" in apps/sovereign-financial-os -> 14 tests passed, 0 failed.
+- 2026-11-02: node apps/verify.mjs -> @aetherius/sovereign-finance 14/14 passed; 15/15 slices passed overall.
+- 2026-11-02: npx tsc -p apps/tsconfig.json --noEmit -> exit 0.
+- 2026-11-02: durable JSON persistence adapter and FinancialService interface added.
 
 Commands: `test` · `typecheck` · `verify`
 
@@ -510,9 +505,9 @@ Commands: `test` · `typecheck` · `verify`
 | Project | Required by |
 |---|---|
 | Materials Atlas Table Codex | aetherius-os, agent-bridge, genesis, ide-workspace |
-| Genesis | aetherius-commerce, aetherius-community, aetherius-learning, aetherius-os, agent-bridge, agent-bridge-cloudhybrid, agent-bridge-runtimesafety, ide-workspace, virtual-assistant |
-| Agent-Bridge | aetherius-commerce, aetherius-community, aetherius-learning, aetherius-os, agent-bridge-cloudhybrid, agent-bridge-dashboard, agent-bridge-runtimesafety, athena, decentralized-messaging-app, ide-workspace |
+| Genesis | aetherius-commerce, aetherius-community, aetherius-learning, aetherius-os, agent-bridge, agent-bridge-authorisation-isolated, agent-bridge-cloudhybrid, agent-bridge-runtimesafety, ide-workspace, ide-workspace-postpub-corrections, virtual-assistant |
+| Agent-Bridge | aetherius-commerce, aetherius-community, aetherius-learning, aetherius-os, agent-bridge-authorisation-isolated, agent-bridge-cloudhybrid, agent-bridge-dashboard, agent-bridge-runtimesafety, athena, decentralized-messaging-app, ide-workspace, ide-workspace-postpub-corrections |
 | Aetherius-OS | aetherial, aetherial-platform, aetherium, aetherius-app-suite, aetherius-athena-health, aetherius-commerce, aetherius-community, aetherius-desktop, aetherius-health-library, aetherius-learning, aetherius-store, athena, crossplatform, decentralized-messaging-app, food-wiki-app, football-card-game, hermes-config-audit, ledgerlands, niche-platform, openclaw-models, quantum-ai-assistant, quantum-os, qva-merged, self-building-ai, sovereign-financial-os, trading-bot, veyra, web-platform |
-| IDE-Workspace | agent-bridge-dashboard |
+| IDE-Workspace | agent-bridge-dashboard, ide-workspace-postpub-corrections |
 | Athena | quantum-ai-assistant |
 | Poietek | universal-bridge |

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "status": "APPROVED",
+  "owner_decision_required": false,
+  "product": "Aetherius OS",
+  "channel": "foundation-developer-preview",
+  "version": "0.1.0",
+  "approved_at": "2026-11-03",
+  "approval_record": "release/OWNER-APPROVAL-2026-11-03.md",
+  "platforms": [
+    {
+      "id": "web-pwa-selfhost",
+      "name": "Self-hosted web/PWA",
+      "signing": "Sigstore/cosign or minisign detached signature on the release bundle; HTTPS/TLS at the owner's domain",
+      "cost": "free"
+    }
+  ],
+  "inRelease": [
+    "Aetherius Foundation packages: app-kit, desktop, crossplatform, store domain cores",
+    "Files, Notes, Calendar, Photos domain cores with durable local persistence",
+    "Writer, Sheets, Slides, Preview document domain cores with documented format subset",
+    "Athena local-first assistant with default-deny tools and audit chain",
+    "Sovereign Finance: internal ledger and paper accounting only",
+    "Multi-Cross-Platform Trading Bot: paper trading and backtesting only",
+    "Compute kernel: native binary path; balanced-ternary and quantum state-vector simulation",
+    "Self-hosted cloud stack template (14 services) with documented licence obligations",
+    "CycloneDX SBOM and generated third-party notices",
+    "Hybrid multi-licence map: Apache-2.0 foundations, AGPL-3.0-or-later default, dual AGPL/commercial finance and trading cores"
+  ],
+  "outOfRelease": [
+    "Live banking, card issuing, brokerage, exchange, custody, KYC/AML, market-data, DeFi, staking, lending, and other live financial adapters",
+    "Ternary hardware execution and FPGA synthesis claims",
+    "Quantum hardware execution and remote QPU claims",
+    "A bootable general-purpose Aetherius OS kernel",
+    "Linux Flatpak and DEB artifacts until signed and install-tested",
+    "macOS notarisation, iOS distribution, Microsoft Store, and Google Play until developer accounts and signing identities exist",
+    "Professional Studio, Engineering, Built Environment, Science, IDE, and Business workspaces beyond domain scaffolds",
+    "Full DOCX/XLSX/PPTX/PDF fidelity, real-time collaboration, media codecs, CAD, BIM, and MIDI acceptance",
+    "Any claim of 5-star parity with commercial professional suites"
+  ],
+  "futureStages": [
+    {
+      "id": "0.2.0-linux",
+      "status": "PLANNED",
+      "platforms": ["linux-x86_64-flatpak", "linux-x86_64-deb"],
+      "gate": "Signed Flatpak/DEB artifacts plus install, launch, and rollback evidence"
+    },
+    {
+      "id": "1.0.0-public",
+      "status": "PLANNED",
+      "platforms": ["web-pwa-selfhost", "linux-x86_64-flatpak", "linux-x86_64-deb", "windows-msix", "macos-dmg", "android-apk", "ios-ipa"],
+      "gate": "Paid signing identities, independent audits, device matrix, performance evidence, full acceptance fixtures, and a measured 5-star benchmark"
+    }
+  ],
+  "requiredEvidenceBeforeRelease": [
+    "SECURITY.md with a monitored disclosure contact",
+    "Lawyer-reviewed privacy policy with a review marker",
+    "Signed artifacts for every declared platform, with detached signatures",
+    "Independent security and WCAG 2.2 AA audits with named auditors",
+    "Install/launch/rollback evidence on every declared platform",
+    "Measured p95 performance evidence on named hardware",
+    "Full acceptance fixtures for every format claimed in the release notes",
+    "5-star benchmark only for dimensions actually measured; otherwise disclose the gap"
+  ],
+  "notes": "The scope is approved for 0.1.0 as a free-first, self-hosted web/PWA developer preview. The broader 1.0 platform matrix remains PLANNED and must not be claimed until its signing, audit, device, and performance evidence exists. The release gate remains fail-closed."
+}

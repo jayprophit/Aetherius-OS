@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { AgentChatMessage, NotificationData, AITask } from '../types';
-import { soundPlayer, SoundType } from '../utils/soundPlayer';
 import { PhoneIcon, VideoIcon, MicrophoneIcon, SpeakerWaveIcon, ArrowUpCircleIcon, XMarkIcon } from './Icons';
 import { GoogleGenAI } from '@google/genai';
+import { chatWithLocalModel } from '../src/ai/localClient';
+import { getRuntimeGeminiKey } from '../src/ai/runtimeCredentials';
 
 // --- Child Components for UI ---
 
@@ -58,7 +59,7 @@ const ToolStatus: React.FC<{ tasks: AITask[] }> = ({ tasks }) => {
 
 export const AiSupportAvatar: React.FC = () => {
     const [messages, setMessages] = useState<AgentChatMessage[]>([
-        { id: '1', role: 'agent', content: "Hello! I'm your AI Support Avatar. I can see your screen. How can I assist you today?", timestamp: new Date().toLocaleTimeString() }
+        { id: '1', role: 'agent', content: "Hello! I'm your AI Support Avatar. I cannot see your screen or run tools in this build. How can I assist you today?", timestamp: new Date().toLocaleTimeString() }
     ]);
     const [input, setInput] = useState('');
     const [tasks, setTasks] = useState<AITask[]>([]);
@@ -79,23 +80,6 @@ export const AiSupportAvatar: React.FC = () => {
         setNotifications(prev => prev.filter(n => n.id !== id));
     };
 
-    const runTool = (name: string, sound: SoundType, duration: number, successMessage: string) => {
-        const taskId = `task-${Date.now()}`;
-        setTasks(prev => [...prev, { id: taskId, name, status: 'processing' }]);
-        soundPlayer.play(sound);
-
-        const systemMessage: AgentChatMessage = { id: `msg-${Date.now()}`, role: 'tool', content: `Executing RPC call: ${name}...`, timestamp: new Date().toLocaleTimeString()};
-        setMessages(prev => [...prev, systemMessage]);
-
-        setTimeout(() => {
-            setTasks(prev => prev.filter(t => t.id !== taskId));
-            addNotification({ type: 'success', title: 'Task Complete', message: successMessage, duration: 4000 });
-            soundPlayer.play('success');
-            const resultMessage: AgentChatMessage = { id: `msg-${Date.now()+1}`, role: 'system', content: `Tool '${name}' finished successfully.`, timestamp: new Date().toLocaleTimeString()};
-            setMessages(prev => [...prev, resultMessage]);
-        }, duration);
-    };
-
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!input.trim() || isProcessing) return;
@@ -106,87 +90,56 @@ export const AiSupportAvatar: React.FC = () => {
         setInput('');
         setIsProcessing(true);
 
-        if (!process.env.API_KEY) {
-             const errorMsg: AgentChatMessage = { id: `err-${Date.now()}`, role: 'system', content: "Error: API Key is not configured.", timestamp: new Date().toLocaleTimeString() };
-             setMessages(prev => [...prev, errorMsg]);
-             setIsProcessing(false);
-             return;
+        const systemInstruction = `
+You are the Aetherius OS Support Avatar, a patient and friendly assistant.
+
+Only describe actions that actually happened. There are no simulated tools in
+this build: you cannot send email, unblock accounts, create tickets, execute
+trades or see the user's screen. If a user asks for one of those actions, say
+plainly that the capability is not configured and explain the manual step.
+
+Never invent a ticket number, a successful transaction or a system status.
+Aetherius defaults to token-free local inference.`;
+
+        let responseText = "";
+        const apiKey = getRuntimeGeminiKey();
+
+        const local = await chatWithLocalModel([
+            { role: 'system', content: systemInstruction },
+            { role: 'user', content: currentInput },
+        ], { timeoutMs: 120_000 });
+
+        if (local.ok) {
+            responseText = local.text;
+        } else if (apiKey) {
+            try {
+                const ai = new GoogleGenAI({ apiKey });
+                const model = ai.chats.create({
+                    model: 'gemini-2.5-flash',
+                    config: { systemInstruction },
+                });
+                const result = await model.sendMessage({ message: currentInput });
+                responseText = result.text || "";
+            } catch (error: any) {
+                console.error(error);
+                responseText = `**Remote provider unavailable.** ${error?.message || "Unknown error"}.`;
+            }
         }
 
-        try {
-             const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-             const model = ai.chats.create({
-                model: 'gemini-2.5-flash',
-                config: {
-                    systemInstruction: `
-You are the Aetherius OS Support Avatar, a highly capable, patient, and friendly AI assistant.
-
-**Primary Role:**
-- Assist users with technical issues within the Aetherius OS environment.
-- Execute system tools when authorized to resolve problems efficiently.
-- Provide clear, step-by-step guidance for complex tasks.
-
-**Capabilities & Tools:**
-You have access to the following simulated tools. When a user asks for an action that corresponds to a tool, you should explicitly mention you are "running the tool" in your response.
-1.  **send_email**: Send communications to support or external contacts.
-2.  **unblock_user**: Restore access to user accounts.
-3.  **create_support_ticket**: Log bugs or complex issues for human review.
-4.  **generate_code**: Write snippets for system configuration or debugging.
-5.  **execute_trade**: Perform financial transactions (simulated).
-
-**Context:**
-- You have a live feed of the user's screen (simulated).
-- You can hear the user via microphone (simulated).
-
-**Interaction Guidelines:**
-- **Tone:** Professional, empathetic, and tech-savvy. **Always be patient and clear.**
-- **Clarity:** **Explain technical concepts simply.** Avoid jargon where possible, or define it if necessary so users of all skill levels can understand.
-- **Risk Awareness:** **Warn users about risks** associated with sensitive actions (e.g., financial trades, system resets, changing core settings) before proceeding.
-- **Safety:** Do not execute financial trades or destructive system commands without explicit user confirmation.
-- **Privacy:** Remind users not to share PII (Personally Identifiable Information) if they attempt to do so.
-- **Format:** Keep responses concise. Use Markdown for clarity.
-
-**Example Interaction:**
-User: "I can't access my account."
-You: "I can help with that. I'll run the 'unblock_user' diagnostic tool to check your account status."
-`
-                }
-             });
-
-             const result = await model.sendMessage({ message: currentInput });
-             const responseText = result.text;
-
-             const agentResponse: AgentChatMessage = { 
-                 id: `msg-${Date.now()+1}`, 
-                 role: 'agent', 
-                 content: responseText, 
-                 timestamp: new Date().toLocaleTimeString() 
-             };
-             setMessages(prev => [...prev, agentResponse]);
-
-             // Simple heuristic to trigger tools based on AI response content
-             // In a real production app, this would be handled by the model's function calling capability
-             const lowerResponse = responseText.toLowerCase();
-             
-             if (lowerResponse.includes("send_email") || lowerResponse.includes("sending email")) {
-                 runTool('send_email', 'typing', 3000, "Email sent successfully.");
-             } else if (lowerResponse.includes("unblock_user") || lowerResponse.includes("unblocking user")) {
-                 runTool('unblock_user', 'processing', 2000, "User account unlocked.");
-             } else if (lowerResponse.includes("create_support_ticket") || lowerResponse.includes("creating ticket")) {
-                 runTool('create_support_ticket', 'typing', 2500, "Ticket #8842 created.");
-             } else if (lowerResponse.includes("generate_code") || lowerResponse.includes("generating code")) {
-                 runTool('generate_code', 'typing', 4000, "Code block generated.");
-             } else if (lowerResponse.includes("execute_trade") || lowerResponse.includes("executing trade")) {
-                 runTool('execute_trade', 'analysis', 3500, "Trade order placed.");
-             }
-
-        } catch (error: any) {
-            console.error(error);
-            const errorMsg: AgentChatMessage = { id: `err-${Date.now()}`, role: 'system', content: `Error: ${error.message}`, timestamp: new Date().toLocaleTimeString() };
-            setMessages(prev => [...prev, errorMsg]);
-        } finally {
-            setIsProcessing(false);
+        if (!responseText) {
+            responseText =
+                "**No local model is available.** Start Ollama and install a model, or supply a " +
+                "session-only key for an optional remote provider. No key is bundled into this build.";
         }
+
+        const agentResponse: AgentChatMessage = {
+            id: `msg-${Date.now()+1}`,
+            role: 'agent',
+            content: responseText,
+            timestamp: new Date().toLocaleTimeString()
+        };
+        setMessages(prev => [...prev, agentResponse]);
+        setIsProcessing(false);
     };
 
     return (

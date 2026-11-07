@@ -325,11 +325,14 @@ known_issues:
     severity: high
     summary: >-
       The app suite, store, Food Wiki and Athena Health are tested domain
-      libraries with no native host shell, renderer or per-OS binary.
+      libraries. A self-hosted web/PWA shell now builds and boots, but there is
+      no native host shell, renderer or per-OS binary.
     evidence: >-
-      node apps/verify.mjs passes 17/17 slices, but every slice is a Node
-      library. The desktop slice models window chrome and themes without
-      rendering a window. No MSIX, DMG, DEB, AAB, IPA or PWA artifact exists.
+      node apps/verify.mjs passes 15/15 slices and apps/smoke-all.mjs imports
+      108/108 entry points. npm run verify:pwa passes 24 installability/launch
+      checks with a loopback p95 of 8.093 ms, and npm run verify:rollback passes
+      an upgrade/rollback drill in headless Chrome. No MSIX, DMG, DEB, AAB or
+      IPA artifact exists; the PWA bundle is unsigned and has no native package.
     status: OPEN
     todo_ref: TODO-APP-006
   - id: AOS-APP-003

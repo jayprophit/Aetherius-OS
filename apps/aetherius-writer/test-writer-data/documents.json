@@ -1,0 +1,18 @@
+[
+  {
+    "id": "doc_8dbf7a12-f379-4e67-9767-c6dc5a6da724",
+    "title": "JSON Export",
+    "blocks": [
+      {
+        "id": "block_aed3e86d-3340-4e91-8428-7d9c39c43c2f",
+        "kind": "paragraph",
+        "text": "content",
+        "createdAt": "2026-11-07T10:53:45.428Z",
+        "updatedAt": "2026-11-07T10:53:45.428Z"
+      }
+    ],
+    "createdAt": "2026-11-07T10:53:45.424Z",
+    "updatedAt": "2026-11-07T10:53:45.428Z",
+    "revision": 1
+  }
+]

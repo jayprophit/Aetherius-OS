@@ -3,6 +3,8 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { GoogleGenAI, Type, Tool, FunctionDeclaration, createPartFromFunctionResponse } from '@google/genai';
 import { ChatMessage, ChatSession } from '../types';
+import { chatWithLocalModel, type LocalChatMessage } from '../src/ai/localClient';
+import { getPreferredProvider, getRuntimeGeminiKey } from '../src/ai/runtimeCredentials';
 import { 
     PlusIcon, UserCircleIcon, EllipsisHorizontalIcon, HiveMindIcon,
     MicrophoneIcon, ArrowUpCircleIcon, ClipboardDocumentCheckIcon, ShareIcon,
@@ -104,31 +106,29 @@ const tools: Tool[] = [
     },
 ];
 
-// --- Mock Tool Implementations ---
+// --- Tool Implementations ---
+//
+// Only calculateSum is real. Weather and market data have no configured
+// provider, so they return an explicit NOT_CONFIGURED result. A demo that
+// invents a temperature or a share price is worse than one that says it has
+// no feed: the owner's rule is that unmeasured data is never presented as
+// measured.
 const executeTool = async (name: string, args: any) => {
-    console.log(`Executing tool: ${name}`, args);
-    await new Promise(resolve => setTimeout(resolve, 500)); // Simulate network delay
-
     switch (name) {
         case "get_current_weather":
-            return { 
-                temp: 72, 
-                condition: "Sunny", 
-                location: args.location, 
-                humidity: "45%", 
-                wind: "10 mph NW" 
+            return {
+                error: "NOT_CONFIGURED",
+                detail: "No live weather provider is configured. Aetherius does not invent weather data.",
             };
         case "calculateSum":
             return { result: args.a + args.b };
         case "get_stocks_data":
-            return { 
-                symbol: args.symbol, 
-                price: 150.00 + (Math.random() * 10 - 5), 
-                change: "+1.2%", 
-                volume: "50M" 
+            return {
+                error: "NOT_CONFIGURED",
+                detail: "No live market-data provider is configured. Aetherius does not invent prices.",
             };
         default:
-            return { error: "Tool not found" };
+            return { error: "TOOL_NOT_FOUND" };
     }
 };
 
@@ -220,119 +220,113 @@ export const AiChatView: React.FC = () => {
             )
         );
 
-        // Check API Key securely
-        const apiKey = process.env.API_KEY;
-        if (!apiKey) {
-            const errorMsg: ChatMessage = { 
-                role: 'model', 
-                text: '⚠️ **System Alert**: API Key is missing. \n\nPlease configure your environment variables with `API_KEY` to enable AI features.' 
-            };
-             setChatSessionsData(prevSessions =>
-                prevSessions.map(session =>
-                    session.id === activeSessionId
-                        ? { ...session, messages: [...session.messages, errorMsg] }
-                        : session
-                )
-            );
-            setIsLoading(false);
-            return;
-        }
+        // Aetherius defaults to token-free local inference. The remote path is
+        // optional and only runs when the user has supplied a session-scoped
+        // key at runtime. No key is compiled into this bundle.
+        const apiKey = getRuntimeGeminiKey();
+        const preferGemini = getPreferredProvider() === 'gemini';
+        const systemInstruction =
+            'You are Aetherius, a helpful and intelligent AI operating system assistant. ' +
+            'Format your responses using Markdown. Be concise yet comprehensive. ' +
+            'Only calculateSum is a real tool. Weather and market data have no configured ' +
+            'provider: never invent a temperature, price or other unmeasured value. Say so plainly.';
 
-        try {
-            const ai = new GoogleGenAI({ apiKey });
-            const chat = ai.chats.create({
-                model: 'gemini-2.5-flash',
-                config: { 
-                    systemInstruction: 'You are Aetherius, a helpful and intelligent AI operating system assistant. Format your responses using Markdown. Be concise yet comprehensive. You have access to tools: calculateSum, get_current_weather, get_stocks_data. Use calculateSum for any addition requests.',
-                    tools: tools
-                }
-            });
+        const localMessages: LocalChatMessage[] = [
+            { role: 'system', content: systemInstruction },
+            ...(activeSession?.messages ?? []).map((message) => ({
+                role: message.role === 'model' ? ('assistant' as const) : ('user' as const),
+                content: message.text,
+            })),
+            { role: 'user', content: currentInput },
+        ];
 
-            // We need to send history for context
-            const history = activeSession?.messages.map(m => ({
-                role: m.role,
-                parts: [{ text: m.text }]
-            })) || [];
+        let responseText = "";
+        let localFailure: string | null = null;
 
-            // The first message call
-            let result = await chat.sendMessage({ message: currentInput });
-            
-            // Handle Function Calls loop
-            // Note: In a real scenario, we might loop this, but here we handle one level of tool calls for simplicity/demo
-            let responseText = "";
-            
-            // Check if the model wants to call a function
-            // We iterate through candidates to check for function calls
-            // result is GenerateContentResponse
-            if (result.candidates?.[0]?.content?.parts) {
-                 const parts = result.candidates[0].content.parts;
-                 
-                 // Check for tool calls
-                 const functionCalls = parts.filter(part => part.functionCall);
-                 
-                 if (functionCalls.length > 0) {
-                      // Execute all requested tools
-                      const functionResponses = await Promise.all(functionCalls.map(async (call) => {
-                          const fc = call.functionCall!;
-                          const toolResult = await executeTool(fc.name, fc.args);
-                          return createPartFromFunctionResponse(
-                              fc.id ?? fc.name,
-                              fc.name,
-                              { result: toolResult },
-                          );
-                      }));
-
-                      // Send tool outputs back to model
-                      result = await chat.sendMessage({ message: functionResponses });
-                 }
-            }
-
-            responseText = result.text || "";
-            
-            const modelMessage: ChatMessage = { role: 'model', text: responseText };
-            
-            setChatSessionsData(prevSessions =>
-                prevSessions.map(session =>
-                    session.id === activeSessionId
-                        ? { ...session, messages: [...session.messages, modelMessage] }
-                        : session
-                )
-            );
-            
-            // Update title if it's a new conversation
-            if (activeSession?.messages.length === 1) {
-                setChatSessionsData(prevSessions => prevSessions.map(s => {
-                    if (s.id === activeSessionId) {
-                        const newTitle = currentInput.split(' ').slice(0, 5).join(' ') + (currentInput.split(' ').length > 5 ? '...' : '');
-                        return { ...s, title: newTitle };
-                    }
-                    return s;
-                }));
-            }
-
-        } catch (e: any) {
-            console.error("AI Interaction Error:", e);
-            let errorText = `**Error:** An unexpected error occurred.`;
-            
-            if (e.status === 429 || e.message?.includes('429') || e.error?.code === 429) {
-                errorText = "⚠️ **API Quota Exceeded**\n\nYou have reached the request limit for the AI service. Please check your billing or try again later.";
-            } else if (e.message?.includes('fetch failed') || e.message?.includes('NetworkError') || e.code === 6) {
-                errorText = "🌐 **Network Connection Error**\n\nUnable to connect to the AI service. Please check your internet connection.";
+        // Local first, unless the host explicitly asked for Gemini and a key
+        // is actually available.
+        if (!(preferGemini && apiKey)) {
+            const local = await chatWithLocalModel(localMessages, { timeoutMs: 120_000 });
+            if ("error" in local) {
+                localFailure = `${local.error} (${local.code})`;
             } else {
-                 errorText = `**System Error:** ${e.message || "Unknown error"}`;
+                responseText = local.text;
             }
-
-            const errorMessage: ChatMessage = { role: 'model', text: errorText };
-            setChatSessionsData(prevSessions =>
-                prevSessions.map(session =>
-                    session.id === activeSessionId
-                        ? { ...session, messages: [...session.messages, errorMessage] }
-                        : session
-                )
-            );
-        } finally {
-            setIsLoading(false);
         }
+
+        if (!responseText && apiKey) {
+            try {
+                const ai = new GoogleGenAI({ apiKey });
+                const chat = ai.chats.create({
+                    model: 'gemini-2.5-flash',
+                    config: {
+                        systemInstruction,
+                        tools: tools,
+                    },
+                });
+
+                let result = await chat.sendMessage({ message: currentInput });
+
+                if (result.candidates?.[0]?.content?.parts) {
+                    const parts = result.candidates[0].content.parts;
+                    const functionCalls = parts.filter((part) => part.functionCall);
+
+                    if (functionCalls.length > 0) {
+                        const functionResponses = await Promise.all(
+                            functionCalls.map(async (call) => {
+                                const fc = call.functionCall!;
+                                const toolResult = await executeTool(fc.name, fc.args);
+                                return createPartFromFunctionResponse(
+                                    fc.id ?? fc.name,
+                                    fc.name,
+                                    { result: toolResult },
+                                );
+                            }),
+                        );
+                        result = await chat.sendMessage({ message: functionResponses });
+                    }
+                }
+
+                responseText = result.text || "";
+            } catch (e: any) {
+                console.error("AI Interaction Error:", e);
+                responseText =
+                    `**Remote provider unavailable.** ${e?.message || "Unknown error"}. ` +
+                    "The local runtime remains the default; no billing or quota decision is made for you.";
+            }
+        }
+
+        if (!responseText) {
+            responseText =
+                "**No local model is available.**\n\n" +
+                (localFailure ?? "The local Ollama runtime did not respond.") +
+                "\n\nAetherius defaults to token-free local inference: no prompt is sent off this machine. " +
+                "Start Ollama and install a model (for example `ollama pull qwen2.5:3b`), or supply a " +
+                "session-only key for an optional remote provider. No API key is bundled into this build.";
+        }
+
+        const modelMessage: ChatMessage = { role: 'model', text: responseText };
+
+        setChatSessionsData(prevSessions =>
+            prevSessions.map(session =>
+                session.id === activeSessionId
+                    ? { ...session, messages: [...session.messages, modelMessage] }
+                    : session
+            )
+        );
+
+        // Update title if it's a new conversation
+        if (activeSession?.messages.length === 1) {
+            setChatSessionsData(prevSessions => prevSessions.map(s => {
+                if (s.id === activeSessionId) {
+                    const newTitle = currentInput.split(' ').slice(0, 5).join(' ') + (currentInput.split(' ').length > 5 ? '...' : '');
+                    return { ...s, title: newTitle };
+                }
+                return s;
+            }));
+        }
+
+        setIsLoading(false);
     };
 
     return (

@@ -1,0 +1,4 @@
+# Reproducible development environment for the Aetherius compute kernel.
+# Tested with Python 3.13.14 on Windows x86_64.
+numpy==2.5.3
+pytest==9.1.1

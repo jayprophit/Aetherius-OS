@@ -1,0 +1,23 @@
+name = "aetherius-sync"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Free-tier resources already created in the owner's Cloudflare account.
+# The id is an identifier, not a secret.
+[[d1_databases]]
+binding = "DB"
+database_name = "aetherius-preview"
+database_id = "53c247a9-4dd2-43c8-b3fc-f8f0d643b0f0"
+
+[vars]
+# Same-origin Pages production plus the local Vite shell. Add another
+# origin only when a real client exists; an empty list keeps CORS closed.
+ALLOWED_ORIGIN = "https://aetherius-preview.pages.dev,http://localhost:3000,http://127.0.0.1:3000"
+
+# SYNC_TOKEN is NOT set here. It is a Worker secret:
+#   wrangler secret put SYNC_TOKEN
+# A missing or short token makes every /v1 route fail closed with 503.
+#
+# SYNC_TENANT is optional and defaults to "default". Set it as a secret or
+# a var when one worker must serve separate tenants.

@@ -3,6 +3,8 @@ import { courses, enrolledCourses, achievements } from '../data';
 import { Course, LearningPath } from '../types';
 import { AcademicCapIcon, LightBulbIcon, TrophyIcon } from './Icons';
 import { GoogleGenAI, Type } from '@google/genai';
+import { chatWithLocalModel } from '../src/ai/localClient';
+import { getRuntimeGeminiKey } from '../src/ai/runtimeCredentials';
 
 interface MyLearningProps {
     onSetView: (view: string, context?: any) => void;
@@ -80,17 +82,41 @@ export const LearningAssistant: React.FC<{ onSetView: (view: string, context?: a
         setError('');
         setLearningPath(null);
 
-        if (!process.env.API_KEY) {
-            setError('API key is not configured.');
+        const courseCatalog = JSON.stringify(courses.map(({ id, title, description, category }) => ({ id, title, description, category })));
+        const prompt = `You are an AI Learning Advisor for Aetherius OS. The user wants to achieve the following goal: "${goal}". Based on this goal, analyze the following course catalog and generate a personalized learning path. The path should be a sequence of courses. For each course, provide a short, one-sentence rationale explaining why it's a necessary step towards the user's goal. Also suggest complementary skills. Here is the course catalog in JSON format: ${courseCatalog}. Respond with ONLY a valid JSON object with keys title, description and steps. Each step must have courseId (number) and rationale (string).`;
+
+        const parseLearningPath = (text: string): LearningPath => {
+            const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim();
+            return JSON.parse(cleaned) as LearningPath;
+        };
+
+        const local = await chatWithLocalModel([
+            { role: 'system', content: 'You return only valid JSON. You never add commentary outside the JSON object.' },
+            { role: 'user', content: prompt },
+        ], { timeoutMs: 120_000 });
+        const localFailure = "error" in local ? `${local.error} (${local.code})` : null;
+
+        if (!("error" in local)) {
+            try {
+                setLearningPath(parseLearningPath(local.text));
+                setIsLoading(false);
+                return;
+            } catch {
+                setError('The local model returned a response that was not valid JSON. Try again or use a larger local model.');
+                setIsLoading(false);
+                return;
+            }
+        }
+
+        const apiKey = getRuntimeGeminiKey();
+        if (!apiKey) {
+            setError(`No local model is available. Start Ollama and install a model to build a token-free learning path. (${localFailure ?? 'unknown error'})`);
             setIsLoading(false);
             return;
         }
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-            const courseCatalog = JSON.stringify(courses.map(({ id, title, description, category }) => ({ id, title, description, category })));
-            const prompt = `You are an AI Learning Advisor for Aetherius OS. The user wants to achieve the following goal: "${goal}". Based on this goal, analyze the following course catalog and generate a personalized learning path. The path should be a sequence of courses. For each course, provide a short, one-sentence rationale explaining why it's a necessary step towards the user's goal. Also suggest complementary skills. Here is the course catalog in JSON format: ${courseCatalog}. Respond with ONLY a valid JSON object.`;
-
+            const ai = new GoogleGenAI({ apiKey });
             const response = await ai.models.generateContent({
                 model: 'gemini-2.5-flash',
                 contents: prompt,
@@ -116,9 +142,7 @@ export const LearningAssistant: React.FC<{ onSetView: (view: string, context?: a
                 }
             });
 
-            const responseJson = JSON.parse(response.text);
-            setLearningPath(responseJson);
-
+            setLearningPath(parseLearningPath(response.text || ''));
         } catch (e: any) {
             console.error(e);
             setError(`An error occurred: ${e.message}`);

@@ -7,9 +7,9 @@ import {
   canonicalProfile,
   trainingProfileIdFor,
   validateProfile,
-} from "./trainingLifecycle";
-import * as trainingLifecycle from "./trainingLifecycle";
-import type { LifecycleClaim, TrainingLifecycleProfile } from "./trainingLifecycle";
+} from "./trainingLifecycle.ts";
+import * as trainingLifecycle from "./trainingLifecycle.ts";
+import type { LifecycleClaim, TrainingLifecycleProfile } from "./trainingLifecycle.ts";
 
 const AT = "2026-09-26T00:00:00.000Z";
 

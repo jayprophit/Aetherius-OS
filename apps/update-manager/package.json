@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/update-manager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius update manager with channels, delta, rollback, telemetry and maintenance windows.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  }
+}

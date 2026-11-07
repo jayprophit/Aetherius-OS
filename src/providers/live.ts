@@ -1,10 +1,10 @@
-import type { BenchmarkRecord, BenchmarkStore } from "./benchmarks";
+import type { BenchmarkRecord, BenchmarkStore } from "./benchmarks.ts";
 import {
   routeCapabilityRequest,
   type CapabilityRequest,
   type ModelCard,
-} from "./capabilities";
-import { effectiveStatus, type HealthRecord } from "./health";
+} from "./capabilities.ts";
+import { effectiveStatus, type HealthRecord } from "./health.ts";
 
 export interface LiveModel extends ModelCard {
   /** Freshness-aware observed state (stale decays to UNKNOWN). */

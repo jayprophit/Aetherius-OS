@@ -35,7 +35,9 @@
     "frontend/src",
     "services",
     "utils",
-    "src"
+    "src",
+    "apps/app-kit/src",
+    "apps/aetherius-app-suite/src"
   ],
   "exclude": [
     "node_modules",

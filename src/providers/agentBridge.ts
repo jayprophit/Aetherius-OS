@@ -1,6 +1,6 @@
-import type { Provider, ProviderReport } from "./types";
-import { baseReport } from "./types";
-import { fetchJson, ProviderError } from "./registry";
+import type { Provider, ProviderReport } from "./types.ts";
+import { baseReport } from "./types.ts";
+import { fetchJson, ProviderError } from "./registry.ts";
 
 export interface AgentBridgeStatus {
   health: unknown;

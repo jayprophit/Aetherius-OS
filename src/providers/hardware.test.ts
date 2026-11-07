@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { HardwareProfileRegistry, rankForPrecision, unmeasuredProfile, validateHardwareProfile } from "./hardware";
-import { CPU_PROBE_WORKLOAD_ID, CPU_PROBE_WORKLOAD_VERSION, probeCpuMatmul } from "./hardwareProbe";
-import type { HardwareProfile } from "./hardware";
+import { HardwareProfileRegistry, rankForPrecision, unmeasuredProfile, validateHardwareProfile } from "./hardware.ts";
+import { CPU_PROBE_WORKLOAD_ID, CPU_PROBE_WORKLOAD_VERSION, probeCpuMatmul } from "./hardwareProbe.ts";
+import type { HardwareProfile } from "./hardware.ts";
 
 function cpuProfile(over: Partial<HardwareProfile> = {}): HardwareProfile {
   return {

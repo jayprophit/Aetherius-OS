@@ -3,8 +3,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { FileStateStore } from "../state/store";
-import { routeCapabilityRequest, type ModelCard } from "./capabilities";
-import { OllamaProbe } from "./health";
+import { routeCapabilityRequest, type ModelCard } from "./capabilities.ts";
+import { OllamaProbe } from "./health.ts";
 import {
   AdapterRegistry,
   invokeRoute,
@@ -12,8 +12,8 @@ import {
   type InvokeRequest,
   type InvocationAdapter,
   type InvokeResult,
-} from "./invoke";
-import { OllamaAdapter, type FetchFn } from "./ollama";
+} from "./invoke.ts";
+import { OllamaAdapter, type FetchFn } from "./ollama.ts";
 
 function req(over: Partial<InvokeRequest> = {}): InvokeRequest {
   return {

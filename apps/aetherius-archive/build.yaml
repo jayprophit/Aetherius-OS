@@ -1,0 +1,26 @@
+schema_version: "1.0.0"
+
+project:
+  id: aetherius-archive
+  name: Archive
+  kind: application
+  domain: apps
+  description: "Aetherius archive manager domain core (add, remove, list entries)."
+  repository: false
+  languages: [typescript]
+
+toolchain:
+  build_system: node --test
+  package_manager: none
+
+commands:
+  - name: test
+    command: "node --test tests/*.test.ts"
+
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
+
+status:
+  state: PARTIAL
+  last_verified: "2026-10-30"

@@ -1,0 +1,11 @@
+{
+  "name": "@aetherius/help-support",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Aetherius help and support with search, diagnostics, community links and ticket escalation.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  }
+}

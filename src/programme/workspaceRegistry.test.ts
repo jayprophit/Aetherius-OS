@@ -49,7 +49,10 @@ function projectFoldersOnDisk(): string[] {
     .filter((e) => statSync(join(PROJECTS_ROOT, e)).isDirectory())
     // Temp is the designated holding folder. `.freebuff` is Freebuff
     // Desktop's own project metadata (project-id), not a project of ours.
-    .filter((e) => e !== TEMP_DIR && e !== ".freebuff")
+    // `.wrangler` is the Wrangler CLI cache directory, created whenever
+    // wrangler runs from the Projects root; it holds transient cache files
+    // and is not a project.
+    .filter((e) => e !== TEMP_DIR && e !== ".freebuff" && e !== ".wrangler")
     .sort();
 }
 
