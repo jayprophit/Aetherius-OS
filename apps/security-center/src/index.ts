@@ -1,17 +1,7 @@
+export * from "./domain.ts";
+
 /**
- * Security Center
- *
- * Aetherius security center with firewall, permissions, audit log, quarantine and policy.
- *
- * This is a scaffold. Replace the placeholder with the real domain logic.
+ * Security Center — firewall rules, permissions, hash-chained audit log and
+ * quarantine, with an overall posture score.
  */
-
 export const SecurityCenterVersion = "0.1.0";
-
-export interface SecurityCenterState {
-  initialized: boolean;
-}
-
-export function createSecurityCenter(): SecurityCenterState {
-  return { initialized: true };
-}

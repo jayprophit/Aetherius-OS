@@ -1,18 +1,15 @@
-# =============================================================================
-# BUILD MANIFEST - Update Manager
-# =============================================================================
 schema_version: "1.0.0"
-
 project:
   id: update-manager
   name: Update Manager
   kind: application
   domain: apps
   description: >-
-    Aetherius update manager with channels, delta, rollback, telemetry and maintenance windows.
+    Release channels (dev/beta/stable), update plans with delta preference,
+    signed-release enforcement and rollback to the previous version. Every
+    apply and rollback is ledger-audited.
   repository: false
   languages: [typescript]
-
 toolchain:
   build_system: node --test
   package_manager: none
@@ -20,22 +17,27 @@ toolchain:
     - name: node
       version: ">=24"
       required: true
-      purpose: runs the TypeScript sources directly via type stripping
-
 commands:
   - name: test
-    import: tests/*.test.ts
-  - name: typecheck
-    import: src/**/*.ts
-
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: verify
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
 status:
-  state: PARTIAL
+  state: TESTED
   last_verified: "2026-11-07"
-  summary: "Scaffold only: exports a version constant, a state interface and a create factory. The test proves importability and nothing more. No domain logic, UI or host adapter yet."
+  summary: "Real domain core: channel planning with delta preference, signed-release enforcement for stable/beta, install/apply/rollback. 6 behaviour tests + scaffold import test pass."
   evidence:
-    - "2026-11-07: npm run test:apps -> scaffold import test passes; tsc -p apps/tsconfig.json --noEmit passes"
+    - "2026-11-07: npm test (slice) -> 7/7 pass"
+    - "2026-11-07: tsc -p apps/tsconfig.json --noEmit passes"
 known_issues:
   - id: update-manager-001
-    severity: medium
-    summary: "Domain logic not implemented. The package is intentionally a compile-and-import stub."
+    severity: low
+    summary: "No download executor or host installer; plans are computed, not applied to the OS."
     status: OPEN

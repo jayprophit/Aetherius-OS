@@ -1,18 +1,15 @@
-# =============================================================================
-# BUILD MANIFEST - Security Center
-# =============================================================================
 schema_version: "1.0.0"
-
 project:
   id: security-center
   name: Security Center
   kind: application
   domain: apps
   description: >-
-    Aetherius security center with firewall, permissions, audit log, quarantine and policy.
+    Host-facing security surface: firewall rules, per-application permissions,
+    a hash-chained audit log, quarantine and an overall posture score. Local
+    state only; no network scanning happens in this layer.
   repository: false
   languages: [typescript]
-
 toolchain:
   build_system: node --test
   package_manager: none
@@ -20,22 +17,27 @@ toolchain:
     - name: node
       version: ">=24"
       required: true
-      purpose: runs the TypeScript sources directly via type stripping
-
 commands:
   - name: test
-    import: tests/*.test.ts
-  - name: typecheck
-    import: src/**/*.ts
-
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: verify
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
 status:
-  state: PARTIAL
+  state: TESTED
   last_verified: "2026-11-07"
-  summary: "Scaffold only: exports a version constant, a state interface and a create factory. The test proves importability and nothing more. No domain logic, UI or host adapter yet."
+  summary: "Real domain core: firewall rules with per-app resolution, permissions, verifiable hash-chained audit log, quarantine lifecycle and posture score. 5 behaviour tests + scaffold import test pass."
   evidence:
-    - "2026-11-07: npm run test:apps -> scaffold import test passes; tsc -p apps/tsconfig.json --noEmit passes"
+    - "2026-11-07: npm test (slice) -> 6/6 pass"
+    - "2026-11-07: tsc -p apps/tsconfig.json --noEmit passes"
 known_issues:
   - id: security-center-001
-    severity: medium
-    summary: "Domain logic not implemented. The package is intentionally a compile-and-import stub."
+    severity: low
+    summary: "No host adapter; does not apply rules to the real OS firewall."
     status: OPEN

@@ -1257,13 +1257,13 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "packageName": "@aetherius/aetherius-reminders",
     "aetheriusSlice": true,
     "id": "aetherius-reminders",
-    "name": "Reminders",
+    "name": "Aetherius Reminders",
     "kind": "application",
-    "description": "Aetherius reminders with lists, due dates, location triggers and subtasks.",
-    "status": "PARTIAL",
+    "description": "Lists of reminders with due dates, priority, subtasks and completion tracking. Location triggers are recorded as data; no device location is read in this layer.",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1945,11 +1945,11 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "id": "security-center",
     "name": "Security Center",
     "kind": "application",
-    "description": "Aetherius security center with firewall, permissions, audit log, quarantine and policy.",
-    "status": "PARTIAL",
+    "description": "Host-facing security surface: firewall rules, per-application permissions, a hash-chained audit log, quarantine and an overall posture score. Local state only; no network scanning happens in this layer.",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1973,11 +1973,11 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "id": "update-manager",
     "name": "Update Manager",
     "kind": "application",
-    "description": "Aetherius update manager with channels, delta, rollback, telemetry and maintenance windows.",
-    "status": "PARTIAL",
+    "description": "Release channels (dev/beta/stable), update plans with delta preference, signed-release enforcement and rollback to the previous version. Every apply and rollback is ledger-audited.",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {

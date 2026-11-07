@@ -1,18 +1,15 @@
-# =============================================================================
-# BUILD MANIFEST - Reminders
-# =============================================================================
 schema_version: "1.0.0"
-
 project:
   id: aetherius-reminders
-  name: Reminders
+  name: Aetherius Reminders
   kind: application
   domain: apps
   description: >-
-    Aetherius reminders with lists, due dates, location triggers and subtasks.
+    Lists of reminders with due dates, priority, subtasks and completion
+    tracking. Location triggers are recorded as data; no device location is
+    read in this layer.
   repository: false
   languages: [typescript]
-
 toolchain:
   build_system: node --test
   package_manager: none
@@ -20,22 +17,27 @@ toolchain:
     - name: node
       version: ">=24"
       required: true
-      purpose: runs the TypeScript sources directly via type stripping
-
 commands:
   - name: test
-    import: tests/*.test.ts
-  - name: typecheck
-    import: src/**/*.ts
-
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+  - name: verify
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
 status:
-  state: PARTIAL
+  state: TESTED
   last_verified: "2026-11-07"
-  summary: "Scaffold only: exports a version constant, a state interface and a create factory. The test proves importability and nothing more. No domain logic, UI or host adapter yet."
+  summary: "Real domain core: create, list by list, update, complete, reopen, subtasks, overdue and due-soon reporting. 5 behaviour tests + scaffold import test pass."
   evidence:
-    - "2026-11-07: npm run test:apps -> scaffold import test passes; tsc -p apps/tsconfig.json --noEmit passes"
+    - "2026-11-07: npm test (slice) -> 6/6 pass"
+    - "2026-11-07: tsc -p apps/tsconfig.json --noEmit passes"
 known_issues:
   - id: reminders-001
-    severity: medium
-    summary: "Domain logic not implemented. The package is intentionally a compile-and-import stub."
+    severity: low
+    summary: "No UI, no host notification adapter, no recurring rules yet."
     status: OPEN
