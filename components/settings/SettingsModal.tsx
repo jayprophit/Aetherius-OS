@@ -20,6 +20,10 @@ import { DateTimeSettings } from './DateTimeSettings';
 import { LanguageSettings } from './LanguageSettings';
 import { CloudSyncSettings } from './CloudSyncSettings';
 import { ApplicationsSettings } from './ApplicationsSettings';
+import { DesktopSettings } from './DesktopSettings';
+import { WindowSettings } from './WindowSettings';
+import { InputSettings } from './InputSettings';
+import { GenesisSettings } from './GenesisSettings';
 
 // Core OS Components mapped to settings
 import { SystemArchitecture } from '../SystemArchitecture';
@@ -226,6 +230,12 @@ const componentMap: { [key: string]: React.FC<any> } = {
   // Local-first sync and the application catalogue
   cloud_sync: CloudSyncSettings,
   applications: ApplicationsSettings,
+
+  // Desktop organisation, windows, input and Genesis Human
+  desktop_org: DesktopSettings,
+  window_mgmt: WindowSettings,
+  input_dev: InputSettings,
+  genesis_human: GenesisSettings,
 
   // Operations & Maintenance (Moved from Main Menu)
   cloudOps: CloudOpsApp,

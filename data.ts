@@ -1,11 +1,16 @@
 import {
+  AppWindowIcon,
   BookOpenIcon,
   CalculatorIcon,
+  ChatBubbleLeftRightIcon,
   CloudIcon,
   Cog6ToothIcon,
   CommandLineIcon,
+  ComputerDesktopIcon,
+  CursorArrowRaysIcon,
   DisplayIcon,
   DocumentTextIcon,
+  FaceSmileIcon,
   FolderIcon,
   GlobeAltIcon,
   InformationCircleIcon,
@@ -38,6 +43,7 @@ export const courses: any = [];
 export const enrolledCourses: any = [];
 export const creatorMarketplaceItems: any = [];
 export const desktopItems: any = [
+  { type: "app", id: "aetherius-genesis-human", title: "Genesis Human", component: "aetherius-genesis-human", icon: ChatBubbleLeftRightIcon },
   { type: "app", id: "aetherius-notes", title: "Notes", component: "aetherius-notes", icon: BookOpenIcon },
   { type: "app", id: "aetherius-writer", title: "Writer", component: "aetherius-writer", icon: DocumentTextIcon },
   { type: "app", id: "aetherius-sheets", title: "Sheets", component: "aetherius-sheets", icon: TableCellsIcon },
@@ -54,6 +60,7 @@ export const mainMenuItems: any = [
   {
     title: "Aetherius Apps",
     children: [
+      { title: "Genesis Human", component: "aetherius-genesis-human", icon: ChatBubbleLeftRightIcon },
       { title: "Notes", component: "aetherius-notes", icon: BookOpenIcon },
       { title: "Writer", component: "aetherius-writer", icon: DocumentTextIcon },
       { title: "Sheets", component: "aetherius-sheets", icon: TableCellsIcon },
@@ -85,6 +92,35 @@ export const settingsConfig: any = [
       { id: "shell-settings", title: "Shell settings", component: "systemSettings", icon: Cog6ToothIcon },
       { id: "display", title: "Display", component: "display", icon: DisplayIcon },
       { id: "about", title: "About", component: "about", icon: InformationCircleIcon },
+    ],
+  },
+  {
+    id: "desktop",
+    icon: ComputerDesktopIcon,
+    title: "Desktop & Widgets",
+    description: "Icon size, grid, sorting, grouping, and per-widget visibility and size.",
+    items: [
+      { id: "desktop", title: "Desktop organisation", component: "desktop_org", icon: ComputerDesktopIcon },
+      { id: "wallpaper", title: "Wallpaper", component: "wallpaper", icon: DisplayIcon },
+    ],
+  },
+  {
+    id: "windows-input",
+    icon: CursorArrowRaysIcon,
+    title: "Windows & Input",
+    description: "Window size, snapping, and mouse, keyboard and touch behaviour.",
+    items: [
+      { id: "windows", title: "Window management", component: "window_mgmt", icon: AppWindowIcon },
+      { id: "input", title: "Mouse, keyboard & touch", component: "input_dev", icon: CursorArrowRaysIcon },
+    ],
+  },
+  {
+    id: "genesis",
+    icon: FaceSmileIcon,
+    title: "Genesis Human",
+    description: "Voice, local-model preference, and the research panel.",
+    items: [
+      { id: "genesis", title: "Genesis Human", component: "genesis_human", icon: FaceSmileIcon },
     ],
   },
   {

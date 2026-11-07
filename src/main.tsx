@@ -22,6 +22,7 @@ import { SheetsApp } from "../components/apps/SheetsApp";
 import { SlidesApp } from "../components/apps/SlidesApp";
 import { CanvasApp } from "../components/apps/CanvasApp";
 import { BrowserApp } from "../components/apps/BrowserApp";
+import { GenesisHumanApp } from "../components/apps/GenesisHumanApp";
 import { Terminal } from "../components/apps/Terminal";
 import { Calculator } from "../components/apps/Calculator";
 import { Notepad } from "../components/apps/Notepad";
@@ -152,13 +153,14 @@ function Shell() {
     }
 
     const id = `win-${nextWindowId++}`;
+    const isGenesis = app.component === "aetherius-genesis-human";
     const newWindow: AppWindow = {
       id,
       component: app.component,
       title: app.title || "App",
       icon: app.icon || (() => null),
       position: { x: 80 + windows.length * 30, y: 80 + windows.length * 30 },
-      size: { width: 560, height: 420 },
+      size: isGenesis ? { width: 900, height: 620 } : { width: 560, height: 420 },
       zIndex: nextZ++,
       isMinimized: false,
       isMaximized: false,
@@ -229,6 +231,14 @@ function Shell() {
     setPinnedAppIds((prev) => (prev.includes(appId) ? prev.filter((id) => id !== appId) : [...prev, appId]));
   }, []);
 
+  const handleToggleMaximize = useCallback((id: string) => {
+    setWindows((prev) => prev.map((w) => (w.id === id ? { ...w, isMaximized: !w.isMaximized } : w)));
+  }, []);
+
+  const handleToggleMinimize = useCallback((id: string) => {
+    setWindows((prev) => prev.map((w) => (w.id === id ? { ...w, isMinimized: !w.isMinimized } : w)));
+  }, []);
+
   const menus: MenuData[] = useMemo(
     () => [
       {
@@ -293,6 +303,9 @@ function Shell() {
   const renderAppContent = (win: AppWindow) => {
     let view: React.ReactNode;
     switch (win.component) {
+      case "aetherius-genesis-human":
+        view = <GenesisHumanApp />;
+        break;
       case "aetherius-recorder":
         view = <RecorderApp />;
         break;
@@ -431,10 +444,10 @@ function Shell() {
             key={win.id}
             className="absolute pointer-events-auto bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 shadow-2xl flex flex-col"
             style={{
-              left: win.position.x,
-              top: win.position.y,
-              width: win.size.width,
-              height: win.size.height,
+              left: win.isMaximized ? 8 : win.position.x,
+              top: win.isMaximized ? 8 : win.position.y,
+              width: win.isMaximized ? "calc(100vw - 16px)" : win.size.width,
+              height: win.isMaximized ? "calc(100vh - 120px)" : win.size.height,
               zIndex: win.zIndex,
               display: win.isMinimized ? "none" : "flex",
             }}
@@ -451,7 +464,7 @@ function Shell() {
                   {
                     id: `window-min:${win.id}`,
                     label: win.isMinimized ? "Restore" : "Minimize",
-                    onSelect: () => setWindows((prev) => prev.map((w) => (w.id === win.id ? { ...w, isMinimized: !w.isMinimized } : w))),
+                    onSelect: () => handleToggleMinimize(win.id),
                   },
                   { id: `window-close:${win.id}`, label: "Close Window", onSelect: () => handleClose(win.id) },
                   { id: "sep-win", separator: true },
@@ -460,27 +473,87 @@ function Shell() {
               });
             }}
           >
-            <div className="flex items-center justify-between px-3 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 select-none">
+            <div
+              className="flex items-center justify-between px-3 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 select-none cursor-move touch-none"
+              onPointerDown={(event) => {
+                if (win.isMaximized) return;
+                const target = event.target as HTMLElement;
+                if (target.closest("button")) return;
+                handleFocus(win.id);
+                const startX = event.clientX;
+                const startY = event.clientY;
+                const origX = win.position.x;
+                const origY = win.position.y;
+                const move = (moveEvent: PointerEvent) => {
+                  const nextX = Math.max(0, origX + moveEvent.clientX - startX);
+                  const nextY = Math.max(0, origY + moveEvent.clientY - startY);
+                  setWindows((prev) => prev.map((w) => (w.id === win.id ? { ...w, position: { x: nextX, y: nextY } } : w)));
+                };
+                const up = () => {
+                  window.removeEventListener("pointermove", move);
+                  window.removeEventListener("pointerup", up);
+                };
+                window.addEventListener("pointermove", move);
+                window.addEventListener("pointerup", up);
+              }}
+              onDoubleClick={() => handleToggleMaximize(win.id)}
+            >
               <div className="flex items-center gap-2">
                 {win.icon && <win.icon className="w-4 h-4" />}
                 <span className="text-sm font-medium">{win.title}</span>
               </div>
               <div className="flex items-center gap-1">
                 <button
-                  onClick={() => setWindows((prev) => prev.map((w) => (w.id === win.id ? { ...w, isMinimized: !w.isMinimized } : w)))}
+                  onClick={() => handleToggleMinimize(win.id)}
                   className="px-2 py-0.5 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
+                  aria-label={`Minimize ${win.title}`}
                 >
                   _
                 </button>
                 <button
+                  onClick={() => handleToggleMaximize(win.id)}
+                  className="px-2 py-0.5 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
+                  aria-label={`${win.isMaximized ? "Restore" : "Maximize"} ${win.title}`}
+                >
+                  {win.isMaximized ? "❐" : "□"}
+                </button>
+                <button
                   onClick={() => handleClose(win.id)}
                   className="px-2 py-0.5 text-xs hover:bg-red-500 hover:text-white rounded"
+                  aria-label={`Close ${win.title}`}
                 >
                   ✕
                 </button>
               </div>
             </div>
             <div className="flex-1 overflow-hidden">{renderAppContent(win)}</div>
+            <div
+              className="absolute bottom-0 right-0 h-4 w-4 cursor-se-resize"
+              style={{ touchAction: "none" }}
+              onPointerDown={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                if (win.isMaximized) return;
+                handleFocus(win.id);
+                const startX = event.clientX;
+                const startY = event.clientY;
+                const origW = win.size.width;
+                const origH = win.size.height;
+                const move = (moveEvent: PointerEvent) => {
+                  const nextW = Math.max(320, origW + moveEvent.clientX - startX);
+                  const nextH = Math.max(240, origH + moveEvent.clientY - startY);
+                  setWindows((prev) => prev.map((w) => (w.id === win.id ? { ...w, size: { width: nextW, height: nextH } } : w)));
+                };
+                const up = () => {
+                  window.removeEventListener("pointermove", move);
+                  window.removeEventListener("pointerup", up);
+                };
+                window.addEventListener("pointermove", move);
+                window.addEventListener("pointerup", up);
+              }}
+              title="Drag to resize"
+              aria-hidden="true"
+            />
           </div>
         ))}
       </div>
