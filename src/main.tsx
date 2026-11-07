@@ -21,6 +21,7 @@ import { WriterApp } from "../components/apps/WriterApp";
 import { SheetsApp } from "../components/apps/SheetsApp";
 import { SlidesApp } from "../components/apps/SlidesApp";
 import { CanvasApp } from "../components/apps/CanvasApp";
+import { BrowserApp } from "../components/apps/BrowserApp";
 import { Terminal } from "../components/apps/Terminal";
 import { Calculator } from "../components/apps/Calculator";
 import { Notepad } from "../components/apps/Notepad";
@@ -38,7 +39,6 @@ const LoadingView: React.FC<{ label: string }> = ({ label }) => (
     Loading {label}…
   </div>
 );
-import { MenuBar, type MenuData } from "../components/MenuBar";
 
 /**
  * Isolates a failing app view so one bad window cannot take the shell down.
@@ -156,7 +156,7 @@ function Shell() {
       title: app.title || "App",
       icon: app.icon || (() => null),
       position: { x: 80 + windows.length * 30, y: 80 + windows.length * 30 },
-      size: { width: 800, height: 600 },
+      size: { width: 560, height: 420 },
       zIndex: nextZ++,
       isMinimized: false,
       isMaximized: false,
@@ -269,6 +269,9 @@ function Shell() {
       case "aetherius-canvas":
         view = <CanvasApp />;
         break;
+      case "aetherius-browser":
+        view = <BrowserApp />;
+        break;
       case "aetherius-terminal":
         view = <Terminal />;
         break;
@@ -305,7 +308,14 @@ function Shell() {
     <div className="relative flex h-full flex-col overflow-hidden" style={{ zoom } as React.CSSProperties}>
       <div role="status" className="sr-only">Local-first shell. Provider-dependent data stays empty until a backend is connected.</div>
       <ProviderStatus registry={registry} pollMs={pollMs} />
-      <MenuBar menus={menus} onLaunch={launchApp} onAction={handleMenuAction} />
+      <MenuBar
+        menus={menus}
+        onLaunch={(componentId) => {
+          const app = apps.find((candidate) => candidate.component === componentId);
+          if (app) launchApp(app);
+        }}
+        onAction={handleMenuAction}
+      />
       <TopBar
         toggleLeftSidebar={() => setSidebarOpen((open) => !open)}
         onLaunchApp={launchApp}

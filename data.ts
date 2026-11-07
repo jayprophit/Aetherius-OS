@@ -7,6 +7,7 @@ import {
   DisplayIcon,
   DocumentTextIcon,
   FolderIcon,
+  GlobeAltIcon,
   InformationCircleIcon,
   MicrophoneIcon,
   PaintBrushIcon,
@@ -46,6 +47,7 @@ export const desktopItems: any = [
   { type: "app", id: "aetherius-terminal", title: "Terminal", component: "aetherius-terminal", icon: CommandLineIcon },
   { type: "app", id: "aetherius-calculator", title: "Calculator", component: "aetherius-calculator", icon: CalculatorIcon },
   { type: "app", id: "aetherius-notepad", title: "Notepad", component: "aetherius-notepad", icon: PencilIcon },
+  { type: "app", id: "aetherius-browser", title: "Browser", component: "aetherius-browser", icon: GlobeAltIcon },
   { type: "app", id: "aetherius-files", title: "Files", component: "aetherius-files", icon: FolderIcon },
 ];
 export const mainMenuItems: any = [
@@ -61,6 +63,7 @@ export const mainMenuItems: any = [
       { title: "Terminal", component: "aetherius-terminal", icon: CommandLineIcon },
       { title: "Calculator", component: "aetherius-calculator", icon: CalculatorIcon },
       { title: "Notepad", component: "aetherius-notepad", icon: PencilIcon },
+      { title: "Browser", component: "aetherius-browser", icon: GlobeAltIcon },
       { title: "Files", component: "aetherius-files", icon: FolderIcon },
     ],
   },
