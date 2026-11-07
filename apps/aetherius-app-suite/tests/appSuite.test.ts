@@ -32,6 +32,31 @@ test("notes create, derive a title, tag, pin and search", () => {
   assert.equal(ledger.ofType("notes.created").length, 2);
 });
 
+test("notes importNote preserves the id for sync", () => {
+  const notes = new NotesApp({ clock: CLOCK });
+  const remote = {
+    id: "note_remote_1",
+    title: "From another device",
+    body: "synced body",
+    tags: ["sync"],
+    pinned: false,
+    archived: false,
+    version: 3,
+    createdAt: "2026-11-01T00:00:00.000Z",
+    updatedAt: "2026-11-01T00:00:00.000Z",
+  };
+  const imported = notes.importNote(remote);
+  assert.equal(imported.id, "note_remote_1");
+  assert.equal(imported.version, 3);
+  assert.equal(notes.get("note_remote_1")?.body, "synced body");
+  // Revising an imported note keeps the id and bumps the version.
+  const updated = notes.importNote({ ...remote, body: "synced body v2", version: 4 });
+  assert.equal(updated.version, 4);
+  assert.equal(notes.get("note_remote_1")?.body, "synced body v2");
+  // A malformed import is refused, not silently stored.
+  assert.throws(() => notes.importNote({ ...remote, id: "" }), /needs a note with an id/);
+});
+
 test("notes keep every revision and can restore one", () => {
   const notes = new NotesApp({ clock: CLOCK });
   const note = notes.create({ title: "Draft", body: "one" });

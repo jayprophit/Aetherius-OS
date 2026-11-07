@@ -7,6 +7,7 @@ import {
   getOrCreateDeviceId,
   type SyncStatus,
 } from "../../apps/aetherius-sync/src/index";
+import { setSyncSession } from "./syncSession";
 
 /**
  * Cloud & Sync settings.
@@ -71,6 +72,12 @@ export const CloudSyncSettings: React.FC<{ title: string }> = ({ title }) => {
     // Rebuilt deliberately when endpoint or token changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endpoint, token, deviceId]);
+
+  // Publish to the shared session so apps (Notes etc.) can sync without a
+  // second token entry. Still never persisted: page reload clears it.
+  useEffect(() => {
+    setSyncSession(endpoint, token);
+  }, [endpoint, token]);
 
   const refresh = () => {
     setStatus(engine.status());

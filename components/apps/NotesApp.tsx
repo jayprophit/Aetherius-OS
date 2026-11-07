@@ -1,18 +1,121 @@
 import React, { useState, useEffect } from 'react';
-import { NotesApp as NotesCore } from '../../apps/aetherius-app-suite/src/notes.ts';
+import { NotesApp as NotesCore, type Note } from '../../apps/aetherius-app-suite/src/notes.ts';
+import {
+  BrowserSyncStore,
+  HttpSyncTransport,
+  SyncEngine,
+  getOrCreateDeviceId,
+} from '../../apps/aetherius-sync/src/index';
+import { effectiveSyncEndpoint, getSyncToken } from '../settings/syncSession';
 
+const NOTES_KEY = "aetherius.notes.v1";
+
+function loadPersisted(): Note[] {
+  try {
+    const raw = localStorage.getItem(NOTES_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as Note[];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function persist(note: Note[]): void {
+  try {
+    localStorage.setItem(NOTES_KEY, JSON.stringify(note));
+  } catch {
+    // Private browsing or quota: notes still work for the session.
+  }
+}
+
+/**
+ * Notes with local persistence and optional cloud sync.
+ *
+ * Notes always persist locally first (local-first). When a sync token has
+ * been provided in Settings → Cloud & Sync this session, every mutation is
+ * also pushed through the sync engine, and opening the app pulls remote
+ * changes. Without a token nothing leaves the device.
+ */
 export const NotesApp: React.FC = () => {
   const [notes, setNotes] = useState<any[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [search, setSearch] = useState('');
+  const [syncState, setSyncState] = useState<'off' | 'syncing' | 'synced' | 'error'>('off');
   const coreRef = React.useRef<NotesCore | null>(null);
+  const engineRef = React.useRef<SyncEngine | null>(null);
 
   useEffect(() => {
     coreRef.current = new NotesCore();
+    // Restore locally persisted notes (stable ids) so reload keeps them.
+    for (const note of loadPersisted()) {
+      try {
+        coreRef.current.importNote(note);
+      } catch {
+        // Skip a malformed persisted record rather than failing the app.
+      }
+    }
+    // If sync is configured this session, pull and merge.
+    const token = getSyncToken();
+    if (token) {
+      try {
+        const store = new BrowserSyncStore();
+        const transport = new HttpSyncTransport({ baseUrl: effectiveSyncEndpoint() || "", token });
+        let deviceId = "device-ephemeral";
+        try {
+          deviceId = getOrCreateDeviceId(window.localStorage);
+        } catch {
+          deviceId = "device-ephemeral";
+        }
+        const engine = new SyncEngine({ store, transport, deviceId });
+        engineRef.current = engine;
+        setSyncState('syncing');
+        engine
+          .sync()
+          .then(() => {
+            for (const record of engine.list("aetherius-notes", "notes")) {
+              if (record.deleted) continue;
+              const remote = record.value as Note;
+              if (remote && typeof remote.id === "string") {
+                try {
+                  coreRef.current?.importNote(remote);
+                } catch {
+                  // Skip a malformed remote record.
+                }
+              }
+            }
+            setSyncState('synced');
+            refresh();
+          })
+          .catch(() => setSyncState('error'));
+      } catch {
+        setSyncState('error');
+      }
+    }
     refresh();
   }, []);
+
+  const pushNote = (note: Note | undefined, deleted = false) => {
+    persist(coreRef.current?.list({ includeArchived: true }) ?? []);
+    const engine = engineRef.current;
+    if (!engine || !note) return;
+    try {
+      if (deleted) {
+        engine.remove("aetherius-notes", "notes", note.id);
+      } else {
+        engine.put("aetherius-notes", "notes", note.id, note);
+      }
+      setSyncState('syncing');
+      engine
+        .sync()
+        .then((report) => setSyncState(report.ok ? 'synced' : 'error'))
+        .catch(() => setSyncState('error'));
+    } catch {
+      setSyncState('error');
+    }
+  };
 
   const refresh = () => {
     if (!coreRef.current) return;
@@ -27,6 +130,7 @@ export const NotesApp: React.FC = () => {
     setTitle('');
     setBody('');
     setSelectedId(note.id);
+    pushNote(note);
     refresh();
   };
 
@@ -40,16 +144,19 @@ export const NotesApp: React.FC = () => {
 
   const handleUpdate = () => {
     if (!coreRef.current || !selectedId) return;
-    coreRef.current.update(selectedId, { title, body });
+    const note = coreRef.current.update(selectedId, { title, body });
+    pushNote(note);
     refresh();
   };
 
   const handleDelete = () => {
     if (!coreRef.current || !selectedId) return;
+    const gone = coreRef.current.get(selectedId);
     coreRef.current.delete(selectedId);
     setSelectedId(null);
     setTitle('');
     setBody('');
+    pushNote(gone, true);
     refresh();
   };
 
@@ -62,6 +169,11 @@ export const NotesApp: React.FC = () => {
           placeholder="Search notes..."
           className="px-2 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-sm flex-1"
         />
+        <span className="text-xs text-gray-500" title={syncState === 'off'
+          ? 'Local only — add the sync token in Settings → Cloud & Sync to sync notes'
+          : `Sync: ${syncState}`}>
+          {syncState === 'off' ? 'Local' : syncState === 'syncing' ? 'Syncing…' : syncState === 'synced' ? 'Synced' : 'Sync error'}
+        </span>
         <button onClick={handleCreate} className="px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">New</button>
       </div>
       <div className="flex flex-1 overflow-hidden">

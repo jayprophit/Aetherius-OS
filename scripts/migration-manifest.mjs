@@ -81,7 +81,7 @@ function walk(dir) {
       continue;
     }
     const rel = relative(PROJECTS, full).replace(/\\/g, "/");
-    rows.push({ rel, size: st.size, sha: hashFile(full) });
+    rows.push({ rel, size: st.size, sha: hashFile(full, st.size) });
     scanned += 1;
   }
 }

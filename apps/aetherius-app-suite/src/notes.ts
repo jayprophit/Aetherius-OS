@@ -108,6 +108,41 @@ export class NotesApp {
     return note ? structuredClone(note) : undefined;
   }
 
+  /**
+   * Insert or replace a note preserving its id. Used by the sync layer to
+   * apply a record that came from another device; local edits go through
+   * create/update instead. Keeps the revision history consistent.
+   */
+  importNote(note: Note): Note {
+    if (!note || typeof note.id !== "string" || note.id.length === 0) {
+      throw new Error("importNote needs a note with an id");
+    }
+    const clean: Note = {
+      id: note.id,
+      title: note.title ?? "Untitled",
+      body: note.body ?? "",
+      tags: normaliseTags(note.tags ?? []),
+      pinned: note.pinned === true,
+      archived: note.archived === true,
+      version: Number.isInteger(note.version) && note.version > 0 ? note.version : 1,
+      createdAt: note.createdAt ?? nowIso(this.clock),
+      updatedAt: note.updatedAt ?? nowIso(this.clock),
+    };
+    this.notes.set(clean.id, clean);
+    const revisions = this.revisions.get(clean.id) ?? [];
+    if (revisions[revisions.length - 1]?.version !== clean.version) {
+      revisions.push(snapshot(clean));
+    }
+    this.revisions.set(clean.id, revisions);
+    this.ledger.append({
+      type: "notes.imported",
+      actor: "sync",
+      subject: clean.id,
+      data: { version: clean.version },
+    });
+    return structuredClone(clean);
+  }
+
   delete(noteId: string): boolean {
     this.require(noteId);
     this.notes.delete(noteId);
