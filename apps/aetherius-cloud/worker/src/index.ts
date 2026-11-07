@@ -33,6 +33,7 @@ import {
 
 export interface WorkerEnv {
   DB?: D1Database;
+  BLOBS?: R2Bucket;
   SYNC_TOKEN?: string;
   SYNC_TENANT?: string;
   ALLOWED_ORIGIN?: string;
@@ -41,7 +42,52 @@ export interface WorkerEnv {
 const SERVICE = "aetherius-sync";
 const VERSION = "0.1.0";
 const MAX_BODY_BYTES = 1024 * 1024;
+const MAX_BLOB_BYTES = 16 * 1024 * 1024;
 const MIN_TOKEN_LENGTH = 16;
+
+/** Minimal R2 bucket surface the worker needs. */
+export interface R2Bucket {
+  put(key: string, value: ArrayBuffer, options?: { httpMetadata?: { contentType?: string } }): Promise<unknown>;
+  get(key: string): Promise<{ body: ReadableStream | null; httpMetadata?: { contentType?: string }; size: number } | null>;
+  head(key: string): Promise<{ size: number; httpMetadata?: { contentType?: string } } | null>;
+  delete(key: string): Promise<void>;
+}
+
+/** In-memory blob store used by tests. */
+export class MemoryBlobStore implements R2Bucket {
+  private readonly objects = new Map<string, { data: Uint8Array; contentType: string }>();
+
+  async put(key: string, value: ArrayBuffer, options?: { httpMetadata?: { contentType?: string } }): Promise<unknown> {
+    this.objects.set(key, { data: new Uint8Array(value), contentType: options?.httpMetadata?.contentType ?? "application/octet-stream" });
+    return {};
+  }
+
+  async get(key: string): Promise<{ body: ReadableStream; httpMetadata: { contentType: string }; size: number } | null> {
+    const found = this.objects.get(key);
+    if (!found) return null;
+    return {
+      body: new Response(found.data).body as ReadableStream,
+      httpMetadata: { contentType: found.contentType },
+      size: found.data.byteLength,
+    };
+  }
+
+  async head(key: string): Promise<{ size: number; httpMetadata: { contentType: string } } | null> {
+    const found = this.objects.get(key);
+    if (!found) return null;
+    return { size: found.data.byteLength, httpMetadata: { contentType: found.contentType } };
+  }
+
+  async delete(key: string): Promise<void> {
+    this.objects.delete(key);
+  }
+}
+
+function isSafeBlobKey(key: string): boolean {
+  if (key.length === 0 || key.length > 512) return false;
+  if (key.includes("..") || key.startsWith("/") || key.includes("//")) return false;
+  return !/[\u0000-\u001f\u007f\\]/.test(key);
+}
 
 function json(body: unknown, status = 200, headers: HeadersInit = {}): Response {
   return new Response(JSON.stringify(body), {
@@ -264,6 +310,70 @@ export async function handleRequest(
   if (path === "/v1/sync/state" && request.method === "GET") {
     const state = await repo.state(tenant);
     return withCors(json({ ...state, serverTime: Date.now() }), cors);
+  }
+
+  // ------------------------------------------------------- blob store
+
+  if (path.startsWith("/v1/blobs/")) {
+    const key = decodeURIComponent(path.slice("/v1/blobs/".length));
+    if (!isSafeBlobKey(key)) {
+      return withCors(failure(400, "INVALID_KEY", "Blob keys must be 1-512 characters without traversal."), cors);
+    }
+    const blobs = env.BLOBS ?? null;
+    if (!blobs) {
+      return withCors(failure(503, "BLOB_NOT_CONFIGURED", "The R2 binding is not configured."), cors);
+    }
+    // Tenant-scope blob keys so one tenant cannot read another's blobs.
+    const scoped = `${tenant}:${key}`;
+
+    if (request.method === "PUT") {
+      const body = await request.arrayBuffer();
+      if (body.byteLength === 0 || body.byteLength > MAX_BLOB_BYTES) {
+        return withCors(failure(400, "INVALID_SIZE", `Blob bodies must be 1 byte to ${MAX_BLOB_BYTES} bytes.`), cors);
+      }
+      const contentType = request.headers.get("content-type") || "application/octet-stream";
+      await blobs.put(scoped, body, { httpMetadata: { contentType } });
+      return withCors(json({ key, size: body.byteLength, serverTime: Date.now() }), cors);
+    }
+
+    if (request.method === "HEAD") {
+      const meta = await blobs.head(scoped);
+      if (!meta) return withCors(failure(404, "NOT_FOUND", "No blob with that key."), cors);
+      return withCors(
+        new Response(null, {
+          status: 200,
+          headers: {
+            "content-length": String(meta.size),
+            "content-type": meta.httpMetadata?.contentType ?? "application/octet-stream",
+            "cache-control": "no-store",
+          },
+        }),
+        cors,
+      );
+    }
+
+    if (request.method === "GET") {
+      const object = await blobs.get(scoped);
+      if (!object) return withCors(failure(404, "NOT_FOUND", "No blob with that key."), cors);
+      return withCors(
+        new Response(object.body, {
+          status: 200,
+          headers: {
+            "content-length": String(object.size),
+            "content-type": object.httpMetadata?.contentType ?? "application/octet-stream",
+            "cache-control": "no-store",
+          },
+        }),
+        cors,
+      );
+    }
+
+    if (request.method === "DELETE") {
+      await blobs.delete(scoped);
+      return withCors(json({ key, deleted: true, serverTime: Date.now() }), cors);
+    }
+
+    return withCors(failure(405, "METHOD_NOT_ALLOWED", `Method ${request.method} is not allowed on blobs.`), cors);
   }
 
   return withCors(failure(404, "NOT_FOUND", "Unknown route."), cors);

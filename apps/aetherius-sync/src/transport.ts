@@ -98,6 +98,112 @@ export class HttpSyncTransport implements SyncTransport {
     );
   }
 
+  /** Store or replace a blob (up to 16 MB). */
+  putBlob(
+    key: string,
+    data: ArrayBuffer,
+    contentType = "application/octet-stream",
+    signal?: AbortSignal,
+  ): Promise<TransportResult<{ key: string; size: number }>> {
+    if (data.byteLength === 0 || data.byteLength > 16 * 1024 * 1024) {
+      return Promise.resolve({
+        ok: false,
+        status: null,
+        code: "INVALID_SIZE",
+        error: "Blob bodies must be 1 byte to 16 MB.",
+      });
+    }
+    return this.request<{ key: string; size: number }>(
+      `/v1/blobs/${encodeURIComponent(key)}`,
+      { method: "PUT", headers: { "content-type": contentType }, body: data },
+      signal,
+    );
+  }
+
+  /** Fetch a blob's bytes. */
+  async getBlob(key: string, signal?: AbortSignal): Promise<TransportResult<ArrayBuffer>> {
+    if (!this.fetchFn) {
+      return { ok: false, status: null, code: "FETCH_UNAVAILABLE", error: "fetch is unavailable" };
+    }
+    const headers = new Headers({ accept: "application/octet-stream", "cache-control": "no-store" });
+    if (this.token) headers.set("authorization", `Bearer ${this.token}`);
+    try {
+      const response = await this.fetchFn(`${this.baseUrl}/v1/blobs/${encodeURIComponent(key)}`, {
+        method: "GET",
+        headers,
+        signal,
+        credentials: "omit",
+      });
+      if (!response.ok) {
+        const text = await response.text().catch(() => "");
+        return {
+          ok: false,
+          status: response.status,
+          code: response.status === 404 ? "NOT_FOUND" : `HTTP_${response.status}`,
+          error: text || `The sync server returned HTTP ${response.status}.`,
+        };
+      }
+      const bytes = await response.arrayBuffer();
+      return { ok: true, data: bytes };
+    } catch (error) {
+      if (signal?.aborted) {
+        return { ok: false, status: null, code: "CANCELLED", error: "Request cancelled." };
+      }
+      return {
+        ok: false,
+        status: null,
+        code: "NETWORK",
+        error: error instanceof Error ? error.message : String(error),
+      };
+    }
+  }
+
+  /** Check whether a blob exists without downloading it. */
+  async headBlob(key: string, signal?: AbortSignal): Promise<TransportResult<{ size: number }>> {
+    if (!this.fetchFn) {
+      return { ok: false, status: null, code: "FETCH_UNAVAILABLE", error: "fetch is unavailable" };
+    }
+    const headers = new Headers({ "cache-control": "no-store" });
+    if (this.token) headers.set("authorization", `Bearer ${this.token}`);
+    try {
+      const response = await this.fetchFn(`${this.baseUrl}/v1/blobs/${encodeURIComponent(key)}`, {
+        method: "HEAD",
+        headers,
+        signal,
+        credentials: "omit",
+      });
+      if (!response.ok) {
+        return {
+          ok: false,
+          status: response.status,
+          code: response.status === 404 ? "NOT_FOUND" : `HTTP_${response.status}`,
+          error: `The sync server returned HTTP ${response.status}.`,
+        };
+      }
+      const size = Number(response.headers.get("content-length") ?? "0");
+      return { ok: true, data: { size: Number.isFinite(size) ? size : 0 } };
+    } catch (error) {
+      if (signal?.aborted) {
+        return { ok: false, status: null, code: "CANCELLED", error: "Request cancelled." };
+      }
+      return {
+        ok: false,
+        status: null,
+        code: "NETWORK",
+        error: error instanceof Error ? error.message : String(error),
+      };
+    }
+  }
+
+  /** Delete a blob (idempotent). */
+  deleteBlob(key: string, signal?: AbortSignal): Promise<TransportResult<{ deleted: boolean }>> {
+    return this.request<{ deleted: boolean }>(
+      `/v1/blobs/${encodeURIComponent(key)}`,
+      { method: "DELETE" },
+      signal,
+    );
+  }
+
   private async request<T>(
     path: string,
     init: RequestInit,
