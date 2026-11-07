@@ -23,6 +23,7 @@ import { SlidesApp } from "../components/apps/SlidesApp";
 import { CanvasApp } from "../components/apps/CanvasApp";
 import { BrowserApp } from "../components/apps/BrowserApp";
 import { GenesisHumanApp } from "../components/apps/GenesisHumanApp";
+import { findShellEntry } from "./apps/shellRegistry";
 import { Terminal } from "../components/apps/Terminal";
 import { Calculator } from "../components/apps/Calculator";
 import { Notepad } from "../components/apps/Notepad";
@@ -154,13 +155,16 @@ function Shell() {
 
     const id = `win-${nextWindowId++}`;
     const isGenesis = app.component === "aetherius-genesis-human";
+    const registryEntry = findShellEntry(app.component);
     const newWindow: AppWindow = {
       id,
       component: app.component,
       title: app.title || "App",
       icon: app.icon || (() => null),
       position: { x: 80 + windows.length * 30, y: 80 + windows.length * 30 },
-      size: isGenesis ? { width: 900, height: 620 } : { width: 560, height: 420 },
+      size: isGenesis
+        ? { width: 900, height: 620 }
+        : registryEntry?.size ?? { width: 560, height: 420 },
       zIndex: nextZ++,
       isMinimized: false,
       isMaximized: false,
@@ -302,6 +306,14 @@ function Shell() {
 
   const renderAppContent = (win: AppWindow) => {
     let view: React.ReactNode;
+    const registryEntry = findShellEntry(win.component);
+    if (registryEntry) {
+      return (
+        <AppErrorBoundary title={win.title}>
+          <React.Suspense fallback={<LoadingView label={win.title} />}>{registryEntry.render()}</React.Suspense>
+        </AppErrorBoundary>
+      );
+    }
     switch (win.component) {
       case "aetherius-genesis-human":
         view = <GenesisHumanApp />;

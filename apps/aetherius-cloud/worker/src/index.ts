@@ -44,6 +44,12 @@ const VERSION = "0.1.0";
 const MAX_BODY_BYTES = 1024 * 1024;
 const MAX_BLOB_BYTES = 16 * 1024 * 1024;
 const MIN_TOKEN_LENGTH = 16;
+/**
+ * Conservative app-side ceiling. R2/D1 free tiers are billing allocations,
+ * not hard caps — exceeding them can charge. The worker fails closed before
+ * the ceiling so a runaway tenant can never bill the owner account.
+ */
+const MAX_TENANT_RECORDS = 50_000;
 
 /** Minimal R2 bucket surface the worker needs. */
 export interface R2Bucket {
@@ -276,6 +282,14 @@ export async function handleRequest(
     }
 
     const results: SyncPushResponse["results"] = [];
+    // Fail closed when the tenant is at its record ceiling.
+    const currentState = await repo.state(tenant);
+    if (currentState.records + records.length > MAX_TENANT_RECORDS) {
+      return withCors(
+        failure(413, "QUOTA_EXCEEDED", `Tenant record ceiling of ${MAX_TENANT_RECORDS} reached.`),
+        cors,
+      );
+    }
     for (const record of records) {
       results.push(await repo.apply(tenant, record));
     }

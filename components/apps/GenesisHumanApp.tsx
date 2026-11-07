@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { GenesisAvatar, type AvatarFrame, type AvatarState, type AvatarEmotion } from "./GenesisAvatar";
-import { chatWithLocalModel, listLocalModels } from "../../src/ai/localClient";
+import { probeLocalOllama, chatWithProvider } from "../../src/ai/provider";
 import { genesisPrefs, type GenesisPrefs } from "../desktopPreferences";
 import {
   CameraIcon,
@@ -180,11 +180,11 @@ export const GenesisHumanApp: React.FC = () => {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const models = await listLocalModels();
+      const state = await probeLocalOllama();
       if (cancelled) return;
-      if (models.length > 0) {
-        setModel(models[0]);
-        setBackend(`LOCAL OLLAMA · ${models[0]}`);
+      if (state.available) {
+        setModel(state.label.replace("LOCAL OLLAMA · ", ""));
+        setBackend(state.label);
       } else {
         setBackend("OFFLINE FALLBACK · no local model");
       }
@@ -285,15 +285,14 @@ export const GenesisHumanApp: React.FC = () => {
       { role: "user", content: text },
     ];
 
-    const result = await chatWithLocalModel(history, { timeoutMs: 45_000 });
+    const result = await chatWithProvider(history, { preferLocal: prefs.preferLocalModel, timeoutMs: 45_000 });
     setThinking(false);
 
     const turn = metrics.turns + 1;
-    if (result.ok) {
-      setModel(result.model);
-      setBackend(`LOCAL OLLAMA · ${result.model} · ${(result.latencyMs / 1000).toFixed(1)}s`);
+    if (result.ok && result.text) {
+      setBackend(result.label);
       setMetrics((m) => ({ ...m, turns: turn, events: m.events + 1 }));
-      setLines((prev) => [...prev, { role: "genesis", text: result.text, backend: result.model, ts: Date.now() }]);
+      setLines((prev) => [...prev, { role: "genesis", text: result.text!, backend: result.label, ts: Date.now() }]);
       setFrame({ state: "SPEAKING", emotion, viseme: "A", gesture: gestureFor(emotion, "SPEAKING"), intensity: 0.5 });
       speak(result.text);
     } else {
