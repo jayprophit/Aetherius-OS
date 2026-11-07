@@ -22,6 +22,7 @@ import { SheetsApp } from "../components/apps/SheetsApp";
 import { SlidesApp } from "../components/apps/SlidesApp";
 import { CanvasApp } from "../components/apps/CanvasApp";
 import { SettingsView } from "../components/settings/SettingsModal";
+import { MenuBar, type MenuData } from "../components/MenuBar";
 
 /**
  * Isolates a failing app view so one bad window cannot take the shell down.
@@ -170,6 +171,67 @@ function Shell() {
     setPinnedAppIds((prev) => (prev.includes(appId) ? prev.filter((id) => id !== appId) : [...prev, appId]));
   }, []);
 
+  const menus: MenuData[] = useMemo(
+    () => [
+      {
+        id: "file",
+        title: "File",
+        items: [
+          { id: "launch:settings", label: "Open Settings" },
+          { id: "sep-1", separator: true },
+          { id: "view:sidebar", label: "Toggle Applications Sidebar" },
+          { id: "view:notifications", label: "Toggle Notifications" },
+          { id: "sep-2", separator: true },
+          {
+            id: "open",
+            label: "Open App",
+            submenu: apps.map((app) => ({ id: `launch:${app.component}`, label: app.title })),
+          },
+        ],
+      },
+      {
+        id: "window",
+        title: "Window",
+        items: [
+          ...(windows.length === 0
+            ? [{ id: "window-none", label: "No windows open", disabled: true }]
+            : windows.map((win) => ({
+                id: `window:${win.id}`,
+                label: win.title,
+                onSelect: () => handleFocus(win.id),
+              }))),
+          { id: "sep-3", separator: true },
+          {
+            id: "close-active",
+            label: "Close Active Window",
+            disabled: activeWindowId === null,
+            onSelect: () => {
+              if (activeWindowId) handleClose(activeWindowId);
+            },
+          },
+        ],
+      },
+      {
+        id: "help",
+        title: "Help",
+        items: [
+          { id: "help:docs", label: "Cloud & Sync Guide" },
+          { id: "help:synctoken", label: "Set Sync Token…" },
+          { id: "sep-4", separator: true },
+          { id: "help:about", label: "About Aetherius OS" },
+        ],
+      },
+    ],
+    [apps, windows, handleFocus, handleClose, activeWindowId],
+  );
+
+  const handleMenuAction = useCallback((actionId: string) => {
+    if (actionId === "view:sidebar") setSidebarOpen((open) => !open);
+    else if (actionId === "view:notifications") setNotificationsOpen((open) => !open);
+    else if (actionId === "help:synctoken") window.location.hash = "#settings";
+    else if (actionId === "help:docs" || actionId === "help:about") window.location.hash = "#settings";
+  }, []);
+
   const renderAppContent = (win: AppWindow) => {
     let view: React.ReactNode;
     switch (win.component) {
@@ -211,6 +273,7 @@ function Shell() {
     <div className="relative flex h-full flex-col overflow-hidden" style={{ zoom } as React.CSSProperties}>
       <div role="status" className="sr-only">Local-first shell. Provider-dependent data stays empty until a backend is connected.</div>
       <ProviderStatus registry={registry} pollMs={pollMs} />
+      <MenuBar menus={menus} onLaunch={launchApp} onAction={handleMenuAction} />
       <TopBar
         toggleLeftSidebar={() => setSidebarOpen((open) => !open)}
         onLaunchApp={launchApp}
