@@ -339,7 +339,7 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "status": "PARTIAL",
     "lastVerified": "2026-10-30",
     "hasSource": true,
-    "testFiles": 4,
+    "testFiles": 5,
     "testScript": "node --test tests/*.test.ts"
   },
   {

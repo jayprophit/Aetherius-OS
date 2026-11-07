@@ -88,6 +88,34 @@ export async function probeLocalOllama(): Promise<ProviderState> {
 }
 
 /**
+ * Native Genesis model server. Hermes owns the training side and no endpoint
+ * is runtime-configured in the preview build, so this is honestly
+ * NOT_CONFIGURED. It must not be probed by starting servers this session.
+ */
+export async function probeGenesisServer(): Promise<ProviderState> {
+  return {
+    id: "genesis-server",
+    label: "GENESIS SERVER · NOT_CONFIGURED",
+    available: false,
+    detail: "No native Genesis endpoint is configured at runtime; training runs stay untouched by this session",
+  };
+}
+
+/**
+ * Agent Bridge. The bridge repo exists but no endpoint is configured in the
+ * preview build. Tool calls need explicit permission checks; this probe
+ * only reports state.
+ */
+export async function probeAgentBridge(): Promise<ProviderState> {
+  return {
+    id: "agent-bridge",
+    label: "AGENT BRIDGE · NOT_CONFIGURED",
+    available: false,
+    detail: "No Agent Bridge endpoint is configured at runtime; tool execution stays approval-only",
+  };
+}
+
+/**
  * Send a chat turn, preferring local Ollama, otherwise falling back to the
  * labelled offline responder. The genesis-server and agent-bridge providers
  * are reported as not configured rather than silently skipped: there is no
