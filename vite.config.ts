@@ -1,4 +1,5 @@
 import path from 'path';
+import { readFileSync } from 'node:fs';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
@@ -16,6 +17,21 @@ function pwaPrecache(): Plugin {
         type: 'asset',
         fileName: 'sw-manifest.json',
         source: JSON.stringify({ files }, null, 2),
+      });
+      // Emit sw.js with the build id baked into the cache name so every
+      // production build ships different SW bytes and the browser installs
+      // the new worker on the next navigation. A static sw.js pinned the
+      // cache forever (the stale-build incident of 2026-11-07).
+      const buildId = process.env.AETHERIUS_BUILD_ID || 'dev';
+      const source = readFileSync('public/sw.js', 'utf8');
+      const versioned = source.replace(
+        'const CACHE = "aetherius-shell-v1";',
+        `const CACHE = "aetherius-shell-${buildId.replace(/[^a-zA-Z0-9.-]/g, '_')}";`,
+      );
+      this.emitFile({
+        type: 'asset',
+        fileName: 'sw.js',
+        source: versioned,
       });
     },
   };
