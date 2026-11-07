@@ -13,7 +13,7 @@
  *
  * Usage: node scripts/migration-manifest.mjs
  */
-import { readdirSync, statSync, readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
+import { readdirSync, statSync, readFileSync, existsSync, writeFileSync, mkdirSync, openSync, readSync, closeSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, relative, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -30,9 +30,25 @@ const SKIP_DIRS = new Set([
   ".next", "coverage",
 ]);
 
-function hashFile(path) {
+function hashFile(path, size) {
   const hash = createHash("sha256");
-  hash.update(readFileSync(path));
+  // Files over 1 GB are hashed in chunks so a multi-GB backup bundle
+  // cannot exhaust memory or hit ERR_FS_FILE_TOO_LARGE.
+  if (size > 1024 * 1024 * 1024) {
+    const fd = openSync(path, "r");
+    try {
+      const buffer = Buffer.alloc(8 * 1024 * 1024);
+      for (;;) {
+        const read = readSync(fd, buffer, 0, buffer.length, null);
+        if (read === 0) break;
+        hash.update(buffer.subarray(0, read));
+      }
+    } finally {
+      closeSync(fd);
+    }
+  } else {
+    hash.update(readFileSync(path));
+  }
   return hash.digest("hex");
 }
 
