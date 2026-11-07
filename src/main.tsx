@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import './index.css';
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useMemo, useState, useCallback, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { Desktop } from "../components/Desktop";
 import { TopBar } from "../components/TopBar";
@@ -27,6 +27,7 @@ import { Calculator } from "../components/apps/Calculator";
 import { Notepad } from "../components/apps/Notepad";
 import { FileManager } from "../components/apps/FileManager";
 import { MenuBar, type MenuData } from "../components/MenuBar";
+import { ContextMenu, useContextMenu, type ContextMenuState } from "../components/ContextMenu";
 
 // Heavy and rarely-opened surfaces load on demand instead of bloating the
 // initial bundle. The fallback is honest about what is loading.
@@ -113,6 +114,7 @@ function Shell() {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [viewMode, setViewMode] = useState<"desktop" | "mobile">("desktop");
   const [zoom, setZoom] = useState(1);
+  const [contextMenu, setContextMenu] = useState<ContextMenuState | null>(null);
 
   const apps = useMemo<LaunchableApp[]>(() => {
     const byComponent = new Map<string, LaunchableApp>();
@@ -164,6 +166,46 @@ function Shell() {
     setWindows((prev) => [...prev, newWindow]);
     setActiveWindowId(id);
   }, [windows]);
+
+  const launchByComponent = useCallback((componentId: string) => {
+    const app = apps.find((candidate) => candidate.component === componentId);
+    if (app) launchApp(app);
+  }, [apps, launchApp]);
+
+  /** Context menu for the desktop background (right-click / long-press / Shift+F10). */
+  const desktopContextHandlers = useContextMenu(
+    () => [
+      { id: "launch:aetherius-notes", label: "New Note" },
+      { id: "launch:aetherius-files", label: "New Folder (Files)" },
+      { id: "launch:aetherius-screenshot", label: "Take Screenshot" },
+      { id: "sep-ctx-1", separator: true },
+      { id: "view:sidebar", label: "Show Applications" },
+      { id: "view:notifications", label: "Show Notifications" },
+      { id: "sep-ctx-2", separator: true },
+      { id: "launch:settings", label: "Settings…" },
+    ],
+    setContextMenu,
+  );
+
+  // Keyboard context menus: Shift+F10 or the Menu key, like Windows/macOS.
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      const isContextKey =
+        (event.shiftKey && event.key === "F10") || event.key === "ContextMenu";
+      if (!isContextKey) return;
+      event.preventDefault();
+      setContextMenu({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        items: [
+          { id: "launch:aetherius-notes", label: "New Note" },
+          { id: "launch:settings", label: "Settings…" },
+        ],
+      });
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
 
   const handleFocus = useCallback((id: string) => {
     setActiveWindowId(id);
@@ -363,7 +405,13 @@ function Shell() {
         </div>
       )}
 
-      <main className="relative flex-1 overflow-hidden">
+      <main
+        className="relative flex-1 overflow-hidden"
+        onContextMenu={desktopContextHandlers.onContextMenu}
+        onTouchStart={desktopContextHandlers.onTouchStart}
+        onTouchEnd={desktopContextHandlers.onTouchEnd}
+        onTouchMove={desktopContextHandlers.onTouchEnd}
+      >
         {viewMode === "desktop" ? (
           <Desktop launchApp={launchApp} />
         ) : (
@@ -391,6 +439,26 @@ function Shell() {
               display: win.isMinimized ? "none" : "flex",
             }}
             onMouseDown={() => handleFocus(win.id)}
+            onContextMenu={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              handleFocus(win.id);
+              setContextMenu({
+                x: event.clientX,
+                y: event.clientY,
+                items: [
+                  { id: `window:${win.id}`, label: "Bring to Front", onSelect: () => handleFocus(win.id) },
+                  {
+                    id: `window-min:${win.id}`,
+                    label: win.isMinimized ? "Restore" : "Minimize",
+                    onSelect: () => setWindows((prev) => prev.map((w) => (w.id === win.id ? { ...w, isMinimized: !w.isMinimized } : w))),
+                  },
+                  { id: `window-close:${win.id}`, label: "Close Window", onSelect: () => handleClose(win.id) },
+                  { id: "sep-win", separator: true },
+                  { id: "launch:settings", label: "Settings…" },
+                ],
+              });
+            }}
           >
             <div className="flex items-center justify-between px-3 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 select-none">
               <div className="flex items-center gap-2">
@@ -416,6 +484,12 @@ function Shell() {
           </div>
         ))}
       </div>
+      <ContextMenu
+        state={contextMenu}
+        onClose={() => setContextMenu(null)}
+        onLaunch={launchByComponent}
+        onAction={handleMenuAction}
+      />
       <div className="h-12 shrink-0">
         <Taskbar
           windows={windows}

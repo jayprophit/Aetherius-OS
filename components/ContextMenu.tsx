@@ -1,125 +1,178 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ChevronRightIcon } from './Icons';
+import React, { useEffect, useRef, useState } from "react";
+import { ChevronRightIcon } from "./Icons";
+import type { MenuItemData } from "./MenuBar";
 
-export interface ContextMenuItem {
-  label: string;
-  action: () => void;
-  disabled?: boolean;
-  type?: 'item';
-}
+/**
+ * Right-click / long-press context menu with cascading submenus.
+ *
+ * Data-driven (same MenuItemData shape as the menu bar). Opens on
+ * contextmenu (mouse right-click, trackpad two-finger), on long-press
+ * (touch, 500 ms), and with Shift+F10 / Menu key (keyboard). Closes on
+ * Escape, outside tap, or after any action.
+ */
 
-export interface SubMenuItem {
-    label: string;
-    items: ContextMenuItem[];
-    type: 'submenu';
-}
-
-export interface DividerItem {
-    type: 'divider';
-}
-
-type MenuItemType = ContextMenuItem | SubMenuItem | DividerItem;
-
-interface ContextMenuProps {
+export interface ContextMenuState {
   x: number;
   y: number;
-  items: MenuItemType[];
-  onClose: () => void;
+  items: MenuItemData[];
 }
 
-const SubMenu: React.FC<{ items: ContextMenuItem[], parentRef: React.RefObject<HTMLDivElement> }> = ({ items, parentRef }) => {
-    const [position, setPosition] = useState({ top: 0, left: 0 });
-
-    useEffect(() => {
-        if (parentRef.current) {
-            const rect = parentRef.current.getBoundingClientRect();
-            setPosition({ top: rect.top, left: rect.right });
-        }
-    }, [parentRef]);
-    
-    return (
-        <div 
-            className="fixed z-[1001] bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 w-40"
-            style={{ top: position.top, left: position.left }}
-            onClick={(e) => e.stopPropagation()}
-        >
-            {items.map((item, index) => (
-                <button
-                    key={index}
-                    onClick={item.action}
-                    disabled={item.disabled}
-                    className="w-full text-left px-3 py-1.5 text-sm text-gray-800 dark:text-gray-200 hover:bg-blue-500 hover:text-white disabled:opacity-50"
-                >
-                    {item.label}
-                </button>
-            ))}
-        </div>
-    );
-};
-
-
-export const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, items, onClose }) => {
-  const menuRef = useRef<HTMLDivElement>(null);
-  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
-  const subMenuRef = useRef<HTMLDivElement>(null);
+export const ContextMenu: React.FC<{
+  state: ContextMenuState | null;
+  onClose: () => void;
+  onLaunch: (componentId: string) => void;
+  onAction: (actionId: string) => void;
+}> = ({ state, onClose, onLaunch, onAction }) => {
+  const [subId, setSubId] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        onClose();
-      }
+    if (state) setSubId(null);
+  }, [state]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    // Use timeout to prevent immediate closing on the same right-click
-    const timer = setTimeout(() => {
-        document.addEventListener('contextmenu', handleClickOutside);
-    }, 0);
+    const onResize = () => onClose();
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('contextmenu', handleClickOutside);
-      clearTimeout(timer);
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
     };
   }, [onClose]);
 
+  if (!state) return null;
+
+  const activate = (item: MenuItemData) => {
+    if (item.disabled) return;
+    if (item.submenu && item.submenu.length > 0) {
+      setSubId(item.id);
+      return;
+    }
+    onClose();
+    if (item.onSelect) item.onSelect();
+    else if (item.id.startsWith("launch:")) onLaunch(item.id.slice("launch:".length));
+    else onAction(item.id);
+  };
+
+  // Clamp to the viewport so the menu never renders off-screen.
+  const estimatedWidth = 260;
+  const estimatedHeight = Math.min(state.items.length * 36, window.innerHeight * 0.9);
+  const left = Math.min(state.x, Math.max(8, window.innerWidth - estimatedWidth));
+  const top = Math.min(state.y, Math.max(8, window.innerHeight - estimatedHeight));
+
   return (
-    <div
-      ref={menuRef}
-      className="fixed z-[1000] bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 w-48 animate-fade-in-up"
-      style={{ top: y, left: x }}
-      onContextMenu={(e) => e.stopPropagation()}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {items.map((item, index) => {
-        if (item.type === 'divider') {
-            return <div key={index} className="h-px bg-gray-200 dark:bg-gray-700 my-1 mx-2" />;
-        }
-        if (item.type === 'submenu') {
-             return (
-                <div key={index} onMouseEnter={() => setActiveSubMenu(item.label)} onMouseLeave={() => setActiveSubMenu(null)} ref={subMenuRef}>
-                    <button
-                        className="w-full flex justify-between items-center text-left px-3 py-1.5 text-sm text-gray-800 dark:text-gray-200 hover:bg-blue-500 hover:text-white"
-                    >
-                        <span>{item.label}</span>
-                        <ChevronRightIcon className="w-4 h-4" />
-                    </button>
-                    {activeSubMenu === item.label && <SubMenu items={item.items} parentRef={subMenuRef} />}
-                </div>
-            );
-        }
-        return (
-            <button
-            key={index}
-            onClick={() => {
-                item.action();
-                onClose();
-            }}
-            disabled={item.disabled}
-            className="w-full text-left px-3 py-1.5 text-sm text-gray-800 dark:text-gray-200 hover:bg-blue-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-            {item.label}
-            </button>
-        );
-      })}
+    <>
+      <div className="fixed inset-0 z-40" onClick={onClose} onContextMenu={(event) => { event.preventDefault(); onClose(); }} />
+      <div
+        role="menu"
+        aria-label="Context menu"
+        className="fixed z-50 min-w-52 max-w-72 rounded-md border border-gray-200 bg-white py-1 shadow-xl dark:border-gray-700 dark:bg-gray-900 max-h-[80vh] overflow-y-auto"
+        style={{ left, top }}
+      >
+        {state.items.map((item, index) =>
+          item.separator ? (
+            <div key={`ctx-sep-${index}`} className="my-1 border-t border-gray-200 dark:border-gray-700" role="separator" />
+          ) : (
+            <ContextRow
+              key={item.id}
+              item={item}
+              subId={subId}
+              setSubId={setSubId}
+              activate={activate}
+            />
+          ),
+        )}
+      </div>
+    </>
+  );
+};
+
+const ContextRow: React.FC<{
+  item: MenuItemData;
+  subId: string | null;
+  setSubId: (id: string | null) => void;
+  activate: (item: MenuItemData) => void;
+}> = ({ item, subId, setSubId, activate }) => {
+  const hasSubmenu = !!item.submenu && item.submenu.length > 0;
+  const submenuOpen = subId === item.id;
+  return (
+    <div className="relative" role="none">
+      <button
+        role="menuitem"
+        disabled={item.disabled}
+        aria-haspopup={hasSubmenu ? "menu" : undefined}
+        aria-expanded={hasSubmenu ? submenuOpen : undefined}
+        onClick={() => activate(item)}
+        onMouseEnter={() => setSubId(hasSubmenu ? item.id : null)}
+        className="flex w-full items-center justify-between gap-6 px-4 py-1.5 text-left text-sm text-gray-700 hover:bg-blue-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 dark:text-gray-200"
+      >
+        <span>{item.label}</span>
+        {item.shortcut && <span className="text-xs opacity-70">{item.shortcut}</span>}
+        {hasSubmenu && <ChevronRightIcon className="h-4 w-4" />}
+      </button>
+      {hasSubmenu && submenuOpen && (
+        <div
+          role="menu"
+          aria-label={item.label}
+          className="absolute left-full top-0 z-50 min-w-52 rounded-md border border-gray-200 bg-white py-1 shadow-xl dark:border-gray-700 dark:bg-gray-900"
+        >
+          {item.submenu!.map((sub, index) =>
+            sub.separator ? (
+              <div key={`${item.id}-sep-${index}`} className="my-1 border-t border-gray-200 dark:border-gray-700" role="separator" />
+            ) : (
+              <button
+                key={sub.id}
+                role="menuitem"
+                disabled={sub.disabled}
+                onClick={() => activate(sub)}
+                className="flex w-full items-center justify-between gap-6 px-4 py-1.5 text-left text-sm text-gray-700 hover:bg-blue-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 dark:text-gray-200"
+              >
+                <span>{sub.label}</span>
+                {sub.shortcut && <span className="text-xs opacity-70">{sub.shortcut}</span>}
+              </button>
+            ),
+          )}
+        </div>
+      )}
     </div>
   );
 };
+
+/** Hook: attach contextmenu + long-press detection to a target element. */
+export function useContextMenu(
+  getItems: (x: number, y: number, target: HTMLElement) => MenuItemData[],
+  onOpen: (state: ContextMenuState) => void,
+): { onContextMenu: (event: React.MouseEvent) => void; onTouchStart: (event: React.TouchEvent) => void; onTouchEnd: () => void } {
+  const timerRef = useRef<number | null>(null);
+  const touchPosRef = useRef<{ x: number; y: number } | null>(null);
+
+  return {
+    onContextMenu: (event: React.MouseEvent) => {
+      event.preventDefault();
+      const items = getItems(event.clientX, event.clientY, event.target as HTMLElement);
+      if (items.length > 0) onOpen({ x: event.clientX, y: event.clientY, items });
+    },
+    onTouchStart: (event: React.TouchEvent) => {
+      const touch = event.touches[0];
+      touchPosRef.current = { x: touch.clientX, y: touch.clientY };
+      timerRef.current = window.setTimeout(() => {
+        const pos = touchPosRef.current;
+        if (!pos) return;
+        const items = getItems(pos.x, pos.y, event.target as HTMLElement);
+        if (items.length > 0) {
+          if (navigator.vibrate) navigator.vibrate(30);
+          onOpen({ x: pos.x, y: pos.y, items });
+        }
+      }, 500);
+    },
+    onTouchEnd: () => {
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+      touchPosRef.current = null;
+    },
+  };
+}
