@@ -35,7 +35,7 @@ scopes:
 
 totals:
   documents: 1131
-  bytes: 25302319
+  bytes: 25302724
   kind_build_record: 116
   kind_document: 629
   kind_handoff: 27
@@ -8911,10 +8911,10 @@ sources:
     scope: documents-root
     kind: prompt_or_brief
     title: "main directory for projects location:"
-    bytes: 418
-    lines: 29
-    modified: 2026-11-05
-    digest: sha256:ce5faa2c0a15c72e91cb893f8a5bae50e98bae5cd052eb05b6697d7b0fe8526b
+    bytes: 823
+    lines: 39
+    modified: 2026-11-07
+    digest: sha256:18d3251740002db132415f031da96aaebb2410310328015731381f749df48f18
   - path: "Documents/free cloud ai desktop or terminal apps.txt"
     scope: documents-root
     kind: prompt_or_brief

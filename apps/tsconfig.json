@@ -269,7 +269,11 @@
     "update-manager/src",
     "update-manager/tests",
     "voice-assistant/src",
-    "voice-assistant/tests"
+    "voice-assistant/tests",
+    "aetherius-reader/src",
+    "aetherius-reader/tests",
+    "aetherius-vpn/src",
+    "aetherius-vpn/tests"
   ],
   "exclude": [
     "**/node_modules",

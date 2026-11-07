@@ -32,7 +32,7 @@ describe("app catalogue", () => {
 
   it("covers every directory under apps/, including absorbed products", () => {
     const directories = new Set(APP_CATALOGUE.map((entry) => entry.directory));
-    expect(directories.size).toBe(141);
+    expect(directories.size).toBe(143);
     expect(directories.has("LedgerLands")).toBe(true);
     expect(directories.has("Poietek")).toBe(true);
     expect(directories.has("football-card-game")).toBe(true);
@@ -44,7 +44,7 @@ describe("app catalogue", () => {
 
   it("marks exactly the @aetherius slices as slices", () => {
     const slices = listAetheriusSlices();
-    expect(slices.length).toBe(133);
+    expect(slices.length).toBe(135);
     for (const slice of slices) {
       expect(slice.packageName?.startsWith("@aetherius/")).toBe(true);
       expect(slice.testScript).toBeTruthy();

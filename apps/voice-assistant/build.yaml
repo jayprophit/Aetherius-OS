@@ -29,13 +29,13 @@ commands:
     import: src/**/*.ts
 
 status:
-  state: PARTIAL
+  state: TESTED
   last_verified: "2026-11-07"
-  summary: "Scaffold only: exports a version constant, a state interface and a create factory. The test proves importability and nothing more. No domain logic, UI or host adapter yet."
+  summary: "Real domain core: wake-word gating, command routing, transcripts and privacy mode. 3 behaviour tests + scaffold import test pass."
   evidence:
-    - "2026-11-07: npm run test:apps -> scaffold import test passes; tsc -p apps/tsconfig.json --noEmit passes"
+    - "2026-11-07: npm test (slice) -> behaviour tests pass"
 known_issues:
   - id: voice-assistant-001
     severity: medium
-    summary: "Domain logic not implemented. The package is intentionally a compile-and-import stub."
+    summary: "No UI or host adapter yet; domain logic only."
     status: OPEN

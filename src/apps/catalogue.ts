@@ -28,10 +28,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Accessibility",
     "kind": "application",
     "description": "Aetherius accessibility suite with screen reader, magnifier, high contrast and on-screen keyboard.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -560,10 +560,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Disk Utility",
     "kind": "application",
     "description": "Aetherius disk utility with volumes, encryption, repair, erase and benchmarks.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -966,10 +966,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Media Player",
     "kind": "application",
     "description": "Aetherius media player with playlists, subtitles, cast and transcoding.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1162,10 +1162,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "PDF",
     "kind": "application",
     "description": "Aetherius PDF viewer with annotations, form fill, search and digital signatures.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1234,6 +1234,20 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "description": "Domain core for Print.",
     "status": "PARTIAL",
     "lastVerified": "2026-10-30",
+    "hasSource": true,
+    "testFiles": 1,
+    "testScript": "node --test tests/*.test.ts"
+  },
+  {
+    "directory": "aetherius-reader",
+    "packageName": "@aetherius/aetherius-reader",
+    "aetheriusSlice": true,
+    "id": "aetherius-reader",
+    "name": "Aetherius Reader",
+    "kind": "application",
+    "description": "E-reader with a library of e-books, reading progress, bookmarks and highlights. Content parsing is a host adapter concern.",
+    "status": "TESTED",
+    "lastVerified": "2026-11-07",
     "hasSource": true,
     "testFiles": 1,
     "testScript": "node --test tests/*.test.ts"
@@ -1358,10 +1372,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Screenshot",
     "kind": "application",
     "description": "Aetherius screenshot with region, window, full-screen, timer and annotation.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1512,10 +1526,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Task Manager",
     "kind": "application",
     "description": "Aetherius task manager with processes, services, resource graphs and force quit.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1554,10 +1568,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Text Editor",
     "kind": "application",
     "description": "Aetherius text editor with syntax highlighting, minimap, find/replace and outline.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1612,6 +1626,20 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "description": "Domain core for Virtual Stage.",
     "status": "PARTIAL",
     "lastVerified": "2026-10-30",
+    "hasSource": true,
+    "testFiles": 1,
+    "testScript": "node --test tests/*.test.ts"
+  },
+  {
+    "directory": "aetherius-vpn",
+    "packageName": "@aetherius/aetherius-vpn",
+    "aetheriusSlice": true,
+    "id": "aetherius-vpn",
+    "name": "Aetherius VPN",
+    "kind": "application",
+    "description": "VPN server profiles, connection state, per-app routing and a kill-switch flag. Tunnelling itself is a host adapter concern.",
+    "status": "TESTED",
+    "lastVerified": "2026-11-07",
     "hasSource": true,
     "testFiles": 1,
     "testScript": "node --test tests/*.test.ts"
@@ -1694,10 +1722,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "App Launcher",
     "kind": "application",
     "description": "Aetherius app launcher with search, categories, recent, favourites and workspace switcher.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1722,10 +1750,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Backup & Restore",
     "kind": "application",
     "description": "Aetherius backup and restore with snapshots, encryption, scheduling and migration.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1750,10 +1778,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Font Viewer",
     "kind": "application",
     "description": "Aetherius font viewer with catalogue, preview, install, uninstall and fallback analysis.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1806,10 +1834,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Help & Support",
     "kind": "application",
     "description": "Aetherius help and support with search, diagnostics, community links and ticket escalation.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1862,10 +1890,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "On-Screen Keyboard",
     "kind": "application",
     "description": "Aetherius on-screen keyboard with layouts, themes, prediction and accessibility modes.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1904,10 +1932,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Print Manager",
     "kind": "application",
     "description": "Aetherius print manager with queues, drivers, preview, duplex and scan-to-cloud.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1932,10 +1960,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Screen Recorder",
     "kind": "application",
     "description": "Aetherius screen recorder with region, audio, webcam overlay, formats and sharing.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1988,10 +2016,10 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "name": "Voice Assistant",
     "kind": "application",
     "description": "Aetherius voice assistant with wake word, commands, dictation and privacy controls.",
-    "status": "PARTIAL",
+    "status": "TESTED",
     "lastVerified": "2026-11-07",
     "hasSource": true,
-    "testFiles": 1,
+    "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
   }
 ];

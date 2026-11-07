@@ -1,17 +1,6 @@
+export * from "./domain.ts";
+
 /**
- * Media Player
- *
- * Aetherius media player with playlists, subtitles, cast and transcoding.
- *
- * This is a scaffold. Replace the placeholder with the real domain logic.
+ * Media Player — playlists, queues and playback state.
  */
-
 export const MediaPlayerVersion = "0.1.0";
-
-export interface MediaPlayerState {
-  initialized: boolean;
-}
-
-export function createMediaPlayer(): MediaPlayerState {
-  return { initialized: true };
-}

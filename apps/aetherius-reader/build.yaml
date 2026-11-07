@@ -1,0 +1,37 @@
+schema_version: "1.0.0"
+project:
+  id: aetherius-reader
+  name: Aetherius Reader
+  kind: application
+  domain: apps
+  description: >-
+    E-reader with a library of e-books, reading progress, bookmarks and
+    highlights. Content parsing is a host adapter concern.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
+status:
+  state: TESTED
+  last_verified: "2026-11-07"
+  summary: "Real domain core: book library, progress tracking, bookmarks and highlights. 2 behaviour tests + scaffold import test pass."
+  evidence:
+    - "2026-11-07: npm test (slice) -> 3/3 pass"
+known_issues:
+  - id: reader-001
+    severity: low
+    summary: "No UI, no EPUB parser (host adapter)."
+    status: OPEN

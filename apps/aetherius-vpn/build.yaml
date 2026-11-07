@@ -1,0 +1,37 @@
+schema_version: "1.0.0"
+project:
+  id: aetherius-vpn
+  name: Aetherius VPN
+  kind: application
+  domain: apps
+  description: >-
+    VPN server profiles, connection state, per-app routing and a kill-switch
+    flag. Tunnelling itself is a host adapter concern.
+  repository: false
+  languages: [typescript]
+toolchain:
+  build_system: node --test
+  package_manager: none
+  requirements:
+    - name: node
+      version: ">=24"
+      required: true
+commands:
+  - name: test
+    command: node --test "tests/*.test.ts"
+    working_directory: .
+    timeout_minutes: 5
+dependencies:
+  projects: [aetherius-os, app-kit]
+  external: []
+status:
+  state: TESTED
+  last_verified: "2026-11-07"
+  summary: "Real domain core: server profiles, connect/disconnect/fail lifecycle, per-app routing, free-server filtering. 3 behaviour tests + scaffold import test pass."
+  evidence:
+    - "2026-11-07: npm test (slice) -> 4/4 pass"
+known_issues:
+  - id: vpn-001
+    severity: low
+    summary: "No UI, no tunnel executor (host adapter)."
+    status: OPEN
