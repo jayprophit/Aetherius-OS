@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T21:58:23.998Z",
+  "generatedAt": "2026-11-07T15:00:00.000Z",
   "benchmark": "Aetherius OS 5-Star Pre-Public Readiness",
   "overall": "NOT_5_STAR",
   "weightedScore": null,
@@ -9,25 +9,25 @@
       "id": "foundation",
       "weight": 15,
       "status": "PARTIAL_EVIDENCE",
-      "note": "app-kit + 100 app slices compile; registry reconciliation not closed"
+      "note": "135 @aetherius slices compile; root + apps typecheck clean; full verify green (secret-scan, 1816+ root tests, 135/135 slices, production build); source + build registries byte-synced"
     },
     {
       "id": "default_core",
       "weight": 20,
       "status": "PARTIAL_EVIDENCE",
-      "note": "15/15 app slices pass their own tests; full mandatory workflows not fixture-tested"
+      "note": "135/135 slices pass their own tests; 10 shell windows wired (Notes, Writer, Sheets, Slides, Canvas, Recorder, Terminal, Calculator, Notepad, Files); 31 components unwired; mandatory workflows not fixture-tested"
     },
     {
       "id": "advanced_unique",
       "weight": 15,
-      "status": "NOT_MEASURED",
-      "note": "Studio/Engineering/Science workspaces not implemented"
+      "status": "PARTIAL_EVIDENCE",
+      "note": "sync engine + Worker + D1 LIVE with live push/pull/converge proof; R2 blob sync LIVE (put/get round-trip verified); kernel compute 49 pytest pass with honest capability labels; Notes wired to sync"
     },
     {
       "id": "settings",
       "weight": 10,
-      "status": "NOT_MEASURED",
-      "note": "per-app profile/portability fixtures not executed"
+      "status": "PARTIAL_EVIDENCE",
+      "note": "macOS-style menu bar with cascading submenus; Shell/Cloud&Sync/Applications settings categories with real pages; per-app profile/portability fixtures not executed"
     },
     {
       "id": "formats",
@@ -38,20 +38,20 @@
     {
       "id": "performance",
       "weight": 10,
-      "status": "NOT_MEASURED",
-      "note": "no timing/resource/crash-recovery measurements"
+      "status": "PARTIAL_EVIDENCE",
+      "note": "initial bundle code-split 677 KB -> 404 KB (Settings lazy-loaded 262 KB); no timing/resource/crash-recovery fixtures yet"
     },
     {
       "id": "security_accessibility",
       "weight": 10,
       "status": "NOT_MEASURED",
-      "note": "security rules empty; accessibility fixtures verified=false"
+      "note": "Security Center + Accessibility domains exist (tested); UI shell and independent audits not done"
     },
     {
       "id": "cross_platform",
       "weight": 10,
-      "status": "NOT_MEASURED",
-      "note": "no signed install artifacts; no hardware installation/rollback tests"
+      "status": "PARTIAL_EVIDENCE",
+      "note": "PWA live on Cloudflare Pages + Vercel + local dev (200 OK); desktop packaging planned per OS family (msix/deb/rpm/dmg) with signing chains; no signed install artifacts"
     }
   ],
   "gates": [

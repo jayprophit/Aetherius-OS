@@ -124,6 +124,18 @@ export default defineConfig(() => {
         ),
       },
 
+      build: {
+        chunkSizeWarningLimit: 600,
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              vendor: ['react', 'react-dom'],
+              ui: ['lucide-react'],
+            },
+          },
+        },
+      },
+
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),

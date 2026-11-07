@@ -25,7 +25,19 @@ import { Terminal } from "../components/apps/Terminal";
 import { Calculator } from "../components/apps/Calculator";
 import { Notepad } from "../components/apps/Notepad";
 import { FileManager } from "../components/apps/FileManager";
-import { SettingsView } from "../components/settings/SettingsModal";
+import { MenuBar, type MenuData } from "../components/MenuBar";
+
+// Heavy and rarely-opened surfaces load on demand instead of bloating the
+// initial bundle. The fallback is honest about what is loading.
+const SettingsView = React.lazy(() =>
+  import("../components/settings/SettingsModal").then((module) => ({ default: module.SettingsView })),
+);
+
+const LoadingView: React.FC<{ label: string }> = ({ label }) => (
+  <div className="flex h-full items-center justify-center text-sm text-gray-500">
+    Loading {label}…
+  </div>
+);
 import { MenuBar, type MenuData } from "../components/MenuBar";
 
 /**
@@ -270,7 +282,11 @@ function Shell() {
         view = <FileManager />;
         break;
       case "settings":
-        view = <SettingsView />;
+        view = (
+          <React.Suspense fallback={<LoadingView label="Settings" />}>
+            <SettingsView />
+          </React.Suspense>
+        );
         break;
       default:
         view = (
