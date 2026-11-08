@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "created": "2026-11-08",
+  "host": {
+    "cpu": {
+      "model": "Intel i7-870 (4C/8T, lacks AVX/AVX2)",
+      "features": [],
+      "cores": 4,
+      "threads": 8
+    },
+    "ram_gb": 16,
+    "gpu": {
+      "model": "NVIDIA GTX 1050 Ti 4 GB",
+      "vram_gb": 4,
+      "features": ["CUDA 11.8"]
+    },
+    "storage": {
+      "type": "HDD",
+      "free_gb": null,
+      "notes": "F: drive excluded for reported errors"
+    }
+  },
+  "benchmark_targets": [],
+  "verified": false
+}

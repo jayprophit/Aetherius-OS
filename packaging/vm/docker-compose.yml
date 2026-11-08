@@ -1,0 +1,20 @@
+services:
+  aetherius:
+    build:
+      context: ../..
+      dockerfile: packaging/vm/Dockerfile
+    image: aetherius-os:0.1.0
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "generated": "2026-11-08",
+  "policy": {
+    "free_only": true,
+    "paid_agents_disabled": true,
+    "credentials": "KeePass -> process env only; never committed or logged",
+    "coordination": "localhost hive; one writer per file; supervisor commits"
+  },
+  "transport": {
+    "hive_http": "http://127.0.0.1:7317",
+    "hive_a2a": "http://127.0.0.1:7317/a2a",
+    "hive_mcp": "node orchestration/hive/mcp-server.mjs",
+    "model_router": "http://127.0.0.1:7318/v1"
+  },
+  "agents": [
+    {
+      "id": "hermes",
+      "kind": "hermes",
+      "version": "0.22.6",
+      "protocols": ["cli"],
+      "headless": ["hermes", "chat", "-q", "{prompt}", "--oneshot", "-Q"],
+      "model": "upstage/solar-mini4:free",
+      "billing": "free",
+      "role": "research, external-service runbooks, verification"
+    },
+    {
+      "id": "openclaw",
+      "kind": "openclaw",
+      "version": "2026.10.7",
+      "protocols": ["acp", "mcp", "gateway", "cli"],
+      "headless": ["openclaw", "agent", "--local", "--json", "-m", "{prompt}"],
+      "model": "ollama/qwen3.5:2b-q4_K_M",
+      "billing": "free-local",
+      "role": "task board, documentation, repo coordination"
+    },
+    {
+      "id": "kilo",
+      "kind": "kilo",
+      "version": "7.8.17",
+      "protocols": ["acp", "mcp", "cli"],
+      "headless": ["kilo", "run", "--format", "json", "{prompt}"],
+      "model": "auto via free router",
+      "billing": "free-models-only",
+      "role": "knowledge graph, code changes, tests"
+    },
+    {
+      "id": "cline",
+      "kind": "cline",
+      "version": "3.0.73",
+      "protocols": ["acp", "cli"],
+      "headless": ["cline", "--json", "{prompt}"],
+      "model": "auto via free router",
+      "billing": "free-models-only",
+      "role": "independent CI and E2E verification"
+    },
+    {
+      "id": "vibe",
+      "kind": "mistral-vibe",
+      "version": "3.0.2",
+      "protocols": ["acp", "mcp", "cli"],
+      "headless": ["vibe", "-p", "{prompt}", "--output", "json", "--max-price", "0"],
+      "model": "mistral-small-latest",
+      "billing": "free-tier",
+      "role": "cross-platform build evidence and review"
+    },
+    {
+      "id": "freebuff",
+      "kind": "freebuff",
+      "version": "0.2.34",
+      "protocols": ["cli", "mcp"],
+      "headless": ["freebuff", "{prompt}"],
+      "model": "freebuff-default",
+      "billing": "free",
+      "role": "browser workflow tests"
+    },
+    {
+      "id": "codex",
+      "kind": "codex",
+      "version": "0.155.1",
+      "protocols": ["mcp", "app-server", "cli"],
+      "headless": ["codex", "exec", "{prompt}"],
+      "model": "gpt-6-astra",
+      "billing": "disabled-paid",
+      "role": "disabled until pointed at the free router"
+    },
+    {
+      "id": "opencode",
+      "kind": "opencode",
+      "version": "2.2.6",
+      "protocols": ["mcp", "cli"],
+      "headless": ["opencode", "run", "{prompt}"],
+      "model": "supervisor",
+      "billing": "supervisor",
+      "role": "supervisor, integration, commit and release gate"
+    }
+  ],
+  "gui_only": [
+    { "id": "kilo-desktop", "role": "manual UI verification" },
+    { "id": "cursor", "role": "manual review" },
+    { "id": "windsurf", "role": "manual review" },
+    { "id": "claude-desktop", "role": "manual review" },
+    { "id": "gemini-desktop", "role": "manual review" },
+    { "id": "lm-studio", "role": "local model serving; endpoint currently down" }
+  ],
+  "free_model_pool": {
+    "local": ["ollama/qwen3.5:2b-q4_K_M", "ollama/qwen3:latest", "ollama/granite4:3b", "ollama/ministral-3:3b", "ollama/hhao/qwen2.5-coder-tools:3b"],
+    "cloud": [
+      "github/openai/gpt-4.1-mini",
+      "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
+      "openrouter/google/gemma-4-31b-it:free",
+      "groq/openai/gpt-oss-120b",
+      "google/gemini-3.8-flash",
+      "cerebras/gpt-oss-120b",
+      "mistral/mistral-small-latest"
+    ]
+  }
+}

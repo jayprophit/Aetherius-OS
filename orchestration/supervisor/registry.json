@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "updated": "2026-11-08",
+  "policy": {
+    "free_only": true,
+    "lease_key": "supervisor.lease",
+    "ttl_seconds": 900,
+    "heartbeat_seconds": 300,
+    "takeover_requires_work_summary": true,
+    "paid_models_refused": true
+  },
+  "supervisor_candidates": [
+    {
+      "id": "opencode",
+      "priority": 1,
+      "label": "OpenCode supervisor",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "provider": "opencode-cli",
+      "billing": "free",
+      "supervisor": true,
+      "can_become_worker": true,
+      "headless": ["opencode", "run", "--model", "opencode/deepseek-v4.1-flash-free", "{prompt}"],
+      "strengths": ["full tool loop", "repository integration", "commit and release gate"],
+      "limits": ["session usage and credits are finite"]
+    },
+    {
+      "id": "kilo",
+      "priority": 2,
+      "label": "Kilo supervisor (large free model)",
+      "model": "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
+      "fallback_model": "auto",
+      "provider": "aetherius-free-router",
+      "billing": "free",
+      "supervisor": true,
+      "can_become_worker": true,
+      "headless": ["kilo", "run", "--format", "json", "{prompt}"],
+      "strengths": ["large context free model", "code changes", "tests", "MCP"],
+      "limits": ["depends on the local free router and OpenRouter quota"]
+    },
+    {
+      "id": "hermes",
+      "priority": 3,
+      "label": "Hermes supervisor (independent free provider)",
+      "model": "upstage/solar-mini4:free",
+      "provider": "nous-portal",
+      "billing": "free",
+      "supervisor": true,
+      "can_become_worker": true,
+      "headless": ["hermes", "chat", "-q", "{prompt}", "--oneshot", "-Q"],
+      "strengths": ["independent provider", "research", "runbooks", "external verification"],
+      "limits": ["smaller model", "less reliable at large code edits"]
+    },
+    {
+      "id": "cline",
+      "priority": 4,
+      "label": "Cline supervisor (free router)",
+      "model": "auto",
+      "provider": "aetherius-free-router",
+      "billing": "free",
+      "supervisor": true,
+      "can_become_worker": true,
+      "headless": ["cline", "--json", "{prompt}"],
+      "strengths": ["independent CI and E2E verification"],
+      "limits": ["depends on the local free router"]
+    },
+    {
+      "id": "vibe",
+      "priority": 5,
+      "label": "Mistral Vibe supervisor",
+      "model": "mistral-small-latest",
+      "provider": "mistral-free-tier",
+      "billing": "free-tier",
+      "supervisor": true,
+      "can_become_worker": true,
+      "headless": ["vibe", "-p", "{prompt}", "--output", "json", "--max-price", "0"],
+      "strengths": ["cross-platform review", "independent provider"],
+      "limits": ["smaller model", "free-tier rate limits"]
+    },
+    {
+      "id": "openclaw",
+      "priority": 6,
+      "label": "OpenClaw supervisor (local model)",
+      "model": "ollama/qwen3.5:2b-q4_K_M",
+      "provider": "ollama-local",
+      "billing": "free-local",
+      "supervisor": true,
+      "can_become_worker": true,
+      "headless": ["openclaw", "agent", "--local", "--json", "-m", "{prompt}"],
+      "strengths": ["fully local", "no cloud quota", "task board"],
+      "limits": ["small model", "not suited to large code changes"]
+    }
+  ],
+  "worker_switch": {
+    "opencode": {
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "command": "opencode run --model opencode/deepseek-v4.1-flash-free \"<task>\"",
+      "instruction": "After handing the supervisor lease to another agent, OpenCode keeps working as a free-model worker on claimed tasks. It must not commit or push while another agent holds the supervisor lease."
+    },
+    "local_fallback": {
+      "model": "ollama/qwen3.5:2b-q4_K_M",
+      "command": "opencode run --model ollama/qwen3.5:2b-q4_K_M \"<task>\""
+    }
+  },
+  "handoff_checklist": [
+    "Read docs/SUPERVISOR-HANDOFF-2026-11-08.md and docs/SUPERVISOR-FAILOVER.md.",
+    "Read the Obsidian note Supervisor Handoff.md and Work Ledger.md.",
+    "Check hive /work/summary, /tasks?status=blocked and /leases/supervisor.lease.",
+    "Run node orchestration/hive/cli.mjs work export to refresh the human-readable ledger.",
+    "Claim the supervisor lease with the new agent id before directing work.",
+    "Record a work_log entry for the takeover, including the previous supervisor and model.",
+    "Verify the tree with npm run verify before committing anything.",
+    "Keep free-only: no paid model, plan or provider."
+  ]
+}

@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 
-import { handleRequest, MemorySyncRepository } from "../worker/src/index.ts";
+import { handleRequest, MemorySyncRepository, MemoryBlobStore } from "../worker/src/index.ts";
 import { createChange, type SyncChange } from "../../aetherius-sync/src/protocol.ts";
 
 const TOKEN = "test-token-0123456789";

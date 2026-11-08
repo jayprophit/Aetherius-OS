@@ -1,0 +1,642 @@
+{
+  "schema_version": 1,
+  "catalog": "Aetherius free/freemium compute",
+  "generated_at": "2026-11-08",
+  "notes": [
+    "No account is claimed to exist for any provider. This file is a catalogue, not a credential store.",
+    "Each checked_at date means the source_url was read in this session. Quotas marked verified=false were not confirmed on an official page in this session.",
+    "Free tiers change without notice. Re-check source_url before relying on a quota.",
+    "Auth lists environment variable names only. No token, key or credential value belongs in this repository."
+  ],
+  "providers": [
+    {
+      "id": "kaggle-notebooks",
+      "label": "Kaggle Notebooks",
+      "url": "https://www.kaggle.com/code",
+      "category": "notebook",
+      "free_tier": "Free Kaggle account includes CPU, GPU and TPU notebook sessions; no paid plan is required for the free accelerator queue.",
+      "card_required": false,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "CPU/GPU session execution time",
+          "value": "12 hours per session",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "TPU session execution time",
+          "value": "9 hours per session",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "Saved output",
+          "value": "20 GB in /kaggle/working",
+          "reset": "per notebook version",
+          "verified": true
+        },
+        {
+          "name": "Interactive idle timeout",
+          "value": "20 minutes",
+          "reset": "per interactive session",
+          "verified": true
+        },
+        {
+          "name": "Free GPU hardware",
+          "value": "1x NVIDIA Tesla P100 or 2x NVIDIA Tesla T4, subject to availability and queue",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "Free TPU hardware",
+          "value": "TPU v3-8; the TPU 1VM profile lists 96 CPU cores and 330 GB RAM",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "Weekly GPU/TPU allowance",
+          "value": "Not stated on the documentation page fetched in this session; account settings holds the live figure",
+          "reset": "account quota window",
+          "verified": false
+        }
+      ],
+      "automation": "api",
+      "auth": [
+        "KAGGLE_API_TOKEN",
+        "KAGGLE_USERNAME",
+        "KAGGLE_KEY"
+      ],
+      "status": "AVAILABLE",
+      "notes": "The official kaggle CLI can push and run kernels and download outputs. Internet is disabled by default in kernel metadata. GPU/TPU availability is queued, not guaranteed.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://www.kaggle.com/docs/notebooks"
+    },
+    {
+      "id": "google-colab",
+      "label": "Google Colab",
+      "url": "https://colab.research.google.com/",
+      "category": "notebook",
+      "free_tier": "Free hosted Jupyter notebooks with variable GPU/TPU access; paid Colab plans are optional, not required.",
+      "card_required": false,
+      "commercial_use": "Subject to Colab terms. Free managed runtimes prohibit crypto mining, remote proxies, denial-of-service, password cracking, deepfakes, file hosting unrelated to interactive compute, and bypassing the notebook UI.",
+      "quotas": [
+        {
+          "name": "Maximum notebook runtime (free)",
+          "value": "12 hours, depending on availability and usage patterns",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "GPU/TPU allowance",
+          "value": "Not published by Google; fluctuates over time and is not guaranteed",
+          "reset": "varies",
+          "verified": false
+        },
+        {
+          "name": "Idle timeout",
+          "value": "Enforced; exact duration is not published",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "Accelerator types",
+          "value": "Vary over time; free tier normally exposes a subset of T4-class GPUs and TPUs",
+          "reset": "per session",
+          "verified": false
+        }
+      ],
+      "automation": "manual",
+      "auth": [],
+      "status": "AVAILABLE",
+      "notes": "Colab free has no official public automation API. Run notebooks in the browser and download results manually. Do not fake unattended execution with browser automation; the FAQ treats bypassing the notebook UI as a restricted activity.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://research.google.com/colaboratory/faq.html"
+    },
+    {
+      "id": "hugging-face-zerogpu",
+      "label": "Hugging Face Spaces / ZeroGPU",
+      "url": "https://huggingface.co/docs/hub/spaces-zerogpu",
+      "category": "gpu",
+      "free_tier": "Free personal accounts can use ZeroGPU Spaces with a 5-minute daily GPU quota and can host up to 2 ZeroGPU Spaces.",
+      "card_required": false,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "Free account daily GPU quota",
+          "value": "5 minutes per day",
+          "reset": "24 hours after first GPU usage",
+          "verified": true
+        },
+        {
+          "name": "Unauthenticated daily GPU quota",
+          "value": "2 minutes per day",
+          "reset": "24 hours after first GPU usage",
+          "verified": true
+        },
+        {
+          "name": "ZeroGPU Spaces per free personal account",
+          "value": "2 (requires verified email and account older than 30 days)",
+          "reset": "account lifetime",
+          "verified": true
+        },
+        {
+          "name": "GPU size and hardware",
+          "value": "large = half NVIDIA RTX Pro 6000 Blackwell (48 GB VRAM); xlarge = full GPU (96 GB VRAM, 2x quota cost)",
+          "reset": "n/a",
+          "verified": true
+        },
+        {
+          "name": "Default function GPU duration",
+          "value": "60 seconds; can be raised with @spaces.GPU(duration=...)",
+          "reset": "per call",
+          "verified": true
+        }
+      ],
+      "automation": "api",
+      "auth": [
+        "HF_TOKEN"
+      ],
+      "status": "AVAILABLE",
+      "notes": "ZeroGPU hosting currently requires the Gradio SDK and PyTorch 2.8+. It is an inference/demo allocation, not a general-purpose training VM. Free quota is per account, not per Space.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://huggingface.co/docs/hub/spaces-zerogpu"
+    },
+    {
+      "id": "lightning-ai",
+      "label": "Lightning AI Studio",
+      "url": "https://lightning.ai/pricing",
+      "category": "notebook",
+      "free_tier": "Free plan with up to 30 starter credits, a promotional 50 free GPU hours, one free Studio, 50 GB persistent storage, and pay-as-you-go after credits.",
+      "card_required": false,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "Starter credits",
+          "value": "Up to 30 credits to start",
+          "reset": "one-time starter grant",
+          "verified": true
+        },
+        {
+          "name": "Promotional free GPU hours",
+          "value": "Up to 50 free GPU hours advertised on the pricing page",
+          "reset": "one-time promotional grant",
+          "verified": true
+        },
+        {
+          "name": "Free Studio lifetime",
+          "value": "Runs 24/7 but must be restarted every 4 hours",
+          "reset": "every 4 hours",
+          "verified": true
+        },
+        {
+          "name": "Concurrent GPUs on Free",
+          "value": "Up to 2",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Persistent storage on Free",
+          "value": "50 GB",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Listed GPU rates",
+          "value": "T4 16 GB $0.55/hr; L4 24 GB $0.79/hr (paid rates after credits)",
+          "reset": "billed by the second",
+          "verified": true
+        }
+      ],
+      "automation": "unknown",
+      "auth": [],
+      "status": "AVAILABLE",
+      "notes": "The page advertises both 'up to 50 free GPU hours' and 'up to 30 credits to start'; the credit-to-GPU-hour conversion was not stated. No SDK or token flow was exercised in this session.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://lightning.ai/pricing"
+    },
+    {
+      "id": "sagemaker-studio-lab",
+      "label": "Amazon SageMaker Studio Lab",
+      "url": "https://studiolab.sagemaker.aws/",
+      "category": "notebook",
+      "free_tier": "Free JupyterLab service for existing customers only. AWS states it is no longer open to new customers.",
+      "card_required": null,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "GPU compute time",
+          "value": "Up to 4 hours at a time and 4 hours in a 24-hour period",
+          "reset": "24 hours",
+          "verified": true
+        },
+        {
+          "name": "CPU compute time",
+          "value": "Up to 4 hours at a time and 8 hours in a 24-hour period",
+          "reset": "24 hours",
+          "verified": true
+        },
+        {
+          "name": "Project storage",
+          "value": "15 GB",
+          "reset": "account lifetime",
+          "verified": true
+        },
+        {
+          "name": "Project RAM",
+          "value": "Conflicting docs: 16 GB in the component overview, 12 GB in the availability-change page",
+          "reset": "per runtime",
+          "verified": false
+        }
+      ],
+      "automation": "manual",
+      "auth": [],
+      "status": "OWNER_GATED",
+      "notes": "Official docs say no new customers; existing accounts continue. New work should use Kaggle, Colab or Lightning. Mobile phone verification is required at first runtime. No account is claimed.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://docs.aws.amazon.com/sagemaker/latest/dg/studio-lab.html"
+    },
+    {
+      "id": "paperspace-gradient",
+      "label": "Paperspace Gradient",
+      "url": "https://www.paperspace.com/pricing",
+      "category": "gpu",
+      "free_tier": "Free plan with a free GPU tier, 5 GB storage, and a 12-hour auto-shutdown limit; paid instances are billed hourly.",
+      "card_required": null,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "Persistent storage on Free",
+          "value": "5 GB",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Auto-shutdown on Free",
+          "value": "12 hours",
+          "reset": "per notebook session",
+          "verified": true
+        },
+        {
+          "name": "Free GPU allowance",
+          "value": "Free GPU instances are offered on a best-availability basis; hours and GPU model are not stated on the pricing page",
+          "reset": "not published",
+          "verified": false
+        },
+        {
+          "name": "Paid Pro perk",
+          "value": "Faster free GPUs, based on availability",
+          "reset": "plan limit",
+          "verified": true
+        }
+      ],
+      "automation": "unknown",
+      "auth": [],
+      "status": "AVAILABLE",
+      "notes": "Paperspace is now part of DigitalOcean. Free GPU capacity is availability-based and may queue or be unavailable. No API/token flow was verified in this session.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://www.paperspace.com/pricing"
+    },
+    {
+      "id": "github-codespaces",
+      "label": "GitHub Codespaces",
+      "url": "https://github.com/features/codespaces",
+      "category": "cpu",
+      "free_tier": "GitHub Free personal accounts include 120 core-hours of compute and 15 GB-month of storage each month.",
+      "card_required": false,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "Included compute",
+          "value": "120 core-hours per month (for example 60 hours on a 2-core machine)",
+          "reset": "monthly billing cycle",
+          "verified": true
+        },
+        {
+          "name": "Included storage",
+          "value": "15 GB-month per month",
+          "reset": "monthly billing cycle",
+          "verified": true
+        },
+        {
+          "name": "Default machine class",
+          "value": "2-core CPU dev container; larger CPU machines consume quota faster",
+          "reset": "per session",
+          "verified": true
+        }
+      ],
+      "automation": "api",
+      "auth": [
+        "GITHUB_TOKEN"
+      ],
+      "status": "AVAILABLE",
+      "notes": "CPU-only development environment, not an ML training GPU. Usage is blocked at the free quota when no payment method is on file. The free quota is per personal account, not per repository.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://docs.github.com/en/billing/concepts/product-billing/github-codespaces"
+    },
+    {
+      "id": "gitpod",
+      "label": "Gitpod (now Ona)",
+      "url": "https://www.gitpod.io/pricing",
+      "category": "cpu",
+      "free_tier": "No public self-serve free tier found. The gitpod.io pricing URL served an Ona contact/sales page on 2026-11-08.",
+      "card_required": null,
+      "commercial_use": null,
+      "quotas": [],
+      "automation": "unknown",
+      "auth": [],
+      "status": "DEFERRED",
+      "notes": "Gitpod has rebranded to Ona and the pricing page is now a contact form, not a published free-tier price list. Deferred for this lane until the owner confirms any existing account or plan. No account is claimed.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://www.gitpod.io/pricing"
+    },
+    {
+      "id": "deepnote",
+      "label": "Deepnote",
+      "url": "https://deepnote.com/pricing",
+      "category": "notebook",
+      "free_tier": "Free forever plan with unlimited basic machines (5 GB RAM, 2 vCPU), 3 editors, and 5 projects. GPU is not included on Free.",
+      "card_required": null,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "Basic machines",
+          "value": "Unlimited, 5 GB RAM and 2 vCPU",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Editors",
+          "value": "Up to 3",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Projects",
+          "value": "Up to 5",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Inactivity period",
+          "value": "15 minutes",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "GPU access",
+          "value": "Not included on Free; GPU machines are a Team feature",
+          "reset": "plan limit",
+          "verified": true
+        }
+      ],
+      "automation": "manual",
+      "auth": [],
+      "status": "AVAILABLE",
+      "notes": "CPU-only notebooks on Free. The Notebook API is a Team feature, so there is no free automation API. Suitable for light CPU analysis, not GPU training.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://deepnote.com/pricing"
+    },
+    {
+      "id": "binder",
+      "label": "Binder (mybinder.org)",
+      "url": "https://mybinder.org/",
+      "category": "notebook",
+      "free_tier": "Public, account-free, ephemeral Jupyter sessions launched from a Git repository.",
+      "card_required": false,
+      "commercial_use": "Not permitted as the backend for a for-profit service or product; the service is donation and grant funded.",
+      "quotas": [
+        {
+          "name": "RAM per session",
+          "value": "At least 1 GB, maximum 2 GB",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "Session lifetime",
+          "value": "Up to 6 hours, or up to 1 CPU-hour for compute-heavy sessions",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "Inactivity cull",
+          "value": "10 minutes",
+          "reset": "per session",
+          "verified": true
+        },
+        {
+          "name": "Concurrent sessions per repository",
+          "value": "100",
+          "reset": "n/a",
+          "verified": true
+        },
+        {
+          "name": "Persistent storage",
+          "value": "None",
+          "reset": "n/a",
+          "verified": true
+        },
+        {
+          "name": "Outbound bandwidth",
+          "value": "Approximately 1 Mbit per session",
+          "reset": "per session",
+          "verified": true
+        }
+      ],
+      "automation": "browser",
+      "auth": [],
+      "status": "AVAILABLE",
+      "notes": "For reproducible demos and teaching, not batch jobs. No persistence and no private launches. Never place secrets in a Binder repository; the session is public infrastructure.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://mybinder.readthedocs.io/en/latest/about/user-guidelines.html"
+    },
+    {
+      "id": "modal",
+      "label": "Modal",
+      "url": "https://modal.com/pricing",
+      "category": "serverless",
+      "free_tier": "Starter plan costs $0 per month and includes $30 per month of free compute credits, then pay-as-you-go.",
+      "card_required": null,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "Monthly free compute credits",
+          "value": "$30 per month",
+          "reset": "monthly",
+          "verified": true
+        },
+        {
+          "name": "GPU concurrency on Starter",
+          "value": "10",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Containers on Starter",
+          "value": "100",
+          "reset": "plan limit",
+          "verified": true
+        },
+        {
+          "name": "Included network egress",
+          "value": "1 TiB per month",
+          "reset": "monthly",
+          "verified": true
+        },
+        {
+          "name": "Listed T4 rate",
+          "value": "$0.000164 per second (about $0.59 per GPU-hour)",
+          "reset": "billed per second",
+          "verified": true
+        },
+        {
+          "name": "Listed L4 rate",
+          "value": "$0.000222 per second (about $0.80 per GPU-hour)",
+          "reset": "billed per second",
+          "verified": true
+        }
+      ],
+      "automation": "api",
+      "auth": [
+        "MODAL_TOKEN_ID",
+        "MODAL_TOKEN_SECRET"
+      ],
+      "status": "AVAILABLE",
+      "notes": "The $30 is a credit, not a perpetual free GPU. Card requirement for Starter was not stated on the pricing page. Serverless cold starts and GPU availability apply.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://modal.com/pricing"
+    },
+    {
+      "id": "oracle-cloud-always-free",
+      "label": "Oracle Cloud Always Free",
+      "url": "https://www.oracle.com/cloud/free/",
+      "category": "vm",
+      "free_tier": "Always Free tenancy: two AMD micro VMs and/or 2 OCPU plus 12 GB Ampere A1, 200 GB block volume, 20 GB object storage, and 10 TB monthly egress, with no expiry.",
+      "card_required": true,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "AMD micro VMs",
+          "value": "Up to 2x VM.Standard.E2.1.Micro (1/8 OCPU, 1 GB RAM each)",
+          "reset": "account lifetime",
+          "verified": true
+        },
+        {
+          "name": "Ampere A1 compute",
+          "value": "1,500 OCPU-hours and 9,000 GB-hours per month, equivalent to 2 OCPU and 12 GB RAM for an Always Free tenancy",
+          "reset": "monthly",
+          "verified": true
+        },
+        {
+          "name": "Block volume",
+          "value": "200 GB total boot plus block storage; 5 volume backups",
+          "reset": "account lifetime",
+          "verified": true
+        },
+        {
+          "name": "Object storage",
+          "value": "20 GB combined Standard/Infrequent/Archive, 50,000 API requests per month",
+          "reset": "monthly",
+          "verified": true
+        },
+        {
+          "name": "Outbound data transfer",
+          "value": "10 TB per month",
+          "reset": "monthly",
+          "verified": true
+        },
+        {
+          "name": "Idle reclamation",
+          "value": "Always Free instances may be reclaimed if CPU, network or memory utilization stays below 20 percent over 7 days",
+          "reset": "7-day window",
+          "verified": true
+        }
+      ],
+      "automation": "api",
+      "auth": [],
+      "status": "AVAILABLE",
+      "notes": "No GPU. Oracle docs say most users need a mobile phone number and a credit card to create an account; the card is not charged unless the account is upgraded. A1 capacity is often unavailable in popular home regions. Auth uses the OCI CLI config file, not a repository token.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm"
+    },
+    {
+      "id": "cloudflare-workers-ai",
+      "label": "Cloudflare Workers AI",
+      "url": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      "category": "serverless",
+      "free_tier": "Workers Free includes 10,000 Neurons per day of serverless model inference at no charge.",
+      "card_required": false,
+      "commercial_use": null,
+      "quotas": [
+        {
+          "name": "Daily free allocation",
+          "value": "10,000 Neurons per day",
+          "reset": "daily at 00:00 UTC",
+          "verified": true
+        },
+        {
+          "name": "Paid overage rate",
+          "value": "$0.011 per 1,000 Neurons on Workers Paid",
+          "reset": "billed monthly",
+          "verified": true
+        },
+        {
+          "name": "Paid-only models",
+          "value": "Some frontier models require Workers Paid or prepaid AI Gateway credits",
+          "reset": "n/a",
+          "verified": true
+        }
+      ],
+      "automation": "api",
+      "auth": [
+        "CLOUDFLARE_API_TOKEN",
+        "CLOUDFLARE_ACCOUNT_ID"
+      ],
+      "status": "AVAILABLE",
+      "notes": "Serverless inference, embeddings, image and audio models. Not a training or fine-tuning GPU and not a general-purpose VM. Neuron consumption varies by model.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://developers.cloudflare.com/workers-ai/platform/pricing/"
+    },
+    {
+      "id": "google-tpu-research-cloud",
+      "label": "Google TPU Research Cloud",
+      "url": "https://sites.research.google/trc/about/",
+      "category": "tpu",
+      "free_tier": "Free Cloud TPU quota for accepted research applicants; quota is granted temporarily to a Google Cloud project.",
+      "card_required": null,
+      "commercial_use": "Research programme. Participants must share results publicly through peer-reviewed publication, open source code, a blog post or another public channel, and must follow the Google AI Principles.",
+      "quotas": [
+        {
+          "name": "TPU quota",
+          "value": "Temporary Cloud TPU quota granted to an approved GCP project; exact device count and term are not published",
+          "reset": "temporary grant",
+          "verified": true
+        },
+        {
+          "name": "Shared cluster size",
+          "value": "More than 1,000 Cloud TPU devices across the programme",
+          "reset": "n/a",
+          "verified": true
+        },
+        {
+          "name": "Other GCP costs",
+          "value": "Cloud TPUs are free to TRC participants, but VMs and Cloud Storage are billed at normal GCP rates",
+          "reset": "billed by GCP",
+          "verified": true
+        },
+        {
+          "name": "Vertex AI compatibility",
+          "value": "TRC TPU quota is not compatible with Vertex AI workflows",
+          "reset": "n/a",
+          "verified": true
+        }
+      ],
+      "automation": "manual",
+      "auth": [],
+      "status": "OWNER_GATED",
+      "notes": "Apply through the programme and wait for an invitation; approval is not automatic. Colab offers free TPU access for quick starts. Auth is through gcloud in the approved project, not a repository secret.",
+      "checked_at": "2026-11-08",
+      "source_url": "https://sites.research.google/trc/faq/"
+    }
+  ]
+}

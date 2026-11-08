@@ -1,0 +1,50 @@
+# Aetherius AI Gateway — PROPOSED, NOT DEPLOYED
+#
+# Prepared 2026-11-08 for review. Nothing here has been deployed and no public
+# endpoint exists. Deploying requires separate owner approval.
+#
+# Purpose: one authenticated, free-tier-only inference entry point that the
+# Aetherius fabric can call from any component, with the provider credential
+# held as a Worker secret and never exposed to a browser, a model prompt or a
+# log.
+#
+# Free tier used:
+#   Workers Free          100,000 requests/day, 10 ms CPU per request
+#   Workers AI Free       10,000 neurons/day (some models are paid-only; the
+#                         allowlist below is free models only)
+#   R2 Free               10 GB-month storage, 1M Class A / 10M Class B ops,
+#                         no egress fee
+#
+# Cost controls enforced in code:
+#   * a model allowlist — anything not listed is rejected, so a free model
+#     cannot silently fall back to a paid one
+#   * a spend limit of GBP 0, reported on every response
+#   * no automatic upgrades, no purchases, no credits
+#
+# Security:
+#   * GATEWAY_TOKEN is a Worker secret; requests without it get 401
+#   * OPENROUTER_API_KEY is a Worker secret; it never leaves the Worker
+#   * CORS defaults to the Aetherius origins only
+#   * request bodies are size-capped
+#
+# Rollback: `wrangler remove` (or delete the Worker in the dashboard). No
+# persistent state is created, so removal leaves nothing behind.
+
+name = "aetherius-ai-gateway"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Workers AI binding. Free tier: 10,000 neurons/day.
+[ai]
+binding = "AI"
+
+# Same-origin Pages production plus the local Vite shell. An empty list would
+# keep CORS closed; add an origin only when a real client exists.
+[[rules]]
+type = "ESModule"
+globs = ["**/*.ts"]
+
+[vars]
+ALLOWED_ORIGIN = "https://aetherius-preview.pages.dev,http://localhost:3000,http://127.0.0.1:3000"
+SPEND_LIMIT_GBP = "0"

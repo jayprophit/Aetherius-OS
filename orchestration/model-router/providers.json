@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.1.0",
+  "policy": {
+    "free_only": true,
+    "allow_paid": false,
+    "paid_opt_in_env": "AETHERIUS_ALLOW_PAID",
+    "max_attempts": 10,
+    "attempt_timeout_ms": 90000,
+    "cooldown_seconds": 300,
+    "rotate_on_status": [401, 402, 403, 404, 408, 409, 425, 429, 500, 502, 503, 504],
+    "free_tier_refresh_days": 30,
+    "require_verified_free": true
+  },
+  "providers": [
+    {
+      "id": "ollama",
+      "label": "Local Ollama (free)",
+      "kind": "openai-compatible",
+      "baseUrl": "http://127.0.0.1:11434/v1",
+      "apiKey": "ollama-local",
+      "requiresKey": false,
+      "tier": 0,
+      "free": true,
+      "verified_free": true,
+      "discovery": "ollama",
+      "models": [
+        "qwen3.5:2b-q4_K_M",
+        "qwen3.5:0.8b",
+        "qwen3:latest",
+        "qwen3:1.7b",
+        "local-qwen3:1.7b-cpu",
+        "granite4:3b",
+        "granite3.3:2b",
+        "ministral-3:3b",
+        "hhao/qwen2.5-coder-tools:3b",
+        "moondream:latest",
+        "gemma3:4b",
+        "llama3.2:3b"
+      ]
+    },
+    {
+      "id": "opencode",
+      "label": "OpenCode free model via local CLI",
+      "kind": "cli",
+      "commandEnv": "OPENCODE_CLI",
+      "apiKey": "local-cli",
+      "requiresKey": false,
+      "tier": 1,
+      "free": true,
+      "verified_free": true,
+      "models": ["deepseek-v4.1-flash-free"]
+    },
+    {
+      "id": "cloudflare-ai",
+      "label": "Cloudflare Workers AI free gateway",
+      "kind": "openai-compatible",
+      "baseUrlEnv": "CLOUDFLARE_AI_GATEWAY_URL",
+      "apiKey": "cloudflare-ai",
+      "requiresKey": false,
+      "tier": 1,
+      "free": true,
+      "discovery": "cloudflare",
+      "models": []
+    },
+    {
+      "id": "github",
+      "label": "GitHub Models (free tier)",
+      "kind": "openai-compatible",
+      "baseUrl": "https://models.github.ai/inference",
+      "apiKeyFrom": "gh",
+      "tier": 2,
+      "free": true,
+      "discovery": "github",
+      "models": [
+        "openai/gpt-4.1-mini",
+        "openai/gpt-4.1",
+        "meta/Llama-4-Scout-17B-16E-Instruct"
+      ]
+    },
+    {
+      "id": "openrouter",
+      "label": "OpenRouter free models",
+      "kind": "openai-compatible",
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "apiKeyEnv": "OPENROUTER_API_KEY",
+      "tier": 3,
+      "free": true,
+      "discovery": "openrouter",
+      "models": [
+        "nvidia/nemotron-3-super-120b-a12b:free",
+        "google/gemma-4-31b-it:free",
+        "thinkingmachines/inkling-small:free",
+        "cohere/north-mini-code:free"
+      ]
+    },
+    {
+      "id": "groq",
+      "label": "Groq free tier",
+      "kind": "openai-compatible",
+      "baseUrl": "https://api.groq.com/openai/v1",
+      "apiKeyEnv": "GROQ_API_KEY",
+      "tier": 4,
+      "free": true,
+      "verified_free": false,
+      "discovery": "openai",
+      "models": ["openai/gpt-oss-120b", "qwen/qwen3.6-27b"]
+    },
+    {
+      "id": "google",
+      "label": "Google AI Studio free tier",
+      "kind": "openai-compatible",
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "apiKeyEnv": "GEMINI_API_KEY",
+      "tier": 5,
+      "free": true,
+      "discovery": "google",
+      "models": ["gemini-3.8-flash"]
+    },
+    {
+      "id": "cerebras",
+      "label": "Cerebras free tier",
+      "kind": "openai-compatible",
+      "baseUrl": "https://api.cerebras.ai/v1",
+      "apiKeyEnv": "CEREBRAS_API_KEY",
+      "tier": 6,
+      "free": true,
+      "discovery": "openai",
+      "models": ["gpt-oss-120b"]
+    },
+    {
+      "id": "mistral",
+      "label": "Mistral free tier",
+      "kind": "openai-compatible",
+      "baseUrl": "https://api.mistral.ai/v1",
+      "apiKeyEnv": "MISTRAL_API_KEY",
+      "tier": 7,
+      "free": true,
+      "discovery": "openai",
+      "models": ["mistral-small-latest"]
+    },
+    {
+      "id": "huggingface",
+      "label": "Hugging Face Inference free credits",
+      "kind": "openai-compatible",
+      "baseUrl": "https://router.huggingface.co/v1",
+      "apiKeyEnv": "HUGGINGFACE_API_KEY",
+      "tier": 8,
+      "free": true,
+      "quota": "monthly free credits",
+      "discovery": "huggingface",
+      "models": [
+        "Qwen/Qwen2.5-7B-Instruct",
+        "meta-llama/Llama-3.3-70B-Instruct",
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      ]
+    }
+  ]
+}

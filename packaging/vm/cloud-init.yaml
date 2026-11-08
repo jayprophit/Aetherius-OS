@@ -1,0 +1,40 @@
+#cloud-config
+# Aetherius OS VM appliance bootstrap.
+#
+# Replace the repository URL with your fork if you do not use the canonical
+# public repository. The VM hosts the same web shell as the PWA; it is not
+# the native Aetherius kernel.
+package_update: true
+packages:
+  - git
+  - curl
+  - ca-certificates
+
+write_files:
+  - path: /etc/systemd/system/aetherius.service
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Aetherius OS VM appliance
+      Requires=docker.service
+      After=docker.service network-online.target
+      Wants=network-online.target
+
+      [Service]
+      Type=oneshot
+      RemainAfterExit=yes
+      WorkingDirectory=/opt/aetherius
+      ExecStart=/usr/bin/docker compose -f packaging/vm/docker-compose.yml up -d --build
+      ExecStop=/usr/bin/docker compose -f packaging/vm/docker-compose.yml down
+      TimeoutStartSec=0
+
+      [Install]
+      WantedBy=multi-user.target
+
+runcmd:
+  - curl -fsSL https://get.docker.com | sh
+  - systemctl enable --now docker
+  - git clone --depth 1 https://github.com/jayprophit/Aetherius-OS.git /opt/aetherius
+  - systemctl daemon-reload
+  - systemctl enable --now aetherius.service
+  - systemctl status --no-pager aetherius.service
