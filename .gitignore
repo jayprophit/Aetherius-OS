@@ -139,3 +139,39 @@ apps/aetherius-health-library/Healing_Web_OCR_first2.txt
 !predecessors/aetherius-os-prototype/**
 !predecessors/aetherius-os-worldclass-prototype/
 !predecessors/aetherius-os-worldclass-prototype/**
+
+# Local knowledge graph output (regenerate with graphify)
+graphify-out/
+
+# Local runtime state (regenerate; never commit)
+orchestration/hive/hive.db*
+orchestration/model-router/free-models.json
+orchestration/model-router/state.json
+orchestration/model-router/usage.jsonl
+orchestration/supervisor/*.log
+orchestration/logs/
+rea-output/
+
+# Generated test/recorder artefacts — local only, never commit binary churn
+**/test-recorder-*/rec_*.wav
+**/test-recorder-*/rec_*.md
+**/recorder-data/
+**/.wrangler-dry-run/
+test-canvas-raster/
+test-slides-raster/
+test-recorder-compat/
+test-recorder-data/
+apps/tsconfig.json.tmp
+dirlist.txt
+inventory_raw.json
+test_output.txt
+test-output.txt
+verify-output.txt
+verify_todos.py
+scripts/add_*.py
+scripts/check_*.py
+scripts/seed_*.py
+scripts/integrate_*.py
+scripts/extract_*.py
+sovereign_todos_output.txt
+graphify-out/

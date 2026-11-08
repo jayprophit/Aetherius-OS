@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "license": "SEE LICENSE IN LICENSING.md",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -23,6 +26,10 @@
     "verify:pwa": "npm run build && node scripts/verify-pwa.mjs",
     "verify:rollback": "node scripts/verify-rollback.mjs",
     "pwa:icons": "node scripts/generate-pwa-icons.mjs",
+    "platform:preflight": "node scripts/platform-preflight.mjs",
+    "desktop:icon": "node scripts/generate-pwa-icons.mjs && node scripts/generate-tauri-icons.mjs",
+    "desktop:dev": "npm run build && npx tauri dev",
+    "desktop:build": "npm run build && npx tauri build",
     "verify": "npm run secret-scan && npm run typecheck && npm run typecheck:apps && npm test && npm run test:apps && npm run build"
   },
   "dependencies": {
@@ -36,7 +43,9 @@
     "rxjs": "^7.8.2"
   },
   "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "@tailwindcss/vite": "^4.3.4",
+    "@tauri-apps/cli": "^2.12.4",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "tailwindcss": "^4.3.4",

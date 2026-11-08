@@ -1,0 +1,14 @@
+# Build context exclusions for the Aetherius VM/appliance image.
+node_modules
+**/node_modules
+dist
+.git
+.github
+.wrangler
+**/.wrangler
+native/target
+**/.venv
+**/__pycache__
+graphify-out
+knowledge
+*.log
