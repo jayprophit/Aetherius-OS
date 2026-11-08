@@ -97,7 +97,11 @@ for (const dirName of readdirSync(APPS).sort()) {
   });
 }
 
-entries.sort((a, b) => a.directory.localeCompare(b.directory));
+// Code-unit order, not locale order. `localeCompare` depends on the host's
+// ICU data and locale, so the Windows and Linux outputs diverged and the
+// byte-identical catalogue test failed only in CI. This comparator is
+// stable on every host Node runs on.
+entries.sort((a, b) => (a.directory < b.directory ? -1 : a.directory > b.directory ? 1 : 0));
 
 function js(value) {
   return JSON.stringify(value, null, 2);

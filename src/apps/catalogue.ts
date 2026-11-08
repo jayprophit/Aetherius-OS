@@ -21,6 +21,104 @@ export interface CatalogueEntry {
 
 export const APP_CATALOGUE: CatalogueEntry[] = [
   {
+    "directory": "Athena",
+    "packageName": "@aetherius/athena",
+    "aetheriusSlice": true,
+    "id": "athena",
+    "name": "Athena",
+    "kind": "application",
+    "description": "Athena, the shared intelligence runtime: model routing, tool registration and execution, planning, working and long-term memory, delegation, durable tasks, evaluation and a local-model contract. The owner's original Athena requirements live in a ChatGPT project that is not in the local corpus, so this is candidate scope.",
+    "status": "PARTIAL",
+    "lastVerified": "2026-10-27",
+    "hasSource": true,
+    "testFiles": 1,
+    "testScript": "node --test \"tests/*.test.ts\""
+  },
+  {
+    "directory": "Decentralized Messaging App",
+    "packageName": "@aetherius/messaging",
+    "aetheriusSlice": true,
+    "id": "decentralized-messaging-app",
+    "name": "Decentralized Messaging App",
+    "kind": "application",
+    "description": "The messaging slice: encrypted message storage, membership and presence, notifications, attachments, call signalling and signed federation envelopes. It builds on the Agent-Bridge communication core concepts. The transport is deliberately an interface, not a live relay or media plane, and THREAT-MODEL.md records the assets, trust boundaries, controls and residual risks. The product requirements are candidate scope; no WebRTC media plane or live federation transport is claimed.",
+    "status": "PARTIAL",
+    "lastVerified": "2026-10-29",
+    "hasSource": true,
+    "testFiles": 1,
+    "testScript": "node --test \"tests/*.test.ts\""
+  },
+  {
+    "directory": "Food Wiki App",
+    "packageName": null,
+    "aetheriusSlice": false,
+    "id": "food-wiki-app",
+    "name": "Food Wiki App",
+    "kind": "placeholder",
+    "description": "A project folder reserved for the Food Wiki / FaturaWiki application. It contains a single empty design directory and nothing else.",
+    "status": "NOT_STARTED",
+    "lastVerified": "2026-10-20",
+    "hasSource": false,
+    "testFiles": 0,
+    "testScript": null
+  },
+  {
+    "directory": "IDE-Workspace",
+    "packageName": null,
+    "aetheriusSlice": false,
+    "id": "ide-workspace",
+    "name": "IDE-Workspace",
+    "kind": "product",
+    "description": "The Aetherius IDE supervisor surface and its Python bridge host. A Vite front end under workspace/app, with a Python integration layer that exercises the bridge under workspace/integration.",
+    "status": "VERIFIED",
+    "lastVerified": "2026-10-20",
+    "hasSource": false,
+    "testFiles": 0,
+    "testScript": null
+  },
+  {
+    "directory": "LedgerLands",
+    "packageName": "ledgerlands",
+    "aetheriusSlice": false,
+    "id": "ledgerlands",
+    "name": "LedgerLands",
+    "kind": "product",
+    "description": "Aetherius OS property-trading strategy and GameFi application. An npm-workspaces monorepo with a Fastify server-authoritative API, a React/Vite gameplay UI, a deterministic game engine, a double-entry ledger and a Prisma/PostgreSQL persistence schema.",
+    "status": "VERIFIED",
+    "lastVerified": "2026-10-20",
+    "hasSource": true,
+    "testFiles": 0,
+    "testScript": "npm run test --workspaces --if-present"
+  },
+  {
+    "directory": "Multi-Cross-Platform-Trading-Bot",
+    "packageName": "@aetherius/trading-bot",
+    "aetheriusSlice": true,
+    "id": "trading-bot",
+    "name": "Multi-Cross-Platform Trading Bot",
+    "kind": "application",
+    "description": "A paper-only trading bot slice: an SMA crossover strategy, an integer-cent paper broker with commissions, idempotent client order ids, hard risk limits, a daily-loss kill switch, a deterministic backtest and an audit trail. No live exchange adapter is claimed.",
+    "status": "PARTIAL",
+    "lastVerified": "2026-11-02",
+    "hasSource": true,
+    "testFiles": 2,
+    "testScript": "node --test \"tests/*.test.ts\""
+  },
+  {
+    "directory": "Poietek",
+    "packageName": "poietek-studio",
+    "aetheriusSlice": false,
+    "id": "poietek",
+    "name": "Poietek",
+    "kind": "product",
+    "description": "Poietek Studio: a local-first cross-platform creative production system with a Tauri desktop shell, a web preview build, and a native audio core. Canonical creative surface of the Aetherius ecosystem.",
+    "status": "VERIFIED",
+    "lastVerified": "2026-10-20",
+    "hasSource": true,
+    "testFiles": 0,
+    "testScript": "npm run typecheck:core && node ./scripts/prepare-core-tests.mjs && node --test tests/*.test.js"
+  },
+  {
     "directory": "accessibility",
     "packageName": "@aetherius/accessibility",
     "aetheriusSlice": true,
@@ -1729,20 +1827,6 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
-    "directory": "Athena",
-    "packageName": "@aetherius/athena",
-    "aetheriusSlice": true,
-    "id": "athena",
-    "name": "Athena",
-    "kind": "application",
-    "description": "Athena, the shared intelligence runtime: model routing, tool registration and execution, planning, working and long-term memory, delegation, durable tasks, evaluation and a local-model contract. The owner's original Athena requirements live in a ChatGPT project that is not in the local corpus, so this is candidate scope.",
-    "status": "PARTIAL",
-    "lastVerified": "2026-10-27",
-    "hasSource": true,
-    "testFiles": 1,
-    "testScript": "node --test \"tests/*.test.ts\""
-  },
-  {
     "directory": "backup-restore",
     "packageName": "@aetherius/backup-restore",
     "aetheriusSlice": true,
@@ -1754,20 +1838,6 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "lastVerified": "2026-11-07",
     "hasSource": true,
     "testFiles": 2,
-    "testScript": "node --test \"tests/*.test.ts\""
-  },
-  {
-    "directory": "Decentralized Messaging App",
-    "packageName": "@aetherius/messaging",
-    "aetheriusSlice": true,
-    "id": "decentralized-messaging-app",
-    "name": "Decentralized Messaging App",
-    "kind": "application",
-    "description": "The messaging slice: encrypted message storage, membership and presence, notifications, attachments, call signalling and signed federation envelopes. It builds on the Agent-Bridge communication core concepts. The transport is deliberately an interface, not a live relay or media plane, and THREAT-MODEL.md records the assets, trust boundaries, controls and residual risks. The product requirements are candidate scope; no WebRTC media plane or live federation transport is claimed.",
-    "status": "PARTIAL",
-    "lastVerified": "2026-10-29",
-    "hasSource": true,
-    "testFiles": 1,
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
@@ -1783,20 +1853,6 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "hasSource": true,
     "testFiles": 2,
     "testScript": "node --test \"tests/*.test.ts\""
-  },
-  {
-    "directory": "Food Wiki App",
-    "packageName": null,
-    "aetheriusSlice": false,
-    "id": "food-wiki-app",
-    "name": "Food Wiki App",
-    "kind": "placeholder",
-    "description": "A project folder reserved for the Food Wiki / FaturaWiki application. It contains a single empty design directory and nothing else.",
-    "status": "NOT_STARTED",
-    "lastVerified": "2026-10-20",
-    "hasSource": false,
-    "testFiles": 0,
-    "testScript": null
   },
   {
     "directory": "football-card-game",
@@ -1841,48 +1897,6 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "testScript": "node --test \"tests/*.test.ts\""
   },
   {
-    "directory": "IDE-Workspace",
-    "packageName": null,
-    "aetheriusSlice": false,
-    "id": "ide-workspace",
-    "name": "IDE-Workspace",
-    "kind": "product",
-    "description": "The Aetherius IDE supervisor surface and its Python bridge host. A Vite front end under workspace/app, with a Python integration layer that exercises the bridge under workspace/integration.",
-    "status": "VERIFIED",
-    "lastVerified": "2026-10-20",
-    "hasSource": false,
-    "testFiles": 0,
-    "testScript": null
-  },
-  {
-    "directory": "LedgerLands",
-    "packageName": "ledgerlands",
-    "aetheriusSlice": false,
-    "id": "ledgerlands",
-    "name": "LedgerLands",
-    "kind": "product",
-    "description": "Aetherius OS property-trading strategy and GameFi application. An npm-workspaces monorepo with a Fastify server-authoritative API, a React/Vite gameplay UI, a deterministic game engine, a double-entry ledger and a Prisma/PostgreSQL persistence schema.",
-    "status": "VERIFIED",
-    "lastVerified": "2026-10-20",
-    "hasSource": true,
-    "testFiles": 0,
-    "testScript": "npm run test --workspaces --if-present"
-  },
-  {
-    "directory": "Multi-Cross-Platform-Trading-Bot",
-    "packageName": "@aetherius/trading-bot",
-    "aetheriusSlice": true,
-    "id": "trading-bot",
-    "name": "Multi-Cross-Platform Trading Bot",
-    "kind": "application",
-    "description": "A paper-only trading bot slice: an SMA crossover strategy, an integer-cent paper broker with commissions, idempotent client order ids, hard risk limits, a daily-loss kill switch, a deterministic backtest and an audit trail. No live exchange adapter is claimed.",
-    "status": "PARTIAL",
-    "lastVerified": "2026-11-02",
-    "hasSource": true,
-    "testFiles": 2,
-    "testScript": "node --test \"tests/*.test.ts\""
-  },
-  {
     "directory": "on-screen-keyboard",
     "packageName": "@aetherius/on-screen-keyboard",
     "aetheriusSlice": true,
@@ -1909,20 +1923,6 @@ export const APP_CATALOGUE: CatalogueEntry[] = [
     "hasSource": true,
     "testFiles": 1,
     "testScript": "node --test \"tests/*.test.ts\""
-  },
-  {
-    "directory": "Poietek",
-    "packageName": "poietek-studio",
-    "aetheriusSlice": false,
-    "id": "poietek",
-    "name": "Poietek",
-    "kind": "product",
-    "description": "Poietek Studio: a local-first cross-platform creative production system with a Tauri desktop shell, a web preview build, and a native audio core. Canonical creative surface of the Aetherius ecosystem.",
-    "status": "VERIFIED",
-    "lastVerified": "2026-10-20",
-    "hasSource": true,
-    "testFiles": 0,
-    "testScript": "npm run typecheck:core && node ./scripts/prepare-core-tests.mjs && node --test tests/*.test.js"
   },
   {
     "directory": "print-manager",

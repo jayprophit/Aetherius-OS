@@ -80,6 +80,9 @@ export default defineConfig(() => {
         include: [
           'src/**/*.{test,spec}.?(c|m)[jt]s?(x)',
           'docs/**/*.{test,spec}.?(c|m)[jt]s?(x)',
+          // The orchestration substrate is runtime code, not a tool install.
+          // Its localhost contract tests belong to this suite.
+          'orchestration/**/*.{test,spec}.?(c|m)[jt]s?(x)',
         ],
         exclude: [
           '**/node_modules/**',
