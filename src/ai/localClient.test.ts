@@ -83,17 +83,17 @@ describe("chatWithLocalModel empty/thinking/truncation", () => {
     expect(JSON.parse(seen[0]!).think).toBe(false);
   });
 
-  it("returns CANCELLED when caller aborts before sending", async () => {
+  it("returns CANCELLED when caller aborts during chat", async () => {
     const controller = new AbortController();
-    // Mock fetch must respect abort: it checks signal before resolving.
     vi.stubGlobal("fetch", async (_url: string, init?: { signal?: AbortSignal }) => {
-      if (init?.signal?.aborted) throw new DOMException("Aborted", "AbortError");
       if (String(_url).includes("/api/tags")) {
         return { ok: true, status: 200, text: async () => JSON.stringify({ models: [{ name: "qwen3.5:0.8b" }] }) } as Response;
       }
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      if (init?.signal?.aborted) throw new DOMException("Aborted", "AbortError");
       return { ok: true, status: 200, text: async () => JSON.stringify({ model: "qwen3.5:0.8b", message: { content: "x" }, done: true, done_reason: "stop" }) } as Response;
     });
-    controller.abort();
+    setTimeout(() => controller.abort(), 10);
     const r = await chatWithLocalModel([{ role: "user", content: "hi" }], { timeoutMs: 5000, signal: controller.signal });
     expect(r.ok).toBe(false);
     if (r.ok === false) {
